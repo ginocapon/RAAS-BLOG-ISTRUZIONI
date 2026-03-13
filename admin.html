@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — BandiItalia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root {
+  --nero: #0a1628;
+  --nero2: #0f2035;
+  --nero3: #162a45;
+  --oro: #d4a843;
+  --oro2: #e8c872;
+  --oro3: rgba(212,168,67,0.15);
+  --sfondo: #f0ede6;
+  --bianco: #fafaf5;
+  --testo: #1a1a2e;
+  --grigio: #8b95a5;
+  --grigio2: #c8cdd5;
+  --rosso: #e74c3c;
+  --verde: #2dd4a0;
+  --arancio: #f39c12;
+  --blu: #3498db;
+  --sidebar-w: 260px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--sfondo);
+  color: var(--testo);
+  min-height: 100vh;
+}
+
+/* ══════════ LOGIN OVERLAY ══════════ */
+#loginOverlay {
+  position: fixed; inset: 0;
+  background: linear-gradient(135deg, var(--nero) 0%, var(--nero2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999;
+}
+.login-box {
+  background: var(--bianco);
+  border-radius: 16px;
+  padding: 48px 40px;
+  width: 100%; max-width: 420px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+  text-align: center;
+}
+.login-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--nero);
+  margin-bottom: 4px;
+}
+.login-logo span { color: var(--oro); }
+.login-sub {
+  font-size: 0.7rem;
+  color: var(--grigio);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.login-box input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--testo);
+  background: var(--sfondo);
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.login-box input:focus {
+  outline: none;
+  border-color: var(--oro);
+}
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background: var(--oro);
+  color: var(--nero);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-login:hover { background: var(--oro2); }
+.login-error {
+  color: var(--rosso);
+  font-size: 0.82rem;
+  margin-top: 12px;
+  display: none;
+}
+
+/* ══════════ LAYOUT ══════════ */
+#appWrapper { display: none; min-height: 100vh; }
+#appWrapper.visible { display: flex; }
+
+/* SIDEBAR */
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--nero);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 100;
+  transition: transform 0.3s;
+}
+.sidebar-logo {
+  padding: 24px 24px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.sidebar-logo h1 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--oro);
+  line-height: 1.2;
+}
+.sidebar-logo h1 em { font-style: normal; color: #fff; }
+.sidebar-logo span {
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grigio);
+  display: block;
+  margin-top: 4px;
+}
+.sidebar nav { flex: 1; padding: 12px 0; overflow-y: auto; }
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  color: var(--grigio);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+.nav-item:hover {
+  color: white;
+  background: rgba(255,255,255,0.05);
+}
+.nav-item.active {
+  color: var(--oro);
+  background: rgba(212,168,67,0.08);
+  border-left-color: var(--oro);
+}
+.nav-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+.nav-badge {
+  position: absolute;
+  right: 16px;
+  background: var(--rosso);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+.sidebar-footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.btn-logout {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--grigio);
+  cursor: pointer;
+  font-size: 0.78rem;
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  padding: 8px 0;
+  transition: color 0.2s;
+}
+.btn-logout:hover { color: var(--oro); }
+
+/* MAIN */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+}
+
+/* TOPBAR */
+.topbar {
+  position: sticky;
+  top: 0;
+  background: rgba(240,237,230,0.92);
+  backdrop-filter: blur(10px);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  z-index: 50;
+}
+.topbar h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--testo);
+}
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.8rem;
+  color: var(--grigio);
+}
+#adminBurger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--testo);
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+/* CONTENT */
+.content { padding: 24px 32px; }
+
+/* SECTIONS */
+.section { display: none; }
+.section.active { display: block; }
+
+/* ══════════ CARDS & STATS ══════════ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--bianco);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.stat-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.stat-icon.blue { background: rgba(52,152,219,0.1); color: var(--blu); }
+.stat-icon.green { background: rgba(45,212,160,0.1); color: var(--verde); }
+.stat-icon.gold { background: rgba(212,168,67,0.1); color: var(--oro); }
+.stat-icon.red { background: rgba(231,76,60,0.1); color: var(--rosso); }
+.stat-info h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--testo);
+  line-height: 1;
+}
+.stat-info p {
+  font-size: 0.78rem;
+  color: var(--grigio);
+  margin-top: 4px;
+}
+
+/* ══════════ TABLES ══════════ */
+.card {
+  background: var(--bianco);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 20px;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.card-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.toolbar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.search-box {
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  width: 220px;
+  transition: border-color 0.2s;
+}
+.search-box:focus { outline: none; border-color: var(--oro); }
+select.filter-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  background: white;
+  cursor: pointer;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.data-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 600;
+  color: var(--grigio);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #eee;
+}
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+.data-table tbody tr:hover {
+  background: rgba(212,168,67,0.04);
+}
+.table-wrap { overflow-x: auto; }
+
+/* BADGES */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.badge.attivo { background: rgba(45,212,160,0.12); color: var(--verde); }
+.badge.scaduto { background: rgba(231,76,60,0.12); color: var(--rosso); }
+.badge.in-scadenza { background: rgba(243,156,18,0.12); color: var(--arancio); }
+.badge.paid { background: rgba(212,168,67,0.12); color: var(--oro); }
+.badge.free { background: rgba(52,152,219,0.12); color: var(--blu); }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--oro); color: var(--nero); }
+.btn-primary:hover { background: var(--oro2); }
+.btn-secondary { background: #e8e5de; color: var(--testo); }
+.btn-secondary:hover { background: #ddd9d0; }
+.btn-danger { background: #fde8e8; color: var(--rosso); }
+.btn-danger:hover { background: #fcd2d2; }
+.btn-sm { padding: 5px 10px; font-size: 0.75rem; }
+.btn-icon {
+  width: 32px; height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.85rem;
+}
+.btn-icon:hover { border-color: var(--oro); background: var(--oro3); }
+
+/* FORMS */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--testo);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--testo);
+  background: white;
+  transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--oro);
+}
+.form-group textarea { min-height: 120px; resize: vertical; }
+.toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.toggle {
+  position: relative;
+  width: 44px; height: 24px;
+  background: #ccc;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.toggle.on { background: var(--verde); }
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.toggle.on::after { transform: translateX(20px); }
+
+/* PAGINATION */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 0.82rem;
+}
+.pagination button {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  transition: all 0.2s;
+}
+.pagination button:hover { border-color: var(--oro); }
+.pagination button.active { background: var(--oro); color: var(--nero); border-color: var(--oro); }
+.pagination button:disabled { opacity: 0.4; cursor: default; }
+
+/* TOAST */
+#toastContainer {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.toast {
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: white;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  animation: toastIn 0.3s ease;
+  max-width: 360px;
+}
+.toast.success { background: var(--verde); }
+.toast.error { background: var(--rosso); }
+.toast.info { background: var(--blu); }
+@keyframes toastIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+}
+.modal-overlay.show { display: flex; }
+.modal {
+  background: var(--bianco);
+  border-radius: 16px;
+  padding: 32px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+}
+.modal h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.modal p {
+  font-size: 0.88rem;
+  color: var(--grigio);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+/* LOADING */
+.spinner {
+  display: inline-block;
+  width: 20px; height: 20px;
+  border: 2px solid #ddd;
+  border-top-color: var(--oro);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  z-index: 10;
+}
+
+/* SCADENZE TIMELINE */
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: flex-start;
+}
+.timeline-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.timeline-dot.red { background: var(--rosso); }
+.timeline-dot.orange { background: var(--arancio); }
+.timeline-dot.green { background: var(--verde); }
+.timeline-info h4 { font-size: 0.88rem; font-weight: 600; }
+.timeline-info p { font-size: 0.78rem; color: var(--grigio); margin-top: 2px; }
+.timeline-date {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* EMAIL COMPOSE */
+.email-preview {
+  background: var(--nero);
+  border-radius: 12px;
+  padding: 24px;
+  color: white;
+  margin-top: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.recipient-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.chip {
+  padding: 4px 10px;
+  background: rgba(212,168,67,0.1);
+  color: var(--oro);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  #adminBurger { display: block; }
+  .main { margin-left: 0; }
+  .topbar { padding: 12px 16px; }
+  .content { padding: 16px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .card { padding: 16px; }
+}
+@media (max-width: 480px) {
+  .login-box { padding: 32px 24px; margin: 16px; }
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .search-box { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ LOGIN ══════════ -->
+<div id="loginOverlay">
+  <div class="login-box">
+    <div class="login-logo">BANDI<span>ITALIA</span></div>
+    <div class="login-sub">Pannello Amministrazione</div>
+    <input type="password" id="loginPwd" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn-login" onclick="doLogin()">ACCEDI</button>
+    <div class="login-error" id="loginErr">Password errata</div>
+  </div>
+</div>
+
+<!-- ══════════ APP ══════════ -->
+<div id="appWrapper">
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <h1><em>Bandi</em>Italia</h1>
+    <span>Admin Panel</span>
+  </div>
+  <nav>
+    <div class="nav-item active" onclick="showSection('dashboard')" data-sec="dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Dashboard
+    </div>
+    <div class="nav-item" onclick="showSection('bandi')" data-sec="bandi">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+      Bandi
+      <span class="nav-badge" id="badgeBandi" style="display:none">0</span>
+    </div>
+    <div class="nav-item" onclick="showSection('nuovo-bando')" data-sec="nuovo-bando">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+      Nuovo Bando
+    </div>
+    <div class="nav-item" onclick="showSection('iscritti')" data-sec="iscritti">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      Iscritti
+      <span class="nav-badge" id="badgeIscritti" style="display:none">0</span>
+    </div>
+    <div class="nav-item" onclick="showSection('email')" data-sec="email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+      Email
+    </div>
+    <div class="nav-item" onclick="showSection('newsletter')" data-sec="newsletter">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      Newsletter
+    </div>
+    <div class="nav-item" onclick="showSection('scadenze')" data-sec="scadenze">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+      Scadenze
+    </div>
+    <div class="nav-item" onclick="showSection('impostazioni')" data-sec="impostazioni">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      Impostazioni
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="btn-logout" onclick="doLogout()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Esci
+    </button>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;">
+      <button id="adminBurger" onclick="toggleSidebar()">&#9776;</button>
+      <h2 id="topbarTitle">Dashboard</h2>
+    </div>
+    <div class="topbar-right">
+      <span id="topbarDate"></span>
+    </div>
+  </div>
+  <div class="content">
+
+    <!-- ══════════ DASHBOARD ══════════ -->
+    <div class="section active" id="sec-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon gold">&#128196;</div>
+          <div class="stat-info">
+            <h3 id="statBandi">-</h3>
+            <p>Bandi Attivi</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue">&#128101;</div>
+          <div class="stat-info">
+            <h3 id="statIscritti">-</h3>
+            <p>Iscritti Totali</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">&#128176;</div>
+          <div class="stat-info">
+            <h3 id="statPaid">-</h3>
+            <p>Abbonati Premium</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red">&#9200;</div>
+          <div class="stat-info">
+            <h3 id="statScadenza">-</h3>
+            <p>In Scadenza (7gg)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Bandi in Scadenza Imminente</h3>
+        </div>
+        <div id="dashScadenze">
+          <p style="color:var(--grigio);font-size:0.85rem;">Caricamento...</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Ultimi Iscritti</h3>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Nome</th><th>Email</th><th>Tipo</th><th>Data</th></tr></thead>
+            <tbody id="dashUltimiIscritti"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ BANDI ══════════ -->
+    <div class="section" id="sec-bandi">
+      <div class="card">
+        <div class="card-header">
+          <h3>Gestione Bandi</h3>
+          <div class="toolbar">
+            <input class="search-box" type="text" id="searchBandi" placeholder="Cerca bando..." oninput="debounceBandi()">
+            <select class="filter-select" id="filterRegione" onchange="loadBandiAdmin()">
+              <option value="">Tutte le Regioni</option>
+              <option>Abruzzo</option><option>Basilicata</option><option>Calabria</option>
+              <option>Campania</option><option>Emilia-Romagna</option><option>Friuli Venezia Giulia</option>
+              <option>Lazio</option><option>Liguria</option><option>Lombardia</option>
+              <option>Marche</option><option>Molise</option><option>Piemonte</option>
+              <option>Puglia</option><option>Sardegna</option><option>Sicilia</option>
+              <option>Toscana</option><option>Trentino-Alto Adige</option><option>Umbria</option>
+              <option>Valle d'Aosta</option><option>Veneto</option><option>Nazionale</option>
+            </select>
+            <select class="filter-select" id="filterTipo" onchange="loadBandiAdmin()">
+              <option value="">Tutti i Tipi</option>
+              <option>Fondo Perduto</option><option>Credito Agevolato</option>
+              <option>Contributo Misto</option><option>Garanzia</option>
+            </select>
+            <button class="btn btn-primary" onclick="showSection('nuovo-bando')">+ Nuovo</button>
+          </div>
+        </div>
+        <div class="table-wrap" style="position:relative;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Titolo</th>
+                <th>Ente</th>
+                <th>Regione</th>
+                <th>Importo Max</th>
+                <th>Tipo</th>
+                <th>Scadenza</th>
+                <th>Stato</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyBandi"></tbody>
+          </table>
+          <div id="bandiLoading" class="loading-overlay" style="display:none;"><div class="spinner"></div></div>
+        </div>
+        <div class="pagination" id="pagBandi"></div>
+      </div>
+    </div>
+
+    <!-- ══════════ NUOVO BANDO ══════════ -->
+    <div class="section" id="sec-nuovo-bando">
+      <div class="card">
+        <div class="card-header">
+          <h3 id="formBandoTitle">Nuovo Bando</h3>
+        </div>
+        <form id="formBando" onsubmit="saveBando(event)">
+          <input type="hidden" id="bandoId" value="">
+          <div class="form-grid">
+            <div class="form-group full">
+              <label>Titolo *</label>
+              <input type="text" id="bandoTitolo" required>
+            </div>
+            <div class="form-group full">
+              <label>Descrizione *</label>
+              <textarea id="bandoDescrizione" required></textarea>
+            </div>
+            <div class="form-group">
+              <label>Ente Erogatore *</label>
+              <input type="text" id="bandoEnte" required placeholder="Es: MISE, Regione Veneto...">
+            </div>
+            <div class="form-group">
+              <label>Regione</label>
+              <select id="bandoRegione">
+                <option value="">Nazionale</option>
+                <option>Abruzzo</option><option>Basilicata</option><option>Calabria</option>
+                <option>Campania</option><option>Emilia-Romagna</option><option>Friuli Venezia Giulia</option>
+                <option>Lazio</option><option>Liguria</option><option>Lombardia</option>
+                <option>Marche</option><option>Molise</option><option>Piemonte</option>
+                <option>Puglia</option><option>Sardegna</option><option>Sicilia</option>
+                <option>Toscana</option><option>Trentino-Alto Adige</option><option>Umbria</option>
+                <option>Valle d'Aosta</option><option>Veneto</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Importo Massimo (EUR)</label>
+              <input type="number" id="bandoImporto" placeholder="50000">
+            </div>
+            <div class="form-group">
+              <label>Tipo Contributo *</label>
+              <select id="bandoTipo" required>
+                <option value="">Seleziona...</option>
+                <option>Fondo Perduto</option>
+                <option>Credito Agevolato</option>
+                <option>Contributo Misto</option>
+                <option>Garanzia</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Settore</label>
+              <input type="text" id="bandoSettore" placeholder="Es: Digitalizzazione, Energia, Turismo...">
+            </div>
+            <div class="form-group">
+              <label>Scadenza *</label>
+              <input type="date" id="bandoScadenza" required>
+            </div>
+            <div class="form-group full">
+              <label>Link Bando (URL)</label>
+              <input type="url" id="bandoLink" placeholder="https://...">
+            </div>
+            <div class="form-group">
+              <label>Stato</label>
+              <div class="toggle-wrap">
+                <div class="toggle on" id="bandoAttivo" onclick="this.classList.toggle('on')"></div>
+                <span style="font-size:0.82rem;">Attivo</span>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:24px;display:flex;gap:12px;">
+            <button type="submit" class="btn btn-primary">Salva Bando</button>
+            <button type="button" class="btn btn-secondary" onclick="resetBandoForm();showSection('bandi')">Annulla</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ══════════ ISCRITTI ══════════ -->
+    <div class="section" id="sec-iscritti">
+      <div class="card">
+        <div class="card-header">
+          <h3>Gestione Iscritti</h3>
+          <div class="toolbar">
+            <input class="search-box" type="text" id="searchIscritti" placeholder="Cerca iscritto..." oninput="debounceIscritti()">
+            <select class="filter-select" id="filterTipoIscritto" onchange="loadIscrittiAdmin()">
+              <option value="">Tutti</option>
+              <option value="paid">Premium</option>
+              <option value="free">Free</option>
+              <option value="chatbot">Chatbot</option>
+            </select>
+            <button class="btn btn-secondary" onclick="exportCSV()">Esporta CSV</button>
+          </div>
+        </div>
+        <div class="table-wrap" style="position:relative;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Azienda</th>
+                <th>Tipo</th>
+                <th>Newsletter</th>
+                <th>Data</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyIscritti"></tbody>
+          </table>
+          <div id="iscrittiLoading" class="loading-overlay" style="display:none;"><div class="spinner"></div></div>
+        </div>
+        <div class="pagination" id="pagIscritti"></div>
+      </div>
+    </div>
+
+    <!-- ══════════ EMAIL ══════════ -->
+    <div class="section" id="sec-email">
+      <div class="card">
+        <div class="card-header">
+          <h3>Componi Email</h3>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Destinatari</label>
+            <select id="emailDestinatari">
+              <option value="all">Tutti gli iscritti</option>
+              <option value="paid">Solo Premium</option>
+              <option value="free">Solo Free</option>
+              <option value="newsletter">Solo newsletter attiva</option>
+              <option value="custom">Personalizzato</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Conteggio destinatari</label>
+            <div id="emailCount" style="padding:10px 14px;background:#f0f0f0;border-radius:8px;font-size:0.88rem;font-weight:600;">-</div>
+          </div>
+          <div class="form-group full" id="customEmailWrap" style="display:none;">
+            <label>Email personalizzate (una per riga)</label>
+            <textarea id="customEmails" placeholder="mario@azienda.it&#10;laura@studio.com"></textarea>
+          </div>
+          <div class="form-group full">
+            <label>Oggetto *</label>
+            <input type="text" id="emailOggetto" placeholder="Es: Nuovi bandi disponibili per la tua azienda">
+          </div>
+          <div class="form-group full">
+            <label>Corpo HTML</label>
+            <textarea id="emailCorpo" style="min-height:200px;font-family:monospace;font-size:0.8rem;" placeholder="Inserisci HTML email..."></textarea>
+          </div>
+          <div class="form-group full">
+            <label>Oppure usa template</label>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button type="button" class="btn btn-secondary btn-sm" onclick="loadEmailTemplate('bandi-alert')">Template Bandi Alert</button>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="loadEmailTemplate('welcome')">Template Benvenuto</button>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:12px;align-items:center;">
+          <button class="btn btn-primary" onclick="sendEmail()">Invia Email</button>
+          <button class="btn btn-secondary" onclick="previewEmail()">Anteprima</button>
+          <span id="emailStatus" style="font-size:0.82rem;color:var(--grigio);"></span>
+        </div>
+        <div id="emailPreviewBox" style="display:none;margin-top:20px;">
+          <h4 style="font-size:0.88rem;margin-bottom:8px;">Anteprima:</h4>
+          <div class="email-preview" id="emailPreviewContent"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ NEWSLETTER ══════════ -->
+    <div class="section" id="sec-newsletter">
+      <div class="card">
+        <div class="card-header">
+          <h3>Campagna Newsletter</h3>
+        </div>
+        <p style="color:var(--grigio);font-size:0.85rem;margin-bottom:20px;">
+          Seleziona i bandi da includere nella newsletter. Verranno inseriti automaticamente nel template email.
+        </p>
+        <div id="nlBandiList" style="margin-bottom:20px;">
+          <p style="color:var(--grigio);font-size:0.82rem;">Caricamento bandi...</p>
+        </div>
+        <div class="form-group" style="max-width:400px;margin-bottom:16px;">
+          <label>Oggetto newsletter</label>
+          <input type="text" id="nlOggetto" value="Nuovi Bandi della Settimana — BandiItalia">
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;">
+          <button class="btn btn-primary" onclick="sendNewsletter()">Invia Newsletter</button>
+          <button class="btn btn-secondary" onclick="previewNewsletter()">Anteprima</button>
+          <span id="nlStatus" style="font-size:0.82rem;color:var(--grigio);"></span>
+        </div>
+        <div id="nlPreviewBox" style="display:none;margin-top:20px;">
+          <h4 style="font-size:0.88rem;margin-bottom:8px;">Anteprima Newsletter:</h4>
+          <div class="email-preview" id="nlPreviewContent"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ SCADENZE ══════════ -->
+    <div class="section" id="sec-scadenze">
+      <div class="card">
+        <div class="card-header">
+          <h3>Calendario Scadenze</h3>
+          <div class="toolbar">
+            <select class="filter-select" id="filterScadMesi" onchange="loadScadenze()">
+              <option value="1">Prossimi 30 giorni</option>
+              <option value="2">Prossimi 60 giorni</option>
+              <option value="3" selected>Prossimi 90 giorni</option>
+              <option value="6">Prossimi 6 mesi</option>
+            </select>
+          </div>
+        </div>
+        <div id="scadenzeTimeline">
+          <p style="color:var(--grigio);font-size:0.85rem;">Caricamento...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ IMPOSTAZIONI ══════════ -->
+    <div class="section" id="sec-impostazioni">
+      <div class="card" style="max-width:600px;">
+        <div class="card-header">
+          <h3>Impostazioni</h3>
+        </div>
+        <div class="form-group" style="margin-bottom:20px;">
+          <label>Cambia Password Admin</label>
+          <input type="password" id="newPwd" placeholder="Nuova password">
+          <button class="btn btn-primary btn-sm" style="margin-top:8px;width:fit-content;" onclick="changePassword()">Aggiorna Password</button>
+        </div>
+        <hr style="border:none;border-top:1px solid #eee;margin:20px 0;">
+        <div class="form-group" style="margin-bottom:20px;">
+          <label>Test Connessione Supabase</label>
+          <button class="btn btn-secondary btn-sm" onclick="testSupabase()">Testa Connessione</button>
+          <div id="supabaseStatus" style="margin-top:8px;font-size:0.82rem;"></div>
+        </div>
+        <hr style="border:none;border-top:1px solid #eee;margin:20px 0;">
+        <div class="form-group" style="margin-bottom:20px;">
+          <label>Test Invio Email SMTP</label>
+          <input type="email" id="testEmailAddr" placeholder="email@test.it">
+          <button class="btn btn-secondary btn-sm" style="margin-top:8px;width:fit-content;" onclick="testSMTP()">Invia Email di Test</button>
+          <div id="smtpStatus" style="margin-top:8px;font-size:0.82rem;"></div>
+        </div>
+        <hr style="border:none;border-top:1px solid #eee;margin:20px 0;">
+        <div class="form-group">
+          <label>Password SMTP (info@raasautomazioni.it)</label>
+          <input type="password" id="smtpPassField" placeholder="Password SMTP SiteGround">
+          <button class="btn btn-secondary btn-sm" style="margin-top:8px;width:fit-content;" onclick="saveSMTPPass()">Salva in Locale</button>
+          <p style="font-size:0.72rem;color:var(--grigio);margin-top:4px;">Salvata in localStorage. Per produzione, configurare come env var su Supabase.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /appWrapper -->
+
+<!-- MODAL CONFERMA -->
+<div class="modal-overlay" id="modalConfirm">
+  <div class="modal">
+    <h3 id="modalTitle">Conferma</h3>
+    <p id="modalMsg">Sei sicuro?</p>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal()">Annulla</button>
+      <button class="btn btn-danger" id="modalConfirmBtn" onclick="">Conferma</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toastContainer"></div>
+
+<script>
+// ══════════ CONFIG ══════════
+const SUPABASE_URL = 'https://ieeriszlalrsbfsnarih.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZXJpc3psYWxyc2Jmc25hcmloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNjEyNjAsImV4cCI6MjA4MzczNzI2MH0.Sjwu1620mMTAAoKVHgXHQ1cA-m3hFXqtCtqjAQNErQo';
+const EDGE_FN_URL = SUPABASE_URL + '/functions/v1/send-email';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const PAGE_SIZE = 20;
+let bandiPage = 1, bandiTotal = 0, allBandiCache = [];
+let iscrittiPage = 1, iscrittiTotal = 0, allIscrittiCache = [];
+let bandiSearchTimer = null, iscrittiSearchTimer = null;
+
+// ══════════ LOGIN ══════════
+function getAdminPwd() { return localStorage.getItem('bandiAdminPwd') || 'BandiAdmin2026!'; }
+
+function doLogin() {
+  const pwd = document.getElementById('loginPwd').value;
+  if (pwd === getAdminPwd()) {
+    localStorage.setItem('bandiAdminAuth', 'true');
+    document.getElementById('loginOverlay').style.display = 'none';
+    document.getElementById('appWrapper').classList.add('visible');
+    initApp();
+  } else {
+    const err = document.getElementById('loginErr');
+    err.style.display = 'block';
+    setTimeout(() => err.style.display = 'none', 3000);
+  }
+}
+
+function doLogout() {
+  localStorage.removeItem('bandiAdminAuth');
+  location.reload();
+}
+
+function changePassword() {
+  const np = document.getElementById('newPwd').value.trim();
+  if (np.length < 6) { toast('Password troppo corta (min 6 caratteri)', 'error'); return; }
+  localStorage.setItem('bandiAdminPwd', np);
+  document.getElementById('newPwd').value = '';
+  toast('Password aggiornata', 'success');
+}
+
+// ══════════ INIT ══════════
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('topbarDate').textContent = new Date().toLocaleDateString('it-IT', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  if (localStorage.getItem('bandiAdminAuth') === 'true') {
+    document.getElementById('loginOverlay').style.display = 'none';
+    document.getElementById('appWrapper').classList.add('visible');
+    initApp();
+  }
+  document.getElementById('emailDestinatari').addEventListener('change', function() {
+    document.getElementById('customEmailWrap').style.display = this.value === 'custom' ? 'block' : 'none';
+    countRecipients();
+  });
+});
+
+async function initApp() {
+  loadDashboard();
+}
+
+// ══════════ NAVIGATION ══════════
+const sectionTitles = {
+  'dashboard': 'Dashboard',
+  'bandi': 'Gestione Bandi',
+  'nuovo-bando': 'Nuovo Bando',
+  'iscritti': 'Gestione Iscritti',
+  'email': 'Componi Email',
+  'newsletter': 'Campagna Newsletter',
+  'scadenze': 'Calendario Scadenze',
+  'impostazioni': 'Impostazioni'
+};
+
+function showSection(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  const sec = document.getElementById('sec-' + name);
+  if (sec) sec.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => {
+    n.classList.toggle('active', n.getAttribute('data-sec') === name);
+  });
+  document.getElementById('topbarTitle').textContent = sectionTitles[name] || name;
+  // Close sidebar on mobile
+  document.getElementById('sidebar').classList.remove('open');
+  // Load data
+  if (name === 'dashboard') loadDashboard();
+  else if (name === 'bandi') loadBandiAdmin();
+  else if (name === 'iscritti') loadIscrittiAdmin();
+  else if (name === 'scadenze') loadScadenze();
+  else if (name === 'newsletter') loadNLBandi();
+  else if (name === 'email') countRecipients();
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+// ══════════ TOAST ══════════
+function toast(msg, type = 'info') {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity 0.3s'; setTimeout(() => t.remove(), 300); }, 3500);
+}
+
+// ══════════ MODAL ══════════
+function showModal(title, msg, onConfirm) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalMsg').textContent = msg;
+  document.getElementById('modalConfirmBtn').onclick = () => { closeModal(); onConfirm(); };
+  document.getElementById('modalConfirm').classList.add('show');
+}
+function closeModal() { document.getElementById('modalConfirm').classList.remove('show'); }
+
+// ══════════ DASHBOARD ══════════
+async function loadDashboard() {
+  try {
+    // Stats
+    const [bandiRes, subRes, paidRes] = await Promise.all([
+      sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true),
+      sb.from('subscribers').select('*', { count: 'exact', head: true }),
+      sb.from('subscribers').select('*', { count: 'exact', head: true }).eq('type', 'paid')
+    ]);
+    document.getElementById('statBandi').textContent = bandiRes.count || 0;
+    document.getElementById('statIscritti').textContent = subRes.count || 0;
+    document.getElementById('statPaid').textContent = paidRes.count || 0;
+
+    // Bandi in scadenza
+    const oggi = new Date();
+    const fra7 = new Date(oggi); fra7.setDate(fra7.getDate() + 7);
+    const scadRes = await sb.from('bandi').select('*').eq('attivo', true).lte('scadenza', fra7.toISOString().split('T')[0]).gte('scadenza', oggi.toISOString().split('T')[0]).order('scadenza', { ascending: true }).limit(10);
+    document.getElementById('statScadenza').textContent = scadRes.data ? scadRes.data.length : 0;
+
+    const cont = document.getElementById('dashScadenze');
+    if (scadRes.data && scadRes.data.length > 0) {
+      cont.innerHTML = scadRes.data.map(b => {
+        const giorni = Math.ceil((new Date(b.scadenza) - oggi) / 86400000);
+        const dotClass = giorni <= 3 ? 'red' : giorni <= 7 ? 'orange' : 'green';
+        return `<div class="timeline-item">
+          <div class="timeline-dot ${dotClass}"></div>
+          <div class="timeline-info">
+            <h4>${esc(b.titolo)}</h4>
+            <p>${esc(b.ente || '')} ${b.regione ? '— ' + esc(b.regione) : ''}</p>
+          </div>
+          <div class="timeline-date" style="color:var(--${dotClass === 'red' ? 'rosso' : dotClass === 'orange' ? 'arancio' : 'verde'})">${giorni}gg</div>
+        </div>`;
+      }).join('');
+    } else {
+      cont.innerHTML = '<p style="color:var(--grigio);font-size:0.85rem;">Nessun bando in scadenza nei prossimi 7 giorni.</p>';
+    }
+
+    // Ultimi iscritti
+    const lastSub = await sb.from('subscribers').select('*').order('created_at', { ascending: false }).limit(5);
+    const tbody = document.getElementById('dashUltimiIscritti');
+    if (lastSub.data && lastSub.data.length > 0) {
+      tbody.innerHTML = lastSub.data.map(s => `<tr>
+        <td>${esc(s.name || '-')}</td>
+        <td>${esc(s.email)}</td>
+        <td><span class="badge ${s.type === 'paid' ? 'paid' : 'free'}">${s.type || 'free'}</span></td>
+        <td>${s.created_at ? new Date(s.created_at).toLocaleDateString('it-IT') : '-'}</td>
+      </tr>`).join('');
+    } else {
+      tbody.innerHTML = '<tr><td colspan="4" style="color:var(--grigio);">Nessun iscritto</td></tr>';
+    }
+  } catch (e) {
+    console.error('Dashboard error:', e);
+    toast('Errore caricamento dashboard', 'error');
+  }
+}
+
+// ══════════ BANDI CRUD ══════════
+function debounceBandi() {
+  clearTimeout(bandiSearchTimer);
+  bandiSearchTimer = setTimeout(() => { bandiPage = 1; loadBandiAdmin(); }, 500);
+}
+
+async function loadBandiAdmin() {
+  const loading = document.getElementById('bandiLoading');
+  loading.style.display = 'flex';
+  try {
+    let query = sb.from('bandi').select('*', { count: 'exact' });
+    const search = document.getElementById('searchBandi').value.trim();
+    const regione = document.getElementById('filterRegione').value;
+    const tipo = document.getElementById('filterTipo').value;
+    if (search) query = query.ilike('titolo', '%' + search + '%');
+    if (regione) query = query.eq('regione', regione);
+    if (tipo) query = query.eq('tipo_contributo', tipo);
+    const offset = (bandiPage - 1) * PAGE_SIZE;
+    query = query.order('id', { ascending: false }).range(offset, offset + PAGE_SIZE - 1);
+    const { data, count, error } = await query;
+    if (error) throw error;
+    bandiTotal = count || 0;
+    allBandiCache = data || [];
+    renderBandiTable();
+    renderPagination('pagBandi', bandiTotal, bandiPage, (p) => { bandiPage = p; loadBandiAdmin(); });
+    // Badge
+    const badge = document.getElementById('badgeBandi');
+    badge.textContent = bandiTotal;
+    badge.style.display = bandiTotal > 0 ? 'inline' : 'none';
+  } catch (e) {
+    console.error(e);
+    toast('Errore caricamento bandi', 'error');
+  }
+  loading.style.display = 'none';
+}
+
+function renderBandiTable() {
+  const tbody = document.getElementById('tbodyBandi');
+  if (allBandiCache.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8" style="color:var(--grigio);text-align:center;">Nessun bando trovato</td></tr>';
+    return;
+  }
+  const oggi = new Date();
+  tbody.innerHTML = allBandiCache.map(b => {
+    const scad = b.scadenza ? new Date(b.scadenza) : null;
+    const giorni = scad ? Math.ceil((scad - oggi) / 86400000) : 999;
+    let statusBadge = '';
+    if (!b.attivo) statusBadge = '<span class="badge scaduto">Disattivo</span>';
+    else if (giorni < 0) statusBadge = '<span class="badge scaduto">Scaduto</span>';
+    else if (giorni <= 7) statusBadge = '<span class="badge in-scadenza">In Scadenza</span>';
+    else statusBadge = '<span class="badge attivo">Attivo</span>';
+    return `<tr>
+      <td style="max-width:250px;"><strong>${esc(b.titolo)}</strong></td>
+      <td>${esc(b.ente || '-')}</td>
+      <td>${esc(b.regione || 'Nazionale')}</td>
+      <td>${b.importo_max ? '€' + Number(b.importo_max).toLocaleString('it-IT') : '-'}</td>
+      <td>${esc(b.tipo_contributo || '-')}</td>
+      <td>${scad ? scad.toLocaleDateString('it-IT') : '-'}</td>
+      <td>${statusBadge}</td>
+      <td>
+        <button class="btn-icon" title="Modifica" onclick="editBando(${b.id})">&#9998;</button>
+        <button class="btn-icon" title="Elimina" onclick="confirmDeleteBando(${b.id},'${esc(b.titolo)}')">&#128465;</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+async function saveBando(e) {
+  e.preventDefault();
+  const id = document.getElementById('bandoId').value;
+  const data = {
+    titolo: document.getElementById('bandoTitolo').value.trim(),
+    descrizione: document.getElementById('bandoDescrizione').value.trim(),
+    ente: document.getElementById('bandoEnte').value.trim(),
+    regione: document.getElementById('bandoRegione').value || null,
+    importo_max: document.getElementById('bandoImporto').value ? Number(document.getElementById('bandoImporto').value) : null,
+    tipo_contributo: document.getElementById('bandoTipo').value,
+    settore: document.getElementById('bandoSettore').value.trim() || null,
+    scadenza: document.getElementById('bandoScadenza').value || null,
+    link: document.getElementById('bandoLink').value.trim() || null,
+    attivo: document.getElementById('bandoAttivo').classList.contains('on')
+  };
+  try {
+    if (id) {
+      const { error } = await sb.from('bandi').update(data).eq('id', Number(id));
+      if (error) throw error;
+      toast('Bando aggiornato', 'success');
+    } else {
+      const { error } = await sb.from('bandi').insert([data]);
+      if (error) throw error;
+      toast('Bando creato', 'success');
+    }
+    resetBandoForm();
+    showSection('bandi');
+  } catch (e) {
+    console.error(e);
+    toast('Errore salvataggio: ' + (e.message || e), 'error');
+  }
+}
+
+async function editBando(id) {
+  try {
+    const { data, error } = await sb.from('bandi').select('*').eq('id', id).single();
+    if (error) throw error;
+    document.getElementById('bandoId').value = data.id;
+    document.getElementById('bandoTitolo').value = data.titolo || '';
+    document.getElementById('bandoDescrizione').value = data.descrizione || '';
+    document.getElementById('bandoEnte').value = data.ente || '';
+    document.getElementById('bandoRegione').value = data.regione || '';
+    document.getElementById('bandoImporto').value = data.importo_max || '';
+    document.getElementById('bandoTipo').value = data.tipo_contributo || '';
+    document.getElementById('bandoSettore').value = data.settore || '';
+    document.getElementById('bandoScadenza').value = data.scadenza || '';
+    document.getElementById('bandoLink').value = data.link || '';
+    const toggle = document.getElementById('bandoAttivo');
+    toggle.classList.toggle('on', data.attivo !== false);
+    document.getElementById('formBandoTitle').textContent = 'Modifica Bando';
+    showSection('nuovo-bando');
+  } catch (e) {
+    toast('Errore caricamento bando', 'error');
+  }
+}
+
+function confirmDeleteBando(id, titolo) {
+  showModal('Elimina Bando', 'Vuoi eliminare "' + titolo + '"? Azione irreversibile.', () => deleteBando(id));
+}
+
+async function deleteBando(id) {
+  try {
+    const { error } = await sb.from('bandi').delete().eq('id', id);
+    if (error) throw error;
+    toast('Bando eliminato', 'success');
+    loadBandiAdmin();
+  } catch (e) {
+    toast('Errore eliminazione', 'error');
+  }
+}
+
+function resetBandoForm() {
+  document.getElementById('formBando').reset();
+  document.getElementById('bandoId').value = '';
+  document.getElementById('bandoAttivo').classList.add('on');
+  document.getElementById('formBandoTitle').textContent = 'Nuovo Bando';
+}
+
+// ══════════ ISCRITTI ══════════
+function debounceIscritti() {
+  clearTimeout(iscrittiSearchTimer);
+  iscrittiSearchTimer = setTimeout(() => { iscrittiPage = 1; loadIscrittiAdmin(); }, 500);
+}
+
+async function loadIscrittiAdmin() {
+  const loading = document.getElementById('iscrittiLoading');
+  loading.style.display = 'flex';
+  try {
+    let query = sb.from('subscribers').select('*', { count: 'exact' });
+    const search = document.getElementById('searchIscritti').value.trim();
+    const tipo = document.getElementById('filterTipoIscritto').value;
+    if (search) query = query.or('email.ilike.%' + search + '%,name.ilike.%' + search + '%,company.ilike.%' + search + '%');
+    if (tipo) query = query.eq('type', tipo);
+    const offset = (iscrittiPage - 1) * PAGE_SIZE;
+    query = query.order('created_at', { ascending: false }).range(offset, offset + PAGE_SIZE - 1);
+    const { data, count, error } = await query;
+    if (error) throw error;
+    iscrittiTotal = count || 0;
+    allIscrittiCache = data || [];
+    renderIscrittiTable();
+    renderPagination('pagIscritti', iscrittiTotal, iscrittiPage, (p) => { iscrittiPage = p; loadIscrittiAdmin(); });
+    const badge = document.getElementById('badgeIscritti');
+    badge.textContent = iscrittiTotal;
+    badge.style.display = iscrittiTotal > 0 ? 'inline' : 'none';
+  } catch (e) {
+    console.error(e);
+    toast('Errore caricamento iscritti', 'error');
+  }
+  loading.style.display = 'none';
+}
+
+function renderIscrittiTable() {
+  const tbody = document.getElementById('tbodyIscritti');
+  if (allIscrittiCache.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" style="color:var(--grigio);text-align:center;">Nessun iscritto trovato</td></tr>';
+    return;
+  }
+  tbody.innerHTML = allIscrittiCache.map(s => `<tr>
+    <td>${esc(s.name || '-')}</td>
+    <td>${esc(s.email)}</td>
+    <td>${esc(s.company || '-')}</td>
+    <td><span class="badge ${s.type === 'paid' ? 'paid' : s.type === 'chatbot' ? 'in-scadenza' : 'free'}">${s.type || 'free'}</span></td>
+    <td>${s.newsletter ? '<span style="color:var(--verde);">&#10003;</span>' : '<span style="color:var(--grigio);">&#10007;</span>'}</td>
+    <td>${s.created_at ? new Date(s.created_at).toLocaleDateString('it-IT') : '-'}</td>
+    <td>
+      <button class="btn-icon" title="Elimina" onclick="confirmDeleteIscritto(${s.id},'${esc(s.email)}')">&#128465;</button>
+    </td>
+  </tr>`).join('');
+}
+
+function confirmDeleteIscritto(id, email) {
+  showModal('Elimina Iscritto', 'Vuoi eliminare "' + email + '"?', () => deleteIscritto(id));
+}
+
+async function deleteIscritto(id) {
+  try {
+    const { error } = await sb.from('subscribers').delete().eq('id', id);
+    if (error) throw error;
+    toast('Iscritto eliminato', 'success');
+    loadIscrittiAdmin();
+  } catch (e) {
+    toast('Errore eliminazione', 'error');
+  }
+}
+
+function exportCSV() {
+  if (allIscrittiCache.length === 0) { toast('Nessun dato da esportare', 'info'); return; }
+  const headers = ['email', 'name', 'company', 'type', 'newsletter', 'region_interest', 'created_at'];
+  let csv = headers.join(';') + '\n';
+  allIscrittiCache.forEach(s => {
+    csv += headers.map(h => '"' + (s[h] != null ? String(s[h]).replace(/"/g, '""') : '') + '"').join(';') + '\n';
+  });
+  const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'iscritti_' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click(); URL.revokeObjectURL(url);
+  toast('CSV esportato', 'success');
+}
+
+// ══════════ PAGINATION ══════════
+function renderPagination(containerId, total, current, onPage) {
+  const pages = Math.ceil(total / PAGE_SIZE);
+  const c = document.getElementById(containerId);
+  if (pages <= 1) { c.innerHTML = ''; return; }
+  let html = `<button ${current <= 1 ? 'disabled' : ''} onclick="void(0)">&#8592;</button>`;
+  const start = Math.max(1, current - 2);
+  const end = Math.min(pages, current + 2);
+  for (let i = start; i <= end; i++) {
+    html += `<button class="${i === current ? 'active' : ''}">${i}</button>`;
+  }
+  html += `<button ${current >= pages ? 'disabled' : ''}>&#8594;</button>`;
+  c.innerHTML = html;
+  c.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const txt = btn.textContent;
+      if (txt === '\u2190') onPage(current - 1);
+      else if (txt === '\u2192') onPage(current + 1);
+      else { const n = parseInt(txt); if (!isNaN(n)) onPage(n); }
+    });
+  });
+}
+
+// ══════════ EMAIL ══════════
+async function countRecipients() {
+  const sel = document.getElementById('emailDestinatari').value;
+  let count = 0;
+  try {
+    let query = sb.from('subscribers').select('*', { count: 'exact', head: true });
+    if (sel === 'paid') query = query.eq('type', 'paid');
+    else if (sel === 'free') query = query.eq('type', 'free');
+    else if (sel === 'newsletter') query = query.eq('newsletter', true);
+    else if (sel === 'custom') {
+      const custom = document.getElementById('customEmails').value.trim().split('\n').filter(e => e.includes('@'));
+      count = custom.length;
+      document.getElementById('emailCount').textContent = count + ' destinatari';
+      return;
+    }
+    const res = await query;
+    count = res.count || 0;
+  } catch (e) { count = '?'; }
+  document.getElementById('emailCount').textContent = count + ' destinatari';
+}
+
+function previewEmail() {
+  const html = document.getElementById('emailCorpo').value;
+  if (!html.trim()) { toast('Inserisci il corpo HTML', 'info'); return; }
+  document.getElementById('emailPreviewContent').innerHTML = html;
+  document.getElementById('emailPreviewBox').style.display = 'block';
+}
+
+async function sendEmail() {
+  const oggetto = document.getElementById('emailOggetto').value.trim();
+  const html = document.getElementById('emailCorpo').value.trim();
+  if (!oggetto || !html) { toast('Compila oggetto e corpo email', 'error'); return; }
+  const smtpPass = localStorage.getItem('smtpPass');
+  if (!smtpPass) { toast('Configura la password SMTP nelle Impostazioni', 'error'); return; }
+
+  const sel = document.getElementById('emailDestinatari').value;
+  let emails = [];
+  try {
+    if (sel === 'custom') {
+      emails = document.getElementById('customEmails').value.trim().split('\n').map(e => e.trim()).filter(e => e.includes('@'));
+    } else {
+      let query = sb.from('subscribers').select('email');
+      if (sel === 'paid') query = query.eq('type', 'paid');
+      else if (sel === 'free') query = query.eq('type', 'free');
+      else if (sel === 'newsletter') query = query.eq('newsletter', true);
+      const { data } = await query;
+      emails = (data || []).map(s => s.email);
+    }
+  } catch (e) {
+    toast('Errore recupero destinatari', 'error'); return;
+  }
+
+  if (emails.length === 0) { toast('Nessun destinatario trovato', 'error'); return; }
+
+  showModal('Invio Email', `Stai per inviare a ${emails.length} destinatari. Procedere?`, async () => {
+    document.getElementById('emailStatus').innerHTML = '<span class="spinner"></span> Invio in corso...';
+    try {
+      const res = await fetch(EDGE_FN_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY },
+        body: JSON.stringify({ to: emails, subject: oggetto, html: html, smtp_pass: smtpPass })
+      });
+      const result = await res.json();
+      if (result.success) {
+        toast(`Email inviate: ${result.sent} successo, ${result.failed} fallite`, result.failed > 0 ? 'info' : 'success');
+      } else {
+        toast('Errore: ' + (result.error || 'sconosciuto'), 'error');
+      }
+    } catch (e) {
+      toast('Errore invio: ' + e.message, 'error');
+    }
+    document.getElementById('emailStatus').textContent = '';
+  });
+}
+
+function loadEmailTemplate(name) {
+  if (name === 'bandi-alert') {
+    fetch('/mail-template/mailbandi001.txt').then(r => r.text()).then(html => {
+      document.getElementById('emailCorpo').value = html;
+      toast('Template caricato', 'success');
+    }).catch(() => toast('Template non trovato', 'error'));
+  } else if (name === 'welcome') {
+    document.getElementById('emailCorpo').value = getWelcomeTemplate();
+    toast('Template benvenuto caricato', 'success');
+  }
+}
+
+function getWelcomeTemplate() {
+  return `<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#0a1628;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#0a1628;padding:20px 0 40px;"><tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#0f2035;border-radius:16px;overflow:hidden;border:1px solid rgba(212,168,67,0.15);">
+<tr><td style="padding:30px 40px;text-align:center;">
+  <h1 style="font-family:Georgia,serif;font-size:24px;color:#d4a843;margin:0;">Benvenuto su BandiItalia</h1>
+  <p style="color:#8b95a5;font-size:14px;margin:12px 0 0;">Il tuo account e' stato attivato con successo.</p>
+</td></tr>
+<tr><td style="padding:20px 40px 40px;">
+  <p style="color:#c8cdd5;font-size:15px;line-height:1.7;">
+    Da oggi riceverai aggiornamenti settimanali sui bandi e finanziamenti disponibili per la tua azienda.
+    Puoi personalizzare le tue preferenze di ricerca direttamente sulla piattaforma.
+  </p>
+  <p style="text-align:center;margin:30px 0;">
+    <a href="https://www.raasautomazioni.it/bandi" style="display:inline-block;padding:14px 40px;background:#d4a843;color:#0a1628;font-size:16px;font-weight:700;text-decoration:none;border-radius:50px;">Esplora i Bandi</a>
+  </p>
+</td></tr>
+<tr><td style="padding:20px 40px;background:#0a1628;border-top:1px solid rgba(255,255,255,0.04);text-align:center;">
+  <p style="font-size:12px;color:#666;">BandiItalia — Un servizio di RaaS Automazioni<br>info@raasautomazioni.it</p>
+</td></tr>
+</table></td></tr></table></body></html>`;
+}
+
+// ══════════ NEWSLETTER ══════════
+async function loadNLBandi() {
+  try {
+    const { data } = await sb.from('bandi').select('*').eq('attivo', true).order('created_at', { ascending: false }).limit(50);
+    const cont = document.getElementById('nlBandiList');
+    if (!data || data.length === 0) {
+      cont.innerHTML = '<p style="color:var(--grigio);">Nessun bando attivo disponibile.</p>';
+      return;
+    }
+    cont.innerHTML = data.map(b => `<label style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f0f0f0;cursor:pointer;">
+      <input type="checkbox" class="nl-bando-check" value="${b.id}" data-titolo="${esc(b.titolo)}" data-ente="${esc(b.ente || '')}" data-importo="${b.importo_max || ''}" data-tipo="${esc(b.tipo_contributo || '')}" data-scadenza="${b.scadenza || ''}" data-link="${esc(b.link || '')}" data-descrizione="${esc((b.descrizione || '').substring(0, 150))}">
+      <div>
+        <strong style="font-size:0.88rem;">${esc(b.titolo)}</strong>
+        <span style="font-size:0.75rem;color:var(--grigio);display:block;">${esc(b.ente || '')} ${b.regione ? '— ' + b.regione : ''} ${b.scadenza ? '| Scad: ' + new Date(b.scadenza).toLocaleDateString('it-IT') : ''}</span>
+      </div>
+    </label>`).join('');
+  } catch (e) {
+    toast('Errore caricamento bandi per newsletter', 'error');
+  }
+}
+
+function buildNewsletterHTML(bandi) {
+  let bandiHtml = bandi.map(b => {
+    const importo = b.importo ? '€' + Number(b.importo).toLocaleString('it-IT') : '';
+    return `<table width="100%" cellpadding="0" cellspacing="0" style="background:#0a1628;border-radius:12px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;margin-bottom:12px;">
+    <tr><td style="padding:8px 16px;background:rgba(45,212,160,0.08);border-bottom:1px solid rgba(255,255,255,0.04);">
+      <span style="font-size:11px;font-weight:700;color:#2dd4a0;text-transform:uppercase;letter-spacing:.5px;">${esc(b.tipo)}</span>
+    </td></tr>
+    <tr><td style="padding:18px 16px;">
+      <p style="margin:0 0 8px;font-size:16px;font-weight:700;color:#f8f6f1;line-height:1.3;">${esc(b.titolo)}</p>
+      <p style="margin:0 0 12px;font-size:14px;color:#8b95a5;line-height:1.5;">${esc(b.descrizione)}</p>
+      <table cellpadding="0" cellspacing="0"><tr>
+        ${importo ? `<td style="padding:3px 10px;background:rgba(212,168,67,0.1);border-radius:4px;font-size:12px;color:#d4a843;font-weight:600;">Max ${importo}</td><td width="8"></td>` : ''}
+        ${b.scadenza ? `<td style="padding:3px 10px;background:rgba(231,76,60,0.1);border-radius:4px;font-size:12px;color:#e74c3c;font-weight:600;">Scad: ${new Date(b.scadenza).toLocaleDateString('it-IT')}</td>` : ''}
+      </tr></table>
+    </td></tr></table>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#0a1628;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#0a1628;padding:20px 0 40px;"><tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#0f2035;border-radius:16px;overflow:hidden;border:1px solid rgba(212,168,67,0.15);">
+<tr><td style="padding:30px 40px 20px;text-align:center;">
+  <table cellpadding="0" cellspacing="0" style="margin:0 auto;"><tr>
+    <td style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#d4a843;letter-spacing:1px;">BANDI</td>
+    <td style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#f8f6f1;letter-spacing:1px;">ITALIA</td>
+  </tr></table>
+  <p style="margin:8px 0 0;font-size:11px;color:#8b95a5;letter-spacing:2px;text-transform:uppercase;">Newsletter Settimanale</p>
+</td></tr>
+<tr><td style="padding:0 60px;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td style="height:2px;background:linear-gradient(90deg,transparent,#d4a843,transparent);"></td></tr></table></td></tr>
+<tr><td style="padding:30px 40px 10px;text-align:center;">
+  <h1 style="margin:0;font-family:Georgia,serif;font-size:26px;font-weight:700;color:#f8f6f1;">Nuovi Bandi Disponibili</h1>
+  <p style="margin:12px 0 0;font-size:15px;color:#8b95a5;">Ecco i bandi selezionati per te questa settimana</p>
+</td></tr>
+<tr><td style="padding:20px 30px 30px;">${bandiHtml}</td></tr>
+<tr><td style="padding:10px 40px 30px;text-align:center;">
+  <a href="https://www.raasautomazioni.it/bandi" style="display:inline-block;padding:16px 44px;background:#d4a843;color:#0a1628;font-size:16px;font-weight:800;text-decoration:none;border-radius:50px;">Vedi Tutti i Bandi</a>
+</td></tr>
+<tr><td style="background:#0a1628;padding:24px 40px;border-top:1px solid rgba(255,255,255,0.04);text-align:center;">
+  <p style="font-size:12px;color:#666;line-height:1.6;">BandiItalia — Un servizio di RaaS Automazioni | info@raasautomazioni.it<br>
+  <a href="{{ unsubscribe }}" style="color:#8b95a5;text-decoration:underline;">Cancella iscrizione</a></p>
+</td></tr>
+</table></td></tr></table></body></html>`;
+}
+
+function previewNewsletter() {
+  const checks = document.querySelectorAll('.nl-bando-check:checked');
+  if (checks.length === 0) { toast('Seleziona almeno un bando', 'info'); return; }
+  const bandi = Array.from(checks).map(c => ({
+    titolo: c.dataset.titolo,
+    ente: c.dataset.ente,
+    importo: c.dataset.importo,
+    tipo: c.dataset.tipo,
+    scadenza: c.dataset.scadenza,
+    descrizione: c.dataset.descrizione,
+    link: c.dataset.link
+  }));
+  const html = buildNewsletterHTML(bandi);
+  document.getElementById('nlPreviewContent').innerHTML = html;
+  document.getElementById('nlPreviewBox').style.display = 'block';
+}
+
+async function sendNewsletter() {
+  const checks = document.querySelectorAll('.nl-bando-check:checked');
+  if (checks.length === 0) { toast('Seleziona almeno un bando', 'info'); return; }
+  const smtpPass = localStorage.getItem('smtpPass');
+  if (!smtpPass) { toast('Configura la password SMTP nelle Impostazioni', 'error'); return; }
+
+  const bandi = Array.from(checks).map(c => ({
+    titolo: c.dataset.titolo, ente: c.dataset.ente, importo: c.dataset.importo,
+    tipo: c.dataset.tipo, scadenza: c.dataset.scadenza, descrizione: c.dataset.descrizione
+  }));
+  const html = buildNewsletterHTML(bandi);
+  const oggetto = document.getElementById('nlOggetto').value.trim() || 'Newsletter BandiItalia';
+
+  // Get newsletter subscribers
+  try {
+    const { data } = await sb.from('subscribers').select('email').eq('newsletter', true);
+    const emails = (data || []).map(s => s.email);
+    if (emails.length === 0) { toast('Nessun iscritto alla newsletter', 'error'); return; }
+
+    showModal('Invio Newsletter', `Invio a ${emails.length} iscritti newsletter. Procedere?`, async () => {
+      document.getElementById('nlStatus').innerHTML = '<span class="spinner"></span> Invio in corso...';
+      try {
+        const res = await fetch(EDGE_FN_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY },
+          body: JSON.stringify({ to: emails, subject: oggetto, html: html, smtp_pass: smtpPass })
+        });
+        const result = await res.json();
+        if (result.success) {
+          toast(`Newsletter inviata: ${result.sent} successo, ${result.failed} fallite`, 'success');
+        } else {
+          toast('Errore: ' + (result.error || 'sconosciuto'), 'error');
+        }
+      } catch (e) {
+        toast('Errore invio: ' + e.message, 'error');
+      }
+      document.getElementById('nlStatus').textContent = '';
+    });
+  } catch (e) {
+    toast('Errore recupero iscritti', 'error');
+  }
+}
+
+// ══════════ SCADENZE ══════════
+async function loadScadenze() {
+  const mesi = parseInt(document.getElementById('filterScadMesi').value);
+  const oggi = new Date();
+  const fine = new Date(oggi); fine.setMonth(fine.getMonth() + mesi);
+  try {
+    const { data } = await sb.from('bandi').select('*').eq('attivo', true)
+      .gte('scadenza', oggi.toISOString().split('T')[0])
+      .lte('scadenza', fine.toISOString().split('T')[0])
+      .order('scadenza', { ascending: true });
+    const cont = document.getElementById('scadenzeTimeline');
+    if (!data || data.length === 0) {
+      cont.innerHTML = '<p style="color:var(--grigio);font-size:0.85rem;">Nessuna scadenza nel periodo selezionato.</p>';
+      return;
+    }
+    cont.innerHTML = data.map(b => {
+      const scad = new Date(b.scadenza);
+      const giorni = Math.ceil((scad - oggi) / 86400000);
+      const dotClass = giorni <= 7 ? 'red' : giorni <= 30 ? 'orange' : 'green';
+      const color = dotClass === 'red' ? 'var(--rosso)' : dotClass === 'orange' ? 'var(--arancio)' : 'var(--verde)';
+      return `<div class="timeline-item">
+        <div class="timeline-dot ${dotClass}"></div>
+        <div class="timeline-info">
+          <h4>${esc(b.titolo)}</h4>
+          <p>${esc(b.ente || '')} ${b.regione ? '— ' + esc(b.regione) : ''} | ${esc(b.tipo_contributo || '')}</p>
+        </div>
+        <div class="timeline-date" style="color:${color}">${scad.toLocaleDateString('it-IT')} (${giorni}gg)</div>
+      </div>`;
+    }).join('');
+  } catch (e) {
+    toast('Errore caricamento scadenze', 'error');
+  }
+}
+
+// ══════════ IMPOSTAZIONI ══════════
+async function testSupabase() {
+  const status = document.getElementById('supabaseStatus');
+  status.innerHTML = '<span class="spinner"></span> Test in corso...';
+  try {
+    const { count, error } = await sb.from('bandi').select('*', { count: 'exact', head: true });
+    if (error) throw error;
+    status.innerHTML = '<span style="color:var(--verde);">&#10003; Connessione OK — ' + count + ' bandi in database</span>';
+  } catch (e) {
+    status.innerHTML = '<span style="color:var(--rosso);">&#10007; Errore: ' + e.message + '</span>';
+  }
+}
+
+async function testSMTP() {
+  const email = document.getElementById('testEmailAddr').value.trim();
+  if (!email) { toast('Inserisci email di test', 'error'); return; }
+  const smtpPass = localStorage.getItem('smtpPass');
+  if (!smtpPass) { toast('Configura prima la password SMTP', 'error'); return; }
+  const status = document.getElementById('smtpStatus');
+  status.innerHTML = '<span class="spinner"></span> Invio test...';
+  try {
+    const res = await fetch(EDGE_FN_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY },
+      body: JSON.stringify({
+        to: email,
+        subject: 'Test SMTP — BandiItalia Admin',
+        html: '<h2 style="color:#d4a843;">Test SMTP funzionante!</h2><p>Se leggi questo messaggio, la configurazione SMTP e\' corretta.</p><p>— BandiItalia Admin</p>',
+        smtp_pass: smtpPass
+      })
+    });
+    const result = await res.json();
+    if (result.success) {
+      status.innerHTML = '<span style="color:var(--verde);">&#10003; Email di test inviata a ' + esc(email) + '</span>';
+    } else {
+      status.innerHTML = '<span style="color:var(--rosso);">&#10007; ' + (result.error || 'Errore sconosciuto') + '</span>';
+    }
+  } catch (e) {
+    status.innerHTML = '<span style="color:var(--rosso);">&#10007; ' + e.message + '</span>';
+  }
+}
+
+function saveSMTPPass() {
+  const pass = document.getElementById('smtpPassField').value;
+  if (!pass) { toast('Inserisci la password', 'error'); return; }
+  localStorage.setItem('smtpPass', pass);
+  document.getElementById('smtpPassField').value = '';
+  toast('Password SMTP salvata in locale', 'success');
+}
+
+// ══════════ UTILITY ══════════
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+</script>
+</body>
+</html>
