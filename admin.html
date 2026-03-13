@@ -620,6 +620,36 @@ select.filter-select {
   font-weight: 500;
 }
 
+/* CHARTS */
+.chart-container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+.chart-container canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+#anIscrittiLegend .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 0.88rem;
+}
+#anIscrittiLegend .legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+#anIscrittiLegend .legend-val {
+  margin-left: auto;
+  font-weight: 700;
+  color: var(--testo);
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .sidebar { transform: translateX(-100%); }
@@ -631,6 +661,8 @@ select.filter-select {
   .form-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr; }
   .card { padding: 16px; }
+  #sec-analytics > div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr; }
+  #sec-analytics .card div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .login-box { padding: 32px 24px; margin: 16px; }
@@ -665,6 +697,10 @@ select.filter-select {
     <div class="nav-item active" onclick="showSection('dashboard')" data-sec="dashboard">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
       Dashboard
+    </div>
+    <div class="nav-item" onclick="showSection('analytics')" data-sec="analytics">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+      Analytics
     </div>
     <div class="nav-item" onclick="showSection('bandi')" data-sec="bandi">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
@@ -769,6 +805,101 @@ select.filter-select {
             <thead><tr><th>Nome</th><th>Email</th><th>Tipo</th><th>Data</th></tr></thead>
             <tbody id="dashUltimiIscritti"></tbody>
           </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ ANALYTICS ══════════ -->
+    <div class="section" id="sec-analytics">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue">&#128200;</div>
+          <div class="stat-info">
+            <h3 id="anTotBandi">-</h3>
+            <p>Bandi Totali</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">&#128994;</div>
+          <div class="stat-info">
+            <h3 id="anBandiAttivi">-</h3>
+            <p>Bandi Attivi</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon gold">&#128101;</div>
+          <div class="stat-info">
+            <h3 id="anTotIscritti">-</h3>
+            <p>Iscritti Totali</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red">&#128176;</div>
+          <div class="stat-info">
+            <h3 id="anConvRate">-</h3>
+            <p>Tasso Conversione (Free→Premium)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grafico Crescita Iscritti -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Crescita Iscritti nel Tempo</h3>
+          <div class="toolbar">
+            <select class="filter-select" id="anPeriodoIscritti" onchange="loadAnalytics()">
+              <option value="7">Ultimi 7 giorni</option>
+              <option value="30" selected>Ultimi 30 giorni</option>
+              <option value="90">Ultimi 90 giorni</option>
+              <option value="365">Ultimo anno</option>
+            </select>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartIscritti" width="800" height="300"></canvas>
+        </div>
+      </div>
+
+      <!-- Grafici Distribuzione -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <div class="card">
+          <div class="card-header">
+            <h3>Bandi per Regione</h3>
+          </div>
+          <div class="chart-container">
+            <canvas id="chartRegioni" width="400" height="280"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3>Bandi per Tipo Contributo</h3>
+          </div>
+          <div class="chart-container">
+            <canvas id="chartTipi" width="400" height="280"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grafico Iscritti per Tipo -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
+          <h3>Composizione Iscritti</h3>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;">
+          <div class="chart-container">
+            <canvas id="chartIscrittiTipo" width="300" height="250"></canvas>
+          </div>
+          <div id="anIscrittiLegend"></div>
+        </div>
+      </div>
+
+      <!-- Top Regioni Iscritti -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
+          <h3>Importi Disponibili per Regione</h3>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartImporti" width="800" height="280"></canvas>
         </div>
       </div>
     </div>
@@ -1150,6 +1281,7 @@ async function initApp() {
 // ══════════ NAVIGATION ══════════
 const sectionTitles = {
   'dashboard': 'Dashboard',
+  'analytics': 'Analytics',
   'bandi': 'Gestione Bandi',
   'nuovo-bando': 'Nuovo Bando',
   'iscritti': 'Gestione Iscritti',
@@ -1171,6 +1303,7 @@ function showSection(name) {
   document.getElementById('sidebar').classList.remove('open');
   // Load data
   if (name === 'dashboard') loadDashboard();
+  else if (name === 'analytics') loadAnalytics();
   else if (name === 'bandi') loadBandiAdmin();
   else if (name === 'iscritti') loadIscrittiAdmin();
   else if (name === 'scadenze') loadScadenze();
@@ -1825,6 +1958,328 @@ function saveSMTPPass() {
   localStorage.setItem('smtpPass', pass);
   document.getElementById('smtpPassField').value = '';
   toast('Password SMTP salvata in locale', 'success');
+}
+
+// ══════════ ANALYTICS ══════════
+const AN_COLORS = ['#d4a843','#2dd4a0','#3498db','#e74c3c','#f39c12','#9b59b6','#1abc9c','#e67e22','#2ecc71','#c0392b','#8e44ad','#16a085','#d35400','#27ae60','#2980b9','#f1c40f','#7f8c8d','#34495e','#e84393','#00cec9'];
+
+async function loadAnalytics() {
+  try {
+    const giorni = parseInt(document.getElementById('anPeriodoIscritti').value);
+
+    const [bandiAll, bandiAttivi, subAll, subPaid] = await Promise.all([
+      sb.from('bandi').select('*', { count: 'exact', head: true }),
+      sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true),
+      sb.from('subscribers').select('*', { count: 'exact', head: true }),
+      sb.from('subscribers').select('*', { count: 'exact', head: true }).eq('type', 'paid')
+    ]);
+
+    const totBandi = bandiAll.count || 0;
+    const attivi = bandiAttivi.count || 0;
+    const totIscritti = subAll.count || 0;
+    const totPaid = subPaid.count || 0;
+    const convRate = totIscritti > 0 ? ((totPaid / totIscritti) * 100).toFixed(1) + '%' : '0%';
+
+    document.getElementById('anTotBandi').textContent = totBandi;
+    document.getElementById('anBandiAttivi').textContent = attivi;
+    document.getElementById('anTotIscritti').textContent = totIscritti;
+    document.getElementById('anConvRate').textContent = convRate;
+
+    // Crescita iscritti
+    const daData = new Date();
+    daData.setDate(daData.getDate() - giorni);
+    const { data: subData } = await sb.from('subscribers').select('created_at').gte('created_at', daData.toISOString()).order('created_at', { ascending: true });
+    drawLineChart('chartIscritti', groupByDate(subData || [], giorni), 'Nuovi iscritti');
+
+    // Bandi per regione
+    const { data: bandiRegione } = await sb.from('bandi').select('regione').eq('attivo', true);
+    const regCounts = countField(bandiRegione || [], 'regione', 'Nazionale');
+    drawBarChart('chartRegioni', regCounts);
+
+    // Bandi per tipo
+    const { data: bandiTipo } = await sb.from('bandi').select('tipo_contributo').eq('attivo', true);
+    const tipoCounts = countField(bandiTipo || [], 'tipo_contributo', 'Non specificato');
+    drawDonutChart('chartTipi', tipoCounts);
+
+    // Iscritti per tipo
+    const { data: subTipoData } = await sb.from('subscribers').select('type');
+    const subTipo = countField(subTipoData || [], 'type', 'free');
+    drawDonutChart('chartIscrittiTipo', subTipo);
+    renderLegend('anIscrittiLegend', subTipo);
+
+    // Importi per regione
+    const { data: bandiImporti } = await sb.from('bandi').select('regione, importo_max').eq('attivo', true);
+    const importiPerRegione = sumByField(bandiImporti || [], 'regione', 'importo_max', 'Nazionale');
+    drawBarChart('chartImporti', importiPerRegione, true);
+
+  } catch (e) {
+    console.error('Analytics error:', e);
+    toast('Errore caricamento analytics', 'error');
+  }
+}
+
+function groupByDate(rows, giorni) {
+  const map = {};
+  const oggi = new Date();
+  for (let i = giorni; i >= 0; i--) {
+    const d = new Date(oggi);
+    d.setDate(d.getDate() - i);
+    const key = d.toISOString().split('T')[0];
+    map[key] = 0;
+  }
+  rows.forEach(r => {
+    if (r.created_at) {
+      const key = r.created_at.split('T')[0];
+      if (map[key] !== undefined) map[key]++;
+    }
+  });
+  return map;
+}
+
+function countField(rows, field, fallback) {
+  const map = {};
+  rows.forEach(r => {
+    const val = r[field] || fallback;
+    map[val] = (map[val] || 0) + 1;
+  });
+  return map;
+}
+
+function sumByField(rows, groupField, sumField, fallback) {
+  const map = {};
+  rows.forEach(r => {
+    const key = r[groupField] || fallback;
+    map[key] = (map[key] || 0) + (Number(r[sumField]) || 0);
+  });
+  return map;
+}
+
+function drawLineChart(canvasId, data, label) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.parentElement.clientWidth || 800;
+  const h = 300;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, w, h);
+
+  const keys = Object.keys(data);
+  const values = Object.values(data);
+  const max = Math.max(...values, 1);
+  const padL = 50, padR = 20, padT = 30, padB = 50;
+  const chartW = w - padL - padR;
+  const chartH = h - padT - padB;
+
+  // Grid
+  ctx.strokeStyle = '#e8e5de';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + (chartH / 4) * i;
+    ctx.beginPath();
+    ctx.moveTo(padL, y);
+    ctx.lineTo(w - padR, y);
+    ctx.stroke();
+    ctx.fillStyle = '#8b95a5';
+    ctx.font = '11px Inter, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(Math.round(max - (max / 4) * i), padL - 8, y + 4);
+  }
+
+  if (keys.length < 2) return;
+
+  // Line
+  const stepX = chartW / (keys.length - 1);
+  ctx.beginPath();
+  ctx.strokeStyle = '#d4a843';
+  ctx.lineWidth = 2.5;
+  ctx.lineJoin = 'round';
+  values.forEach((v, i) => {
+    const x = padL + stepX * i;
+    const y = padT + chartH - (v / max) * chartH;
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+
+  // Area fill
+  ctx.lineTo(padL + stepX * (values.length - 1), padT + chartH);
+  ctx.lineTo(padL, padT + chartH);
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(0, padT, 0, padT + chartH);
+  grad.addColorStop(0, 'rgba(212,168,67,0.25)');
+  grad.addColorStop(1, 'rgba(212,168,67,0.02)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Dots
+  values.forEach((v, i) => {
+    const x = padL + stepX * i;
+    const y = padT + chartH - (v / max) * chartH;
+    ctx.beginPath();
+    ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#d4a843';
+    ctx.fill();
+  });
+
+  // X labels (show subset)
+  ctx.fillStyle = '#8b95a5';
+  ctx.font = '10px Inter, sans-serif';
+  ctx.textAlign = 'center';
+  const labelStep = Math.max(1, Math.floor(keys.length / 8));
+  keys.forEach((k, i) => {
+    if (i % labelStep === 0 || i === keys.length - 1) {
+      const x = padL + stepX * i;
+      const parts = k.split('-');
+      ctx.fillText(parts[2] + '/' + parts[1], x, h - padB + 18);
+    }
+  });
+}
+
+function drawBarChart(canvasId, data, isCurrency) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.parentElement.clientWidth || 400;
+  const h = 280;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, w, h);
+
+  const entries = Object.entries(data).sort((a, b) => b[1] - a[1]).slice(0, 12);
+  if (entries.length === 0) { ctx.fillStyle = '#8b95a5'; ctx.font = '13px Inter'; ctx.fillText('Nessun dato', w / 2 - 40, h / 2); return; }
+
+  const max = Math.max(...entries.map(e => e[1]), 1);
+  const padL = isCurrency ? 80 : 50, padR = 20, padT = 20, padB = 80;
+  const chartW = w - padL - padR;
+  const chartH = h - padT - padB;
+  const barW = Math.min(40, (chartW / entries.length) * 0.6);
+  const gap = chartW / entries.length;
+
+  // Grid
+  ctx.strokeStyle = '#e8e5de';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + (chartH / 4) * i;
+    ctx.beginPath();
+    ctx.moveTo(padL, y);
+    ctx.lineTo(w - padR, y);
+    ctx.stroke();
+    ctx.fillStyle = '#8b95a5';
+    ctx.font = '10px Inter, sans-serif';
+    ctx.textAlign = 'right';
+    const val = Math.round(max - (max / 4) * i);
+    ctx.fillText(isCurrency ? '€' + val.toLocaleString('it-IT') : val, padL - 8, y + 4);
+  }
+
+  // Bars
+  entries.forEach(([label, val], i) => {
+    const x = padL + gap * i + (gap - barW) / 2;
+    const barH = (val / max) * chartH;
+    const y = padT + chartH - barH;
+
+    const grad = ctx.createLinearGradient(x, y, x, padT + chartH);
+    grad.addColorStop(0, AN_COLORS[i % AN_COLORS.length]);
+    grad.addColorStop(1, AN_COLORS[i % AN_COLORS.length] + '44');
+    ctx.fillStyle = grad;
+
+    ctx.beginPath();
+    ctx.roundRect(x, y, barW, barH, [4, 4, 0, 0]);
+    ctx.fill();
+
+    // Value on top
+    ctx.fillStyle = '#1a1a2e';
+    ctx.font = '10px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(isCurrency ? '€' + Number(val).toLocaleString('it-IT') : val, x + barW / 2, y - 6);
+
+    // Label
+    ctx.save();
+    ctx.translate(x + barW / 2, padT + chartH + 10);
+    ctx.rotate(-0.5);
+    ctx.fillStyle = '#8b95a5';
+    ctx.font = '10px Inter, sans-serif';
+    ctx.textAlign = 'left';
+    const shortLabel = label.length > 14 ? label.substring(0, 12) + '..' : label;
+    ctx.fillText(shortLabel, 0, 0);
+    ctx.restore();
+  });
+}
+
+function drawDonutChart(canvasId, data) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const size = Math.min(canvas.parentElement.clientWidth || 300, 280);
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  canvas.style.width = size + 'px';
+  canvas.style.height = size + 'px';
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, size, size);
+
+  const entries = Object.entries(data);
+  const total = entries.reduce((s, e) => s + e[1], 0);
+  if (total === 0) { ctx.fillStyle = '#8b95a5'; ctx.font = '13px Inter'; ctx.fillText('Nessun dato', size / 2 - 40, size / 2); return; }
+
+  const cx = size / 2, cy = size / 2;
+  const outerR = size / 2 - 20;
+  const innerR = outerR * 0.55;
+  let startAngle = -Math.PI / 2;
+
+  entries.forEach(([label, val], i) => {
+    const slice = (val / total) * Math.PI * 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy, outerR, startAngle, startAngle + slice);
+    ctx.arc(cx, cy, innerR, startAngle + slice, startAngle, true);
+    ctx.closePath();
+    ctx.fillStyle = AN_COLORS[i % AN_COLORS.length];
+    ctx.fill();
+
+    // Label
+    if (slice > 0.25) {
+      const mid = startAngle + slice / 2;
+      const lx = cx + Math.cos(mid) * (outerR + innerR) / 2;
+      const ly = cy + Math.sin(mid) * (outerR + innerR) / 2;
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 11px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(Math.round((val / total) * 100) + '%', lx, ly);
+    }
+
+    startAngle += slice;
+  });
+
+  // Center text
+  ctx.fillStyle = '#1a1a2e';
+  ctx.font = 'bold 22px Inter, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(total, cx, cy - 6);
+  ctx.font = '11px Inter, sans-serif';
+  ctx.fillStyle = '#8b95a5';
+  ctx.fillText('totale', cx, cy + 14);
+}
+
+function renderLegend(containerId, data) {
+  const entries = Object.entries(data);
+  const total = entries.reduce((s, e) => s + e[1], 0);
+  const cont = document.getElementById(containerId);
+  cont.innerHTML = entries.map(([label, val], i) => {
+    const pct = total > 0 ? Math.round((val / total) * 100) : 0;
+    return `<div class="legend-item">
+      <div class="legend-dot" style="background:${AN_COLORS[i % AN_COLORS.length]}"></div>
+      <span>${esc(label)}</span>
+      <span class="legend-val">${val} (${pct}%)</span>
+    </div>`;
+  }).join('');
 }
 
 // ══════════ UTILITY ══════════
