@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="500" height="600">
+<defs>
+<linearGradient id="hd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f5f5f5"/><stop offset="100%" stop-color="#e0e0e0"/></linearGradient>
+<linearGradient id="sk" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c68642"/><stop offset="100%" stop-color="#a0622e"/></linearGradient>
+<linearGradient id="hs" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#d0d0d0"/><stop offset="100%" stop-color="#e8e8e8"/></linearGradient>
+<linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00d4ff"/><stop offset="50%" stop-color="#b829ff"/><stop offset="100%" stop-color="#ff2d78"/></linearGradient>
+<filter id="ds"><feDropShadow dx="3" dy="5" stdDeviation="7" flood-color="rgba(0,0,0,.2)"/></filter>
+<filter id="bs"><feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="rgba(0,0,0,.12)"/></filter>
+</defs>
+<g filter="url(#ds)">
+<path d="M140,350 C140,320 160,280 200,260 L210,258 C220,255 235,252 250,250 C280,248 310,252 330,260 C370,278 385,310 385,350 L385,580 C385,590 378,598 368,600 L158,600 C148,600 140,590 140,580 Z" fill="url(#hd)" stroke="#ccc" stroke-width="1"/>
+<path d="M200,300 Q220,380 215,500" fill="none" stroke="#d0d0d0" stroke-width="2" opacity=".5"/>
+<path d="M320,300 Q310,380 315,500" fill="none" stroke="#d0d0d0" stroke-width="2" opacity=".5"/>
+<line x1="262" y1="270" x2="262" y2="600" stroke="#c8c8c8" stroke-width="1.5"/>
+<path d="M190,430 Q200,420 262,418 Q325,420 335,430 L340,500 Q330,510 262,512 Q195,510 185,500 Z" fill="none" stroke="#c8c8c8" stroke-width="1.5" opacity=".4"/>
+<g opacity=".8">
+<path d="M220,340 L240,310 L235,335 L255,335 L230,375 L238,348 L220,348 Z" fill="url(#ng)" opacity=".7"/>
+<circle cx="290" cy="320" r="3" fill="#00d4ff" opacity=".6"/><circle cx="310" cy="345" r="2" fill="#ff2d78" opacity=".5"/><circle cx="275" cy="360" r="2.5" fill="#b829ff" opacity=".6"/>
+<path d="M280,310 Q300,330 295,360" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity=".5"/>
+</g>
+<path d="M140,350 C130,360 125,380 128,420 C130,445 140,460 175,465 Q190,460 195,450" fill="url(#hd)" stroke="#ccc" stroke-width="1"/>
+<path d="M385,350 C400,355 415,360 425,370 C438,382 440,395 435,410 L420,415 C410,400 400,395 385,392" fill="url(#hd)" stroke="#ccc" stroke-width="1"/>
+<g transform="translate(425,370) rotate(-15)">
+<ellipse cx="15" cy="25" rx="16" ry="14" fill="url(#sk)" stroke="#8b5e3c" stroke-width="1"/>
+<path d="M4,16 Q2,22 5,30 Q8,35 12,35 Q10,28 8,20" fill="url(#sk)" stroke="#8b5e3c" stroke-width=".8"/>
+<path d="M10,14 Q7,22 10,32 Q14,37 18,36 Q15,28 13,18" fill="url(#sk)" stroke="#8b5e3c" stroke-width=".8"/>
+<path d="M18,14 Q15,22 17,33 Q20,38 24,36 Q22,27 20,17" fill="url(#sk)" stroke="#8b5e3c" stroke-width=".8"/>
+<path d="M10,16 Q8,8 10,0 Q12,-4 16,-4 Q20,-4 21,0 Q23,8 20,16" fill="url(#sk)" stroke="#8b5e3c" stroke-width="1"/>
+</g>
+<path d="M175,260 C170,240 168,210 175,185 C185,155 210,130 250,120 C290,130 315,155 325,185 C332,210 330,240 325,260 C310,255 290,250 260,248 C230,250 200,255 175,260 Z" fill="url(#hs)" stroke="#bbb" stroke-width="1"/>
+<path d="M175,260 C180,252 200,238 215,232 C235,225 255,222 270,224 C285,226 305,232 320,244 C328,250 330,256 325,260 C310,255 285,250 260,248 C235,250 200,255 175,260 Z" fill="#eee" stroke="#ccc" stroke-width="1"/>
+<path d="M215,240 C212,250 210,265 212,278 C215,295 225,308 240,315 C250,318 262,318 275,312 C288,305 298,290 300,275 C302,260 300,248 295,240" fill="url(#sk)"/>
+<path d="M215,240 C218,235 240,228 260,228 C280,230 295,236 295,240 C290,248 280,252 260,250 C240,248 220,248 215,240 Z" fill="rgba(0,0,0,.12)"/>
+<ellipse cx="238" cy="260" rx="8" ry="5" fill="#1a1a1a"/><ellipse cx="240" cy="259" rx="3" ry="3" fill="#fff"/><circle cx="241" cy="258.5" r="1.2" fill="#1a1a1a"/>
+<ellipse cx="272" cy="258" rx="7" ry="5" fill="#1a1a1a"/><ellipse cx="273" cy="257" rx="3" ry="3" fill="#fff"/><circle cx="274" cy="256.5" r="1.2" fill="#1a1a1a"/>
+<path d="M228,252 Q238,247 248,250" fill="none" stroke="#3d2b1f" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M264,249 Q274,246 282,250" fill="none" stroke="#3d2b1f" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M255,265 Q258,278 254,283 Q250,286 248,284" fill="none" stroke="#8b5e3c" stroke-width="1.5" opacity=".5"/>
+<path d="M240,296 Q255,305 275,298" fill="none" stroke="#5c3a21" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M275,298 Q278,295 280,296" fill="none" stroke="#5c3a21" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M298,260 C305,258 308,265 307,275 C306,282 302,286 298,285" fill="url(#sk)" stroke="#8b5e3c" stroke-width="1" opacity=".6"/>
+<path d="M215,242 Q220,235 235,232 Q240,240 238,245" fill="#1a1a1a" opacity=".6"/>
+</g>
+<g filter="url(#bs)">
+<rect x="20" y="40" width="260" height="100" rx="20" fill="white"/>
+<path d="M220,140 L250,170 L190,140" fill="white"/>
+<rect x="20" y="40" width="260" height="100" rx="20" fill="none" stroke="#e0e0e0" stroke-width="1.5"/>
+<path d="M220,140 L250,170 L190,140" fill="none" stroke="#e0e0e0" stroke-width="1.5"/>
+<rect x="192" y="138" width="30" height="5" fill="white"/>
+<text x="150" y="78" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="800" fill="#0a0a0f">Che fai oggi</text>
+<text x="150" y="108" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="800" fill="#6C5CE7">BRO? 😎</text>
+<text x="255" y="55" font-size="18">👍</text>
+</g>
+</svg>

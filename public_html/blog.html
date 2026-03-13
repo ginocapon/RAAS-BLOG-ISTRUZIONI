@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog SEO & Digital Marketing | RaaS Automazioni</title>
+    <meta name="description" content="Guide SEO, strategie digital marketing e automazioni per PMI. Articoli pratici su web agency, lead generation e crescita digitale.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+:root{
+    --neon-cyan:#00b4d8;
+    --neon-pink:#f4a261;
+    --deep-space:#0a1929;
+    --dark:#1a2f47;
+    --dark-light:#2a4a6f;
+    --text:#2b3d52;
+    --bg:#f7fafc;
+    --white:#fff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    overflow-x:hidden
+}
+
+/* ========== NAVBAR SEMPRE VISIBILE ========== */
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background:rgba(26,47,71,0.95);
+    backdrop-filter:blur(20px);
+    box-shadow:0 4px 30px rgba(0,180,216,0.1);
+    z-index:10000;
+    padding:1rem 0;
+    border-bottom:1px solid rgba(0,180,216,0.2)
+}
+
+.nav-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 1.5rem
+}
+
+.logo{
+    font-size:1.5rem;
+    font-weight:800;
+    color:var(--white);
+    text-decoration:none;
+    transition:transform 0.3s
+}
+
+.logo:hover{transform:scale(1.05)}
+.logo span{color:var(--neon-cyan)}
+
+.nav-links{display:flex;gap:2rem;align-items:center}
+
+.nav-links a{
+    color:rgba(255,255,255,0.9);
+    font-weight:500;
+    text-decoration:none;
+    transition:all 0.3s;
+    font-size:0.95rem;
+    position:relative
+}
+
+.nav-links a::after{
+    content:'';
+    position:absolute;
+    bottom:-4px;
+    left:0;
+    width:0;
+    height:2px;
+    background:var(--neon-cyan);
+    transition:width 0.3s
+}
+
+.nav-links a:hover{color:var(--neon-cyan)}
+.nav-links a:hover::after{width:100%}
+
+.btn-primary{
+    background:linear-gradient(135deg,var(--neon-cyan) 0%,#0096c7 100%);
+    color:var(--white);
+    padding:0.75rem 1.5rem;
+    border-radius:50px;
+    font-weight:700;
+    box-shadow:0 4px 20px rgba(0,180,216,0.3);
+    border:none
+}
+
+.btn-primary:hover{
+    box-shadow:0 6px 30px rgba(0,180,216,0.5);
+    transform:translateY(-2px)
+}
+
+.mobile-menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    font-size:1.5rem;
+    color:var(--white);
+    cursor:pointer
+}
+
+/* ========== HERO WOW SECTION ========== */
+#particles-canvas{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0
+}
+
+.hero-section{
+    position:relative;
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--deep-space) 0%,var(--dark) 50%,var(--dark-light) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding-top:80px
+}
+
+.hero-section::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300b4d8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity:0.3
+}
+
+.hero-content{
+    position:relative;
+    z-index:10;
+    text-align:center;
+    max-width:900px;
+    padding:2rem;
+    animation:fadeInUp 1s ease-out
+}
+
+@keyframes fadeInUp{
+    0%{opacity:0;transform:translateY(30px)}
+    100%{opacity:1;transform:translateY(0)}
+}
+
+.hero-content h1{
+    font-size:clamp(2.5rem,8vw,5rem);
+    font-weight:900;
+    line-height:1.1;
+    margin-bottom:1.5rem;
+    background:linear-gradient(135deg,#fff 0%,var(--neon-cyan) 50%,var(--neon-pink) 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    animation:textGlow 3s ease-in-out infinite;
+    position:relative
+}
+
+@keyframes textGlow{
+    0%,100%{filter:drop-shadow(0 0 20px rgba(0,180,216,0.3))}
+    50%{filter:drop-shadow(0 0 40px rgba(0,180,216,0.6))}
+}
+
+.hero-content p{
+    font-size:1.3rem;
+    color:rgba(255,255,255,0.8);
+    margin-bottom:2rem;
+    line-height:1.6
+}
+
+.scroll-indicator{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    animation:bounce 2s infinite;
+    color:rgba(255,255,255,0.5);
+    font-size:2rem
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateX(-50%) translateY(0)}
+    50%{transform:translateX(-50%) translateY(10px)}
+}
+
+/* ========== ARTICOLI SECTION ========== */
+.articles-section{
+    position:relative;
+    background:var(--bg);
+    padding:5rem 0;
+    z-index:1
+}
+
+.container{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 1.5rem
+}
+
+.section-header{
+    text-align:center;
+    margin-bottom:4rem
+}
+
+.section-header h2{
+    font-size:2.5rem;
+    font-weight:800;
+    color:var(--dark);
+    margin-bottom:1rem
+}
+
+.section-header p{
+    font-size:1.1rem;
+    color:var(--text);
+    opacity:0.8
+}
+
+.articles-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
+    gap:2.5rem;
+    margin-bottom:4rem
+}
+
+/* ========== EMPTY STATE ========== */
+.empty-state{
+    text-align:center;
+    padding:4rem 2rem;
+    background:linear-gradient(135deg,rgba(0,180,216,0.05) 0%,rgba(244,162,97,0.05) 100%);
+    border-radius:20px;
+    margin:2rem 0
+}
+
+.empty-state i{
+    font-size:4rem;
+    color:var(--neon-cyan);
+    margin-bottom:1.5rem;
+    opacity:0.5;
+    animation:pulse 2s infinite
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1);opacity:0.5}
+    50%{transform:scale(1.1);opacity:0.7}
+}
+
+.empty-state h2{
+    font-size:1.8rem;
+    color:var(--dark);
+    margin-bottom:0.5rem
+}
+
+.empty-state p{
+    color:var(--text);
+    opacity:0.7
+}
+
+/* ========== CTA SECTION ========== */
+.cta-section{
+    background:linear-gradient(135deg,var(--dark) 0%,var(--dark-light) 100%);
+    padding:4rem 2rem;
+    text-align:center;
+    position:relative;
+    overflow:hidden
+}
+
+.cta-section::before{
+    content:'';
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:conic-gradient(from 0deg,transparent 0%,var(--neon-cyan) 25%,transparent 50%,var(--neon-pink) 75%,transparent 100%);
+    animation:rotate 20s linear infinite;
+    opacity:0.05
+}
+
+@keyframes rotate{
+    100%{transform:rotate(360deg)}
+}
+
+.cta-content{
+    position:relative;
+    z-index:1;
+    max-width:700px;
+    margin:0 auto
+}
+
+.cta-content h2{
+    font-size:2.5rem;
+    color:var(--white);
+    margin-bottom:1rem;
+    font-weight:800
+}
+
+.cta-content p{
+    font-size:1.1rem;
+    color:rgba(255,255,255,0.8);
+    margin-bottom:2rem
+}
+
+.cta-button{
+    display:inline-block;
+    padding:1.2rem 3rem;
+    background:var(--white);
+    color:var(--dark);
+    text-decoration:none;
+    font-size:1.1rem;
+    font-weight:700;
+    border-radius:50px;
+    transition:all 0.3s;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2)
+}
+
+.cta-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 40px rgba(0,0,0,0.3)
+}
+
+/* ========== FOOTER ========== */
+.footer{
+    background:var(--dark);
+    color:rgba(255,255,255,0.7);
+    padding:3rem 0 1.5rem;
+    text-align:center
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    gap:2rem;
+    margin-bottom:1.5rem;
+    flex-wrap:wrap
+}
+
+.footer-links a{
+    color:rgba(255,255,255,0.7);
+    text-decoration:none;
+    font-weight:500;
+    transition:all 0.3s
+}
+
+.footer-links a:hover{color:var(--neon-cyan)}
+
+.footer p{
+    margin:0;
+    font-size:0.9rem;
+    opacity:0.6
+}
+
+/* ========== BLOG CARDS ========== */
+.blog-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.blog-card:hover .blog-card-image { transform: scale(1.05); }
+
+.blog-card-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.blog-category {
+    display: inline-block;
+    background: linear-gradient(135deg, #00b4d8 0%, #0096c7 100%);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.blog-card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    transition: color 0.3s;
+}
+
+.blog-card:hover .blog-card-title { color: var(--neon-cyan); }
+
+.blog-card-excerpt {
+    font-size: 1rem;
+    color: #516a87;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.blog-card-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e8f1f8;
+}
+
+.blog-date,
+.blog-read-time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #516a87;
+}
+
+.blog-date i,
+.blog-read-time i { color: var(--neon-cyan); }
+
+.blog-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--neon-cyan);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.blog-read-more:hover { gap: 1rem; color: #0096c7; }
+.blog-read-more i { transition: transform 0.3s; }
+.blog-read-more:hover i { transform: translateX(4px); }
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:768px){
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:var(--dark);
+        flex-direction:column;
+        padding:2rem;
+        box-shadow:0 20px 40px rgba(0,0,0,0.3)
+    }
+    
+    .nav-links.active{display:flex}
+    .mobile-menu-toggle{display:block}
+    
+    .articles-grid{
+        grid-template-columns:1fr;
+        gap:2rem
+    }
+    
+    .hero-content h1{font-size:2.5rem}
+    .hero-content p{font-size:1.1rem}
+
+    .blog-card-content { padding: 1.5rem; }
+    .blog-card-title { font-size: 1.25rem; }
+    .blog-card-meta { flex-direction: column; gap: 0.75rem; }
+}
+    </style>
+</head>
+<body>
+    <!-- ========== NAVBAR - LINK ASSOLUTI CORRETTI ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo" aria-label="RaaSAutomazioni Homepage">RaaS<span>Automazioni</span></a>
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/#chi-siamo">Chi Siamo</a>
+                <a href="/#portfolio">Portfolio</a>
+                <a href="/#siti-web">Prezzi</a>
+                <a href="/blog/" style="color:var(--neon-cyan)">Blog</a>
+                <a href="/#contatti" class="btn-primary">Contatti</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Apri menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO WOW SECTION -->
+    <section class="hero-section">
+        <canvas id="particles-canvas"></canvas>
+        <div class="hero-content">
+            <h1>Blog SEO & Digital Marketing</h1>
+            <p>Strategie concrete, risultati misurabili, zero teoria inutile.<br>Scopri come far crescere il tuo business digitale.</p>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ARTICOLI SECTION -->
+    <section class="articles-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ultimi Articoli</h2>
+                <p>Guide pratiche, case study e strategie verificate sul campo</p>
+            </div>
+
+            <div class="articles-grid" id="articlesGrid">
+
+                <!-- ARTICOLO 1 - Lead Generation 50 Lead -->
+                <article class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop" 
+                         alt="Dashboard con grafici di performance di lead generation" 
+                         class="blog-card-image"
+                         loading="lazy">
+                    <div class="blog-card-content">
+                        <span class="blog-category">Lead Generation</span>
+                        <h2 class="blog-card-title">Come Ottenere 50 Lead Qualificati al Mese con l'Automazione</h2>
+                        <p class="blog-card-excerpt">
+                            Scopri le strategie testate che portano risultati concreti: da 0 a 50+ contatti qualificati 
+                            ogni mese attraverso funnel automatizzati e chatbot intelligenti.
+                        </p>
+                        <div class="blog-card-meta">
+                            <span class="blog-date">
+                                <i class="far fa-calendar"></i> 5 Febbraio 2026
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="far fa-clock"></i> 5 min
+                            </span>
+                        </div>
+                        <a href="/blog/articoli/lead-generation-50-lead-qualificati-automazione" class="blog-read-more">
+                            Leggi l'articolo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ARTICOLO 2 - 5 Automazioni -->
+                <article class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop" 
+                         alt="Grafici di crescita e analytics su schermo" 
+                         class="blog-card-image"
+                         loading="lazy">
+                    <div class="blog-card-content">
+                        <span class="blog-category">Automazioni</span>
+                        <h2 class="blog-card-title">5 Automazioni che Fanno Risparmiare 20 Ore alla Settimana</h2>
+                        <p class="blog-card-excerpt">
+                            Email automatiche, follow-up intelligenti, gestione CRM: ecco le 5 automazioni essenziali 
+                            che ogni PMI dovrebbe implementare per liberare tempo e aumentare le conversioni.
+                        </p>
+                        <div class="blog-card-meta">
+                            <span class="blog-date">
+                                <i class="far fa-calendar"></i> 3 Febbraio 2026
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="far fa-clock"></i> 7 min
+                            </span>
+                        </div>
+                        <a href="/blog/articoli/5-automazioni-risparmiare-20-ore-settimana" class="blog-read-more">
+                            Leggi l'articolo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ARTICOLO 3 - PageSpeed 95+ -->
+                <article class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=800&q=80&auto=format&fit=crop" 
+                         alt="Laptop con codice e design di sito web" 
+                         class="blog-card-image"
+                         loading="lazy">
+                    <div class="blog-card-content">
+                        <span class="blog-category">Siti Web</span>
+                        <h2 class="blog-card-title">Perché il Tuo Sito Deve Avere PageSpeed 95+: Dati e ROI</h2>
+                        <p class="blog-card-excerpt">
+                            Un sito lento perde il 53% dei visitatori. Scopri come un PageSpeed 95+ aumenta conversioni 
+                            del 40% e migliora il posizionamento Google con esempi concreti.
+                        </p>
+                        <div class="blog-card-meta">
+                            <span class="blog-date">
+                                <i class="far fa-calendar"></i> 1 Febbraio 2026
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="far fa-clock"></i> 6 min
+                            </span>
+                        </div>
+                        <a href="/blog/articoli/pagespeed-95-dati-roi" class="blog-read-more">
+                            Leggi l'articolo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ARTICOLO 4 - Sito Vetrina a Macchina Business -->
+                <article class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&auto=format&fit=crop" 
+                         alt="Team che lavora su strategia digitale con lavagna" 
+                         class="blog-card-image"
+                         loading="lazy">
+                    <div class="blog-card-content">
+                        <span class="blog-category">Strategie</span>
+                        <h2 class="blog-card-title">Da Sito Vetrina a Macchina di Business: La Trasformazione in 90 Giorni</h2>
+                        <p class="blog-card-excerpt">
+                            Il percorso completo per trasformare un sito statico in uno strumento di crescita attivo: 
+                            automazioni, lead magnet, funnel e metriche da monitorare mese per mese.
+                        </p>
+                        <div class="blog-card-meta">
+                            <span class="blog-date">
+                                <i class="far fa-calendar"></i> 30 Gennaio 2026
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="far fa-clock"></i> 8 min
+                            </span>
+                        </div>
+                        <a href="/blog/articoli/sito-vetrina-macchina-business-90-giorni" class="blog-read-more">
+                            Leggi l'articolo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- EMPTY STATE (mostra quando non ci sono articoli) -->
+            <div class="empty-state" id="emptyState" style="display:none;">
+                <i class="fas fa-rocket"></i>
+                <h2>Nuovi Articoli in Arrivo</h2>
+                <p>Stiamo preparando contenuti di valore per te. Torna presto!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINALE -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Vuoi Risultati Concreti?</h2>
+            <p>Niente chiacchiere, solo strategie verificate sul campo. Parliamone.</p>
+            <a href="/#contatti" class="cta-button">
+                Contattaci Ora <i class="fas fa-arrow-right" style="margin-left:0.5rem"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER - LINK ASSOLUTI CORRETTI ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/#chi-siamo">Chi Siamo</a>
+                <a href="/blog/">Blog</a>
+                <a href="/#contatti">Contatti</a>
+                <a href="/privacy.html">Privacy Policy</a>
+            </div>
+            <p>&copy; 2024 RaaS Automazioni. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sistema Particelle Canvas
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height, particles = [];
+        
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 180, 216, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+        
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            
+            particles = [];
+            for (let i = 0; i < 80; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 25, 41, 0.05)';
+            ctx.fillRect(0, 0, width, height);
+            
+            ctx.strokeStyle = 'rgba(0, 180, 216, 0.1)';
+            ctx.lineWidth = 0.5;
+            
+            for (let i = 0; i < particles.length; i++) {
+                const p1 = particles[i];
+                p1.update();
+                p1.draw();
+                
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        window.addEventListener('resize', init);
+        init();
+        animate();
+        
+        // Mobile menu toggle
+        const toggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        if(toggle) {
+            toggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                toggle.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+        }
+        
+        // Empty state logic
+        const articlesGrid = document.getElementById('articlesGrid');
+        const emptyState = document.getElementById('emptyState');
+        
+        function checkArticles() {
+            const articles = articlesGrid.querySelectorAll('.blog-card');
+            if (articles.length === 0) {
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+            }
+        }
+        
+        checkArticles();
+    </script>
+
+<!-- CHATBOT RAAS -->
+<style>
+.chatbot-container{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    z-index:99999
+}
+
+.chat-button{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--neon-cyan) 0%,#0096c7 100%);
+    border:none;
+    cursor:pointer;
+    box-shadow:0 4px 20px rgba(0,180,216,0.4);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:1.8rem;
+    transition:all 0.3s;
+    position:relative
+}
+
+.chat-button:hover{
+    transform:scale(1.1);
+    box-shadow:0 6px 30px rgba(0,180,216,0.6)
+}
+
+.chat-button .notification-badge{
+    position:absolute;
+    top:-5px;
+    right:-5px;
+    background:#f4a261;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.75rem;
+    font-weight:700;
+    animation:pulse 2s infinite
+}
+
+.chat-window{
+    position:fixed;
+    bottom:90px;
+    right:20px;
+    width:380px;
+    max-width:calc(100vw - 40px);
+    height:600px;
+    max-height:calc(100vh - 120px);
+    background:white;
+    border-radius:20px;
+    box-shadow:0 10px 60px rgba(0,0,0,0.2);
+    display:none;
+    flex-direction:column;
+    overflow:hidden;
+    animation:slideUp 0.3s ease-out
+}
+
+@keyframes slideUp{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+.chat-window.active{display:flex}
+
+.chat-header{
+    background:linear-gradient(135deg,var(--dark) 0%,var(--dark-light) 100%);
+    color:white;
+    padding:1.2rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between
+}
+
+.chat-header-info{
+    display:flex;
+    align-items:center;
+    gap:0.8rem
+}
+
+.chat-avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--neon-cyan);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.2rem
+}
+
+.chat-header h3{
+    font-size:1rem;
+    margin:0;
+    font-weight:700
+}
+
+.chat-header p{
+    font-size:0.75rem;
+    margin:0;
+    opacity:0.8
+}
+
+.chat-close{
+    background:none;
+    border:none;
+    color:white;
+    font-size:1.5rem;
+    cursor:pointer;
+    padding:0;
+    width:30px;
+    height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    transition:background 0.3s
+}
+
+.chat-close:hover{background:rgba(255,255,255,0.1)}
+
+.chat-messages{
+    flex:1;
+    overflow-y:auto;
+    padding:1.5rem;
+    background:#f7fafc;
+    display:flex;
+    flex-direction:column;
+    gap:1rem
+}
+
+.chat-message{
+    max-width:85%;
+    padding:0.8rem 1.2rem;
+    border-radius:18px;
+    font-size:0.9rem;
+    line-height:1.5;
+    animation:fadeIn 0.3s ease-out
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:scale(0.9)}
+    to{opacity:1;transform:scale(1)}
+}
+
+.chat-message.bot{
+    background:white;
+    align-self:flex-start;
+    border-bottom-left-radius:4px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05)
+}
+
+.chat-message.user{
+    background:linear-gradient(135deg,var(--neon-cyan) 0%,#0096c7 100%);
+    color:white;
+    align-self:flex-end;
+    border-bottom-right-radius:4px
+}
+
+.chat-suggestions{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+    margin-top:0.5rem
+}
+
+.suggestion-btn{
+    background:white;
+    border:1px solid #e0e7ee;
+    padding:0.8rem 1rem;
+    border-radius:12px;
+    text-align:left;
+    cursor:pointer;
+    font-size:0.85rem;
+    transition:all 0.3s;
+    color:var(--text)
+}
+
+.suggestion-btn:hover{
+    background:var(--neon-cyan);
+    color:white;
+    border-color:var(--neon-cyan);
+    transform:translateX(5px)
+}
+
+.typing-indicator{
+    display:flex;
+    gap:4px;
+    padding:0.8rem 1.2rem;
+    background:white;
+    border-radius:18px;
+    width:fit-content;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05)
+}
+
+.typing-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--neon-cyan);
+    animation:typingDot 1.4s infinite ease-in-out
+}
+
+.typing-dot:nth-child(2){animation-delay:0.2s}
+.typing-dot:nth-child(3){animation-delay:0.4s}
+
+@keyframes typingDot{
+    0%,60%,100%{transform:translateY(0)}
+    30%{transform:translateY(-10px)}
+}
+
+.chat-form{
+    background:white;
+    padding:1rem;
+    border-radius:12px;
+    margin-top:0.5rem;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05)
+}
+
+.chat-form input,
+.chat-form textarea{
+    width:100%;
+    padding:0.75rem;
+    border:1px solid #e0e7ee;
+    border-radius:8px;
+    margin-bottom:0.75rem;
+    font-family:inherit;
+    font-size:0.9rem
+}
+
+.chat-form textarea{
+    resize:vertical;
+    min-height:80px
+}
+
+.chat-form button{
+    width:100%;
+    padding:0.9rem;
+    background:linear-gradient(135deg,var(--neon-cyan) 0%,#0096c7 100%);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-weight:700;
+    cursor:pointer;
+    font-size:0.95rem;
+    transition:all 0.3s
+}
+
+.chat-form button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,180,216,0.3)
+}
+
+@media(max-width:480px){
+    .chat-window{
+        width:calc(100vw - 20px);
+        height:calc(100vh - 80px);
+        bottom:70px;
+        right:10px
+    }
+}
+</style>
+
+<div class="chatbot-container">
+    <button class="chat-button" id="chatButton" aria-label="Apri chat assistenza">
+        <i class="fas fa-comments"></i>
+        <span class="notification-badge">1</span>
+    </button>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">🤖</div>
+                <div>
+                    <h3>Assistente RaaS</h3>
+                    <p>Online • Rispondo subito</p>
+                </div>
+            </div>
+            <button class="chat-close" id="chatClose" aria-label="Chiudi chat">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages"></div>
+    </div>
+</div>
+
+<script>
+const chatData = {
+    questionCount: 0,
+    qa: {
+        'Quanto costa un sito web?': 'I nostri piani sono trasparenti: Essential 199€/anno, Business 249€/anno (più richiesto), Professional 299€/anno. Prezzo BLOCCATO per sempre, zero rincari!',
+        'Perché così economico?': 'Nessun intermediario, zero costi marketing, lavoro da remoto. Investiamo in qualità, non in uffici costosi. Risultato: prezzi onesti, servizio premium.',
+        'Ci sono costi nascosti?': 'ZERO. Il prezzo che vedi è quello che paghi. Hosting, SSL, manutenzione base inclusi. Niente sorprese, niente clausole nascoste.',
+        'Perché altri costano di più?': 'Molte agenzie: uffici centro città (affitto alto), team grandi, marketing aggressivo. Noi: remoto, team lean, passaparola. Stessa qualità, prezzo reale.',
+        'Quanto costa manutenzione?': 'Manutenzione base inclusa nel piano annuale. Modifiche extra: 50€/ora (ma raramente servono con codice puro).',
+        'Accettate pagamenti rateali?': 'Sì! Puoi pagare in 3 rate senza interessi. Oppure annuale con sconto 5%. Massima flessibilità.',
+        'Cosa include il prezzo?': 'Tutto: progettazione, sviluppo, hosting, SSL, backup, supporto. Non paghi extra per "sorprese" scoperte dopo.',
+        'Costa di più con WordPress?': 'WordPress = plugin €€€ + licenze + manutenzione continua. In 2 anni spendi il doppio. Noi: codice puro, zero plugin, costo fisso.',
+        'Preventivo gratuito?': 'Sì, sempre! Compila il form o scrivi WhatsApp. Ti rispondiamo in 24h con preventivo dettagliato e trasparente.',
+        'Prezzo aumenta negli anni?': 'MAI. 249€ oggi = 249€ tra 5 anni. È scritto nel contratto. Garanzia anti-rincaro blindata.',
+        'Cosa fate esattamente?': 'Creiamo siti web veloci (PageSpeed 95+), ottimizzati SEO, che convertono visitatori in clienti. Codice puro, zero WordPress.',
+        'Fate anche e-commerce?': 'Sì! E-commerce custom ultra-veloci. Niente WooCommerce lento. Codice proprietario, prestazioni eccellenti.',
+        'Gestite social media?': 'No, siamo specialisti web puro. Ma possiamo consigliarti partner fidati per social/ads.',
+        'Fate SEO?': 'SEO base inclusa: struttura corretta, meta tags, sitemap, velocità. SEO avanzata (link building, content): pacchetto dedicato.',
+        'Logo e branding?': 'Logo base incluso in Professional. Per branding completo: partner designer (ti mettiamo in contatto).',
+        'Modifiche al sito?': 'Modifiche base incluse anno 1. Dopo: 50€/ora. Ma con codice puro servono raramente!',
+        'Fate app mobile?': 'Al momento no. Siamo specialisti web. Focus: fare una cosa, farla perfetta.',
+        'Email aziendali?': 'Configuriamo email@tuodominio.it (Google Workspace o altro). Costo hosting email: a partire da 6€/mese/casella.',
+        'Backup inclusi?': 'Sì! Backup automatici giornalieri inclusi. Ripristino gratuito in caso di problemi.',
+        'Assistenza post-vendita?': 'Supporto email/WhatsApp incluso. Risposta entro 24h lavorative. Emergenze: entro 4h.',
+        'Garanzia soddisfatti o rimborsati?': 'Sì! 30 giorni garanzia. Non sei soddisfatto? Rimborso completo, nessuna domanda.',
+        'Cosa è la garanzia PageSpeed?': 'Garantiamo score 90+ su Google PageSpeed Insights. Se non raggiungiamo: lavoriamo gratis finché ok.',
+        'Garantite risultati SEO?': 'Garantiamo sito ottimizzato tecnicamente. Posizionamento dipende da contenuti/competizione. Nessuno può garantire "primo posto Google".',
+        'E se il sito va giù?': 'Uptime 99.9% garantito. Se down per colpa nostra: rimborso proporzionale + ripristino urgente.',
+        'Proprietà del codice?': 'Il codice è TUO. 100%. Vuoi andartene? Ok, ti diamo tutto senza problemi. Zero vincoli.',
+        'Contratto vincolante?': 'No. Rinnovo annuale facoltativo. Non ti teniamo ostaggio. Vuoi fermarti? Nessun problema.',
+        'Cosa è codice puro?': 'HTML/CSS/JavaScript scritto a mano. Niente WordPress, niente plugin. Risultato: velocità estrema, zero vulnerabilità.',
+        'Perché non WordPress?': 'WordPress = lento, vulnerabile, plugin infiniti. Nostro codice: 10x più veloce, sicuro, zero manutenzione.',
+        'Quanto è veloce?': '0.2-0.5 secondi caricamento. WordPress media: 3-5 secondi. La velocità converte. Lento = clienti persi.',
+        'Mobile ottimizzato?': 'Sì! Mobile-first design. 80% traffico è mobile. Il tuo sito sarà perfetto su ogni schermo.',
+        'Accessibilità WCAG?': 'Sì, rispettiamo linee guida accessibilità. Sito usabile anche per persone con disabilità.',
+        'Hosting dove?': 'Server europei veloci (es: Hetzner Germania). GDPR compliant, latenza bassa Italia.',
+        'SSL incluso?': 'Sì! HTTPS gratuito incluso. Sicurezza e trust per i tuoi visitatori.',
+        'Aggiornamenti necessari?': 'Codice puro = zero aggiornamenti. Niente "plugin da aggiornare ogni settimana". Imposta e dimentica.',
+        'Integrazione tools?': 'Sì: Google Analytics, Facebook Pixel, CRM, email marketing, calendari, form avanzati.',
+        'Compatibilità browser?': 'Chrome, Firefox, Safari, Edge. Testato su tutti i principali browser e versioni.',
+        'Quanto tempo ci vuole?': 'Sito vetrina: 5-7 giorni. Sito aziendale: 10-14 giorni. E-commerce: 3-4 settimane. Dipende da complessità.',
+        'Posso vedere anteprima?': 'Sì! Ti diamo accesso area staging per vedere lavoro in progress. Feedback continui.',
+        'Quando posso iniziare?': 'Subito! Compila form o scrivi WhatsApp. Kickoff call entro 48h, sviluppo parte subito dopo accordo.',
+        'Consegna urgente?': 'Sì, con supplemento rush. Esempio: sito vetrina in 3 giorni (+30% sul prezzo). Fattibile!',
+        'Revisioni incluse?': '2 round revisioni inclusi. Ulteriori modifiche: a consumo (ma raramente servono).',
+        'Siete affidabili?': 'Lavoriamo dal 2020, 50+ clienti soddisfatti. Portfolio pubblico. Recensioni verificate. Trasparenza totale.',
+        'Dove siete basati?': 'Italia, lavoro remoto. Vantaggio: costi bassi, flessibilità. Svantaggio: zero. Tutto online funziona perfettamente.',
+        'Parlate italiano?': 'Certo! Siamo italiani. Comunicazione chiara, zero "tecnicismi". Spieghiamo tutto in modo semplice.',
+        'Posso vedervi di persona?': 'Lavoriamo remote-first. Ma call Zoom/Meet sempre disponibili. Preferisci incontro? Valutabile nelle grandi città.',
+        'Come vi contatto?': 'WhatsApp, email, form contatti. Rispondiamo in 24h max. Emergenze: 4h.'
+    },
+    suggestions: [
+        'Quanto costa un sito web?',
+        'Perché così economico?',
+        'Garanzia PageSpeed 95+?',
+        'Cosa è codice puro?',
+        'Quanto tempo ci vuole?',
+        'Ci sono costi nascosti?',
+        'Fate anche e-commerce?',
+        'Proprietà del codice?'
+    ]
+};
+
+const chatButton = document.getElementById('chatButton');
+const chatWindow = document.getElementById('chatWindow');
+const chatClose = document.getElementById('chatClose');
+const chatMessages = document.getElementById('chatMessages');
+
+chatButton.addEventListener('click', () => {
+    chatWindow.classList.add('active');
+    chatButton.querySelector('.notification-badge').style.display = 'none';
+    if (chatMessages.children.length === 0) initChat();
+});
+
+chatClose.addEventListener('click', () => { chatWindow.classList.remove('active'); });
+
+function initChat() {
+    addBotMessage('Ciao! 👋 Sono l\'assistente RaaS. Ti aiuto a scegliere il piano perfetto per te!');
+    setTimeout(() => { addBotMessage('Cosa vorresti sapere?'); showSuggestions(); }, 800);
+}
+
+function addBotMessage(text) {
+    const msg = document.createElement('div');
+    msg.className = 'chat-message bot';
+    msg.textContent = text;
+    chatMessages.appendChild(msg);
+    scrollToBottom();
+}
+
+function addUserMessage(text) {
+    const msg = document.createElement('div');
+    msg.className = 'chat-message user';
+    msg.textContent = text;
+    chatMessages.appendChild(msg);
+    scrollToBottom();
+}
+
+function showTyping() {
+    const typing = document.createElement('div');
+    typing.className = 'typing-indicator';
+    typing.id = 'typingIndicator';
+    typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+    chatMessages.appendChild(typing);
+    scrollToBottom();
+}
+
+function hideTyping() {
+    const typing = document.getElementById('typingIndicator');
+    if (typing) typing.remove();
+}
+
+function showSuggestions() {
+    const container = document.createElement('div');
+    container.className = 'chat-suggestions';
+    const randomSuggestions = chatData.suggestions.sort(() => 0.5 - Math.random()).slice(0, 4);
+    randomSuggestions.forEach(suggestion => {
+        const btn = document.createElement('button');
+        btn.className = 'suggestion-btn';
+        btn.textContent = suggestion;
+        btn.onclick = () => handleQuestion(suggestion);
+        container.appendChild(btn);
+    });
+    chatMessages.appendChild(container);
+    scrollToBottom();
+}
+
+function handleQuestion(question) {
+    document.querySelectorAll('.chat-suggestions').forEach(el => el.remove());
+    addUserMessage(question);
+    chatData.questionCount++;
+    showTyping();
+    setTimeout(() => {
+        hideTyping();
+        if (chatData.questionCount === 5) {
+            addBotMessage('Mi fa piacere aiutarti! 😊 Per darti supporto personalizzato, posso farti contattare da un nostro consulente?');
+            setTimeout(() => showContactForm(), 500);
+            return;
+        }
+        const answer = chatData.qa[question] || 'Ottima domanda! Per info specifiche, ti consiglio di contattarci direttamente. Vuoi che ti faccia richiamare?';
+        addBotMessage(answer);
+        setTimeout(() => { addBotMessage('Altre domande?'); showSuggestions(); }, 1000);
+    }, 1200);
+}
+
+function showContactForm() {
+    const formHTML = `
+        <div class="chat-form">
+            <p style="margin-bottom:1rem;font-size:0.9rem;color:var(--text)">
+                <strong>Compila e ti ricontattiamo in 24h!</strong>
+            </p>
+            <input type="text" id="chatName" placeholder="Nome *" required>
+            <input type="email" id="chatEmail" placeholder="Email *" required>
+            <input type="tel" id="chatPhone" placeholder="Telefono">
+            <textarea id="chatMessage" placeholder="Cosa ti serve? (opzionale)"></textarea>
+            <button onclick="submitChatForm()">Invia Richiesta</button>
+        </div>
+    `;
+    const container = document.createElement('div');
+    container.innerHTML = formHTML;
+    chatMessages.appendChild(container);
+    scrollToBottom();
+}
+
+function submitChatForm() {
+    const name = document.getElementById('chatName').value;
+    const email = document.getElementById('chatEmail').value;
+    if (!name || !email) { alert('Compila almeno Nome e Email!'); return; }
+    document.querySelector('.chat-form').remove();
+    addBotMessage(`Grazie ${name}! 🎉 Ti ricontatteremo entro 24h su ${email}. Nel frattempo, altre domande?`);
+    setTimeout(() => { chatData.questionCount = 0; showSuggestions(); }, 1000);
+    console.log('Form submitted:', {name, email});
+}
+
+function scrollToBottom() { chatMessages.scrollTop = chatMessages.scrollHeight; }
+</script>
+
+</body>
+</html>

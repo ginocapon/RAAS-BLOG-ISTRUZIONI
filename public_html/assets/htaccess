@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Redirect da blog.html a /blog
+RewriteRule ^blog\.html$ /blog [R=301,L]
+
+# Servi blog.html quando viene richiesto /blog
+RewriteRule ^blog$ blog.html [L]

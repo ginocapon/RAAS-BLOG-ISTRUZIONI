@@ -1,0 +1,12 @@
+ // Tawk.to lazy loading
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                if (window.Tawk_API) return;
+                const s1 = document.createElement("script");
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/696d0c752bd34c1982a64bfc/1jf8vhblo';
+                s1.charset = 'UTF-8';
+                s1.setAttribute('crossorigin', '*');
+                document.body.appendChild(s1);
+            }, 3000);
+        });

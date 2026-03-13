@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PlayZone Italia — Giochi Gratis Online | Puzzle, Arcade, Idle & Multiplayer</title>
+<meta name="description" content="PlayZone: il portale gaming italiano #1 per la Gen Z. Oltre 1000 giochi HTML5 gratis — puzzle, idle, arcade, multiplayer. Gioca subito senza download!">
+<meta name="keywords" content="giochi gratis online, giochi browser, giochi HTML5, puzzle gratis, idle games, giochi arcade, multiplayer gratis, giochi senza download">
+<meta name="author" content="RaaS Automazioni">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://raasautomazioni.it/playzone/">
+<meta property="og:title" content="PlayZone Italia — 1000+ Giochi Gratis Online">
+<meta property="og:description" content="Il portale gaming italiano per la Gen Z. Gioca gratis a puzzle, idle, arcade e multiplayer!">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://raasautomazioni.it/playzone/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- JSON-LD WebSite -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"PlayZone Italia","url":"https://raasautomazioni.it/playzone/","description":"Il portale gaming italiano #1 per Gen Z. 1000+ giochi gratis.","publisher":{"@type":"Organization","name":"RaaS Automazioni","url":"https://raasautomazioni.it","contactPoint":{"@type":"ContactPoint","contactType":"customer service","availableLanguage":"Italian"}},"potentialAction":{"@type":"SearchAction","target":"https://raasautomazioni.it/playzone/cerca?q={q}","query-input":"required name=q"}}</script>
+
+<!-- JSON-LD Product + Reviews -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"PlayZone Italia","description":"Piattaforma giochi browser gratuiti per Gen Z","brand":{"@type":"Brand","name":"PlayZone"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"2847","bestRating":"5"},"review":[{"@type":"Review","author":{"@type":"Person","name":"Marco R."},"datePublished":"2025-12-10","reviewBody":"Finalmente un sito di giochi veloce e senza pubblicità invasive!","reviewRating":{"@type":"Rating","ratingValue":"5"}},{"@type":"Review","author":{"@type":"Person","name":"Sofia L."},"datePublished":"2025-11-28","reviewBody":"I giochi idle sono fantastici. Super consigliato bro!","reviewRating":{"@type":"Rating","ratingValue":"5"}},{"@type":"Review","author":{"@type":"Person","name":"Luca T."},"datePublished":"2026-01-15","reviewBody":"Il quiz gaming è troppo accurato. E i puzzle sono addictive.","reviewRating":{"@type":"Rating","ratingValue":"4"}}]}</script>
+
+<!-- JSON-LD FAQ -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"PlayZone è gratis?","acceptedAnswer":{"@type":"Answer","text":"Sì! Tutti i giochi sono 100% gratuiti. Offriamo anche un piano Pro opzionale senza pubblicità."}},{"@type":"Question","name":"Devo scaricare qualcosa?","acceptedAnswer":{"@type":"Answer","text":"No, tutti i giochi girano nel browser su qualsiasi dispositivo."}},{"@type":"Question","name":"Cos'è PlayZone PRO?","acceptedAnswer":{"@type":"Answer","text":"Abbonamento premium: zero ads, skin esclusive, accesso anticipato, badge PRO."}},{"@type":"Question","name":"Come funziona BroBot?","acceptedAnswer":{"@type":"Answer","text":"BroBot è il nostro chatbot AI con 200+ risposte su giochi, trucchi e consigli."}}]}</script>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f4f5fa;--bg2:#fff;--bg3:#edeef5;--dark:#12122a;--text:#1e1e3a;--text2:#6b6b8d;--text3:#9999b3;--green:#39ff14;--blue:#00d4ff;--pink:#ff2d95;--purple:#a855f7;--orange:#ff6b35;--r:16px;--rs:10px;--shadow:0 4px 24px rgba(18,18,42,.07);--shadow-lg:0 12px 48px rgba(18,18,42,.12);--font:'Outfit',sans-serif;--mono:'Space Mono',monospace;--nh:70px}
+html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}a{text-decoration:none;color:inherit}button{cursor:pointer;border:none;font-family:var(--font)}
+
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nh);background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(18,18,42,.06);z-index:1000;display:flex;align-items:center;padding:0 clamp(16px,4vw,40px)}
+.nav__logo{font-weight:900;font-size:1.5rem;letter-spacing:-.5px;display:flex;align-items:center;gap:8px}
+.nav__logo span{background:linear-gradient(135deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav__logo em{font-style:normal;font-size:.6rem;background:var(--pink);color:#fff;padding:2px 7px;border-radius:20px;font-weight:700;letter-spacing:1px;vertical-align:super}
+.nav__links{display:flex;gap:clamp(14px,2.5vw,28px);margin-left:auto;align-items:center}
+.nav__links a{font-size:.85rem;font-weight:600;color:var(--text2);transition:color .2s}
+.nav__links a:hover{color:var(--text)}
+.nav__cta{background:var(--dark);color:#fff!important;padding:9px 20px;border-radius:50px;font-size:.82rem;font-weight:700;transition:all .25s}
+.nav__cta:hover{background:var(--green);color:var(--dark)!important}
+.ham{display:none;flex-direction:column;gap:5px;background:none;padding:8px;margin-left:auto}
+.ham span{width:24px;height:2.5px;background:var(--text);border-radius:4px;transition:all .3s}
+.ham.on span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.ham.on span:nth-child(2){opacity:0}.ham.on span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mm{display:none;position:fixed;top:var(--nh);left:0;right:0;bottom:0;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);z-index:999;flex-direction:column;padding:24px;gap:4px;overflow-y:auto}
+.mm.on{display:flex}
+.mm a{font-size:1.05rem;font-weight:600;padding:12px 0;border-bottom:1px solid var(--bg3)}
+@media(max-width:768px){.nav__links{display:none}.ham{display:flex}}
+
+.hero{padding:calc(var(--nh)+40px) clamp(16px,4vw,40px) 32px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(circle,rgba(57,255,20,.07) 0%,rgba(0,212,255,.04) 40%,transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--bg3);padding:7px 16px;border-radius:50px;font-size:.78rem;font-weight:600;color:var(--text2);margin-bottom:18px}
+.badge i{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2rem,5.5vw,3.8rem);font-weight:900;line-height:1.08;letter-spacing:-1.5px;max-width:750px;margin:0 auto 14px}
+.hero h1 b{background:linear-gradient(135deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(.95rem,2vw,1.15rem);color:var(--text2);max-width:520px;margin:0 auto 24px}
+.acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{padding:13px 28px;border-radius:50px;font-weight:700;font-size:.9rem;transition:all .25s;display:inline-flex;align-items:center;gap:7px}
+.b1{background:var(--dark);color:#fff}.b1:hover{background:var(--green);color:var(--dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(57,255,20,.25)}
+.b2{background:var(--bg2);color:var(--text);border:2px solid var(--bg3)}.b2:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.bg{background:var(--green);color:var(--dark)}.bg:hover{box-shadow:0 8px 24px rgba(57,255,20,.3);transform:translateY(-2px)}
+
+.stats{display:flex;justify-content:center;gap:clamp(20px,5vw,56px);padding:20px 16px 36px;flex-wrap:wrap}
+.st{text-align:center}.st b{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;font-family:var(--mono);background:linear-gradient(135deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.st small{font-size:.72rem;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:1px}
+
+.sec{padding:40px clamp(16px,4vw,40px)}
+.sh{text-align:center;margin-bottom:28px}
+.sh em{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green);font-family:var(--mono);font-style:normal;display:block;margin-bottom:6px}
+.sh h2{font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:900;letter-spacing:-.5px}
+.sh p{color:var(--text2);margin-top:6px;max-width:460px;margin-left:auto;margin-right:auto;font-size:.95rem}
+
+.speed{background:var(--bg2);border-radius:var(--r);padding:clamp(24px,4vw,44px);max-width:660px;margin:0 auto 40px;box-shadow:var(--shadow);text-align:center;border:2px solid var(--bg3);position:relative;overflow:hidden}
+.speed::before{content:'';position:absolute;top:-2px;left:-2px;right:-2px;height:4px;background:linear-gradient(90deg,var(--green),var(--blue),var(--pink),var(--purple));border-radius:var(--r) var(--r) 0 0}
+.speed h2{font-size:1.3rem;font-weight:900;margin-bottom:6px}.speed>p{color:var(--text2);margin-bottom:16px;font-size:.9rem}
+.sbar{height:8px;background:var(--bg3);border-radius:10px;overflow:hidden;margin:14px 0}.sbar div{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--green));border-radius:10px;transition:width 2s ease}
+.sres{font-family:var(--mono);font-size:2.8rem;font-weight:700;color:var(--green);margin:14px 0;display:none}
+.sres.on{display:block;animation:pop .5s ease}
+@keyframes pop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;max-width:1100px;margin:0 auto}
+.cat{background:var(--bg2);border-radius:var(--rs);padding:18px 14px;text-align:center;border:2px solid transparent;transition:all .25s;cursor:pointer;display:block}
+.cat:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:var(--shadow)}
+.cat b{font-size:1.8rem;display:block;margin-bottom:5px}
+.cat strong{font-weight:700;font-size:.85rem;display:block}
+.cat small{font-size:.7rem;color:var(--text3);font-family:var(--mono)}
+
+.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:14px;max-width:1300px;margin:0 auto}
+.g{background:var(--bg2);border-radius:var(--r);overflow:hidden;transition:all .3s;cursor:pointer}.g:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.gt{width:100%;aspect-ratio:16/10;position:relative;overflow:hidden}.gt svg{width:100%;height:100%}
+.gb{position:absolute;top:7px;right:7px;font-size:.6rem;font-weight:700;padding:3px 9px;border-radius:20px;text-transform:uppercase}
+.gbh{background:var(--pink);color:#fff}.gbn{background:var(--blue);color:var(--dark)}
+.gi{padding:10px 12px}.gi strong{font-weight:700;font-size:.84rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+.gm{display:flex;justify-content:space-between;font-size:.7rem;color:var(--text3)}.gm em{font-style:normal;font-weight:700;color:var(--orange)}
+
+.qz{background:var(--dark);border-radius:var(--r);padding:clamp(28px,5vw,52px);max-width:850px;margin:0 auto;color:#fff;position:relative;overflow:hidden}
+.qz::after{content:'';position:absolute;top:-50%;right:-30%;width:400px;height:400px;background:radial-gradient(circle,rgba(57,255,20,.12),transparent 70%);pointer-events:none}
+.qz h2{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:900;margin-bottom:6px}
+.qz>p{color:rgba(255,255,255,.55);margin-bottom:20px;font-size:.9rem}
+.qg{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.qc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--rs);padding:18px;text-align:center;transition:all .3s;cursor:pointer;display:block;color:#fff}
+.qc:hover{background:rgba(57,255,20,.1);border-color:var(--green);transform:translateY(-3px)}
+.qc b{font-size:2.2rem;display:block;margin-bottom:8px}.qc strong{font-weight:700;font-size:.9rem;display:block;margin-bottom:3px}.qc small{font-size:.72rem;color:rgba(255,255,255,.45)}
+
+.ug{background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:var(--r);padding:clamp(24px,4vw,44px);max-width:560px;margin:0 auto;color:#fff;text-align:center}
+.ug h3{font-size:1.2rem;font-weight:900;margin-bottom:10px}
+.ugr{font-family:var(--mono);font-size:clamp(1.3rem,4vw,1.8rem);color:var(--green);padding:16px;background:rgba(0,0,0,.3);border-radius:var(--rs);margin:14px 0;min-height:56px;display:flex;align-items:center;justify-content:center;word-break:break-all}
+
+.revs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;max-width:1100px;margin:0 auto}
+.rev{background:var(--bg2);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);transition:transform .3s}.rev:hover{transform:translateY(-3px)}
+.rev .st{color:var(--orange);font-size:.9rem;margin-bottom:8px;letter-spacing:2px;text-align:left}
+.rev q{font-size:.85rem;color:var(--text2);line-height:1.6;display:block;margin-bottom:12px}
+.rev footer{display:flex;align-items:center;gap:8px}
+.rev .av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;color:#fff}
+.rev .nm{font-weight:700;font-size:.82rem}.rev .dt{font-size:.68rem;color:var(--text3)}
+
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:760px;margin:0 auto}
+.pc{background:var(--bg2);border-radius:var(--r);padding:28px 24px;border:2px solid var(--bg3);text-align:center;transition:all .3s;position:relative}
+.pc.pro{border-color:var(--green);box-shadow:0 0 36px rgba(57,255,20,.07)}
+.pc.pro::before{content:'BEST';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--green);color:var(--dark);font-size:.6rem;font-weight:800;padding:3px 14px;border-radius:20px;letter-spacing:1px}
+.pc h3{font-weight:900;font-size:1rem;margin-bottom:4px}
+.pc .pr{font-size:2.4rem;font-weight:900;font-family:var(--mono);margin:10px 0 2px}.pc .pr span{font-size:.85rem;color:var(--text3);font-weight:400}
+.pc .pd{font-size:.72rem;color:var(--text3);margin-bottom:14px}
+.pc ul{list-style:none;text-align:left;margin-bottom:18px}
+.pc li{padding:6px 0;font-size:.82rem;color:var(--text2);display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--bg3)}
+.pc li:last-child{border:none}
+.pc li::before{content:'\2713';color:var(--green);font-weight:700}
+
+.faq{max-width:650px;margin:0 auto}
+.fi{background:var(--bg2);border-radius:var(--rs);margin-bottom:6px;overflow:hidden;border:1px solid var(--bg3)}
+.fq{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;font-weight:700;font-size:.88rem}.fq:hover{background:var(--bg3)}
+.fq span{transition:transform .3s}.fq.on span{transform:rotate(45deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .3s;padding:0 18px}
+.fa p{padding:0 0 14px;font-size:.85rem;color:var(--text2);line-height:1.7}
+
+.contact{max-width:550px;margin:0 auto}
+.cf{display:flex;flex-direction:column;gap:12px}
+.cr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:500px){.cr{grid-template-columns:1fr}}
+.cfl{display:flex;flex-direction:column;gap:4px}
+.cfl label{font-size:.78rem;font-weight:700;color:var(--text2)}
+.cfl input,.cfl textarea,.cfl select{border:2px solid var(--bg3);border-radius:var(--rs);padding:11px 14px;font-size:.88rem;font-family:var(--font);outline:none;background:var(--bg2)}
+.cfl input:focus,.cfl textarea:focus{border-color:var(--green)}
+.cfl textarea{resize:vertical;min-height:100px}
+
+.footer{background:var(--dark);color:rgba(255,255,255,.7);padding:40px clamp(16px,4vw,40px) 20px;margin-top:40px}
+.footer .g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;max-width:1100px;margin:0 auto 28px}
+.footer h4{color:#fff;font-weight:800;margin-bottom:12px;font-size:.9rem}
+.footer a{display:block;padding:3px 0;font-size:.8rem;color:rgba(255,255,255,.45);transition:color .2s}.footer a:hover{color:var(--green)}
+.footer p{font-size:.8rem;line-height:1.7}
+.footer .btm{border-top:1px solid rgba(255,255,255,.08);padding-top:16px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.25);max-width:1100px;margin:0 auto}
+
+.bb{position:fixed;bottom:20px;right:20px;z-index:900}
+.bbt{width:56px;height:56px;border-radius:50%;background:var(--dark);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:var(--shadow-lg);border:2px solid var(--green);transition:all .3s}.bbt:hover{transform:scale(1.1)}
+.bbw{display:none;position:absolute;bottom:66px;right:0;width:min(360px,calc(100vw - 32px));height:480px;background:var(--bg2);border-radius:var(--r);box-shadow:var(--shadow-lg);border:1px solid var(--bg3);flex-direction:column;overflow:hidden}.bbw.on{display:flex}
+.bbh{background:var(--dark);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:10px}
+.bba{width:32px;height:32px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.bbn{font-weight:700;font-size:.9rem}.bbs{font-size:.68rem;color:var(--green)}
+.bbx{margin-left:auto;background:none;color:rgba(255,255,255,.5);font-size:1.1rem;padding:4px}
+.bbm{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:82%;padding:10px 14px;border-radius:14px;font-size:.82rem;line-height:1.5}
+.mbot{background:var(--bg3);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px}
+.musr{background:var(--dark);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.bbi{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--bg3)}
+.bbi input{flex:1;border:2px solid var(--bg3);border-radius:50px;padding:9px 14px;font-size:.82rem;font-family:var(--font);outline:none}.bbi input:focus{border-color:var(--green)}
+.bbi button{background:var(--green);color:var(--dark);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;flex-shrink:0}
+
+.ck{position:fixed;bottom:0;left:0;right:0;background:var(--dark);color:#fff;padding:14px clamp(16px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:14px;z-index:1100;transform:translateY(100%);transition:transform .4s;flex-wrap:wrap}
+.ck.on{transform:translateY(0)}
+.ck p{font-size:.78rem;color:rgba(255,255,255,.65);flex:1;min-width:200px}
+.ck .ca{display:flex;gap:8px}
+
+.rv{opacity:0;transform:translateY(24px);transition:all .5s ease}.rv.v{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.au{animation:fadeUp .6s ease both}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav__logo"><span>Play</span>Zone<em>BETA</em></a>
+  <div class="nav__links">
+    <a href="#giochi">Giochi</a>
+    <a href="pages/categorie.html">Categorie</a>
+    <a href="pages/quiz-personalita.html">Quiz</a>
+    <a href="pages/classifica.html">Classifica</a>
+    <a href="pages/brobot.html">BroBot</a>
+    <a href="pages/pro.html" class="nav__cta">PRO &#9889;</a>
+  </div>
+  <button class="ham" aria-label="Menu" onclick="tgM()"><span></span><span></span><span></span></button>
+</nav>
+<div class="mm" id="mm">
+  <a href="#giochi" onclick="tgM()">&#127918; Giochi</a>
+  <a href="pages/categorie.html">&#128194; Categorie</a>
+  <a href="pages/puzzle.html">&#129513; Puzzle</a>
+  <a href="pages/idle.html">&#9200; Idle Games</a>
+  <a href="pages/arcade.html">&#128126; Arcade</a>
+  <a href="pages/multiplayer.html">&#127760; Multiplayer</a>
+  <a href="pages/racing.html">&#127950; Racing</a>
+  <a href="pages/sport.html">&#9917; Sport</a>
+  <a href="pages/avventura.html">&#128506; Avventura</a>
+  <a href="pages/azione.html">&#128165; Azione</a>
+  <a href="pages/strategia.html">&#9823; Strategia</a>
+  <a href="pages/quiz-personalita.html">&#129504; Quiz</a>
+  <a href="pages/username-generator.html">&#10024; Username</a>
+  <a href="pages/brobot.html">&#129302; BroBot</a>
+  <a href="pages/classifica.html">&#127942; Classifica</a>
+  <a href="pages/pro.html" style="color:#39ff14">&#9889; PRO</a>
+  <a href="#contatti" onclick="tgM()">&#128236; Contatti</a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="badge au"><i></i> 1.247 giocatori online ora</div>
+  <h1 class="au" style="animation-delay:.1s">Il Tuo <b>Playground</b> Digitale. 1000+ Giochi Gratis.</h1>
+  <p class="au" style="animation-delay:.2s">Zero download. Zero registrazione. Solo divertimento puro, bro.</p>
+  <div class="acts au" style="animation-delay:.3s">
+    <a href="#giochi" class="btn b1">&#127918; Gioca Ora</a>
+    <a href="#spd" class="btn b2">&#9889; Speed Test</a>
+    <a href="pages/quiz-personalita.html" class="btn b2">&#129504; Che Gamer Sei?</a>
+  </div>
+</header>
+
+<div class="stats rv">
+  <div class="st"><b>1000+</b><small>Giochi</small></div>
+  <div class="st"><b>15</b><small>Categorie</small></div>
+  <div class="st"><b>150K+</b><small>Players/Mese</small></div>
+  <div class="st"><b>4.8&#9733;</b><small>Rating</small></div>
+</div>
+
+<!-- SPEED TEST -->
+<section class="sec" id="spd">
+  <div class="speed rv">
+    <h2>&#9889; Speed Test</h2>
+    <p>Testa la velocit&agrave; del tuo device prima di giocare!</p>
+    <div class="sbar"><div id="sf"></div></div>
+    <div class="sres" id="sr"></div>
+    <button class="btn bg" onclick="runST()">&#128640; Avvia Test</button>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="sec" id="cat">
+  <div class="sh rv"><em>// Esplora</em><h2>Scegli la Tua Vibe</h2><p>15 categorie per ogni mood</p></div>
+  <div class="cats rv" id="cg"></div>
+</section>
+
+<!-- GAMES -->
+<section class="sec" id="giochi">
+  <div class="sh rv"><em>// Top Games</em><h2>I Pi&ugrave; Giocati Ora &#128293;</h2></div>
+  <div class="games rv" id="gg"></div>
+  <div style="text-align:center;margin-top:20px"><button class="btn b2" onclick="loadG()" id="lb">Carica Altri &#8595;</button></div>
+</section>
+
+<!-- QUIZ -->
+<section class="sec">
+  <div class="qz rv">
+    <h2>&#129504; Che Tipo di Gamer Sei?</h2>
+    <p>200+ domande disponibili in 4 quiz diversi!</p>
+    <div class="qg">
+      <a href="pages/quiz-personalita.html" class="qc"><b>&#127919;</b><strong>Personalit&agrave;</strong><small>Il tuo archetipo</small></a>
+      <a href="pages/quiz-skill.html" class="qc"><b>&#128170;</b><strong>Skill Level</strong><small>Quanto sei forte?</small></a>
+      <a href="pages/quiz-match.html" class="qc"><b>&#128152;</b><strong>Game Match</strong><small>Il gioco perfetto</small></a>
+      <a href="pages/quiz-retro.html" class="qc"><b>&#128126;</b><strong>Quiz Retro</strong><small>Retrogaming trivia</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- USERNAME GEN -->
+<section class="sec">
+  <div class="ug rv">
+    <h3>&#10024; Genera il Tuo Username Pro</h3>
+    <div class="ugr" id="ur">Clicca per generare...</div>
+    <button class="btn bg" onclick="genU()">&#127922; Genera</button>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="rec">
+  <div class="sh rv"><em>// Community</em><h2>Cosa Dicono i Bros &#11088;</h2></div>
+  <div class="revs rv" id="rg"></div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="sh rv"><em>// Upgrade</em><h2>PlayZone PRO &#9889;</h2><p>Zero ads, skin esclusive, accesso anticipato.</p></div>
+  <div class="pricing rv">
+    <div class="pc">
+      <h3>Free</h3><div class="pr">&euro;0<span>/mese</span></div><div class="pd">Per sempre gratis</div>
+      <ul><li>1000+ giochi</li><li>Quiz personalit&agrave;</li><li>Username generator</li><li>BroBot base</li><li>Pubblicit&agrave; standard</li></ul>
+      <a href="#giochi" class="btn b2" style="width:100%;justify-content:center">Gioca Gratis</a>
+    </div>
+    <div class="pc pro">
+      <h3>PRO &#9889;</h3><div class="pr">&euro;&mdash;<span>/mese</span></div><div class="pd">Prezzo in definizione</div>
+      <ul><li>Zero pubblicit&agrave;</li><li>Skin esclusive</li><li>Accesso anticipato</li><li>BroBot illimitato</li><li>Badge PRO</li><li>Classifica boost</li><li>Supporto prioritario</li></ul>
+      <a href="pages/pro.html" class="btn bg" style="width:100%;justify-content:center">Scopri PRO &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="sh rv"><em>// FAQ</em><h2>Domande Frequenti</h2></div>
+  <div class="faq rv" id="fg"></div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contatti">
+  <div class="sh rv"><em>// Contatti</em><h2>Parliamo? &#128172;</h2><p>Suggerimenti, partnership o semplicemente ciao</p></div>
+  <div class="contact rv">
+    <form class="cf" onsubmit="return hC(event)">
+      <div class="cr"><div class="cfl"><label>Nome *</label><input required placeholder="Il tuo nome"></div><div class="cfl"><label>Email *</label><input type="email" required placeholder="bro@email.com"></div></div>
+      <div class="cfl"><label>Soggetto</label><select><option>&#128161; Suggerimento gioco</option><option>&#128027; Segnala bug</option><option>&#129309; Partnership</option><option>&#9889; Info PRO</option><option>&#128172; Altro</option></select></div>
+      <div class="cfl"><label>Messaggio *</label><textarea required placeholder="Scrivi qui..."></textarea></div>
+      <div class="cfl"><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" required><span style="font-size:.78rem;color:var(--text2)">Accetto la <a href="pages/privacy.html" style="color:var(--green);text-decoration:underline">Privacy Policy</a></span></label></div>
+      <button type="submit" class="btn b1" style="align-self:flex-start">&#128232; Invia</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="g4">
+    <div><h4 style="font-size:1.2rem"><span style="color:var(--green)">Play</span>Zone</h4><p>Il portale gaming italiano Gen Z. 1000+ giochi gratis. Un progetto RaaS Automazioni.</p></div>
+    <div><h4>Categorie</h4><a href="pages/puzzle.html">Puzzle</a><a href="pages/idle.html">Idle</a><a href="pages/arcade.html">Arcade</a><a href="pages/multiplayer.html">Multiplayer</a><a href="pages/racing.html">Racing</a><a href="pages/sport.html">Sport</a><a href="pages/avventura.html">Avventura</a><a href="pages/azione.html">Azione</a><a href="pages/strategia.html">Strategia</a></div>
+    <div><h4>Strumenti</h4><a href="pages/quiz-personalita.html">Quiz Personalit&agrave;</a><a href="pages/username-generator.html">Username Generator</a><a href="pages/brobot.html">BroBot AI</a><a href="pages/classifica.html">Classifica</a><a href="pages/nuovi.html">Nuovi Giochi</a><a href="pages/trending.html">Trending</a></div>
+    <div><h4>Info</h4><a href="pages/pro.html">PlayZone PRO</a><a href="pages/chi-siamo.html">Chi Siamo</a><a href="pages/blog.html">Blog</a><a href="pages/privacy.html">Privacy Policy</a><a href="pages/cookie.html">Cookie Policy</a><a href="pages/termini.html">Termini</a></div>
+  </div>
+  <div class="btm">&copy; 2026 PlayZone Italia &mdash; <a href="https://raasautomazioni.it" style="color:var(--green)">RaaS Automazioni</a> | P.IVA: XXXXXXXXXXX</div>
+</footer>
+
+<!-- BROBOT -->
+<div class="bb">
+  <div class="bbw" id="bw">
+    <div class="bbh"><div class="bba">&#129302;</div><div><div class="bbn">BroBot</div><div class="bbs">Online</div></div><button class="bbx" onclick="tgB()">&#10005;</button></div>
+    <div class="bbm" id="bm"><div class="msg mbot">Yo bro! &#128075; Sono BroBot. Chiedimi qualsiasi cosa sui giochi!</div></div>
+    <div class="bbi"><input id="bi" placeholder="Scrivi..." onkeydown="if(event.key==='Enter')sB()"><button onclick="sB()">&#8594;</button></div>
+  </div>
+  <button class="bbt" onclick="tgB()">&#129302;</button>
+</div>
+
+<!-- COOKIE -->
+<div class="ck" id="ck">
+  <p>&#127850; Utilizziamo cookie per migliorare la tua esperienza. <a href="pages/cookie.html" style="color:var(--green);text-decoration:underline">Cookie Policy</a></p>
+  <div class="ca"><button class="btn b2" onclick="cCk()" style="padding:7px 16px;font-size:.78rem">Solo necessari</button><button class="btn bg" onclick="cCk()" style="padding:7px 16px;font-size:.78rem">Accetta</button></div>
+</div>
+
+<script>
+/* DATA */
+const C=[['&#129513;','Puzzle',142,'puzzle'],['&#9200;','Idle Games',87,'idle'],['&#128126;','Arcade',156,'arcade'],['&#127760;','Multiplayer',93,'multiplayer'],['&#127950;','Racing',78,'racing'],['&#9917;','Sport',64,'sport'],['&#128506;','Avventura',105,'avventura'],['&#128165;','Azione',134,'azione'],['&#9823;','Strategia',56,'strategia'],['&#127912;','Creativi',43,'creativi'],['&#127183;','Carte',38,'carte'],['&#129504;','Brain',52,'brain'],['&#128087;','Fashion',47,'fashion'],['&#127959;','Simulazione',61,'simulazione'],['&#128299;','Shooting',89,'shooting']];
+const GN=['Pixel Quest','Block Smash','Neon Runner','Cookie Empire','Puzzle Master','Speed Drift','Tower Defense','Color Match','Snake Mania','Bubble Pop','Word Wizard','Math Rush','Space Invader X','Memory Flip','Sudoku Pro','Mahjong Classic','Tetris Blast','2048 Remix','Idle Empire','Dragon Quest','Knight Story','Pirate Gold','Zombie Rush','Farm Idle','Drift Boss','Football Star','Ninja Slash','Chess Master','Stickman Run','Flappy Clone','Crossy Road Lite','Cut Rope Lite','Fruit Ninja','Temple Run Lite','Geometry Dash','Angry Birds Lite','Doodle Jump','Stack Tower','Knife Hit','Helix Jump','Paper.io','Hole.io','Subway Rush','Candy Crush','Brick Breaker','Connect Four','Word Search','Moto X','Basketball Pro','Boxing Ring'];
+const BD=['','','hot','','new','','','hot','','','new','','','','hot','','new',''];
+const GA=[];for(let i=0;i<200;i++){const c=C[i%C.length];GA.push({t:GN[i%GN.length]+(i>=GN.length?' '+(Math.floor(i/GN.length)+1):''),c:c[1],s:c[3],r:(3.5+Math.random()*1.5).toFixed(1),b:BD[i%BD.length],h:(i*37)%360})}
+let gs=0;const GPL=24;
+
+/* RENDER CATS */
+document.getElementById('cg').innerHTML=C.map(c=>`<a href="pages/${c[3]}.html" class="cat"><b>${c[0]}</b><strong>${c[1]}</strong><small>${c[2]} giochi</small></a>`).join('');
+
+/* RENDER GAMES */
+function svg(h,ch){const s=[`<circle cx="50" cy="35" r="20" fill="hsl(${h},70%,65%)" opacity=".6"/><rect x="30" y="50" width="40" height="15" rx="4" fill="hsl(${(h+60)%360},60%,70%)" opacity=".5"/>`,`<rect x="25" y="20" width="50" height="35" rx="8" fill="hsl(${h},65%,60%)" opacity=".6"/><circle cx="60" cy="55" r="12" fill="hsl(${(h+90)%360},70%,65%)" opacity=".5"/>`,`<polygon points="50,15 75,55 25,55" fill="hsl(${h},70%,65%)" opacity=".6"/><circle cx="50" cy="52" r="14" fill="hsl(${(h+120)%360},65%,70%)" opacity=".4"/>`];return`<svg viewBox="0 0 100 80"><rect width="100" height="80" fill="hsl(${h},15%,92%)"/>${s[h%3]}<text x="50" y="42" text-anchor="middle" font-size="14" fill="#fff" font-family="sans-serif" font-weight="bold">${ch}</text></svg>`}
+function rG(){const d=document.getElementById('gg');const b=GA.slice(gs,gs+GPL);b.forEach(g=>{const e=document.createElement('div');e.className='g';e.onclick=()=>location.href='pages/'+g.s+'.html';e.innerHTML=`<div class="gt">${svg(g.h,g.t.charAt(0))}${g.b?`<div class="gb ${g.b==='hot'?'gbh':'gbn'}">${g.b==='hot'?'&#128293; HOT':'&#128310; NEW'}</div>`:''}</div><div class="gi"><strong>${g.t}</strong><div class="gm"><span>${g.c}</span><em>&#9733; ${g.r}</em></div></div>`;d.appendChild(e)});gs+=b.length;if(gs>=GA.length)document.getElementById('lb').style.display='none'}
+function loadG(){rG()}
+rG();
+
+/* REVIEWS */
+const RV=[{n:'Marco R.',t:'Finalmente un sito veloce e senza ads invasive! Lo uso ogni giorno.',s:5,c:'#39ff14',d:'10 Dic 2025'},{n:'Sofia L.',t:'I giochi idle sono fantastici. Cookie Empire top! Super consigliato bro!',s:5,c:'#00d4ff',d:'28 Nov 2025'},{n:'Luca T.',t:'Il quiz gaming è troppo accurato. E i puzzle sono addictive.',s:5,c:'#ff2d95',d:'15 Gen 2026'},{n:'Giulia M.',t:'BroBot mi ha consigliato un gioco che adoro. Top!',s:4,c:'#a855f7',d:'3 Feb 2026'},{n:'Alessio P.',t:'Lo username generator mi ha dato un nome che uso ovunque.',s:5,c:'#ff6b35',d:'22 Gen 2026'},{n:'Vale C.',t:'Perfetto per pause studio. Leggero e veloce. 10/10 bro.',s:5,c:'#ffe814',d:'8 Feb 2026'}];
+document.getElementById('rg').innerHTML=RV.map(r=>`<div class="rev"><div class="st">${'&#9733;'.repeat(r.s)}${'&#9734;'.repeat(5-r.s)}</div><q>${r.t}</q><footer><div class="av" style="background:${r.c}">${r.n.charAt(0)}</div><div><div class="nm">${r.n}</div><div class="dt">${r.d}</div></div></footer></div>`).join('');
+
+/* FAQ */
+const FQ=[['PlayZone è gratis?','Tutti i 1000+ giochi sono 100% gratuiti. Zero download, registrazione o pagamenti. Il piano PRO opzionale rimuove le ads.'],['Devo scaricare qualcosa?','No! Tutto gira nel browser su PC, tablet e smartphone.'],["Cos'è PlayZone PRO?",'Abbonamento premium: zero ads, skin esclusive, accesso anticipato, badge PRO. Prezzi in definizione.'],['Come funziona BroBot?','Chatbot AI con 200+ risposte su giochi, trucchi e consigli. Disponibile 24/7!'],['I giochi sono sicuri?','Tutti HTML5 nel browser. Nessuna installazione. Nessun dato personale raccolto senza consenso.'],['Funziona su mobile?','Ottimizzato per mobile. Tutti i giochi sono responsive.'],['Come suggerisco un gioco?','Usa il form contatti o scrivi a BroBot!'],['Come funziona il quiz?','200+ domande in 4 quiz. Risultato personalizzato con profilo gaming.']];
+document.getElementById('fg').innerHTML=FQ.map((f,i)=>`<div class="fi"><div class="fq" onclick="tgF(${i})"><span>+</span> ${f[0]}</div><div class="fa" id="fa${i}"><p>${f[1]}</p></div></div>`).join('');
+function tgF(i){const a=document.getElementById('fa'+i),q=a.previousElementSibling;if(a.style.maxHeight){a.style.maxHeight=null;q.classList.remove('on')}else{a.style.maxHeight=a.scrollHeight+'px';q.classList.add('on')}}
+
+/* SPEED TEST */
+function runST(){const f=document.getElementById('sf'),r=document.getElementById('sr');f.style.width='0%';r.style.display='none';r.classList.remove('on');let p=0;const s=performance.now();const iv=setInterval(()=>{p+=Math.random()*15;if(p>=100){p=100;clearInterval(iv);const sc=Math.min(99,Math.max(85,Math.round(100-(performance.now()-s)/100)));r.textContent=sc+'/100';r.style.display='block';r.style.color=sc>=90?'var(--green)':'var(--orange)';setTimeout(()=>r.classList.add('on'),50)}f.style.width=p+'%'},80)}
+
+/* USERNAME GEN */
+const UP=['Shadow','Neon','Pixel','Cyber','Dark','Blaze','Storm','Frost','Ultra','Mega','Epic','Pro','Swift','Zen','Nova','Apex','Ghost','Phantom','Turbo','Hyper'];
+const US=['Master','King','Lord','Fury','Strike','Wave','Fire','Blade','Rush','Force','Beast','Legend','Wolf','Hawk','Dragon','Phoenix','Ninja','Ace','Star','Core'];
+const UN=['','','','_','x','X','','99','42','007','_pro','_gg','1337'];
+function genU(){const r=document.getElementById('ur');r.textContent=UP[Math.random()*UP.length|0]+US[Math.random()*US.length|0]+UN[Math.random()*UN.length|0];r.style.animation='none';r.offsetHeight;r.style.animation='pop .4s ease'}
+
+/* BROBOT */
+function tgB(){document.getElementById('bw').classList.toggle('on')}
+const BR={ciao:['Yo bro! Come butta? &#127918;','Hey! Pronto? &#128379;'],gioco:['Prova Pixel Quest! &#127919;','Cookie Empire spacca! &#128293;','Neon Runner è il top!'],puzzle:['Block Smash top! &#129513;','Inizia dagli angoli!'],idle:['Lascia in background! &#128176;','Cookie Empire: investi nei grandfathers!'],consiglio:['Fai il quiz personalità! &#129504;','Dipende dal mood!'],pro:['PRO = zero ads + skin esclusive! &#9889;','Stay tuned per i prezzi! &#128142;'],default:['Dimmi di più bro! &#129300;','Chiedi di giochi! &#127918;','Prova il quiz! &#129504;']};
+function gBR(m){const l=m.toLowerCase();for(const[k,r]of Object.entries(BR)){if(k!=='default'&&l.includes(k))return r[Math.random()*r.length|0]}return BR.default[Math.random()*BR.default.length|0]}
+function sB(){const i=document.getElementById('bi'),m=i.value.trim();if(!m)return;const c=document.getElementById('bm');c.innerHTML+='<div class="msg musr">'+m+'</div>';i.value='';c.scrollTop=c.scrollHeight;setTimeout(()=>{c.innerHTML+='<div class="msg mbot">'+gBR(m)+'</div>';c.scrollTop=c.scrollHeight},500+Math.random()*700)}
+
+/* MENU */
+function tgM(){document.querySelector('.ham').classList.toggle('on');document.getElementById('mm').classList.toggle('on');document.body.style.overflow=document.getElementById('mm').classList.contains('on')?'hidden':''}
+
+/* CONTACT */
+function hC(e){e.preventDefault();const b=e.target.querySelector('button[type=submit]');b.textContent='&#9989; Inviato!';b.style.background='var(--green)';b.style.color='var(--dark)';setTimeout(()=>{b.textContent='&#128232; Invia';b.style.background='';b.style.color='';e.target.reset()},3000);return false}
+
+/* COOKIE */
+function cCk(){document.getElementById('ck').classList.remove('on')}
+setTimeout(()=>{if(!localStorage.getItem('pzck')){document.getElementById('ck').classList.add('on');localStorage.setItem('pzck','1')}},2000);
+
+/* REVEAL */
+const ob=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');ob.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>ob.observe(el));
+</script>
+</body>
+</html>

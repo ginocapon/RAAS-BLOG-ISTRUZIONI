@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Quale TikToker Italiano Sei? 🎭 Sfida i tuoi Amici! | RaaS Automazioni</title>
+<meta name="description" content="Scopri quale TikToker italiano ti somiglia! Sfida i tuoi amici in multiplayer e vinci premi. Quiz virale 2026 con classifica!">
+<meta name="keywords" content="quiz tiktoker italiano, quale tiktoker sei, test personalità tiktoker, quiz virale 2026, sfida amici quiz">
+<link rel="canonical" href="https://www.raasautomazioni.it/quiz/quale-tiktoker-sei">
+<meta property="og:title" content="Quale TikToker Italiano Sei? 🎭 Sfida i Tuoi Amici!">
+<meta property="og:description" content="Fai il quiz, scopri il tuo tipo e sfida i tuoi amici! Chi vince?">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Quiz","name":"Quale TikToker Italiano Sei?","description":"Quiz virale multiplayer per scoprire il tuo tipo di creator","creator":{"@type":"Organization","name":"RaaS Automazioni","url":"https://www.raasautomazioni.it"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--pk:#ff2d78;--cy:#00d4ff;--pu:#b829ff;--gr:#39ff14;--yl:#ffe600;--or:#ff6b35;--bg:#0a0a0f;--cd:#12121a;--sf:#1a1a2e;--gl:rgba(255,255,255,.05);--gb:rgba(255,255,255,.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:#fff;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* BG GLOW — CSS only, no extra DOM */
+body::before,body::after{content:'';position:fixed;border-radius:50%;filter:blur(120px);opacity:.3;pointer-events:none;z-index:0}
+body::before{width:500px;height:500px;background:var(--pk);top:-10%;left:-10%}
+body::after{width:400px;height:400px;background:var(--cy);top:40%;right:-15%}
+
+/* Grid pattern — CSS only */
+.ctn::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;z-index:0;pointer-events:none}
+
+.ctn{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:20px 16px;min-height:100vh}
+
+/* NAV — CENTRATA */
+.teen-nav{position:sticky;top:0;z-index:90;background:rgba(10,10,15,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--gb)}
+.nav-inner{display:flex;align-items:center;justify-content:center;gap:6px;height:56px;max-width:1080px;margin:0 auto;padding:0 20px}
+.nav-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#fff;text-decoration:none;display:flex;align-items:center;gap:6px;padding:7px 14px}
+.nav-brand .brand-gradient{background:linear-gradient(135deg,var(--pk),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:6px}
+.nav-links a{padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;color:rgba(255,255,255,.55);text-decoration:none;transition:.2s;white-space:nowrap}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.04)}
+.nav-links a.active{color:var(--pk);background:rgba(255,45,120,.06)}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:10px;background:none;border:1px solid var(--gb);border-radius:12px;cursor:pointer;z-index:100;transition:.3s}
+.hamburger:hover{border-color:var(--pk);background:rgba(255,45,120,.04)}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s cubic-bezier(.68,-.55,.27,1.55);transform-origin:center}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(10,10,15,.97);backdrop-filter:blur(30px);z-index:89;padding:24px;flex-direction:column;gap:8px}
+.mobile-menu.open{display:flex;animation:menuSlide .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes menuSlide{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+.mobile-menu a{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--cd);border:1px solid var(--gb);border-radius:16px;color:rgba(255,255,255,.7);text-decoration:none;font-size:16px;font-weight:600;transition:.25s}
+.mobile-menu a:hover,.mobile-menu a.active{color:#fff;border-color:var(--pk);background:rgba(255,45,120,.05)}
+.mobile-menu a .m-icon{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--sf);border-radius:12px;flex-shrink:0}
+.mobile-menu a .m-label{display:flex;flex-direction:column}
+.mobile-menu a .m-title{font-size:15px;font-weight:700}
+.mobile-menu a .m-desc{font-size:12px;color:rgba(255,255,255,.35);font-weight:400;margin-top:2px}
+
+/* HEADER */
+.hdr{text-align:center;padding:24px 0 20px;animation:fd .8s ease-out}
+@keyframes fd{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+.badge{display:inline-block;background:linear-gradient(135deg,var(--pk),var(--pu));padding:6px 18px;border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;box-shadow:0 0 20px rgba(255,45,120,.4)}
+.emoji-big{font-size:52px;display:block;margin-bottom:12px;animation:bn 2s ease-in-out infinite}
+@keyframes bn{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hdr h1{font-family:'Dela Gothic One',sans-serif;font-size:clamp(24px,6vw,42px);line-height:1.1;background:linear-gradient(135deg,var(--pk),var(--pu),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;text-transform:uppercase}
+.hdr p{font-size:14px;color:rgba(255,255,255,.5)}
+
+/* REFERRAL BANNER */
+.ref-banner{background:linear-gradient(135deg,rgba(57,255,20,.06),rgba(0,212,255,.06));border:1px solid rgba(57,255,20,.2);border-radius:18px;padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:.3s}
+.ref-banner:hover{border-color:var(--gr);transform:translateY(-2px);box-shadow:0 6px 25px rgba(57,255,20,.12)}
+.ref-icon{font-size:32px;flex-shrink:0}.ref-text{flex:1}.ref-text strong{font-size:14px;display:block;margin-bottom:2px;color:var(--gr)}.ref-text span{font-size:12px;color:rgba(255,255,255,.5)}
+.ref-arrow{font-size:18px;color:var(--gr);animation:ra 1.5s ease-in-out infinite}
+@keyframes ra{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+
+/* SCREENS */
+.scr{display:none;animation:si .5s cubic-bezier(.34,1.56,.64,1)}.scr.on{display:block}
+@keyframes si{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+
+/* PROGRESS */
+.prg{margin-bottom:24px}.prg-info{display:flex;justify-content:space-between;margin-bottom:6px;font-size:12px;color:rgba(255,255,255,.45)}.prg-info .cur{font-weight:700;color:var(--pk)}
+.prg-bar{width:100%;height:5px;background:var(--gl);border-radius:10px;overflow:hidden}.prg-fill{height:100%;background:linear-gradient(90deg,var(--pk),var(--pu),var(--cy));border-radius:10px;transition:width .6s cubic-bezier(.34,1.56,.64,1)}
+
+/* QUESTION CARD */
+.qcard{background:var(--cd);border:1px solid var(--gb);border-radius:22px;padding:28px 20px;margin-bottom:20px;position:relative;overflow:hidden}
+.qcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pk),var(--pu),var(--cy))}
+.qnum{font-family:'Dela Gothic One',sans-serif;font-size:64px;position:absolute;top:-8px;right:16px;background:linear-gradient(135deg,rgba(255,45,120,.07),rgba(184,41,255,.07));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;pointer-events:none}
+.qemoji{font-size:32px;display:block;margin-bottom:12px}.qtxt{font-size:clamp(18px,4.5vw,24px);font-weight:700;line-height:1.3;margin-bottom:22px}
+.opts{display:grid;gap:10px}
+.obtn{display:flex;align-items:center;gap:12px;width:100%;padding:15px 16px;background:var(--sf);border:2px solid rgba(255,255,255,.05);border-radius:14px;color:#fff;font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;text-align:left;cursor:pointer;transition:.3s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
+.obtn:hover{border-color:var(--pk);transform:translateY(-2px);box-shadow:0 6px 25px rgba(255,45,120,.12)}
+.obtn.sel{border-color:var(--pk);background:linear-gradient(135deg,rgba(255,45,120,.12),rgba(184,41,255,.08));box-shadow:0 0 25px rgba(255,45,120,.15)}
+.olet{flex-shrink:0;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-weight:700;font-size:13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);transition:.3s}
+.obtn.sel .olet{background:linear-gradient(135deg,var(--pk),var(--pu));color:#fff;border-color:transparent}
+.otxt{flex:1}.oemo{font-size:20px;margin-left:auto}
+
+/* MP BAR */
+.mp-bar{background:linear-gradient(135deg,rgba(184,41,255,.1),rgba(0,212,255,.1));border:1px solid rgba(184,41,255,.25);border-radius:14px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.mp-bar .mp-icon{font-size:24px}.mp-bar .mp-text{font-size:13px;color:rgba(255,255,255,.7)}.mp-bar .mp-text strong{color:var(--cy)}
+
+/* START */
+.start{text-align:center;padding:20px 0}
+.start-hero{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.start-hero-left{flex:1;text-align:center}
+.start-hero-right{flex:0 0 200px;display:flex;align-items:center;justify-content:center}
+.start-hero-right img{width:100%;height:auto;max-width:200px;filter:drop-shadow(0 8px 25px rgba(0,0,0,.25))}
+@media(max-width:600px){.start-hero{flex-direction:column}.start-hero-right{flex:0 0 auto;max-width:160px;order:-1}}
+.start-vis{position:relative;width:160px;height:160px;margin:0 auto 24px}
+.ring{position:absolute;border-radius:50%;border:2px solid;animation:sr linear infinite}
+.ring:nth-child(1){width:100%;height:100%;border-color:var(--pk);animation-duration:6s}
+.ring:nth-child(2){width:80%;height:80%;top:10%;left:10%;border-color:var(--pu);animation-duration:4s;animation-direction:reverse}
+.ring:nth-child(3){width:60%;height:60%;top:20%;left:20%;border-color:var(--cy);animation-duration:3s}
+.ci{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:52px}
+@keyframes sr{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.sbtn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:linear-gradient(135deg,var(--pk),var(--pu));border:none;border-radius:50px;color:#fff;font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:.3s;text-transform:uppercase;letter-spacing:1px;box-shadow:0 8px 40px rgba(255,45,120,.3);margin-bottom:16px}
+.sbtn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 50px rgba(255,45,120,.45)}
+.mp-start-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--sf);border:1px solid rgba(184,41,255,.3);border-radius:50px;color:var(--pu);font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:.3s}
+.mp-start-btn:hover{border-color:var(--pu);background:rgba(184,41,255,.08);transform:translateY(-2px)}
+.sstat{display:flex;justify-content:center;gap:24px;margin-top:20px}
+.sstat .si{text-align:center}.sstat .sn{font-family:'Dela Gothic One',sans-serif;font-size:20px;background:linear-gradient(135deg,var(--pk),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.sstat .sl{font-size:10px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+/* RESULT */
+.rcard{background:var(--cd);border:1px solid var(--gb);border-radius:24px;padding:32px 20px;text-align:center;position:relative;overflow:hidden}
+.rcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gr),var(--cy),var(--pu),var(--pk))}
+.rbadge{display:inline-block;padding:5px 16px;background:rgba(57,255,20,.1);border:1px solid rgba(57,255,20,.25);border-radius:50px;font-size:11px;font-weight:700;color:var(--gr);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.remo{font-size:72px;display:block;margin-bottom:12px;animation:rp .6s cubic-bezier(.34,1.56,.64,1)}
+@keyframes rp{from{transform:scale(0) rotate(-20deg)}to{transform:scale(1) rotate(0)}}
+.rname{font-family:'Dela Gothic One',sans-serif;font-size:clamp(22px,5.5vw,32px);background:linear-gradient(135deg,var(--pk),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
+.rtype{font-size:13px;color:var(--pu);font-weight:600;margin-bottom:16px}
+.rdesc{font-size:14px;line-height:1.6;color:rgba(255,255,255,.65);margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto}
+.rtags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:24px}
+.rtag{padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;background:var(--sf);border:1px solid rgba(255,255,255,.06)}
+
+/* MP COMPARE */
+.mp-compare{background:linear-gradient(135deg,rgba(184,41,255,.08),rgba(0,212,255,.06));border:1px solid rgba(184,41,255,.2);border-radius:20px;padding:24px 20px;margin:20px 0;text-align:center}
+.mp-compare h3{font-size:16px;font-weight:800;margin-bottom:16px;color:var(--cy)}
+.mp-vs{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px}
+.mp-player{text-align:center;flex:1}.mp-player .mp-emo{font-size:48px;display:block;margin-bottom:6px}.mp-player .mp-pname{font-size:13px;font-weight:700;color:var(--pk)}.mp-player .mp-ptype{font-size:11px;color:rgba(255,255,255,.4)}
+.mp-mid{font-family:'Dela Gothic One',sans-serif;font-size:24px;color:var(--yl)}
+.mp-compat{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;background:linear-gradient(135deg,var(--gr),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ACTIONS */
+.actions{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.abtn{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:14px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:.3s;border:none;color:#fff;text-decoration:none}
+.abtn.pri{background:linear-gradient(135deg,var(--pk),var(--pu));box-shadow:0 6px 25px rgba(255,45,120,.25)}
+.abtn.sec{background:var(--sf);border:1px solid rgba(255,255,255,.08)}
+.abtn.mp{background:linear-gradient(135deg,var(--pu),var(--cy));box-shadow:0 6px 25px rgba(184,41,255,.25)}
+.abtn:hover{transform:translateY(-2px)}
+.retry{display:inline-flex;align-items:center;gap:6px;padding:12px 28px;background:transparent;border:1px solid rgba(255,255,255,.12);border-radius:50px;color:rgba(255,255,255,.5);font-family:'Outfit',sans-serif;font-size:13px;cursor:pointer;transition:.3s;margin-top:16px}
+.retry:hover{border-color:var(--pk);color:#fff}
+
+/* REFERRAL CARD */
+.ref-card{background:linear-gradient(135deg,rgba(57,255,20,.06),rgba(0,212,255,.06));border:1px solid rgba(57,255,20,.2);border-radius:20px;padding:24px 20px;margin:20px 0;text-align:center}
+.ref-card h3{font-size:16px;font-weight:800;margin-bottom:8px;color:var(--gr)}
+.ref-card p{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:16px;line-height:1.5}
+.ref-tiers{display:grid;gap:8px;margin-bottom:16px;text-align:left}
+.ref-tier{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(255,255,255,.03);border-radius:12px;font-size:12px;color:rgba(255,255,255,.7)}
+.ref-tier .rt-icon{font-size:20px;flex-shrink:0}.ref-tier .rt-count{font-weight:800;color:var(--gr);min-width:24px}.ref-tier .rt-prize{flex:1}
+.ref-link-box{display:flex;gap:8px}
+.ref-link-input{flex:1;padding:12px 14px;background:var(--sf);border:1px solid var(--gb);border-radius:12px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;outline:none}
+.ref-copy-btn{padding:12px 20px;background:var(--gr);border:none;border-radius:12px;color:#000;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:.3s}
+.ref-copy-btn:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(57,255,20,.3)}
+
+/* OFFER */
+.offer{margin-top:24px}
+.offer-tabs{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px}
+.offer-tab{padding:10px 18px;background:var(--sf);border:1px solid var(--gb);border-radius:50px;font-size:12px;font-weight:700;color:rgba(255,255,255,.5);cursor:pointer;transition:.3s;white-space:nowrap;flex-shrink:0}
+.offer-tab.hot{border-color:var(--pk);color:var(--pk);background:rgba(255,45,120,.08)}
+.offer-tab:hover{border-color:var(--cy);color:#fff}
+.ocard{background:var(--cd);border:2px solid var(--gb);border-radius:22px;padding:28px 20px;text-align:center;position:relative;transition:.3s;display:none}
+.ocard.on{display:block;animation:si .4s ease-out}
+.ocard.featured{border-color:var(--pk)}
+.ocard.featured::before{content:'🔥 PIÙ SCELTO';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--pk),var(--pu));padding:4px 16px;border-radius:0 0 10px 10px;font-size:10px;font-weight:800;letter-spacing:1px}
+.ocard .otitle{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin:12px 0 8px}
+.ocard .oprice{font-family:'Dela Gothic One',sans-serif;font-size:40px;background:linear-gradient(135deg,var(--gr),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.ocard .ovat{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:16px}
+.ocard .ofeats{text-align:left;margin-bottom:20px}
+.ocard .ofeat{display:flex;align-items:center;gap:8px;padding:8px 0;font-size:13px;color:rgba(255,255,255,.65);border-bottom:1px solid rgba(255,255,255,.03)}
+.ocard .ofeat .ofc{color:var(--gr);font-weight:700;flex-shrink:0}
+.ocard .ofeat:last-child{border-bottom:none}
+.pay-btn{display:block;width:100%;padding:16px;background:linear-gradient(135deg,var(--gr),#00c853);border:none;border-radius:14px;color:#000;font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:.3s;text-decoration:none;text-align:center;box-shadow:0 6px 30px rgba(57,255,20,.2)}
+.pay-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(57,255,20,.35)}
+.pay-secure{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;font-size:11px;color:rgba(255,255,255,.3)}
+
+/* CROSS LINK */
+.cross-link{display:flex;align-items:center;gap:12px;padding:16px 20px;background:linear-gradient(135deg,rgba(0,212,255,.06),rgba(184,41,255,.06));border:1px solid rgba(0,212,255,.15);border-radius:18px;margin-top:24px;cursor:pointer;transition:.3s;text-decoration:none;color:#fff}
+.cross-link:hover{border-color:var(--cy);transform:translateY(-2px);box-shadow:0 6px 25px rgba(0,212,255,.12)}
+.cl-icon{font-size:28px;flex-shrink:0}.cl-text{flex:1}.cl-text strong{font-size:14px;display:block;margin-bottom:2px}.cl-text span{font-size:12px;color:rgba(255,255,255,.45)}
+.cl-arrow{font-size:18px;color:var(--cy)}
+
+/* FOOTER */
+.ftr{text-align:center;padding:32px 0 24px;border-top:1px solid rgba(255,255,255,.04);margin-top:32px}
+.ftr .fb{font-weight:700;font-size:13px;margin-bottom:4px}.ftr .fb a{background:linear-gradient(135deg,var(--pk),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+.ftr .ft{font-size:11px;color:rgba(255,255,255,.25)}
+.ftr-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px}
+.ftr-links a{padding:4px 12px;background:rgba(255,255,255,.03);border:1px solid var(--gb);border-radius:50px;font-size:11px;color:rgba(255,255,255,.3);text-decoration:none;transition:.2s}
+.ftr-links a:hover{color:#fff;border-color:var(--pk)}
+
+/* BROBOT */
+.bb-toggle{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,var(--cy),var(--pu));border:none;border-radius:50%;cursor:pointer;z-index:998;box-shadow:0 8px 30px rgba(0,212,255,.3);transition:.3s;padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bb-toggle:hover{transform:scale(1.1)}
+.bb-toggle img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 35%}
+.bb-panel{position:fixed;bottom:90px;right:20px;width:360px;max-height:500px;background:var(--cd);border:1px solid var(--gb);border-radius:20px;z-index:999;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.bb-panel.open{display:flex;animation:si .3s ease-out}
+.bb-hdr{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--gb)}
+.bb-av{width:36px;height:36px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bb-av img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.bb-nm{font-size:14px;font-weight:700}
+.bb-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.4);font-size:18px;cursor:pointer}
+.bb-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;max-height:320px}
+.bb-msg{max-width:85%;padding:10px 14px;border-radius:16px;font-size:13px;line-height:1.5}
+.bb-msg.bot{align-self:flex-start;background:rgba(0,255,247,.06);border:1px solid rgba(0,255,247,.1);border-bottom-left-radius:4px}
+.bb-msg.usr{align-self:flex-end;background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.1);border-bottom-right-radius:4px}
+.bb-qr{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 8px}
+.bb-qr button{padding:7px 14px;background:var(--sf);border:1px solid rgba(255,255,255,.06);border-radius:50px;color:rgba(255,255,255,.6);font-size:11px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;transition:.2s}
+.bb-qr button:hover{border-color:var(--cy);color:#fff}
+.bb-input{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--gb)}
+.bb-input input{flex:1;padding:10px 14px;background:var(--sf);border:1px solid var(--gb);border-radius:12px;color:#fff;font-size:13px;font-family:'Outfit',sans-serif;outline:none}
+.bb-input input:focus{border-color:var(--cy)}
+.bb-input button{width:40px;height:40px;background:linear-gradient(135deg,var(--cy),var(--pu));border:none;border-radius:12px;color:#fff;font-size:16px;cursor:pointer}
+
+/* CONFETTI */
+.conf{position:fixed;z-index:100;pointer-events:none;animation:cf linear forwards}
+@keyframes cf{0%{transform:translateY(-10vh) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+
+/* LOADING */
+.loading{text-align:center;padding:50px 0}.spinner{width:60px;height:60px;margin:0 auto 20px;border-radius:50%;border:3px solid var(--sf);border-top-color:var(--pk);border-right-color:var(--pu);animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}.ltxt{font-size:14px;color:rgba(255,255,255,.45);animation:pl 1.5s ease-in-out infinite}
+@keyframes pl{0%,100%{opacity:.4}50%{opacity:1}}
+.hidden{display:none!important}
+
+/* RESPONSIVE */
+@media(max-width:680px){.nav-links{display:none}.hamburger{display:flex}}
+@media(min-width:681px){.mobile-menu{display:none!important}}
+@media(max-width:480px){.ctn{padding:12px}.qcard{padding:22px 16px}.obtn{padding:12px 14px;font-size:13px}.bb-panel{width:calc(100vw - 32px);right:16px;bottom:86px}}
+</style>
+</head>
+<body>
+
+<div class="ctn">
+<!-- NAV CENTRATA -->
+<nav class="teen-nav">
+<div class="nav-inner">
+<a href="/" class="nav-brand">⚡ <span class="brand-gradient">RaaS</span></a>
+<div class="nav-links">
+<a href="/quiz/quale-tiktoker-sei" class="active">🎭 Quiz TikToker</a>
+<a href="/tools/generatore-username">✨ Username</a>
+<a href="/offerta-creator">⚡ Offerta Creator</a>
+<a href="/">🏠 RaaS</a>
+</div>
+<button class="hamburger" id="hamburgerBtn" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="/quiz/quale-tiktoker-sei" class="active"><span class="m-icon">🎭</span><span class="m-label"><span class="m-title">Quiz TikToker</span><span class="m-desc">Scopri che tipo di creator sei</span></span></a>
+<a href="/tools/generatore-username"><span class="m-icon">✨</span><span class="m-label"><span class="m-title">Generatore Username</span><span class="m-desc">Crea il nome perfetto per i social</span></span></a>
+<a href="/offerta-creator"><span class="m-icon">⚡</span><span class="m-label"><span class="m-title">Offerta Creator</span><span class="m-desc">Siti web da €99 per under 25</span></span></a>
+<a href="/"><span class="m-icon">🏠</span><span class="m-label"><span class="m-title">RaaS Automazioni</span><span class="m-desc">Siti web professionali per PMI</span></span></a>
+</div>
+
+<!-- REFERRAL BANNER -->
+<div class="ref-banner" onclick="document.getElementById('ref-section').scrollIntoView({behavior:'smooth'})">
+<span class="ref-icon">🎁</span>
+<div class="ref-text"><strong>Invita 3 amici = 2 pagine GRATIS!</strong><span>Condividi il quiz e sblocca premi pazzeschi</span></div>
+<span class="ref-arrow">→</span>
+</div>
+
+<!-- START -->
+<div class="scr on" id="s-start">
+<div class="hdr">
+<div class="badge">🔥 Quiz Virale 2026</div>
+<span class="emoji-big">🎭</span>
+<h1>Quale TikToker Italiano Sei?</h1>
+<p>10 domande • Sfida i tuoi amici • Vinci premi</p>
+</div>
+<div class="start">
+<div class="start-hero">
+<div class="start-hero-left">
+<div class="start-vis"><div class="ring"></div><div class="ring"></div><div class="ring"></div><span class="ci">📱</span></div>
+<button class="sbtn" onclick="startQuiz(false)">Inizia il Quiz ▶</button><br>
+<button class="mp-start-btn" onclick="startQuiz(true)">🎮 Sfida un Amico</button>
+</div>
+<div class="start-hero-right">
+<img src="bro-character.svg" alt="BroBot mascotte" width="500" height="600" loading="eager" decoding="async">
+</div>
+</div>
+<div class="sstat">
+<div class="si"><div class="sn" id="cnt">127K</div><div class="sl">Quiz fatti</div></div>
+<div class="si"><div class="sn">10</div><div class="sl">Domande</div></div>
+<div class="si"><div class="sn">2 min</div><div class="sl">Tempo</div></div>
+</div>
+</div>
+</div>
+
+<!-- QUIZ -->
+<div class="scr" id="s-quiz">
+<div class="hdr" style="padding:12px 0"><h1 style="font-size:clamp(16px,4vw,22px)">Quale TikToker Sei?</h1></div>
+<div id="mp-indicator" class="mp-bar hidden"><span class="mp-icon">🎮</span><div class="mp-text">Modalità <strong>Sfida</strong> — Il tuo amico vedrà il confronto!</div></div>
+<div class="prg"><div class="prg-info"><span>Domanda <span class="cur" id="qn">1</span> di 10</span><span id="qp">10%</span></div><div class="prg-bar"><div class="prg-fill" id="pf" style="width:10%"></div></div></div>
+<div id="qc"></div>
+</div>
+
+<!-- LOADING -->
+<div class="scr" id="s-load"><div class="loading"><div class="spinner"></div><div class="ltxt">Analizzo le tue risposte...</div></div></div>
+
+<!-- RESULT -->
+<div class="scr" id="s-result">
+<div class="hdr" style="padding-bottom:12px"><h1 style="font-size:clamp(16px,4vw,22px)">Il Tuo Risultato</h1></div>
+<div id="rc"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="ftr">
+<div class="fb">⚡ <a href="/">RaaS Automazioni</a></div>
+<p class="ft">Siti web ultra-veloci & strategie digitali per chi vuole spaccare online</p>
+<div class="ftr-links">
+<a href="/quiz/quale-tiktoker-sei">Quiz TikToker</a>
+<a href="/tools/generatore-username">Generatore Username</a>
+<a href="/offerta-creator">Offerta Creator</a>
+<a href="/quiz/quale-tiktoker-sei?mode=multiplayer">Quiz Multiplayer</a>
+</div>
+</footer>
+</div>
+
+<!-- BROBOT con personaggio -->
+<button class="bb-toggle" id="bbToggle" onclick="toggleBot()" aria-label="Apri BroBot">
+<img src="bro-character.svg" alt="BroBot" width="52" height="52">
+</button>
+<div class="bb-panel" id="bbPanel">
+<div class="bb-hdr">
+<div class="bb-av"><img src="bro-character.svg" alt="BroBot" width="36" height="36"></div>
+<div><div class="bb-nm">BroBot ⚡</div></div>
+<button class="bb-close" onclick="toggleBot()">✕</button>
+</div>
+<div class="bb-msgs" id="bbMsgs"></div>
+<div class="bb-qr" id="bbQr"></div>
+<div class="bb-input"><input type="text" id="bbIn" placeholder="Scrivi bro..." onkeypress="if(event.key==='Enter')bbSend()"><button onclick="bbSend()">▶</button></div>
+</div>
+
+<!-- FONTS — async, non-blocking -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&family=Syne:wght@700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&family=Syne:wght@700;800&display=swap"></noscript>
+
+<script>
+// QUIZ ENGINE
+var QS=[
+{e:"🎬",t:"Stai per girare un video: cosa fai?",o:[{t:"Script dettagliato con tempistiche",e:"📝",y:"creativo"},{t:"Freestyle, vediamo che esce!",e:"🎤",y:"spontaneo"},{t:"Studio i trend e ci metto il mio twist",e:"📊",y:"strategico"},{t:"Chiamo gli amici, più siamo meglio è!",e:"👯",y:"sociale"}]},
+{e:"💬",t:"Commento hater sotto il tuo video. Come reagisci?",o:[{t:"Ci faccio un video sopra e ci scherzo",e:"😂",y:"spontaneo"},{t:"Lo ignoro, i numeri parlano per me",e:"💅",y:"strategico"},{t:"Rispondo con gentilezza e class",e:"🤝",y:"sociale"},{t:"Lo trasformo in contenuto geniale",e:"🎨",y:"creativo"}]},
+{e:"📱",t:"Il tuo feed ideale è pieno di...",o:[{t:"Sketch comici e scenette esilaranti",e:"😆",y:"spontaneo"},{t:"Tutorial, tips e contenuti educativi",e:"📚",y:"strategico"},{t:"Vlog lifestyle e momenti di vita vera",e:"🏡",y:"sociale"},{t:"Edit pazzeschi e transizioni wow",e:"✨",y:"creativo"}]},
+{e:"🎵",t:"Che suono metti nel prossimo TikTok?",o:[{t:"Il trend audio del momento, ovvio",e:"🔥",y:"strategico"},{t:"Un suono originale creato da me",e:"🎹",y:"creativo"},{t:"Una canzone che fa ridere tutti",e:"🤪",y:"spontaneo"},{t:"Una hit che fa cantare in coro",e:"🎶",y:"sociale"}]},
+{e:"🌟",t:"Superpotere per i social?",o:[{t:"Far ridere chiunque con una battuta",e:"⚡",y:"spontaneo"},{t:"Creare effetti visivi da film",e:"🎥",y:"creativo"},{t:"Far diventare virale qualsiasi video",e:"🚀",y:"strategico"},{t:"Connettere persone da tutto il mondo",e:"🌍",y:"sociale"}]},
+{e:"🏆",t:"1 milione di follower. Primo pensiero?",o:[{t:"Live di ringraziamento con tutti!",e:"🎉",y:"sociale"},{t:"Creo un format tutto mio",e:"💡",y:"creativo"},{t:"Lancio il mio brand / merch",e:"🛍️",y:"strategico"},{t:"Prank epico per celebrare",e:"😈",y:"spontaneo"}]},
+{e:"🍕",t:"Video a tema food: tu cosa fai?",o:[{t:"Mukbang esagerato con reazioni assurde",e:"😱",y:"spontaneo"},{t:"Ricetta estetica con editing ASMR",e:"🍳",y:"creativo"},{t:"Challenge con gli amici: chi cucina meglio?",e:"👨‍🍳",y:"sociale"},{t:"Recensione food con classifica finale",e:"📋",y:"strategico"}]},
+{e:"🎮",t:"Sabato sera: cosa fai?",o:[{t:"Live streaming su Twitch/TikTok",e:"🔴",y:"sociale"},{t:"Editing del video che esce domani",e:"🖥️",y:"creativo"},{t:"Fuori con gli amici a creare content",e:"📸",y:"spontaneo"},{t:"Analizzo le analytics della settimana",e:"📈",y:"strategico"}]},
+{e:"🎤",t:"Ti propongono una collab: con chi?",o:[{t:"Un creator che ammiro tantissimo",e:"🌟",y:"creativo"},{t:"Chiunque, basta divertirsi!",e:"🤙",y:"spontaneo"},{t:"Chi porta valore al mio pubblico",e:"📊",y:"strategico"},{t:"Il mio migliore amico/a, sempre!",e:"💜",y:"sociale"}]},
+{e:"🔮",t:"Come vuoi essere ricordato online?",o:[{t:"Quello/a che faceva morire dal ridere",e:"😂",y:"spontaneo"},{t:"Un/a visionario/a dei contenuti",e:"🎨",y:"creativo"},{t:"Chi ha costruito un empire digitale",e:"👑",y:"strategico"},{t:"Una persona vera e genuina",e:"💖",y:"sociale"}]}
+];
+var RS={
+spontaneo:{n:"King/Queen delle Vibes",e:"😎",ty:"Spontaneo & Comico",d:"Sei pura energia! Non hai bisogno di script, il tuo carisma naturale buca lo schermo. La gente ti ama perché sei vero/a, divertente e imprevedibile.",tags:["🔥 Carisma","😂 Umorismo","🎤 Freestyle","⚡ Energia"]},
+creativo:{n:"Visionary Creator",e:"🎨",ty:"Creativo & Artistico",d:"Sei un/a vero/a artista digitale! I tuoi contenuti sono mini-capolavori con editing da Oscar e transizioni che lasciano a bocca aperta.",tags:["✨ Estetica","🎬 Editing pro","💡 Originalità","🎨 Visione"]},
+strategico:{n:"Business Mind",e:"📈",ty:"Strategico & Imprenditoriale",d:"Hai la mentalità del CEO! Ogni video è pensato, ogni trend calcolato, ogni collab strategica. Stai costruendo un impero!",tags:["🧠 Strategia","📊 Data-driven","🚀 Growth","👑 Boss"]},
+sociale:{n:"Community Builder",e:"💖",ty:"Sociale & Connettore",d:"La tua community è tutto! Rispondi a ogni commento, fai live fino a tardi. La gente non ti segue per i video, ti segue per TE!",tags:["💬 Comunicatore","🤝 Connector","🎉 Party starter","💜 Cuore"]}
+};
+
+// HAMBURGER
+(function(){var b=document.getElementById('hamburgerBtn'),m=document.getElementById('mobileMenu');b.addEventListener('click',function(){b.classList.toggle('active');m.classList.toggle('open');var o=m.classList.contains('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('active');m.classList.remove('open');document.body.style.overflow='';b.setAttribute('aria-expanded','false')})});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')){b.classList.remove('active');m.classList.remove('open');document.body.style.overflow='';b.setAttribute('aria-expanded','false')}})})();
+
+var cq=0,sc={spontaneo:0,creativo:0,strategico:0,sociale:0},isMP=false,p1Data=null;
+var refCode='BRO'+Math.random().toString(36).substr(2,6).toUpperCase();
+
+(function(){var u=new URLSearchParams(window.location.search);if(u.get('p1')){p1Data={type:u.get('p1'),name:u.get('n')||'Amico'};isMP=true}})();
+
+function sw(id){document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('on')});document.getElementById(id).classList.add('on')}
+function startQuiz(mp){cq=0;sc={spontaneo:0,creativo:0,strategico:0,sociale:0};isMP=mp||!!p1Data;sw('s-quiz');if(isMP)document.getElementById('mp-indicator').classList.remove('hidden');else document.getElementById('mp-indicator').classList.add('hidden');renderQ()}
+function renderQ(){var q=QS[cq],c=document.getElementById('qc'),L=['A','B','C','D'];
+c.innerHTML='<div class="qcard"><span class="qnum">'+String(cq+1).padStart(2,'0')+'</span><span class="qemoji">'+q.e+'</span><div class="qtxt">'+q.t+'</div><div class="opts">'+q.o.map(function(o,i){return'<button class="obtn" onclick="ans(\''+o.y+'\',this)"><span class="olet">'+L[i]+'</span><span class="otxt">'+o.t+'</span><span class="oemo">'+o.e+'</span></button>'}).join('')+'</div></div>';
+document.getElementById('qn').textContent=cq+1;document.getElementById('qp').textContent=Math.round((cq+1)/10*100)+'%';document.getElementById('pf').style.width=(cq+1)/10*100+'%'}
+function ans(y,b){document.querySelectorAll('.obtn').forEach(function(x){x.style.pointerEvents='none'});b.classList.add('sel');sc[y]++;setTimeout(function(){cq++;cq<QS.length?renderQ():showLoad()},350)}
+function showLoad(){sw('s-load');setTimeout(showResult,1800)}
+function showResult(){var w=Object.keys(sc).reduce(function(a,b){return sc[a]>=sc[b]?a:b}),r=RS[w],c=document.getElementById('rc');
+var mpHTML='';if(p1Data){var p1r=RS[p1Data.type];var compat=p1Data.type===w?'100%':Math.floor(40+Math.random()*35)+'%';
+mpHTML='<div class="mp-compare"><h3>⚔️ Risultato Sfida</h3><div class="mp-vs"><div class="mp-player"><span class="mp-emo">'+p1r.e+'</span><div class="mp-pname">'+p1Data.name+'</div><div class="mp-ptype">'+p1r.ty+'</div></div><div class="mp-mid">VS</div><div class="mp-player"><span class="mp-emo">'+r.e+'</span><div class="mp-pname">Tu</div><div class="mp-ptype">'+r.ty+'</div></div></div><div class="mp-compat">Compatibilità: '+compat+'</div></div>'}
+c.innerHTML='<div class="rcard"><div class="rbadge">✅ Analisi completata</div><span class="remo">'+r.e+'</span><div class="rname">'+r.n+'</div><div class="rtype">'+r.ty+'</div><p class="rdesc">'+r.d+'</p><div class="rtags">'+r.tags.map(function(t){return'<span class="rtag">'+t+'</span>'}).join('')+'</div>'+mpHTML+'<div class="actions"><button class="abtn mp" onclick="shareChallenge(\''+w+'\')">🎮 Sfida un Amico</button><button class="abtn pri" onclick="shareResult(\''+r.n+'\')">📤 Condividi Risultato</button><button class="abtn sec" onclick="copyResult(\''+r.n+'\')">📋 Copia per Story</button></div><button class="retry" onclick="startQuiz(false)">🔄 Rifai il quiz</button></div>'+
+'<div class="ref-card" id="ref-section"><h3>🎁 Porta un Bro, Vinci Premi!</h3><p>Condividi il tuo link e per ogni amico che fa il quiz sblocchi premi:</p><div class="ref-tiers"><div class="ref-tier"><span class="rt-icon">🥉</span><span class="rt-count">1</span><span class="rt-prize">Accesso BroBot Premium</span></div><div class="ref-tier"><span class="rt-icon">🥈</span><span class="rt-count">3</span><span class="rt-prize"><strong>2 pagine social GRATIS</strong></span></div><div class="ref-tier"><span class="rt-icon">🥇</span><span class="rt-count">5</span><span class="rt-prize"><strong>Sconto 20%</strong> (€79 invece di €99)</span></div><div class="ref-tier"><span class="rt-icon">👑</span><span class="rt-count">10</span><span class="rt-prize"><strong>Audit social GRATUITO</strong></span></div></div><div class="ref-link-box"><input class="ref-link-input" id="refLink" value="raasautomazioni.it/quiz?ref='+refCode+'" readonly><button class="ref-copy-btn" onclick="copyRef()">Copia</button></div></div>'+
+'<div class="offer" id="offer-section"><div class="offer-tabs"><button class="offer-tab hot" onclick="showPack(0,this)">⚡ Starter €99</button><button class="offer-tab" onclick="showPack(1,this)">🔥 Pro €199</button><button class="offer-tab" onclick="showPack(2,this)">👑 Empire €399</button></div>'+
+'<div class="ocard featured on" id="pack0"><div class="otitle">Creator Starter</div><div class="oprice">€99</div><div class="ovat">+ IVA • Pagamento unico</div><div class="ofeats"><div class="ofeat"><span class="ofc">✓</span> Landing page custom da creator</div><div class="ofeat"><span class="ofc">✓</span> Design mobile-first ultra-veloce</div><div class="ofeat"><span class="ofc">✓</span> PageSpeed garantito 90+</div><div class="ofeat"><span class="ofc">✓</span> Keyword strategy Google & AI</div><div class="ofeat"><span class="ofc">✓</span> 1 pagina social ottimizzata</div><div class="ofeat"><span class="ofc">✓</span> SEO base (meta, schema, OG)</div></div><a href="https://buy.stripe.com/TUOLINK_STARTER" target="_blank" class="pay-btn">⚡ Paga ora con carta →</a><div class="pay-secure">🔒 Pagamento sicuro via Stripe</div></div>'+
+'<div class="ocard" id="pack1"><div class="otitle">Creator Pro</div><div class="oprice">€199</div><div class="ovat">+ IVA • Pagamento unico</div><div class="ofeats"><div class="ofeat"><span class="ofc">✓</span> Tutto il pacchetto Starter +</div><div class="ofeat"><span class="ofc">✓</span> 3 pagine social ottimizzate</div><div class="ofeat"><span class="ofc">✓</span> Strategia keyword IG + TikTok</div><div class="ofeat"><span class="ofc">✓</span> Analisi competitor</div><div class="ofeat"><span class="ofc">✓</span> Content calendar 1 mese</div><div class="ofeat"><span class="ofc">✓</span> Setup Analytics + Search Console</div></div><a href="https://buy.stripe.com/TUOLINK_PRO" target="_blank" class="pay-btn">🔥 Paga ora con carta →</a><div class="pay-secure">🔒 Pagamento sicuro via Stripe</div></div>'+
+'<div class="ocard" id="pack2"><div class="otitle">Creator Empire</div><div class="oprice">€399</div><div class="ovat">+ IVA • Pagamento unico</div><div class="ofeats"><div class="ofeat"><span class="ofc">✓</span> Tutto il pacchetto Pro +</div><div class="ofeat"><span class="ofc">✓</span> Sito multi-pagina (fino a 5)</div><div class="ofeat"><span class="ofc">✓</span> Blog/news per SEO</div><div class="ofeat"><span class="ofc">✓</span> Strategia crescita 3 mesi</div><div class="ofeat"><span class="ofc">✓</span> 2 call strategiche mensili</div><div class="ofeat"><span class="ofc">✓</span> Report analytics mensile</div></div><a href="https://buy.stripe.com/TUOLINK_EMPIRE" target="_blank" class="pay-btn">👑 Paga ora con carta →</a><div class="pay-secure">🔒 Pagamento sicuro via Stripe</div></div></div>'+
+'<a class="cross-link" href="/tools/generatore-username"><span class="cl-icon">✨</span><div class="cl-text"><strong>Hai trovato il tuo tipo? Crea il tuo username da pro!</strong><span>Generatore Username Aesthetic — gratis</span></div><span class="cl-arrow">→</span></a>';
+sw('s-result');launchConfetti()}
+
+function showPack(i,btn){document.querySelectorAll('.ocard').forEach(function(c){c.classList.remove('on')});document.querySelectorAll('.offer-tab').forEach(function(t){t.classList.remove('hot')});document.getElementById('pack'+i).classList.add('on');btn.classList.add('hot')}
+function shareChallenge(type){var url=window.location.origin+window.location.pathname+'?p1='+type+'&n=Amico';var txt='Ti sfido! 🎮 Fai il quiz "Quale TikToker Sei?" e vediamo chi vince!\n\n👉 '+url;if(navigator.share)navigator.share({title:'Sfida Quiz TikToker!',text:txt});else{navigator.clipboard.writeText(txt);alert('Link sfida copiato! 🎮')}}
+function shareResult(n){var txt='Ho fatto il quiz "Quale TikToker Sei?" e sono: '+n+'! 🎭\n\nFallo anche tu 👉 raasautomazioni.it/quiz/quale-tiktoker-sei';if(navigator.share)navigator.share({title:'Il mio risultato!',text:txt});else{navigator.clipboard.writeText(txt);alert('Copiato! 📋')}}
+function copyResult(n){navigator.clipboard.writeText('🎭 Sono "'+n+'"!\n\nFai il quiz → raasautomazioni.it/quiz/quale-tiktoker-sei');alert('Copiato per la tua Story! ✨')}
+function copyRef(){var el=document.getElementById('refLink');el.select();navigator.clipboard.writeText(el.value);document.querySelector('.ref-copy-btn').textContent='✅ Copiato!';setTimeout(function(){document.querySelector('.ref-copy-btn').textContent='Copia'},2000)}
+function launchConfetti(){var c=['#ff2d78','#00d4ff','#b829ff','#39ff14','#ffe600'];for(var i=0;i<40;i++){var p=document.createElement('div');p.className='conf';p.style.left=Math.random()*100+'%';p.style.background=c[Math.floor(Math.random()*c.length)];p.style.width=p.style.height=(6+Math.random()*7)+'px';p.style.borderRadius=Math.random()>.5?'50%':'2px';p.style.animationDuration=(2+Math.random()*3)+'s';p.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(p);setTimeout(function(el){el.remove()},5e3,p)}}
+// Counter
+(function(){var el=document.getElementById('cnt');var n=127e3;setInterval(function(){n+=Math.floor(Math.random()*3);el.textContent=(n/1e3).toFixed(1)+'K'},3e3)})();
+if(p1Data)startQuiz(true);
+
+// BROBOT
+var BB=[
+{k:["tiktok","virale"],a:"Bro per andare virale su TikTok: primi 2 sec = hook pazzesco, video sotto 30 sec, posta tra 18-21. Di niente 😎🚀"},
+{k:["instagram","crescere ig"],a:"IG nel 2026 = Reels + Carousel! 4-5 Reels/settimana, rispondi ai commenti entro 2 ore. Consistency is key bro 🔑"},
+{k:["youtube","shorts"],a:"YouTube = long game ma paga di più. Thumbnail + Titolo = 80% del successo. Shorts per crescere, long-form per monetizzare 📹💰"},
+{k:["sito","landing","99"],a:"Bro noi di RaaS facciamo landing page da creator a 99€+IVA! Custom, PageSpeed 90+. Vai su /offerta-creator 😎⚡"},
+{k:["soldi","guadagnare","monetizzare"],a:"Modi REALI 2026: brand deals, freelancing, prodotti digitali, affiliate, UGC. Il più veloce? Offri un servizio con un sito da pro 💰"},
+{k:["ciao","hey","yo"],a:"Eyyy ciao bro! 🤙 Sono BroBot, il tuo coach digitale. Chiedimi qualsiasi cosa su social, content creation!"},
+{k:["chi sei","brobot"],a:"Sono BroBot 🤖⚡ creato da RaaS! Ti aiuto a spaccare sui social. Offerta siti a 99€ su /offerta-creator 💯"},
+{k:["grazie"],a:"Figurati bro! 💜 Se ti è servito, condividi con un amico 🚀"},
+{k:["offerta","prezzo","quanto costa"],a:"Under 25: Starter €99, Pro €199, Empire €399. IVA inclusa, pagamento unico. Vai su /offerta-creator! 🤯⚡"},
+{k:["nicchia","cosa postare"],a:"3 passioni + 3 skill + 3 cose che ti chiedono sempre. L'intersezione = la tua nicchia. INIZIA! 🎯"},
+{k:["paura","vergogna"],a:"La paura è NORMALE bro 💜 Inizia anonimo se serve. L'importante è fare il primo passo. You got this! 💪"},
+{k:["follower","crescere"],a:"100-500 follower/mese i primi 6 mesi = GIÀ ottimo. Chi migliora costantemente vince. Long game bro 🏆"},
+{k:["username","nome"],a:"Hai provato il Generatore Username? Nella navbar in alto ✨ Nomi aesthetic, gaming, K-pop e altro!"},
+{k:["quiz","risultato"],a:"Vuoi rifare il quiz? Clicca 'Rifai il quiz' nel risultato. Oppure sfida un amico con il link multiplayer! 🎮"}
+];
+var BF=["Non ho capito bro 😅 Prova su TikTok, Instagram, crescita social o come guadagnare!","Hmm tough one! Chiedimi di social media, content creation o come spaccare online 💯"];
+function bbMatch(i){var n=i.toLowerCase(),b=null,bs=0;for(var j=0;j<BB.length;j++){var s=0,q=BB[j];for(var k=0;k<q.k.length;k++)if(n.indexOf(q.k[k])!==-1)s+=10;if(s>bs){bs=s;b=q}}return bs>=10?b:null}
+function bbAddMsg(c,s){var d=document.createElement('div');d.className='bb-msg '+s;d.innerHTML=c;document.getElementById('bbMsgs').appendChild(d);document.getElementById('bbMsgs').scrollTop=9999}
+function bbShowQR(o){document.getElementById('bbQr').innerHTML=o.map(function(x){return'<button onclick="bbQuick(\''+x.replace(/'/g,"\\'")+'\')">'+x+'</button>'}).join('')}
+function bbQuick(t){document.getElementById('bbQr').innerHTML='';bbProcess(t)}
+function bbSend(){var v=document.getElementById('bbIn').value.trim();if(!v)return;document.getElementById('bbIn').value='';document.getElementById('bbQr').innerHTML='';bbProcess(v)}
+function bbProcess(t){bbAddMsg(t,'usr');setTimeout(function(){var m=bbMatch(t);bbAddMsg(m?m.a:BF[Math.floor(Math.random()*BF.length)],'bot');bbShowQR(['🎵 Tips TikTok','💰 Offerta 99€','📸 Tips Instagram','✨ Username'])},600+Math.random()*800)}
+var bbOpen=false;
+function toggleBot(){bbOpen=!bbOpen;document.getElementById('bbPanel').classList.toggle('open');if(bbOpen&&!document.getElementById('bbMsgs').children.length){bbAddMsg("Eyyy bro! 🤖⚡ Sono BroBot! Chiedimi qualsiasi cosa su social, content creation, o come spaccare online!",'bot');bbShowQR(['🎵 Come cresco su TikTok?','💰 Come guadagnare?','⚡ Offerta 99€','✨ Username'])}}
+</script>
+</body>
+</html>

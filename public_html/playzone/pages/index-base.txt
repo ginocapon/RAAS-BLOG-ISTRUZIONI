@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Offerta Creator Under 25 — Il Tuo Sito da €99 | RaaS Automazioni</title>
+<meta name="description" content="Landing page professionale per creator a €99+IVA. PageSpeed 90+ garantito, SEO per AI e Google. Pacchetti Starter, Pro, Empire. Paga online con carta.">
+<meta name="keywords" content="sito web creator, landing page creator, sito 99 euro, offerta under 25, sito economico giovani, landing page prezzo">
+<link rel="canonical" href="https://www.raasautomazioni.it/offerta-creator">
+<meta property="og:title" content="Il Tuo Sito da Creator — Da €99 | RaaS Automazioni">
+<meta property="og:description" content="Landing page custom, ultra-veloce, SEO per AI. Da €99+IVA. Paga online.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Creator Starter Pack","description":"Landing page professionale per creator Under 25","brand":{"@type":"Organization","name":"RaaS Automazioni","url":"https://www.raasautomazioni.it"},"offers":[{"@type":"Offer","name":"Starter","price":"99","priceCurrency":"EUR"},{"@type":"Offer","name":"Pro","price":"199","priceCurrency":"EUR"},{"@type":"Offer","name":"Empire","price":"399","priceCurrency":"EUR"}]}</script>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@400;500;600;700;800;900&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bl:#0066ff;--blg:#00d4ff;--pk:#ff2d78;--pu:#b829ff;--gr:#39ff14;--yl:#ffe600;--bg:#050508;--cd:#0a0a12;--sf:#0f0f1a;--gb:rgba(255,255,255,.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--bl);color:#fff}
+
+/* === BG FX === */
+.bgfx{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.neon-line{position:absolute;height:2px;background:var(--bl);filter:blur(1px);opacity:.4;animation:nlMove linear infinite}
+.neon-line:nth-child(1){width:60%;top:15%;left:-10%;animation-duration:8s;box-shadow:0 0 15px var(--bl),0 0 30px var(--bl)}
+.neon-line:nth-child(2){width:40%;top:45%;right:-10%;animation-duration:6s;animation-delay:-2s;box-shadow:0 0 10px var(--blg)}
+.neon-line:nth-child(3){width:50%;bottom:20%;left:-5%;animation-duration:10s;animation-delay:-4s;box-shadow:0 0 12px var(--pk);background:var(--pk);opacity:.25}
+@keyframes nlMove{0%{transform:translateX(-100%) scaleY(1)}50%{transform:translateX(50vw) scaleY(2.5)}100%{transform:translateX(200%) scaleY(1)}}
+.scan-line{position:fixed;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.008) 2px,rgba(255,255,255,.008) 4px);pointer-events:none;z-index:0}
+.orb{position:absolute;border-radius:50%;filter:blur(140px);opacity:.2;animation:od 12s ease-in-out infinite}
+.orb:nth-child(4){width:500px;height:500px;background:var(--bl);top:-10%;right:-15%}
+.orb:nth-child(5){width:400px;height:400px;background:var(--pk);bottom:10%;left:-10%;animation-delay:-5s}
+
+.wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 0;animation:fu .5s ease-out}
+.nav a{padding:8px 16px;background:rgba(255,255,255,.02);border:1px solid var(--gb);border-radius:50px;color:rgba(255,255,255,.45);font-size:12px;font-weight:600;text-decoration:none;transition:all .3s;display:flex;align-items:center;gap:6px}
+.nav a:hover{border-color:var(--bl);color:#fff}
+.nav a.ac{border-color:var(--bl);color:var(--blg);background:rgba(0,102,255,.06)}
+@keyframes fu{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+.hero{text-align:center;padding:48px 0 40px;animation:fd .8s ease-out}
+@keyframes fd{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 18px;border:1px solid rgba(0,102,255,.35);background:rgba(0,102,255,.08);border-radius:50px;font-size:11px;font-weight:700;color:var(--blg);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.hero-badge .hb-dot{width:6px;height:6px;background:var(--gr);border-radius:50%;animation:bl 1.5s ease-in-out infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-emoji{font-size:64px;display:block;margin-bottom:16px;animation:bn 3s ease-in-out infinite}
+@keyframes bn{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(3deg)}}
+.hero h1{font-family:'Dela Gothic One',sans-serif;font-size:clamp(28px,7vw,56px);line-height:1.05;margin-bottom:12px;text-transform:uppercase}
+.hero h1 .gl{background:linear-gradient(135deg,var(--bl),var(--blg),var(--pu));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 .wh{color:#fff}
+.hero-sub{font-size:clamp(15px,3.5vw,18px);color:rgba(255,255,255,.45);line-height:1.6;max-width:560px;margin:0 auto 28px}
+.hero-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.hero-stat{text-align:center}.hero-stat .hs-n{font-family:'Dela Gothic One',sans-serif;font-size:clamp(22px,5vw,32px);background:linear-gradient(135deg,var(--bl),var(--blg));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero-stat .hs-l{font-size:11px;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+/* SOCIAL PROOF */
+.proof{display:flex;align-items:center;justify-content:center;gap:12px;padding:20px 0 40px;animation:fu .8s ease-out .3s both}
+.proof-avatars{display:flex}.proof-avatars span{width:32px;height:32px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:14px}.proof-avatars span:nth-child(1){background:linear-gradient(135deg,#ff6b6b,#ee5a24);z-index:5}.proof-avatars span:nth-child(2){background:linear-gradient(135deg,#48dbfb,#0abde3);z-index:4}.proof-avatars span:nth-child(3){background:linear-gradient(135deg,#feca57,#ff9f43);z-index:3}.proof-avatars span:nth-child(4){background:linear-gradient(135deg,#ff9ff3,#f368e0);z-index:2}.proof-avatars span:nth-child(5){background:var(--sf);z-index:1;font-size:10px;font-weight:700;color:rgba(255,255,255,.6)}
+.proof-text{font-size:13px;color:rgba(255,255,255,.4)}.proof-text strong{color:#fff}
+
+/* PACKS */
+.packs-title{text-align:center;margin-bottom:32px}
+.packs-title h2{font-family:'Syne',sans-serif;font-size:clamp(20px,4.5vw,28px);font-weight:800;margin-bottom:6px}
+.packs-title p{font-size:14px;color:rgba(255,255,255,.35)}
+
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:40px}
+
+.pack{background:var(--cd);border:2px solid var(--gb);border-radius:24px;padding:32px 24px;text-align:center;position:relative;transition:all .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden}
+.pack:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.pack::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gb),transparent)}
+
+/* FEATURED */
+.pack.hot{border-color:var(--bl);box-shadow:0 0 40px rgba(0,102,255,.08)}
+.pack.hot::before{background:linear-gradient(90deg,var(--bl),var(--blg),var(--pu))}
+.pack.hot::after{content:'🔥 PIÙ SCELTO';position:absolute;top:0;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--bl),var(--pu));padding:4px 16px;border-radius:0 0 10px 10px;font-size:10px;font-weight:800;letter-spacing:1px;color:#fff}
+
+.pack-icon{font-size:40px;display:block;margin-bottom:8px}
+.pack-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:4px}
+.pack-tagline{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:16px}
+
+.pack-price{margin-bottom:4px}
+.pack-price .pp-old{font-size:14px;color:rgba(255,255,255,.25);text-decoration:line-through;margin-right:6px}
+.pack-price .pp-new{font-family:'Dela Gothic One',sans-serif;font-size:clamp(36px,8vw,48px);background:linear-gradient(135deg,var(--gr),var(--blg));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pack-vat{font-size:12px;color:rgba(255,255,255,.25);margin-bottom:20px}
+
+.pack-feats{text-align:left;margin-bottom:24px}
+.pf{display:flex;align-items:flex-start;gap:10px;padding:9px 0;font-size:13px;color:rgba(255,255,255,.6);border-bottom:1px solid rgba(255,255,255,.03)}
+.pf:last-child{border:none}
+.pf .pfc{color:var(--gr);font-weight:800;font-size:14px;flex-shrink:0;margin-top:1px}
+.pf.bonus{color:var(--yl)}
+.pf.bonus .pfc{color:var(--yl)}
+
+.pay-btn{display:block;width:100%;padding:16px;border:none;border-radius:14px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:all .3s;text-decoration:none;text-align:center;color:#000}
+.pack:nth-child(1) .pay-btn{background:linear-gradient(135deg,var(--blg),var(--bl));color:#fff;box-shadow:0 6px 25px rgba(0,102,255,.2)}
+.pack:nth-child(2) .pay-btn{background:linear-gradient(135deg,var(--gr),#00c853);box-shadow:0 6px 25px rgba(57,255,20,.2)}
+.pack:nth-child(3) .pay-btn{background:linear-gradient(135deg,var(--yl),var(--pk));box-shadow:0 6px 25px rgba(255,45,120,.2)}
+.pay-btn:hover{transform:translateY(-3px)}
+
+.pay-secure{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:10px;font-size:10px;color:rgba(255,255,255,.2)}
+
+/* REFERRAL */
+.ref-promo{background:linear-gradient(135deg,rgba(57,255,20,.04),rgba(0,212,255,.04));border:1px solid rgba(57,255,20,.15);border-radius:22px;padding:28px 24px;text-align:center;margin-bottom:40px}
+.ref-promo h3{font-size:18px;font-weight:800;margin-bottom:8px;color:var(--gr)}
+.ref-promo p{font-size:14px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:16px}
+.ref-promo .ref-highlight{display:inline-block;padding:8px 20px;background:rgba(57,255,20,.08);border:1px solid rgba(57,255,20,.25);border-radius:50px;font-size:15px;font-weight:800;color:var(--gr)}
+
+/* GARANZIE */
+.guarantees{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:40px}
+.guar{background:var(--cd);border:1px solid var(--gb);border-radius:16px;padding:20px;text-align:center;transition:all .3s}
+.guar:hover{border-color:rgba(0,102,255,.2);transform:translateY(-3px)}
+.guar-icon{font-size:28px;margin-bottom:8px;display:block}
+.guar-title{font-size:14px;font-weight:700;margin-bottom:4px}
+.guar-text{font-size:12px;color:rgba(255,255,255,.35);line-height:1.4}
+
+/* FAQ */
+.faq{margin-bottom:40px}
+.faq h2{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;text-align:center;margin-bottom:20px}
+.faq-item{background:var(--cd);border:1px solid var(--gb);border-radius:14px;margin-bottom:8px;overflow:hidden;transition:border-color .3s}
+.faq-item:hover{border-color:rgba(0,102,255,.15)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;font-size:14px;font-weight:700;transition:color .3s}
+.faq-q:hover{color:var(--blg)}
+.faq-q .fq-icon{font-size:18px;color:var(--bl);transition:transform .3s}
+.faq-item.open .fq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a p{padding:0 20px 16px;font-size:13px;color:rgba(255,255,255,.5);line-height:1.6}
+
+/* CROSS LINKS */
+.cross{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:40px}
+.cross a{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--cd);border:1px solid var(--gb);border-radius:18px;text-decoration:none;color:#fff;transition:all .3s}
+.cross a:hover{border-color:var(--bl);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.cx-icon{font-size:28px;flex-shrink:0}
+.cx-text strong{font-size:14px;display:block;margin-bottom:2px}
+.cx-text span{font-size:12px;color:rgba(255,255,255,.35)}
+
+/* FOOTER */
+.ftr{text-align:center;padding:32px 0;border-top:1px solid rgba(255,255,255,.04)}
+.ftr a{color:var(--blg);text-decoration:none;font-weight:700}
+.ftr p{font-size:11px;color:rgba(255,255,255,.2);margin-top:4px}
+
+/* BROBOT */
+.bb-t{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,var(--bl),var(--pu));border:none;border-radius:50%;color:#fff;font-size:26px;cursor:pointer;z-index:998;box-shadow:0 8px 30px rgba(0,102,255,.3);transition:all .3s;animation:bp 2s ease-in-out infinite}
+@keyframes bp{0%,100%{box-shadow:0 8px 30px rgba(0,102,255,.3)}50%{box-shadow:0 8px 40px rgba(0,102,255,.5)}}
+.bb-t:hover{transform:scale(1.1)}
+.bb-p{position:fixed;bottom:90px;right:20px;width:340px;max-height:480px;background:var(--cd);border:1px solid var(--gb);border-radius:20px;z-index:999;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);animation:si .3s ease-out}
+.bb-p.op{display:flex}
+@keyframes si{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.bb-h{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--gb)}
+.bb-av{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--bl),var(--pu));display:flex;align-items:center;justify-content:center;font-size:16px}
+.bb-nm{font-size:13px;font-weight:700}.bb-cl{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.3);font-size:16px;cursor:pointer}
+.bb-ms{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;max-height:300px}
+.bb-m{max-width:85%;padding:10px 14px;border-radius:14px;font-size:12px;line-height:1.5;animation:si .3s ease-out}
+.bb-m.b{align-self:flex-start;background:rgba(0,102,255,.06);border:1px solid rgba(0,102,255,.1);border-bottom-left-radius:4px}
+.bb-m.u{align-self:flex-end;background:rgba(255,45,120,.06);border:1px solid rgba(255,45,120,.1);border-bottom-right-radius:4px}
+.bb-qr{display:flex;flex-wrap:wrap;gap:5px;padding:0 12px 8px}
+.bb-qr button{padding:6px 12px;background:var(--sf);border:1px solid var(--gb);border-radius:50px;color:rgba(255,255,255,.55);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
+.bb-qr button:hover{border-color:var(--bl);color:#fff}
+.bb-in{display:flex;gap:6px;padding:10px 12px;border-top:1px solid var(--gb)}
+.bb-in input{flex:1;padding:10px;background:var(--sf);border:1px solid var(--gb);border-radius:10px;color:#fff;font-size:12px;font-family:inherit;outline:none}
+.bb-in input:focus{border-color:var(--bl)}
+.bb-in button{width:36px;height:36px;background:linear-gradient(135deg,var(--bl),var(--pu));border:none;border-radius:10px;color:#fff;font-size:14px;cursor:pointer}
+
+@media(max-width:640px){.packs{grid-template-columns:1fr}.hero{padding:32px 0 28px}.pack{padding:24px 18px}.bb-p{width:calc(100vw - 32px);right:16px;bottom:86px}}
+</style>
+</head>
+<body>
+<div class="bgfx">
+<div class="neon-line"></div><div class="neon-line"></div><div class="neon-line"></div>
+<div class="orb"></div><div class="orb"></div>
+</div>
+<div class="scan-line"></div>
+
+<div class="wrap">
+<!-- NAV -->
+<nav class="nav">
+<a href="/quiz/quale-tiktoker-sei">🎭 Quiz TikToker</a>
+<a href="/tools/generatore-username">✨ Username</a>
+<a href="#" class="ac">⚡ Offerta Creator</a>
+<a href="/">🏠 RaaS</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-badge"><span class="hb-dot"></span>Offerta Under 25 — Posti Limitati</div>
+<span class="hero-emoji">⚡</span>
+<h1><span class="wh">Il Tuo Sito<br>Da </span><span class="gl">Creator Pro</span></h1>
+<p class="hero-sub">Landing page custom, ultra-veloce, ottimizzata per Google e AI. Costruita con codice puro, niente WordPress. Paghi una volta, è tuo per sempre.</p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="hs-n">90+</div><div class="hs-l">PageSpeed</div></div>
+<div class="hero-stat"><div class="hs-n">€99</div><div class="hs-l">Da</div></div>
+<div class="hero-stat"><div class="hs-n">24h</div><div class="hs-l">Consegna</div></div>
+<div class="hero-stat"><div class="hs-n">0€</div><div class="hs-l">Costi Nascosti</div></div>
+</div>
+</div>
+
+<!-- SOCIAL PROOF -->
+<div class="proof">
+<div class="proof-avatars"><span>😎</span><span>🔥</span><span>💜</span><span>🚀</span><span>+47</span></div>
+<div class="proof-text"><strong>47+ creator</strong> hanno già scelto RaaS</div>
+</div>
+
+<!-- PACCHETTI -->
+<div class="packs-title"><h2>Scegli il Tuo Pacchetto</h2><p>Tutti i prezzi sono pagamento unico. Nessun abbonamento.</p></div>
+
+<div class="packs">
+<!-- STARTER -->
+<div class="pack" style="animation:fu .6s ease-out .1s both">
+<span class="pack-icon">⚡</span>
+<div class="pack-name">Starter</div>
+<div class="pack-tagline">Per chi vuole iniziare</div>
+<div class="pack-price"><span class="pp-new">€99</span></div>
+<div class="pack-vat">+ IVA • Pagamento unico</div>
+<div class="pack-feats">
+<div class="pf"><span class="pfc">✓</span> Landing page custom da creator</div>
+<div class="pf"><span class="pfc">✓</span> Design mobile-first ultra-veloce</div>
+<div class="pf"><span class="pfc">✓</span> PageSpeed garantito 90+</div>
+<div class="pf"><span class="pfc">✓</span> Keyword strategy Google & AI</div>
+<div class="pf"><span class="pfc">✓</span> 1 pagina social ottimizzata</div>
+<div class="pf"><span class="pfc">✓</span> SEO base (meta, schema, OG)</div>
+</div>
+<a href="https://buy.stripe.com/TUOLINK_STARTER" target="_blank" class="pay-btn">⚡ Paga Ora — €99</a>
+<div class="pay-secure">🔒 Stripe • Carta • Apple Pay • Google Pay</div>
+</div>
+
+<!-- PRO -->
+<div class="pack hot" style="animation:fu .6s ease-out .25s both">
+<span class="pack-icon">🔥</span>
+<div class="pack-name">Pro</div>
+<div class="pack-tagline">Per chi vuole fare sul serio</div>
+<div class="pack-price"><span class="pp-old">€299</span><span class="pp-new">€199</span></div>
+<div class="pack-vat">+ IVA • Pagamento unico • Risparmi €100</div>
+<div class="pack-feats">
+<div class="pf"><span class="pfc">✓</span> Tutto il pacchetto Starter</div>
+<div class="pf"><span class="pfc">✓</span> 3 pagine social ottimizzate</div>
+<div class="pf"><span class="pfc">✓</span> Strategia keyword IG + TikTok</div>
+<div class="pf"><span class="pfc">✓</span> Analisi competitor nella tua nicchia</div>
+<div class="pf"><span class="pfc">✓</span> Content calendar 1 mese</div>
+<div class="pf"><span class="pfc">✓</span> Setup Analytics + Search Console</div>
+<div class="pf bonus"><span class="pfc">★</span> Bonus: strategia crescita 1 mese</div>
+</div>
+<a href="https://buy.stripe.com/TUOLINK_PRO" target="_blank" class="pay-btn">🔥 Paga Ora — €199</a>
+<div class="pay-secure">🔒 Stripe • Carta • Apple Pay • Google Pay</div>
+</div>
+
+<!-- EMPIRE -->
+<div class="pack" style="animation:fu .6s ease-out .4s both">
+<span class="pack-icon">👑</span>
+<div class="pack-name">Empire</div>
+<div class="pack-tagline">Per chi vuole dominare</div>
+<div class="pack-price"><span class="pp-old">€599</span><span class="pp-new">€399</span></div>
+<div class="pack-vat">+ IVA • Pagamento unico • Risparmi €200</div>
+<div class="pack-feats">
+<div class="pf"><span class="pfc">✓</span> Tutto il pacchetto Pro</div>
+<div class="pf"><span class="pfc">✓</span> Sito multi-pagina (fino a 5)</div>
+<div class="pf"><span class="pfc">✓</span> Blog/news section per SEO</div>
+<div class="pf"><span class="pfc">✓</span> Strategia crescita 3 mesi</div>
+<div class="pf"><span class="pfc">✓</span> 2 call strategiche mensili</div>
+<div class="pf"><span class="pfc">✓</span> Report analytics mensile</div>
+<div class="pf bonus"><span class="pfc">★</span> Bonus: audit social completo</div>
+</div>
+<a href="https://buy.stripe.com/TUOLINK_EMPIRE" target="_blank" class="pay-btn">👑 Paga Ora — €399</a>
+<div class="pay-secure">🔒 Stripe • Carta • Apple Pay • Google Pay</div>
+</div>
+</div>
+
+<!-- REFERRAL -->
+<div class="ref-promo">
+<h3>🎁 Porta un Bro = Premi Extra!</h3>
+<p>Hai fatto il quiz o generato il tuo username? Condividi con 3 amici e ottieni:</p>
+<div class="ref-highlight">🎉 2 Pagine Social GRATIS col pacchetto!</div>
+</div>
+
+<!-- GARANZIE -->
+<div class="guarantees">
+<div class="guar"><span class="guar-icon">⚡</span><div class="guar-title">PageSpeed 90+</div><div class="guar-text">Se non raggiungiamo 90+ su PageSpeed, non paghi</div></div>
+<div class="guar"><span class="guar-icon">📱</span><div class="guar-title">Mobile-First</div><div class="guar-text">Perfetto su ogni telefono, senza compromessi</div></div>
+<div class="guar"><span class="guar-icon">🤖</span><div class="guar-title">SEO per AI</div><div class="guar-text">Ottimizzato per ChatGPT, Perplexity, Google AI</div></div>
+<div class="guar"><span class="guar-icon">🔒</span><div class="guar-title">Tuo Per Sempre</div><div class="guar-text">Zero abbonamenti, zero costi nascosti, è tuo</div></div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+<h2>Domande Frequenti</h2>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Ma è veramente a €99? Qual è la fregatura?<span class="fq-icon">+</span></div><div class="faq-a"><p>Zero fregature bro! €99 + IVA, pagamento unico. Noi lavoriamo con codice puro (niente WordPress), quindi siamo più veloci e i costi sono più bassi. È il nostro prezzo per Under 25 perché crediamo nei giovani creator.</p></div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Quanto tempo ci vuole per avere il sito?<span class="fq-icon">+</span></div><div class="faq-a"><p>24-48 ore per il pacchetto Starter, 3-5 giorni per Pro, 7-10 giorni per Empire. Dopo il pagamento ti contattiamo subito per raccogliere le info e partire.</p></div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Cosa vuol dire "SEO per AI"?<span class="fq-icon">+</span></div><div class="faq-a"><p>Nel 2026 le persone cercano info non solo su Google, ma anche su ChatGPT, Perplexity e Google AI Overview. Noi ottimizziamo il tuo sito per essere raccomandato anche da queste piattaforme AI. È il futuro della visibilità online.</p></div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Devo pagare un hosting mensile?<span class="fq-icon">+</span></div><div class="faq-a"><p>Ti consigliamo noi le migliori opzioni di hosting (anche gratuite come GitHub Pages o Netlify). Il sito che ti consegniamo è un pacchetto di file HTML/CSS/JS che funziona ovunque, senza dipendenze.</p></div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Posso pagare con carta, Apple Pay o Google Pay?<span class="fq-icon">+</span></div><div class="faq-a"><p>Sì! Usiamo Stripe, la piattaforma di pagamento più sicura al mondo. Accettiamo Visa, Mastercard, American Express, Apple Pay e Google Pay. Zero rischi.</p></div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">E se non sono soddisfatto?<span class="fq-icon">+</span></div><div class="faq-a"><p>Facciamo revisioni illimitate fino a quando sei al 100% soddisfatto. Il nostro obiettivo è che tu dica "WOW" quando vedi il risultato. Se non raggiungiamo PageSpeed 90+, ti rimborsiamo.</p></div></div>
+</div>
+
+<!-- CROSS LINKS -->
+<div class="cross">
+<a href="/quiz/quale-tiktoker-sei"><span class="cx-icon">🎭</span><div class="cx-text"><strong>Non hai ancora fatto il Quiz?</strong><span>Scopri che tipo di creator sei — è gratis!</span></div></a>
+<a href="/tools/generatore-username"><span class="cx-icon">✨</span><div class="cx-text"><strong>Crea il tuo Username da Pro</strong><span>Generatore gratuito per TikTok, IG, YouTube</span></div></a>
+</div>
+
+<!-- FOOTER -->
+<footer class="ftr">
+<div>⚡ <a href="https://www.raasautomazioni.it">RaaS Automazioni</a></div>
+<p>Siti ultra-veloci & strategie digitali • P.IVA XXXXXXXXX</p>
+</footer>
+</div>
+
+<!-- BROBOT -->
+<button class="bb-t" onclick="tBot()">🤖</button>
+<div class="bb-p" id="bp">
+<div class="bb-h"><div class="bb-av">🤖</div><div class="bb-nm">BroBot ⚡</div><button class="bb-cl" onclick="tBot()">✕</button></div>
+<div class="bb-ms" id="bm"></div>
+<div class="bb-qr" id="bq"></div>
+<div class="bb-in"><input id="bi" placeholder="Chiedi a BroBot..." onkeypress="if(event.key==='Enter')bSend()"><button onclick="bSend()">▶</button></div>
+</div>
+
+<script>
+const BB=[
+{k:["99","starter","prezzo","quanto"],a:"Il pacchetto Starter costa solo €99+IVA bro! Include landing page custom, mobile-first, PageSpeed 90+, keyword strategy e SEO per AI. Un affare pazzesco 🤯⚡"},
+{k:["pro","199","differenza"],a:"Il Pro a €199 include tutto lo Starter PLUS 3 pagine social, strategia keyword IG+TikTok, analisi competitor e content calendar 1 mese. È il best seller! 🔥"},
+{k:["empire","399","completo"],a:"Empire a €399 è il pacchetto TOTALE: sito 5 pagine, blog SEO, strategia 3 mesi, 2 call mensili, report analytics. Per chi vuole dominare 👑💰"},
+{k:["pagamento","carta","stripe","pagare"],a:"Paghi online in 2 click con Stripe: carta, Apple Pay, Google Pay. Super sicuro, zero rischi. Clicca il pulsante del pacchetto che preferisci! 🔒💳"},
+{k:["tempo","quanto ci vuole","veloce"],a:"Starter = 24-48h, Pro = 3-5 giorni, Empire = 7-10 giorni. Dopo il pagamento ti contattiamo subito! ⚡"},
+{k:["seo","ai","google","farsi trovare"],a:"Ogni sito è ottimizzato per Google E per le AI (ChatGPT, Perplexity). Nel 2026 chi non è visibile all'AI è invisibile. Noi ti copriamo fr 🤖🔍"},
+{k:["ciao","hey","salve"],a:"Eyyy bro! 🤙 Sono BroBot! Hai domande sui pacchetti? Chiedimi tutto: prezzi, tempistiche, cosa include. Sono qui per te 24/7! 💯"},
+{k:["grazie"],a:"Figurati bro! 💜 Se sei pronto, scegli il pacchetto e clicca 'Paga Ora'. Se hai dubbi, scrivi! 🚀"},
+],F=["Non ho capito bro 😅 Chiedimi sui pacchetti, prezzi, o tempistiche!","Prova a chiedermi: quanto costa, cosa include, come pago 💯"];
+function bMatch(i){const n=i.toLowerCase();let b=null,s=0;for(const q of BB){let c=0;for(const k of q.k)if(n.includes(k))c+=10;if(c>s){s=c;b=q}}return s>=10?b:null}
+function bAdd(c,s){const d=document.createElement('div');d.className='bb-m '+s;d.textContent=c;document.getElementById('bm').appendChild(d);document.getElementById('bm').scrollTop=9999}
+function bQR(o){document.getElementById('bq').innerHTML=o.map(x=>'<button onclick="bQ(\''+x.replace(/'/g,"\\'")+'\')">'+x+'</button>').join('')}
+function bQ(t){document.getElementById('bq').innerHTML='';bProc(t)}
+function bSend(){const v=document.getElementById('bi').value.trim();if(!v)return;document.getElementById('bi').value='';document.getElementById('bq').innerHTML='';bProc(v)}
+function bProc(t){bAdd(t,'u');setTimeout(()=>{const m=bMatch(t);bAdd(m?m.a:F[Math.floor(Math.random()*F.length)],'b');bQR(['💰 Quanto costa?','⚡ Cosa include?','🔒 Come pago?'])},500+Math.random()*700)}
+let bo=false;function tBot(){bo=!bo;document.getElementById('bp').classList.toggle('op');if(bo&&!document.getElementById('bm').children.length){bAdd("Ciao bro! 🤖⚡ Hai domande sui pacchetti Creator? Chiedimi tutto!",'b');bQR(['💰 Prezzi','⚡ Starter €99','🔥 Pro €199','👑 Empire €399'])}}
+</script>
+</body>
+</html>

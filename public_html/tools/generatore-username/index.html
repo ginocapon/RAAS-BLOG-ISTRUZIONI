@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore Username Aesthetic ✨ Nomi per TikTok & Instagram 2026 | RaaS Automazioni</title>
+    <meta name="description" content="Genera username aesthetic e unici per TikTok, Instagram e YouTube! Scegli il tuo stile: dark, cute, gaming, K-pop, anime e crea il nome perfetto per i tuoi social.">
+    <meta name="keywords" content="generatore username, username aesthetic, nomi per tiktok, nickname instagram, username generator italiano, nomi belli per social, username anime, username gaming">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.raasautomazioni.it/tools/generatore-username">
+    <meta property="og:title" content="Generatore Username Aesthetic ✨ Nomi per TikTok & Instagram 2026">
+    <meta property="og:description" content="Genera username unici e aesthetic per tutti i tuoi social. Gratis e velocissimo!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.raasautomazioni.it/tools/generatore-username">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Generatore Username Aesthetic","description":"Genera username unici e aesthetic per TikTok, Instagram e YouTube","applicationCategory":"UtilitiesApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0"},"creator":{"@type":"Organization","name":"RaaS Automazioni","url":"https://www.raasautomazioni.it"}}
+    </script>
+    <!-- FONTS: preconnect only, loaded ASYNC at end of body (come il Quiz) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        :root {
+            --cyber-cyan: #00fff7;
+            --cyber-magenta: #ff00ea;
+            --cyber-yellow: #ffe400;
+            --cyber-green: #00ff88;
+            --cyber-orange: #ff6b35;
+            --bg-deep: #050510;
+            --bg-card: #0d0d1a;
+            --bg-surface: #141428;
+            --glass: rgba(255,255,255,0.04);
+            --glass-border: rgba(255,255,255,0.07);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+            background: var(--bg-deep);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === BG GLOW — CSS only, zero DOM, zero blur su div reali (come il Quiz) === */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::before {
+            width: 500px; height: 500px;
+            background: var(--cyber-magenta);
+            top: -15%; left: -15%;
+            filter: blur(120px);
+            opacity: 0.25;
+        }
+        body::after {
+            width: 400px; height: 400px;
+            background: var(--cyber-cyan);
+            bottom: -15%; right: -15%;
+            filter: blur(120px);
+            opacity: 0.2;
+        }
+
+        /* Grid pattern — CSS only, no DOM */
+        .container::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 1px 1px, rgba(0,255,247,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        /* === HEADER === */
+        .page-header {
+            text-align: center;
+            padding: 40px 0 36px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            padding: 5px 16px;
+            background: rgba(0,255,247,0.08);
+            border: 1px solid rgba(0,255,247,0.25);
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--cyber-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .header-icon {
+            font-size: 56px;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 {
+            font-family: 'Syne', system-ui, sans-serif;
+            font-size: clamp(28px, 7vw, 48px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .page-header h1 .gradient-text {
+            background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-magenta), var(--cyber-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header .subtitle {
+            font-size: 15px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
+        }
+
+        /* === SECTIONS (no animation-delay!) === */
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--cyber-cyan);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-label::before {
+            content: '//';
+            opacity: 0.4;
+        }
+
+        /* === PLATFORM SELECTOR === */
+        .platform-section { margin-bottom: 24px; }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .platform-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 16px 10px;
+            background: var(--bg-card);
+            border: 2px solid var(--glass-border);
+            border-radius: 16px;
+            color: rgba(255,255,255,0.6);
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .platform-btn .p-icon { font-size: 28px; }
+        .platform-btn:hover { border-color: var(--cyber-cyan); color: #fff; }
+        .platform-btn.active {
+            border-color: var(--cyber-cyan);
+            background: rgba(0,255,247,0.06);
+            color: #fff;
+        }
+
+        /* === STYLE SELECTOR === */
+        .style-section { margin-bottom: 24px; }
+
+        .styles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .style-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: var(--bg-card);
+            border: 2px solid var(--glass-border);
+            border-radius: 14px;
+            color: rgba(255,255,255,0.6);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .style-btn .s-icon { font-size: 22px; }
+        .style-btn:hover { border-color: var(--cyber-magenta); color: #fff; }
+        .style-btn.active {
+            border-color: var(--cyber-magenta);
+            background: rgba(255,0,234,0.06);
+            color: #fff;
+        }
+
+        /* === NAME INPUT === */
+        .input-section { margin-bottom: 28px; }
+
+        .name-input {
+            width: 100%;
+            padding: 18px 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--glass-border);
+            border-radius: 16px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 500;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .name-input::placeholder { color: rgba(255,255,255,0.25); }
+        .name-input:focus { border-color: var(--cyber-cyan); }
+
+        .input-hint {
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            margin-top: 8px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* === BRO + GENERATE BUTTON (affiancati) === */
+        .generate-section { margin-bottom: 32px; }
+
+        .bro-generate-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .bro-gen-img {
+            flex: 0 0 120px;
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 8px 25px rgba(0,0,0,0.3));
+        }
+
+        .generate-btn {
+            flex: 1;
+            max-width: 340px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-magenta));
+            border: none;
+            border-radius: 18px;
+            color: #fff;
+            font-family: 'Syne', system-ui, sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: transform 0.2s;
+            box-shadow: 0 8px 40px rgba(0,255,247,0.2);
+        }
+
+        .generate-btn:hover { transform: translateY(-3px); }
+        .generate-btn:active { transform: scale(0.98); }
+
+        /* === RESULTS === */
+        .results-section { display: none; }
+        .results-section.visible { display: block; }
+
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .results-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--cyber-green);
+        }
+
+        .results-grid { display: grid; gap: 10px; margin-bottom: 20px; }
+
+        .username-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .username-card:hover {
+            border-color: var(--cyber-cyan);
+        }
+
+        .username-card .name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .username-card .name .tag {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tag.fire { background: rgba(255,107,53,0.15); color: var(--cyber-orange); }
+        .tag.rare { background: rgba(0,255,136,0.1); color: var(--cyber-green); }
+        .tag.unique { background: rgba(255,0,234,0.1); color: var(--cyber-magenta); }
+
+        .copy-btn {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: rgba(255,255,255,0.6);
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover { background: var(--cyber-cyan); color: #000; border-color: var(--cyber-cyan); }
+        .copy-btn.copied { background: var(--cyber-green); color: #000; border-color: var(--cyber-green); }
+
+        .regenerate-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 16px;
+            background: var(--bg-surface);
+            border: 1px dashed rgba(255,255,255,0.12);
+            border-radius: 14px;
+            color: rgba(255,255,255,0.5);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .regenerate-btn:hover { border-color: var(--cyber-cyan); color: var(--cyber-cyan); }
+
+        /* === SEO CONTENT === */
+        .seo-content {
+            margin-top: 48px;
+            padding: 32px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+        }
+
+        .seo-content h2 {
+            font-family: 'Syne', system-ui, sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .seo-content h3 { font-size: 16px; font-weight: 700; margin: 20px 0 8px; color: var(--cyber-cyan); }
+        .seo-content p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.55); margin-bottom: 12px; }
+
+        /* === OFFER === */
+        .offer-banner {
+            margin-top: 32px;
+            background: var(--bg-card);
+            border: 2px solid rgba(255,0,234,0.2);
+            border-radius: 24px;
+            padding: 32px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-magenta), var(--cyber-yellow));
+        }
+
+        .offer-badge {
+            display: inline-block;
+            background: var(--cyber-yellow);
+            color: #000;
+            padding: 5px 14px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .offer-headline {
+            font-family: 'Syne', system-ui, sans-serif;
+            font-size: clamp(20px, 5vw, 28px);
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .offer-text { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+        .offer-price-tag { display: flex; align-items: baseline; justify-content: center; gap: 8px; margin-bottom: 24px; }
+        .offer-price-tag .big {
+            font-family: 'Syne', system-ui, sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyber-green), var(--cyber-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .offer-price-tag .small { font-size: 14px; color: rgba(255,255,255,0.4); }
+
+        .offer-perks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px; text-align: left; }
+        .perk { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.7); padding: 10px 12px; background: rgba(255,255,255,0.03); border-radius: 10px; }
+        .perk .icon { color: var(--cyber-green); }
+
+        .offer-action {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--cyber-green), #00c853);
+            border: none;
+            border-radius: 16px;
+            color: #000;
+            font-family: 'Syne', system-ui, sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: transform 0.2s;
+            box-shadow: 0 6px 30px rgba(0,255,136,0.2);
+        }
+        .offer-action:hover { transform: translateY(-3px); }
+
+        /* === FOOTER === */
+        .page-footer { text-align: center; padding: 40px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px; }
+        .page-footer .brand { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+        .page-footer .brand a { background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+        .page-footer .credit { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+        /* === TOAST === */
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); padding: 14px 28px; background: var(--cyber-green); color: #000; font-weight: 700; font-size: 14px; border-radius: 50px; z-index: 1000; transition: transform 0.3s; pointer-events: none; }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+
+        /* === NAV === */
+        .teen-nav { position: sticky; top: 0; z-index: 90; background: rgba(5,5,16,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+        .teen-nav .nav-inner { display: flex; align-items: center; justify-content: center; height: 56px; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+        .nav-links { display: flex; gap: 6px; }
+        .nav-links a { padding: 7px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: #fff; }
+        .nav-links a.active { color: var(--cyber-cyan); background: rgba(0,255,247,0.06); }
+        .nav-brand{font-family:'Syne',system-ui,sans-serif;font-weight:800;font-size:15px;color:#fff;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap}
+        .nav-brand .brand-gradient{background:linear-gradient(135deg,var(--cyber-cyan),var(--cyber-magenta));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:10px;background:none;border:1px solid var(--glass-border);border-radius:12px;cursor:pointer;z-index:100}
+        .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}
+        .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+        .hamburger.active span:nth-child(2){opacity:0}
+        .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+        .mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(5,5,16,.97);z-index:89;padding:24px;flex-direction:column;gap:8px}
+        .mobile-menu.open{display:flex}
+        .mobile-menu a{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--bg-card);border:1px solid var(--glass-border);border-radius:16px;color:rgba(255,255,255,.7);text-decoration:none;font-size:16px;font-weight:600}
+        .mobile-menu a:hover,.mobile-menu a.active{color:#fff;border-color:var(--cyber-cyan)}
+        .mobile-menu a .m-icon{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--bg-surface);border-radius:12px;flex-shrink:0}
+        .mobile-menu a .m-label{display:flex;flex-direction:column}
+        .mobile-menu a .m-title{font-size:15px;font-weight:700}
+        .mobile-menu a .m-desc{font-size:12px;color:rgba(255,255,255,.35);margin-top:2px}
+        @media(max-width:680px){.nav-links{display:none}.hamburger{display:flex}}
+        @media(min-width:681px){.mobile-menu{display:none!important}}
+
+        /* === CROSS LINKS === */
+        .cross-links { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
+        .cx-card { display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 16px; text-decoration: none; color: #fff; transition: border-color 0.2s; }
+        .cx-card:hover { border-color: var(--cyber-cyan); }
+        .cx-card .cx-icon { font-size: 28px; flex-shrink: 0; }
+        .cx-card .cx-title { font-size: 14px; font-weight: 700; }
+        .cx-card .cx-desc { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .ftr-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 12px; }
+        .ftr-links a { padding: 4px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 50px; font-size: 11px; color: rgba(255,255,255,0.3); text-decoration: none; }
+
+        /* === BROBOT === */
+        .bb-toggle{position:fixed;bottom:20px;right:20px;width:56px;height:56px;background:#6C5CE7;border:none;border-radius:50%;cursor:pointer;z-index:998;box-shadow:0 6px 25px rgba(108,92,231,0.3);padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+        .bb-toggle img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 35%}
+        .bb-panel{position:fixed;bottom:86px;right:20px;width:360px;max-height:520px;background:var(--bg-card);border:1px solid var(--glass-border);border-radius:20px;z-index:999;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+        .bb-panel.open{display:flex}
+        .bb-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--glass-border)}
+        .bb-av{width:36px;height:36px;border-radius:12px;background:#6C5CE7;display:flex;align-items:center;justify-content:center;overflow:hidden}
+        .bb-av img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+        .bb-nm{font-size:14px;font-weight:700}.bb-st{font-size:11px;color:var(--cyber-green)}
+        .bb-x{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.3);font-size:18px;cursor:pointer}
+        .bb-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;max-height:320px}
+        .bb-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.5}
+        .bb-msg.bot{align-self:flex-start;background:rgba(108,92,231,0.08);border:1px solid rgba(108,92,231,0.12);border-bottom-left-radius:4px}
+        .bb-msg.usr{align-self:flex-end;background:rgba(0,206,201,0.08);border:1px solid rgba(0,206,201,0.12);border-bottom-right-radius:4px}
+        .bb-msg .typing{display:inline-flex;gap:4px}
+        .bb-msg .typing span{width:6px;height:6px;border-radius:50%;background:#a29bfe;animation:tDot 1.4s infinite}
+        .bb-msg .typing span:nth-child(2){animation-delay:.2s}
+        .bb-msg .typing span:nth-child(3){animation-delay:.4s}
+        @keyframes tDot{0%,80%,100%{transform:scale(.4);opacity:.4}40%{transform:scale(1);opacity:1}}
+        .bb-qr{display:flex;flex-wrap:wrap;gap:5px;padding:0 14px 10px}
+        .bb-qr button{padding:6px 12px;background:var(--bg-surface);border:1px solid var(--glass-border);border-radius:50px;color:rgba(255,255,255,0.55);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit}
+        .bb-input{display:flex;gap:6px;padding:12px 14px;border-top:1px solid var(--glass-border)}
+        .bb-input input{flex:1;padding:10px 14px;background:var(--bg-surface);border:1px solid var(--glass-border);border-radius:10px;color:#fff;font-size:13px;font-family:inherit;outline:none}
+        .bb-input input:focus{border-color:#6C5CE7}
+        .bb-input button{width:38px;height:38px;background:#6C5CE7;border:none;border-radius:10px;color:#fff;font-size:15px;cursor:pointer}
+
+        /* === MOBILE === */
+        @media (max-width: 600px) { .cross-links { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .bb-panel { width: calc(100vw - 32px); right: 16px; bottom: 82px; } }
+        @media (max-width: 480px) {
+            .container { padding: 12px; }
+            .offer-perks { grid-template-columns: 1fr; }
+            .username-card { padding: 14px 16px; }
+            .username-card .name { font-size: 14px; }
+            .bro-gen-img { flex: 0 0 90px; width: 90px; }
+            .bro-generate-row { gap: 12px; }
+            .generate-btn { font-size: 14px; letter-spacing: 1px; padding: 16px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="teen-nav">
+    <div class="nav-inner">
+        <a href="/" class="nav-brand">⚡ <span class="brand-gradient">RaaS</span></a>
+        <div class="nav-links">
+            <a href="/quiz/quale-tiktoker-sei">🎭 Quiz TikToker</a>
+            <a href="/tools/generatore-username" class="active">✨ Username</a>
+            <a href="/offerta-creator">⚡ Offerta Creator</a>
+            <a href="/">🏠 RaaS</a>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/quiz/quale-tiktoker-sei"><span class="m-icon">🎭</span><span class="m-label"><span class="m-title">Quiz TikToker</span><span class="m-desc">Scopri che tipo di creator sei</span></span></a>
+        <a href="/tools/generatore-username" class="active"><span class="m-icon">✨</span><span class="m-label"><span class="m-title">Generatore Username</span><span class="m-desc">Crea il nome perfetto per i social</span></span></a>
+        <a href="/offerta-creator"><span class="m-icon">⚡</span><span class="m-label"><span class="m-title">Offerta Creator</span><span class="m-desc">Siti web da €99 per under 25</span></span></a>
+        <a href="/"><span class="m-icon">🏠</span><span class="m-label"><span class="m-title">RaaS Automazioni</span><span class="m-desc">Siti web professionali per PMI</span></span></a>
+    </div>
+
+    <!-- NO background divs! Everything is CSS body::before/after + container::before -->
+
+    <div class="container">
+        <header class="page-header">
+            <div class="header-badge">⚡ Tool Gratuito</div>
+            <span class="header-icon">✨</span>
+            <h1><span class="gradient-text">Generatore<br>Username Aesthetic</span></h1>
+            <p class="subtitle">Crea il nome perfetto per TikTok, Instagram, YouTube e gaming.<br>Unico, memorabile, tutto tuo.</p>
+        </header>
+
+        <section class="platform-section">
+            <div class="section-label">Scegli la piattaforma</div>
+            <div class="platforms-grid">
+                <button class="platform-btn active" data-platform="tiktok" onclick="selectPlatform(this)"><span class="p-icon">🎵</span> TikTok</button>
+                <button class="platform-btn" data-platform="instagram" onclick="selectPlatform(this)"><span class="p-icon">📸</span> Instagram</button>
+                <button class="platform-btn" data-platform="youtube" onclick="selectPlatform(this)"><span class="p-icon">▶️</span> YouTube</button>
+            </div>
+        </section>
+
+        <section class="style-section">
+            <div class="section-label">Scegli il tuo stile</div>
+            <div class="styles-grid">
+                <button class="style-btn active" data-style="aesthetic" onclick="selectStyle(this)"><span class="s-icon">🌸</span> Aesthetic</button>
+                <button class="style-btn" data-style="dark" onclick="selectStyle(this)"><span class="s-icon">🖤</span> Dark / Gothic</button>
+                <button class="style-btn" data-style="gaming" onclick="selectStyle(this)"><span class="s-icon">🎮</span> Gaming</button>
+                <button class="style-btn" data-style="kpop" onclick="selectStyle(this)"><span class="s-icon">💜</span> K-Pop / Anime</button>
+                <button class="style-btn" data-style="cute" onclick="selectStyle(this)"><span class="s-icon">🧸</span> Cute / Kawaii</button>
+                <button class="style-btn" data-style="hypebeast" onclick="selectStyle(this)"><span class="s-icon">🔥</span> Hypebeast</button>
+            </div>
+        </section>
+
+        <section class="input-section">
+            <div class="section-label">Il tuo nome o nickname</div>
+            <div class="input-wrapper">
+                <input type="text" class="name-input" id="name-input" placeholder="Es: Luca, Luna, Shadow..." maxlength="20" autocomplete="off">
+            </div>
+            <div class="input-hint">// opzionale — lascia vuoto per nomi completamente random</div>
+        </section>
+
+        <section class="generate-section">
+            <div class="bro-generate-row">
+                <img src="bro-character.svg" alt="BroBot mascotte" class="bro-gen-img" width="500" height="600" loading="eager" decoding="async">
+                <button class="generate-btn" onclick="generateUsernames()">⚡ Genera Username</button>
+            </div>
+        </section>
+
+        <section class="results-section" id="results-section">
+            <div class="results-header">
+                <div class="section-label">I tuoi username</div>
+                <div class="results-count" id="results-count"></div>
+            </div>
+            <div class="results-grid" id="results-grid"></div>
+            <button class="regenerate-btn" onclick="generateUsernames()">🔄 Genera altri username</button>
+        </section>
+
+        <div class="offer-banner">
+            <div class="offer-badge">🎁 Offerta Under 25</div>
+            <div class="offer-headline">Hai trovato il nome perfetto?<br>Ora fai il passo da pro.</div>
+            <p class="offer-text">Ti creiamo un sito / landing page da vero creator con il tuo brand, le keyword giuste per farti scoprire da Google e dall'AI, e una strategia per far crescere Instagram e TikTok.</p>
+            <div class="offer-price-tag"><span class="big">€99</span><span class="small">+ IVA</span></div>
+            <div class="offer-perks">
+                <div class="perk"><span class="icon">✓</span> Landing page da creator</div>
+                <div class="perk"><span class="icon">✓</span> Keyword strategy social</div>
+                <div class="perk"><span class="icon">✓</span> Design mobile-first</div>
+                <div class="perk"><span class="icon">✓</span> PageSpeed 90+</div>
+                <div class="perk"><span class="icon">✓</span> SEO per AI & Google</div>
+                <div class="perk"><span class="icon">✓</span> Strategia crescita IG/TT</div>
+            </div>
+            <a href="/offerta-creator" class="offer-action">🚀 Scopri i Pacchetti →</a>
+        </div>
+
+        <section class="seo-content">
+            <h2>Come scegliere il username perfetto nel 2026</h2>
+            <p>Il tuo username è la prima cosa che le persone vedono sui social. È il tuo brand personale, la tua identità digitale. Un username aesthetic e memorabile può fare la differenza tra essere dimenticato e diventare virale.</p>
+            <h3>Perché il username è così importante?</h3>
+            <p>Su TikTok, Instagram e YouTube, il tuo username è come il tuo biglietto da visita. Deve essere facile da ricordare, unico e deve rappresentare il tuo stile. Un buon username ti aiuta a essere trovato, riconosciuto e ricordato. I creator di successo hanno tutti una cosa in comune: un nome che spacca.</p>
+            <h3>Consigli per un username che funziona</h3>
+            <p>Mantienilo corto (max 15 caratteri), evita numeri casuali alla fine, scegli qualcosa che suoni bene anche a voce, e assicurati che sia disponibile su tutte le piattaforme. Il nostro generatore ti aiuta a trovare combinazioni uniche che rispettano tutte queste regole.</p>
+            <h3>Username per ogni stile</h3>
+            <p>Che tu sia un creator aesthetic, un gamer, un fan del K-pop o del mondo anime, il tuo username deve riflettere chi sei. Il nostro tool genera nomi personalizzati per ogni vibes: dal dark gothic al kawaii, dall'hypebeast allo stile dreamy. Prova diversi stili e trova quello che ti rappresenta al 100%.</p>
+        </section>
+
+        <div class="cross-links">
+            <a href="/quiz/quale-tiktoker-sei" class="cx-card"><span class="cx-icon">🎭</span><div><div class="cx-title">Quiz: Quale TikToker Sei?</div><div class="cx-desc">Scopri il tuo tipo di creator — è gratis</div></div></a>
+            <a href="/offerta-creator" class="cx-card"><span class="cx-icon">⚡</span><div><div class="cx-title">Offerta Creator Under 25</div><div class="cx-desc">Il tuo sito da €99 — pagamento unico</div></div></a>
+        </div>
+
+        <footer class="page-footer">
+            <div class="brand">⚡ <a href="/">RaaS Automazioni</a></div>
+            <p class="credit">Siti web ultra-veloci & strategie digitali per chi vuole spaccare online.</p>
+            <div class="ftr-links">
+                <a href="/quiz/quale-tiktoker-sei">Quiz TikToker</a>
+                <a href="/tools/generatore-username">Generatore Username</a>
+                <a href="/offerta-creator">Offerta Creator</a>
+                <a href="/tools/generatore-username#aesthetic">Username Aesthetic</a>
+                <a href="/tools/generatore-username#gaming">Username Gaming</a>
+            </div>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast">📋 Username copiato!</div>
+
+    <!-- BROBOT con BRO character -->
+    <button class="bb-toggle" onclick="toggleBot()" aria-label="Apri BroBot"><img src="bro-character.svg" alt="BroBot" width="52" height="52"></button>
+    <div class="bb-panel" id="bbp">
+        <div class="bb-head">
+            <div class="bb-av"><img src="bro-character.svg" alt="BroBot" width="36" height="36"></div>
+            <div><div class="bb-nm">BroBot</div><div class="bb-st">● Online</div></div>
+            <button class="bb-x" onclick="toggleBot()">✕</button>
+        </div>
+        <div class="bb-msgs" id="bbm"></div>
+        <div class="bb-qr" id="bbq"></div>
+        <div class="bb-input"><input id="bbi" placeholder="Scrivi al BroBot..." onkeypress="if(event.key==='Enter')sendMsg()"><button onclick="sendMsg()">▶</button></div>
+    </div>
+
+    <!-- FONTS ASYNC — come il Quiz (NON bloccanti!) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;700;900&display=swap"></noscript>
+
+    <script>
+// HAMBURGER
+var hb=document.getElementById('hamburgerBtn'),mm=document.getElementById('mobileMenu');
+hb.addEventListener('click',function(){this.classList.toggle('active');mm.classList.toggle('open');var o=mm.classList.contains('open');this.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''});
+mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){hb.classList.remove('active');mm.classList.remove('open');document.body.style.overflow='';hb.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mm.classList.contains('open')){hb.classList.remove('active');mm.classList.remove('open');document.body.style.overflow='';hb.setAttribute('aria-expanded','false')}});
+
+var selectedPlatform='tiktok',selectedStyle='aesthetic';
+function selectPlatform(btn){document.querySelectorAll('.platform-btn').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');selectedPlatform=btn.dataset.platform}
+function selectStyle(btn){document.querySelectorAll('.style-btn').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');selectedStyle=btn.dataset.style}
+
+var data={aesthetic:{prefixes:['soft','dreamy','misty','velvet','silk','petal','cloud','dew','pearl','moon','fern','bloom','honey','ivory','sage','aurora','opal','flora','lumi','celest'],suffixes:['vibes','mood','glow','aura','soul','muse','dream','daze','haze','bliss','rose','sky','rain','star','luna','dusk','dawn','isle','vale','hush'],symbols:['✧','❀','☁','✿','♡','◌','⊹']},dark:{prefixes:['void','shadow','crimson','raven','phantom','obsidian','nox','grim','abyss','venom','onyx','wraith','hex','crypt','doom','scar','fang','dusk','ash','thorn'],suffixes:['blade','soul','shade','night','veil','curse','bone','storm','reign','claw','mist','fang','bane','hex','reaper','wolf','crow','fury','wrath','blood'],symbols:['☠','⛧','☾','🗡','🖤','⚔']},gaming:{prefixes:['ace','nova','blitz','turbo','cyber','pixel','zero','neo','glitch','alpha','omega','sniper','ghost','nitro','hyper','chaos','flash','elite','savage','prime'],suffixes:['pro','x','gg','fps','shot','kill','clutch','rush','zone','ops','raid','core','hack','bot','king','fury','strike','nexus','volt','force'],symbols:['⚡','🎯','🔥','💀','🏆','⚔']},kpop:{prefixes:['sakura','yuki','hoshi','sora','mochi','nari','hana','luna','kira','tsuki','aoi','yume','miku','ren','kai','tae','jin','suho','yuna','mina'],suffixes:['chan','stan','luv','dream','light','angel','world','verse','shine','heart','star','glow','fairy','blossom','petal','cloud','melody','spark','wish','magic'],symbols:['💜','🌸','⭐','🦋','✨','🌙']},cute:{prefixes:['bunny','kitty','panda','teddy','marshy','fuzzy','sunny','peachy','cookie','bubbly','cherry','candy','ducky','puppy','starry','cozy','tiny','fluffy','sugar','snowy'],suffixes:['bear','pie','boo','bean','cake','puff','pop','tot','hug','kiss','love','bun','cub','plush','drop','bub','peach','sprout','dot','bloom'],symbols:['🧸','🍰','🌈','🎀','🍓','⭐']},hypebeast:{prefixes:['flex','drip','ice','swag','wave','rare','sauce','fresh','heat','stack','grind','boss','rich','luxe','cash','vibe','fly','lit','king','legend'],suffixes:['god','era','szn','mode','gang','world','club','life','zone','set','fit','drip','flex','wave','elite','status','brand','empire','crew','plug'],symbols:['💰','🔥','💎','👑','🏆','⚡']}};
+var platformRules={tiktok:{sep:['_','.','']},instagram:{sep:['_','.','']},youtube:{sep:[' ','','_']}};
+function pick(a){return a[Math.random()*a.length|0]}function ucFirst(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+
+function generateUsernames(){
+var nameInput=document.getElementById('name-input').value.trim().toLowerCase().replace(/[^a-z0-9]/g,'');
+var sd=data[selectedStyle],sep=platformRules[selectedPlatform].sep,name=nameInput||pick(sd.prefixes),us=[],tags=['fire','rare','unique'];
+us.push(pick(sd.prefixes)+ucFirst(name));us.push(name+pick(sep)+pick(sd.suffixes));us.push(pick(sd.prefixes)+pick(sep)+pick(sd.suffixes));us.push(pick(sd.prefixes)+ucFirst(name)+(Math.random()*99|0));us.push('the'+pick(sep)+name+pick(sep)+pick(sd.suffixes));us.push(pick(sd.prefixes)+pick(sep)+pick(sd.prefixes));us.push(name+'_'+pick(sd.suffixes)+'_');us.push('x'+pick(sd.prefixes)+ucFirst(pick(sd.suffixes))+'x');
+var grid=document.getElementById('results-grid');
+grid.innerHTML=us.map(function(u,i){var tag=tags[i%3];var tl=tag==='fire'?'🔥 Hot':tag==='rare'?'💎 Rare':'✨ Unique';return'<div class="username-card"><div class="name"><span>'+pick(sd.symbols)+'</span><span>'+u+'</span><span class="tag '+tag+'">'+tl+'</span></div><button class="copy-btn" onclick="copyUsername(this,\''+u+'\')">📋 Copia</button></div>'}).join('');
+document.getElementById('results-count').textContent=us.length+' risultati generati';
+document.getElementById('results-section').classList.add('visible');
+document.getElementById('results-section').scrollIntoView({behavior:'smooth',block:'start'})}
+
+function copyUsername(btn,username){navigator.clipboard.writeText(username).then(function(){btn.innerHTML='✅ Copiato!';btn.classList.add('copied');showToast();setTimeout(function(){btn.innerHTML='📋 Copia';btn.classList.remove('copied')},2000)})}
+function showToast(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2000)}
+document.getElementById('name-input').addEventListener('keypress',function(e){if(e.key==='Enter')generateUsernames()});
+
+// BROBOT
+var QA=[{k:["username","generare","nome","come funziona"],a:"Scegli piattaforma e stile, inserisci il tuo nome (o lascia vuoto) e clicca Genera! Puoi copiare qualsiasi username con un tap."},{k:["stile","aesthetic","dark","gaming","kpop","cute","hypebeast"],a:"Abbiamo 6 stili: Aesthetic (dreamy), Dark/Gothic (misterioso), Gaming (competitivo), K-Pop/Anime (giapponese), Cute/Kawaii (adorabile), Hypebeast (streetwear). Provali tutti!"},{k:["tiktok","instagram","youtube","piattaforma"],a:"Ogni piattaforma ha regole diverse per i nomi. TikTok e Instagram usano underscore e punti, YouTube permette anche spazi. Il generatore si adatta!"},{k:["disponibile","preso","occupato"],a:"Il generatore crea combinazioni uniche, ma verifica la disponibilità direttamente su TikTok/IG/YT prima di usarli."},{k:["99","prezzo","sito","landing","creator","offerta"],a:"Con €99+IVA ti creiamo un sito da creator professionale! PageSpeed 90+, SEO per AI e Google. Vai su /offerta-creator per i dettagli e i 3 pacchetti."},{k:["199","pro"],a:"Il Pro a €199+IVA include tutto lo Starter PLUS 3 pagine social, strategia keyword IG+TikTok, analisi competitor, content calendar. Best seller!"},{k:["399","empire","completo"],a:"Empire a €399+IVA è il pacchetto completo: sito 5 pagine, blog SEO, strategia 3 mesi, 2 call mensili, report analytics."},{k:["quiz","tiktoker","test"],a:"Hai provato il Quiz 'Quale TikToker Sei?'? È gratis! Lo trovi nella navbar in alto 🎭"},{k:["ciao","hey","salve","buongiorno","yo","ehi"],a:"Ciao! Sono BroBot 🤖 Chiedimi come funziona il generatore, consigli sugli username, o info sull'offerta creator!"},{k:["grazie","thanks","perfetto","grande"],a:"Figurati! Se hai trovato il nome perfetto, dai un'occhiata all'offerta creator 😉"},{k:["consiglio","suggerimento","migliore"],a:"Un buon username è corto (max 15 char), facile da pronunciare e senza numeri random. Prova diversi stili!"},{k:["gratis","free","costa"],a:"Il generatore è 100% gratuito! Se vuoi un sito da creator, i pacchetti partono da €99."},{k:["help","aiuto","non capisco","spiegami"],a:"Facile! 1) Scegli piattaforma 2) Scegli stile 3) Scrivi il tuo nome 4) Clicca Genera! 5) Copia quello che ti piace."},{k:["pagare","pagamento","stripe","carta","apple pay"],a:"Per i pacchetti siti web paghi con Stripe (carta, Apple Pay, Google Pay). Vai su /offerta-creator e scegli il tuo piano!"},{k:["wordpress","cms","template"],a:"Noi NON usiamo WordPress. Costruiamo tutto con codice puro (HTML/CSS/JS). Risultato: sito 10x più veloce, zero manutenzione."},{k:["pagespeed","velocità","performance"],a:"Garantiamo PageSpeed 90+ o ti rimborsiamo. I nostri siti caricano in meno di 1 secondo."},{k:["referral","amico","invita"],a:"Porta 3 amici che acquistano = 2 pagine social GRATIS aggiunte al tuo pacchetto!"}];
+var FB=["Mmh, non ho capito bene. Chiedimi del generatore, degli stili, o dell'offerta creator!","Prova a chiedermi come funziona il tool o info sui pacchetti siti web.","Bella domanda! Per cose specifiche scrivi a raasautomazioni.it/contatti"];
+function match(txt){var t=txt.toLowerCase(),best=null,score=0;for(var i=0;i<QA.length;i++){var s=0;for(var j=0;j<QA[i].k.length;j++)if(t.indexOf(QA[i].k[j])>-1)s+=10;if(s>score){score=s;best=QA[i]}}return score>=10?best:null}
+function addMsg(text,cls){var d=document.createElement('div');d.className='bb-msg '+cls;d.innerHTML=text;document.getElementById('bbm').appendChild(d);document.getElementById('bbm').scrollTop=1e5}
+function showQR(opts){document.getElementById('bbq').innerHTML=opts.map(function(o){return'<button onclick="quickReply(\''+o.replace(/'/g,"\\'")+'\')">'+o+'</button>'}).join('')}
+function quickReply(t){document.getElementById('bbq').innerHTML='';processInput(t)}
+function sendMsg(){var v=document.getElementById('bbi').value.trim();if(!v)return;document.getElementById('bbi').value='';document.getElementById('bbq').innerHTML='';processInput(v)}
+function processInput(t){addMsg(t,'usr');addMsg('<div class="typing"><span></span><span></span><span></span></div>','bot');setTimeout(function(){var m=document.getElementById('bbm');m.removeChild(m.lastChild);var r=match(t);addMsg(r?r.a:FB[Math.floor(Math.random()*FB.length)],'bot');showQR(['✨ Come funziona','🎨 6 Stili','💰 Offerta €99','🎭 Quiz TikToker'])},500+Math.random()*700)}
+var botOpen=false;
+function toggleBot(){botOpen=!botOpen;document.getElementById('bbp').classList.toggle('open');if(botOpen&&!document.getElementById('bbm').children.length){addMsg("Ciao! Sono BroBot 🤖 Chiedimi tutto sul generatore username, consigli per il nome perfetto, o info sull'offerta creator!",'bot');showQR(['✨ Come funziona','🎨 Stili','💰 Offerta €99','🎭 Quiz'])}}
+    </script>
+</body>
+</html>

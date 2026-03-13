@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandi e Finanziamenti per Imprese 2025 | RaaSAutomazioni</title>
+    <meta name="description" content="Aggregatore bandi a fondo perduto, finanziamenti agevolati e incentivi per PMI italiane. 500+ bandi da Invitalia, SIMEST, INAIL, 20 Regioni, 105+ CCIAA.">
+    <link rel="canonical" href="https://www.raasautomazioni.it/bandi.html">
+    <meta property="og:title" content="Aggregatore Bandi Italia 2025 | RaaS Automazioni">
+    <meta property="og:description" content="500+ bandi a fondo perduto e finanziamenti per imprese italiane. Aggiornamento giornaliero.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.raasautomazioni.it/bandi.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+:root{--primary:#0ea5e9;--primary-dark:#0284c7;--primary-glow:rgba(14,165,233,0.25);--accent:#f59e0b;--accent-dark:#d97706;--dark:#0f172a;--dark-mid:#1e293b;--dark-light:#334155;--text:#1e293b;--text-light:#64748b;--text-muted:#94a3b8;--bg:#f8fafc;--white:#fff;--success:#10b981;--danger:#ef4444;--border:#e2e8f0;--radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;--shadow-sm:0 1px 3px rgba(15,23,42,0.06);--shadow-md:0 4px 20px rgba(15,23,42,0.08);--shadow-lg:0 20px 50px rgba(15,23,42,0.12)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden}
+
+/* ANIMATED BG */
+.hero-bandi{margin-top:56px;padding:5rem 0 4rem;background:linear-gradient(160deg,var(--dark) 0%,var(--dark-mid) 40%,#0c4a6e 100%);color:var(--white);text-align:center;position:relative;overflow:hidden}
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;width:4px;height:4px;background:var(--primary);border-radius:50%;opacity:0;animation:particleFloat 6s ease-in-out infinite}
+.particle:nth-child(1){left:10%;bottom:0;animation-delay:0s}
+.particle:nth-child(2){left:25%;bottom:0;animation-delay:1s;width:3px;height:3px;background:var(--accent)}
+.particle:nth-child(3){left:40%;bottom:0;animation-delay:2s}
+.particle:nth-child(4){left:55%;bottom:0;animation-delay:0.5s;width:5px;height:5px}
+.particle:nth-child(5){left:70%;bottom:0;animation-delay:3s;background:var(--accent)}
+.particle:nth-child(6){left:85%;bottom:0;animation-delay:1.5s;width:3px;height:3px}
+.particle:nth-child(7){left:15%;bottom:0;animation-delay:4s}
+.particle:nth-child(8){left:60%;bottom:0;animation-delay:2.5s;background:var(--success);width:3px;height:3px}
+@keyframes particleFloat{0%{opacity:0;transform:translateY(0) scale(0)}10%{opacity:.8;transform:translateY(-50px) scale(1)}90%{opacity:.3}100%{opacity:0;transform:translateY(-600px) scale(.5)}}
+.hero-mesh{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 20% 80%,rgba(14,165,233,0.15) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 80% 20%,rgba(245,158,11,0.1) 0%,transparent 70%);animation:meshPulse 8s ease-in-out infinite alternate}
+@keyframes meshPulse{0%{opacity:.7}100%{opacity:1}}
+/* Floating lines in hero */
+.hero-line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(14,165,233,0.2),transparent);width:100%;animation:scanLine 8s linear infinite}
+.hero-line:nth-child(11){top:20%;animation-delay:0s}
+.hero-line:nth-child(12){top:50%;animation-delay:-3s;animation-duration:12s;background:linear-gradient(90deg,transparent,rgba(245,158,11,0.12),transparent)}
+.hero-line:nth-child(13){top:75%;animation-delay:-6s;animation-duration:10s}
+@keyframes scanLine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--border);z-index:1000;padding:.875rem 0}
+.nav-container{display:flex;justify-content:space-between;align-items:center;max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.logo{font-family:'Space Mono',monospace;font-size:1.35rem;font-weight:700;color:var(--dark);text-decoration:none;letter-spacing:-.5px}
+.logo span{color:var(--primary)}
+.nav-links{display:flex;gap:1.75rem;align-items:center}
+.nav-links a{color:var(--text-light);font-weight:500;text-decoration:none;font-size:.9rem;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--primary)}
+.nav-links a.nav-bandi{color:var(--accent);font-weight:700;background:rgba(245,158,11,0.08);padding:.4rem 1rem;border-radius:20px}
+.nav-links a.nav-cta{background:var(--primary);color:var(--white)!important;padding:.6rem 1.25rem;border-radius:50px;font-weight:600}
+.nav-links a.nav-cta:hover{background:var(--primary-dark)}
+.mobile-menu-toggle{display:none;background:none;border:none;font-size:1.5rem;color:var(--dark);cursor:pointer}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 1.75rem;font-weight:700;border-radius:50px;text-decoration:none;transition:all .3s;border:none;cursor:pointer;font-size:.95rem;font-family:inherit}
+.btn-primary{background:var(--primary);color:var(--white);box-shadow:0 4px 15px var(--primary-glow)}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px)}
+.btn-accent{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:var(--white);box-shadow:0 4px 15px rgba(245,158,11,0.3)}
+.btn-accent:hover{transform:translateY(-2px)}
+.btn-secondary{background:var(--white);color:var(--dark);border:2px solid var(--border)}
+.btn-secondary:hover{border-color:var(--primary);color:var(--primary)}
+.btn-ghost{background:rgba(255,255,255,.1);color:var(--white);border:1px solid rgba(255,255,255,.2)}
+.btn-ghost:hover{background:rgba(255,255,255,.2)}
+
+/* STATUS BAR */
+.user-status-bar{background:var(--success);color:var(--white);padding:.6rem;text-align:center;font-weight:600;font-size:.85rem;display:none;position:fixed;top:56px;left:0;right:0;z-index:999}
+.user-status-bar.expired{background:var(--danger)}
+.user-status-bar.active{display:block}
+.user-status-bar a{color:var(--white);text-decoration:underline;margin-left:.5rem}
+
+/* HERO CONTENT */
+.hero-bandi .container{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.hero-bandi h1{font-size:clamp(2rem,5vw,3.25rem);font-weight:800;margin-bottom:1rem;letter-spacing:-.5px;line-height:1.2}
+.hero-bandi h1 .gradient-text{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-bandi .hero-desc{font-size:1.1rem;opacity:.85;max-width:680px;margin:0 auto 2.5rem;line-height:1.7}
+.stats-bar{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.stat{text-align:center;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);padding:1.25rem 2rem;border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,.1);min-width:140px;transition:all .3s}
+.stat:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.stat-value{font-family:'Space Mono',monospace;font-size:1.75rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:.8rem;opacity:.75;margin-top:.25rem}
+.pricing-hero{background:rgba(255,255,255,.07);backdrop-filter:blur(20px);border:1px solid rgba(245,158,11,.3);border-radius:var(--radius-xl);padding:2rem;max-width:480px;margin:2.5rem auto 0;position:relative;overflow:hidden}
+.pricing-hero h3{font-size:1.3rem;margin-bottom:.5rem}
+.pricing-hero .price{font-family:'Space Mono',monospace;font-size:3rem;font-weight:700;color:var(--accent)}
+.pricing-hero .price span{font-size:1rem;opacity:.7;font-family:'DM Sans',sans-serif}
+.pricing-hero .price-note{font-size:.85rem;opacity:.7;margin-bottom:1rem}
+.pricing-hero ul{text-align:left;list-style:none;margin:1.25rem 0}
+.pricing-hero ul li{padding:.4rem 0;display:flex;align-items:center;gap:.75rem;font-size:.95rem}
+.pricing-hero ul li i{color:var(--success)}
+
+/* PREVIEW SECTION */
+.preview-section{max-width:1280px;margin:-2rem auto 0;padding:0 1.5rem 3rem;position:relative;z-index:10}
+.preview-header{text-align:center;margin-bottom:2rem;padding-top:2rem}
+.preview-header h2{font-size:1.5rem;font-weight:800;color:var(--dark);margin-bottom:.5rem}
+.preview-header p{color:var(--text-light);font-size:.95rem}
+.preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1.5rem}
+
+/* FILTERS */
+.filters-section{background:var(--white);padding:1.5rem 2rem;border-radius:var(--radius-xl);box-shadow:var(--shadow-md);max-width:1240px;margin:0 auto 2rem;display:none}
+.filters-section.unlocked{display:block}
+.filters-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
+.filter-group{display:flex;flex-direction:column;gap:.4rem}
+.filter-group label{font-size:.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px}
+.filter-group select,.filter-group input{padding:.7rem 1rem;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.9rem;background:var(--white);transition:all .3s;font-family:inherit}
+.filter-group select:focus,.filter-group input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-glow)}
+.search-box{grid-column:1/-1}
+.search-box input{width:100%;padding:.875rem 1.25rem;font-size:1rem}
+
+/* RESULTS */
+.results-section{max-width:1280px;margin:0 auto;padding:0 1.5rem 3rem;display:none}
+.results-section.unlocked{display:block}
+.results-info{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid var(--border);margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.results-count{font-weight:600;color:var(--text-light)}
+.sort-options{display:flex;gap:.75rem;align-items:center}
+.sort-options label{font-size:.85rem;color:var(--text-muted)}
+.sort-options select{padding:.5rem 1rem;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.85rem;font-family:inherit}
+.bandi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:1.5rem}
+
+/* BANDO CARD */
+.bando-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:all .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border:1px solid var(--border);position:relative}
+.bando-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--primary)}
+.bando-card.preview-card{border-top:3px solid var(--success)}
+.bando-card .card-badge{position:absolute;top:.75rem;right:.75rem;background:var(--success);color:var(--white);padding:.2rem .65rem;border-radius:20px;font-size:.7rem;font-weight:700;z-index:5}
+.bando-header{padding:1.5rem 1.5rem .75rem}
+.bando-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.75rem}
+.tag{font-size:.72rem;padding:.25rem .65rem;border-radius:20px;font-weight:600}
+.tag-stato{background:#dcfce7;color:#166534}
+.tag-stato.chiuso{background:#fee2e2;color:#991b1b}
+.tag-stato.in_arrivo{background:#fef3c7;color:#92400e}
+.tag-tipo{background:#dbeafe;color:#1e40af}
+.tag-regione{background:#f3e8ff;color:#6b21a8}
+.bando-title{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.4rem;line-height:1.45}
+.bando-title a{color:inherit;text-decoration:none;transition:color .3s}
+.bando-title a:hover{color:var(--primary)}
+.bando-ente{font-size:.85rem;color:var(--text-light);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.bando-ente i{color:var(--primary);font-size:.8rem}
+.bando-body{padding:0 1.5rem;flex-grow:1}
+.bando-details{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.detail-item{display:flex;flex-direction:column}
+.detail-label{font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px}
+.detail-value{font-size:.9rem;font-weight:600;color:var(--text)}
+.detail-value.highlight{color:var(--success);font-weight:800}
+.bando-footer{padding:1.25rem 1.5rem;border-top:1px solid var(--border);margin-top:auto}
+.bando-footer .btn{width:100%;justify-content:center;font-size:.9rem;padding:.75rem}
+
+/* PAYWALL */
+.paywall-banner{background:linear-gradient(160deg,var(--dark) 0%,var(--dark-mid) 60%,#0c4a6e 100%);color:var(--white);padding:4rem 2rem;text-align:center;margin:2rem 0;border-radius:var(--radius-xl);position:relative;overflow:hidden}
+.paywall-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 40% 40% at 10% 90%,rgba(14,165,233,0.2) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 90% 10%,rgba(245,158,11,0.15) 0%,transparent 70%)}
+.paywall-banner>*{position:relative;z-index:1}
+.paywall-banner h2{font-size:2rem;margin-bottom:1rem}
+.paywall-banner p{font-size:1.05rem;opacity:.9;max-width:580px;margin:0 auto 2rem}
+.paywall-banner .price-box{background:rgba(255,255,255,.08);border:1px solid rgba(245,158,11,.3);border-radius:var(--radius-lg);padding:1.75rem;max-width:380px;margin:0 auto 2rem}
+.paywall-banner .price{font-family:'Space Mono',monospace;font-size:3rem;font-weight:700;color:var(--accent)}
+.paywall-banner .price span{font-size:1.1rem;opacity:.7}
+.paywall-banner .price-details{font-size:.85rem;opacity:.7;margin-top:.35rem}
+
+/* REGISTER */
+.register-section{padding:4rem 0;background:var(--white)}
+.register-section .container{max-width:600px;margin:0 auto;padding:0 1.5rem;text-align:center}
+.register-section h2{font-size:1.75rem;font-weight:800;color:var(--dark);margin-bottom:.5rem}
+.register-section .section-desc{color:var(--text-light);margin-bottom:2rem;font-size:.95rem}
+.register-form{background:var(--bg);padding:2rem;border-radius:var(--radius-xl);border:1px solid var(--border);text-align:left}
+.register-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.register-form .form-group{margin-bottom:1rem}
+.register-form label{display:block;font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:.4rem}
+.register-form input,.register-form select{width:100%;padding:.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.95rem;font-family:inherit;transition:all .3s}
+.register-form input:focus,.register-form select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-glow)}
+.register-success{display:none;text-align:center;padding:2rem}
+.register-success i{font-size:3rem;color:var(--success);margin-bottom:1rem}
+
+/* INFO CARDS */
+.info-section{padding:4rem 0;background:var(--bg)}
+.info-section .container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.section-title{text-align:center;font-size:1.75rem;font-weight:800;color:var(--dark);margin-bottom:.5rem}
+.section-subtitle{text-align:center;color:var(--text-light);max-width:650px;margin:0 auto 3rem;font-size:.95rem}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+.info-card{background:var(--white);padding:2rem;border-radius:var(--radius-lg);text-align:center;transition:all .3s;border:1px solid var(--border)}
+.info-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--primary)}
+.info-card .icon-wrap{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem}
+.info-card:nth-child(1) .icon-wrap{background:rgba(14,165,233,.1);color:var(--primary)}
+.info-card:nth-child(2) .icon-wrap{background:rgba(245,158,11,.1);color:var(--accent)}
+.info-card:nth-child(3) .icon-wrap{background:rgba(16,185,129,.1);color:var(--success)}
+.info-card:nth-child(4) .icon-wrap{background:rgba(99,102,241,.1);color:#6366f1}
+.info-card h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:.5rem}
+.info-card p{font-size:.9rem;color:var(--text-light);line-height:1.6}
+
+/* FONTI */
+.fonti-section{padding:4rem 0;background:var(--white)}
+.fonti-section .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;text-align:center}
+.fonti-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.25rem;margin-top:2.5rem}
+.fonte-card{background:var(--bg);padding:1.5rem 1rem;border-radius:var(--radius-md);text-align:center;transition:all .3s;border:1px solid transparent}
+.fonte-card:hover{border-color:var(--primary);transform:translateY(-3px);box-shadow:var(--shadow-sm)}
+.fonte-icon{font-size:2rem;margin-bottom:.75rem}
+.fonte-card h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:.35rem}
+.fonte-card p{font-size:.8rem;color:var(--text-light)}
+
+/* CTA */
+.cta-section{padding:4rem 0;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:var(--white);text-align:center}
+.cta-section .container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.cta-section h2{font-size:1.75rem;font-weight:800;margin-bottom:.75rem}
+.cta-section p{font-size:1rem;opacity:.9;max-width:550px;margin:0 auto 2rem}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-buttons .btn-primary{background:var(--white);color:var(--primary)}
+
+/* CHATBOT */
+.chatbot-toggle{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9000;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:var(--white);border:none;cursor:pointer;box-shadow:0 4px 20px var(--primary-glow);display:flex;align-items:center;justify-content:center;font-size:1.5rem;transition:all .3s;animation:pulseChat 3s ease-in-out infinite}
+.chatbot-toggle:hover{transform:scale(1.1)}
+@keyframes pulseChat{0%,100%{box-shadow:0 4px 20px var(--primary-glow)}50%{box-shadow:0 4px 35px rgba(14,165,233,.4)}}
+.chatbot-window{position:fixed;bottom:6rem;right:1.5rem;z-index:9000;width:380px;max-height:550px;background:var(--white);border-radius:var(--radius-xl);box-shadow:0 20px 60px rgba(15,23,42,.2);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--border);animation:chatIn .3s ease}
+.chatbot-window.open{display:flex}
+@keyframes chatIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.chat-header{background:linear-gradient(135deg,var(--dark),var(--dark-mid));color:var(--white);padding:1rem 1.25rem;display:flex;align-items:center;gap:.75rem}
+.chat-avatar{width:38px;height:38px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.chat-header-info h4{font-size:.95rem;font-weight:700}
+.chat-header-info p{font-size:.75rem;opacity:.7}
+.chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-size:1.25rem}
+.chat-close:hover{color:var(--white)}
+.chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem;max-height:320px;min-height:200px}
+.chat-msg{max-width:85%;padding:.75rem 1rem;border-radius:14px;font-size:.88rem;line-height:1.5;animation:msgIn .25s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg.bot{background:var(--bg);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-msg.user{background:var(--primary);color:var(--white);align-self:flex-end;border-bottom-right-radius:4px}
+.chat-msg a{color:var(--primary);text-decoration:underline}
+.chat-suggestions{display:flex;flex-wrap:wrap;gap:.4rem;padding:.5rem 1rem;border-top:1px solid var(--border)}
+.chat-suggestion{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:.35rem .75rem;font-size:.78rem;cursor:pointer;transition:all .3s;color:var(--text);font-family:inherit}
+.chat-suggestion:hover{border-color:var(--primary);color:var(--primary)}
+.chat-input-area{display:flex;gap:.5rem;padding:.75rem 1rem;border-top:1px solid var(--border)}
+.chat-input-area input{flex:1;border:1px solid var(--border);border-radius:20px;padding:.6rem 1rem;font-size:.88rem;font-family:inherit;outline:none}
+.chat-input-area input:focus{border-color:var(--primary)}
+.chat-input-area button{width:38px;height:38px;border-radius:50%;background:var(--primary);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.75);backdrop-filter:blur(4px);z-index:9999;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.active{display:flex}
+.modal{background:var(--white);border-radius:var(--radius-xl);max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn .3s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(.92) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{position:absolute;top:1rem;right:1rem;background:var(--bg);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;color:var(--text-light);display:flex;align-items:center;justify-content:center;font-size:1rem;z-index:10}
+.modal-close:hover{background:#fee2e2;color:var(--danger)}
+.modal-header{padding:2rem 2rem 1rem;text-align:center;border-bottom:1px solid var(--border)}
+.modal-header h2{font-size:1.5rem;color:var(--dark);margin-bottom:.35rem}
+.modal-header p{color:var(--text-light);font-size:.9rem}
+.modal-body{padding:1.75rem 2rem}
+.form-group{margin-bottom:1.15rem}
+.form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:.4rem}
+.form-group input{width:100%;padding:.8rem 1rem;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.95rem;font-family:inherit;transition:all .3s}
+.form-group input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-glow)}
+.form-checkbox{display:flex;align-items:flex-start;gap:.75rem;font-size:.85rem;color:var(--text-light)}
+.form-checkbox input{margin-top:2px;width:18px;height:18px;accent-color:var(--primary);flex-shrink:0}
+.form-checkbox a{color:var(--primary)}
+.price-summary{background:var(--bg);padding:1.25rem;border-radius:var(--radius-md);margin:1.25rem 0}
+.price-row{display:flex;justify-content:space-between;padding:.4rem 0;font-size:.9rem;color:var(--text-light)}
+.price-row.total{border-top:2px solid var(--border);margin-top:.5rem;padding-top:.75rem;font-weight:700;font-size:1.05rem;color:var(--text)}
+.price-row.total .amount{color:var(--primary);font-family:'Space Mono',monospace;font-size:1.15rem}
+.payment-methods{margin:1.5rem 0}
+.payment-methods h4{font-size:.8rem;color:var(--text-muted);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px}
+.payment-buttons{display:flex;flex-direction:column;gap:.75rem}
+#paypal-button-container{min-height:45px}
+.btn-stripe{background:linear-gradient(135deg,#635bff,#4f46e5);color:var(--white);width:100%;padding:.875rem;font-size:.95rem}
+.secure-badge{display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--text-muted);font-size:.8rem;margin-top:1rem}
+.secure-badge i{color:var(--success)}
+.success-icon{width:72px;height:72px;background:linear-gradient(135deg,var(--success),#059669);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:2rem;color:var(--white)}
+.success-details{background:var(--bg);padding:1.25rem;border-radius:var(--radius-md);text-align:left;margin-bottom:1.5rem}
+.success-details p{margin:.35rem 0;font-size:.9rem;color:var(--text-light)}
+.success-details strong{color:var(--text)}
+.loading{text-align:center;padding:3rem 2rem}
+.loading-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto .75rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{text-align:center;padding:3rem 2rem;color:var(--text-light)}
+.empty-icon{font-size:3rem;margin-bottom:.75rem;opacity:.4}
+.footer{background:var(--dark);color:rgba(255,255,255,.6);padding:3rem 0 2rem;text-align:center}
+.footer-links{display:flex;justify-content:center;gap:1.75rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,.6);text-decoration:none;font-weight:500;font-size:.9rem;transition:color .3s}
+.footer-links a:hover{color:var(--primary)}
+.footer p{font-size:.85rem}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem;box-shadow:var(--shadow-lg);gap:.75rem}
+.nav-links.active{display:flex}
+.mobile-menu-toggle{display:block}
+.stats-bar{gap:.75rem}
+.stat{min-width:100px;padding:.875rem 1rem}
+.stat-value{font-size:1.35rem}
+.bandi-grid,.preview-grid{grid-template-columns:1fr}
+.filters-section{padding:1rem}
+.hero-bandi{padding:3.5rem 0 3rem}
+.hero-bandi h1{font-size:1.65rem}
+.pricing-hero{margin:1.5rem .5rem 0}
+.paywall-banner{padding:2.5rem 1.25rem;margin:2rem 0;border-radius:var(--radius-lg)}
+.paywall-banner .price{font-size:2.5rem}
+.cta-buttons{flex-direction:column}
+.info-grid{grid-template-columns:1fr}
+.fonti-grid{grid-template-columns:repeat(2,1fr)}
+.chatbot-window{width:calc(100% - 2rem);right:1rem;bottom:5.5rem;max-height:70vh}
+.register-form .form-row{grid-template-columns:1fr}
+}
+.chat-messages::-webkit-scrollbar{width:5px}
+.chat-messages::-webkit-scrollbar-track{background:transparent}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px}
+/* COOKIE BANNER */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:rgba(15,23,42,.97);backdrop-filter:blur(20px);border-top:1px solid rgba(14,165,233,.2);padding:18px 24px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;box-shadow:0 -4px 30px rgba(0,0,0,.3);transform:translateY(100%);transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.cookie-banner.show{transform:translateY(0)}
+.cookie-banner p{font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.5;max-width:600px;margin:0}
+.cookie-banner p a{color:var(--primary);text-decoration:underline}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0}
+.cookie-btn{padding:10px 24px;border-radius:50px;font-size:.85rem;font-weight:700;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .3s}
+.cookie-accept{background:var(--primary);color:var(--white)}
+.cookie-accept:hover{background:var(--primary-dark)}
+.cookie-reject{background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)}
+.cookie-reject:hover{border-color:rgba(255,255,255,.3);color:var(--white)}
+@media(max-width:768px){.cookie-banner{flex-direction:column;text-align:center;padding:16px}.cookie-banner p{font-size:.82rem}}
+</style>
+
+</head>
+<body>
+<div class="user-status-bar" id="userStatusBar"><span id="statusMessage"></span></div>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">RaaS<span>Automazioni</span></a>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="index.html#chi-siamo">Chi Siamo</a>
+            <a href="index.html#portfolio">Portfolio</a>
+            <a href="bandi.html" class="nav-bandi active">&#x1F1EE;&#x1F1F9; Bandi</a>
+            <a href="blog">Blog</a>
+            <a href="index.html#contatti" class="nav-cta">Contatti</a>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
+    </div>
+</nav>
+
+<section class="hero-bandi">
+    <div class="hero-particles">
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div>
+    </div>
+    <div class="hero-mesh"></div>
+    <div class="hero-line"></div><div class="hero-line"></div><div class="hero-line"></div>
+    <div class="container">
+        <h1>&#x1F1EE;&#x1F1F9; <span class="gradient-text">Bandi e Finanziamenti</span> per Imprese</h1>
+        <p class="hero-desc">Accedi a tutti i bandi a fondo perduto, finanziamenti agevolati e incentivi per PMI italiane. Aggiornamento automatico giornaliero da oltre 150 fonti ufficiali.</p>
+        <div class="stats-bar">
+            <div class="stat"><div class="stat-value" id="stat-bandi">&mdash;</div><div class="stat-label">Bandi Totali</div></div>
+            <div class="stat"><div class="stat-value">150+</div><div class="stat-label">Fonti Monitorate</div></div>
+            <div class="stat"><div class="stat-value">24h</div><div class="stat-label">Aggiornamento</div></div>
+        </div>
+        <div class="pricing-hero" id="pricingHero">
+            <h3>Abbonamento Annuale</h3>
+            <div class="price">&euro;50 <span>+ IVA</span></div>
+            <div class="price-note">&euro;61 totali &middot; Validit&agrave; 12 mesi</div>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> Accesso illimitato a tutti i bandi</li>
+                <li><i class="fas fa-check-circle"></i> Filtri avanzati per regione, settore, importo</li>
+                <li><i class="fas fa-check-circle"></i> Aggiornamenti giornalieri automatici</li>
+                <li><i class="fas fa-check-circle"></i> Newsletter settimanale opportunit&agrave;</li>
+            </ul>
+            <button class="btn btn-accent" onclick="openPaymentModal()" style="width:100%;margin-top:.75rem">
+                <i class="fas fa-unlock"></i> Attiva Abbonamento
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- PREVIEW: 3 latest bandi -->
+<section class="preview-section" id="previewSection">
+    <div class="preview-header">
+        <h2>&#x1F4CB; Ultimi Bandi Inseriti</h2>
+        <p>Anteprima gratuita degli ultimi 3 bandi caricati nel nostro database</p>
+    </div>
+    <div id="loading-preview" class="loading"><div class="loading-spinner"></div><p>Caricamento bandi...</p></div>
+    <div id="preview-grid" class="preview-grid" style="display:none;"></div>
+    <div class="paywall-banner" id="paywallBanner" style="display:none;">
+        <h2>&#x1F512; Sblocca Tutti i Bandi</h2>
+        <p>Stai vedendo solo <strong>3 bandi in anteprima</strong>. Abbonati per accedere a tutti i <span id="totalBandiCount">500+</span> bandi con filtri avanzati!</p>
+        <div class="price-box"><div class="price">&euro;50 <span>+ IVA</span></div><div class="price-details">&euro;61 totali &middot; Accesso per 12 mesi</div></div>
+        <button class="btn btn-accent" onclick="openPaymentModal()"><i class="fas fa-unlock"></i> Attiva Abbonamento Ora</button>
+    </div>
+</section>
+
+<!-- FILTERS (subscribers only) -->
+<section class="filters-section" id="filtersSection">
+    <div class="filters-grid">
+        <div class="filter-group search-box"><input type="text" id="search" placeholder="&#x1F50D; Cerca bandi per titolo, ente, settore, regione..."></div>
+        <div class="filter-group"><label>Regione</label><select id="filter-regione"><option value="">Tutte le regioni</option><option value="Nazionale">Nazionali</option><option value="Sud Italia">Sud Italia</option><option value="Piemonte">Piemonte</option><option value="Valle d'Aosta">Valle d'Aosta</option><option value="Lombardia">Lombardia</option><option value="Trentino-Alto Adige">Trentino-Alto Adige</option><option value="Veneto">Veneto</option><option value="Friuli Venezia Giulia">Friuli Venezia Giulia</option><option value="Liguria">Liguria</option><option value="Emilia-Romagna">Emilia-Romagna</option><option value="Toscana">Toscana</option><option value="Umbria">Umbria</option><option value="Marche">Marche</option><option value="Lazio">Lazio</option><option value="Abruzzo">Abruzzo</option><option value="Molise">Molise</option><option value="Campania">Campania</option><option value="Puglia">Puglia</option><option value="Basilicata">Basilicata</option><option value="Calabria">Calabria</option><option value="Sicilia">Sicilia</option><option value="Sardegna">Sardegna</option></select></div>
+        <div class="filter-group"><label>Tipo Ente</label><select id="filter-tipo-ente"><option value="">Tutti</option><option value="ministero">Ministeri</option><option value="ente_nazionale">Enti Nazionali</option><option value="regione">Regioni</option><option value="cciaa">Camere di Commercio</option><option value="altro">Altro</option></select></div>
+        <div class="filter-group"><label>Tipo Contributo</label><select id="filter-tipo-contributo"><option value="">Tutti</option><option value="fondo_perduto">Fondo Perduto</option><option value="tasso_agevolato">Tasso Agevolato</option><option value="misto">Misto</option><option value="credito_imposta">Credito d'Imposta</option></select></div>
+        <div class="filter-group"><label>Stato</label><select id="filter-stato"><option value="">Tutti</option><option value="aperto" selected>Aperti</option><option value="in_arrivo">In arrivo</option><option value="chiuso">Chiusi</option></select></div>
+    </div>
+</section>
+
+<section class="results-section" id="resultsSection">
+    <div class="results-info"><span class="results-count" id="results-count">Caricamento...</span><div class="sort-options"><label>Ordina:</label><select id="sort-by"><option value="data_desc">Pi&ugrave; recenti</option><option value="titolo">Nome A-Z</option><option value="ente">Ente</option><option value="regione">Regione</option></select></div></div>
+    <div id="bandi-grid" class="bandi-grid"></div>
+    <div id="empty" class="empty" style="display:none;"><div class="empty-icon">&#x1F50D;</div><h3>Nessun bando trovato</h3><p>Prova a modificare i filtri</p></div>
+</section>
+
+<!-- REGISTRATION -->
+<section class="register-section" id="registerSection">
+    <div class="container">
+        <h2>&#x1F4EC; Resta Aggiornato sui Bandi</h2>
+        <p class="section-desc">Registrati gratuitamente per ricevere aggiornamenti settimanali sui nuovi bandi e opportunit&agrave; di finanziamento.</p>
+        <div class="register-form" id="registerForm">
+            <div class="form-row">
+                <div class="form-group"><label>Nome *</label><input type="text" id="reg-nome" required placeholder="Mario"></div>
+                <div class="form-group"><label>Cognome *</label><input type="text" id="reg-cognome" required placeholder="Rossi"></div>
+            </div>
+            <div class="form-group"><label>Email *</label><input type="email" id="reg-email" required placeholder="mario@azienda.it"></div>
+            <div class="form-row">
+                <div class="form-group"><label>Azienda</label><input type="text" id="reg-azienda" placeholder="Nome Azienda Srl"></div>
+                <div class="form-group"><label>Regione Interesse</label><select id="reg-regione"><option value="">Seleziona...</option><option value="tutte">Tutte</option><option value="nazionale">Solo nazionali</option><option value="Veneto">Veneto</option><option value="Lombardia">Lombardia</option><option value="Emilia-Romagna">Emilia-Romagna</option><option value="Toscana">Toscana</option><option value="Lazio">Lazio</option><option value="Campania">Campania</option><option value="Puglia">Puglia</option><option value="Sicilia">Sicilia</option><option value="Sardegna">Sardegna</option><option value="Altra">Altra</option></select></div>
+            </div>
+            <div class="form-group"><div class="form-checkbox"><input type="checkbox" id="reg-privacy" required><label for="reg-privacy">Accetto la <a href="privacy.html" target="_blank">Privacy Policy</a> *</label></div></div>
+            <button class="btn btn-primary" onclick="submitRegistration()" style="width:100%;margin-top:.5rem"><i class="fas fa-paper-plane"></i> Iscriviti Gratis</button>
+        </div>
+        <div class="register-success" id="registerSuccess"><i class="fas fa-check-circle"></i><h3>Registrazione Completata!</h3><p>Riceverai aggiornamenti sui nuovi bandi via email.</p></div>
+    </div>
+</section>
+
+<!-- INFO -->
+<section class="info-section">
+    <div class="container">
+        <h2 class="section-title">Perch&eacute; Usare il Nostro Aggregatore?</h2>
+        <p class="section-subtitle">Risparmi ore di ricerca. Tutti i bandi italiani in un unico posto, sempre aggiornati.</p>
+        <div class="info-grid">
+            <div class="info-card"><div class="icon-wrap"><i class="fas fa-sync-alt"></i></div><h3>Aggiornamento Automatico</h3><p>Scraping giornaliero da 150+ fonti ufficiali.</p></div>
+            <div class="info-card"><div class="icon-wrap"><i class="fas fa-filter"></i></div><h3>Filtri Intelligenti</h3><p>Trova i bandi per regione, settore, importo.</p></div>
+            <div class="info-card"><div class="icon-wrap"><i class="fas fa-euro-sign"></i></div><h3>Solo &euro;50/anno</h3><p>Un caff&egrave; al mese per migliaia di opportunit&agrave;.</p></div>
+            <div class="info-card"><div class="icon-wrap"><i class="fas fa-shield-alt"></i></div><h3>Fonti Ufficiali</h3><p>Solo siti istituzionali: Ministeri, Regioni, Invitalia.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- FONTI -->
+<section class="fonti-section">
+    <div class="container">
+        <h2 class="section-title">Le Nostre Fonti</h2>
+        <p class="section-subtitle">Monitoriamo quotidianamente le principali fonti di finanziamento italiane</p>
+        <div class="fonti-grid">
+            <div class="fonte-card"><div class="fonte-icon">&#x1F3DB;</div><h4>Ministeri</h4><p>MIMIT, MUR, MASE, MASAF</p></div>
+            <div class="fonte-card"><div class="fonte-icon">&#x1F3E6;</div><h4>Enti Nazionali</h4><p>Invitalia, SIMEST, INAIL, SACE</p></div>
+            <div class="fonte-card"><div class="fonte-icon">&#x1F5FA;</div><h4>20 Regioni</h4><p>Portali regionali + Province Autonome</p></div>
+            <div class="fonte-card"><div class="fonte-icon">&#x1F3EA;</div><h4>105+ CCIAA</h4><p>Camere di Commercio</p></div>
+            <div class="fonte-card"><div class="fonte-icon">&#x1F30D;</div><h4>Portali Nazionali</h4><p>incentivi.gov.it, RNA, OpenCoesione</p></div>
+            <div class="fonte-card"><div class="fonte-icon">&#x1F1EA;&#x1F1FA;</div><h4>Fondi UE</h4><p>Horizon Europe, COSME, LIFE</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Hai Bisogno di Aiuto con i Bandi?</h2>
+        <p>Possiamo assisterti nella ricerca del bando giusto e nella preparazione della domanda.</p>
+        <div class="cta-buttons">
+            <a href="index.html#contatti" class="btn btn-primary"><i class="fas fa-phone"></i> Richiedi Consulenza</a>
+            <a href="index.html#siti-web" class="btn btn-ghost"><i class="fas fa-globe"></i> Scopri i Nostri Servizi</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+    <a href="index.html">Home</a><a href="bandi.html">Bandi</a><a href="blog">Blog</a><a href="index.html#contatti">Contatti</a><a href="privacy.html">Privacy Policy</a><a href="cookie.html">Cookie Policy</a>
+</div>
+        <p>&copy; 2025 RaaS Automazioni. Tutti i diritti riservati.</p>
+    </div>
+</footer>
+
+<!-- CHATBOT -->
+<button class="chatbot-toggle" id="chatToggle" onclick="toggleChat()"><i class="fas fa-comment-dots"></i></button>
+<div class="chatbot-window" id="chatWindow">
+    <div class="chat-header">
+        <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+        <div class="chat-header-info"><h4>Assistente Bandi</h4><p>Risposte immediate sui finanziamenti</p></div>
+        <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg bot">Ciao! &#x1F44B; Sono l'assistente BandiItalia. Posso aiutarti su bandi, finanziamenti e incentivi. Cosa vuoi sapere?</div>
+    </div>
+    <div class="chat-suggestions" id="chatSuggestions">
+        <button class="chat-suggestion" onclick="askBot(this.textContent)">Cos'&egrave; un fondo perduto?</button>
+        <button class="chat-suggestion" onclick="askBot(this.textContent)">Bandi per startup</button>
+        <button class="chat-suggestion" onclick="askBot(this.textContent)">Come funziona SIMEST?</button>
+        <button class="chat-suggestion" onclick="askBot(this.textContent)">Bandi digitalizzazione</button>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Scrivi una domanda..." onkeydown="if(event.key==='Enter')sendChat()">
+        <button onclick="sendChat()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="paymentModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closePaymentModal()"><i class="fas fa-times"></i></button>
+        <div class="modal-header"><h2>Attiva Abbonamento</h2><p>Accesso completo per 12 mesi</p></div>
+        <div class="modal-body">
+            <form id="subscriptionForm" onsubmit="return false;">
+                <div class="form-group"><label>Nome e Cognome *</label><input type="text" id="fullName" required placeholder="Mario Rossi"></div>
+                <div class="form-group"><label>Email *</label><input type="email" id="email" required placeholder="mario@azienda.it"></div>
+                <div class="form-group"><label>Azienda</label><input type="text" id="company" placeholder="Nome Azienda Srl"></div>
+                <div class="form-group"><label>Partita IVA</label><input type="text" id="vatNumber" placeholder="IT12345678901"></div>
+                <div class="price-summary">
+                    <div class="price-row"><span>Abbonamento Annuale</span><span>&euro;50,00</span></div>
+                    <div class="price-row"><span>IVA (22%)</span><span>&euro;11,00</span></div>
+                    <div class="price-row total"><span>Totale</span><span class="amount">&euro;61,00</span></div>
+                </div>
+                <div class="form-group"><div class="form-checkbox"><input type="checkbox" id="newsletter" checked><label for="newsletter">Iscrivimi alla newsletter bandi</label></div></div>
+                <div class="form-group"><div class="form-checkbox"><input type="checkbox" id="terms" required><label for="terms">Accetto <a href="termini.html" target="_blank">Termini</a> e <a href="privacy.html" target="_blank">Privacy</a> *</label></div></div>
+                <div class="payment-methods">
+                    <h4>Metodo di Pagamento</h4>
+                    <div class="payment-buttons">
+                        <div id="paypal-button-container"></div>
+                        <button type="button" class="btn btn-stripe" onclick="processStripePayment()"><i class="fab fa-cc-stripe"></i> Paga con Carta (Stripe)</button>
+                    </div>
+                </div>
+                <div class="secure-badge"><i class="fas fa-lock"></i> Pagamento sicuro e crittografato</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal">
+        <div style="padding:2.5rem;text-align:center;">
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <h2 style="font-size:1.5rem;color:var(--dark);margin-bottom:.35rem">Abbonamento Attivato!</h2>
+            <p style="color:var(--text-light);margin-bottom:1.25rem">Ora hai accesso completo a tutti i bandi.</p>
+            <div class="success-details">
+                <p><strong>Email:</strong> <span id="successEmail"></span></p>
+                <p><strong>Validit&agrave;:</strong> 12 mesi da oggi</p>
+                <p><strong>Scadenza:</strong> <span id="successExpiry"></span></p>
+            </div>
+            <button class="btn btn-primary" onclick="closeSuccessModal()"><i class="fas fa-search"></i> Esplora i Bandi</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const SUPABASE_URL='https://ieeriszlalrsbfsnarih.supabase.co';
+const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZXJpc3psYWxyc2Jmc25hcmloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNjEyNjAsImV4cCI6MjA4MzczNzI2MH0.Sjwu1620mMTAAoKVHgXHQ1cA-m3hFXqtCtqjAQNErQo';
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const PREVIEW_COUNT=3;const SUBSCRIPTION_DAYS=365;
+let allBandi=[],filteredBandi=[];
+
+function getSubscription(){const s=localStorage.getItem('bandiSubscription');if(!s)return null;try{return JSON.parse(s)}catch{return null}}
+function isSubscriptionActive(){const s=getSubscription();return s?new Date()<new Date(s.expiryDate):false}
+function getSubscriptionDaysLeft(){const s=getSubscription();if(!s)return 0;return Math.max(0,Math.ceil((new Date(s.expiryDate)-new Date())/864e5))}
+function activateSubscription(email,name,company,vatNumber,newsletter){
+    const start=new Date(),expiry=new Date();expiry.setDate(expiry.getDate()+SUBSCRIPTION_DAYS);
+    const sub={email,name,company:company||'',vatNumber:vatNumber||'',newsletter,startDate:start.toISOString(),expiryDate:expiry.toISOString(),transactionId:'TXN-'+Date.now()};
+    localStorage.setItem('bandiSubscription',JSON.stringify(sub));
+    try{supabaseClient.from('subscribers').insert([{email:sub.email,name:sub.name,company:sub.company,vat_number:sub.vatNumber,newsletter:sub.newsletter,start_date:sub.startDate,expiry_date:sub.expiryDate,transaction_id:sub.transactionId,type:'paid'}])}catch(e){}
+    return sub;
+}
+function updateStatusBar(){
+    const bar=document.getElementById('userStatusBar'),msg=document.getElementById('statusMessage');
+    if(isSubscriptionActive()){const d=getSubscriptionDaysLeft(),s=getSubscription();
+        if(d<=30){bar.className='user-status-bar active expired';msg.innerHTML='\u26a0\ufe0f Scade tra '+d+' gg. <a href="#" onclick="openPaymentModal();return false;">Rinnova</a>'}
+        else{bar.className='user-status-bar active';msg.innerHTML='\u2705 Attivo fino al '+formatDate(new Date(s.expiryDate))}
+    }else{const s=getSubscription();if(s){bar.className='user-status-bar active expired';msg.innerHTML='\ud83d\udd34 Scaduto. <a href="#" onclick="openPaymentModal();return false;">Rinnova</a>'}else bar.style.display='none'}
+}
+function formatDate(d){return d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'})}
+function openPaymentModal(){document.getElementById('paymentModal').classList.add('active');document.body.style.overflow='hidden';initPayPal()}
+function closePaymentModal(){document.getElementById('paymentModal').classList.remove('active');document.body.style.overflow=''}
+function closeSuccessModal(){document.getElementById('successModal').classList.remove('active');document.body.style.overflow='';initPage()}
+function showSuccessModal(sub){document.getElementById('paymentModal').classList.remove('active');document.getElementById('successModal').classList.add('active');document.getElementById('successEmail').textContent=sub.email;document.getElementById('successExpiry').textContent=formatDate(new Date(sub.expiryDate))}
+function validateForm(){
+    const n=document.getElementById('fullName').value.trim(),e=document.getElementById('email').value.trim(),t=document.getElementById('terms').checked;
+    if(!n||!e||!t){alert('Compila tutti i campi obbligatori.');return false}
+    if(!e.includes('@')||!e.includes('.')){alert('Email non valida.');return false}return true;
+}
+function getFormData(){return{name:document.getElementById('fullName').value.trim(),email:document.getElementById('email').value.trim(),company:document.getElementById('company').value.trim(),vatNumber:document.getElementById('vatNumber').value.trim(),newsletter:document.getElementById('newsletter').checked}}
+function initPayPal(){
+    const c=document.getElementById('paypal-button-container');if(c.innerHTML)return;
+    if(typeof paypal==='undefined'){c.innerHTML='<p style="color:var(--danger);font-size:.85rem;text-align:center;">PayPal non disponibile. Usa carta.</p>';return}
+    paypal.Buttons({style:{layout:'horizontal',color:'gold',shape:'pill',label:'paypal'},
+        createOrder:function(d,a){if(!validateForm())return a.reject();return a.order.create({purchase_units:[{description:'Abbonamento BandiItalia 12 mesi',amount:{value:'61.00',currency_code:'EUR'}}]})},
+        onApprove:function(d,a){return a.order.capture().then(function(){const fd=getFormData();showSuccessModal(activateSubscription(fd.email,fd.name,fd.company,fd.vatNumber,fd.newsletter))})},
+        onError:function(e){alert('Errore PayPal.')}
+    }).render('#paypal-button-container');
+}
+function processStripePayment(){
+    if(!validateForm())return;
+    // Salva i dati del form in localStorage prima del redirect
+    var fd=getFormData();
+    localStorage.setItem('pendingSubscription',JSON.stringify(fd));
+    // INSERISCI QUI IL TUO STRIPE PAYMENT LINK (vedi guida)
+    // Sostituisci TUTTO l'URL qui sotto con il tuo Payment Link da Stripe Dashboard
+    var stripeUrl='https://buy.stripe.com/fZu5kC9aja2ofNg8fi5EY00';
+    // Aggiunge email come parametro per precompilare Stripe Checkout
+    stripeUrl+='?prefilled_email='+encodeURIComponent(fd.email);
+    window.location.href=stripeUrl;
+}
+// =====================================================
+// PASSO 2: INCOLLA la funzione qui sotto
+// DOVE? Subito PRIMA di "async function loadBandi()"
+// =====================================================
+
+async function submitRegistration(){
+    const nome=document.getElementById('reg-nome').value.trim(),
+          cognome=document.getElementById('reg-cognome').value.trim(),
+          email=document.getElementById('reg-email').value.trim(),
+          priv=document.getElementById('reg-privacy').checked;
+    if(!nome||!cognome||!email){alert('Compila Nome, Cognome e Email.');return}
+    if(!email.includes('@')){alert('Email non valida.');return}
+    if(!priv){alert('Accetta la Privacy Policy.');return}
+    try{await supabaseClient.from('subscribers').insert([{email,name:nome+' '+cognome,company:document.getElementById('reg-azienda').value.trim(),region_interest:document.getElementById('reg-regione').value,newsletter:true,type:'free'}])}catch(e){}
+    localStorage.setItem('freeRegEmail',email);
+    try{await supabaseClient.from('user_search_preferences').upsert({email:email,regione:document.getElementById('reg-regione').value||'',updated_at:new Date().toISOString()},{onConflict:'email'})}catch(e){}
+    try{
+        await fetch('https://api.brevo.com/v3/contacts',{
+            method:'POST',
+            headers:{'accept':'application/json','content-type':'application/json','api-key':'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'},
+            body:JSON.stringify({email:email,attributes:{NOME:nome,COGNOME:cognome},listIds:[9],updateEnabled:true})
+        });
+    }catch(e){console.warn('Brevo sync err:',e)}
+    document.getElementById('registerForm').style.display='none';
+    document.getElementById('registerSuccess').style.display='block';
+}
+async function loadBandi(){
+    try{
+        var countRes=await supabaseClient.from('bandi').select('*',{count:'exact',head:true}).eq('attivo',true);
+        var totalCount=countRes.count||0;
+        document.getElementById('stat-bandi').textContent=totalCount;
+        document.getElementById('totalBandiCount').textContent=totalCount;
+        var all=[],offset=0;
+        while(true){
+            var res=await supabaseClient.from('bandi').select('*').eq('attivo',true).order('id',{ascending:false}).range(offset,offset+999);
+            if(res.error)throw res.error;
+            if(!res.data||!res.data.length)break;
+            all=all.concat(res.data);
+            if(res.data.length<1000)break;
+            offset+=1000;
+        }
+        allBandi=all;
+    }catch(e){allBandi=[];document.getElementById('stat-bandi').textContent='0';}
+}
+function renderPreview(){
+    const grid=document.getElementById('preview-grid'),load=document.getElementById('loading-preview');
+    const latest=allBandi.slice(0,PREVIEW_COUNT);load.style.display='none';
+    if(!latest.length){grid.innerHTML='<p style="text-align:center;color:var(--text-light)">Nessun bando disponibile.</p>';grid.style.display='block';return}
+    grid.style.display='grid';grid.innerHTML=latest.map(b=>renderCard(b,true)).join('');
+    if(!isSubscriptionActive()&&allBandi.length>PREVIEW_COUNT)document.getElementById('paywallBanner').style.display='block';
+}
+function applyFilters(){
+    const s=document.getElementById('search').value.toLowerCase(),r=document.getElementById('filter-regione').value,te=document.getElementById('filter-tipo-ente').value,tc=document.getElementById('filter-tipo-contributo').value,st=document.getElementById('filter-stato').value;
+    filteredBandi=allBandi.filter(b=>{if(s&&!JSON.stringify(b).toLowerCase().includes(s))return false;if(r&&b.regione!==r&&!(b.regione||'').includes(r))return false;if(te&&b.tipo_ente!==te)return false;if(tc&&b.tipo_contributo!==tc)return false;if(st&&b.stato!==st)return false;return true});
+    const sort=document.getElementById('sort-by').value;
+    filteredBandi.sort((a,b)=>{if(sort==='titolo')return(a.titolo||'').localeCompare(b.titolo||'');if(sort==='ente')return(a.ente||'').localeCompare(b.ente||'');if(sort==='regione')return(a.regione||'').localeCompare(b.regione||'');return 0});
+    renderFullList();
+}
+function renderFullList(){
+    const grid=document.getElementById('bandi-grid'),empty=document.getElementById('empty'),count=document.getElementById('results-count');
+    if(!filteredBandi.length){grid.style.display='none';empty.style.display='block';count.textContent='0 bandi';return}
+    empty.style.display='none';grid.style.display='grid';count.textContent=filteredBandi.length+' bandi trovati';
+    grid.innerHTML=filteredBandi.map(b=>renderCard(b,false)).join('');
+}
+function renderCard(b,isPreview){
+    return '<article class="bando-card'+(isPreview?' preview-card':'')+'">'+(isPreview?'<span class="card-badge">ANTEPRIMA</span>':'')+'<div class="bando-header"><div class="bando-tags"><span class="tag tag-stato '+b.stato+'">'+getStatoLabel(b.stato)+'</span><span class="tag tag-tipo">'+getTipoLabel(b.tipo_contributo)+'</span>'+(b.regione?'<span class="tag tag-regione">'+b.regione+'</span>':'')+'</div><h3 class="bando-title"><a href="'+(b.url||'#')+'" target="_blank" rel="noopener">'+b.titolo+'</a></h3><div class="bando-ente"><i class="fas fa-building"></i> '+b.ente+'</div></div><div class="bando-body"><div class="bando-details"><div class="detail-item"><span class="detail-label">Contributo Max</span><span class="detail-value highlight">'+(b.contributo_max||'Variabile')+'</span></div><div class="detail-item"><span class="detail-label">Percentuale</span><span class="detail-value">'+(b.percentuale||'Variabile')+'</span></div><div class="detail-item"><span class="detail-label">Scadenza</span><span class="detail-value">'+(b.scadenza||'Da definire')+'</span></div><div class="detail-item"><span class="detail-label">Tipo Ente</span><span class="detail-value">'+getTipoEnteLabel(b.tipo_ente)+'</span></div></div></div><div class="bando-footer"><a href="'+(b.url||'#')+'" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Vai al Bando</a></div></article>';
+}
+function getStatoLabel(s){return{aperto:'\ud83d\udfe2 Aperto',chiuso:'\ud83d\udd34 Chiuso',in_arrivo:'\ud83d\udfe1 In arrivo'}[s]||s||'N/D'}
+function getTipoLabel(t){return{fondo_perduto:'\ud83d\udcb0 Fondo Perduto',tasso_agevolato:'\ud83d\udcc9 Tasso Agevolato',misto:'\ud83d\udd04 Misto',credito_imposta:'\ud83d\udccb Credito Imposta'}[t]||t||'N/D'}
+function getTipoEnteLabel(t){return{ministero:'Ministero',ente_nazionale:'Ente Nazionale',regione:'Regione',cciaa:'Camera Commercio',altro:'Altro Ente'}[t]||t||'-'}
+
+// ===== SALVATAGGIO PREFERENZE PER NEWSLETTER =====
+let prefSaveTimer=null;
+function saveSearchPreferences(){
+    clearTimeout(prefSaveTimer);
+    prefSaveTimer=setTimeout(async()=>{
+        const sub=getSubscription();
+        let email=sub?sub.email:null;
+        if(!email){try{const ls=localStorage.getItem('freeRegEmail');if(ls)email=ls}catch(e){}}
+        if(!email)return;
+        const prefs={
+            email:email,
+            regione:document.getElementById('filter-regione').value||'',
+            tipo_ente:document.getElementById('filter-tipo-ente').value||'',
+            tipo_contributo:document.getElementById('filter-tipo-contributo').value||'',
+            stato:document.getElementById('filter-stato').value||'aperto',
+            keywords:document.getElementById('search').value.trim()||'',
+            updated_at:new Date().toISOString()
+        };
+        try{await supabaseClient.from('user_search_preferences').upsert(prefs,{onConflict:'email'})}catch(e){console.warn('Pref save err:',e)}
+    },2000);
+}
+
+function debounce(fn,w){let t;return function(...a){clearTimeout(t);t=setTimeout(()=>fn(...a),w)}}
+async function initPage(){
+    updateStatusBar();await loadBandi();renderPreview();
+    if(isSubscriptionActive()){document.getElementById('filtersSection').classList.add('unlocked');document.getElementById('resultsSection').classList.add('unlocked');document.getElementById('pricingHero').style.display='none';document.getElementById('paywallBanner').style.display='none';applyFilters()}
+}
+document.addEventListener('DOMContentLoaded',function(){
+    // Gestione ritorno da Stripe Payment Link
+    if(window.location.search.includes('payment=success')){
+        var pending=localStorage.getItem('pendingSubscription');
+        if(pending){
+            try{var fd=JSON.parse(pending);
+            var sub=activateSubscription(fd.email,fd.name,fd.company,fd.vatNumber,fd.newsletter);
+            localStorage.removeItem('pendingSubscription');
+            setTimeout(function(){showSuccessModal(sub)},500);
+            }catch(e){console.warn('Stripe return parse error:',e)}
+        }
+        // Pulisci URL dal parametro
+        window.history.replaceState({},'',window.location.pathname);
+    }
+    initPage();
+    document.getElementById('search').addEventListener('input',debounce(function(){applyFilters();saveSearchPreferences()},300));
+    ['filter-regione','filter-tipo-ente','filter-tipo-contributo','filter-stato','sort-by'].forEach(id=>document.getElementById(id).addEventListener('change',function(){applyFilters();saveSearchPreferences()}));
+    const toggle=document.getElementById('mobileMenuToggle'),nav=document.getElementById('navLinks');
+    toggle&&toggle.addEventListener('click',()=>{nav.classList.toggle('active');toggle.innerHTML=nav.classList.contains('active')?'<i class="fas fa-times"></i>':'<i class="fas fa-bars"></i>'});
+    ['paymentModal','successModal'].forEach(id=>document.getElementById(id).addEventListener('click',function(e){if(e.target===this){id==='paymentModal'?closePaymentModal():closeSuccessModal()}}));
+});
+
+// ========== CHATBOT CON CONTATORE 10 INTERAZIONI ==========
+let chatInteractionCount = 0; // Contatore per le interazioni
+let chatFormShown = false;    // Flag per evitare di mostrare il form più volte
+
+function toggleChat(){document.getElementById('chatWindow').classList.toggle('open')}
+
+function sendChat(){
+    const i=document.getElementById('chatInput'),
+          t=i.value.trim();
+    if(!t)return;
+    
+    addMsg(t,'user');
+    i.value='';
+    
+    // Incrementa contatore
+    chatInteractionCount++;
+    
+    // Simula risposta dopo 400ms
+    setTimeout(()=>{
+        // DOPO 10 INTERAZIONI MOSTRA IL FORM DI CONTATTO
+        if(chatInteractionCount >= 10 && !chatFormShown){
+            chatFormShown = true; // Evita di mostrarlo più volte
+            addMsg(`
+                <div style="background:#f0f9ff;border-radius:12px;padding:1rem;margin:0.5rem 0;border-left:4px solid #00b4d8;">
+                    <p style="margin-bottom:1rem;font-weight:700;color:#1e293b;">👋 Grazie per le tue domande!</p>
+                    <p style="margin-bottom:1rem;font-size:0.9rem;color:#334155;">Vuoi una consulenza personalizzata? Lascia i tuoi dati e ti contattiamo entro 24h.</p>
+                    <input type="text" id="chatFormName" placeholder="Nome *" style="width:100%;padding:0.6rem;margin-bottom:0.5rem;border:1px solid #cbd5e1;border-radius:6px;">
+                    <input type="email" id="chatFormEmail" placeholder="Email *" style="width:100%;padding:0.6rem;margin-bottom:0.5rem;border:1px solid #cbd5e1;border-radius:6px;">
+                    <input type="tel" id="chatFormPhone" placeholder="Telefono" style="width:100%;padding:0.6rem;margin-bottom:0.5rem;border:1px solid #cbd5e1;border-radius:6px;">
+                    <button onclick="submitChatForm()" style="width:100%;padding:0.7rem;background:linear-gradient(135deg,#00b4d8,#0096c7);color:white;border:none;border-radius:6px;font-weight:700;cursor:pointer;margin-top:0.25rem;">Richiedi Consulenza</button>
+                </div>
+            `,'bot');
+            return;
+        }
+        
+        // Risposta normale
+        addMsg(findAnswer(t),'bot');
+        updateSuggestions();
+    },400);
+}
+
+function askBot(t){
+    addMsg(t,'user');
+    
+    // Incrementa contatore
+    chatInteractionCount++;
+    
+    setTimeout(()=>{
+        // DOPO 10 INTERAZIONI MOSTRA IL FORM DI CONTATTO
+        if(chatInteractionCount >= 10 && !chatFormShown){
+            chatFormShown = true;
+            addMsg(`
+                <div style="background:#f0f9ff;border-radius:12px;padding:1rem;margin:0.5rem 0;border-left:4px solid #00b4d8;">
+                    <p style="margin-bottom:1rem;font-weight:700;color:#1e293b;">👋 Grazie per le tue domande!</p>
+                    <p style="margin-bottom:1rem;font-size:0.9rem;color:#334155;">Vuoi una consulenza personalizzata? Lascia i tuoi dati e ti contattiamo entro 24h.</p>
+                    <input type="text" id="chatFormName" placeholder="Nome *" style="width:100%;padding:0.6rem;margin-bottom:0.5rem;border:1px solid #cbd5e1;border-radius:6px;">
+                    <input type="email" id="chatFormEmail" placeholder="Email *" style="width:100%;padding:0.6rem;margin-bottom:0.5rem;border:1px solid #cbd5e1;border-radius:6px;">
+                    <input type="tel" id="chatFormPhone" placeholder="Telefono" style="width:100%;padding:0.6rem;margin-bottom:0.5rem;border:1px solid #cbd5e1;border-radius:6px;">
+                    <button onclick="submitChatForm()" style="width:100%;padding:0.7rem;background:linear-gradient(135deg,#00b4d8,#0096c7);color:white;border:none;border-radius:6px;font-weight:700;cursor:pointer;margin-top:0.25rem;">Richiedi Consulenza</button>
+                </div>
+            `,'bot');
+            return;
+        }
+        
+        addMsg(findAnswer(t),'bot');
+        updateSuggestions();
+    },400);
+}
+
+// Funzione per gestire l'invio del form nella chat
+function submitChatForm(){
+    const name = document.getElementById('chatFormName')?.value.trim();
+    const email = document.getElementById('chatFormEmail')?.value.trim();
+    const phone = document.getElementById('chatFormPhone')?.value.trim();
+    
+    if(!name || !email){
+        alert('Inserisci almeno Nome ed Email');
+        return;
+    }
+    
+    if(!email.includes('@')){
+        alert('Email non valida');
+        return;
+    }
+    
+    // Nascondi il form
+    const lastMsg = document.querySelector('#chatMessages .chat-msg:last-child');
+    if(lastMsg) lastMsg.style.display = 'none';
+    
+    // Messaggio di conferma
+    addMsg('✅ Grazie ' + name + '! Ti contatteremo a breve su ' + email + '.', 'bot');
+    
+    // Salva su Supabase se disponibile
+    try {
+        if(typeof supabaseClient !== 'undefined'){
+            supabaseClient.from('subscribers').insert([{
+                email: email,
+                name: name,
+                company: '',
+                newsletter: true,
+                type: 'chatbot_10_interactions',
+                start_date: new Date().toISOString(),
+                transaction_id: 'CHAT10-' + Date.now()
+            }]);
+        }
+    } catch(e){}
+    
+    // Reset contatore
+    chatInteractionCount = 0;
+    chatFormShown = false;
+}
+
+function addMsg(t,type){
+    const d=document.createElement('div');
+    d.className='chat-msg '+type;
+    d.innerHTML=t;
+    const m=document.getElementById('chatMessages');
+    m.appendChild(d);
+    m.scrollTop=m.scrollHeight;
+}
+
+function updateSuggestions(){
+    const s=document.getElementById('chatSuggestions'),
+          r=chatSuggestionSets[Math.floor(Math.random()*chatSuggestionSets.length)];
+    s.innerHTML=r.map(x=>'<button class="chat-suggestion" onclick="askBot(this.textContent)">'+x+'</button>').join('');
+}
+const chatSuggestionSets=[["Bandi Invitalia","Credito d'imposta","Bandi Veneto","Quanto costa?"],["Bandi SIMEST","Fondo perduto startup","Bandi Lombardia","Come funziona?"],["Bandi INAIL","Finanziamenti export","Bandi Campania","Quante fonti?"],["Voucher digitalizzazione","Bandi agricoltura","Bandi Sicilia","Come abbono?"],["Bandi energia","Bandi turismo","Bandi Puglia","Donne imprenditrici"],["Transizione 5.0","PNRR bandi","Bandi Emilia-Romagna","Under 35"],["Bandi innovazione","Brevetti e marchi","Bandi Toscana","Artigiani"]];
+
+
+// ===== CHATBOT Q&A DATABASE =====
+const chatQA=[
+{k:["cos'è","fondo perduto","cosa significa fondo perduto"],a:"Un <b>contributo a fondo perduto</b> è un finanziamento che non deve essere restituito. Lo Stato copre una percentuale delle spese (dal 30% all'80%). È la forma più vantaggiosa per le PMI."},
+{k:["tasso agevolato","prestito agevolato","finanziamento agevolato"],a:"Un <b>finanziamento a tasso agevolato</b> è un prestito a condizioni favorevoli (tasso vicino allo 0%). Deve essere restituito ma il risparmio sugli interessi è significativo. Spesso combinato con fondo perduto."},
+{k:["credito d'imposta","credito imposta","tax credit"],a:"Il <b>credito d'imposta</b> è un'agevolazione fiscale: l'impresa compensa le tasse con il credito maturato. Es: Credito R&S, Transizione 5.0, Formazione 4.0."},
+{k:["contributo misto","misto"],a:"Un <b>contributo misto</b> combina fondo perduto + finanziamento agevolato. Es: Resto al Sud offre 50% fondo perduto e 50% tasso zero."},
+{k:["come funziona","come fare domanda","come partecipare","procedura"],a:"Per partecipare: <b>1)</b> Verifica requisiti. <b>2)</b> Prepara business plan. <b>3)</b> Raccogli documentazione. <b>4)</b> Presenta domanda online. <b>5)</b> Attendi valutazione. Possiamo assisterti!"},
+{k:["quanto tempo","tempi","tempistiche"],a:"Preparazione domanda: <b>2-4 settimane</b>. Istruttoria: <b>30-180 giorni</b>. Bandi a sportello più veloci; a graduatoria più tempo per la valutazione."},
+{k:["chi può","requisiti","beneficiari"],a:"Possono partecipare: <b>PMI</b>, <b>startup innovative</b>, <b>professionisti</b> P.IVA, <b>reti d'impresa</b>. Alcuni bandi riservati a donne, giovani under 35, o aree specifiche."},
+{k:["pmi","piccola media impresa"],a:"Definizione UE PMI: <b>Micro</b> (<10 dip., <€2M), <b>Piccola</b> (<50 dip., <€10M), <b>Media</b> (<250 dip., <€50M). La maggior parte dei bandi è per PMI."},
+{k:["de minimis","aiuti di stato"],a:"Il <b>regime de minimis</b> limita gli aiuti a €300.000 in 3 anni per impresa (dal 2024). Verificare di non aver superato il tetto."},
+{k:["spese ammissibili","cosa posso comprare"],a:"Spese tipiche: macchinari, software, consulenze, brevetti, formazione, ristrutturazione, marketing digitale. Ogni bando specifica le voci ammesse."},
+{k:["invitalia","cos'è invitalia"],a:"<b>Invitalia</b> è l'Agenzia nazionale per lo sviluppo d'impresa. Gestisce: Resto al Sud, ON Tasso Zero, Smart&Start, Cultura Crea, SELFIEmployment. Sito: invitalia.it"},
+{k:["resto al sud","resto sud"],a:"<b>Resto al Sud</b>: nuove attività nel Mezzogiorno. Fino a <b>€200.000</b> individuali (€800.000 società): 50% fondo perduto + 50% tasso zero. Per 18-55 anni."},
+{k:["smart start","smart&start"],a:"<b>Smart&Start Italia</b>: startup innovative su tutto il territorio. Fino a <b>€1.500.000</b> a tasso zero, copertura fino all'80% (90% al Sud). Nessuna garanzia."},
+{k:["on oltre nuove","tasso zero giovani","nuove imprese"],a:"<b>ON - Tasso Zero</b>: per under 35 e donne. Fino a <b>€3.000.000</b>: mix fondo perduto + tasso zero. Produzione, servizi, commercio, turismo."},
+{k:["cultura crea","bandi cultura"],a:"<b>Cultura Crea 2.0</b>: imprese culturali nel Mezzogiorno. Fondo perduto + tasso zero fino a <b>€400.000</b>. Include no-profit."},
+{k:["selfiemployment","autoimpiego"],a:"<b>SELFIEmployment</b>: prestiti tasso zero fino a <b>€50.000</b> per giovani NEET (18-29). Nessuna garanzia. Per microimprese e lavoro autonomo."},
+{k:["simest","cos'è simest","come funziona simest"],a:"<b>SIMEST</b> (Gruppo CDP) supporta l'internazionalizzazione: fiere, e-commerce export, studi fattibilità, inserimento mercati esteri. Contributo fondo perduto fino al 10%."},
+{k:["fiere internazionali","simest fiere"],a:"SIMEST <b>fiere internazionali</b>: fino a <b>€150.000</b> tasso agevolato + 10% fondo perduto. Copre stand, allestimento, trasporto, personale."},
+{k:["e-commerce","simest ecommerce"],a:"SIMEST <b>E-Commerce</b>: fino a <b>€300.000</b> per vendita online estero. Copre sviluppo sito, marketplace, digital marketing."},
+{k:["transizione digitale","simest digitale"],a:"SIMEST <b>Transizione Digitale ed Ecologica</b>: fino a <b>€300.000</b> (€500.000 con green). Digitalizzazione, sostenibilità, nuove tecnologie per export."},
+{k:["inail","bandi inail","bando isi","isi inail"],a:"<b>INAIL Bando ISI</b>: fondo perduto fino al 65% per sicurezza sul lavoro. Budget €300-400M/anno. Copre macchinari, DPI, bonifica amianto. Domanda a sportello (click day)."},
+{k:["click day","come funziona click day"],a:"Il <b>Click Day INAIL</b> è il giorno per inviare la domanda ISI. Chi invia prima ottiene il finanziamento. Fondamentale prepararsi con tutta la documentazione."},
+{k:["transizione 5.0","5.0","piano transizione"],a:"<b>Transizione 5.0</b>: crediti d'imposta per investimenti in beni 4.0 con risparmio energetico. Dal 35% al 45% fino a €50M. Richiede certificazione energetica."},
+{k:["4.0","industria 4.0","beni strumentali 4.0"],a:"<b>Industria 4.0</b> (ora 5.0): crediti d'imposta per beni strumentali allegato A/B, software, formazione. Focus su efficienza energetica nel 2025."},
+{k:["pnrr","piano resilienza","recovery"],a:"Il <b>PNRR</b> stanzia €191 miliardi: digitalizzazione, transizione ecologica, infrastrutture, istruzione, salute. Molti bandi imprese derivano dal PNRR."},
+{k:["pnrr digitalizzazione","digitale pnrr"],a:"PNRR ~€50 miliardi per <b>digitalizzazione</b>: cloud, cybersecurity PMI, competenze digitali, banda ultralarga. Voucher CCIAA spesso finanziati PNRR."},
+{k:["bandi regionali","regione","quali regioni"],a:"Monitoriamo tutte le <b>20 regioni</b> + Province Autonome. Bandi regionali spesso fino a 80% fondo perduto ma budget limitati. Abbonati per filtrarli!"},
+{k:["veneto","bandi veneto"],a:"<b>Veneto</b>: bandi innovazione PMI, artigianato, commercio, turismo, agricoltura, internazionalizzazione. POR FESR 2021-2027 attivo."},
+{k:["lombardia","bandi lombardia"],a:"<b>Lombardia</b>: Al Via, Bando Innovazione, internazionalizzazione, voucher digitali. Budget tra i più alti d'Italia."},
+{k:["campania","bandi campania"],a:"<b>Campania</b>: POR FESR, Titolo II investimenti PMI, startup, turismo, cultura. Fondi extra Mezzogiorno."},
+{k:["puglia","bandi puglia"],a:"<b>Puglia</b>: PIN (Pugliesi Innovativi), Titolo II, NIDI, TecnoNidi startup, internazionalizzazione. Puglia Sviluppo gestisce."},
+{k:["sicilia","bandi sicilia"],a:"<b>Sicilia</b>: IRFIS FinSicilia, microcredito, PMI, agricoltura, turismo. Fondi extra insularità e Mezzogiorno."},
+{k:["toscana","bandi toscana"],a:"<b>Toscana</b>: innovazione, internazionalizzazione, turismo sostenibile, artigianato, startup. Sviluppo Toscana. POR FESR."},
+{k:["lazio","bandi lazio"],a:"<b>Lazio</b>: Lazio Innova gestisce voucher startup, innovazione, PMI, cinema/audiovisivo, turismo. FESR e FEASR."},
+{k:["emilia","emilia-romagna","bandi emilia"],a:"<b>Emilia-Romagna</b>: manifattura avanzata, big data, economia circolare, innovazione, export. ART-ER gestisce. Alto cofinanziamento."},
+{k:["piemonte","bandi piemonte"],a:"<b>Piemonte</b>: innovazione, digitalizzazione, sostenibilità, automotive, aerospazio, agroalimentare. Finpiemonte gestisce."},
+{k:["sardegna","bandi sardegna"],a:"<b>Sardegna</b>: turismo, agroalimentare, ICT, artigianato, startup. Sardegna Ricerche. Fondi extra insularità."},
+{k:["sud","mezzogiorno","bandi sud"],a:"<b>Sud Italia</b>: ZES Unica, Resto al Sud, Decontribuzione Sud, Credito d'imposta Mezzogiorno, fondi europei extra. Percentuali contributo più alte."},
+{k:["camera commercio","cciaa","voucher digitali"],a:"<b>CCIAA</b> (105+): voucher digitalizzazione PID, brevetti/marchi, export, certificazioni. Tipico: €5.000-€10.000 fondo perduto 50-70%."},
+{k:["voucher","pid","punto impresa"],a:"<b>Voucher PID</b>: consulenza digitale (e-commerce, social, cybersecurity, cloud, AI). Importo ~€10.000 al 50-70%. Bando annuale."},
+{k:["startup","startup innovativa"],a:"Per <b>startup innovative</b>: Smart&Start (€1.5M), ON Tasso Zero, voucher CCIAA, programmi regionali. Vantaggi fiscali e accesso facilitato credito."},
+{k:["donne","imprenditoria femminile","fondo impresa donna"],a:"<b>Fondo Impresa Donna</b>: contributi fondo perduto per imprese femminili. ON Tasso Zero per donne. Premialità 10-20% in molti bandi regionali."},
+{k:["giovani","under 35"],a:"Per <b>under 35</b>: ON Tasso Zero, SELFIEmployment, Resto al Sud, programmi regionali con premialità giovani, crediti d'imposta maggiorati."},
+{k:["agricoltura","bandi agricoltura","psr"],a:"<b>Agricoltura</b>: PSR regionali (FEASR), OCM Vino, ISMEA, MASAF innovazione agroalimentare, contributi PAC. Ogni regione ha il proprio PSR."},
+{k:["turismo","bandi turismo","hotel"],a:"<b>Turismo</b>: bandi MiTur, credito ristrutturazioni alberghiere, Cultura Crea 2.0, FRI-Tur riqualificazione strutture ricettive."},
+{k:["commercio","negozio","retail"],a:"<b>Commercio</b>: voucher CCIAA, bandi regionali innovazione retail, ON Tasso Zero. Alcune regioni hanno bandi centri storici."},
+{k:["artigianato","artigiani"],a:"<b>Artigianato</b>: bandi regionali dedicati, voucher CCIAA, Legge 949 prestiti CdP, contributi botteghe storiche."},
+{k:["innovazione","ricerca sviluppo","r&d"],a:"<b>R&D</b>: Credito d'Imposta R&S (20%), Smart&Start, Horizon Europe, Accordi Innovazione MIMIT. Contratti di Sviluppo sopra €20M."},
+{k:["digitalizzazione","digitale","trasformazione digitale"],a:"<b>Digitalizzazione</b>: Transizione 5.0, voucher PID CCIAA, SIMEST e-commerce, programmi regionali. Copre software, cloud, cybersecurity, AI, IoT."},
+{k:["export","esportazione","internazionalizzazione"],a:"<b>Export</b>: SIMEST (fiere, e-commerce, studi), SACE (garanzie), ICE, voucher CCIAA, programmi regionali. SIMEST è il più completo."},
+{k:["energia","efficienza energetica","rinnovabili","fotovoltaico"],a:"<b>Energia</b>: Transizione 5.0, Conto Termico GSE, bandi regionali rinnovabili, FER fotovoltaico, comunità energetiche. PNRR miliardi per green."},
+{k:["formazione","training","competenze"],a:"<b>Formazione</b>: Fondi Interprofessionali, Credito Formazione 4.0, FSE+ regionale, ANPAL, programmi GOL. Molti bandi includono quota formazione."},
+{k:["brevetti","marchi","proprietà intellettuale"],a:"<b>Brevetti/Marchi</b>: voucher CCIAA (Marchi+, Brevetti+, Disegni+), EUIPO rimborso fino a €1.500, Patent Box super-deduzione 110%."},
+{k:["europa","fondi europei","eu"],a:"<b>Fondi UE</b>: Horizon Europe (€95 mld), COSME/SMP, LIFE, Creative Europe, Digital Europe, FESR. Gestiti da UE e tramite bandi nazionali/regionali."},
+{k:["horizon","horizon europe"],a:"<b>Horizon Europe</b> 2021-2027 (€95 mld): ERC grants, azioni collaborative, EIC Accelerator (fino a €2.5M equity + €2.5M grant). Molto competitivo."},
+{k:["zes","zona economica speciale"],a:"<b>ZES Unica Mezzogiorno</b> (2024): credito d'imposta investimenti nelle 8 regioni Sud. Beni strumentali nuovi. Aliquota variabile per dimensione."},
+{k:["fondo garanzia","garanzia pmi"],a:"<b>Fondo Garanzia PMI</b> (MCC): garanzia pubblica fino all'80% su prestiti fino a €5M. Gratuito per PMI e startup. Non è un finanziamento diretto."},
+{k:["abbonamento","quanto costa","prezzo","costo"],a:"Abbonamento: <b>€50 + IVA</b>/anno (€61 totali). Accesso completo, filtri avanzati, aggiornamenti giornalieri, newsletter. Un caffè al mese per migliaia di opportunità!"},
+{k:["come abbonare","come mi abbono","pagamento"],a:"Clicca <b>'Attiva Abbonamento'</b>. Paga con <b>PayPal</b> o <b>carta Stripe</b>. Accesso immediato per 12 mesi."},
+{k:["fonti","quante fonti"],a:"Oltre <b>150 fonti</b>: 6+ Ministeri, Invitalia, SIMEST, INAIL, SACE, CDP, 20 Regioni, 105+ CCIAA, incentivi.gov.it, RNA, OpenCoesione, fondi UE."},
+{k:["aggiornamento","ogni quanto"],a:"Database aggiornato <b>ogni giorno</b> tramite scraping automatico. Nuovi bandi inseriti entro 24 ore dalla pubblicazione."},
+{k:["consulenza","aiuto","assistenza"],a:"<b>Consulenza gratuita</b> per clienti RaaS: identificazione bandi, documentazione, compilazione domande. <a href='index.html#contatti'>Contattaci</a>."},
+{k:["newsletter","email"],a:"Registrati gratis per <b>newsletter settimanale</b> con nuovi bandi. Abbonati premium ricevono alert personalizzati. Iscriviti in basso!"},
+{k:["raas","raas automazioni","chi siete"],a:"<b>RaaS Automazioni</b>: digital agency italiana, siti web ad alte prestazioni + automazioni. BandiItalia nasce dalla nostra esperienza in aggregazione dati."},
+{k:["business plan","piano aziendale"],a:"<b>Business plan</b> richiesto per la maggior parte dei bandi: descrizione progetto, analisi mercato, piano finanziario 3-5 anni, team, investimenti. Invitalia ha template specifici."},
+{k:["documentazione","documenti necessari"],a:"Documenti tipici: visura camerale, bilanci 2-3 anni, DURC, dichiarazione de minimis, business plan, preventivi, CV team, carta d'identità."},
+{k:["durc"],a:"<b>DURC</b>: attesta regolarità INPS/INAIL/Cassa Edile. Obbligatorio per tutti i bandi. Richiesta tramite portale INPS."},
+{k:["rendicontazione","giustificativi"],a:"<b>Rendicontazione</b>: fatture, bonifici bancari (mai contanti!), relazioni tecniche, foto beni acquistati. Conservare tutto dall'inizio."},
+{k:["anticipo","erogazione","quando arrivano"],a:"Erogazione: anticipo (30-40%), SAL (su rendicontazione parziale), saldo (finale). Invitalia spesso anticipa importi significativi."},
+{k:["cumulabilità","posso cumulare"],a:"Bandi spesso <b>cumulabili</b> se spese non superano 100% investimento. De minimis: tetto €300.000 in 3 anni. Verificare caso per caso."},
+{k:["scadenza","quando scade"],a:"Bandi a sportello: aperti fino a esaurimento. A graduatoria: data precisa chiusura. Nel nostro database trovi sempre la scadenza aggiornata."},
+{k:["sportello","a sportello","graduatoria"],a:"<b>A sportello</b>: ordine cronologico, chi prima arriva vince. <b>A graduatoria</b>: tutte le domande valutate con punteggio, i migliori vincono."},
+{k:["nuova sabatini","sabatini"],a:"<b>Nuova Sabatini</b>: contributo interessi per beni strumentali. Fino a €4M + contributo 2.75% (3.575% Sud/green). Molto rapida nell'erogazione."},
+{k:["contratto sviluppo","grande progetto"],a:"<b>Contratti di Sviluppo</b>: progetti sopra €20M (€7.5M turismo). Fino al 75% con mix fondo perduto + tasso agevolato."},
+{k:["fri-tur","fondo rotativo turismo"],a:"<b>FRI-Tur</b>: riqualificazione strutture ricettive, fino all'80% (35% fondo perduto + 65% prestito agevolato)."},
+{k:["patent box"],a:"<b>Patent Box</b>: super-deduzione 110% costi R&S per brevetti, software, design. In dichiarazione redditi per 5 anni."},
+{k:["sace","garanzia export"],a:"<b>SACE</b>: garanzie e assicurazione crediti export. Garanzia Italia fino al 90%, polizze credito, finanza strutturata."},
+{k:["cdp","cassa depositi"],a:"<b>CDP</b>: equity, debito, Fondo Innovazione (CDP Venture Capital), infrastrutture. Opera tramite SIMEST e SACE."},
+{k:["mimit","mise","ministero imprese"],a:"<b>MIMIT</b> (ex MISE): Transizione 5.0, Nuova Sabatini, Contratti Sviluppo, Fondo Impresa Donna, marchi e brevetti."},
+{k:["comunità energetica","cer"],a:"<b>CER</b>: tariffa incentivante GSE (20 anni), contributo PNRR 40% comuni <5.000 ab., benefici fiscali membri."},
+{k:["ismea","garanzia agricoltura"],a:"<b>ISMEA</b>: garanzie e prestiti agricoltura. Più Impresa (avvio/sviluppo), SGFA (garanzie), mutui fondiari. Per giovani agricoltori."},
+{k:["cup","codice unico progetto"],a:"<b>CUP</b>: codice identificativo progetto investimento pubblico. Generato su cupweb.rgs.mef.gov.it. Va riportato su tutti i documenti."},
+{k:["grazie","ok","capito","perfetto"],a:"Di nulla! Altre domande? Puoi anche <a href='index.html#contatti'>contattarci</a> per consulenza personalizzata."},
+{k:["ciao","salve","buongiorno","buonasera"],a:"Ciao! Come posso aiutarti? Chiedi su bandi, finanziamenti, requisiti, procedure, o qualsiasi altra cosa!"},
+{k:["contatti","telefono","email contatto"],a:"Contattaci dalla pagina <a href='index.html#contatti'>Contatti</a>. Consulenza gratuita per clienti RaaS."},
+{k:["edilizia","ristrutturazione","costruzioni"],a:"<b>Edilizia</b>: Bando ISI INAIL, bonus fiscali, bandi regionali rigenerazione, PNRR efficientamento. Contributi CCIAA botteghe."},
+{k:["banda ultralarga","fibra","connettività"],a:"Piano <b>Banda Ultralarga</b> PNRR: voucher connettività MIMIT fino €2.500 per upgrade a 30+ Mbps."},
+{k:["mini pia","programma integrato"],a:"<b>Mini PIA</b>: bandi regionali (soprattutto Puglia/Sud) per progetti complessi con investimenti + formazione + innovazione. Fino al 60-70%."},
+{k:["fondo perduto 2025","bandi 2025"],a:"Nel <b>2025</b> sono attivi numerosi bandi a fondo perduto: Transizione 5.0, Smart&Start, ON Tasso Zero, Resto al Sud, bandi regionali POR FESR, voucher CCIAA. Il nostro aggregatore li monitora tutti quotidianamente!"},
+{k:["come risparmiare","risparmiare tasse"],a:"I bandi permettono di <b>risparmiare</b> significativamente: fondo perduto (soldi che non restituisci), crediti d'imposta (riduci le tasse), tassi agevolati (interessi quasi zero). Combinandoli puoi coprire fino al 90% dell'investimento."},
+{k:["startup innovativa requisiti","come diventare startup"],a:"Per essere <b>startup innovativa</b>: costituita da meno di 5 anni, fatturato < €5M, oggetto sociale innovativo, almeno 1 requisito tra: 15% spese in R&S, 1/3 team con dottorato/laurea magistrale, brevetto registrato. Iscrizione alla sezione speciale del Registro Imprese."},
+{k:["partita iva","libero professionista","freelance"],a:"I <b>liberi professionisti</b> con P.IVA possono accedere a diversi bandi: SELFIEmployment, voucher CCIAA, alcuni bandi regionali, credito d'imposta formazione. Verificare i requisiti specifici di ogni bando."},
+{k:["cooperative","cooperativa","bandi cooperative"],a:"Le <b>cooperative</b> possono accedere alla maggior parte dei bandi per PMI. Inoltre: Fondo Sviluppo Cooperazione (Legacoop, Confcooperative), bandi regionali specifici, agevolazioni fiscali cooperative sociali."},
+{k:["franchising","aprire franchising"],a:"Per aprire un <b>franchising</b> puoi usare: ON Tasso Zero (under 35/donne), Resto al Sud (Mezzogiorno), finanziamenti bancari con garanzia MCC. Il business plan deve includere il piano di affiliazione."},
+{k:["e-commerce","vendita online","negozio online"],a:"Per avviare un <b>e-commerce</b>: SIMEST e-commerce export (fino a €300.000), voucher PID digitalizzazione CCIAA, bandi regionali digital transformation, Transizione 5.0 per software. Coprono sviluppo sito, piattaforma, marketing."},
+{k:["social media","marketing digitale","digital marketing"],a:"Il <b>marketing digitale</b> è spesa ammissibile in molti bandi: voucher PID CCIAA (social media, SEO, advertising), SIMEST (marketing per export), bandi regionali digitalizzazione. Tipico contributo 50-70%."},
+{k:["intelligenza artificiale","ai","bandi ai"],a:"Per l'<b>AI</b>: Transizione 5.0 (se porta risparmio energetico), Horizon Europe (programmi specifici AI), bandi MIMIT per innovazione digitale, voucher PID. L'AI è tra le tecnologie abilitanti 4.0."},
+{k:["cybersecurity","sicurezza informatica"],a:"Per la <b>cybersecurity</b>: voucher PID CCIAA, bandi regionali digitalizzazione, PNRR cybersecurity, Transizione 5.0. Copre software di sicurezza, firewall, formazione, certificazioni ISO 27001."},
+{k:["cloud","cloud computing","migrazione cloud"],a:"La <b>migrazione al cloud</b> è finanziabile con: voucher PID CCIAA, Transizione 5.0, bandi regionali, voucher connettività MIMIT. Copre licenze SaaS, infrastruttura cloud, consulenza migrazione."},
+{k:["blockchain","bandi blockchain"],a:"La <b>blockchain</b> rientra nelle tecnologie 4.0: finanziabile con Transizione 5.0, voucher PID CCIAA, Smart&Start (se startup), Horizon Europe. Applicazioni: tracciabilità supply chain, smart contracts, fintech."},
+{k:["iot","internet of things","sensori"],a:"L'<b>IoT</b> è tecnologia abilitante 4.0: Transizione 5.0 (credito d'imposta), voucher PID CCIAA, bandi regionali innovazione. Copre sensori, gateway, piattaforme dati, integrazione sistemi."},
+{k:["robot","robotica","automazione industriale"],a:"Per la <b>robotica</b>: Transizione 5.0 (beni allegato A), Nuova Sabatini (acquisto macchinari), bandi regionali manifattura avanzata. I robot collaborativi (cobot) sono tra i beni più finanziati."},
+{k:["stampa 3d","additive manufacturing","prototipazione"],a:"La <b>stampa 3D</b> rientra nei beni 4.0 allegato A: Transizione 5.0, Nuova Sabatini, bandi regionali. Copre stampanti, materiali, software CAD/CAM, formazione."},
+{k:["realtà virtuale","vr","realtà aumentata","ar"],a:"<b>VR/AR</b> sono tecnologie 4.0: finanziabili con Transizione 5.0, voucher PID, Smart&Start, bandi regionali. Applicazioni: formazione, manutenzione remota, design prodotto, turismo immersivo."},
+{k:["big data","analisi dati","data analytics"],a:"Il <b>Big Data</b> è tecnologia abilitante 4.0: Transizione 5.0, voucher PID CCIAA, bandi regionali, Horizon Europe. Copre software analytics, data warehouse, consulenza, formazione data science."},
+{k:["certificazione","iso","qualità"],a:"Le <b>certificazioni</b> (ISO 9001, 14001, 45001, etc.) sono spesso finanziabili: voucher CCIAA, bandi regionali, INAIL (per ISO 45001). Alcune certificazioni danno punteggio extra nei bandi."},
+{k:["sostenibilità","green","economia circolare","esg"],a:"Per la <b>sostenibilità</b>: Transizione 5.0 (focus green), bandi MASE (Ministero Ambiente), LIFE (programma UE), bandi regionali economia circolare, credito d'imposta investimenti green."},
+{k:["auto elettrica","mobilità sostenibile","colonnine"],a:"Per la <b>mobilità elettrica</b>: incentivi acquisto veicoli commerciali elettrici, bandi regionali per colonnine ricarica, PNRR mobilità sostenibile, Conto Termico per aziende."},
+{k:["idrogeno","bandi idrogeno"],a:"Per l'<b>idrogeno</b>: PNRR ha stanziato €3.6 miliardi, IPCEI Idrogeno (progetti europei), bandi MASE, incentivi produzione idrogeno verde. Settore in forte crescita con molte opportunità."},
+{k:["agroalimentare","food","alimentare"],a:"Per l'<b>agroalimentare</b>: PSR regionali, MASAF (innovazione filiere), OCM ortofrutta/vino, ISMEA garanzie, Contratti di Filiera, bandi CCIAA, marchi DOP/IGP. Settore con molti bandi dedicati."},
+{k:["vino","viticoltura","cantina"],a:"Per il <b>settore vino</b>: OCM Vino (ristrutturazione vigneti, investimenti, promozione Paesi terzi), PSR, ISMEA, bandi regionali. L'OCM Vino è uno dei bandi più generosi dell'agroalimentare."},
+{k:["biologico","bio","agricoltura biologica"],a:"Per il <b>biologico</b>: PSR (misure specifiche per conversione e mantenimento bio), MASAF, bandi regionali, certificazione bio finanziabile. Premialità extra in molti bandi agricoli."},
+{k:["pesca","acquacoltura","bandi pesca"],a:"Per <b>pesca e acquacoltura</b>: FEAMPA (Fondo Europeo per gli Affari Marittimi), bandi MASAF, programmi regionali pesca, investimenti per modernizzazione flotta e impianti acquacoltura."},
+{k:["moda","tessile","fashion","abbigliamento"],a:"Per il <b>settore moda</b>: bandi MIMIT Made in Italy, Nuova Sabatini (macchinari), bandi regionali manifattura, SIMEST (internazionalizzazione), voucher CCIAA (e-commerce, digitalizzazione)."},
+{k:["design","arredamento","mobili"],a:"Per <b>design e arredamento</b>: bandi MIMIT (Disegni+), Nuova Sabatini, bandi regionali artigianato, SIMEST fiere internazionali (Salone del Mobile), voucher CCIAA."},
+{k:["farmaceutico","pharma","bandi farmaceutico"],a:"Per il <b>farmaceutico</b>: Contratti di Sviluppo (grandi progetti), credito R&S, Horizon Europe (Health), AIFA bandi ricerca, bandi regionali biotech e life sciences."},
+{k:["medicale","dispositivi medici","healthcare"],a:"Per il <b>settore medicale</b>: credito R&S, Horizon Europe, PNRR salute, bandi regionali innovazione sanitaria, Smart&Start (startup medtech). Settore in forte espansione post-COVID."},
+{k:["cinema","audiovisivo","film","produzione video"],a:"Per il <b>cinema/audiovisivo</b>: Tax Credit Cinema (40%), bandi MiC (Ministero Cultura), Lazio Cinema, bandi regionali audiovisivo, Creative Europe (UE). Copre produzione, distribuzione, sale."},
+{k:["musica","spettacolo","eventi","live"],a:"Per <b>musica e spettacolo</b>: FUS (Fondo Unico Spettacolo), bandi MiC, Creative Europe, bandi regionali cultura, Tax Credit musica. Per eventi: contributi CCIAA e bandi turismo."},
+{k:["sport","impianti sportivi","palestra"],a:"Per lo <b>sport</b>: bandi Sport e Salute SpA, Credito Sportivo (prestiti agevolati), bandi regionali impianti sportivi, PNRR sport (riqualificazione impianti comunali)."},
+{k:["sociale","impresa sociale","terzo settore","no profit"],a:"Per il <b>terzo settore</b>: Cultura Crea 2.0, bandi Fondazioni bancarie, Fondo Sociale Europeo (FSE+), bandi regionali economia sociale, Italia Sociale (MIMIT). Le imprese sociali hanno accesso a bandi dedicati."},
+{k:["trasporti","logistica","autotrasporto"],a:"Per <b>trasporti e logistica</b>: incentivi MIT per rinnovo parco veicoli, Nuova Sabatini (mezzi), bandi regionali logistica, Marebonus/Ferrobonus (intermodalità), contributi per mezzi green."},
+{k:["nautica","cantieristica","barche"],a:"Per la <b>nautica</b>: bandi regionali (soprattutto Liguria, Toscana, Campania), SIMEST (export), Nuova Sabatini, Contratti di Sviluppo per grandi cantieri. Settore Made in Italy molto forte."},
+{k:["edtech","formazione online","e-learning"],a:"Per l'<b>EdTech</b>: Smart&Start (startup), bandi PNRR istruzione digitale, voucher PID, bandi regionali innovazione sociale, Horizon Europe. La formazione digitale è settore in crescita."},
+{k:["fintech","pagamenti digitali","bandi fintech"],a:"Per il <b>FinTech</b>: Smart&Start, EIC Accelerator (Horizon Europe), bandi MIMIT innovazione, sandbox regolamentaria Banca d'Italia. Settore ad alta crescita con investitori interessati."},
+{k:["proptech","immobiliare tech"],a:"Per il <b>PropTech</b>: Smart&Start, bandi regionali innovazione, Transizione 5.0 (per digitalizzazione gestione immobili), PNRR rigenerazione urbana. Mercato emergente in Italia."},
+{k:["coworking","spazi condivisi"],a:"Per il <b>coworking</b>: bandi regionali per imprenditorialità, contributi comunali rigenerazione urbana, PNRR borghi e aree interne. Alcune regioni hanno bandi specifici per spazi di lavoro condivisi."},
+{k:["incubatore","acceleratore","programmi accelerazione"],a:"<b>Incubatori e acceleratori</b> in Italia: CDP Venture Capital, Luiss EnLabs, H-Farm, PoliHub, I3P. Offrono mentoring, networking, spazi e spesso investimenti seed da €50K a €200K."},
+{k:["venture capital","investitori","equity","round"],a:"<b>Venture Capital</b> in Italia: CDP Venture Capital (principale investitore pubblico), P101, United Ventures, Primo Ventures, 360 Capital. Per startup con alto potenziale di crescita. Non è un bando ma un investimento in equity."},
+{k:["crowdfunding","equity crowdfunding"],a:"Il <b>crowdfunding</b> è un'alternativa ai bandi: piattaforme come Mamacrowd, CrowdFundMe, BacktoWork raccolgono capitali da investitori privati. Regolamentato da Consob. Non è un contributo pubblico."},
+{k:["microcredito","piccolo prestito"],a:"Il <b>microcredito</b> è un prestito fino a €75.000 (imprenditoriale) o €15.000 (sociale) senza garanzie reali. Gestito da banche e operatori autorizzati. ENM (Ente Nazionale Microcredito) coordina il settore."},
+{k:["prestito d'onore","finanziamento giovani"],a:"Il <b>prestito d'onore</b> è un finanziamento agevolato per giovani che vogliono avviare un'attività: tasso zero o quasi, nessuna garanzia. Spesso gestito da Invitalia o enti regionali."},
+{k:["leasing","leasing agevolato"],a:"Il <b>leasing agevolato</b> è finanziabile con Nuova Sabatini: contributo sugli interessi del leasing per acquisto beni strumentali 4.0. Vantaggi fiscali: canoni deducibili."},
+{k:["assunzioni","bonus assunzioni","incentivi occupazione"],a:"<b>Incentivi assunzioni</b>: Decontribuzione Sud, Bonus Giovani Under 36, incentivo donne svantaggiate, Garanzia Giovani, assunzioni percettori RdC. Non sono bandi classici ma riduzioni contributive INPS."},
+{k:["tirocinio","stage","apprendistato"],a:"<b>Tirocini e apprendistato</b>: Garanzia Giovani (rimborso spese tirocinio), FSE+ regionale, apprendistato professionalizzante (sgravi contributivi). Non servono bandi, sono incentivi automatici."},
+{k:["welfare aziendale","benefit dipendenti"],a:"Il <b>welfare aziendale</b> ha vantaggi fiscali automatici (non serve un bando): i benefit ai dipendenti sono deducibili e non tassati fino a €3.000/anno. Alcune regioni hanno bandi specifici per piani welfare PMI."},
+{k:["smart working","lavoro agile","telelavoro"],a:"Per lo <b>smart working</b>: voucher PID CCIAA (strumenti digitali), bandi regionali digitalizzazione, Transizione 5.0 (software collaborativi). Copre piattaforme, VPN, hardware, formazione."},
+{k:["internazionalizzazione","andare all'estero"],a:"Per <b>andare all'estero</b>: SIMEST (pacchetto completo: fiere, e-commerce, studi, patrimonializzazione), SACE (garanzie), ICE (servizi promozionali), voucher CCIAA internazionalizzazione. SIMEST è il punto di partenza migliore."},
+{k:["marca","brand","branding"],a:"Per sviluppare il <b>brand</b>: bandi Marchi+ MIMIT (registrazione marchi), voucher CCIAA, SIMEST (branding per export), EUIPO (rimborso fino €1.500 per marchi UE). Investire nel brand è spesso finanziabile."},
+{k:["packaging","imballaggio"],a:"Il <b>packaging</b> innovativo è finanziabile: bandi economia circolare (packaging sostenibile), Nuova Sabatini (macchinari confezionamento), bandi regionali innovazione, CONAI premi per eco-design."},
+{k:["logistica magazzino","magazzino automatizzato"],a:"Per la <b>logistica magazzino</b>: Transizione 5.0 (sistemi automatizzati allegato A), Nuova Sabatini, bandi regionali. Copre: WMS, scaffalature automatiche, AGV, picking robotizzato."},
+{k:["efficientamento edifici","riqualificazione energetica azienda"],a:"Per l'<b>efficientamento energetico</b> aziendale: Conto Termico (GSE), Transizione 5.0, bandi regionali green, detrazioni fiscali. Copre: isolamento, infissi, impianti, LED, building automation."},
+{k:["pannelli solari","fotovoltaico azienda"],a:"Per il <b>fotovoltaico aziendale</b>: Transizione 5.0 (se abbinato a beni 4.0), Conto Termico, FER (incentivi GSE), bandi regionali, CER (comunità energetiche). Autoconsumo = risparmio in bolletta."},
+{k:["pompa di calore","riscaldamento"],a:"Le <b>pompe di calore</b> per aziende: Conto Termico (fino al 65%), Transizione 5.0, bandi regionali efficienza energetica. Risparmio immediato sui costi di riscaldamento/raffrescamento."},
+{k:["acqua","depurazione","trattamento acque"],a:"Per il <b>trattamento acque</b>: bandi MASE (gestione risorse idriche), PNRR (investimenti idrici), bandi regionali, INAIL ISI (se legato a sicurezza). Economia circolare dell'acqua è tema prioritario."},
+{k:["rifiuti","gestione rifiuti","riciclo"],a:"Per la <b>gestione rifiuti</b>: bandi MASE economia circolare, PNRR (impianti riciclo), bandi regionali, credito d'imposta prodotti da riciclo. Forte spinta verso zero waste."},
+{k:["amianto","bonifica amianto"],a:"Per la <b>bonifica amianto</b>: INAIL Bando ISI (contributo fino al 65%), credito d'imposta bonifica amianto, bandi regionali. L'INAIL finanzia specificamente la rimozione amianto dalle aziende."},
+{k:["sicurezza lavoro","prevenzione infortuni","dpi"],a:"Per la <b>sicurezza sul lavoro</b>: INAIL Bando ISI (principale strumento, fino al 65% fondo perduto), bandi regionali, OPRA (Organismi Paritetici). Copre macchinari sicuri, DPI, formazione, bonifica."},
+{k:["haccp","sicurezza alimentare"],a:"L'<b>HACCP</b> e la sicurezza alimentare: i costi di certificazione e adeguamento sono finanziabili con voucher CCIAA, bandi regionali agroalimentare, PSR per aziende agricole."},
+{k:["negozio fisico","apertura negozio"],a:"Per aprire un <b>negozio</b>: ON Tasso Zero (under 35/donne), Resto al Sud (Mezzogiorno), bandi comunali rivitalizzazione centri storici, microcredito. Alcune regioni hanno bandi specifici per il commercio."},
+{k:["ristorante","ristorazione","bar","pizzeria"],a:"Per la <b>ristorazione</b>: ON Tasso Zero, Resto al Sud, bandi regionali commercio, contributi CCIAA. Spese ammesse: arredi, attrezzature cucina, climatizzazione, insegne, marketing."},
+{k:["hotel","albergo","b&b","bed and breakfast"],a:"Per <b>hotel e B&B</b>: FRI-Tur (fino all'80%), credito d'imposta strutture ricettive, bandi regionali turismo, Cultura Crea 2.0 (Sud). Copre ristrutturazione, arredi, digitalizzazione, energia."},
+{k:["agriturismo","fattoria didattica"],a:"Per l'<b>agriturismo</b>: PSR regionale (misure specifiche diversificazione), FRI-Tur, bandi regionali turismo rurale, GAL (Gruppi Azione Locale). Ottimi contributi per attività multifunzionali."},
+{k:["centro estetico","parrucchiere","salone bellezza"],a:"Per <b>centri estetici e parrucchieri</b>: bandi regionali artigianato, voucher CCIAA digitalizzazione (prenotazioni online, social), ON Tasso Zero, microcredito. Settore artigianale con buone opportunità."},
+{k:["palestra","centro fitness","wellness"],a:"Per <b>palestre e fitness</b>: bandi Credito Sportivo (tassi agevolati), bandi regionali sport, ON Tasso Zero (nuova apertura), contributi comunali. Attrezzature sportive sono beni strumentali finanziabili."},
+{k:["ambulatorio","studio medico","poliambulatorio"],a:"Per <b>studi medici</b>: Nuova Sabatini (attrezzature), bandi regionali sanità, credito d'imposta beni strumentali. Le apparecchiature medicali sono beni strumentali ammissibili in molti bandi."},
+{k:["dentista","studio dentistico","odontoiatrico"],a:"Per <b>studi dentistici</b>: Nuova Sabatini (riuniti, TAC, scanner), bandi regionali, credito d'imposta beni 4.0 (es. scanner digitali). Le attrezzature odontoiatriche sono beni strumentali."},
+{k:["veterinario","clinica veterinaria"],a:"Per <b>cliniche veterinarie</b>: Nuova Sabatini (attrezzature diagnostiche), bandi regionali, voucher CCIAA per digitalizzazione (gestionale, prenotazioni online)."},
+{k:["trasporto merci","autotrasportatore","camion"],a:"Per l'<b>autotrasporto</b>: incentivi MIT rinnovo parco veicolare (contributo per acquisto mezzi nuovi Euro 6/elettrici), rottamazione mezzi inquinanti, Nuova Sabatini."},
+{k:["taxi","ncc","noleggio con conducente"],a:"Per <b>taxi e NCC</b>: contributi per veicoli elettrici/ibridi, bandi comunali mobilità sostenibile, microcredito. Il settore beneficia degli incentivi alla mobilità green."},
+{k:["autofficina","carrozzeria","meccanico"],a:"Per <b>autofficine e carrozzerie</b>: INAIL Bando ISI (sicurezza), Nuova Sabatini (attrezzature), bandi regionali artigianato, voucher CCIAA digitalizzazione (gestionale, diagnosi digitale)."},
+{k:["tipografia","stampa","grafica"],a:"Per la <b>tipografia e stampa</b>: Nuova Sabatini (macchinari digitali), bandi regionali artigianato, Transizione 5.0 (stampanti digitali 4.0), voucher CCIAA. La stampa digitale è bene 4.0."},
+{k:["falegnameria","legno","carpenteria"],a:"Per la <b>falegnameria</b>: bandi regionali artigianato, Nuova Sabatini (CNC, macchine taglio), INAIL ISI (sicurezza macchinari), Transizione 5.0 per macchinari 4.0 a controllo numerico."},
+{k:["saldatura","metalmeccanico","officina"],a:"Per il settore <b>metalmeccanico</b>: Transizione 5.0, Nuova Sabatini, INAIL ISI (sicurezza), bandi regionali manifattura, Contratti di Sviluppo (grandi investimenti). Forte dotazione di bandi."},
+{k:["edilizia verde","bioedilizia","costruzioni sostenibili"],a:"Per la <b>bioedilizia</b>: bandi MASE, PNRR efficientamento, Conto Termico, bandi regionali green building, Superbonus per residenziale. La sostenibilità in edilizia è priorità nazionale."},
+{k:["impiantista","elettricista","idraulico"],a:"Per <b>impiantisti</b>: bandi regionali artigianato, INAIL ISI (sicurezza), Nuova Sabatini (attrezzature), voucher CCIAA. Le certificazioni F-Gas e FER sono spesso finanziabili."},
+{k:["gelateria","pasticceria","panificio","forno"],a:"Per <b>gelaterie e panifici</b>: bandi regionali artigianato alimentare, ON Tasso Zero, Nuova Sabatini (forni, abbattitori), contributi CCIAA. Eccellenze artigianali italiane con bandi dedicati."},
+{k:["lavanderia","pulizie","cleaning"],a:"Per <b>lavanderie e imprese pulizia</b>: bandi regionali artigianato/servizi, Nuova Sabatini (macchinari professionali), INAIL ISI (prodotti chimici sicurezza), voucher CCIAA."},
+{k:["traslocchi","trasloco"],a:"Per imprese di <b>traslochi</b>: incentivi MIT rinnovo parco veicolare, Nuova Sabatini (mezzi e attrezzature), bandi regionali servizi, voucher CCIAA per digitalizzazione."},
+{k:["scuola guida","autoscuola"],a:"Per le <b>autoscuole</b>: contributi per veicoli elettrici (formazione guida EV), voucher CCIAA digitalizzazione (prenotazioni online, simulatori), bandi regionali servizi."},
+{k:["agenzia viaggi","tour operator"],a:"Per <b>agenzie viaggi e tour operator</b>: bandi MiTur, bandi regionali turismo, SIMEST (incoming/outgoing), voucher CCIAA (piattaforme booking), Cultura Crea 2.0 (Sud)."},
+{k:["eventi","wedding","organizzazione eventi"],a:"Per gli <b>eventi e wedding</b>: bandi regionali turismo e cultura, Creative Europe (grandi eventi culturali), contributi CCIAA, ON Tasso Zero per nuove attività."},
+{k:["coworking","spazio coworking"],a:"Per aprire uno <b>spazio coworking</b>: bandi regionali imprenditorialità, contributi comunali rigenerazione urbana, ON Tasso Zero, PNRR borghi. Alcune regioni finanziano hub innovazione."},
+{k:["agenzia immobiliare","immobiliare"],a:"Per le <b>agenzie immobiliari</b>: voucher CCIAA (digitalizzazione, CRM, virtual tour), bandi regionali servizi, PropTech startup (Smart&Start). La digitalizzazione immobiliare è incentivata."},
+{k:["assicurazioni","agenzia assicurativa"],a:"Per le <b>agenzie assicurative</b>: voucher CCIAA (digitalizzazione gestionale), bandi regionali servizi. Le InsurTech startup possono accedere a Smart&Start e venture capital."},
+{k:["consulenza","studio consulenza","consulente"],a:"Per gli <b>studi di consulenza</b>: voucher CCIAA, bandi regionali per professionisti, credito formazione. Come fornitore: molti bandi includono consulenze tra le spese ammissibili."},
+{k:["avvocato","studio legale"],a:"Gli <b>studi legali</b> possono beneficiare di: voucher CCIAA digitalizzazione (gestionale, firma digitale), bandi regionali per professionisti, formazione continua finanziata dagli Ordini."},
+{k:["commercialista","studio commercialista"],a:"Per i <b>commercialisti</b>: voucher CCIAA (software gestionale, fatturazione elettronica), bandi regionali professionisti. Importante: i commercialisti sono anche consulenti per i bandi dei clienti!"},
+{k:["architetto","studio architettura","ingegnere"],a:"Per <b>architetti e ingegneri</b>: voucher CCIAA (BIM, software 3D), bandi regionali professionisti, credito formazione. Il BIM è obbligatorio per appalti pubblici e molto richiesto."},
+{k:["fotografo","studio fotografico","video"],a:"Per <b>fotografi e videomaker</b>: bandi regionali cultura/creatività, voucher CCIAA, Tax Credit Cinema (per produzioni), Creative Europe. Attrezzature professionali sono beni strumentali."},
+{k:["web","sviluppo web","agenzia web","sito internet"],a:"Per <b>agenzie web e sviluppatori</b>: Smart&Start (se startup innovativa), voucher CCIAA, bandi regionali ICT. Come fornitori: il vostro lavoro è spesa ammissibile per i bandi dei clienti!"},
+{k:["app","sviluppo app","applicazione mobile"],a:"Per lo <b>sviluppo app</b>: Smart&Start (startup), voucher PID CCIAA, bandi regionali innovazione digitale, Horizon Europe (se ricerca). Le app innovative rientrano nei beni immateriali 4.0."},
+{k:["gaming","videogiochi","game development"],a:"Per i <b>videogiochi</b>: Tax Credit Videogiochi (credito d'imposta fino al 25%), bandi MiC, Creative Europe (sottoprogramma MEDIA), Smart&Start, bandi regionali audiovisivo."},
+{k:["podcast","content creator","creator economy"],a:"Per i <b>content creator</b>: bandi regionali cultura/creatività, voucher CCIAA (attrezzature, software), ON Tasso Zero per nuove attività. Il settore è in crescita ma con pochi bandi specifici."},
+{k:["marketplace","piattaforma online"],a:"Per creare un <b>marketplace</b>: Smart&Start (se startup innovativa), SIMEST e-commerce, bandi regionali digitalizzazione. I marketplace rientrano nelle piattaforme digitali finanziate da PNRR."},
+{k:["saas","software as a service"],a:"Per sviluppare un <b>SaaS</b>: Smart&Start (fino a €1.5M), EIC Accelerator, venture capital (CDP, fondi privati), bandi regionali ICT. Il SaaS è il modello di business più finanziato per startup tech."},
+{k:["drone","droni","uav"],a:"Per i <b>droni</b>: bandi regionali innovazione, Transizione 5.0 (se uso industriale 4.0), bandi agricoltura di precisione (PSR), Smart&Start per startup drone-tech. Servono certificazioni ENAC."},
+{k:["apicoltura","api","miele"],a:"Per l'<b>apicoltura</b>: PSR regionale (misura apicoltura), Programma Apistico Nazionale (PAN), bandi regionali agricoltura, contributi OCM. L'apicoltura ha programmi UE dedicati."},
+{k:["florovivaismo","fiori","vivaio"],a:"Per il <b>florovivaismo</b>: PSR regionale, bandi regionali agricoltura, contributi PAC, bandi CCIAA. Le serre tecnologiche rientrano nei beni 4.0 (Transizione 5.0)."},
+{k:["allevamento","zootecnia","bovini","suini"],a:"Per l'<b>allevamento</b>: PSR regionale (investimenti zootecnici), ISMEA (garanzie e mutui), bandi benessere animale, bandi regionali. Investimenti in stalle moderne sono molto finanziati."},
+{k:["tartufo","funghi","prodotti bosco"],a:"Per <b>tartufo e prodotti del bosco</b>: PSR regionale (diversificazione), bandi GAL aree rurali, contributi forestali, bandi regionali. Prodotti di nicchia ad alto valore aggiunto."},
+{k:["birrificio","birra artigianale","microbirrificio"],a:"Per i <b>birrifici artigianali</b>: bandi regionali artigianato alimentare, ON Tasso Zero, Nuova Sabatini (impianti birrari), SIMEST (export birra). Settore in forte crescita con buone opportunità."},
+{k:["distilleria","liquori","spirits"],a:"Per le <b>distillerie</b>: bandi regionali agroalimentare, OCM spiriti, SIMEST (export), Nuova Sabatini (alambicchi e attrezzature), bandi CCIAA valorizzazione territori."},
+{k:["affittacamere","casa vacanza","affitto breve"],a:"Per <b>affittacamere e case vacanza</b>: bandi regionali turismo, contributi comunali, FRI-Tur (se struttura ricettiva registrata), voucher CCIAA per piattaforme di prenotazione online."},
+{k:["campeggio","glamping","villaggio turistico"],a:"Per <b>campeggi e glamping</b>: FRI-Tur, bandi regionali turismo, PNRR turismo sostenibile. Il glamping è un trend crescente con buone possibilità di finanziamento."},
+{k:["stabilimento balneare","lido","balneare"],a:"Per gli <b>stabilimenti balneari</b>: FRI-Tur, bandi regionali turismo costiero, contributi comunali, bandi per accessibilità spiagge. Investimenti in sostenibilità sono premiati."},
+{k:["museo","galleria","spazio espositivo"],a:"Per <b>musei e gallerie</b>: bandi MiC (Ministero Cultura), Art Bonus (credito d'imposta 65% per donazioni), PNRR cultura, Creative Europe, bandi regionali cultura."},
+{k:["teatro","danza","performing arts"],a:"Per il <b>teatro e danza</b>: FUS (Fondo Unico Spettacolo), bandi MiC, Creative Europe, bandi regionali cultura e spettacolo. Contributi per produzioni, festival, formazione artistica."},
+{k:["editoria","libro","casa editrice"],a:"Per l'<b>editoria</b>: Tax Credit Librerie, bandi MiC editoria, Creative Europe, contributi traduzioni letterarie, bandi regionali cultura. Piccole case editrici hanno bandi dedicati."},
+{k:["giornalismo","testata","media"],a:"Per il <b>giornalismo</b>: contributi diretti all'editoria (Presidenza Consiglio), bandi regionali informazione, credito d'imposta edicole e giornalai, fondi innovazione media."},
+{k:["benefici fiscali","vantaggi startup"],a:"Le <b>startup innovative</b> hanno vantaggi extra: incentivi fiscali per investitori (30-50% detrazione), esonero diritti camerali, facilitazione lavoro flessibile, accesso diretto al Fondo Garanzia."},
+{k:["sovraindebitamento","debiti","crisi impresa"],a:"Per imprese in <b>difficoltà</b>: composizione negoziata crisi (CCI), accordi ristrutturazione, concordato preventivo. Non ci sono bandi a fondo perduto, ma strumenti legali per ristrutturare i debiti."},
+{k:["successione","passaggio generazionale"],a:"Per il <b>passaggio generazionale</b>: alcuni bandi regionali finanziano consulenza e accompagnamento, voucher CCIAA, credito d'imposta per investimenti post-successione. Tema importante per PMI familiari."},
+{k:["certificazione parità genere","gender equality"],a:"La <b>certificazione parità di genere</b> (UNI/PdR 125) dà punteggio extra in molti bandi pubblici e sgravi contributivi (fino a €50.000/anno). Investimento nella certificazione finanziabile con voucher CCIAA."},
+{k:["rating legalità","rating esg"],a:"Il <b>Rating di Legalità</b> (AGCM) dà punteggio extra nei bandi pubblici e facilita accesso al credito. Gratuito, dura 2 anni. Richiesto online su agcm.it. Fortemente consigliato per chi fa bandi."},
+{k:["firma digitale","spid","pec","identità digitale"],a:"<b>SPID, PEC e firma digitale</b> sono indispensabili per partecipare ai bandi online. SPID gratuito (Poste, InfoCert), PEC ~€5/anno, firma digitale ~€30/anno. Senza questi non puoi inviare domande."},
+{k:["fattura proforma","preventivo","offerta"],a:"I <b>preventivi</b> dei fornitori sono quasi sempre richiesti nei bandi: almeno 2-3 preventivi comparativi per ogni voce di spesa. Devono essere dettagliati (descrizione, quantità, prezzo unitario, totale)."},
+{k:["cofinanziamento","quota propria"],a:"Il <b>cofinanziamento</b> è la parte di investimento che l'impresa deve sostenere con fondi propri. Se un bando copre il 50%, il restante 50% è a tuo carico. Può essere coperto con prestito bancario (garanzia MCC)."},
+{k:["anticipazione","prefinanziamento"],a:"L'<b>anticipazione bancaria</b> su contributi è possibile: la banca ti anticipa il contributo approvato, che poi rimborserai quando l'ente eroga. Il Fondo Garanzia MCC copre anche queste operazioni."},
+{k:["varianti","modifica progetto"],a:"Le <b>varianti</b> in corso d'opera sono generalmente ammesse (10-30% del totale) previa comunicazione all'ente. Varianti sostanziali richiedono autorizzazione. Meglio attenersi al progetto originale."},
+{k:["revoca","rinuncia","restituzione contributo"],a:"La <b>revoca del contributo</b> avviene se: non si rispettano le tempistiche, le spese non sono conformi, l'impresa chiude prima del termine di mantenimento (3-5 anni). Bisogna restituire quanto ricevuto."},
+{k:["mantenimento","vincoli post contributo"],a:"Dopo il contributo ci sono <b>vincoli di mantenimento</b>: l'impresa deve restare attiva 3-5 anni, i beni acquistati non si possono vendere, bisogna mantenere i livelli occupazionali dichiarati."},
+{k:["proroga","estensione termini"],a:"Le <b>proroghe</b> sono spesso concesse: si richiede prima della scadenza, motivando il ritardo. La maggior parte degli enti concede 3-6 mesi di proroga. Meglio chiederla per tempo."},
+{k:["procura speciale","delegato"],a:"La <b>procura speciale</b> serve quando un consulente presenta la domanda per conto dell'impresa: documento notarile o firmato digitalmente che autorizza il delegato. Richiesta in quasi tutti i bandi."},
+{k:["fascicolo aziendale","agea","sian"],a:"Il <b>Fascicolo Aziendale</b> AGEA/SIAN è obbligatorio per tutti i bandi agricoli: contiene i dati dell'azienda agricola. Si costituisce presso un CAA (Centro Assistenza Agricola) convenzionato."},
+{k:["aiuto","non so quale bando","quale bando"],a:"Non sai quale bando fa per te? Dipende da: dove sei (regione), cosa fai (settore), cosa vuoi fare (investimento), quanto vuoi investire, e se sei startup/donna/giovane. <a href='index.html#contatti'>Contattaci</a> per una consulenza gratuita e ti guidiamo!"},
+{k:["troppo complicato","difficile","non capisco"],a:"Capisco che i bandi possano sembrare complicati! Ma con la giusta guida diventano accessibili. Noi possiamo aiutarti passo passo: dalla scelta del bando alla presentazione della domanda. <a href='index.html#contatti'>Chiedi una consulenza</a>, è gratuita!"},
+{k:["quanto si guadagna","conviene","vale la pena"],a:"<b>Assolutamente sì</b>! Anche un piccolo bando da €10.000 a fondo perduto sono soldi che non restituisci. Con €50 di abbonamento puoi scoprire opportunità da decine o centinaia di migliaia di euro. Il ritorno sull'investimento è enorme."},
+{k:["gratuito","gratis","free","prova"],a:"Puoi vedere <b>3 bandi in anteprima gratuita</b> e usare il chatbot gratis. Per l'accesso completo con filtri avanzati e tutti i 500+ bandi, l'abbonamento costa solo €50+IVA/anno. Puoi anche registrarti gratis alla newsletter!"}
+];
+
+// Fuzzy match function
+function findAnswer(query){
+    var q=query.toLowerCase().replace(/[?!.,;:'"]/g,'');
+    var best=null,bestScore=0;
+    for(var i=0;i<chatQA.length;i++){
+        for(var j=0;j<chatQA[i].k.length;j++){
+            if(q.indexOf(chatQA[i].k[j])!==-1){
+                var score=chatQA[i].k[j].length;
+                if(score>bestScore){bestScore=score;best=chatQA[i].a}
+            }
+        }
+    }
+    if(best)return best;
+    var words=q.split(/\s+/).filter(function(w){return w.length>3});
+    for(var i=0;i<chatQA.length;i++){
+        for(var j=0;j<chatQA[i].k.length;j++){
+            for(var w=0;w<words.length;w++){
+                if(chatQA[i].k[j].indexOf(words[w])!==-1)return chatQA[i].a;
+            }
+        }
+    }
+    return "Non ho trovato una risposta specifica. Prova a riformulare o scegli tra i suggerimenti. Per domande dettagliate <a href='index.html#contatti'>contattaci</a> per consulenza gratuita!";
+}
+// === COOKIE BANNER ===
+function acceptCookies(){
+  document.cookie='cookie_consent=accepted;path=/;max-age=31536000;SameSite=Lax';
+  document.getElementById('cookieBanner').classList.remove('show');
+}
+function rejectCookies(){
+  document.cookie='cookie_consent=rejected;path=/;max-age=31536000;SameSite=Lax';
+  document.getElementById('cookieBanner').classList.remove('show');
+}
+if(!document.cookie.includes('cookie_consent=')){
+  setTimeout(function(){document.getElementById('cookieBanner').classList.add('show')},1500);
+}
+
+
+</script>
+<div class="cookie-banner" id="cookieBanner">
+  <p>Questo sito utilizza cookie tecnici per il corretto funzionamento. Consulta la <a href="privacy.html">Privacy Policy</a> e la <a href="cookie.html">Cookie Policy</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Accetta</button>
+    <button class="cookie-btn cookie-reject" onclick="rejectCookies()">Rifiuta</button>
+  </div>
+</div>
+<script src="https://www.paypal.com/sdk/js?client-id=AeBeG13urvj5m4BX-e4gt5xOnCFlrbxStYUmEIZ3d0xrAsULyXSB12-wT3-eMn3vQEtDzHUv_oe1lD-y&currency=EUR"></script>
+</body>
+</html>

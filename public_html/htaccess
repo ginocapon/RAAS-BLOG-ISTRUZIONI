@@ -1,0 +1,18 @@
+# Abilita rewrite
+RewriteEngine On
+
+# STEP 1: REDIRECT .html -> URL PULITI (301)
+# /bandi.html -> /bandi
+# /blog.html -> /blog  
+# /playzone/pages/puzzle.html -> /playzone/pages/puzzle
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# STEP 2: INTERNAMENTE SERVE IL FILE .html
+# /bandi -> serve bandi.html
+# /blog -> serve blog.html
+# /playzone/pages/puzzle -> serve puzzle.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]

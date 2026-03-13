@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sito Web per Creator Under 25 — Da €99 | RaaS Automazioni</title>
+<meta name="description" content="Il tuo sito da creator professionista. PageSpeed 90+ garantito, SEO per AI e Google. Codice puro, zero WordPress. Da €99+IVA, pagamento unico.">
+<meta name="keywords" content="sito web creator, landing page creator, sito 99 euro, sito economico giovani, sito web under 25">
+<link rel="canonical" href="https://www.raasautomazioni.it/offerta-creator">
+<meta property="og:title" content="Il Tuo Sito da Creator — Da €99 | RaaS">
+<meta property="og:description" content="Landing page custom, ultra-veloce, SEO per AI. Da €99+IVA.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Creator Website Pack","brand":{"@type":"Organization","name":"RaaS Automazioni"},"offers":[{"@type":"Offer","name":"Starter","price":"99","priceCurrency":"EUR"},{"@type":"Offer","name":"Pro","price":"199","priceCurrency":"EUR"},{"@type":"Offer","name":"Empire","price":"399","priceCurrency":"EUR"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--ac:#6C5CE7;--ac2:#a29bfe;--ac3:#00cec9;--gn:#00b894;--pk:#fd79a8;--yl:#fdcb6e;--bg:#0b0b0f;--s1:#111118;--s2:#18181f;--bd:rgba(255,255,255,.06);--t1:#fff;--t2:rgba(255,255,255,.55);--t3:rgba(255,255,255,.3);--r:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--ac);color:#fff}
+.w{max-width:1080px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+/* NAV — blur ridotto per mobile */
+nav{position:sticky;top:0;z-index:90;background:rgba(11,11,15,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+nav .w{display:flex;align-items:center;justify-content:center;gap:6px;height:56px}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--t1);text-decoration:none}
+.nav-logo span{color:var(--ac)}
+.nav-links{display:flex;gap:6px}
+.nav-links a{padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;color:var(--t2);text-decoration:none;transition:.2s}
+.nav-links a:hover{color:var(--t1);background:rgba(255,255,255,.04)}
+.nav-links a.cur{color:var(--ac2);background:rgba(108,92,231,.08)}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:10px;background:none;border:1px solid var(--bd);border-radius:12px;cursor:pointer;z-index:100;transition:.3s}
+.hamburger:hover{border-color:var(--ac);background:rgba(108,92,231,.04)}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s;transform-origin:center}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* MOBILE MENU — NO backdrop-filter (GPU killer su mobile) */
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(11,11,15,.98);z-index:89;padding:24px;flex-direction:column;gap:8px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{display:flex;align-items:center;gap:14px;padding:18px 20px;background:var(--s1);border:1px solid var(--bd);border-radius:16px;color:rgba(255,255,255,.7);text-decoration:none;font-size:16px;font-weight:600;transition:.25s}
+.mobile-menu a:hover,.mobile-menu a.active{color:#fff;border-color:var(--ac);background:rgba(108,92,231,.05)}
+.mobile-menu a .m-icon{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--s2);border-radius:12px;flex-shrink:0}
+.mobile-menu a .m-label{display:flex;flex-direction:column}
+.mobile-menu a .m-title{font-size:15px;font-weight:700}
+.mobile-menu a .m-desc{font-size:12px;color:var(--t3);font-weight:400;margin-top:2px}
+
+/* HERO */
+.hero{padding:80px 0 60px;display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 6px;background:var(--s1);border:1px solid var(--bd);border-radius:50px;font-size:12px;font-weight:600;color:var(--t2);margin-bottom:20px}
+.hero-pill .hp-dot{width:8px;height:8px;background:var(--gn);border-radius:50%;box-shadow:0 0 8px var(--gn)}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(32px,5.5vw,56px);font-weight:800;line-height:1.08;margin-bottom:16px;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--ac),var(--ac3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:17px;color:var(--t2);max-width:480px;margin-bottom:28px;line-height:1.65}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:.25s;text-decoration:none;border:none}
+.btn-p{background:var(--ac);color:#fff;box-shadow:0 4px 20px rgba(108,92,231,.25)}
+.btn-p:hover{background:#7c6ef0;transform:translateY(-2px);box-shadow:0 8px 30px rgba(108,92,231,.35)}
+.btn-s{background:var(--s2);color:var(--t1);border:1px solid var(--bd)}
+.btn-s:hover{border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.04)}
+.hero-trust{display:flex;align-items:center;gap:12px;margin-top:28px}
+.hero-trust-av{display:flex}
+.hero-trust-av span{width:28px;height:28px;border-radius:50%;border:2px solid var(--bg);margin-left:-6px;display:flex;align-items:center;justify-content:center;font-size:13px}
+.hero-trust-av span:nth-child(1){background:#6c5ce7;z-index:4}
+.hero-trust-av span:nth-child(2){background:#00cec9;z-index:3}
+.hero-trust-av span:nth-child(3){background:#fd79a8;z-index:2}
+.hero-trust-av span:nth-child(4){background:var(--s2);z-index:1;font-size:10px;font-weight:700;color:var(--t3)}
+.hero-trust-text{font-size:13px;color:var(--t3)}
+.hero-trust-text strong{color:var(--t2)}
+.hero-right{display:flex;align-items:center;justify-content:center}
+.hero-right img{width:100%;height:auto;max-width:300px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.3))}
+
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:80px}
+.met{background:var(--s1);padding:24px;text-align:center}
+.met-v{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--ac2)}
+.met-l{font-size:12px;color:var(--t3);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+
+/* SECTION HEADINGS */
+.sh{text-align:center;margin-bottom:40px}
+.sh-label{display:inline-block;font-size:12px;font-weight:700;color:var(--ac2);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+.sh h2{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,36px);font-weight:800;margin-bottom:8px}
+.sh p{font-size:15px;color:var(--t3);max-width:500px;margin:0 auto}
+
+/* PRICING */
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:80px}
+.pc{background:var(--s1);border:1px solid var(--bd);border-radius:20px;padding:32px 24px;position:relative;transition:.3s}
+.pc:hover{border-color:rgba(108,92,231,.2);transform:translateY(-4px)}
+.pc.pop{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac),0 20px 60px rgba(108,92,231,.08)}
+.pc.pop::before{content:'Più scelto';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--ac);padding:4px 14px;border-radius:50px;font-size:11px;font-weight:700;color:#fff;letter-spacing:.5px}
+.pc-icon{font-size:32px;margin-bottom:12px}
+.pc-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:2px}
+.pc-for{font-size:13px;color:var(--t3);margin-bottom:16px}
+.pc-price{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
+.pc-price .old{font-size:16px;color:var(--t3);text-decoration:line-through}
+.pc-price .val{font-family:'Syne',sans-serif;font-size:44px;font-weight:800;letter-spacing:-.02em}
+.pc-price .cur{font-size:20px;color:var(--t2);margin-right:2px}
+.pc-vat{font-size:12px;color:var(--t3);margin-bottom:20px}
+.pc-feats{list-style:none;margin-bottom:24px}
+.pc-feats li{display:flex;align-items:flex-start;gap:8px;padding:8px 0;font-size:13.5px;color:var(--t2);border-bottom:1px solid rgba(255,255,255,.03)}
+.pc-feats li:last-child{border:none}
+.pc-feats li .ck{color:var(--gn);font-weight:700;flex-shrink:0}
+.pc-feats li.bonus{color:var(--yl)}
+.pc-feats li.bonus .ck{color:var(--yl)}
+.pc .btn{width:100%;justify-content:center}
+.pc:nth-child(1) .btn{background:var(--s2);color:var(--t1);border:1px solid var(--bd)}
+.pc:nth-child(1) .btn:hover{border-color:var(--ac)}
+.pc-secure{text-align:center;font-size:10px;color:var(--t3);margin-top:10px}
+
+/* WHY */
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:80px}
+.wy{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:24px;transition:.3s}
+.wy:hover{border-color:rgba(108,92,231,.15)}
+.wy-icon{font-size:24px;margin-bottom:10px}
+.wy-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.wy-desc{font-size:13px;color:var(--t3);line-height:1.55}
+
+/* PROCESS */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:80px}
+.step{text-align:center;padding:20px 16px}
+.step-n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ac2);margin-bottom:8px}
+.step-icon{font-size:28px;margin-bottom:8px}
+.step-title{font-size:14px;font-weight:700;margin-bottom:4px}
+.step-desc{font-size:12px;color:var(--t3);line-height:1.5}
+
+/* FAQ */
+.faq-list{max-width:700px;margin:0 auto 80px}
+.fq{border-bottom:1px solid var(--bd)}
+.fq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 0;cursor:pointer;font-size:15px;font-weight:600;transition:color .2s}
+.fq-q:hover{color:var(--ac2)}
+.fq-q .ic{font-size:18px;color:var(--ac);transition:transform .3s}
+.fq.open .ic{transform:rotate(45deg)}
+.fq-a{max-height:0;overflow:hidden;transition:max-height .4s}
+.fq.open .fq-a{max-height:400px}
+.fq-a p{padding:0 0 18px;font-size:14px;color:var(--t2);line-height:1.7}
+
+/* CROSS */
+.cross{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:80px}
+.cx{display:flex;align-items:center;gap:16px;padding:20px;background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);text-decoration:none;color:var(--t1);transition:.25s}
+.cx:hover{border-color:var(--ac);transform:translateY(-2px)}
+.cx-i{font-size:28px;flex-shrink:0}
+.cx-t{font-size:14px;font-weight:700}
+.cx-d{font-size:12px;color:var(--t3)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--bd);padding:32px 0;text-align:center}
+footer a{color:var(--ac2);text-decoration:none;font-weight:700}
+footer p{font-size:11px;color:var(--t3);margin-top:4px}
+.ftr-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px}
+.ftr-links a{padding:4px 12px;background:var(--s1);border:1px solid var(--bd);border-radius:50px;font-size:11px;color:var(--t3);transition:.2s}
+.ftr-links a:hover{color:var(--t1);border-color:var(--ac)}
+
+/* BROBOT */
+.bb-toggle{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:var(--ac);border:none;border-radius:50%;cursor:pointer;z-index:998;box-shadow:0 6px 25px rgba(108,92,231,.3);transition:.3s;padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bb-toggle:hover{transform:scale(1.08)}
+.bb-toggle img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center 35%}
+.bb-panel{position:fixed;bottom:86px;right:20px;width:360px;max-height:520px;background:var(--s1);border:1px solid var(--bd);border-radius:20px;z-index:999;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.bb-panel.open{display:flex}
+.bb-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--bd)}
+.bb-av{width:36px;height:36px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bb-av img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.bb-nm{font-size:14px;font-weight:700}
+.bb-st{font-size:11px;color:var(--gn)}
+.bb-x{margin-left:auto;background:none;border:none;color:var(--t3);font-size:18px;cursor:pointer}
+.bb-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;max-height:320px}
+.bb-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.5}
+.bb-msg.bot{align-self:flex-start;background:rgba(108,92,231,.08);border:1px solid rgba(108,92,231,.12);border-bottom-left-radius:4px}
+.bb-msg.usr{align-self:flex-end;background:rgba(0,206,201,.08);border:1px solid rgba(0,206,201,.12);border-bottom-right-radius:4px}
+.bb-msg .typing{display:inline-flex;gap:4px}
+.bb-msg .typing span{width:6px;height:6px;border-radius:50%;background:var(--ac2);animation:tDot 1.4s infinite}
+.bb-msg .typing span:nth-child(2){animation-delay:.2s}
+.bb-msg .typing span:nth-child(3){animation-delay:.4s}
+@keyframes tDot{0%,80%,100%{transform:scale(.4);opacity:.4}40%{transform:scale(1);opacity:1}}
+.bb-qr{display:flex;flex-wrap:wrap;gap:5px;padding:0 14px 10px}
+.bb-qr button{padding:6px 12px;background:var(--s2);border:1px solid var(--bd);border-radius:50px;color:var(--t2);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s}
+.bb-qr button:hover{border-color:var(--ac);color:var(--t1)}
+.bb-input{display:flex;gap:6px;padding:12px 14px;border-top:1px solid var(--bd)}
+.bb-input input{flex:1;padding:10px 14px;background:var(--s2);border:1px solid var(--bd);border-radius:10px;color:#fff;font-size:13px;font-family:inherit;outline:none}
+.bb-input input:focus{border-color:var(--ac)}
+.bb-input button{width:38px;height:38px;background:var(--ac);border:none;border-radius:10px;color:#fff;font-size:15px;cursor:pointer;transition:.2s}
+.bb-input button:hover{background:#7c6ef0}
+
+/* BG GLOW — CSS only, blur ridotto a 120px come Quiz e Username */
+body::before,body::after{content:'';position:fixed;border-radius:50%;filter:blur(120px);opacity:.12;pointer-events:none;z-index:0}
+body::before{width:500px;height:500px;background:var(--ac);top:-20%;left:-10%}
+body::after{width:400px;height:400px;background:var(--ac3);bottom:10%;right:-10%}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;text-align:center;padding:48px 0 40px}
+  .hero-right{display:none}
+  .hero-sub{margin:0 auto 28px}
+  .hero-ctas{justify-content:center}
+  .hero-trust{justify-content:center}
+  .pricing{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}
+}
+@media(max-width:680px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+}
+@media(min-width:681px){
+  .mobile-menu{display:none!important}
+}
+@media(max-width:640px){
+  .bb-panel{width:calc(100vw - 32px);right:16px;bottom:82px}
+}
+@media(max-width:600px){
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .why{grid-template-columns:1fr}
+  .process{grid-template-columns:repeat(2,1fr)}
+  .cross{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav><div class="w">
+<a href="/" class="nav-logo">⚡ <span>RaaS</span></a>
+<div class="nav-links">
+<a href="/quiz/quale-tiktoker-sei">🎭 Quiz TikToker</a>
+<a href="/tools/generatore-username">✨ Username</a>
+<a href="/offerta-creator" class="cur">⚡ Offerta Creator</a>
+<a href="/">🏠 RaaS</a>
+</div>
+<button class="hamburger" id="hamburgerBtn" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="/quiz/quale-tiktoker-sei"><span class="m-icon">🎭</span><span class="m-label"><span class="m-title">Quiz TikToker</span><span class="m-desc">Scopri che tipo di creator sei</span></span></a>
+<a href="/tools/generatore-username"><span class="m-icon">✨</span><span class="m-label"><span class="m-title">Generatore Username</span><span class="m-desc">Crea il nome perfetto per i social</span></span></a>
+<a href="#" class="active"><span class="m-icon">💰</span><span class="m-label"><span class="m-title">Offerta Creator</span><span class="m-desc">Siti web da €99 per under 25</span></span></a>
+<a href="/"><span class="m-icon">🏠</span><span class="m-label"><span class="m-title">RaaS Automazioni</span><span class="m-desc">Siti web professionali per PMI</span></span></a>
+</div>
+
+<div class="w">
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-left">
+<div class="hero-pill"><span class="hp-dot"></span>Offerta Under 25 — Pagamento unico</div>
+<h1>Il tuo sito da <em>creator.</em><br>Non da boomer.</h1>
+<p class="hero-sub">Costruiamo il tuo sito con codice puro. Ultra-veloce, mobile-first, ottimizzato per Google e AI. Niente WordPress, niente abbonamenti, niente sorprese.</p>
+<div class="hero-ctas">
+<a href="#piani" class="btn btn-p">Vedi i piani ↓</a>
+<a href="#come" class="btn btn-s">Come funziona</a>
+</div>
+<div class="hero-trust">
+<div class="hero-trust-av"><span>😎</span><span>🔥</span><span>💜</span><span>+47</span></div>
+<div class="hero-trust-text"><strong>47+ creator</strong> ci hanno scelto</div>
+</div>
+</div>
+<div class="hero-right">
+<img src="bro-character.svg" alt="BroBot mascotte RaaS" width="500" height="600" loading="eager" decoding="async">
+</div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics">
+<div class="met"><div class="met-v">90+</div><div class="met-l">PageSpeed</div></div>
+<div class="met"><div class="met-v">€99</div><div class="met-l">Prezzo base</div></div>
+<div class="met"><div class="met-v">24h</div><div class="met-l">Consegna</div></div>
+<div class="met"><div class="met-v">0€</div><div class="met-l">Costi nascosti</div></div>
+</div>
+
+<!-- WHY -->
+<div class="sh"><div class="sh-label">Perché noi</div><h2>Non siamo la solita agenzia.</h2><p>Codice puro, risultati reali, zero fuffa.</p></div>
+<div class="why">
+<div class="wy"><div class="wy-icon">⚡</div><div class="wy-title">Codice puro, zero WordPress</div><div class="wy-desc">HTML/CSS/JS scritto a mano. Niente plugin che rallentano, niente aggiornamenti che rompono tutto. Veloce per sempre.</div></div>
+<div class="wy"><div class="wy-icon">🤖</div><div class="wy-title">SEO per AI + Google</div><div class="wy-desc">Nel 2026 le persone cercano anche su ChatGPT e Perplexity. Noi ti ottimizziamo per essere raccomandato ovunque.</div></div>
+<div class="wy"><div class="wy-icon">📱</div><div class="wy-title">Mobile-first nativo</div><div class="wy-desc">Non "responsive": mobile-FIRST. Progettato dal telefono e poi adattato al desktop. Come navigano davvero i tuoi follower.</div></div>
+<div class="wy"><div class="wy-icon">🔒</div><div class="wy-title">Tuo per sempre</div><div class="wy-desc">Paghi una volta, è tuo. I file sono tuoi, l'hosting lo scegli tu. Zero abbonamenti, zero dipendenze, zero sorprese.</div></div>
+</div>
+
+<!-- PROCESS -->
+<div class="sh" id="come"><div class="sh-label">Come funziona</div><h2>4 step, zero stress.</h2></div>
+<div class="process">
+<div class="step"><div class="step-n">01</div><div class="step-icon">💰</div><div class="step-title">Scegli e paga</div><div class="step-desc">Seleziona il pacchetto, paga online con carta o Apple Pay.</div></div>
+<div class="step"><div class="step-n">02</div><div class="step-icon">💬</div><div class="step-title">Brief veloce</div><div class="step-desc">Ti contattiamo per raccogliere info, colori, testi, riferimenti.</div></div>
+<div class="step"><div class="step-n">03</div><div class="step-icon">🚀</div><div class="step-title">Noi costruiamo</div><div class="step-desc">Sviluppiamo il sito in 24h-10gg a seconda del pacchetto.</div></div>
+<div class="step"><div class="step-n">04</div><div class="step-icon">✅</div><div class="step-title">Online!</div><div class="step-desc">Revisioni illimitate fino al tuo OK. Poi live!</div></div>
+</div>
+
+<!-- PRICING -->
+<div class="sh" id="piani"><div class="sh-label">Piani</div><h2>Scegli il tuo pacchetto.</h2><p>Pagamento unico. Mai più un euro dopo.</p></div>
+<div class="pricing">
+<div class="pc">
+<div class="pc-icon">⚡</div>
+<div class="pc-name">Starter</div>
+<div class="pc-for">Per chi vuole iniziare</div>
+<div class="pc-price"><span class="cur">€</span><span class="val">99</span></div>
+<div class="pc-vat">+ IVA · Pagamento unico</div>
+<ul class="pc-feats">
+<li><span class="ck">✓</span> Landing page custom</li>
+<li><span class="ck">✓</span> Design mobile-first</li>
+<li><span class="ck">✓</span> PageSpeed 90+ garantito</li>
+<li><span class="ck">✓</span> Keyword strategy Google & AI</li>
+<li><span class="ck">✓</span> 1 pagina social ottimizzata</li>
+<li><span class="ck">✓</span> SEO base (meta, schema, OG)</li>
+</ul>
+<a href="https://buy.stripe.com/fZudR8dqz7Ugbx0cvy5EY01" target="_blank" class="btn">Scegli Starter →</a>
+<div class="pc-secure">🔒 Carta · Apple Pay · Google Pay · PayPal</div>
+</div>
+<div class="pc pop">
+<div class="pc-icon">🔥</div>
+<div class="pc-name">Pro</div>
+<div class="pc-for">Per chi vuole fare sul serio</div>
+<div class="pc-price"><span class="old">€299</span><span class="cur">€</span><span class="val">199</span></div>
+<div class="pc-vat">+ IVA · Risparmi €100</div>
+<ul class="pc-feats">
+<li><span class="ck">✓</span> Tutto il pacchetto Starter</li>
+<li><span class="ck">✓</span> 3 pagine social ottimizzate</li>
+<li><span class="ck">✓</span> Strategia keyword IG + TikTok</li>
+<li><span class="ck">✓</span> Analisi competitor</li>
+<li><span class="ck">✓</span> Content calendar 1 mese</li>
+<li><span class="ck">✓</span> Setup Analytics + Search Console</li>
+<li class="bonus"><span class="ck">★</span> Bonus: strategia crescita 1 mese</li>
+</ul>
+<a href="https://buy.stripe.com/00w7sK72b4I4bx0fHK5EY02" target="_blank" class="btn btn-p">Scegli Pro →</a>
+<div class="pc-secure">🔒 Carta · Apple Pay · Google Pay · PayPal</div>
+</div>
+<div class="pc">
+<div class="pc-icon">👑</div>
+<div class="pc-name">Empire</div>
+<div class="pc-for">Per chi vuole dominare</div>
+<div class="pc-price"><span class="old">€599</span><span class="cur">€</span><span class="val">399</span></div>
+<div class="pc-vat">+ IVA · Risparmi €200</div>
+<ul class="pc-feats">
+<li><span class="ck">✓</span> Tutto il pacchetto Pro</li>
+<li><span class="ck">✓</span> Sito 5 pagine completo</li>
+<li><span class="ck">✓</span> Blog/news per SEO</li>
+<li><span class="ck">✓</span> Strategia crescita 3 mesi</li>
+<li><span class="ck">✓</span> 2 call strategiche al mese</li>
+<li><span class="ck">✓</span> Report analytics mensile</li>
+<li class="bonus"><span class="ck">★</span> Bonus: audit social completo</li>
+</ul>
+<a href="https://buy.stripe.com/28EbJ0fyHb6s58C8fi5EY04" target="_blank" class="btn">Scegli Empire →</a>
+<div class="pc-secure">🔒 Carta · Apple Pay · Google Pay · PayPal</div>
+</div>
+</div>
+
+<!-- FAQ -->
+<div class="sh"><div class="sh-label">FAQ</div><h2>Domande frequenti</h2></div>
+<div class="faq-list" id="faqList">
+<div class="fq"><div class="fq-q">Ma €99 è il prezzo vero? Dov'è la fregatura?<span class="ic">+</span></div><div class="fq-a"><p>Zero fregature. €99 + IVA, pagamento unico. Costruiamo con codice puro quindi siamo più veloci, e i costi sono più bassi. È il nostro prezzo Under 25 perché crediamo nei giovani creator.</p></div></div>
+<div class="fq"><div class="fq-q">Quanto ci vuole per avere il sito?<span class="ic">+</span></div><div class="fq-a"><p>Starter: 24-48h. Pro: 3-5 giorni. Empire: 7-10 giorni. Dopo il pagamento ti contattiamo subito per raccogliere le info.</p></div></div>
+<div class="fq"><div class="fq-q">Cosa vuol dire "SEO per AI"?<span class="ic">+</span></div><div class="fq-a"><p>Nel 2026 le persone cercano info su ChatGPT, Perplexity e Google AI Overview. Noi ottimizziamo il tuo sito per essere raccomandato anche da queste piattaforme — non solo da Google classico.</p></div></div>
+<div class="fq"><div class="fq-q">Devo pagare un hosting mensile?<span class="ic">+</span></div><div class="fq-a"><p>Ti consigliamo le opzioni migliori, anche gratuite come Netlify o GitHub Pages. Il sito è un pacchetto di file HTML/CSS/JS che funziona ovunque.</p></div></div>
+<div class="fq"><div class="fq-q">Posso pagare con carta o Apple Pay?<span class="ic">+</span></div><div class="fq-a"><p>Sì. Usiamo Stripe: Visa, Mastercard, Amex, Apple Pay, Google Pay. Tutto super sicuro.</p></div></div>
+<div class="fq"><div class="fq-q">E se non sono soddisfatto?<span class="ic">+</span></div><div class="fq-a"><p>Revisioni illimitate fino a quando dici WOW. Se non raggiungiamo PageSpeed 90+, ti rimborsiamo.</p></div></div>
+</div>
+
+<!-- CROSS LINKS -->
+<div class="sh"><div class="sh-label">Esplora</div><h2>Prova i tool gratuiti</h2></div>
+<div class="cross">
+<a href="/quiz/quale-tiktoker-sei" class="cx"><span class="cx-i">🎭</span><div><div class="cx-t">Quiz: Quale TikToker Sei?</div><div class="cx-d">Scopri il tuo tipo di creator — è gratis</div></div></a>
+<a href="/tools/generatore-username" class="cx"><span class="cx-i">✨</span><div><div class="cx-t">Generatore Username</div><div class="cx-d">Crea il nome perfetto per i social</div></div></a>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer><div class="w">
+<div>⚡ <a href="/">RaaS Automazioni</a></div>
+<p>Siti ultra-veloci & strategie digitali · P.IVA XXXXXXXXX</p>
+<div class="ftr-links">
+<a href="/quiz/quale-tiktoker-sei">Quiz TikToker</a>
+<a href="/tools/generatore-username">Generatore Username</a>
+<a href="/quiz/quale-tiktoker-sei?mode=multiplayer">Quiz Multiplayer</a>
+<a href="/tools/generatore-username#aesthetic">Username Aesthetic</a>
+<a href="/tools/generatore-username#gaming">Username Gaming</a>
+</div>
+</div></footer>
+
+<!-- BROBOT -->
+<button class="bb-toggle" onclick="toggleBot()" aria-label="Apri BroBot">
+<img src="bro-character.svg" alt="BroBot" width="52" height="52">
+</button>
+<div class="bb-panel" id="bbp">
+<div class="bb-head">
+<div class="bb-av"><img src="bro-character.svg" alt="BroBot" width="36" height="36"></div>
+<div><div class="bb-nm">BroBot</div><div class="bb-st">● Online</div></div>
+<button class="bb-x" onclick="toggleBot()">✕</button>
+</div>
+<div class="bb-msgs" id="bbm"></div>
+<div class="bb-qr" id="bbq"></div>
+<div class="bb-input"><input id="bbi" placeholder="Scrivi al BroBot..." onkeypress="if(event.key==='Enter')sendMsg()"><button onclick="sendMsg()">▶</button></div>
+</div>
+
+<!-- FONTS — loaded async, non-blocking -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@500&display=swap"></noscript>
+
+<script>
+// FAQ toggle
+document.getElementById('faqList').addEventListener('click',function(e){var fq=e.target.closest('.fq');if(fq)fq.classList.toggle('open')});
+
+// Hamburger
+(function(){var b=document.getElementById('hamburgerBtn'),m=document.getElementById('mobileMenu');b.addEventListener('click',function(){b.classList.toggle('active');m.classList.toggle('open');var o=m.classList.contains('open');b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('active');m.classList.remove('open');document.body.style.overflow='';b.setAttribute('aria-expanded','false')})});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')){b.classList.remove('active');m.classList.remove('open');document.body.style.overflow='';b.setAttribute('aria-expanded','false')}})})();
+
+// BroBot
+var QA=[
+{k:["99","prezzo","quanto costa","starter","economico"],a:"Il pacchetto Starter costa €99+IVA, pagamento unico! Include landing page custom, mobile-first, PageSpeed 90+, keyword strategy e SEO per AI. Zero abbonamenti."},
+{k:["199","pro"],a:"Il Pro a €199+IVA include tutto lo Starter PLUS 3 pagine social, strategia keyword IG+TikTok, analisi competitor, content calendar e setup Analytics. Best seller!"},
+{k:["399","empire","completo","5 pagine"],a:"Empire a €399+IVA è il pacchetto completo: sito 5 pagine, blog SEO, strategia 3 mesi, 2 call mensili, report analytics. Per chi vuole dominare!"},
+{k:["differenza","confronto","quale scegliere","migliore"],a:"Starter = 1 landing page per iniziare. Pro = 3 pagine + strategia social (il più scelto). Empire = sito completo + consulenza continua. Dipende dai tuoi obiettivi!"},
+{k:["sconto","offerta","promozione","coupon"],a:"I prezzi Under 25 sono già scontati rispetto al listino standard. Pro e Empire hanno già il risparmio incluso (€100 e €200 rispettivamente)."},
+{k:["iva","tasse"],a:"I prezzi sono + IVA (22%). Quindi Starter = €99 + €21.78 IVA = €120.78 totale. Se hai P.IVA puoi scaricarla."},
+{k:["abbonamento","mensile","ricorrente"],a:"Zero abbonamenti! Paghi una volta sola e il sito è tuo per sempre. Nessun costo nascosto, nessun rinnovo."},
+{k:["rimborso","garanzia","soddisfatto"],a:"Se non raggiungiamo PageSpeed 90+ ti rimborsiamo. Più revisioni illimitate fino a quando sei soddisfatto al 100%."},
+{k:["pagare","pagamento","carta","stripe","apple pay","google pay"],a:"Paghi online con Stripe: carta di credito/debito, Apple Pay, Google Pay. Super sicuro, zero rischi. Clicca il pulsante del pacchetto che preferisci."},
+{k:["bonifico","paypal"],a:"Al momento accettiamo carta, Apple Pay e Google Pay via Stripe. Se hai bisogno di bonifico contattaci e troviamo una soluzione."},
+{k:["fattura","ricevuta"],a:"Sì, emettiamo fattura regolare dopo il pagamento. Mandaci i tuoi dati di fatturazione dopo l'acquisto."},
+{k:["tempo","quanto ci vuole","veloce","quando","consegna","pronto"],a:"Starter = 24-48 ore. Pro = 3-5 giorni lavorativi. Empire = 7-10 giorni. Dopo il pagamento ti contattiamo subito!"},
+{k:["urgente","fretta","domani"],a:"Per urgenze possiamo accelerare. Contattaci e vediamo cosa possiamo fare. Il pacchetto Starter è già velocissimo (24-48h)."},
+{k:["wordpress","cms","template"],a:"Noi NON usiamo WordPress. Costruiamo tutto con codice puro (HTML/CSS/JS). Risultato: sito 10x più veloce, zero manutenzione, zero plugin che si rompono."},
+{k:["pagespeed","velocità","lento","performance"],a:"Garantiamo PageSpeed 90+ o ti rimborsiamo. I nostri siti caricano in meno di 1 secondo. Il codice puro fa la differenza rispetto a WordPress."},
+{k:["seo","google","farsi trovare","posizionamento"],a:"Ogni sito include SEO on-page: meta tag, schema markup, Open Graph, sitemap, robots.txt. I pacchetti Pro e Empire includono anche strategia keyword."},
+{k:["ai","chatgpt","perplexity","intelligenza artificiale"],a:"Ottimizziamo per le AI! Nel 2026 il 35% delle ricerche passa da ChatGPT e Perplexity. Noi ci assicuriamo che il tuo sito venga raccomandato anche lì."},
+{k:["mobile","telefono","responsive","smartphone"],a:"Tutti i nostri siti sono mobile-FIRST: li progettiamo dal telefono e poi li adattiamo al desktop. Perché i tuoi follower navigano da mobile."},
+{k:["hosting","server","dove metto","dominio"],a:"Ti consigliamo le migliori opzioni, anche gratuite (Netlify, GitHub Pages, Vercel). Il sito è tuo, lo metti dove vuoi."},
+{k:["dominio","indirizzo","www"],a:"Il dominio lo compri tu (da €10/anno su provider come Namecheap o Google Domains). Ti guidiamo noi nella scelta e configurazione."},
+{k:["https","ssl","sicurezza","sicuro"],a:"Sì, tutti i nostri siti vengono configurati con HTTPS/SSL incluso. La sicurezza è fondamentale."},
+{k:["aggiornamento","modifica","cambio","aggiornare"],a:"Il sito è in codice puro, quindi puoi modificarlo tu o chiederlo a noi. Per piccole modifiche post-consegna siamo disponibili."},
+{k:["analytics","statistiche","visite","dati"],a:"I pacchetti Pro e Empire includono setup Google Analytics + Search Console. Starter include il setup base."},
+{k:["blog","articoli","contenuti"],a:"Il pacchetto Empire include una sezione blog/news ottimizzata per SEO. Perfetta per pubblicare contenuti e crescere su Google."},
+{k:["form","contatti","email","modulo"],a:"Sì, includiamo form di contatto in tutti i pacchetti. Funzionano senza backend grazie a servizi come Formspree o Netlify Forms."},
+{k:["ecommerce","vendere","shop","negozio"],a:"Per e-commerce complessi consigliamo soluzioni dedicate. Ma per vendere 1-5 prodotti digitali possiamo integrare Stripe Payment Links o Gumroad."},
+{k:["tiktok","instagram","youtube","social"],a:"I pacchetti Pro e Empire includono strategia keyword per i social. Ti aiutiamo a ottimizzare bio, hashtag e contenuti per essere trovato."},
+{k:["link in bio","linktree","stan store"],a:"Con il nostro sito non hai più bisogno di Linktree! La tua landing page diventa il tuo link in bio professionale, con tutto in un posto."},
+{k:["follower","crescere","crescita"],a:"Un sito professionale aumenta la tua credibilità e ti fa trovare da nuovi follower tramite Google e AI. I pacchetti Pro e Empire includono strategia di crescita."},
+{k:["content","piano editoriale","calendario"],a:"I pacchetti Pro e Empire includono un content calendar per 1-3 mesi. Ti diciamo cosa postare, quando e con quali keyword."},
+{k:["ciao","hey","salve","buongiorno","buonasera","yo","ehi"],a:"Ciao! Sono BroBot, l'assistente di RaaS. Come posso aiutarti? Chiedimi di prezzi, pacchetti, tempistiche o qualsiasi dubbio!"},
+{k:["chi siete","chi sei","raas","azienda"],a:"RaaS Automazioni crea siti ultra-veloci con codice puro. Niente WordPress, niente template. Solo performance e risultati. Siamo un'agenzia digitale italiana."},
+{k:["grazie","thanks","perfetto","grande"],a:"Figurati! Se hai altri dubbi chiedi pure. Se sei pronto, scegli il pacchetto e clicca il pulsante. In bocca al lupo!"},
+{k:["under 25","età","giovani","studente"],a:"L'offerta Under 25 è per creator, studenti e giovani imprenditori. Non chiediamo documenti, ci fidiamo di te!"},
+{k:["portfolio","esempi","lavori","progetti"],a:"Puoi vedere i nostri lavori su raasautomazioni.it. Ogni progetto è diverso perché costruiamo tutto custom, niente template."},
+{k:["contatto","contattare","parlare","chiamare","telefono"],a:"Puoi scriverci via il form sul sito principale raasautomazioni.it, oppure scegli direttamente il pacchetto e ti contattiamo noi dopo il pagamento."},
+{k:["referral","amico","invita","sconto amici"],a:"Porta 3 amici che acquistano = 2 pagine social GRATIS aggiunte al tuo pacchetto! Chiedicelo dopo l'acquisto."},
+{k:["quiz","tiktoker","test"],a:"Hai provato il nostro Quiz 'Quale TikToker Sei?'? È gratis e super divertente! Lo trovi su raasautomazioni.it/quiz/quale-tiktoker-sei"},
+{k:["username","generatore","nome"],a:"Prova il Generatore Username gratuito! Crea nomi fighi per TikTok, IG, YouTube. Lo trovi su raasautomazioni.it/tools/generatore-username"},
+{k:["design","grafica","bello","estetica"],a:"Ogni sito ha un design custom studiato per il tuo brand. Niente template preconfezionati. Ti chiediamo i tuoi colori, stile e riferimenti e creiamo qualcosa di unico."},
+{k:["logo","brand","identità"],a:"Non facciamo loghi (per ora), ma possiamo consigliarti tool e designer. Il sito lo costruiamo noi intorno alla tua identità visiva."},
+{k:["competitor","concorrenza","altri"],a:"La maggior parte delle agenzie usa WordPress e ti chiede €1000+. Noi con il codice puro ti diamo risultati migliori a €99. È il vantaggio di non avere overhead."},
+{k:["consiglio","suggerimento","quale pacchetto","raccomandi"],a:"Se parti da zero: Starter a €99. Se vuoi anche i social: Pro a €199 (il più scelto). Se vuoi il pacchetto completo: Empire a €399."},
+{k:["revisione","non mi piace"],a:"Revisioni illimitate incluse! Se qualcosa non ti piace lo cambiamo fino a quando non sei soddisfatto al 100%."},
+{k:["copy","testi","contenuti scritti"],a:"Ti aiutiamo con i testi base. Per copy avanzato puoi fornirceli tu o possiamo crearli insieme durante il brief."},
+{k:["immagini","foto","visual"],a:"Utilizziamo immagini royalty-free di alta qualità o le tue foto. Ti guidiamo su come scegliere le immagini migliori per il tuo brand."},
+{k:["animazioni","effetti","interattivo"],a:"Sì, includiamo animazioni CSS leggere e micro-interazioni che rendono il sito moderno e coinvolgente senza rallentarlo."},
+{k:["gdpr","privacy","cookie"],a:"Includiamo la pagina privacy e il banner cookie GDPR-compliant in tutti i pacchetti. Siamo in regola con la normativa europea."},
+{k:["multilingua","inglese","traduzione"],a:"Il pacchetto base è in una lingua. Per siti multilingua contattaci per un preventivo custom."},
+{k:["manutenzione","supporto","assistenza"],a:"Il codice puro non richiede manutenzione! Niente aggiornamenti, niente plugin da gestire. Per modifiche future siamo disponibili."},
+{k:["gratis","free","gratuito"],a:"I tool (quiz, generatore username, BroBot) sono gratis! I siti web partono da €99 — che è comunque il prezzo più basso che troverai per qualità professionale."},
+{k:["vale la pena","conviene","investimento"],a:"Un sito da €99 che ti porta anche solo 1 cliente ha già ripagato l'investimento. I nostri siti sono ottimizzati per convertire visitatori in contatti."},
+{k:["help","aiuto","non capisco","spiegami"],a:"Certo! Dimmi cosa non ti è chiaro e ti spiego. Puoi chiedermi di prezzi, pacchetti, tempistiche, tecnologia, pagamento... tutto!"}
+],FB=["Non ho capito bene, prova a riformulare! Puoi chiedermi di prezzi, pacchetti, tempistiche, o come funziona.","Mmh, non ho una risposta specifica per questo. Prova a chiedermi qualcosa sui pacchetti, i prezzi, o come lavoriamo!","Bella domanda! Ma non rientra nelle mie competenze. Per cose specifiche scrivi a raasautomazioni.it/contatti"];
+
+function match(txt){var t=txt.toLowerCase(),best=null,score=0;for(var i=0;i<QA.length;i++){var s=0,q=QA[i];for(var j=0;j<q.k.length;j++)if(t.indexOf(q.k[j])!==-1)s+=10;if(s>score){score=s;best=q}}return score>=10?best:null}
+function addMsg(text,cls){var d=document.createElement('div');d.className='bb-msg '+cls;d.innerHTML=text;var m=document.getElementById('bbm');m.appendChild(d);m.scrollTop=1e5}
+function showQR(opts){document.getElementById('bbq').innerHTML=opts.map(function(o){return'<button onclick="quickReply(\''+o.replace(/'/g,"\\'")+"')\">"+o+'</button>'}).join('')}
+function quickReply(t){document.getElementById('bbq').innerHTML='';processInput(t)}
+function sendMsg(){var v=document.getElementById('bbi').value.trim();if(!v)return;document.getElementById('bbi').value='';document.getElementById('bbq').innerHTML='';processInput(v)}
+function processInput(t){addMsg(t,'usr');addMsg('<div class="typing"><span></span><span></span><span></span></div>','bot');setTimeout(function(){var msgs=document.getElementById('bbm');msgs.removeChild(msgs.lastChild);var m=match(t);addMsg(m?m.a:FB[Math.floor(Math.random()*FB.length)],'bot');showQR(['💰 Prezzi','⚡ Come funziona','🔥 Quale pacchetto?','📱 SEO per AI'])},600+Math.random()*800)}
+var botOpen=false;
+function toggleBot(){botOpen=!botOpen;document.getElementById('bbp').classList.toggle('open');if(botOpen&&!document.getElementById('bbm').children.length){addMsg("Ciao! Sono BroBot 🤖 L'assistente di RaaS. Chiedimi tutto su pacchetti, prezzi, tempistiche e come funziona!",'bot');showQR(['💰 Quanto costa?','⚡ Come funziona?','🔥 Pro o Starter?','🤖 SEO per AI?'])}}
+
+// Payment success handler — NO backdrop-filter, NO infinite animation
+(function(){var p=new URLSearchParams(window.location.search);if(p.get('payment')==='success'){var plan=p.get('plan')||'starter',names={starter:'Starter',pro:'Pro',empire:'Empire'},prices={starter:'€99',pro:'€199',empire:'€399'},n=names[plan]||'Starter',pr=prices[plan]||'€99';var o=document.createElement('div');o.id='paymentSuccessModal';o.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99999;display:flex;align-items:center;justify-content:center;padding:1rem';o.innerHTML='<div style="background:#0d0d1a;border:2px solid #a855f7;border-radius:24px;max-width:480px;width:100%;padding:2.5rem;text-align:center;position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#a855f7,#06b6d4,#a855f7)"></div><div style="font-size:3.5rem;margin-bottom:1rem">🎉</div><h2 style="color:#fff;font-size:1.75rem;margin-bottom:.5rem;font-weight:800">Pagamento Confermato!</h2><p style="color:#a78bfa;font-size:1.1rem;margin-bottom:1.5rem">Pacchetto <strong style="color:#c084fc">'+n+'</strong> attivato</p><div style="background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.3);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;text-align:left"><p style="color:#e2e8f0;margin-bottom:.75rem;display:flex;justify-content:space-between"><span>Piano:</span><strong style="color:#c084fc">'+n+'</strong></p><p style="color:#e2e8f0;margin-bottom:.75rem;display:flex;justify-content:space-between"><span>Importo:</span><strong style="color:#06b6d4">'+pr+' + IVA</strong></p><p style="color:#e2e8f0;display:flex;justify-content:space-between"><span>Stato:</span><strong style="color:#10b981">✅ Confermato</strong></p></div><div style="background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.2);border-radius:12px;padding:1rem;margin-bottom:1.5rem"><p style="color:#67e8f9;font-size:.9rem;margin:0">📧 Riceverai una email di conferma con tutti i dettagli e i prossimi step.</p></div><h3 style="color:#fff;font-size:1.1rem;margin-bottom:1rem">Cosa succede ora?</h3><div style="text-align:left;margin-bottom:1.5rem"><p style="color:#e2e8f0;padding:.4rem 0;font-size:.9rem">1️⃣ Ti contattiamo entro <strong style="color:#c084fc">24 ore</strong></p><p style="color:#e2e8f0;padding:.4rem 0;font-size:.9rem">2️⃣ Kickoff call per definire il progetto</p><p style="color:#e2e8f0;padding:.4rem 0;font-size:.9rem">3️⃣ Il tuo sito sarà online in <strong style="color:#06b6d4">5-7 giorni</strong></p></div><button onclick="document.getElementById(\'paymentSuccessModal\').remove()" style="background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;border:none;padding:1rem 2rem;border-radius:50px;font-weight:700;font-size:1rem;cursor:pointer;width:100%">Perfetto, Grazie! 🚀</button></div>';document.body.appendChild(o);window.history.replaceState({},'',window.location.pathname)}})();
+</script>
+<!-- Supabase — loaded defer, non-blocking -->
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</body>
+</html>

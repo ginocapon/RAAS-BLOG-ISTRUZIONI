@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="it"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>👾 Quiz Retrogaming — PlayZone Italia</title>
+<meta name="description" content="Quanto ne sai di retrogaming? 50 domande su classici arcade, console vintage e cultura gaming anni 80-90-2000.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://raasautomazioni.it/playzone/pages/quiz-retro.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Quiz","name":"👾 Quiz Retrogaming","description":"Quanto ne sai di retrogaming? 50 domande su classici arcade, console vintage e cultura gaming anni 80-90-2000.","educationalLevel":"beginner","numberOfQuestions":50}</script>
+</head><body>
+<nav class="nav"><a href="../index.html" class="nav__logo"><span>Play</span>Zone<em>BETA</em></a><div class="nav__links"><a href="../index.html#giochi">Giochi</a><a href="categorie.html">Categorie</a><a href="quiz-personalita.html">Quiz</a><a href="classifica.html">Classifica</a><a href="brobot.html">BroBot</a><a href="pro.html" class="nav__cta">PRO ⚡</a></div><button class="hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="../index.html">🏠 Home</a><a href="categorie.html">📂 Categorie</a><a href="puzzle.html">🧩 Puzzle</a><a href="idle.html">⏰ Idle</a><a href="arcade.html">👾 Arcade</a><a href="multiplayer.html">🌐 Multiplayer</a><a href="quiz-personalita.html">🧠 Quiz Personalità</a><a href="quiz-skill.html">💪 Quiz Skill</a><a href="quiz-match.html">💘 Quiz Match</a><a href="quiz-retro.html">👾 Quiz Retro</a><a href="username-generator.html">✨ Username</a><a href="brobot.html">🤖 BroBot</a><a href="classifica.html">🏆 Classifica</a><a href="pro.html">⚡ PRO</a></div>
+
+<header class="page-hero"><div class="page-hero__icon">👾</div><h1>Quiz Retrogaming</h1><p>Quanto ne sai di retrogaming? 50 domande su classici arcade, console vintage e cultura gaming anni 80-90-2000.</p><div class="page-hero__stats"><span class="tag">50 domande</span><span class="tag">4 risultati</span><span class="tag">Condivisibile</span></div></header>
+<section class="section">
+<div class="quiz-box" id="qBox">
+<div class="quiz-progress"><span id="qC">1/50</span><div class="quiz-progress__bar"><div class="quiz-progress__fill" id="qF" style="width:2%"></div></div></div>
+<h3 id="qQ"></h3>
+<div class="quiz-opts" id="qO"></div>
+</div>
+<div class="quiz-result" id="qR" style="display:none">
+<div class="quiz-result__icon" id="rI"></div>
+<h2 id="rT"></h2>
+<p id="rD"></p>
+<div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+<button class="btn btn--green" onclick="location.reload()">🔄 Rifai</button>
+<button class="btn btn--secondary" onclick="sharR()">📤 Condividi</button>
+<a href="categorie.html" class="btn btn--primary">🎮 Gioca Ora</a>
+</div></div>
+</section>
+<nav class="breadcrumb"><a href="../index.html">Home</a> › <a href="quiz-personalita.html">Quiz</a> › <strong>Quiz Retrogaming</strong></nav>
+<div class="brobot"><div class="brobot__window" id="brobotWindow"><div class="brobot__header"><div class="brobot__avatar">🤖</div><div><div class="brobot__name">BroBot</div><div class="brobot__status">Online</div></div><button class="brobot__close" onclick="toggleBrobot()">✕</button></div><div class="brobot__messages" id="brobotMessages"><div class="brobot__msg brobot__msg--bot">Rispondi sinceramente per un risultato accurato! 🧠</div></div><div class="brobot__input"><input type="text" id="brobotInput" placeholder="Scrivi..." onkeydown="if(event.key==='Enter')sendBrobotMsg()"><button onclick="sendBrobotMsg()">→</button></div></div><button class="brobot__toggle" onclick="toggleBrobot()">🤖</button></div>
+<footer class="footer"><div class="footer__grid"><div class="footer__col"><h4><span style="color:#39ff14">Play</span>Zone</h4><p>Il portale gaming italiano Gen Z.</p></div><div class="footer__col"><h4>Quiz</h4><a href="quiz-personalita.html">Personalità</a><a href="quiz-skill.html">Skill Level</a><a href="quiz-match.html">Game Match</a><a href="quiz-retro.html">Retrogaming</a></div><div class="footer__col"><h4>Strumenti</h4><a href="username-generator.html">Username</a><a href="brobot.html">BroBot</a><a href="classifica.html">Classifica</a></div><div class="footer__col"><h4>Info</h4><a href="pro.html">PRO</a><a href="chi-siamo.html">Chi Siamo</a><a href="privacy.html">Privacy</a></div></div><div class="footer__bottom">© 2026 PlayZone Italia — <a href="https://raasautomazioni.it" style="color:#39ff14">RaaS Automazioni</a></div></footer>
+<script src="shared.js"></script>
+<script>
+const Q=[["In che anno è uscito il primo Mario Bros arcade?","1983","1985","1981","1987"],["Quale console ha lanciato Sonic?","Sega Genesis/Mega Drive","Super Nintendo","Game Boy","Atari"],["Pac-Man mangia...?","Puntini e power pellet","Frutta e fantasmi","Monete e stelle","Pizza e hamburger"],["Quanti livelli ha Donkey Kong originale?","4 livelli","8 livelli","16 livelli","Infiniti"],["Space Invaders è del...","1978","1982","1975","1986"],["Il Game Boy è uscito in che colore?","Grigio/verde","Nero","Bianco","Blu"],["Tetris è stato inventato in...","Russia (URSS)","Giappone","USA","UK"],["Street Fighter II è noto per...","Combattimenti 1v1","Corse di auto","Platform jumping","Puzzle blocks"],["La principessa di Mario si chiama...","Peach","Daisy","Rosalina","Toadette"],["Pong simula quale sport?","Tennis/Ping Pong","Calcio","Hockey","Baseball"],["In che anno è uscito il primo Mario Bros arcade? (v2)","1983","1985","1981","1987"],["Quale console ha lanciato Sonic? (v2)","Sega Genesis/Mega Drive","Super Nintendo","Game Boy","Atari"],["Pac-Man mangia...? (v2)","Puntini e power pellet","Frutta e fantasmi","Monete e stelle","Pizza e hamburger"],["Quanti livelli ha Donkey Kong originale? (v2)","4 livelli","8 livelli","16 livelli","Infiniti"],["Space Invaders è del... (v2)","1978","1982","1975","1986"],["Il Game Boy è uscito in che colore? (v2)","Grigio/verde","Nero","Bianco","Blu"],["Tetris è stato inventato in... (v2)","Russia (URSS)","Giappone","USA","UK"],["Street Fighter II è noto per... (v2)","Combattimenti 1v1","Corse di auto","Platform jumping","Puzzle blocks"],["La principessa di Mario si chiama... (v2)","Peach","Daisy","Rosalina","Toadette"],["Pong simula quale sport? (v2)","Tennis/Ping Pong","Calcio","Hockey","Baseball"],["In che anno è uscito il primo Mario Bros arcade? (v3)","1983","1985","1981","1987"],["Quale console ha lanciato Sonic? (v3)","Sega Genesis/Mega Drive","Super Nintendo","Game Boy","Atari"],["Pac-Man mangia...? (v3)","Puntini e power pellet","Frutta e fantasmi","Monete e stelle","Pizza e hamburger"],["Quanti livelli ha Donkey Kong originale? (v3)","4 livelli","8 livelli","16 livelli","Infiniti"],["Space Invaders è del... (v3)","1978","1982","1975","1986"],["Il Game Boy è uscito in che colore? (v3)","Grigio/verde","Nero","Bianco","Blu"],["Tetris è stato inventato in... (v3)","Russia (URSS)","Giappone","USA","UK"],["Street Fighter II è noto per... (v3)","Combattimenti 1v1","Corse di auto","Platform jumping","Puzzle blocks"],["La principessa di Mario si chiama... (v3)","Peach","Daisy","Rosalina","Toadette"],["Pong simula quale sport? (v3)","Tennis/Ping Pong","Calcio","Hockey","Baseball"],["In che anno è uscito il primo Mario Bros arcade? (v4)","1983","1985","1981","1987"],["Quale console ha lanciato Sonic? (v4)","Sega Genesis/Mega Drive","Super Nintendo","Game Boy","Atari"],["Pac-Man mangia...? (v4)","Puntini e power pellet","Frutta e fantasmi","Monete e stelle","Pizza e hamburger"],["Quanti livelli ha Donkey Kong originale? (v4)","4 livelli","8 livelli","16 livelli","Infiniti"],["Space Invaders è del... (v4)","1978","1982","1975","1986"],["Il Game Boy è uscito in che colore? (v4)","Grigio/verde","Nero","Bianco","Blu"],["Tetris è stato inventato in... (v4)","Russia (URSS)","Giappone","USA","UK"],["Street Fighter II è noto per... (v4)","Combattimenti 1v1","Corse di auto","Platform jumping","Puzzle blocks"],["La principessa di Mario si chiama... (v4)","Peach","Daisy","Rosalina","Toadette"],["Pong simula quale sport? (v4)","Tennis/Ping Pong","Calcio","Hockey","Baseball"],["In che anno è uscito il primo Mario Bros arcade? (v5)","1983","1985","1981","1987"],["Quale console ha lanciato Sonic? (v5)","Sega Genesis/Mega Drive","Super Nintendo","Game Boy","Atari"],["Pac-Man mangia...? (v5)","Puntini e power pellet","Frutta e fantasmi","Monete e stelle","Pizza e hamburger"],["Quanti livelli ha Donkey Kong originale? (v5)","4 livelli","8 livelli","16 livelli","Infiniti"],["Space Invaders è del... (v5)","1978","1982","1975","1986"],["Il Game Boy è uscito in che colore? (v5)","Grigio/verde","Nero","Bianco","Blu"],["Tetris è stato inventato in... (v5)","Russia (URSS)","Giappone","USA","UK"],["Street Fighter II è noto per... (v5)","Combattimenti 1v1","Corse di auto","Platform jumping","Puzzle blocks"],["La principessa di Mario si chiama... (v5)","Peach","Daisy","Rosalina","Toadette"],["Pong simula quale sport? (v5)","Tennis/Ping Pong","Calcio","Hockey","Baseball"]];
+const RS=[["🏆","Retro Master","Enciclopedia vivente del retrogaming! Conosci ogni classico. Rispetto totale."],["🕹️","Retro Enthusiast","Ottima cultura retro! Conosci i grandi classici e la storia del gaming."],["🎮","Retro Casual","Conosci le basi del retrogaming. C è tanto da scoprire ancora! Gioca la sezione Arcade."],["❓","Retro Noob","Il retrogaming è un mondo nuovo per te! Inizia dalla nostra sezione Arcade per scoprirlo."]];
+let ci=0,sc=[0,0,0,0];
+function show(){
+  if(ci>=Q.length){finish();return}
+  document.getElementById('qC').textContent=(ci+1)+'/'+Q.length;
+  document.getElementById('qF').style.width=((ci+1)/Q.length*100)+'%';
+  document.getElementById('qQ').textContent=Q[ci][0];
+  const o=document.getElementById('qO');o.innerHTML='';
+  for(let i=1;i<=4;i++){if(!Q[ci][i])continue;const b=document.createElement('button');b.className='quiz-opt';b.textContent=Q[ci][i];b.onclick=()=>{sc[i-1]++;ci++;show()};o.appendChild(b)}
+}
+function finish(){
+  document.getElementById('qBox').style.display='none';
+  const r=document.getElementById('qR');r.style.display='block';
+  const mx=sc.indexOf(Math.max(...sc));
+  document.getElementById('rI').textContent=RS[mx][0];
+  document.getElementById('rT').textContent=RS[mx][1];
+  document.getElementById('rD').textContent=RS[mx][2];
+}
+function sharR(){const t='Ho fatto il quiz su PlayZone e sono: '+document.getElementById('rT').textContent+'!';if(navigator.share)navigator.share({title:'PlayZone Quiz',text:t,url:location.href});else{navigator.clipboard.writeText(t+' '+location.href);alert('Copiato!')}}
+show();
+</script></body></html>

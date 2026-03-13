@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="it"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🤖 BroBot — AI Gaming Assistant — PlayZone Italia</title>
+<meta name="description" content="BroBot: il tuo assistente gaming AI! Consigli su giochi, trucchi, strategie e tutto su PlayZone. 200+ risposte.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://raasautomazioni.it/playzone/pages/brobot.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head><body>
+<nav class="nav"><a href="../index.html" class="nav__logo"><span>Play</span>Zone<em>BETA</em></a><div class="nav__links"><a href="../index.html#giochi">Giochi</a><a href="categorie.html">Categorie</a><a href="quiz-personalita.html">Quiz</a><a href="classifica.html">Classifica</a><a href="brobot.html">BroBot</a><a href="pro.html" class="nav__cta">PRO ⚡</a></div><button class="hamburger" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button></nav>
+<div class="mobile-menu" id="mobileMenu"><a href="../index.html">🏠 Home</a><a href="categorie.html">📂 Categorie</a><a href="puzzle.html">🧩 Puzzle</a><a href="idle.html">⏰ Idle</a><a href="arcade.html">👾 Arcade</a><a href="multiplayer.html">🌐 Multiplayer</a><a href="racing.html">🏎️ Racing</a><a href="sport.html">⚽ Sport</a><a href="avventura.html">🗺️ Avventura</a><a href="azione.html">💥 Azione</a><a href="strategia.html">♟️ Strategia</a><a href="creativi.html">🎨 Creativi</a><a href="carte.html">🃏 Carte</a><a href="brain.html">🧠 Brain</a><a href="fashion.html">👗 Fashion</a><a href="simulazione.html">🏗️ Simulazione</a><a href="shooting.html">🔫 Shooting</a><a href="quiz-personalita.html">🧠 Quiz</a><a href="username-generator.html">✨ Username</a><a href="brobot.html" style="color:#39ff14">🤖 BroBot</a><a href="classifica.html">🏆 Classifica</a><a href="nuovi.html">🆕 Nuovi</a><a href="trending.html">🔥 Trending</a><a href="pro.html">⚡ PRO</a></div>
+
+<header class="page-hero"><div class="page-hero__icon">🤖</div><h1>BroBot</h1><p>Il tuo assistente gaming AI. Chiedimi qualsiasi cosa!</p></header>
+
+<section class="section">
+<div class="brobot-full">
+  <div class="brobot-full__chat" id="bc"><div class="brobot__msg brobot__msg--bot">Yo bro! 👋 Sono BroBot. Chiedimi di giochi, trucchi, quiz, classifica, PRO... qualsiasi cosa!</div><div class="brobot__msg brobot__msg--bot">Usa i pulsanti rapidi qui sotto 👇</div></div>
+  <div class="brobot-full__input"><input type="text" id="bi" placeholder="Scrivi un messaggio..." onkeydown="if(event.key==='Enter')bs()"><button onclick="bs()">→</button></div>
+  <div class="brobot-full__quick">
+    <button onclick="bq('Consigliami un gioco')">🎮 Consiglio</button>
+    <button onclick="bq('Trucchi puzzle')">🧩 Puzzle tips</button>
+    <button onclick="bq('Tips idle')">⏰ Idle tips</button>
+    <button onclick="bq('Migliorare skill')">💪 Skill up</button>
+    <button onclick="bq('Info PRO')">⚡ PRO</button>
+    <button onclick="bq('Giochi trending')">🔥 Trending</button>
+    <button onclick="bq('Classifica tips')">🏆 Classifica</button>
+    <button onclick="bq('Multiplayer migliori')">🌐 Multi</button>
+    <button onclick="bq('Racing tips')">🏎️ Racing</button>
+    <button onclick="bq('Quiz personalita')">🧠 Quiz</button>
+  </div>
+</div>
+</section>
+<nav class="breadcrumb"><a href="../index.html">Home</a> › <strong>BroBot</strong></nav>
+
+<footer class="footer"><div class="footer__grid"><div class="footer__col"><h4><span style="color:#39ff14">Play</span>Zone</h4><p>Il portale gaming italiano Gen Z. 1000+ giochi gratis.</p></div><div class="footer__col"><h4>Categorie</h4><a href="puzzle.html">Puzzle</a><a href="idle.html">Idle</a><a href="arcade.html">Arcade</a><a href="multiplayer.html">Multiplayer</a><a href="racing.html">Racing</a></div><div class="footer__col"><h4>Strumenti</h4><a href="quiz-personalita.html">Quiz</a><a href="username-generator.html">Username</a><a href="brobot.html">BroBot</a><a href="classifica.html">Classifica</a></div><div class="footer__col"><h4>Info</h4><a href="pro.html">PRO</a><a href="chi-siamo.html">Chi Siamo</a><a href="privacy.html">Privacy</a><a href="cookie.html">Cookie</a><a href="termini.html">Termini</a></div></div><div class="footer__bottom">© 2026 PlayZone Italia — <a href="https://raasautomazioni.it" style="color:#39ff14">RaaS Automazioni</a></div></footer>
+
+<script src="shared.js"></script>
+<script>
+const R={
+ciao:['Yo bro! Come butta? 🎮','Hey! Che si gioca oggi?','Ciao! Dimmi tutto! 🔥','Bella bro! Pronto? 👊','Ehi! BroBot al tuo servizio 🤖','Yo! Carico per giocare? 💪'],
+gioco:['Cookie Empire spacca! Idle puro 🍪','Prova Pixel Quest, arcade top! 👾','Block Smash super addictive! 🧩','Dragon Quest per avventura epica! 🐉','Speed Drift per adrenalina! 🏎️','Battle Royale Lite, multiplayer puro! 🌐','Football Star se ami il calcio! ⚽','Sniper Elite per mira precisa! 🎯','Tower Defense Pro per strateghi! ♟️','Pixel Art Studio per i creativi! 🎨'],
+puzzle:['Nei puzzle inizia dagli angoli! 🧩','Block Smash dopo lvl 30 e insano!','Color Match: cerca i pattern 🎯','Sudoku Pro ha 500 livelli!','Trucco Mahjong: parti dai pezzi in alto!','Memory Flip: mappa mentale delle posizioni 🧠','Pipe Connect: parti dal centro!','2048: mai mettere il numero grande al centro!','Nonogram: riempi le righe complete prima!','Bubble Pop: mira alla base del gruppo!'],
+idle:['Lascia il gioco in background! 💰','Cookie Empire: investi nei grandfathers 🍪','Farm Idle: mucche > polli per ROI 🐄','Idle Mining: priorita piccone ⛏️','AFK Arena: check ogni 4 ore 📦','Idle Dungeon: maghi OP al late game 🧙','Tap Titans: combo per bonus exp!','Gold Rush: reinvesti tutto al primo ciclo!','Idle Slayer: ascension al momento giusto!','Kittens Game: pazienza, i primi 30 min sono lenti!'],
+arcade:['Neon Runner: i pattern sono ciclici! 🏃','Geometry Dash: pratica pratica pratica! 🔷','Pac Runner: fantasmi = pattern prevedibili 👻','Tetris Blast: tieni spazio per la barra! 📊','Flappy Clone: tap leggeri e costanti 🐦','Snake Mania: non inseguire la coda!','Breakout HD: angolo = rimbalzi multipli!','Crossy Road: anticipa il traffico!','Stack Tower: ritmo costante, non fretta!','Helix Jump: cerca i buchi consecutivi!'],
+racing:['Doppio tap per turbo boost! 🏎️💨','Frena PRIMA della curva, non durante! 🔄','Neon Drift: scorciatoie nascoste ovunque 🗺️','Moto X: inclina il telefono! 📱','Formula Lite: gestisci le gomme! 🏁','Drift Boss: tocca e rilascia, non tenere!','Highway Speed: corsia centrale = sicura!','Kart GP: powerup blu > rosso in curva!','Off Road 4x4: salta sulle rampe!','Night Racer: segui i fari!'],
+sport:['Football Star: cross + testa = gol ⚽','Basketball Pro: tiro da 3 paga! 🏀','Tennis Open: mira agli angoli 🎾','Boxing Ring: schiva poi contrassegna 🥊','Golf Putt: controlla il vento! ⛳','Archery King: trattieni il respiro!','Bowling Strike: mira al punto tra 1 e 3!','Table Tennis: spin = arma letale!','Skateboard Pro: combo aeree x2 punti!','MMA Fight: calci bassi per stancare!'],
+multiplayer:['Battle Royale: landing spot tranquilli = sopravvivi 🪂','Among Us: accusa con prove concrete!','Agar.io: nascondi dietro i grandi!','Slither: taglia la strada agli altri!','Skribbl: disegna veloce, non bello!','Ludo Online: blocca gli avversari!','Tank Battle: usa il terreno come copertura!','Co-op Dungeon: il tank avanti sempre!','Team Clash: comunicazione = vittoria!','Word Battle: parole lunghe = piu punti!'],
+avventura:['Dragon Quest: parla con tutti gli NPC! 🐉','Knight Story: livella prima del boss!','Pirate Gold: esplora ogni isola!','Cave Explorer: torcia sempre equipaggiata!','Zombie Escape: corri, non combattere!','Treasure Hunt: la mappa ha indizi nascosti!','Crystal Cave: i cristalli illuminano il path!','Wizard Tower: pozioni prima del floor 10!'],
+azione:['Zombie Rush: mira alla testa sempre! 🧟','Ninja Slash: combo = moltiplicatore!','Samurai Blade: parry > attacco diretto!','Shadow Fight: studia il pattern del boss!','Stickman Run: slide sotto gli ostacoli!','Jump King: pazienza, un salto alla volta!','Robot Wars: energia per lo scudo!','Mech Battle: jet pack per schivare!'],
+strategia:['Tower Defense: mix di torri slow + damage! ♟️','Chess Master: controlla il centro!','Castle Defense: upgrade mura prima!','Kingdom Rise: economia prima, esercito dopo!','Empire Builder: alleanze precoci vincono!','Siege Master: catapulte > ariete!','Risk Lite: consolida territori vicini!','Hex Empire: una fronte alla volta!'],
+shooting:['Sniper Elite: trattieni il respiro per mira! 🎯','Gun Master: headshot = bonus punti!','Bow Master: calcola la parabola!','Turret Defense: posiziona ai colli di bottiglia!','Paintball: movimento > mira ferma!','Tank Wars: angolazione del cannone!'],
+creativi:['Pixel Art Studio: inizia con 16x16! 🎨','Music Maker: loop + layer = magia!','Room Decorator: simmetria piace sempre!','Pottery Craft: ruota lenta = forme migliori!'],
+carte:['Solitaire: scopri le colonne nascoste prima! 🃏','Poker Lite: bluffa solo da posizione late!','UNO Clone: tieni le carte +4 per emergenza!','Blackjack: mai hittare su 17+!','Backgammon: controlla il bar!'],
+brain:['Math Rush: stima prima di calcolare! 🧠','Typing Race: non guardare la tastiera!','Quiz Battle: elimina le risposte assurde!','Memory Challenge: crea storie mnemoniche!','IQ Test: salta e torna alle difficili!'],
+fashion:['Fashion Show: accessori fanno la differenza! 👗','Nail Art: base coat = colori migliori!','Hair Salon: simmetria nel taglio!','Makeup Studio: meno e piu elegante!'],
+simulazione:['City Builder: zona residenziale lontana da industria! 🏗️','Farm Manager: diversifica le colture!','Restaurant Sim: menu piccolo = qualita!','Truck Driver: rispetta i limiti per bonus!'],
+consiglio:['Fai il quiz personalita per scoprire il tuo genere! 🧠','Dipende dal mood: relax=idle, adrenalina=arcade! 🎮','Se vuoi sfidare amici, multiplayer tutta la vita! 🌐','Per allenare il cervello prova Brain Training! 🧩','Vuoi creativita? Pixel Art Studio spacca! 🎨'],
+trucco:['Nei puzzle inizia dagli angoli! 🧩','Nei racing doppio tap per turbo! 🏎️','Negli idle lascia in background! 💰','Negli shooting mira alla testa! 🎯','Nei multiplayer comunicazione = vittoria! 🌐','Nei card games conta le carte uscite! 🃏'],
+pro:['PRO = zero ads + skin esclusive! ⚡','Prezzi in definizione, iscriviti alla waitlist! 💎','PRO ha BroBot illimitato! 🤖','Badge PRO + boost classifica +10%! 🏆','Accesso anticipato ai nuovi giochi! 🚀','Temi esclusivi per personalizzare! 🎨'],
+classifica:['Gioca ogni giorno per punti costanza! 🏆','PRO da +10% boost ai punti!','Varia i generi per punti bonus!','Speed run = piu punti per partita!','Combo e streak danno moltiplicatori!','Il top player ha 52.180 punti, battilo!'],
+trending:['Cookie Empire e #1 da 3 settimane! 🔥','Pixel Quest sta salendo velocissimo! 📈','Block Smash e un evergreen! 🧩','Battle Royale Lite esplosione di players! 💥','Speed Drift nuova entry in top 5! 🏎️'],
+quiz:['Il quiz personalita ti dice che gamer sei! 🧠','50 domande per risultato preciso!','4 quiz diversi: personalita, skill, match, retro!','Quiz retro testa la tua cultura gaming! 👾','Condividi il risultato con gli amici!'],
+username:['Prova il generatore username! ✨','5 stili: epic, cute, dark, retro, pro!','Puoi copiare con un click!','Cronologia degli ultimi 10 nomi generati!'],
+default:['Dimmi di piu bro! 🤔','Chiedi di giochi, trucchi o strategie! 🎮','Prova a chiedermi un consiglio specifico! 💡','Posso aiutarti con puzzle, idle, arcade e molto altro!','Fai il quiz personalita! quiz-personalita.html 🧠','Hai provato il generatore username? ✨','Vuoi sapere i giochi trending? 🔥','Chiedimi trucchi per qualsiasi categoria! 🎯']
+};
+function rnd(a){return a[Math.floor(Math.random()*a.length)]}
+function gr(m){const l=m.toLowerCase();const keys=['ciao','hey','salve','gioco','consigl','sugger','puzzle','rompicap','idle','afk','arcade','retro','racing','corsa','drift','sport','calcio','basket','multiplayer','online','avventura','esplora','azione','zombie','ninja','strategia','difesa','tower','shooting','spara','sniper','creativi','disegn','pixel art','carte','poker','solitario','brain','cervello','quiz','logica','fashion','moda','stile','simulazione','costrui','city','consiglio','trucco','trick','tip','pro','premium','classifica','punti','rank','trending','popolar','username','nome'];
+const maps={ciao:'ciao',hey:'ciao',salve:'ciao',gioco:'gioco',consigl:'consiglio',sugger:'consiglio',puzzle:'puzzle',rompicap:'puzzle',idle:'idle',afk:'idle',arcade:'arcade',retro:'arcade',racing:'racing',corsa:'racing',drift:'racing',sport:'sport',calcio:'sport',basket:'sport',multiplayer:'multiplayer',online:'multiplayer',avventura:'avventura',esplora:'avventura',azione:'azione',zombie:'azione',ninja:'azione',strategia:'strategia',difesa:'strategia',tower:'strategia',shooting:'shooting',spara:'shooting',sniper:'shooting',creativi:'creativi',disegn:'creativi','pixel art':'creativi',carte:'carte',poker:'carte',solitario:'carte',brain:'brain',cervello:'brain',quiz:'quiz',logica:'brain',fashion:'fashion',moda:'fashion',stile:'fashion',simulazione:'simulazione',costrui:'simulazione',city:'simulazione',consiglio:'consiglio',trucco:'trucco',trick:'trucco',tip:'trucco',pro:'pro',premium:'pro',classifica:'classifica',punti:'classifica',rank:'classifica',trending:'trending',popolar:'trending',username:'username',nome:'username'};
+for(const k of keys){if(l.includes(k)&&maps[k]&&R[maps[k]])return rnd(R[maps[k]])}
+return rnd(R.default)}
+function bs(){const i=document.getElementById('bi'),m=i.value.trim();if(!m)return;const c=document.getElementById('bc');c.innerHTML+='<div class="brobot__msg brobot__msg--user">'+m+'</div>';i.value='';c.scrollTop=c.scrollHeight;setTimeout(()=>{c.innerHTML+='<div class="brobot__msg brobot__msg--bot">'+gr(m)+'</div>';c.scrollTop=c.scrollHeight},400+Math.random()*800)}
+function bq(t){document.getElementById('bi').value=t;bs()}
+</script>
+</body></html>
