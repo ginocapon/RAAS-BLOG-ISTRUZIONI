@@ -21,13 +21,13 @@
   "bandi": [
     {
       "id": "inv001smartstart",
-      "titolo": "Smart&Start Italia",
+      "titolo": "Smart&Start — Finanziamento Startup Innovative",
       "ente": "Invitalia",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
       "provincia": null,
-      "url_bando": "https://www.invitalia.it/incentivi-e-strumenti/smart-start-italia",
-      "url_domanda": "https://www.invitalia.it/incentivi-e-strumenti/smart-start-italia",
+      "url_bando": "https://www.invitalia.it/incentivi-e-strumenti/smartstart-italia",
+      "url_domanda": "https://www.invitalia.it/incentivi-e-strumenti/smartstart-italia",
       "data_apertura": "2021-01-01",
       "data_scadenza": null,
       "stato": "aperto",
@@ -60,13 +60,13 @@
     },
     {
       "id": "inv002ontassozero",
-      "titolo": "ON - Oltre Nuove Imprese a Tasso Zero",
+      "titolo": "ON — Nuove Imprese a Tasso Zero per Giovani e Donne",
       "ente": "Invitalia",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
       "provincia": null,
-      "url_bando": "https://www.invitalia.it/incentivi-e-strumenti/ON-nuove-imprese-tasso-zero",
-      "url_domanda": "https://www.invitalia.it/incentivi-e-strumenti/ON-nuove-imprese-tasso-zero",
+      "url_bando": "https://www.invitalia.it/incentivi-e-strumenti/on-nuove-imprese-a-tasso-zero",
+      "url_domanda": "https://www.invitalia.it/incentivi-e-strumenti/on-nuove-imprese-a-tasso-zero",
       "data_apertura": "2021-06-01",
       "data_scadenza": null,
       "stato": "aperto",
@@ -102,7 +102,7 @@
     },
     {
       "id": "inv003restoalsud",
-      "titolo": "Resto al Sud 2.0 - Investire al Sud",
+      "titolo": "Resto al Sud 2.0 — Incentivi per il Mezzogiorno Under 35",
       "ente": "Invitalia",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
@@ -141,7 +141,7 @@
     },
     {
       "id": "mimit001sabatini",
-      "titolo": "Nuova Sabatini",
+      "titolo": "Beni Strumentali — Nuova Sabatini per PMI",
       "ente": "MIMIT - Ministero Imprese e Made in Italy",
       "tipo_ente": "ministero",
       "regione": "Nazionale",
@@ -181,7 +181,7 @@
     },
     {
       "id": "mimit002transizione50",
-      "titolo": "Transizione 5.0",
+      "titolo": "Credito d'Imposta Transizione 5.0 — Risparmio Energetico e 4.0",
       "ente": "MIMIT - Ministero Imprese e Made in Italy",
       "tipo_ente": "ministero",
       "regione": "Nazionale",
@@ -221,7 +221,7 @@
     },
     {
       "id": "mimit003accordiinnovazione",
-      "titolo": "Accordi per l'Innovazione 2025",
+      "titolo": "Accordi Innovazione MIMIT — Progetti R&S da €5M",
       "ente": "MIMIT - Ministero Imprese e Made in Italy",
       "tipo_ente": "ministero",
       "regione": "Nazionale",
@@ -262,7 +262,7 @@
     },
     {
       "id": "simest001mercati",
-      "titolo": "SIMEST - Inserimento Mercati Esteri",
+      "titolo": "SIMEST Mercati Esteri — Finanziamento Agevolato Export",
       "ente": "SIMEST - Gruppo CDP",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
@@ -301,7 +301,7 @@
     },
     {
       "id": "simest002ecommerce",
-      "titolo": "SIMEST - E-commerce",
+      "titolo": "SIMEST E-commerce — Vendita Online su Mercati Internazionali",
       "ente": "SIMEST - Gruppo CDP",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
@@ -339,7 +339,7 @@
     },
     {
       "id": "inail001isi2025",
-      "titolo": "Bando ISI INAIL 2025/2026 - Sicurezza sul Lavoro",
+      "titolo": "ISI INAIL 2026 — Contributi Sicurezza e Prevenzione Lavoro",
       "ente": "INAIL - Istituto Nazionale Assicurazione Infortuni sul Lavoro",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
@@ -383,7 +383,7 @@
     },
     {
       "id": "ven001competitivita",
-      "titolo": "Fondo Veneto Competitività - Sezione Startup",
+      "titolo": "Veneto Competitivita — Fondo per Startup e Innovazione",
       "ente": "Regione Veneto - Veneto Sviluppo",
       "tipo_ente": "regione",
       "regione": "Veneto",
@@ -421,7 +421,7 @@
     },
     {
       "id": "ven002energia",
-      "titolo": "Fondo Energia Veneto - Efficientamento Energetico",
+      "titolo": "Veneto Energia — Efficientamento e Rinnovabili per PMI",
       "ente": "Regione Veneto - Veneto Innovazione",
       "tipo_ente": "regione",
       "regione": "Veneto",
@@ -538,7 +538,7 @@
     },
     {
       "id": "lom002impresaefficiente",
-      "titolo": "Investimenti - Linea Impresa Efficiente Lombardia",
+      "titolo": "Lombardia Impresa Efficiente — Investimenti Green per MPMI",
       "ente": "Regione Lombardia",
       "tipo_ente": "regione",
       "regione": "Lombardia",
@@ -576,7 +576,7 @@
     },
     {
       "id": "laz001donneimpresa",
-      "titolo": "Donne e Impresa - Lazio",
+      "titolo": "Lazio Impresa Femminile — Fondo Perduto Donne PMI",
       "ente": "Regione Lazio - Lazio Innova",
       "tipo_ente": "regione",
       "regione": "Lazio",
@@ -614,7 +614,7 @@
     },
     {
       "id": "cciaa001romavoucher",
-      "titolo": "Voucher Doppia Transizione Digitale e Ecologica 2025 - Roma",
+      "titolo": "Roma Voucher Digitale — Transizione 4.0 ed Ecologica",
       "ente": "Camera di Commercio di Roma",
       "tipo_ente": "cciaa",
       "regione": "Lazio",
@@ -653,7 +653,7 @@
     },
     {
       "id": "cciaa002milanoconnessi",
-      "titolo": "Bando Connessi 2025 - Milano",
+      "titolo": "CONneSSi 2025 — Voucher Digitale Imprese Milano",
       "ente": "Camera di Commercio Milano Monza Brianza Lodi",
       "tipo_ente": "cciaa",
       "regione": "Lombardia",
@@ -729,7 +729,7 @@
     },
     {
       "id": "zes001unicasud",
-      "titolo": "Credito d'Imposta ZES Unica Sud",
+      "titolo": "ZES Unica Mezzogiorno — Credito d'Imposta Investimenti Sud",
       "ente": "Agenzia delle Entrate / MIMIT",
       "tipo_ente": "ministero",
       "regione": "Nazionale",
@@ -768,7 +768,7 @@
     },
     {
       "id": "mimit004brevetti",
-      "titolo": "Brevetti+ 2025",
+      "titolo": "Brevetti+ — Valorizzazione Proprieta Intellettuale PMI",
       "ente": "MIMIT - Ministero Imprese e Made in Italy",
       "tipo_ente": "ministero",
       "regione": "Nazionale",
@@ -807,7 +807,7 @@
     },
     {
       "id": "mimit005marchi",
-      "titolo": "Marchi+ 2025",
+      "titolo": "Marchi+ — Registrazione Marchi UE e Internazionali",
       "ente": "MIMIT - Ministero Imprese e Made in Italy",
       "tipo_ente": "ministero",
       "regione": "Nazionale",
@@ -846,15 +846,15 @@
     },
     {
       "id": "inv004netzero",
-      "titolo": "Contratto di Sviluppo Net Zero",
+      "titolo": "Contratto di Sviluppo — Sportello Net Zero",
       "ente": "Invitalia",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
       "provincia": null,
-      "url_bando": "https://www.invitalia.it/incentivi-e-strumenti/contratto-di-sviluppo",
-      "url_domanda": "https://www.invitalia.it/incentivi-e-strumenti/contratto-di-sviluppo",
-      "data_apertura": "2025-01-01",
-      "data_scadenza": null,
+      "url_bando": "https://www.invitalia.it/incentivi-e-strumenti/contratto-di-sviluppo-net-zero",
+      "url_domanda": "https://www.invitalia.it/incentivi-e-strumenti/contratto-di-sviluppo-net-zero",
+      "data_apertura": "2026-01-19",
+      "data_scadenza": "2026-04-21",
       "stato": "aperto",
       "dotazione": 1738000000,
       "contributo_min": 3000000,
@@ -889,7 +889,7 @@
     },
     {
       "id": "inv005culturacresce",
-      "titolo": "Cultura Cresce",
+      "titolo": "Cultura Cresce — Sostegno Imprese Culturali e Creative",
       "ente": "Invitalia",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
@@ -932,7 +932,7 @@
     },
     {
       "id": "inv006economiacircolare",
-      "titolo": "Economia Circolare - Fondo Crescita Sostenibile",
+      "titolo": "Economia Circolare — Riconversione Produttiva Sostenibile",
       "ente": "Invitalia",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
@@ -973,7 +973,7 @@
     },
     {
       "id": "inv007impresafemminile",
-      "titolo": "Fondo Impresa Femminile",
+      "titolo": "Impresa Femminile PNRR — Agevolazioni per Imprenditrici",
       "ente": "Invitalia",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
@@ -1012,7 +1012,7 @@
     },
     {
       "id": "inv008voucher3i",
-      "titolo": "Voucher 3I - Brevetti per Startup",
+      "titolo": "Voucher 3I — Brevettazione Gratuita per Startup Innovative",
       "ente": "Invitalia",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
@@ -1051,7 +1051,7 @@
     },
     {
       "id": "mimit006greennewdeal",
-      "titolo": "Green New Deal Italia",
+      "titolo": "Green New Deal — Ricerca e Innovazione per Transizione Ecologica",
       "ente": "MIMIT - Ministero Imprese e Made in Italy",
       "tipo_ente": "ministero",
       "regione": "Nazionale",
@@ -1093,7 +1093,7 @@
     },
     {
       "id": "simest003fiere",
-      "titolo": "SIMEST - Partecipazione Fiere ed Eventi",
+      "titolo": "SIMEST Fiere — Sostegno Partecipazione Eventi Internazionali",
       "ente": "SIMEST - Gruppo CDP",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
@@ -1133,7 +1133,7 @@
     },
     {
       "id": "simest004transdigitale",
-      "titolo": "SIMEST - Transizione Digitale ed Ecologica",
+      "titolo": "SIMEST Transizione — Digitale ed Ecologica per PMI Internazionali",
       "ente": "SIMEST - Gruppo CDP",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",
@@ -1171,7 +1171,7 @@
     },
     {
       "id": "euipo001fondopmi",
-      "titolo": "Fondo PMI EUIPO - Voucher Marchi e Brevetti UE",
+      "titolo": "EUIPO Fondo PMI — Voucher UE per Tutela Proprietà Intellettuale",
       "ente": "EUIPO - Ufficio UE Proprietà Intellettuale",
       "tipo_ente": "ente_ue",
       "regione": "Nazionale",
@@ -1211,7 +1211,7 @@
     },
     {
       "id": "mimit007digitaltransformation",
-      "titolo": "Digital Transformation - Digitalizzazione PMI",
+      "titolo": "Digital Transformation MIMIT — Tecnologie I4.0 per PMI",
       "ente": "MIMIT - Ministero Imprese e Made in Italy",
       "tipo_ente": "ministero",
       "regione": "Nazionale",
@@ -1254,7 +1254,7 @@
     },
     {
       "id": "cciaa004connessi2026",
-      "titolo": "Bando CONneSSi 2026 - Marketing Internazionale",
+      "titolo": "CONneSSi 2026 — Voucher Digital Marketing Internazionale",
       "ente": "Unioncamere / Sistema Camerale",
       "tipo_ente": "cciaa",
       "regione": "Nazionale",
@@ -1294,7 +1294,7 @@
     },
     {
       "id": "inv009incentiviecsociale",
-      "titolo": "Incentivi Economia Sociale",
+      "titolo": "Economia Sociale — Sostegno a Cooperative e Imprese Sociali",
       "ente": "Invitalia",
       "tipo_ente": "ente_nazionale",
       "regione": "Nazionale",

@@ -28,6 +28,8 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 8. **Prezzi bloccati** — ogni riferimento ai prezzi deve essere coerente: Essential 199€/anno, Business 249€/anno, Professional 299€/anno
 9. **Dati verificati** — ogni dato numerico DEVE avere fonte citata. Se non hai fonte, scrivi "dato non disponibile"
 10. **Zero claim inventati** — nessuna percentuale o statistica senza fonte verificabile
+11. **Anti-plagio bandi** — i titoli dei bandi in data/bandi.json devono essere parafrasi originali, MAI copiati dal sito ufficiale. Formato: "NomeBando — Descrizione Breve Originale". I link devono corrispondere esattamente alla pagina ufficiale verificata
+12. **Link verificati** — ogni url_bando deve essere controllato contro la fonte ufficiale prima dell'inserimento. URL errati danneggiano la credibilita
 
 ### 1.3 Stile di Comunicazione
 - Rispondi in italiano

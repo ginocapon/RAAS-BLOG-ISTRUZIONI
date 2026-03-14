@@ -15,6 +15,7 @@ interface EmailRequest {
   subject: string;
   html: string;
   from_name?: string;
+  smtp_pass?: string;
 }
 
 Deno.serve(async (req: Request) => {
@@ -32,7 +33,7 @@ Deno.serve(async (req: Request) => {
 
   try {
     const body: EmailRequest = await req.json();
-    const { to, subject, html, from_name } = body;
+    const { to, subject, html, from_name, smtp_pass: bodySmtpPass } = body;
 
     if (!to || !subject || !html) {
       return new Response(
@@ -44,7 +45,7 @@ Deno.serve(async (req: Request) => {
     const smtpHost = Deno.env.get("SMTP_HOST") || "es1003.siteground.eu";
     const smtpPort = parseInt(Deno.env.get("SMTP_PORT") || "465");
     const smtpUser = Deno.env.get("SMTP_USER") || "info@raasautomazioni.it";
-    const smtpPass = Deno.env.get("SMTP_PASS");
+    const smtpPass = Deno.env.get("SMTP_PASS") || bodySmtpPass;
 
     if (!smtpPass) {
       return new Response(
