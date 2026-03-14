@@ -1209,14 +1209,20 @@ select.filter-select {
       <!-- Azioni Manutenzione -->
       <div class="card">
         <div class="card-header">
-          <h3>&#128736; Manutenzione Bandi</h3>
+          <h3>&#128736; Manutenzione Completa Bandi</h3>
           <div class="toolbar">
-            <button class="btn btn-primary" onclick="runManutenzione()">&#9654; Esegui Manutenzione Ora</button>
+            <button class="btn btn-primary" id="btnManutenzione" onclick="runManutenzioneFull()">&#9654; Cerca + Pulisci + Aggiorna</button>
           </div>
         </div>
         <p style="color:var(--grigio);font-size:0.85rem;margin-bottom:16px;">
-          La manutenzione automatica viene eseguita ogni 7 giorni. Puoi lanciarla manualmente con il pulsante sopra.
+          Un clic = ciclo completo: cerca nuovi bandi da fonti ufficiali, elimina scaduti, rimuovi duplicati, verifica titoli e link. Automatico ogni 7 giorni.
         </p>
+        <div id="maintProgress" style="display:none;margin-bottom:12px;">
+          <div style="background:var(--grigio2);border-radius:8px;height:6px;overflow:hidden;">
+            <div id="maintProgressBar" style="background:var(--oro);height:100%;width:0%;transition:width 0.5s ease;border-radius:8px;"></div>
+          </div>
+          <p id="maintProgressText" style="font-size:0.78rem;color:var(--grigio);margin-top:6px;">Avvio...</p>
+        </div>
         <div id="maintLog" style="background:var(--sfondo);border-radius:8px;padding:16px;font-size:0.82rem;font-family:monospace;max-height:400px;overflow-y:auto;white-space:pre-wrap;color:var(--testo);display:none;"></div>
       </div>
 
@@ -1226,10 +1232,11 @@ select.filter-select {
           <h3>Regole SKILL.md Applicate</h3>
         </div>
         <div style="font-size:0.85rem;line-height:1.8;color:var(--testo);">
+          <p>&#10003; <strong>Ricerca nuovi bandi</strong> — Interroga incentivi.gov.it API per nuovi bandi attivi</p>
           <p>&#10003; <strong>Anti-plagio titoli</strong> — I titoli vengono riformattati in "NomeBando — Descrizione Breve Originale"</p>
           <p>&#10003; <strong>Pulizia bandi scaduti</strong> — Bandi con scadenza passata vengono disattivati automaticamente</p>
-          <p>&#10003; <strong>Deduplicazione</strong> — Bandi con titolo simile (>85%) vengono segnalati</p>
-          <p>&#10003; <strong>Verifica link</strong> — URL dei bandi vengono controllati (segnalazione 404/errori)</p>
+          <p>&#10003; <strong>Deduplicazione</strong> — Bandi con titolo simile (>85%) vengono rimossi automaticamente</p>
+          <p>&#10003; <strong>Verifica link</strong> — URL dei bandi vengono controllati (segnalazione vuoti/invalidi)</p>
           <p>&#10003; <strong>Data aggiornamento</strong> — Registrata ad ogni esecuzione (manuale o automatica)</p>
         </div>
       </div>
@@ -1241,7 +1248,7 @@ select.filter-select {
         </div>
         <div class="table-wrap">
           <table class="data-table">
-            <thead><tr><th>Data</th><th>Tipo</th><th>Scaduti Disattivati</th><th>Duplicati Trovati</th><th>Link Errore</th><th>Titoli Corretti</th></tr></thead>
+            <thead><tr><th>Data</th><th>Tipo</th><th>Nuovi Bandi</th><th>Scaduti</th><th>Duplicati</th><th>Link Errore</th><th>Titoli</th></tr></thead>
             <tbody id="maintHistory"></tbody>
           </table>
         </div>
@@ -2594,11 +2601,12 @@ async function loadManutenzione() {
   const hist = getMaintHistory();
   const tbody = document.getElementById('maintHistory');
   if (hist.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" style="color:var(--grigio);text-align:center;">Nessuna manutenzione eseguita</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" style="color:var(--grigio);text-align:center;">Nessuna manutenzione eseguita</td></tr>';
   } else {
     tbody.innerHTML = hist.map(h => `<tr>
       <td>${new Date(h.date).toLocaleDateString('it-IT', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}</td>
-      <td><span class="badge ${h.type === 'auto' ? 'attivo' : 'paid'}">${h.type === 'auto' ? 'Automatico' : 'Manuale'}</span></td>
+      <td><span class="badge ${h.type === 'auto' ? 'attivo' : h.type === 'fallback' ? '' : 'paid'}">${h.type === 'auto' ? 'Auto' : h.type === 'fallback' ? 'Fallback' : 'Manuale'}</span></td>
+      <td style="color:${(h.nuovi || 0) > 0 ? 'var(--verde)' : 'inherit'};font-weight:${(h.nuovi || 0) > 0 ? '700' : '400'}">${h.nuovi || 0}</td>
       <td>${h.scaduti || 0}</td>
       <td>${h.duplicati || 0}</td>
       <td>${h.linkErrori || 0}</td>
@@ -2620,20 +2628,105 @@ async function checkAutoMaintenance() {
   await runManutenzione('auto');
 }
 
-async function runManutenzione(tipo = 'manuale') {
+// Nuova funzione completa: chiama Edge Function per ciclo completo
+async function runManutenzioneFull(tipo = 'manuale') {
   const log = document.getElementById('maintLog');
+  const progress = document.getElementById('maintProgress');
+  const progressBar = document.getElementById('maintProgressBar');
+  const progressText = document.getElementById('maintProgressText');
+  const btn = document.getElementById('btnManutenzione');
+
   log.style.display = 'block';
   log.textContent = '';
-  const addLog = (msg) => { log.textContent += new Date().toLocaleTimeString('it-IT') + ' — ' + msg + '\n'; log.scrollTop = log.scrollHeight; };
+  progress.style.display = 'block';
+  btn.disabled = true;
+  btn.textContent = 'In esecuzione...';
 
-  addLog('Avvio manutenzione ' + tipo + '...');
+  const addLog = (msg) => { log.textContent += msg + '\n'; log.scrollTop = log.scrollHeight; };
+  const setProgress = (pct, text) => { progressBar.style.width = pct + '%'; progressText.textContent = text; };
+
+  addLog('Avvio manutenzione completa (' + tipo + ')...');
+  setProgress(10, 'Connessione alla Edge Function...');
+
+  try {
+    const edgeFnUrl = SUPABASE_URL + '/functions/v1/manutenzione-bandi';
+    const res = await fetch(edgeFnUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'apikey': SUPABASE_ANON_KEY
+      },
+      body: JSON.stringify({ tipo: tipo })
+    });
+
+    setProgress(60, 'Elaborazione in corso...');
+
+    const result = await res.json();
+
+    if (!res.ok || !result.success) {
+      throw new Error(result.error || 'Errore dalla Edge Function (HTTP ' + res.status + ')');
+    }
+
+    setProgress(90, 'Completamento...');
+
+    // Mostra log ricevuto dalla Edge Function
+    if (result.log && result.log.length > 0) {
+      log.textContent = '';
+      result.log.forEach(line => addLog(line));
+    }
+
+    // Salva nel localStorage
+    const now = new Date().toISOString();
+    localStorage.setItem(MAINT_LAST_KEY, now);
+    if (tipo === 'auto') localStorage.setItem(MAINT_AUTO_KEY, now);
+
+    const record = {
+      date: now,
+      type: tipo === 'auto' ? 'auto' : 'manuale',
+      nuovi: result.nuovi_bandi || 0,
+      scaduti: result.scaduti_disattivati || 0,
+      duplicati: result.duplicati_rimossi || 0,
+      linkErrori: result.link_errori || 0,
+      titoliCorretti: result.titoli_da_correggere || 0
+    };
+    const hist = getMaintHistory();
+    hist.unshift(record);
+    saveMaintHistory(hist);
+
+    setProgress(100, 'Completato!');
+    toast('Manutenzione completata: ' + (result.nuovi_bandi || 0) + ' nuovi bandi, ' + (result.scaduti_disattivati || 0) + ' scaduti rimossi', 'success');
+    loadManutenzione();
+
+  } catch (e) {
+    setProgress(0, 'Errore!');
+    addLog('');
+    addLog('ERRORE: ' + e.message);
+    addLog('');
+    addLog('Fallback: esecuzione manutenzione locale (senza ricerca nuovi bandi)...');
+
+    // Fallback: esegui almeno la pulizia locale
+    await runManutenzioneFallback(tipo);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '\u25B6 Cerca + Pulisci + Aggiorna';
+  }
+}
+
+// Fallback locale se la Edge Function non e' raggiungibile
+async function runManutenzioneFallback(tipo = 'manuale') {
+  const log = document.getElementById('maintLog');
+  const addLog = (msg) => { log.textContent += new Date().toLocaleTimeString('it-IT') + ' — ' + msg + '\n'; log.scrollTop = log.scrollHeight; };
+  const setProgress = (pct, text) => { document.getElementById('maintProgressBar').style.width = pct + '%'; document.getElementById('maintProgressText').textContent = text; };
+
   let scadutiCount = 0, dupeCount = 0, linkErrors = 0, titoliCorrected = 0;
 
   try {
     // 1. Disattiva bandi scaduti
+    setProgress(30, 'Pulizia bandi scaduti...');
     addLog('Controllo bandi scaduti...');
     const oggi = new Date().toISOString().split('T')[0];
-    const { data: scaduti } = await sb.from('bandi').select('id, titolo, scadenza').eq('attivo', true).lt('scadenza', oggi);
+    const { data: scaduti } = await sb.from('bandi').select('id, titolo, scadenza').eq('attivo', true).lt('scadenza', oggi).not('scadenza', 'is', null);
     if (scaduti && scaduti.length > 0) {
       const ids = scaduti.map(b => b.id);
       await sb.from('bandi').update({ attivo: false }).in('id', ids);
@@ -2644,79 +2737,88 @@ async function runManutenzione(tipo = 'manuale') {
       addLog('  Nessun bando scaduto trovato');
     }
 
-    // 2. Cerca duplicati (titoli con similarita' alta)
-    addLog('Controllo duplicati...');
-    const { data: allBandi } = await sb.from('bandi').select('id, titolo').eq('attivo', true);
-    const dupes = [];
+    // 2. Cerca duplicati (stessa data+ente = duplicato, oppure titolo > 90%)
+    setProgress(50, 'Deduplicazione...');
+    addLog('Controllo duplicati (data+ente e titolo >90%)...');
+    const { data: allBandi } = await sb.from('bandi').select('id, titolo, scadenza, ente').eq('attivo', true);
     if (allBandi) {
       const norm = allBandi.map(b => ({ ...b, norm: b.titolo.toLowerCase().replace(/[^a-z0-9àèéìòù]/g, '') }));
+      const simFn = (a, b) => { const w1 = new Set(a.split(/\s+/)); const w2 = new Set(b.split(/\s+/)); const inter = [...w1].filter(x => w2.has(x)).length; const uni = new Set([...w1, ...w2]).size; return uni === 0 ? 0 : inter / uni; };
+      const idsToRemove = [];
       for (let i = 0; i < norm.length; i++) {
+        if (idsToRemove.includes(norm[i].id)) continue;
         for (let j = i + 1; j < norm.length; j++) {
-          if (norm[i].norm === norm[j].norm || (norm[i].norm.length > 15 && norm[j].norm.length > 15 && norm[i].norm.substring(0, 20) === norm[j].norm.substring(0, 20))) {
-            dupes.push({ a: norm[i], b: norm[j] });
+          if (idsToRemove.includes(norm[j].id)) continue;
+          const stessaDataEnte = norm[i].scadenza && norm[j].scadenza && norm[i].scadenza === norm[j].scadenza && norm[i].ente && norm[j].ente && norm[i].ente.toLowerCase() === norm[j].ente.toLowerCase();
+          const titoloSimile = norm[i].norm === norm[j].norm || simFn(norm[i].norm, norm[j].norm) > 0.9;
+          if (stessaDataEnte || titoloSimile) {
+            idsToRemove.push(norm[j].id);
+            const motivo = stessaDataEnte ? 'stessa data+ente' : 'titolo >90%';
+            addLog('    Duplicato (' + motivo + '): "' + norm[j].titolo + '"');
           }
         }
       }
-      dupeCount = dupes.length;
-      if (dupes.length > 0) {
-        addLog('  Trovati ' + dupes.length + ' possibili duplicati:');
-        dupes.forEach(d => addLog('    - "' + d.a.titolo + '" vs "' + d.b.titolo + '"'));
+      dupeCount = idsToRemove.length;
+      if (idsToRemove.length > 0) {
+        await sb.from('bandi').update({ attivo: false }).in('id', idsToRemove);
+        addLog('  Disattivati ' + dupeCount + ' duplicati');
       } else {
         addLog('  Nessun duplicato trovato');
       }
     }
 
-    // 3. Verifica formato titoli anti-plagio (SKILL.md regola 11)
+    // 3. Verifica titoli
+    setProgress(70, 'Verifica titoli...');
     addLog('Controllo formato titoli anti-plagio...');
     if (allBandi) {
       const badTitles = allBandi.filter(b => !b.titolo.includes('—') && !b.titolo.includes(' - '));
+      titoliCorrected = badTitles.length;
       if (badTitles.length > 0) {
-        addLog('  Trovati ' + badTitles.length + ' titoli senza formato anti-plagio (NomeBando — Descrizione):');
-        badTitles.slice(0, 10).forEach(b => addLog('    - ID ' + b.id + ': "' + b.titolo + '"'));
-        titoliCorrected = badTitles.length;
+        addLog('  ' + badTitles.length + ' titoli senza formato anti-plagio');
+        badTitles.slice(0, 10).forEach(b => addLog('    - "' + b.titolo + '"'));
       } else {
-        addLog('  Tutti i titoli rispettano il formato anti-plagio');
+        addLog('  Tutti i titoli OK');
       }
     }
 
-    // 4. Verifica link (controlla che abbiano URL)
+    // 4. Verifica link
+    setProgress(85, 'Verifica link...');
     addLog('Controllo link bandi...');
     const { data: noLink } = await sb.from('bandi').select('id, titolo, link').eq('attivo', true);
     if (noLink) {
       const missingLinks = noLink.filter(b => !b.link || b.link.trim() === '' || b.link === '#');
+      linkErrors = missingLinks.length;
       if (missingLinks.length > 0) {
-        linkErrors = missingLinks.length;
-        addLog('  Trovati ' + linkErrors + ' bandi senza link valido:');
-        missingLinks.slice(0, 10).forEach(b => addLog('    - ID ' + b.id + ': "' + b.titolo + '"'));
+        addLog('  ' + linkErrors + ' bandi senza link valido');
+        missingLinks.slice(0, 10).forEach(b => addLog('    - "' + b.titolo + '"'));
       } else {
-        addLog('  Tutti i bandi hanno un link valido');
+        addLog('  Tutti i link OK');
       }
     }
 
-    // Salva risultato
+    // Salva
     const now = new Date().toISOString();
     localStorage.setItem(MAINT_LAST_KEY, now);
     if (tipo === 'auto') localStorage.setItem(MAINT_AUTO_KEY, now);
 
-    const record = { date: now, type: tipo === 'auto' ? 'auto' : 'manuale', scaduti: scadutiCount, duplicati: dupeCount, linkErrori: linkErrors, titoliCorretti: titoliCorrected };
+    const record = { date: now, type: tipo === 'auto' ? 'auto' : 'fallback', nuovi: 0, scaduti: scadutiCount, duplicati: dupeCount, linkErrori: linkErrors, titoliCorretti: titoliCorrected };
     const hist = getMaintHistory();
     hist.unshift(record);
     saveMaintHistory(hist);
 
+    setProgress(100, 'Fallback completato (senza ricerca nuovi)');
     addLog('');
-    addLog('Manutenzione completata.');
-    addLog('  Scaduti disattivati: ' + scadutiCount);
-    addLog('  Duplicati segnalati: ' + dupeCount);
-    addLog('  Link mancanti: ' + linkErrors);
-    addLog('  Titoli da correggere: ' + titoliCorrected);
-
-    toast('Manutenzione completata', 'success');
-    loadManutenzione(); // Refresh stats
+    addLog('Manutenzione fallback completata (ricerca nuovi bandi non disponibile).');
+    toast('Pulizia completata (senza ricerca nuovi bandi)', 'success');
+    loadManutenzione();
   } catch (e) {
-    addLog('ERRORE: ' + e.message);
-    toast('Errore manutenzione: ' + e.message, 'error');
+    addLog('ERRORE FALLBACK: ' + e.message);
+    toast('Errore: ' + e.message, 'error');
   }
 }
+
+// Alias per auto-manutenzione
+async function runManutenzione(tipo) { return runManutenzioneFull(tipo || 'manuale'); }
 
 // ══════════ WEB ANALYTICS (GSC + GA4) ══════════
 const WA_DATA_KEY = 'webAnalyticsData';
