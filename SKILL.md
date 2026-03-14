@@ -1,7 +1,7 @@
 # SKILL UNIFICATA — RaaS Automazioni
 ## Prompt Operativo Master Consolidato
 
-> **Versione:** 2.0 — 14 Marzo 2026
+> **Versione:** 2.1 — 14 Marzo 2026
 > **Unica fonte di verita'** per sviluppo, manutenzione, contenuti SEO, strategia GEO e AI Agents.
 > **Prossima verifica consigliata:** Giugno 2026
 
@@ -923,6 +923,14 @@ Video embedded prova "Experience" (la prima E di E-E-A-T) a Google. Aumenta temp
 
 ## 9. CHANGELOG
 
+### v2.1 - 14 Marzo 2026 (Clean URL + PageSpeed 90+)
+- PageSpeed 95+ cambiato in 90+ ovunque nel sito (IT + EN, 20+ file, ~90 occorrenze)
+- Rimossa estensione .html da tutti i link interni (21 file, ~100 link)
+- Aggiornati canonical, og:url, JSON-LD, hreflang con URL puliti
+- Riordinati articoli blog.html: 3 nuovi (14 Marzo) in cima
+- Aggiornato llms.txt con URL puliti e PageSpeed 90+
+- Mantenuto admin.html e playzone (link relativi interni)
+
 ### v2.0 - 14 Marzo 2026 (GEO + AI Agents + Previsioni 2026-2028)
 - Sezione 8 completamente riscritta: 14 sotto-sezioni integrate
 - Previsioni Google/AI 2026-2028 con fonti verificate (20+ fonti)
@@ -960,6 +968,6 @@ Video embedded prova "Experience" (la prima E di E-E-A-T) a Google. Aumenta temp
 
 ---
 
-**VERSIONE:** 2.0 RaaS Automazioni
+**VERSIONE:** 2.1 RaaS Automazioni
 **ULTIMO AGGIORNAMENTO:** 14 Marzo 2026
 **PROSSIMO REVIEW:** Giugno 2026 (aggiornamento prezzi Q2, refresh previsioni AI)
