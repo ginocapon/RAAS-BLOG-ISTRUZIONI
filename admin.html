@@ -2737,20 +2737,24 @@ async function runManutenzioneFallback(tipo = 'manuale') {
       addLog('  Nessun bando scaduto trovato');
     }
 
-    // 2. Cerca duplicati
+    // 2. Cerca duplicati (stessa data+ente = duplicato, oppure titolo > 90%)
     setProgress(50, 'Deduplicazione...');
-    addLog('Controllo duplicati...');
-    const { data: allBandi } = await sb.from('bandi').select('id, titolo').eq('attivo', true);
+    addLog('Controllo duplicati (data+ente e titolo >90%)...');
+    const { data: allBandi } = await sb.from('bandi').select('id, titolo, scadenza, ente').eq('attivo', true);
     if (allBandi) {
       const norm = allBandi.map(b => ({ ...b, norm: b.titolo.toLowerCase().replace(/[^a-z0-9àèéìòù]/g, '') }));
+      const simFn = (a, b) => { const w1 = new Set(a.split(/\s+/)); const w2 = new Set(b.split(/\s+/)); const inter = [...w1].filter(x => w2.has(x)).length; const uni = new Set([...w1, ...w2]).size; return uni === 0 ? 0 : inter / uni; };
       const idsToRemove = [];
       for (let i = 0; i < norm.length; i++) {
         if (idsToRemove.includes(norm[i].id)) continue;
         for (let j = i + 1; j < norm.length; j++) {
           if (idsToRemove.includes(norm[j].id)) continue;
-          if (norm[i].norm === norm[j].norm || (norm[i].norm.length > 15 && norm[j].norm.length > 15 && norm[i].norm.substring(0, 20) === norm[j].norm.substring(0, 20))) {
+          const stessaDataEnte = norm[i].scadenza && norm[j].scadenza && norm[i].scadenza === norm[j].scadenza && norm[i].ente && norm[j].ente && norm[i].ente.toLowerCase() === norm[j].ente.toLowerCase();
+          const titoloSimile = norm[i].norm === norm[j].norm || simFn(norm[i].norm, norm[j].norm) > 0.9;
+          if (stessaDataEnte || titoloSimile) {
             idsToRemove.push(norm[j].id);
-            addLog('    Duplicato: "' + norm[j].titolo + '"');
+            const motivo = stessaDataEnte ? 'stessa data+ente' : 'titolo >90%';
+            addLog('    Duplicato (' + motivo + '): "' + norm[j].titolo + '"');
           }
         }
       }

@@ -201,7 +201,7 @@ Deno.serve(async (req: Request) => {
     addLog("Caricamento bandi esistenti dal database...");
     const { data: esistenti, error: errEsistenti } = await sb
       .from("bandi")
-      .select("id, titolo, scadenza, link, attivo");
+      .select("id, titolo, scadenza, link, attivo, ente");
     if (errEsistenti) throw new Error("Errore DB: " + errEsistenti.message);
     const bandiEsistenti = esistenti || [];
     addLog(`  ${bandiEsistenti.length} bandi totali nel database`);
@@ -223,30 +223,47 @@ Deno.serve(async (req: Request) => {
     }
 
     // ═══ STEP 3: Deduplica e inserisci nuovi ═══
+    // Logica: data scadenza uguale + stesso ente = duplicato certo
+    //         titolo similarita' > 90% = duplicato certo
     if (tuttiBandiNuovi.length > 0) {
       addLog("Deduplicazione e inserimento nuovi bandi...");
-      const titoliEsistenti = bandiEsistenti.map((b) =>
-        normalizeTitle(b.titolo)
-      );
+      addLog("  Regola: stessa scadenza + stesso ente = duplicato");
+      addLog("  Regola: similarita' titolo > 90% = duplicato");
 
       const bandiDaInserire: Bando[] = [];
       for (const nb of tuttiBandiNuovi) {
         const normNuovo = normalizeTitle(nb.titolo);
 
-        // Skip se titolo identico normalizzato
-        if (titoliEsistenti.includes(normNuovo)) continue;
-
-        // Skip se similarita' > 70%
-        const isDuplicate = titoliEsistenti.some(
-          (t) => similarity(t, normNuovo) > 0.7
+        // Regola 1: stessa data scadenza + stesso ente = duplicato certo
+        const stessaDataEnte = bandiEsistenti.some(
+          (eb) =>
+            eb.scadenza &&
+            nb.scadenza &&
+            eb.scadenza === nb.scadenza &&
+            eb.ente &&
+            nb.ente &&
+            eb.ente.toLowerCase() === nb.ente.toLowerCase()
         );
-        if (isDuplicate) continue;
+        if (stessaDataEnte) continue;
+
+        // Regola 2: titolo similarita' > 90% = duplicato
+        const titoloTroppSimile = bandiEsistenti.some(
+          (eb) => similarity(normalizeTitle(eb.titolo), normNuovo) > 0.9
+        );
+        if (titoloTroppSimile) continue;
+
+        // Controlla anche contro i bandi gia' selezionati per l'inserimento
+        const dupInterno = bandiDaInserire.some(
+          (bi) =>
+            (bi.scadenza && nb.scadenza && bi.scadenza === nb.scadenza && bi.ente.toLowerCase() === nb.ente.toLowerCase()) ||
+            similarity(normalizeTitle(bi.titolo), normNuovo) > 0.9
+        );
+        if (dupInterno) continue;
 
         // Skip link vuoti o placeholder
         if (!nb.link || nb.link === "#") continue;
 
         bandiDaInserire.push(nb);
-        titoliEsistenti.push(normNuovo); // Evita duplicati interni
       }
 
       if (bandiDaInserire.length > 0) {
@@ -285,10 +302,11 @@ Deno.serve(async (req: Request) => {
     }
 
     // ═══ STEP 5: Rileva e rimuovi duplicati ═══
+    // Stessa logica: data scadenza uguale + stesso ente = duplicato, oppure titolo > 90%
     addLog("Controllo duplicati nel database...");
     const { data: allAttivi } = await sb
       .from("bandi")
-      .select("id, titolo")
+      .select("id, titolo, scadenza, ente")
       .eq("attivo", true);
 
     if (allAttivi && allAttivi.length > 1) {
@@ -302,14 +320,26 @@ Deno.serve(async (req: Request) => {
         if (idsToRemove.includes(norm[i].id)) continue;
         for (let j = i + 1; j < norm.length; j++) {
           if (idsToRemove.includes(norm[j].id)) continue;
-          if (
+
+          // Regola 1: stessa scadenza + stesso ente = duplicato
+          const stessaDataEnte =
+            norm[i].scadenza &&
+            norm[j].scadenza &&
+            norm[i].scadenza === norm[j].scadenza &&
+            norm[i].ente &&
+            norm[j].ente &&
+            norm[i].ente.toLowerCase() === norm[j].ente.toLowerCase();
+
+          // Regola 2: similarita' titolo > 90%
+          const titoloSimile =
             norm[i].norm === norm[j].norm ||
-            similarity(norm[i].norm, norm[j].norm) > 0.85
-          ) {
-            // Rimuovi il secondo (il piu' recente, cioe' il duplicato)
+            similarity(norm[i].norm, norm[j].norm) > 0.9;
+
+          if (stessaDataEnte || titoloSimile) {
             idsToRemove.push(norm[j].id);
+            const motivo = stessaDataEnte ? "stessa data+ente" : "titolo simile >90%";
             addLog(
-              `  Duplicato trovato: "${norm[j].titolo}" (simile a "${norm[i].titolo}")`
+              `  Duplicato (${motivo}): "${norm[j].titolo}" vs "${norm[i].titolo}"`
             );
           }
         }
