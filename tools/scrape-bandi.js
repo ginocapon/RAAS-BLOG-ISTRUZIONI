@@ -18,7 +18,16 @@ const path = require('path');
 
 const JSON_PATH = path.join(__dirname, '..', 'data', 'bandi.json');
 const DRY_RUN = process.argv.includes('--dry-run');
+const SKIP_VERIFY = process.argv.includes('--skip-verify');
 const SOURCE_FILTER = process.argv.find(a => a.startsWith('--source='));
+
+// Verifica link con Perplexity (opzionale, richiede API keys)
+let verificaLinkBandi = null;
+try {
+  ({ verificaLinkBandi } = require('./verify-links-perplexity'));
+} catch (e) {
+  // Modulo non disponibile — la verifica verra' saltata
+}
 
 // ══════════ FONTI DI SCRAPING ══════════
 const FONTI = [
@@ -227,16 +236,46 @@ async function main() {
     }
   });
 
+  // ══════════ VERIFICA LINK CON PERPLEXITY ══════════
+  let linkVerificati = 0;
+  let linkAggiornati = 0;
+  const hasApiKeys = process.env.ANTHROPIC_API_KEY && process.env.PERPLEXITY_API_KEY;
+
+  if (!SKIP_VERIFY && verificaLinkBandi && hasApiKeys) {
+    console.log('\n── VERIFICA LINK (Claude + Perplexity) ──');
+    try {
+      const risultati = await verificaLinkBandi(bandi, {
+        onlyNew: totalNuovi > 0, // Se ci sono nuovi bandi, verifica solo quelli
+        maxBandi: totalNuovi > 0 ? totalNuovi : 10,
+        verbose: true
+      });
+      linkVerificati = risultati.verificati;
+      linkAggiornati = risultati.aggiornati;
+    } catch (e) {
+      console.log(`  Verifica link fallita: ${e.message}`);
+      console.log('  Il processo continua senza verifica.\n');
+    }
+  } else if (!SKIP_VERIFY && !hasApiKeys) {
+    console.log('\nVerifica link saltata (API keys non configurate)');
+    console.log('  Configura ANTHROPIC_API_KEY e PERPLEXITY_API_KEY per abilitare\n');
+  }
+
   // Salva
   if (!DRY_RUN) {
     fileData.metadata.generated_at = new Date().toISOString();
     fileData.metadata.total_bandi = bandi.length;
+    if (linkVerificati > 0) {
+      fileData.metadata.last_link_verification = new Date().toISOString();
+    }
     fs.writeFileSync(JSON_PATH, JSON.stringify(fileData, null, 2), 'utf8');
     console.log('JSON aggiornato e salvato.');
   }
 
   console.log('\n═══════════════════════════════════════════');
   console.log(`  RISULTATO: +${totalNuovi} nuovi, ${scaduti} scaduti`);
+  if (linkVerificati > 0) {
+    console.log(`  Link verificati: ${linkVerificati}, aggiornati: ${linkAggiornati}`);
+  }
   console.log(`  Totale bandi: ${bandi.length}`);
   console.log('═══════════════════════════════════════════\n');
 

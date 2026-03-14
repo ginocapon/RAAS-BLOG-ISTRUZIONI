@@ -47,9 +47,9 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 | **Dominio** | raasautomazioni.it / www.raasautomazioni.it |
 | **Tech Stack** | HTML statico + CSS custom + JS vanilla |
 | **Framework** | Nessuno — zero dipendenze esterne, codice puro |
-| **Lingue** | Italiano (principale), Inglese (in sviluppo) |
+| **Lingue** | Italiano (principale), Inglese (/en/ — attivo) |
 | **Target** | PMI, professionisti, startup — B2B |
-| **Mercato** | Italia, focus locale + nazionale |
+| **Mercato** | Italia + UK/USA/Global (bilingue) |
 | **Hosting** | GitHub Pages (migrazione da Serverplan in corso) |
 | **Garanzia** | PageSpeed 95+ garantito, prezzi bloccati per sempre |
 
@@ -84,7 +84,15 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 ├── llms.txt                   # Info sito per AI agents (standard llmstxt.org)
 ├── admin.html                 # Pannello admin (dashboard, bandi, email, analytics)
 │
-├── blog/articoli/              # Articoli blog (7 HTML)
+├── en/                         # Versione inglese del sito
+│   ├── index.html              # Homepage EN
+│   └── blog/articoli/          # Blog articoli EN (4 HTML)
+│       ├── geo-generative-engine-optimization-guide-2026.html
+│       ├── performance-based-marketing-revenue-share-model-2026.html
+│       ├── ai-lead-generation-small-business-2026.html
+│       └── website-speed-seo-roi-pure-code-vs-wordpress-2026.html
+│
+├── blog/articoli/              # Articoli blog IT (7 HTML)
 │   ├── 5-automazioni-risparmiare-20-ore-settimana.html
 │   ├── lead-generation-50-lead-qualificati-automazione.html
 │   ├── pagespeed-95-dati-roi.html
@@ -172,10 +180,42 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 ```
 /                    → Italiano (default)
 /en/                 → English
-/en/index.html       → Homepage EN
-/en/blog.html        → Blog EN (futuro)
+/en/index.html       → Homepage EN (con newsletter, chatbot link, video+robot)
+/en/blog/articoli/   → Blog EN (4 articoli pubblicati)
 ```
 Ogni pagina ha `<link rel="alternate" hreflang="it" href="...">` e `<link rel="alternate" hreflang="en" href="...">`
+
+### 2.7 Design — Colori e Componenti
+| Elemento | Valore | Note |
+|---|---|---|
+| **Colore primario** | #e63946 (rosso acceso) | Tutti i pulsanti CTA, link hover, accenti |
+| **Colore primario dark** | #c1121f | Gradienti, hover pulsanti |
+| **Accent** | #f4a261 (arancione) | Badge, dettagli secondari |
+| **Dark** | #1a2f47 | Background hero, sezioni scure |
+| **Video showcase** | Sotto la hero, layout grid: robot 3D (sx) + video (dx) |
+| **Robot 3D** | Stile Star Wars, CSS puro, animazione float, braccio che indica il video |
+| **Newsletter EN** | Sopra il footer nella pagina /en/, form Formspree |
+
+### 2.8 Sistema Bandi — Verifica Link con AI
+Il sistema bandi usa un orchestratore **Claude + Perplexity** per verificare automaticamente che ogni URL corrisponda alla pagina ufficiale del bando.
+
+| Componente | Dettaglio |
+|---|---|
+| **Scraper** | `tools/scrape-bandi.js` — scraping da fonti ufficiali |
+| **Verificatore** | `tools/verify-links-perplexity.js` — Claude + Perplexity sonar-pro |
+| **Sync** | `tools/sync-bandi.js` — sincronizzazione con Supabase |
+| **Cron** | GitHub Actions ogni lunedi 08:00 UTC |
+| **API Keys** | `ANTHROPIC_API_KEY` + `PERPLEXITY_API_KEY` (GitHub Secrets) |
+
+**Flusso verifica:**
+1. Lo scraper trova nuovi bandi
+2. Per ogni bando, Claude chiede a Perplexity di cercare il link ufficiale
+3. Claude valida il risultato e aggiorna `url_bando` se trova un URL migliore
+4. Ogni bando ha campo `link_verificato` (boolean) e `data_verifica` (ISO date)
+
+**Flag CLI:**
+- `--skip-verify` — salta la verifica Perplexity (utile per test rapidi)
+- `--dry-run` — non salva modifiche
 
 ---
 

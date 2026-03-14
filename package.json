@@ -1,0 +1,14 @@
+{
+  "name": "raas-automazioni-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Strumenti automazione bandi — RaaS Automazioni",
+  "scripts": {
+    "scrape-bandi": "node tools/scrape-bandi.js",
+    "verify-links": "node tools/verify-links-perplexity.js",
+    "sync-bandi": "node tools/sync-bandi.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
