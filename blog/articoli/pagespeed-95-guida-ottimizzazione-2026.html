@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0a">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFM8JG9C2R"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JFM8JG9C2R');</script>
+    <title>PageSpeed 95+: Guida Completa Ottimizzazione Sito Web 2026</title>
+    <meta name="description" content="Come raggiungere PageSpeed 95+ nel 2026: guida tecnica completa con Core Web Vitals, LCP, CLS, TBT. Strategie testate, errori comuni e case study reali con dati verificati.">
+    <meta name="keywords" content="PageSpeed ottimizzazione, Core Web Vitals 2026, velocità sito web, LCP ottimizzazione, performance sito, Google PageSpeed Insights">
+    <meta name="author" content="RaaS Automazioni">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.raasautomazioni.it/blog/pagespeed-95-guida-ottimizzazione-2026">
+    <meta property="og:title" content="PageSpeed 95+: Guida Completa Ottimizzazione Sito Web 2026">
+    <meta property="og:description" content="Come raggiungere PageSpeed 95+: guida tecnica con Core Web Vitals, strategie testate e case study reali.">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="it_IT">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org","@type": "Article",
+      "headline": "PageSpeed 95+: Guida Completa Ottimizzazione Sito Web 2026",
+      "author": {"@type": "Organization","name": "RaaS Automazioni","url": "https://www.raasautomazioni.it"},
+      "publisher": {"@type": "Organization","name": "RaaS Automazioni","logo": {"@type": "ImageObject","url": "https://www.raasautomazioni.it/logo.png"}},
+      "datePublished": "2026-02-07","dateModified": "2026-02-07"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org","@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question","name": "Cos'è il PageSpeed Score e perché è importante?","acceptedAnswer": {"@type": "Answer","text": "Il PageSpeed Score è un punteggio da 0 a 100 di Google che misura velocità ed esperienza utente. Punteggi sopra 90 sono buoni. Influenza ranking e conversioni."}},
+        {"@type": "Question","name": "Quali sono i Core Web Vitals nel 2026?","acceptedAnswer": {"@type": "Answer","text": "LCP (Largest Contentful Paint, velocità), INP (Interaction to Next Paint, reattività) e CLS (Cumulative Layout Shift, stabilità visiva)."}},
+        {"@type": "Question","name": "Quanto impatta il PageSpeed sulle vendite?","acceptedAnswer": {"@type": "Answer","text": "Ogni secondo di ritardo riduce le conversioni del 7% secondo Google."}},
+        {"@type": "Question","name": "Il mio sito WordPress può raggiungere PageSpeed 95?","acceptedAnswer": {"@type": "Answer","text": "Tecnicamente possibile ma molto difficile. Nella pratica la maggior parte dei siti WordPress raggiunge 50-70 su mobile."}},
+        {"@type": "Question","name": "Quanto costa ottimizzare il PageSpeed?","acceptedAnswer": {"@type": "Answer","text": "Ottimizzazione WordPress: 300-800€ base, 1.000-3.000€ avanzata. Ricostruzione in codice puro con RaaS: 249€/anno tutto incluso con PageSpeed 95+ garantito."}},
+        {"@type": "Question","name": "Come misuro il PageSpeed?","acceptedAnswer": {"@type": "Answer","text": "Usa pagespeed.web.dev, inserisci URL e ottieni punteggio con suggerimenti dettagliati."}},
+        {"@type": "Question","name": "Cosa sono LCP, INP e CLS?","acceptedAnswer": {"@type": "Answer","text": "LCP: tempo caricamento elemento più grande (ideale <2.5s). INP: reattività interazioni (ideale <200ms). CLS: spostamenti layout (ideale <0.1)."}},
+        {"@type": "Question","name": "Il lazy loading migliora il PageSpeed?","acceptedAnswer": {"@type": "Answer","text": "Sì, significativamente. Carica le immagini solo quando entrano nel viewport, riducendo il peso iniziale della pagina."}},
+        {"@type": "Question","name": "Serve un CDN per il PageSpeed?","acceptedAnswer": {"@type": "Answer","text": "Per siti italiani con hosting in Italia l'impatto è moderato. Importante per traffico internazionale."}},
+        {"@type": "Question","name": "Ogni quanto ricontrollare il PageSpeed?","acceptedAnswer": {"@type": "Answer","text": "Almeno una volta al mese. I punteggi possono variare con aggiornamenti Google o modifiche al sito."}}
+      ]
+    }
+    </script>
+
+    <style>
+        :root { --primary: #0f172a; --accent: #f59e0b; --accent-dark: #d97706; --accent-glow: rgba(245,158,11,0.12); --text: #1e293b; --text-light: #475569; --bg: #f8fafc; --white: #fff; --border: #e2e8f0; --green: #22c55e; --red: #ef4444; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); background: var(--bg); line-height: 1.8; font-size: 17px; }
+        .article-container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+        .blog-nav { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 24px; position: sticky; top: 0; z-index: 100; }
+        .blog-nav-inner { max-width: 820px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .blog-nav a { text-decoration: none; color: var(--primary); font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+        .blog-nav a:hover { color: var(--accent-dark); }
+        .blog-nav .brand { font-size: 13px; color: var(--text-light); font-weight: 600; }
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, #1e293b 60%, #334155 100%); color: white; padding: 80px 24px 60px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -30%; right: -15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(245,158,11,0.15) 0%, transparent 70%); border-radius: 50%; }
+        .hero-inner { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-badge { display: inline-block; background: var(--accent-glow); color: var(--accent); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+        .hero h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+        .hero h1 span { color: var(--accent); }
+        .hero-subtitle { font-size: 18px; opacity: 0.85; max-width: 600px; line-height: 1.6; }
+        .hero-meta { display: flex; gap: 24px; margin-top: 28px; font-size: 14px; opacity: 0.7; flex-wrap: wrap; }
+        .content { padding: 48px 0 80px; }
+        .content p { margin-bottom: 20px; color: var(--text-light); }
+        .content h2 { font-size: 26px; font-weight: 800; color: var(--primary); margin: 48px 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--accent); display: inline-block; }
+        .content h3 { font-size: 20px; font-weight: 700; color: var(--primary); margin: 32px 0 14px; }
+        .content strong { color: var(--text); font-weight: 700; }
+        .table-wrapper { overflow-x: auto; margin: 28px 0; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .table-wrapper table { width: 100%; border-collapse: collapse; background: var(--white); font-size: 15px; }
+        .table-wrapper thead { background: var(--primary); color: white; }
+        .table-wrapper th { padding: 14px 18px; text-align: left; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .table-wrapper td { padding: 14px 18px; border-bottom: 1px solid var(--border); }
+        .table-wrapper tbody tr:hover { background: #fffbeb; }
+        .table-wrapper .highlight-row { background: rgba(245,158,11,0.06); font-weight: 600; }
+        .table-source { font-size: 12px; color: var(--text-light); margin-top: 8px; font-style: italic; }
+        .callout { background: linear-gradient(135deg, var(--accent-glow), rgba(245,158,11,0.04)); border-left: 4px solid var(--accent); padding: 24px 28px; border-radius: 0 12px 12px 0; margin: 28px 0; }
+        .callout-title { font-weight: 700; font-size: 16px; margin-bottom: 8px; color: var(--primary); }
+        .callout p { margin-bottom: 0; font-size: 15px; }
+        .metric-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+        .metric-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 20px; text-align: center; }
+        .metric-card .label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); margin-bottom: 8px; }
+        .metric-card .value { font-size: 32px; font-weight: 800; color: var(--primary); }
+        .metric-card .target { font-size: 13px; color: var(--green); margin-top: 4px; font-weight: 600; }
+        .code-block { background: var(--primary); color: #e2e8f0; padding: 24px; border-radius: 12px; overflow-x: auto; margin: 24px 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 1.6; }
+        .code-block .comment { color: #64748b; }
+        .code-block .keyword { color: var(--accent); }
+        .code-block .string { color: #22c55e; }
+        .checklist { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin: 28px 0; }
+        .checklist h4 { margin-bottom: 16px; font-size: 18px; }
+        .checklist-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text-light); }
+        .checklist-item:last-child { border-bottom: none; }
+        .checklist-item .icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+        .sponsor-box { background: var(--primary); color: white; padding: 40px 36px; border-radius: 16px; margin: 48px 0; position: relative; overflow: hidden; }
+        .sponsor-box::after { content: ''; position: absolute; bottom: -40px; right: -40px; width: 200px; height: 200px; background: radial-gradient(circle, var(--accent-glow), transparent 70%); border-radius: 50%; }
+        .sponsor-box h3 { color: var(--accent); font-size: 22px; margin-bottom: 16px; }
+        .sponsor-box p { color: rgba(255,255,255,0.85); margin-bottom: 16px; }
+        .sponsor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+        .sponsor-item { display: flex; align-items: center; gap: 10px; font-size: 15px; color: rgba(255,255,255,0.9); }
+        .sponsor-item .check { color: var(--accent); font-weight: bold; font-size: 18px; }
+        .sponsor-cta { display: inline-block; background: var(--accent); color: var(--primary); padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px; margin-top: 20px; transition: transform 0.2s, box-shadow 0.2s; }
+        .sponsor-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,158,11,0.3); }
+        .faq-section { margin: 48px 0; }
+        .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+        .faq-question { padding: 18px 24px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; }
+        .faq-question:hover { background: #fffbeb; }
+        .faq-question::after { content: '+'; font-size: 22px; color: var(--accent); font-weight: 300; transition: transform 0.3s; }
+        .faq-item.open .faq-question::after { transform: rotate(45deg); }
+        .faq-answer { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+        .faq-item.open .faq-answer { padding: 0 24px 18px; max-height: 500px; }
+        .faq-answer p { font-size: 15px; line-height: 1.7; margin: 0; }
+        .sources { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin: 32px 0; }
+        .sources h3 { margin-top: 0; margin-bottom: 14px; }
+        .sources ul { list-style: none; padding: 0; }
+        .sources li { padding: 6px 0; font-size: 14px; color: var(--text-light); }
+        .sources li::before { content: '📎'; margin-right: 8px; }
+        .related-articles { margin: 48px 0 0; padding: 36px 0; border-top: 2px solid var(--border); }
+        .related-articles h3 { font-size: 20px; font-weight: 800; color: var(--primary); margin-bottom: 20px; }
+        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .related-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+        .related-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+        .related-card .tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 8px; }
+        .related-card h4 { font-size: 15px; font-weight: 700; color: var(--primary); line-height: 1.4; margin-bottom: 8px; }
+        .related-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; margin: 0; }
+        @media (max-width: 768px) { .hero { padding: 60px 20px 40px; } .metric-cards { grid-template-columns: 1fr; } .sponsor-grid { grid-template-columns: 1fr; } .hero-meta { flex-direction: column; gap: 8px; } .related-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav class="blog-nav"><div class="blog-nav-inner"><a href="/blog/">← Torna al Blog</a><span class="brand">RaaS Automazioni</span></div></nav>
+
+<header class="hero">
+    <div class="hero-inner">
+        <span class="hero-badge">⚡ Guida Tecnica</span>
+        <h1>PageSpeed 95+: <span>Guida Completa all'Ottimizzazione</span> nel 2026</h1>
+        <p class="hero-subtitle">Come raggiungere e mantenere un punteggio PageSpeed sopra 95. Core Web Vitals, strategie testate, errori da evitare e case study con dati reali.</p>
+        <div class="hero-meta"><span>📅 7 Febbraio 2026</span><span>⏱️ 15 min di lettura</span><span>✍️ RaaS Automazioni</span></div>
+    </div>
+</header>
+
+<main class="article-container content">
+
+    <p>La velocità del tuo sito web non è più un optional: è un fattore di ranking, un elemento che impatta direttamente sulle conversioni e, nel 2026, una delle prime cose che Google valuta per decidere dove posizionarti. Eppure la maggior parte dei siti italiani ha un punteggio PageSpeed inferiore a 60 su mobile. Questo articolo è una guida completa per capire perché il PageSpeed conta, come misurarlo e come raggiungere il fatidico 95+.</p>
+
+    <p>Per un confronto tra le tecnologie che influenzano maggiormente il PageSpeed, leggi il nostro articolo <a href="/blog/codice-puro-vs-wordpress-2026.html" style="color:var(--accent-dark);font-weight:600;">Codice Puro vs WordPress 2026</a>.</p>
+
+    <h2>📊 Cos'è il PageSpeed Score e Perché Conta</h2>
+
+    <p>Google PageSpeed Insights (PSI) è lo strumento ufficiale per misurare velocità ed esperienza utente. Il punteggio si basa su sei metriche, di cui tre sono i Core Web Vitals. Secondo i dati CrUX, solo il 28% dei siti italiani raggiunge punteggi buoni. Di conseguenza chi ottimizza ha un vantaggio competitivo significativo.</p>
+
+    <div class="metric-cards">
+        <div class="metric-card"><div class="label">LCP</div><div class="value">≤ 2.5s</div><div class="target">✓ Soglia "Buono"</div></div>
+        <div class="metric-card"><div class="label">INP</div><div class="value">≤ 200ms</div><div class="target">✓ Soglia "Buono"</div></div>
+        <div class="metric-card"><div class="label">CLS</div><div class="value">≤ 0.1</div><div class="target">✓ Soglia "Buono"</div></div>
+    </div>
+
+    <h2>🔍 I Tre Core Web Vitals Spiegati</h2>
+
+    <h3>LCP - Largest Contentful Paint</h3>
+    <p>Misura il tempo per visualizzare l'elemento più grande del viewport. Google considera "buono" un LCP sotto 2.5 secondi. I siti RaaS raggiungono 0.4-0.8 secondi. Le cause di LCP lento: immagini non ottimizzate, font ritardati e blocking JavaScript.</p>
+
+    <h3>INP - Interaction to Next Paint</h3>
+    <p>Ha sostituito il FID nel marzo 2024. Misura la reattività complessiva alle interazioni (soglia: sotto 200ms). Molti siti WordPress superano i 500ms a causa di JavaScript pesante.</p>
+
+    <h3>CLS - Cumulative Layout Shift</h3>
+    <p>Misura gli spostamenti imprevisti durante il caricamento. Soglia ideale: sotto 0.1. Colpevoli comuni: immagini senza dimensioni, banner caricati in ritardo, font che cambiano layout.</p>
+
+    <h2>🛠️ Strategie di Ottimizzazione: Da 50 a 95+</h2>
+
+    <h3>1. Critical CSS Inline</h3>
+    <p>La tecnica più efficace: inserire nel &lt;head&gt; il CSS necessario per il contenuto above-the-fold. Da sola può migliorare il punteggio di 15-25 punti.</p>
+
+    <div class="code-block">
+<span class="comment">&lt;!-- CSS critico inline --&gt;</span>
+&lt;<span class="keyword">style</span>&gt;
+  body { <span class="keyword">font-family</span>: <span class="string">'Plus Jakarta Sans'</span>, sans-serif; }
+  .hero { <span class="keyword">background</span>: <span class="string">#0a2540</span>; <span class="keyword">padding</span>: <span class="string">80px 24px</span>; }
+&lt;/<span class="keyword">style</span>&gt;
+<span class="comment">&lt;!-- Resto CSS asincrono --&gt;</span>
+&lt;<span class="keyword">link</span> rel=<span class="string">"preload"</span> href=<span class="string">"style.css"</span> as=<span class="string">"style"</span> onload=<span class="string">"this.rel='stylesheet'"</span>&gt;
+    </div>
+
+    <h3>2. Ottimizzazione Immagini</h3>
+    <p>Le immagini pesano il 50-70% della pagina. Strategia: WebP/AVIF (-30-50% vs JPEG), width e height sempre specificati, lazy loading sotto la piega.</p>
+
+    <div class="code-block">
+&lt;<span class="keyword">img</span> src=<span class="string">"hero.webp"</span> alt=<span class="string">"Descrizione"</span>
+  width=<span class="string">"1200"</span> height=<span class="string">"600"</span>
+  loading=<span class="string">"lazy"</span> decoding=<span class="string">"async"</span>&gt;
+    </div>
+
+    <h3>3. Eliminazione Render-Blocking</h3>
+    <p>Ogni file CSS/JS non critico nel &lt;head&gt; blocca il rendering. WordPress ne carica 15-30. La soluzione: differire tutto ciò che non è essenziale per la visualizzazione iniziale.</p>
+
+    <h3>4. Preconnect e DNS-Prefetch</h3>
+    <p>Se carichi risorse esterne (Google Fonts, Analytics), il preconnect avvia la connessione in anticipo, risparmiando 100-300ms per dominio.</p>
+
+    <h3>5. Font Optimization</h3>
+    <p>Font-display: swap + preload dei font critici. Limitare varianti di peso e stile.</p>
+
+    <h2>❌ I 7 Errori Più Comuni</h2>
+
+    <div class="checklist">
+        <h4>Errori da Evitare</h4>
+        <div class="checklist-item"><span class="icon">🔴</span><div><strong>Immagini PNG/JPG non compresse</strong> — Usa WebP/AVIF, dimensioni al viewport necessario.</div></div>
+        <div class="checklist-item"><span class="icon">🔴</span><div><strong>Troppi plugin WordPress</strong> — Ogni plugin aggiunge ~150ms al caricamento.</div></div>
+        <div class="checklist-item"><span class="icon">🔴</span><div><strong>Hosting economico condiviso</strong> — Il TTFB dipende dal server.</div></div>
+        <div class="checklist-item"><span class="icon">🔴</span><div><strong>Video autoplay non ottimizzati</strong> — Possono aggiungere 5-10MB.</div></div>
+        <div class="checklist-item"><span class="icon">🔴</span><div><strong>Google Fonts sincroni</strong> — Bloccano rendering per 300-500ms.</div></div>
+        <div class="checklist-item"><span class="icon">🔴</span><div><strong>Immagini senza dimensioni</strong> — Causano layout shift.</div></div>
+        <div class="checklist-item"><span class="icon">🔴</span><div><strong>Script terze parti non differiti</strong> — Analytics, pixel, chat possono aggiungere 1-3s.</div></div>
+    </div>
+
+    <h2>📈 Case Study: Da PageSpeed 38 a 97 in 14 Giorni</h2>
+
+    <p>Uno studio professionale con PageSpeed mobile di 38, WordPress, 24 plugin, caricamento 6.2 secondi. Ricostruzione completa in codice puro in 14 giorni.</p>
+
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Metrica</th><th>Prima (WP)</th><th>Dopo (Codice Puro)</th><th>Miglioramento</th></tr></thead>
+            <tbody>
+                <tr class="highlight-row"><td><strong>PageSpeed Mobile</strong></td><td>38</td><td>97</td><td>+155%</td></tr>
+                <tr><td>PageSpeed Desktop</td><td>62</td><td>100</td><td>+61%</td></tr>
+                <tr><td>LCP</td><td>5.8s</td><td>0.5s</td><td>-91%</td></tr>
+                <tr><td>CLS</td><td>0.24</td><td>0.01</td><td>-96%</td></tr>
+                <tr><td>TBT</td><td>1.240ms</td><td>8ms</td><td>-99%</td></tr>
+                <tr><td>Peso pagina</td><td>4.8MB</td><td>280KB</td><td>-94%</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="table-source">Fonte: screenshot Google PageSpeed Insights prima/dopo, gennaio 2026. Case study anonimizzato.</p>
+
+    <p>Nei 3 mesi successivi alla migrazzione il traffico organico è aumentato del 42% e i contatti sono passati da 8 a 23 al mese (+187%). Per capire come questi numeri si traducono in lead concreti, leggi il nostro articolo sulla <a href="/blog/lead-generation-30-50-lead-mese-2026.html" style="color:var(--accent-dark);font-weight:600;">lead generation per PMI</a>.</p>
+
+    <h2>🔧 Checklist PageSpeed 95+</h2>
+
+    <div class="checklist">
+        <h4>✅ Checklist Completa</h4>
+        <div class="checklist-item"><span class="icon">✅</span><div><strong>CSS critico inline</strong></div></div>
+        <div class="checklist-item"><span class="icon">✅</span><div><strong>Immagini WebP/AVIF</strong></div></div>
+        <div class="checklist-item"><span class="icon">✅</span><div><strong>Lazy loading attivo</strong></div></div>
+        <div class="checklist-item"><span class="icon">✅</span><div><strong>Dimensioni immagini specificate</strong></div></div>
+        <div class="checklist-item"><span class="icon">✅</span><div><strong>Preconnect configurato</strong></div></div>
+        <div class="checklist-item"><span class="icon">✅</span><div><strong>Font ottimizzati</strong></div></div>
+        <div class="checklist-item"><span class="icon">✅</span><div><strong>JS differito</strong></div></div>
+        <div class="checklist-item"><span class="icon">✅</span><div><strong>Compressione GZIP/Brotli</strong></div></div>
+        <div class="checklist-item"><span class="icon">✅</span><div><strong>Cache headers corretti</strong></div></div>
+        <div class="checklist-item"><span class="icon">✅</span><div><strong>CSS e JS minificati</strong></div></div>
+    </div>
+
+    <div class="sponsor-box">
+        <h3>🏆 PageSpeed 95+ Garantito con RaaS</h3>
+        <p>Non vuoi occuparti di ottimizzazioni? Con RaaS ottieni PageSpeed 95+ garantito per contratto. Se non ci arriviamo, lavoriamo gratis.</p>
+        <div class="sponsor-grid">
+            <div class="sponsor-item"><span class="check">✓</span> PageSpeed 95+ garantito</div>
+            <div class="sponsor-item"><span class="check">✓</span> Codice puro ottimizzato</div>
+            <div class="sponsor-item"><span class="check">✓</span> 249€/anno tutto incluso</div>
+            <div class="sponsor-item"><span class="check">✓</span> Monitoraggio continuo</div>
+        </div>
+        <a href="https://www.raasautomazioni.it/contatti" class="sponsor-cta">📲 Testa il Tuo Sito Gratis</a>
+    </div>
+
+    <h2>❓ FAQ: 10 Domande sul PageSpeed</h2>
+
+    <div class="faq-section">
+        <div class="faq-item"><div class="faq-question">Cos'è il PageSpeed Score?</div><div class="faq-answer"><p>Punteggio da 0 a 100 di Google che misura velocità ed esperienza utente. Sopra 90 è "buono". Influenza ranking e conversioni.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Quali sono i Core Web Vitals 2026?</div><div class="faq-answer"><p>LCP (velocità caricamento, ideale <2.5s), INP (reattività, ideale <200ms), CLS (stabilità layout, ideale <0.1).</p></div></div>
+        <div class="faq-item"><div class="faq-question">Il PageSpeed impatta sulle vendite?</div><div class="faq-answer"><p>Sì: ogni secondo di ritardo riduce le conversioni del 7% secondo Google.</p></div></div>
+        <div class="faq-item"><div class="faq-question">WordPress può raggiungere PageSpeed 95?</div><div class="faq-answer"><p>Molto difficile. La maggior parte si ferma tra 50 e 70 su mobile.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Quanto costa ottimizzare il PageSpeed?</div><div class="faq-answer"><p>Ottimizzazione WP: 300-3.000€. Ricostruzione codice puro con RaaS: 249€/anno con 95+ garantito.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Come misuro il PageSpeed?</div><div class="faq-answer"><p>Vai su pagespeed.web.dev, inserisci URL, ottieni punteggio dettagliato.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Cosa sono LCP, INP e CLS?</div><div class="faq-answer"><p>LCP: tempo elemento più grande. INP: reattività interazioni. CLS: spostamenti layout imprevisti.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Il lazy loading aiuta?</div><div class="faq-answer"><p>Sì, riduce il peso iniziale caricando immagini solo quando visibili.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Serve un CDN?</div><div class="faq-answer"><p>Per siti italiani con hosting italiano l'impatto è moderato. Utile per traffico internazionale.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Ogni quanto ricontrollare?</div><div class="faq-answer"><p>Almeno mensilmente. I punteggi cambiano con aggiornamenti Google e modifiche al sito.</p></div></div>
+    </div>
+
+    <h2>📎 Fonti Verificate</h2>
+    <div class="sources"><h3>Fonti Ufficiali</h3><ul>
+        <li>Google Web.dev - Core Web Vitals documentation, 2025</li>
+        <li>Google CrUX Report - Italia, Q4 2025</li>
+        <li>Searchmetrics - Core Web Vitals Ranking Study, 2025</li>
+        <li>HTTP Archive - State of the Web, 2025</li>
+        <li>Google PageSpeed Insights - Test gennaio 2026</li>
+    </ul></div>
+
+    <h2>📌 Conclusioni</h2>
+    <p>Nel 2026 un sito veloce non è un plus, è una necessità. Google lo premia, gli utenti lo premiano con più conversioni. Se il tuo sito fatica a superare il 60 su mobile, hai due strade: ottimizzare WordPress con risultati incerti, o ripartire in codice puro con performance garantite dal primo giorno.</p>
+
+    <div class="related-articles">
+        <h3>📚 Leggi Anche</h3>
+        <div class="related-grid">
+            <a href="/blog/prezzi-web-agency-2026-raas-vs-aruba.html" class="related-card">
+                <div class="tag" style="color:#00d4aa;">📊 Confronto Prezzi</div>
+                <h4>Prezzi Web Agency 2026: RaaS vs Aruba [+506%]</h4>
+                <p>Confronto trasparente con preventivi ufficiali su 5 anni.</p>
+            </a>
+            <a href="/blog/codice-puro-vs-wordpress-2026.html" class="related-card">
+                <div class="tag" style="color:#e94560;">⚡ Confronto Tecnico</div>
+                <h4>Codice Puro vs WordPress: Performance e Sicurezza</h4>
+                <p>Dati PageSpeed reali, sicurezza, costi manutenzione 5 anni.</p>
+            </a>
+            <a href="/blog/lead-generation-30-50-lead-mese-2026.html" class="related-card">
+                <div class="tag" style="color:#10b981;">🎯 Lead Generation</div>
+                <h4>Come Ottenere 30-50 Lead Qualificati al Mese</h4>
+                <p>SEO locale, landing page, conversione per PMI italiane.</p>
+            </a>
+        </div>
+    </div>
+</main>
+
+<script>document.querySelectorAll('.faq-question').forEach(q=>{q.addEventListener('click',()=>q.parentElement.classList.toggle('open'))});</script>
+</body>
+</html>
