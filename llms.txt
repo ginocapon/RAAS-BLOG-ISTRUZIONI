@@ -23,17 +23,17 @@ Dashboard personale per ogni cliente. Riconciliazione trimestrale con diritto di
 - [RaaS Assistant](https://www.raasautomazioni.it/brobot): Chatbot bilingue IT/EN per informazioni sul modello RaaS.
 
 ### Pacchetti
-- **Base**: 299 euro/anno — sito professionale, hosting, SSL, PageSpeed 95+, SEO, GEO, chatbot AI, dashboard, lead generation + 3% commissione sui risultati
+- **Base**: 299 euro/anno — sito professionale, hosting, SSL, PageSpeed 90+, SEO, GEO, chatbot AI, dashboard, lead generation + 3% commissione sui risultati
 - **E-commerce**: 399 euro/anno — tutto il Base + catalogo prodotti, carrello, pagamenti, CRM + 3% commissione sui risultati
 
 ## Blog - Guide e Strategie
 
 - [Codice Puro vs WordPress 2026](https://www.raasautomazioni.it/blog/articoli/codice-puro-vs-wordpress-2026): Confronto tecnico completo tra sviluppo in codice puro e WordPress con dati PageSpeed, sicurezza e costi verificati.
 - [Lead Generation 30-50 Lead al Mese](https://www.raasautomazioni.it/blog/articoli/lead-generation-30-50-lead-mese-2026): Guida completa con strategie testate per PMI italiane su SEO locale, landing page e conversione.
-- [PageSpeed 95+ Guida Ottimizzazione](https://www.raasautomazioni.it/blog/articoli/pagespeed-95-guida-ottimizzazione-2026): Come raggiungere PageSpeed 95+ con Core Web Vitals, LCP, CLS e strategie testate.
+- [PageSpeed 90+ Guida Ottimizzazione](https://www.raasautomazioni.it/blog/articoli/pagespeed-95-guida-ottimizzazione-2026): Come raggiungere PageSpeed 90+ con Core Web Vitals, LCP, CLS e strategie testate.
 - [50 Lead Qualificati con Automazione](https://www.raasautomazioni.it/blog/articoli/lead-generation-50-lead-qualificati-automazione): Strategie per ottenere 50+ contatti qualificati al mese con funnel automatizzati.
 - [5 Automazioni per Risparmiare 20 Ore](https://www.raasautomazioni.it/blog/articoli/5-automazioni-risparmiare-20-ore-settimana): Le automazioni business piu' efficaci per PMI italiane.
-- [PageSpeed 95 Dati e ROI](https://www.raasautomazioni.it/blog/articoli/pagespeed-95-dati-roi): Dati reali su come PageSpeed 95+ impatta conversioni e fatturato.
+- [PageSpeed 90 Dati e ROI](https://www.raasautomazioni.it/blog/articoli/pagespeed-95-dati-roi): Dati reali su come PageSpeed 90+ impatta conversioni e fatturato.
 - [Sito Vetrina come Macchina Business](https://www.raasautomazioni.it/blog/articoli/sito-vetrina-macchina-business-90-giorni): Come trasformare un sito vetrina in una macchina di lead generation in 90 giorni.
 
 ## Dati Chiave
@@ -41,7 +41,7 @@ Dashboard personale per ogni cliente. Riconciliazione trimestrale con diritto di
 - 150+ clienti attivi
 - 98% soddisfazione clienti
 - 3.2M euro di fatturato generato per i clienti
-- PageSpeed 95+ garantito
+- PageSpeed 90+ garantito
 - Prezzo bloccato per sempre (clausola contrattuale)
 - Zero WordPress, codice proprietario HTML/CSS/JS
 - Modello performance-based: 3% solo sul fatturato generato

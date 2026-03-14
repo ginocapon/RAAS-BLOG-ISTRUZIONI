@@ -182,7 +182,7 @@
 
     <p>La social proof è fondamentale: landing page con almeno 3 recensioni convertono il 34% in più (Spiegel Research Center). Il modulo deve avere massimo 4 campi. Il bottone deve essere specifico: "Richiedi Preventivo Gratuito" converte il 30% in più di "Invia".</p>
 
-    <p>La velocità è cruciale: ogni secondo di ritardo costa il 7% di conversioni. Per approfondire come raggiungere tempi di caricamento ottimali, leggi la nostra <a href="/blog/pagespeed-95-guida-ottimizzazione-2026.html" style="color:var(--accent);font-weight:600;">guida al PageSpeed 95+</a>. Il design deve essere mobile-first (65%+ traffico da mobile in Italia). Infine, offrire canali multipli (form, click-to-call, WhatsApp) aumenta le conversioni del 20-40%.</p>
+    <p>La velocità è cruciale: ogni secondo di ritardo costa il 7% di conversioni. Per approfondire come raggiungere tempi di caricamento ottimali, leggi la nostra <a href="/blog/pagespeed-95-guida-ottimizzazione-2026.html" style="color:var(--accent);font-weight:600;">guida al PageSpeed 90+</a>. Il design deve essere mobile-first (65%+ traffico da mobile in Italia). Infine, offrire canali multipli (form, click-to-call, WhatsApp) aumenta le conversioni del 20-40%.</p>
 
     <h2>💰 Costo per Lead per Settore</h2>
 
@@ -296,7 +296,7 @@
             </a>
             <a href="/blog/pagespeed-95-guida-ottimizzazione-2026.html" class="related-card">
                 <div class="tag" style="color:#f59e0b;">⚡ Guida Tecnica</div>
-                <h4>PageSpeed 95+: Guida Completa Ottimizzazione</h4>
+                <h4>PageSpeed 90+: Guida Completa Ottimizzazione</h4>
                 <p>Core Web Vitals, strategie testate, errori da evitare.</p>
             </a>
         </div>

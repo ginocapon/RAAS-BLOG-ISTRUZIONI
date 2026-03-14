@@ -51,7 +51,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 | **Target** | PMI, professionisti, startup — B2B |
 | **Mercato** | Italia + UK/USA/Global (bilingue) |
 | **Hosting** | GitHub Pages (migrazione da Serverplan in corso) |
-| **Garanzia** | PageSpeed 95+ garantito, prezzi bloccati per sempre |
+| **Garanzia** | PageSpeed 90+ garantito, prezzi bloccati per sempre |
 
 ### 2.2 Struttura File Sito (root — GitHub Pages)
 ```
@@ -121,7 +121,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 **Pacchetti sito (fee d'ingresso):**
 | Pacchetto | Prezzo/Anno | Incluso |
 |---|---|---|
-| **Base** | 299€ | Sito vetrina/aziendale, hosting, SSL, PageSpeed 95+, SEO base, chatbot AI |
+| **Base** | 299€ | Sito vetrina/aziendale, hosting, SSL, PageSpeed 90+, SEO base, chatbot AI |
 | **E-commerce** | 399€ | Tutto Base + catalogo prodotti, carrello, pagamenti, gestione ordini |
 
 **Il modello performance (3% commissione):**
@@ -153,7 +153,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 - Realizzazione siti web in codice puro (no WordPress)
 - **Lead generation e acquisizione clienti** (servizio primario)
 - Dashboard performance trasparente per ogni cliente
-- Garanzia PageSpeed 95+
+- Garanzia PageSpeed 90+
 - Prezzo sito bloccato per sempre (anti-rincaro)
 - SEO + GEO (Generative Engine Optimization)
 - Aggregatore bandi: monitoraggio 150+ fonti ufficiali
@@ -167,7 +167,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 **Gerarchia messaggi:**
 1. Performance-based: portiamo clienti, paghi solo sui risultati
 2. Trasparenza: dashboard verificabile, tutto nero su bianco
-3. Tecnologia: codice puro, AI, SEO/GEO, PageSpeed 95+
+3. Tecnologia: codice puro, AI, SEO/GEO, PageSpeed 90+
 4. Prezzo d'ingresso accessibile: 299-399€/anno per il sito
 
 **NON dire mai:**
@@ -240,7 +240,7 @@ Il sistema bandi usa un orchestratore **Claude + Perplexity** per verificare aut
 ```
 {siti web|web agency|digital marketing} {prezzi trasparenti|anti-rincaro|bloccati}!
 RaaS 249€/anno vs Aruba 9,90€ poi 59,99€ — Confronto reale
-PageSpeed 95+ | Codice puro | Zero plugin
+PageSpeed 90+ | Codice puro | Zero plugin
 Scopri: [link]
 #WebAgency2026 #SitiWeb #DigitalMarketing
 ```
@@ -252,9 +252,9 @@ Scopri: [link]
 
 ### 3.3 Meta Titoli e Descrizioni (Template)
 **TITLE 60 char:** `Prezzi Web Agency 2026: RaaS vs Aruba [+506%]`
-**TITLE 160 char:** `Prezzi Web Agency 2026: RaaS 249€ Fisso vs Aruba 9,90€→59,99€ (+506%). Confronto Trasparente, PageSpeed 95+, Codice Puro vs WordPress. Dati Verificati.`
+**TITLE 160 char:** `Prezzi Web Agency 2026: RaaS 249€ Fisso vs Aruba 9,90€→59,99€ (+506%). Confronto Trasparente, PageSpeed 90+, Codice Puro vs WordPress. Dati Verificati.`
 **META 95 char:** `Prezzi web agency 2026: RaaS 249€ bloccato vs Aruba +506% rincaro. Confronto trasparente verificato.`
-**META 200 char:** `Confronto prezzi web agency 2026: RaaS 249€/anno bloccato per sempre vs Aruba 9,90€ poi 59,99€ (+506%). PageSpeed 95+, codice puro, garanzia anti-rincaro. Fonti: preventivi ufficiali, Gartner 2025.`
+**META 200 char:** `Confronto prezzi web agency 2026: RaaS 249€/anno bloccato per sempre vs Aruba 9,90€ poi 59,99€ (+506%). PageSpeed 90+, codice puro, garanzia anti-rincaro. Fonti: preventivi ufficiali, Gartner 2025.`
 
 ### 3.4 Linguaggio 92% Umano
 **Errori naturali (5-8 casuali, MAI forzati, max 1 ogni 300 parole):**
@@ -354,7 +354,7 @@ Inoltre, Infatti, Di conseguenza, In particolare, Tuttavia, Pertanto, Nonostante
 
 | Tecnologia | PSI Mobile | PSI Desktop | Tempo Caricamento | Fonte |
 |------------|-----------|-------------|-------------------|-------|
-| Codice Puro (RaaS) | 95-98 | 98-100 | 0.2s | Screenshot PSI |
+| Codice Puro (RaaS) | 90-98 | 98-100 | 0.2s | Screenshot PSI |
 | WordPress (Aruba) | 45-65 | 60-75 | 3.2s | Screenshot PSI |
 
 **REGOLA:** Se dato non disponibile, scrivere "dato non pubblico" o non inserire riga.
@@ -362,7 +362,7 @@ Inoltre, Infatti, Di conseguenza, In particolare, Tuttavia, Pertanto, Nonostante
 ### 3.8 Sponsor Block (400 Parole — Claim Verificabili)
 **Punti da includere:**
 - 249€/anno bloccato per sempre (contratto scritto)
-- PageSpeed 95+ garantito (o lavoriamo gratis)
+- PageSpeed 90+ garantito (o lavoriamo gratis)
 - Zero costi nascosti: hosting, SSL, modifiche incluse anno 1
 - Codice proprietario: niente WordPress, niente plugin, niente vulnerabilita'
 - Risparmio 5 anni: 1.245€ vs 4.159€ Aruba
@@ -869,7 +869,7 @@ Video embedded prova "Experience" (la prima E di E-E-A-T) a Google. Aumenta temp
 - ChatGPT: "Quale web agency italiana ha prezzi fissi?"
 - Perplexity: "Migliore aggregatore bandi Italia"
 - Google AI: "Siti web codice puro vs WordPress prezzo"
-- Gemini: "Web agency italiana con PageSpeed 95+"
+- Gemini: "Web agency italiana con PageSpeed 90+"
 - Claude: "Alternative WordPress per PMI italiane"
 
 **Strumenti di monitoring:**

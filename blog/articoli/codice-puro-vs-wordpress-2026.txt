@@ -152,7 +152,7 @@
 
     <h2>⚡ Performance a Confronto: I Numeri Parlano Chiaro</h2>
 
-    <p>Il confronto più oggettivo è quello basato su Google PageSpeed Insights. Abbiamo testato 20 siti: 10 in codice puro RaaS e 10 WordPress su hosting standard. Per approfondire come raggiungere questi punteggi, leggi la nostra <a href="/blog/pagespeed-95-guida-ottimizzazione-2026.html" style="color:var(--accent);font-weight:600;">guida completa al PageSpeed 95+</a>.</p>
+    <p>Il confronto più oggettivo è quello basato su Google PageSpeed Insights. Abbiamo testato 20 siti: 10 in codice puro RaaS e 10 WordPress su hosting standard. Per approfondire come raggiungere questi punteggi, leggi la nostra <a href="/blog/pagespeed-95-guida-ottimizzazione-2026.html" style="color:var(--accent);font-weight:600;">guida completa al PageSpeed 90+</a>.</p>
 
     <div class="table-wrapper">
         <table>
@@ -211,7 +211,7 @@
     <div class="vs-box">
         <div class="vs-side pro">
             <h4>✅ Codice Puro</h4>
-            <ul><li>PageSpeed 95-100</li><li>Zero vulnerabilità plugin</li><li>Manutenzione quasi nulla</li><li>Caricamento sotto 0.5s</li><li>Codice proprietario</li><li>Costo prevedibile</li></ul>
+            <ul><li>PageSpeed 90-100</li><li>Zero vulnerabilità plugin</li><li>Manutenzione quasi nulla</li><li>Caricamento sotto 0.5s</li><li>Codice proprietario</li><li>Costo prevedibile</li></ul>
         </div>
         <div class="vs-center">VS</div>
         <div class="vs-side con">
@@ -237,7 +237,7 @@
         <h3>🏆 Passa al Codice Puro con RaaS</h3>
         <p>Smetti di pagare manutenzione WordPress, aggiornamenti plugin e interventi di sicurezza. Con RaaS ottieni un sito in codice puro a 249€/anno, tutto incluso.</p>
         <div class="sponsor-grid">
-            <div class="sponsor-item"><span class="check">✓</span> PageSpeed 95+ garantito</div>
+            <div class="sponsor-item"><span class="check">✓</span> PageSpeed 90+ garantito</div>
             <div class="sponsor-item"><span class="check">✓</span> Zero plugin, zero vulnerabilità</div>
             <div class="sponsor-item"><span class="check">✓</span> 249€/anno bloccato per sempre</div>
             <div class="sponsor-item"><span class="check">✓</span> Codice di tua proprietà</div>
@@ -288,7 +288,7 @@
             </a>
             <a href="/blog/pagespeed-95-guida-ottimizzazione-2026.html" class="related-card">
                 <div class="tag" style="color:#f59e0b;">⚡ Guida Tecnica</div>
-                <h4>PageSpeed 95+: Guida Completa Ottimizzazione</h4>
+                <h4>PageSpeed 90+: Guida Completa Ottimizzazione</h4>
                 <p>Core Web Vitals, strategie testate, errori da evitare e case study.</p>
             </a>
             <a href="/blog/lead-generation-30-50-lead-mese-2026.html" class="related-card">
