@@ -1,21 +1,43 @@
 {
   "metadata": {
-    "version": "4.0.0",
-    "generated_at": "2026-03-13T23:30:48.055Z",
-    "total_bandi": 33,
+    "version": "5.0.0",
+    "generated_at": "2026-03-14T15:07:59.046903Z",
+    "total_bandi": 72,
     "sources": [
-      "invitalia",
-      "mimit",
-      "simest",
-      "inail",
-      "regione_veneto",
-      "regione_lombardia",
-      "regione_lazio",
-      "cciaa_roma",
+      "aggregatore",
+      "cciaa_bologna",
+      "cciaa_caserta",
+      "cciaa_cremona",
+      "cciaa_marche",
       "cciaa_milano",
+      "cciaa_roma",
+      "cciaa_romagna",
+      "cciaa_salerno",
+      "cciaa_toscana_no",
+      "cciaa_umbria",
       "contributieuropa",
       "europainnovazione",
-      "aggregatore"
+      "inail",
+      "invitalia",
+      "ismea",
+      "mase",
+      "mimit",
+      "minturismo",
+      "provincia_bolzano",
+      "regione_calabria",
+      "regione_emilia_romagna",
+      "regione_fvg",
+      "regione_lazio",
+      "regione_liguria",
+      "regione_lombardia",
+      "regione_piemonte",
+      "regione_puglia",
+      "regione_sardegna",
+      "regione_toscana",
+      "regione_vda",
+      "regione_veneto",
+      "simest",
+      "unioncamere"
     ]
   },
   "bandi": [
@@ -1333,6 +1355,1534 @@
       "descrizione": "Finanziamenti agevolati e contributi a fondo perduto per investimenti €100K-10M in impresa sociale e cooperazione.",
       "data_scraping": "2026-03-13T12:00:00Z",
       "fonte_scraping": "invitalia"
+    },
+    {
+      "id": "mimit008cloudcyber",
+      "titolo": "Voucher Cloud e Cybersecurity — Sicurezza Digitale per PMI",
+      "ente": "MIMIT - Ministero Imprese e Made in Italy",
+      "tipo_ente": "ministero",
+      "regione": "Nazionale",
+      "provincia": null,
+      "url_bando": "https://www.mimit.gov.it/it/incentivi/voucher-per-servizi-di-cloud-computing-e-cybersecurity",
+      "url_domanda": "https://www.mimit.gov.it/it/incentivi/voucher-per-servizi-di-cloud-computing-e-cybersecurity",
+      "data_apertura": "2026-03-04",
+      "data_scadenza": "2026-04-24",
+      "stato": "aperto",
+      "dotazione": 150000000,
+      "contributo_min": 1000,
+      "contributo_max": 20000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi",
+        "lavoratori_autonomi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "digitalizzazione",
+        "cybersecurity",
+        "cloud"
+      ],
+      "keywords": [
+        "cloud",
+        "cybersecurity",
+        "sicurezza informatica",
+        "voucher",
+        "mimit"
+      ],
+      "descrizione": "Voucher fino a €20.000 (50% delle spese) per acquisto servizi cloud e cybersecurity. Dotazione €150M.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "mimit"
+    },
+    {
+      "id": "mimit009disegni",
+      "titolo": "Disegni+ — Valorizzazione Disegni e Modelli Industriali",
+      "ente": "MIMIT - Ministero Imprese e Made in Italy",
+      "tipo_ente": "ministero",
+      "regione": "Nazionale",
+      "provincia": null,
+      "url_bando": "https://www.mimit.gov.it/it/incentivi/disegni",
+      "url_domanda": "https://www.mimit.gov.it/it/incentivi/disegni",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 10000000,
+      "contributo_min": 1000,
+      "contributo_max": 50000,
+      "percentuale": 80,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "proprieta_intellettuale",
+        "design",
+        "innovazione"
+      ],
+      "keywords": [
+        "disegni",
+        "modelli",
+        "design",
+        "brevetti",
+        "proprieta intellettuale"
+      ],
+      "descrizione": "Contributi fino all'80% per PMI che valorizzano disegni o modelli industriali registrati. Dotazione €10M.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "mimit"
+    },
+    {
+      "id": "inv010restoalsud2",
+      "titolo": "Autoimpiego Centro-Nord — Incentivi Nuove Imprese Under 35",
+      "ente": "Invitalia",
+      "tipo_ente": "ente_nazionale",
+      "regione": "Nazionale",
+      "provincia": null,
+      "url_bando": "https://www.invitalia.it/cosa-facciamo/creiamo-nuove-aziende/autoimpiego-centro-nord",
+      "url_domanda": "https://www.invitalia.it/cosa-facciamo/creiamo-nuove-aziende/autoimpiego-centro-nord",
+      "data_apertura": "2025-10-15",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 200000000,
+      "contributo_min": 10000,
+      "contributo_max": 200000,
+      "percentuale": 65,
+      "tipo_contributo": "misto",
+      "beneficiari": [
+        "giovani_under35",
+        "disoccupati"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "avvio_impresa",
+        "autoimpiego",
+        "lavoro_autonomo"
+      ],
+      "keywords": [
+        "autoimpiego",
+        "centro nord",
+        "giovani",
+        "under 35",
+        "nuova impresa"
+      ],
+      "descrizione": "Contributi fino al 65% + voucher formazione €2.500 per under 35 che avviano impresa al Centro-Nord. Max €200.000.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "invitalia"
+    },
+    {
+      "id": "mase001fotovoltaico",
+      "titolo": "Bonus Fotovoltaico Mezzogiorno — Energie Rinnovabili Imprese Sud",
+      "ente": "MASE - Ministero Ambiente e Sicurezza Energetica",
+      "tipo_ente": "ministero",
+      "regione": "Nazionale",
+      "provincia": null,
+      "url_bando": "https://www.mase.gov.it/bandi/fer-imprese-mezzogiorno",
+      "url_domanda": "https://www.mase.gov.it/bandi/fer-imprese-mezzogiorno",
+      "data_apertura": "2025-11-01",
+      "data_scadenza": "2026-07-03",
+      "stato": "aperto",
+      "dotazione": 262000000,
+      "contributo_min": 30000,
+      "contributo_max": 1000000,
+      "percentuale": 65,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi",
+        "grandi_imprese"
+      ],
+      "settori": [
+        "energia",
+        "industria"
+      ],
+      "finalita": [
+        "energie_rinnovabili",
+        "fotovoltaico",
+        "autoconsumo"
+      ],
+      "keywords": [
+        "fotovoltaico",
+        "solare",
+        "mezzogiorno",
+        "rinnovabili",
+        "autoconsumo"
+      ],
+      "descrizione": "Contributi fino al 65% per impianti fotovoltaici nelle regioni del Sud. Dotazione €262M. Scadenza 3 luglio 2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "mase"
+    },
+    {
+      "id": "minturismo001",
+      "titolo": "Fondo Turismo Sostenibile — Investimenti Ricettivo-Turistici",
+      "ente": "Ministero del Turismo",
+      "tipo_ente": "ministero",
+      "regione": "Nazionale",
+      "provincia": null,
+      "url_bando": "https://www.ministeroturismo.gov.it/fondo-turismo-sostenibile",
+      "url_domanda": "https://www.ministeroturismo.gov.it/fondo-turismo-sostenibile",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 109000000,
+      "contributo_min": 50000,
+      "contributo_max": 500000,
+      "percentuale": 50,
+      "tipo_contributo": "misto",
+      "beneficiari": [
+        "pmi",
+        "imprese_turistiche"
+      ],
+      "settori": [
+        "turismo",
+        "ricettivo"
+      ],
+      "finalita": [
+        "turismo",
+        "sostenibilita",
+        "riqualificazione"
+      ],
+      "keywords": [
+        "turismo",
+        "hotel",
+        "ricettivo",
+        "sostenibile",
+        "riqualificazione"
+      ],
+      "descrizione": "€109M per investimenti strategici nel settore turistico-ricettivo. Contributo fino al 50% delle spese.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "minturismo"
+    },
+    {
+      "id": "ismea001investe",
+      "titolo": "ISMEA Investe — Finanziamenti Agevolati Imprese Agricole",
+      "ente": "ISMEA - Istituto Servizi Mercato Agricolo",
+      "tipo_ente": "ente_nazionale",
+      "regione": "Nazionale",
+      "provincia": null,
+      "url_bando": "https://www.ismea.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/13531",
+      "url_domanda": "https://www.ismea.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/13531",
+      "data_apertura": "2026-01-08",
+      "data_scadenza": "2026-05-15",
+      "stato": "aperto",
+      "dotazione": 50000000,
+      "contributo_min": 50000,
+      "contributo_max": 2000000,
+      "percentuale": 70,
+      "tipo_contributo": "finanziamento_agevolato",
+      "beneficiari": [
+        "imprese_agricole"
+      ],
+      "settori": [
+        "agricoltura",
+        "agroalimentare"
+      ],
+      "finalita": [
+        "agricoltura",
+        "investimenti",
+        "sviluppo_rurale"
+      ],
+      "keywords": [
+        "ismea",
+        "agricoltura",
+        "finanziamento ipotecario",
+        "agevolato"
+      ],
+      "descrizione": "Finanziamento a tasso agevolato (70% sconto tasso mercato) per imprese agricole. Durata max 15 anni. Scad. 15/05/2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "ismea"
+    },
+    {
+      "id": "lom003nuovaimpresa2026",
+      "titolo": "Bando Nuova Impresa 2026 — Avvio Attivita Lombardia",
+      "ente": "Regione Lombardia - Unioncamere",
+      "tipo_ente": "regione",
+      "regione": "Lombardia",
+      "provincia": null,
+      "url_bando": "https://www.regione.lombardia.it/wps/portal/istituzionale/HP/DettaglioAvviso/servizi-e-informazioni/imprese/imprese-manifatturiere-artigiane-e-di-servizi/avv-nuova-impresa/avv-nuova-impresa",
+      "url_domanda": "https://www.regione.lombardia.it/wps/portal/istituzionale/HP/DettaglioAvviso/servizi-e-informazioni/imprese/imprese-manifatturiere-artigiane-e-di-servizi/avv-nuova-impresa/avv-nuova-impresa",
+      "data_apertura": "2026-04-30",
+      "data_scadenza": "2027-01-29",
+      "stato": "aperto",
+      "dotazione": 8000000,
+      "contributo_min": 1500,
+      "contributo_max": 10000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "nuove_imprese",
+        "startup"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "avvio_impresa",
+        "autoimprenditorialita"
+      ],
+      "keywords": [
+        "nuova impresa",
+        "lombardia",
+        "avvio",
+        "startup",
+        "fondo perduto"
+      ],
+      "descrizione": "Contributo 50% fino a €10.000 per avvio nuove imprese in Lombardia. Investimento minimo €3.000. Dotazione €8M.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_lombardia"
+    },
+    {
+      "id": "lom004museiimpresa",
+      "titolo": "Musei d'Impresa Lombardia — Valorizzazione Patrimonio Aziendale",
+      "ente": "Regione Lombardia",
+      "tipo_ente": "regione",
+      "regione": "Lombardia",
+      "provincia": null,
+      "url_bando": "https://www.bandi.regione.lombardia.it/servizi/servizio/bandi",
+      "url_domanda": "https://www.bandi.regione.lombardia.it/servizi/servizio/bandi",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": "2026-04-24",
+      "stato": "aperto",
+      "dotazione": 2000000,
+      "contributo_min": 10000,
+      "contributo_max": 80000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi",
+        "grandi_imprese"
+      ],
+      "settori": [
+        "cultura",
+        "turismo",
+        "manifattura"
+      ],
+      "finalita": [
+        "cultura",
+        "valorizzazione",
+        "turismo"
+      ],
+      "keywords": [
+        "museo",
+        "impresa",
+        "lombardia",
+        "cultura",
+        "patrimonio"
+      ],
+      "descrizione": "Finanziamenti fino a €80.000 per creare o riqualificare musei aziendali in Lombardia. Scadenza 24/04/2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_lombardia"
+    },
+    {
+      "id": "pie001investimenti",
+      "titolo": "Piemonte Investimenti Produttivi — Innovazione Filiera Artigianale",
+      "ente": "Regione Piemonte",
+      "tipo_ente": "regione",
+      "regione": "Piemonte",
+      "provincia": null,
+      "url_bando": "https://www.regione.piemonte.it/web/temi/fondi-progetti-europei/por-fesr",
+      "url_domanda": "https://www.regione.piemonte.it/web/temi/fondi-progetti-europei/por-fesr",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 15000000,
+      "contributo_min": 5000,
+      "contributo_max": 100000,
+      "percentuale": 10,
+      "tipo_contributo": "misto",
+      "beneficiari": [
+        "pmi",
+        "artigiani"
+      ],
+      "settori": [
+        "artigianato",
+        "manifattura",
+        "legno"
+      ],
+      "finalita": [
+        "investimenti",
+        "innovazione",
+        "produzione"
+      ],
+      "keywords": [
+        "piemonte",
+        "artigianato",
+        "investimenti",
+        "filiera",
+        "legno"
+      ],
+      "descrizione": "Contributi 8-10% + finanziamenti agevolati per filiera artigianale e legno in Piemonte.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_piemonte"
+    },
+    {
+      "id": "pie002certificazioni",
+      "titolo": "Voucher Certificazioni PMI Piemonte — Contributi Qualita",
+      "ente": "Regione Piemonte",
+      "tipo_ente": "regione",
+      "regione": "Piemonte",
+      "provincia": null,
+      "url_bando": "https://www.regione.piemonte.it/web/temi/fondi-progetti-europei/por-fesr",
+      "url_domanda": "https://www.regione.piemonte.it/web/temi/fondi-progetti-europei/por-fesr",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 8400000,
+      "contributo_min": 2000,
+      "contributo_max": 15000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "certificazioni",
+        "qualita",
+        "competitivita"
+      ],
+      "keywords": [
+        "piemonte",
+        "certificazioni",
+        "voucher",
+        "qualita",
+        "iso"
+      ],
+      "descrizione": "Voucher 50% fino a €15.000 per certificazioni volontarie PMI piemontesi. Dotazione €8,4M.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_piemonte"
+    },
+    {
+      "id": "pie003fiere",
+      "titolo": "Piemonte Fiere — Contributi Partecipazione Fiere Artigiani",
+      "ente": "Regione Piemonte",
+      "tipo_ente": "regione",
+      "regione": "Piemonte",
+      "provincia": null,
+      "url_bando": "https://www.regione.piemonte.it/web/temi/fondi-progetti-europei/por-fesr",
+      "url_domanda": "https://www.regione.piemonte.it/web/temi/fondi-progetti-europei/por-fesr",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": "2026-06-30",
+      "stato": "aperto",
+      "dotazione": 500000,
+      "contributo_min": 2000,
+      "contributo_max": 5000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "artigiani",
+        "pmi"
+      ],
+      "settori": [
+        "artigianato"
+      ],
+      "finalita": [
+        "fiere",
+        "promozione",
+        "internazionalizzazione"
+      ],
+      "keywords": [
+        "piemonte",
+        "fiere",
+        "artigiani",
+        "contributo"
+      ],
+      "descrizione": "Fondo perduto min €2.000 max €5.000 per imprese artigiane piemontesi per fiere nazionali/internazionali 1° sem 2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_piemonte"
+    },
+    {
+      "id": "pie004riciclo",
+      "titolo": "Piemonte Riciclo — Ampliamento Impianti RAEE e Batterie",
+      "ente": "Regione Piemonte",
+      "tipo_ente": "regione",
+      "regione": "Piemonte",
+      "provincia": null,
+      "url_bando": "https://www.regione.piemonte.it/web/temi/ambiente-territorio",
+      "url_domanda": "https://www.regione.piemonte.it/web/temi/ambiente-territorio",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": "2026-07-31",
+      "stato": "aperto",
+      "dotazione": 5000000,
+      "contributo_min": 50000,
+      "contributo_max": 500000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi",
+        "grandi_imprese"
+      ],
+      "settori": [
+        "ambiente",
+        "riciclo"
+      ],
+      "finalita": [
+        "economia_circolare",
+        "riciclo",
+        "RAEE"
+      ],
+      "keywords": [
+        "piemonte",
+        "riciclo",
+        "RAEE",
+        "batterie",
+        "materie prime critiche"
+      ],
+      "descrizione": "Contributi per ampliamento impianti riciclo RAEE, batterie e materie prime critiche. Scadenza 31/07/2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_piemonte"
+    },
+    {
+      "id": "er001startup",
+      "titolo": "Emilia-Romagna Startup Innovative — Fondo Perduto fino 60%",
+      "ente": "Regione Emilia-Romagna",
+      "tipo_ente": "regione",
+      "regione": "Emilia-Romagna",
+      "provincia": null,
+      "url_bando": "https://imprese.regione.emilia-romagna.it/",
+      "url_domanda": "https://imprese.regione.emilia-romagna.it/",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 10000000,
+      "contributo_min": 10000,
+      "contributo_max": 150000,
+      "percentuale": 60,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "startup",
+        "pmi"
+      ],
+      "settori": [
+        "tecnologia",
+        "digitale",
+        "innovazione"
+      ],
+      "finalita": [
+        "innovazione",
+        "startup",
+        "tecnologia"
+      ],
+      "keywords": [
+        "emilia romagna",
+        "startup",
+        "innovazione",
+        "fondo perduto"
+      ],
+      "descrizione": "Incentivi a fondo perduto fino al 60% per startup tecnologiche e digitali innovative in Emilia-Romagna.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_emilia_romagna"
+    },
+    {
+      "id": "er002eureca",
+      "titolo": "Fondo EuReCa Emilia-Romagna — Garanzia PMI CDP",
+      "ente": "Regione Emilia-Romagna / Cassa Depositi e Prestiti",
+      "tipo_ente": "regione",
+      "regione": "Emilia-Romagna",
+      "provincia": null,
+      "url_bando": "https://imprese.regione.emilia-romagna.it/",
+      "url_domanda": "https://imprese.regione.emilia-romagna.it/",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 28000000,
+      "contributo_min": 50000,
+      "contributo_max": 5000000,
+      "percentuale": null,
+      "tipo_contributo": "garanzia",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "investimenti",
+        "garanzia",
+        "credito"
+      ],
+      "keywords": [
+        "emilia romagna",
+        "eureca",
+        "garanzia",
+        "cdp",
+        "finanziamento"
+      ],
+      "descrizione": "Fondo garanzia €28M per generare fino a €450M di investimenti PMI. Cooperazione Regione ER e CDP.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_emilia_romagna"
+    },
+    {
+      "id": "laz002investimenti",
+      "titolo": "Investimenti Strategici PMI Lazio — Modernizzazione Produttiva",
+      "ente": "Regione Lazio - Lazio Innova",
+      "tipo_ente": "regione",
+      "regione": "Lazio",
+      "provincia": null,
+      "url_bando": "https://www.lazioinnova.it/bandi-aperti/",
+      "url_domanda": "https://www.lazioinnova.it/bandi-aperti/",
+      "data_apertura": "2025-07-17",
+      "data_scadenza": "2026-03-05",
+      "stato": "chiuso",
+      "dotazione": 40000000,
+      "contributo_min": 50000,
+      "contributo_max": 10000000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "investimenti",
+        "modernizzazione",
+        "produzione"
+      ],
+      "keywords": [
+        "lazio",
+        "investimenti",
+        "pmi",
+        "modernizzazione"
+      ],
+      "descrizione": "Contributo max €10M a fondo perduto per ampliamento e modernizzazione PMI del Lazio. Dotazione €40M.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_lazio"
+    },
+    {
+      "id": "laz003preseed",
+      "titolo": "PRE-SEED 3.0 Lazio — Avvio Startup Innovative",
+      "ente": "Regione Lazio - Lazio Innova",
+      "tipo_ente": "regione",
+      "regione": "Lazio",
+      "provincia": null,
+      "url_bando": "https://www.lazioinnova.it/bandi-aperti/",
+      "url_domanda": "https://www.lazioinnova.it/bandi-aperti/",
+      "data_apertura": "2026-03-19",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 5000000,
+      "contributo_min": 10000,
+      "contributo_max": 100000,
+      "percentuale": 80,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "startup",
+        "aspiranti_imprenditori"
+      ],
+      "settori": [
+        "tecnologia",
+        "innovazione"
+      ],
+      "finalita": [
+        "avvio_impresa",
+        "startup",
+        "prototipazione"
+      ],
+      "keywords": [
+        "lazio",
+        "preseed",
+        "startup",
+        "innovazione",
+        "prototipo"
+      ],
+      "descrizione": "Fondo perduto fino all'80% per avvio startup innovative nel Lazio. Domande dal 19/03/2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_lazio"
+    },
+    {
+      "id": "laz004fotovoltaico",
+      "titolo": "Energia Solare Imprese Lazio — Fotovoltaico e Accumulo",
+      "ente": "Regione Lazio - Lazio Innova",
+      "tipo_ente": "regione",
+      "regione": "Lazio",
+      "provincia": null,
+      "url_bando": "https://www.lazioinnova.it/bandi-aperti/",
+      "url_domanda": "https://www.lazioinnova.it/bandi-aperti/",
+      "data_apertura": "2026-02-03",
+      "data_scadenza": "2026-03-31",
+      "stato": "aperto",
+      "dotazione": 10000000,
+      "contributo_min": 5000,
+      "contributo_max": 100000,
+      "percentuale": 65,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi",
+        "grandi_imprese"
+      ],
+      "settori": [
+        "energia",
+        "tutti"
+      ],
+      "finalita": [
+        "energie_rinnovabili",
+        "fotovoltaico"
+      ],
+      "keywords": [
+        "lazio",
+        "fotovoltaico",
+        "solare",
+        "energia",
+        "accumulo"
+      ],
+      "descrizione": "Contributi a fondo perduto fino al 65% per impianti fotovoltaici e sistemi accumulo. Scad. 31/03/2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_lazio"
+    },
+    {
+      "id": "laz005manager",
+      "titolo": "Lazio Voucher Manageriali — Rafforzamento Capacita Gestionali",
+      "ente": "Regione Lazio - Lazio Innova",
+      "tipo_ente": "regione",
+      "regione": "Lazio",
+      "provincia": null,
+      "url_bando": "https://www.lazioinnova.it/bandi-aperti/",
+      "url_domanda": "https://www.lazioinnova.it/bandi-aperti/",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 3000000,
+      "contributo_min": 5000,
+      "contributo_max": 30000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "management",
+        "consulenza",
+        "formazione"
+      ],
+      "keywords": [
+        "lazio",
+        "voucher",
+        "manager",
+        "consulenza",
+        "formazione"
+      ],
+      "descrizione": "Voucher a fondo perduto per assunzioni e consulenze di manager esperti nelle PMI del Lazio.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_lazio"
+    },
+    {
+      "id": "tos001moda",
+      "titolo": "Toscana Innovazione Moda — Investimenti Settore Tessile",
+      "ente": "Regione Toscana",
+      "tipo_ente": "regione",
+      "regione": "Toscana",
+      "provincia": null,
+      "url_bando": "https://www.regione.toscana.it/web/guest/bandi",
+      "url_domanda": "https://www.regione.toscana.it/web/guest/bandi",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": "2026-04-30",
+      "stato": "aperto",
+      "dotazione": 30000000,
+      "contributo_min": 10000,
+      "contributo_max": 500000,
+      "percentuale": 100,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "mpmi"
+      ],
+      "settori": [
+        "moda",
+        "tessile"
+      ],
+      "finalita": [
+        "innovazione",
+        "moda",
+        "trasformazione_digitale"
+      ],
+      "keywords": [
+        "toscana",
+        "moda",
+        "tessile",
+        "innovazione",
+        "fondo perduto"
+      ],
+      "descrizione": "Contributo fino al 100% per innovazione nel settore moda/tessile. €30M, singola o aggregata. Scad. 30/04/2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_toscana"
+    },
+    {
+      "id": "pug001trasformazioni",
+      "titolo": "Puglia Trasformazioni — Innovazione e Digitale per PMI",
+      "ente": "Regione Puglia",
+      "tipo_ente": "regione",
+      "regione": "Puglia",
+      "provincia": null,
+      "url_bando": "https://www.regione.puglia.it/web/sviluppo-economico/bandi-attivi",
+      "url_domanda": "https://www.regione.puglia.it/web/sviluppo-economico/bandi-attivi",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 23500000,
+      "contributo_min": 10000,
+      "contributo_max": 200000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "innovazione",
+        "digitalizzazione",
+        "trasformazione"
+      ],
+      "keywords": [
+        "puglia",
+        "trasformazioni",
+        "innovazione",
+        "digitale",
+        "pmi"
+      ],
+      "descrizione": "€23,5M per servizi innovazione e trasformazione digitale PMI pugliesi. Contributo fino al 50%.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_puglia"
+    },
+    {
+      "id": "cal001tecstep",
+      "titolo": "Calabria TecSTEP — Fondo Tecnologie Critiche e Green",
+      "ente": "Regione Calabria",
+      "tipo_ente": "regione",
+      "regione": "Calabria",
+      "provincia": null,
+      "url_bando": "https://portale.regione.calabria.it/website/organizzazione/dipartimento5/",
+      "url_domanda": "https://portale.regione.calabria.it/website/organizzazione/dipartimento5/",
+      "data_apertura": "2025-10-06",
+      "data_scadenza": "2026-12-30",
+      "stato": "aperto",
+      "dotazione": 100000000,
+      "contributo_min": 100000,
+      "contributo_max": 5000000,
+      "percentuale": 80,
+      "tipo_contributo": "misto",
+      "beneficiari": [
+        "pmi",
+        "grandi_imprese"
+      ],
+      "settori": [
+        "digitale",
+        "deep_tech",
+        "green"
+      ],
+      "finalita": [
+        "tecnologia",
+        "innovazione",
+        "green"
+      ],
+      "keywords": [
+        "calabria",
+        "tecstep",
+        "tecnologie critiche",
+        "deep tech",
+        "green"
+      ],
+      "descrizione": "€100M per tecnologie critiche: digitale, deep tech e green in Calabria. Copertura fino all'80%. Scad. 30/12/2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_calabria"
+    },
+    {
+      "id": "cal002fri",
+      "titolo": "FRI Calabria — Fondo Trasformazione Tecnologica PMI",
+      "ente": "Regione Calabria",
+      "tipo_ente": "regione",
+      "regione": "Calabria",
+      "provincia": null,
+      "url_bando": "https://portale.regione.calabria.it/website/organizzazione/dipartimento5/",
+      "url_domanda": "https://portale.regione.calabria.it/website/organizzazione/dipartimento5/",
+      "data_apertura": "2025-11-18",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 45000000,
+      "contributo_min": 50000,
+      "contributo_max": 2000000,
+      "percentuale": 90,
+      "tipo_contributo": "misto",
+      "beneficiari": [
+        "pmi",
+        "grandi_imprese"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "trasformazione_tecnologica",
+        "investimenti"
+      ],
+      "keywords": [
+        "calabria",
+        "fri",
+        "trasformazione",
+        "tecnologica",
+        "pmi"
+      ],
+      "descrizione": "€45M per trasformazione tecnologica PMI e grandi imprese in Calabria. Agevolazioni fino al 90%.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_calabria"
+    },
+    {
+      "id": "cciaa005marchefiere",
+      "titolo": "CCIAA Marche Internazionalizzazione 2026 — Contributi Fiere",
+      "ente": "Camera di Commercio delle Marche",
+      "tipo_ente": "camera_commercio",
+      "regione": "Marche",
+      "provincia": null,
+      "url_bando": "https://www.marche.camcom.it/fai-crescere-la-tua-impresa/bandi-e-contributi/bando-internazionalizzazione-anno-2026",
+      "url_domanda": "https://www.marche.camcom.it/fai-crescere-la-tua-impresa/bandi-e-contributi/bando-internazionalizzazione-anno-2026",
+      "data_apertura": "2026-02-02",
+      "data_scadenza": "2026-12-31",
+      "stato": "aperto",
+      "dotazione": 2400000,
+      "contributo_min": 500,
+      "contributo_max": 6000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "mpmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "internazionalizzazione",
+        "fiere",
+        "export"
+      ],
+      "keywords": [
+        "marche",
+        "camera commercio",
+        "fiere",
+        "internazionalizzazione",
+        "export"
+      ],
+      "descrizione": "Contributo 50% per fiere: Italia max €4.000, UE max €4.500, extra-UE max €6.000. Dotazione €2,4M.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_marche"
+    },
+    {
+      "id": "cciaa006casertafiere",
+      "titolo": "CCIAA Caserta Fiere — Contributi Internazionalizzazione",
+      "ente": "Camera di Commercio di Caserta",
+      "tipo_ente": "camera_commercio",
+      "regione": "Campania",
+      "provincia": "Caserta",
+      "url_bando": "https://www.ce.camcom.it/notizie/bando-contributi-favorire-produzioni-del-territorio-linternazionalizzazione-delle-imprese-11",
+      "url_domanda": "https://www.ce.camcom.it/notizie/bando-contributi-favorire-produzioni-del-territorio-linternazionalizzazione-delle-imprese-11",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": "2026-04-30",
+      "stato": "aperto",
+      "dotazione": 150000,
+      "contributo_min": 500,
+      "contributo_max": 5000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "imprese"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "fiere",
+        "internazionalizzazione",
+        "promozione"
+      ],
+      "keywords": [
+        "caserta",
+        "camera commercio",
+        "fiere",
+        "internazionalizzazione"
+      ],
+      "descrizione": "€150.000 per partecipazione fiere Italia e estero imprese provincia Caserta. I quadrimestre 2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_caserta"
+    },
+    {
+      "id": "cciaa007cremonainternaz",
+      "titolo": "CCIAA Cremona Fiere — Internazionalizzazione PMI",
+      "ente": "Camera di Commercio di Cremona",
+      "tipo_ente": "camera_commercio",
+      "regione": "Lombardia",
+      "provincia": "Cremona",
+      "url_bando": "https://www.cciaa.cremona.it/index.phtml?Id_VMenu=857",
+      "url_domanda": "https://www.cciaa.cremona.it/index.phtml?Id_VMenu=857",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 100000,
+      "contributo_min": 500,
+      "contributo_max": 2000,
+      "percentuale": 25,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "fiere",
+        "internazionalizzazione"
+      ],
+      "keywords": [
+        "cremona",
+        "camera commercio",
+        "fiere",
+        "internazionalizzazione"
+      ],
+      "descrizione": "Contributo 25%: fiere Italia max €1.000, fiere estero max €2.000 per imprese cremonesi.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_cremona"
+    },
+    {
+      "id": "cciaa008salernofiere",
+      "titolo": "CCIAA Salerno Fiere — Partecipazione Manifestazioni",
+      "ente": "Camera di Commercio di Salerno",
+      "tipo_ente": "camera_commercio",
+      "regione": "Campania",
+      "provincia": "Salerno",
+      "url_bando": "https://www.sa.camcom.it/",
+      "url_domanda": "https://www.sa.camcom.it/",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 200000,
+      "contributo_min": 500,
+      "contributo_max": 5000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "fiere",
+        "promozione"
+      ],
+      "keywords": [
+        "salerno",
+        "camera commercio",
+        "fiere",
+        "contributo"
+      ],
+      "descrizione": "Contributo 50% max €5.000 per partecipazione fiere. A sportello fino esaurimento fondi.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_salerno"
+    },
+    {
+      "id": "cciaa009romagnafiere",
+      "titolo": "CCIAA Romagna Fiere Internazionali — Forli-Cesena e Rimini",
+      "ente": "Camera di Commercio della Romagna",
+      "tipo_ente": "camera_commercio",
+      "regione": "Emilia-Romagna",
+      "provincia": "Forli-Cesena / Rimini",
+      "url_bando": "https://www.romagna.camcom.it/",
+      "url_domanda": "https://www.romagna.camcom.it/",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": "2026-12-31",
+      "stato": "aperto",
+      "dotazione": 100000,
+      "contributo_min": 500,
+      "contributo_max": 3000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "fiere",
+        "internazionalizzazione"
+      ],
+      "keywords": [
+        "romagna",
+        "forli",
+        "rimini",
+        "fiere",
+        "internazionalizzazione"
+      ],
+      "descrizione": "€100.000 per partecipazione fiere internazionali imprese province Forli-Cesena e Rimini.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_romagna"
+    },
+    {
+      "id": "cciaa010umbriafiere",
+      "titolo": "CCIAA Umbria Fiere Internazionali — Contributi MPMI",
+      "ente": "Camera di Commercio dell'Umbria",
+      "tipo_ente": "camera_commercio",
+      "regione": "Umbria",
+      "provincia": null,
+      "url_bando": "https://www.umbria.camcom.it/",
+      "url_domanda": "https://www.umbria.camcom.it/",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": "2026-12-31",
+      "stato": "aperto",
+      "dotazione": 200000,
+      "contributo_min": 500,
+      "contributo_max": 4000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "mpmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "fiere",
+        "internazionalizzazione"
+      ],
+      "keywords": [
+        "umbria",
+        "camera commercio",
+        "fiere",
+        "internazionalizzazione"
+      ],
+      "descrizione": "Contributi fino a €4.000 + premialita' per partecipazione fiere internazionali MPMI umbre.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_umbria"
+    },
+    {
+      "id": "cciaa011milanovoucher",
+      "titolo": "CCIAA Milano Check-Up Impresa — Voucher Analisi Competenze",
+      "ente": "Camera di Commercio Milano Monza Brianza Lodi",
+      "tipo_ente": "camera_commercio",
+      "regione": "Lombardia",
+      "provincia": "Milano",
+      "url_bando": "https://www.milomb.camcom.it/bandi-e-contributi",
+      "url_domanda": "https://www.milomb.camcom.it/bandi-e-contributi",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 500000,
+      "contributo_min": 1000,
+      "contributo_max": 5000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "formazione",
+        "competenze",
+        "analisi"
+      ],
+      "keywords": [
+        "milano",
+        "camera commercio",
+        "voucher",
+        "check-up",
+        "competenze"
+      ],
+      "descrizione": "Voucher aziendali per check-up d'impresa e analisi organizzativa delle competenze del capitale umano.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_milano"
+    },
+    {
+      "id": "cciaa012bolognaESG",
+      "titolo": "CCIAA Bologna Sostenibilita — Contributi Bilancio ESG",
+      "ente": "Camera di Commercio di Bologna",
+      "tipo_ente": "camera_commercio",
+      "regione": "Emilia-Romagna",
+      "provincia": "Bologna",
+      "url_bando": "https://www.bo.camcom.gov.it/",
+      "url_domanda": "https://www.bo.camcom.gov.it/",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 200000,
+      "contributo_min": 1000,
+      "contributo_max": 5000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "sostenibilita",
+        "ESG",
+        "bilancio_sostenibilita"
+      ],
+      "keywords": [
+        "bologna",
+        "camera commercio",
+        "ESG",
+        "sostenibilita",
+        "bilancio"
+      ],
+      "descrizione": "Contributi per redazione bilancio di sostenibilita' ESG per imprese bolognesi.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_bologna"
+    },
+    {
+      "id": "cciaa013bolognafiere",
+      "titolo": "CCIAA Bologna Fiere — Contributi Fiere Internazionali",
+      "ente": "Camera di Commercio di Bologna",
+      "tipo_ente": "camera_commercio",
+      "regione": "Emilia-Romagna",
+      "provincia": "Bologna",
+      "url_bando": "https://www.bo.camcom.gov.it/",
+      "url_domanda": "https://www.bo.camcom.gov.it/",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 150000,
+      "contributo_min": 500,
+      "contributo_max": 5000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "fiere",
+        "internazionalizzazione"
+      ],
+      "keywords": [
+        "bologna",
+        "camera commercio",
+        "fiere",
+        "internazionali"
+      ],
+      "descrizione": "Contributi per partecipazione fiere internazionali in Italia per imprese bolognesi.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_bologna"
+    },
+    {
+      "id": "cciaa014romabando2026",
+      "titolo": "CCIAA Roma Competitivita 2026 — Sviluppo Economico Territorio",
+      "ente": "Camera di Commercio di Roma",
+      "tipo_ente": "camera_commercio",
+      "regione": "Lazio",
+      "provincia": "Roma",
+      "url_bando": "https://www.rm.camcom.it/pagina82_altri-bandi-e-avvisi.html",
+      "url_domanda": "https://www.rm.camcom.it/pagina82_altri-bandi-e-avvisi.html",
+      "data_apertura": "2026-02-05",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 2000000,
+      "contributo_min": 1000,
+      "contributo_max": 10000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "competitivita",
+        "sviluppo_economico"
+      ],
+      "keywords": [
+        "roma",
+        "camera commercio",
+        "competitivita",
+        "sviluppo"
+      ],
+      "descrizione": "Bando competitivita' imprese e sviluppo economico territorio. I edizione 2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_roma"
+    },
+    {
+      "id": "pid001voucherdigitali",
+      "titolo": "PID Voucher Digitali 4.0 — Sistema Camerale Nazionale",
+      "ente": "Unioncamere / Punti Impresa Digitale",
+      "tipo_ente": "camera_commercio",
+      "regione": "Nazionale",
+      "provincia": null,
+      "url_bando": "https://www.puntoimpresadigitale.camcom.it/paginainterna/voucher-digitali-40",
+      "url_domanda": "https://www.puntoimpresadigitale.camcom.it/paginainterna/voucher-digitali-40",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 50000000,
+      "contributo_min": 2000,
+      "contributo_max": 10000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "mpmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "digitalizzazione",
+        "industria40",
+        "formazione"
+      ],
+      "keywords": [
+        "pid",
+        "voucher digitali",
+        "4.0",
+        "unioncamere",
+        "digitalizzazione"
+      ],
+      "descrizione": "Voucher 50% fino a €10.000 per consulenza, formazione e tecnologie 4.0 tramite le CCIAA locali.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "unioncamere"
+    },
+    {
+      "id": "taa001fiere",
+      "titolo": "Alto Adige Fiere Internazionali — Contributi Export",
+      "ente": "Provincia Autonoma di Bolzano",
+      "tipo_ente": "provincia_autonoma",
+      "regione": "Trentino-Alto Adige",
+      "provincia": "Bolzano",
+      "url_bando": "https://www.provincia.bz.it/economia-finanze/commercio-servizi/bandi.asp",
+      "url_domanda": "https://www.provincia.bz.it/economia-finanze/commercio-servizi/bandi.asp",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 3000000,
+      "contributo_min": 1000,
+      "contributo_max": 15000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "fiere",
+        "internazionalizzazione",
+        "export"
+      ],
+      "keywords": [
+        "alto adige",
+        "bolzano",
+        "fiere",
+        "internazionalizzazione",
+        "export"
+      ],
+      "descrizione": "Contributi a fondo perduto fino al 50% (40% medie imprese) per fiere internazionali. A sportello.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "provincia_bolzano"
+    },
+    {
+      "id": "vda001fiere",
+      "titolo": "Valle d'Aosta Fiere — Contributi Promozione Internazionale",
+      "ente": "Regione Valle d'Aosta",
+      "tipo_ente": "regione",
+      "regione": "Valle d'Aosta",
+      "provincia": null,
+      "url_bando": "https://www.regione.vda.it/economia/bandi/default_i.aspx",
+      "url_domanda": "https://www.regione.vda.it/economia/bandi/default_i.aspx",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 1000000,
+      "contributo_min": 1000,
+      "contributo_max": 17000,
+      "percentuale": 60,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "fiere",
+        "internazionalizzazione"
+      ],
+      "keywords": [
+        "valle d'aosta",
+        "fiere",
+        "internazionalizzazione",
+        "contributo"
+      ],
+      "descrizione": "Contributo 60% max €17.000 per fiere e promozione internazionale. A sportello fino esaurimento.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_vda"
+    },
+    {
+      "id": "lig001imprese",
+      "titolo": "Liguria Sviluppo Imprese — Investimenti PMI FESR",
+      "ente": "Regione Liguria",
+      "tipo_ente": "regione",
+      "regione": "Liguria",
+      "provincia": null,
+      "url_bando": "https://www.regione.liguria.it/homepage/attivita-produttive/bandi.html",
+      "url_domanda": "https://www.regione.liguria.it/homepage/attivita-produttive/bandi.html",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 10000000,
+      "contributo_min": 10000,
+      "contributo_max": 200000,
+      "percentuale": 40,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "investimenti",
+        "innovazione",
+        "competitivita"
+      ],
+      "keywords": [
+        "liguria",
+        "investimenti",
+        "pmi",
+        "fesr",
+        "innovazione"
+      ],
+      "descrizione": "Contributi FESR fino al 40% per investimenti produttivi PMI liguri.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_liguria"
+    },
+    {
+      "id": "fvg001digitale",
+      "titolo": "Friuli Venezia Giulia Digitale — Voucher Tecnologici PMI",
+      "ente": "Regione Friuli Venezia Giulia",
+      "tipo_ente": "regione",
+      "regione": "Friuli Venezia Giulia",
+      "provincia": null,
+      "url_bando": "https://www.regione.fvg.it/rafvg/cms/RAFVG/economia-imprese/industria/",
+      "url_domanda": "https://www.regione.fvg.it/rafvg/cms/RAFVG/economia-imprese/industria/",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 5000000,
+      "contributo_min": 5000,
+      "contributo_max": 30000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "digitalizzazione",
+        "tecnologia",
+        "innovazione"
+      ],
+      "keywords": [
+        "friuli",
+        "voucher",
+        "digitale",
+        "tecnologia",
+        "pmi"
+      ],
+      "descrizione": "Voucher tecnologici 50% fino a €30.000 per digitalizzazione PMI del Friuli Venezia Giulia.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_fvg"
+    },
+    {
+      "id": "sar001fesr",
+      "titolo": "Sardegna FESR 2021-2027 — Crescita Sostenibile e Digitale PMI",
+      "ente": "Regione Sardegna",
+      "tipo_ente": "regione",
+      "regione": "Sardegna",
+      "provincia": null,
+      "url_bando": "https://www.regione.sardegna.it/argomenti/programmazione-e-fondi-europei/",
+      "url_domanda": "https://www.regione.sardegna.it/argomenti/programmazione-e-fondi-europei/",
+      "data_apertura": "2026-01-01",
+      "data_scadenza": null,
+      "stato": "aperto",
+      "dotazione": 50000000,
+      "contributo_min": 20000,
+      "contributo_max": 500000,
+      "percentuale": 50,
+      "tipo_contributo": "misto",
+      "beneficiari": [
+        "pmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "innovazione",
+        "sostenibilita",
+        "digitalizzazione"
+      ],
+      "keywords": [
+        "sardegna",
+        "fesr",
+        "innovazione",
+        "digitale",
+        "sostenibile"
+      ],
+      "descrizione": "Bandi FESR 2021-2027 per crescita sostenibile, R&S, transizione energetica e digitalizzazione PMI sarde.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "regione_sardegna"
+    },
+    {
+      "id": "cciaa015toscanasicurezza",
+      "titolo": "CCIAA Toscana Nord-Ovest Sicurezza — Voucher MPMI",
+      "ente": "Camera di Commercio Toscana Nord-Ovest",
+      "tipo_ente": "camera_commercio",
+      "regione": "Toscana",
+      "provincia": "Lucca / Massa-Carrara / Pisa",
+      "url_bando": "https://tno.camcom.it/",
+      "url_domanda": "https://tno.camcom.it/",
+      "data_apertura": "2026-03-02",
+      "data_scadenza": "2026-05-31",
+      "stato": "aperto",
+      "dotazione": 200000,
+      "contributo_min": 500,
+      "contributo_max": 5000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "mpmi"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "sicurezza",
+        "prevenzione"
+      ],
+      "keywords": [
+        "toscana",
+        "camera commercio",
+        "sicurezza",
+        "voucher",
+        "prevenzione"
+      ],
+      "descrizione": "Voucher 50% max €5.000 per investimenti sicurezza aziendale MPMI. Lucca, Massa-Carrara, Pisa. Scad. 31/05/2026.",
+      "data_scraping": "2026-03-14T15:07:59.046903Z",
+      "fonte_scraping": "cciaa_toscana_no"
     }
   ]
 }

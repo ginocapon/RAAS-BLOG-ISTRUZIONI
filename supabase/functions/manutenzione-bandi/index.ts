@@ -376,25 +376,80 @@ Deno.serve(async (req: Request) => {
       }
     }
 
-    // ═══ STEP 7: Verifica link vuoti ═══
-    addLog("Controllo link bandi...");
-    const { data: noLink } = await sb
+    // ═══ STEP 7: Verifica link reali (HEAD request + controllo pagina generica) ═══
+    addLog("Verifica link bandi (controllo URL reali)...");
+    let linkVerificati = 0;
+    const { data: bandiConLink } = await sb
       .from("bandi")
       .select("id, titolo, link")
       .eq("attivo", true);
 
-    if (noLink) {
-      const missingLinks = noLink.filter(
+    if (bandiConLink) {
+      // Prima: link vuoti o placeholder
+      const missingLinks = bandiConLink.filter(
         (b) => !b.link || b.link.trim() === "" || b.link === "#"
       );
-      linkErrori = missingLinks.length;
       if (missingLinks.length > 0) {
-        addLog(`  ${linkErrori} bandi senza link valido:`);
-        missingLinks
-          .slice(0, 10)
-          .forEach((b) => addLog(`    ! "${b.titolo}"`));
-      } else {
-        addLog("  Tutti i bandi hanno un link valido");
+        linkErrori += missingLinks.length;
+        addLog(`  ${missingLinks.length} bandi senza link:`);
+        missingLinks.slice(0, 5).forEach((b) => addLog(`    ! "${b.titolo}"`));
+      }
+
+      // Poi: verifica che i link siano raggiungibili e specifici (non homepage generica)
+      const bandiDaVerificare = bandiConLink.filter(
+        (b) => b.link && b.link.startsWith("http") && b.link !== "#"
+      );
+      addLog(`  Verifica ${bandiDaVerificare.length} link attivi...`);
+
+      // Pattern pagine generiche (homepage enti, non pagina specifica bando)
+      const GENERIC_PATTERNS = [
+        /^https?:\/\/[^/]+\/?$/,                      // Solo dominio
+        /\/bandi\/?$/,                                  // /bandi/
+        /\/bandi-aperti\/?$/,                           // /bandi-aperti/
+        /\/incentivi\/?$/,                              // /incentivi/
+        /\/homepage/i,                                  // /homepage
+        /\/index\.(html|php|asp)\/?$/i,                 // /index.html
+      ];
+
+      for (const b of bandiDaVerificare) {
+        // Controlla se URL e' generico
+        const isGeneric = GENERIC_PATTERNS.some((p) => p.test(b.link));
+        if (isGeneric) {
+          linkErrori++;
+          addLog(`    ! Link generico (non specifico del bando): "${b.titolo}" -> ${b.link}`);
+          continue;
+        }
+
+        // HEAD request per verificare raggiungibilita' (max 20 per non rallentare)
+        if (linkVerificati < 20) {
+          try {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 8000);
+            const res = await fetch(b.link, {
+              method: "HEAD",
+              headers: { "User-Agent": "BandiItalia-LinkChecker/1.0" },
+              signal: controller.signal,
+              redirect: "follow",
+            });
+            clearTimeout(timeout);
+            linkVerificati++;
+
+            if (!res.ok) {
+              linkErrori++;
+              addLog(`    ! HTTP ${res.status}: "${b.titolo}" -> ${b.link}`);
+            }
+          } catch {
+            linkErrori++;
+            addLog(`    ! Non raggiungibile: "${b.titolo}" -> ${b.link}`);
+          }
+          // Pausa 500ms tra le richieste per non sovraccaricare
+          await new Promise((r) => setTimeout(r, 500));
+        }
+      }
+
+      addLog(`  Link verificati con HEAD: ${linkVerificati}/${bandiDaVerificare.length}`);
+      if (linkErrori === 0) {
+        addLog("  Tutti i link verificati sono OK");
       }
     }
 
