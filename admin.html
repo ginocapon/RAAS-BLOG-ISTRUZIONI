@@ -724,6 +724,14 @@ select.filter-select {
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
       Newsletter
     </div>
+    <div class="nav-item" onclick="showSection('manutenzione')" data-sec="manutenzione">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      Manutenzione
+    </div>
+    <div class="nav-item" onclick="showSection('web-analytics')" data-sec="web-analytics">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      Web Analytics
+    </div>
     <div class="nav-item" onclick="showSection('scadenze')" data-sec="scadenze">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
       Scadenze
@@ -1162,6 +1170,271 @@ select.filter-select {
         <div id="scadenzeTimeline">
           <p style="color:var(--grigio);font-size:0.85rem;">Caricamento...</p>
         </div>
+      </div>
+    </div>
+
+    <!-- ══════════ MANUTENZIONE BANDI ══════════ -->
+    <div class="section" id="sec-manutenzione">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon gold">&#128197;</div>
+          <div class="stat-info">
+            <h3 id="maintLastDate">Mai</h3>
+            <p>Ultimo Aggiornamento</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red">&#128465;</div>
+          <div class="stat-info">
+            <h3 id="maintScaduti">-</h3>
+            <p>Bandi Scaduti</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue">&#128260;</div>
+          <div class="stat-info">
+            <h3 id="maintDuplicati">-</h3>
+            <p>Possibili Duplicati</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">&#9989;</div>
+          <div class="stat-info">
+            <h3 id="maintAttivi">-</h3>
+            <p>Bandi Attivi OK</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Azioni Manutenzione -->
+      <div class="card">
+        <div class="card-header">
+          <h3>&#128736; Manutenzione Bandi</h3>
+          <div class="toolbar">
+            <button class="btn btn-primary" onclick="runManutenzione()">&#9654; Esegui Manutenzione Ora</button>
+          </div>
+        </div>
+        <p style="color:var(--grigio);font-size:0.85rem;margin-bottom:16px;">
+          La manutenzione automatica viene eseguita ogni 7 giorni. Puoi lanciarla manualmente con il pulsante sopra.
+        </p>
+        <div id="maintLog" style="background:var(--sfondo);border-radius:8px;padding:16px;font-size:0.82rem;font-family:monospace;max-height:400px;overflow-y:auto;white-space:pre-wrap;color:var(--testo);display:none;"></div>
+      </div>
+
+      <!-- Regole Applicate -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
+          <h3>Regole SKILL.md Applicate</h3>
+        </div>
+        <div style="font-size:0.85rem;line-height:1.8;color:var(--testo);">
+          <p>&#10003; <strong>Anti-plagio titoli</strong> — I titoli vengono riformattati in "NomeBando — Descrizione Breve Originale"</p>
+          <p>&#10003; <strong>Pulizia bandi scaduti</strong> — Bandi con scadenza passata vengono disattivati automaticamente</p>
+          <p>&#10003; <strong>Deduplicazione</strong> — Bandi con titolo simile (>85%) vengono segnalati</p>
+          <p>&#10003; <strong>Verifica link</strong> — URL dei bandi vengono controllati (segnalazione 404/errori)</p>
+          <p>&#10003; <strong>Data aggiornamento</strong> — Registrata ad ogni esecuzione (manuale o automatica)</p>
+        </div>
+      </div>
+
+      <!-- Storico Manutenzioni -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
+          <h3>Storico Manutenzioni</h3>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Data</th><th>Tipo</th><th>Scaduti Disattivati</th><th>Duplicati Trovati</th><th>Link Errore</th><th>Titoli Corretti</th></tr></thead>
+            <tbody id="maintHistory"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ WEB ANALYTICS (GSC + GA4) ══════════ -->
+    <div class="section" id="sec-web-analytics">
+      <div class="stats-grid">
+        <div class="stat-card" style="background:linear-gradient(135deg,#4285f4 0%,#34a853 100%);color:#fff;">
+          <div class="stat-icon" style="background:rgba(255,255,255,0.15);color:#fff;">&#128269;</div>
+          <div class="stat-info">
+            <h3 id="waClicTotali" style="color:#fff;">-</h3>
+            <p style="color:rgba(255,255,255,0.8);">Clic Totali (28gg)</p>
+          </div>
+        </div>
+        <div class="stat-card" style="background:linear-gradient(135deg,#ea4335 0%,#fbbc05 100%);color:#fff;">
+          <div class="stat-icon" style="background:rgba(255,255,255,0.15);color:#fff;">&#128065;</div>
+          <div class="stat-info">
+            <h3 id="waImpressioniTotali" style="color:#fff;">-</h3>
+            <p style="color:rgba(255,255,255,0.8);">Impressioni (28gg)</p>
+          </div>
+        </div>
+        <div class="stat-card" style="background:linear-gradient(135deg,#34a853 0%,#0f9d58 100%);color:#fff;">
+          <div class="stat-icon" style="background:rgba(255,255,255,0.15);color:#fff;">&#128200;</div>
+          <div class="stat-info">
+            <h3 id="waCTR" style="color:#fff;">-</h3>
+            <p style="color:rgba(255,255,255,0.8);">CTR Media</p>
+          </div>
+        </div>
+        <div class="stat-card" style="background:linear-gradient(135deg,#673ab7 0%,#9c27b0 100%);color:#fff;">
+          <div class="stat-icon" style="background:rgba(255,255,255,0.15);color:#fff;">&#127919;</div>
+          <div class="stat-info">
+            <h3 id="waPosMedia" style="color:#fff;">-</h3>
+            <p style="color:rgba(255,255,255,0.8);">Posizione Media</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GA4 Stats -->
+      <div class="stats-grid" style="margin-top:12px;">
+        <div class="stat-card">
+          <div class="stat-icon blue">&#128101;</div>
+          <div class="stat-info">
+            <h3 id="waUtenti">-</h3>
+            <p>Utenti Attivi (7gg)</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">&#128196;</div>
+          <div class="stat-info">
+            <h3 id="waEventi">-</h3>
+            <p>Eventi Totali (7gg)</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon gold">&#128100;</div>
+          <div class="stat-info">
+            <h3 id="waNuoviUtenti">-</h3>
+            <p>Nuovi Utenti (7gg)</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red">&#128203;</div>
+          <div class="stat-info">
+            <h3 id="waPagineIndicizzate">-</h3>
+            <p>Pagine Indicizzate</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ultimo aggiornamento + pulsante -->
+      <div class="card">
+        <div class="card-header">
+          <h3>&#128202; Dashboard KPI</h3>
+          <div class="toolbar">
+            <span style="font-size:0.78rem;color:var(--grigio);margin-right:12px;">Ultimo aggiornamento: <strong id="waLastUpdate">Mai</strong></span>
+            <button class="btn btn-primary" onclick="openUpdateWAModal()">&#128260; Aggiorna Dati</button>
+          </div>
+        </div>
+        <p style="color:var(--grigio);font-size:0.82rem;">
+          Inserisci i dati da Google Search Console e Google Analytics 4. Aggiornamento automatico ogni 7 giorni quando aggiorni manualmente.
+        </p>
+      </div>
+
+      <!-- Form Aggiornamento Dati -->
+      <div class="card" id="waUpdateForm" style="margin-top:20px;display:none;">
+        <div class="card-header">
+          <h3>Aggiorna Dati Manualmente</h3>
+          <button class="btn btn-secondary btn-sm" onclick="document.getElementById('waUpdateForm').style.display='none'">Chiudi</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <h4 style="margin-bottom:12px;color:var(--oro);">Google Search Console (28gg)</h4>
+            <div class="form-group"><label>Clic Totali</label><input type="number" id="waInputClic" placeholder="es. 150"></div>
+            <div class="form-group"><label>Impressioni Totali</label><input type="number" id="waInputImpr" placeholder="es. 1590"></div>
+            <div class="form-group"><label>CTR Media (%)</label><input type="number" step="0.1" id="waInputCTR" placeholder="es. 9.4"></div>
+            <div class="form-group"><label>Posizione Media</label><input type="number" step="0.1" id="waInputPos" placeholder="es. 8.1"></div>
+          </div>
+          <div>
+            <h4 style="margin-bottom:12px;color:var(--verde);">Google Analytics 4 (7gg)</h4>
+            <div class="form-group"><label>Utenti Attivi</label><input type="number" id="waInputUtenti" placeholder="es. 96"></div>
+            <div class="form-group"><label>Eventi Totali</label><input type="number" id="waInputEventi" placeholder="es. 926"></div>
+            <div class="form-group"><label>Nuovi Utenti</label><input type="number" id="waInputNuovi" placeholder="es. 9"></div>
+            <div class="form-group"><label>Pagine Indicizzate</label><input type="number" id="waInputPagine" placeholder="es. 55"></div>
+          </div>
+        </div>
+        <h4 style="margin:20px 0 12px;color:var(--blu);">Top Query GSC</h4>
+        <div id="waQueryRows">
+          <div class="wa-query-row" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 30px;gap:8px;margin-bottom:8px;font-size:0.78rem;font-weight:600;color:var(--grigio);">
+            <span>Query</span><span>Clic</span><span>Impressioni</span><span>CTR (%)</span><span>Posizione</span><span></span>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-sm" style="margin-top:4px;" onclick="addQueryRow()">+ Aggiungi Query</button>
+
+        <h4 style="margin:20px 0 12px;color:var(--arancio);">Performance per Pagina</h4>
+        <div id="waPageRows">
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 30px;gap:8px;margin-bottom:8px;font-size:0.78rem;font-weight:600;color:var(--grigio);">
+            <span>Pagina</span><span>Clic</span><span>Impressioni</span><span>CTR (%)</span><span>Posizione</span><span></span>
+          </div>
+        </div>
+        <button class="btn btn-secondary btn-sm" style="margin-top:4px;" onclick="addPageRow()">+ Aggiungi Pagina</button>
+
+        <div style="margin-top:24px;text-align:right;">
+          <button class="btn btn-primary" onclick="saveWebAnalytics()">&#128190; Salva Dati</button>
+        </div>
+      </div>
+
+      <!-- Storico Snapshot -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
+          <h3>Storico Performance — Snapshot Periodici</h3>
+          <span style="font-size:0.78rem;color:var(--grigio);">Automatico ogni 7 giorni</span>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Data</th><th>Clic</th><th>Impressioni</th><th>CTR</th><th>Pos. Media</th><th>Utenti GA</th><th>Eventi GA</th><th>Trend</th></tr></thead>
+            <tbody id="waSnapshotTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Top Query -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
+          <h3>Top Query — Google Search Console</h3>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Query</th><th>Clic</th><th>Impressioni</th><th>CTR</th><th>Posizione</th></tr></thead>
+            <tbody id="waQueryTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Performance per Pagina -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
+          <h3>Performance per Pagina</h3>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Pagina</th><th>Clic</th><th>Impressioni</th><th>CTR</th><th>Posizione</th><th>Status</th></tr></thead>
+            <tbody id="waPageTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Obiettivi Strategici -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
+          <h3>Obiettivi Strategici</h3>
+        </div>
+        <div id="waGoals"></div>
+      </div>
+
+      <!-- Trend Crescita Grafico -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
+          <h3>Trend Crescita — Grafico</h3>
+          <span style="font-size:0.78rem;color:var(--grigio);">Basato sugli snapshot salvati</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="chartWebTrend" width="800" height="300"></canvas>
+        </div>
+      </div>
+
+      <!-- Link diretti -->
+      <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;">
+        <a href="https://search.google.com/search-console" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="text-decoration:none;">&#128269; Google Search Console</a>
+        <a href="https://analytics.google.com" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="text-decoration:none;background:#ea4335;color:#fff;">&#128200; Google Analytics 4</a>
+        <a href="https://pagespeed.web.dev/analysis?url=https://www.raasautomazioni.it" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="text-decoration:none;background:#34a853;color:#fff;">&#9889; PageSpeed Insights</a>
+        <a href="https://search.google.com/test/rich-results?url=https://www.raasautomazioni.it" target="_blank" rel="noopener" class="btn btn-secondary btn-sm" style="text-decoration:none;background:#fbbc05;color:#333;">&#11088; Rich Results Test</a>
       </div>
     </div>
 
@@ -2281,6 +2554,463 @@ function renderLegend(containerId, data) {
     </div>`;
   }).join('');
 }
+
+// ══════════ MANUTENZIONE BANDI ══════════
+const MAINT_KEY = 'bandiMaintenanceHistory';
+const MAINT_LAST_KEY = 'bandiMaintenanceLast';
+const MAINT_AUTO_KEY = 'bandiMaintenanceAutoLast';
+
+function getMaintHistory() {
+  try { return JSON.parse(localStorage.getItem(MAINT_KEY) || '[]'); } catch { return []; }
+}
+function saveMaintHistory(h) { localStorage.setItem(MAINT_KEY, JSON.stringify(h.slice(0, 50))); }
+
+async function loadManutenzione() {
+  const last = localStorage.getItem(MAINT_LAST_KEY);
+  document.getElementById('maintLastDate').textContent = last ? new Date(last).toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }) : 'Mai';
+
+  try {
+    const oggi = new Date().toISOString().split('T')[0];
+    const [scadutiRes, attiviRes, allRes] = await Promise.all([
+      sb.from('bandi').select('*', { count:'exact', head:true }).eq('attivo', true).lt('scadenza', oggi),
+      sb.from('bandi').select('*', { count:'exact', head:true }).eq('attivo', true).gte('scadenza', oggi),
+      sb.from('bandi').select('titolo', { count:'exact' }).eq('attivo', true)
+    ]);
+    document.getElementById('maintScaduti').textContent = scadutiRes.count || 0;
+    document.getElementById('maintAttivi').textContent = attiviRes.count || 0;
+
+    // Conta duplicati approssimativi (titoli molto simili)
+    const titoli = (allRes.data || []).map(b => b.titolo.toLowerCase().replace(/[^a-z0-9]/g, ''));
+    let dupes = 0;
+    for (let i = 0; i < titoli.length; i++) {
+      for (let j = i + 1; j < titoli.length; j++) {
+        if (titoli[i] === titoli[j] || (titoli[i].length > 10 && titoli[j].includes(titoli[i].substring(0, 15)))) { dupes++; break; }
+      }
+    }
+    document.getElementById('maintDuplicati').textContent = dupes;
+  } catch (e) { console.error('Manutenzione stats error:', e); }
+
+  // Storico
+  const hist = getMaintHistory();
+  const tbody = document.getElementById('maintHistory');
+  if (hist.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="color:var(--grigio);text-align:center;">Nessuna manutenzione eseguita</td></tr>';
+  } else {
+    tbody.innerHTML = hist.map(h => `<tr>
+      <td>${new Date(h.date).toLocaleDateString('it-IT', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}</td>
+      <td><span class="badge ${h.type === 'auto' ? 'attivo' : 'paid'}">${h.type === 'auto' ? 'Automatico' : 'Manuale'}</span></td>
+      <td>${h.scaduti || 0}</td>
+      <td>${h.duplicati || 0}</td>
+      <td>${h.linkErrori || 0}</td>
+      <td>${h.titoliCorretti || 0}</td>
+    </tr>`).join('');
+  }
+
+  // Check se serve manutenzione automatica (ogni 7gg)
+  checkAutoMaintenance();
+}
+
+async function checkAutoMaintenance() {
+  const lastAuto = localStorage.getItem(MAINT_AUTO_KEY);
+  if (lastAuto) {
+    const diff = (Date.now() - new Date(lastAuto).getTime()) / 86400000;
+    if (diff < 7) return; // Meno di 7 giorni, skip
+  }
+  // Esegui automaticamente
+  await runManutenzione('auto');
+}
+
+async function runManutenzione(tipo = 'manuale') {
+  const log = document.getElementById('maintLog');
+  log.style.display = 'block';
+  log.textContent = '';
+  const addLog = (msg) => { log.textContent += new Date().toLocaleTimeString('it-IT') + ' — ' + msg + '\n'; log.scrollTop = log.scrollHeight; };
+
+  addLog('Avvio manutenzione ' + tipo + '...');
+  let scadutiCount = 0, dupeCount = 0, linkErrors = 0, titoliCorrected = 0;
+
+  try {
+    // 1. Disattiva bandi scaduti
+    addLog('Controllo bandi scaduti...');
+    const oggi = new Date().toISOString().split('T')[0];
+    const { data: scaduti } = await sb.from('bandi').select('id, titolo, scadenza').eq('attivo', true).lt('scadenza', oggi);
+    if (scaduti && scaduti.length > 0) {
+      const ids = scaduti.map(b => b.id);
+      await sb.from('bandi').update({ attivo: false }).in('id', ids);
+      scadutiCount = ids.length;
+      addLog('  Disattivati ' + scadutiCount + ' bandi scaduti');
+      scaduti.forEach(b => addLog('    - ' + b.titolo + ' (scadenza: ' + b.scadenza + ')'));
+    } else {
+      addLog('  Nessun bando scaduto trovato');
+    }
+
+    // 2. Cerca duplicati (titoli con similarita' alta)
+    addLog('Controllo duplicati...');
+    const { data: allBandi } = await sb.from('bandi').select('id, titolo').eq('attivo', true);
+    const dupes = [];
+    if (allBandi) {
+      const norm = allBandi.map(b => ({ ...b, norm: b.titolo.toLowerCase().replace(/[^a-z0-9àèéìòù]/g, '') }));
+      for (let i = 0; i < norm.length; i++) {
+        for (let j = i + 1; j < norm.length; j++) {
+          if (norm[i].norm === norm[j].norm || (norm[i].norm.length > 15 && norm[j].norm.length > 15 && norm[i].norm.substring(0, 20) === norm[j].norm.substring(0, 20))) {
+            dupes.push({ a: norm[i], b: norm[j] });
+          }
+        }
+      }
+      dupeCount = dupes.length;
+      if (dupes.length > 0) {
+        addLog('  Trovati ' + dupes.length + ' possibili duplicati:');
+        dupes.forEach(d => addLog('    - "' + d.a.titolo + '" vs "' + d.b.titolo + '"'));
+      } else {
+        addLog('  Nessun duplicato trovato');
+      }
+    }
+
+    // 3. Verifica formato titoli anti-plagio (SKILL.md regola 11)
+    addLog('Controllo formato titoli anti-plagio...');
+    if (allBandi) {
+      const badTitles = allBandi.filter(b => !b.titolo.includes('—') && !b.titolo.includes(' - '));
+      if (badTitles.length > 0) {
+        addLog('  Trovati ' + badTitles.length + ' titoli senza formato anti-plagio (NomeBando — Descrizione):');
+        badTitles.slice(0, 10).forEach(b => addLog('    - ID ' + b.id + ': "' + b.titolo + '"'));
+        titoliCorrected = badTitles.length;
+      } else {
+        addLog('  Tutti i titoli rispettano il formato anti-plagio');
+      }
+    }
+
+    // 4. Verifica link (controlla che abbiano URL)
+    addLog('Controllo link bandi...');
+    const { data: noLink } = await sb.from('bandi').select('id, titolo, link').eq('attivo', true);
+    if (noLink) {
+      const missingLinks = noLink.filter(b => !b.link || b.link.trim() === '' || b.link === '#');
+      if (missingLinks.length > 0) {
+        linkErrors = missingLinks.length;
+        addLog('  Trovati ' + linkErrors + ' bandi senza link valido:');
+        missingLinks.slice(0, 10).forEach(b => addLog('    - ID ' + b.id + ': "' + b.titolo + '"'));
+      } else {
+        addLog('  Tutti i bandi hanno un link valido');
+      }
+    }
+
+    // Salva risultato
+    const now = new Date().toISOString();
+    localStorage.setItem(MAINT_LAST_KEY, now);
+    if (tipo === 'auto') localStorage.setItem(MAINT_AUTO_KEY, now);
+
+    const record = { date: now, type: tipo === 'auto' ? 'auto' : 'manuale', scaduti: scadutiCount, duplicati: dupeCount, linkErrori: linkErrors, titoliCorretti: titoliCorrected };
+    const hist = getMaintHistory();
+    hist.unshift(record);
+    saveMaintHistory(hist);
+
+    addLog('');
+    addLog('Manutenzione completata.');
+    addLog('  Scaduti disattivati: ' + scadutiCount);
+    addLog('  Duplicati segnalati: ' + dupeCount);
+    addLog('  Link mancanti: ' + linkErrors);
+    addLog('  Titoli da correggere: ' + titoliCorrected);
+
+    toast('Manutenzione completata', 'success');
+    loadManutenzione(); // Refresh stats
+  } catch (e) {
+    addLog('ERRORE: ' + e.message);
+    toast('Errore manutenzione: ' + e.message, 'error');
+  }
+}
+
+// ══════════ WEB ANALYTICS (GSC + GA4) ══════════
+const WA_DATA_KEY = 'webAnalyticsData';
+const WA_SNAPSHOTS_KEY = 'webAnalyticsSnapshots';
+
+function getWAData() {
+  try { return JSON.parse(localStorage.getItem(WA_DATA_KEY) || 'null'); } catch { return null; }
+}
+function getWASnapshots() {
+  try { return JSON.parse(localStorage.getItem(WA_SNAPSHOTS_KEY) || '[]'); } catch { return []; }
+}
+
+function loadWebAnalytics() {
+  const data = getWAData();
+  if (data) {
+    document.getElementById('waClicTotali').textContent = data.clic ? Number(data.clic).toLocaleString('it-IT') : '-';
+    document.getElementById('waImpressioniTotali').textContent = data.impressioni ? Number(data.impressioni).toLocaleString('it-IT') : '-';
+    document.getElementById('waCTR').textContent = data.ctr ? data.ctr + '%' : '-';
+    document.getElementById('waPosMedia').textContent = data.posMedia || '-';
+    document.getElementById('waUtenti').textContent = data.utenti ? Number(data.utenti).toLocaleString('it-IT') : '-';
+    document.getElementById('waEventi').textContent = data.eventi ? Number(data.eventi).toLocaleString('it-IT') : '-';
+    document.getElementById('waNuoviUtenti').textContent = data.nuoviUtenti || '-';
+    document.getElementById('waPagineIndicizzate').textContent = data.pagineIndicizzate ? data.pagineIndicizzate + '+' : '-';
+    document.getElementById('waLastUpdate').textContent = data.lastUpdate ? new Date(data.lastUpdate).toLocaleDateString('it-IT', { day:'numeric', month:'long', year:'numeric' }) : 'Mai';
+  }
+
+  // Top Query
+  renderWAQueryTable(data);
+  // Performance Pagina
+  renderWAPageTable(data);
+  // Obiettivi
+  renderWAGoals(data);
+  // Snapshots
+  renderWASnapshots();
+  // Trend chart
+  drawWATrendChart();
+}
+
+function renderWAQueryTable(data) {
+  const tbody = document.getElementById('waQueryTable');
+  if (!data || !data.queries || data.queries.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="color:var(--grigio);text-align:center;">Nessun dato. Aggiorna i dati GSC.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.queries.sort((a, b) => (b.clic || 0) - (a.clic || 0)).map(q => `<tr>
+    <td><strong>${esc(q.query)}</strong></td>
+    <td style="color:var(--oro);font-weight:600;">${q.clic || 0}</td>
+    <td>${q.impressioni || 0}</td>
+    <td>${q.ctr || '-'}%</td>
+    <td style="color:${(q.posizione || 99) <= 5 ? 'var(--verde)' : (q.posizione || 99) <= 10 ? 'var(--oro)' : 'var(--rosso)'};font-weight:600;">${q.posizione || '-'}</td>
+  </tr>`).join('');
+}
+
+function renderWAPageTable(data) {
+  const tbody = document.getElementById('waPageTable');
+  if (!data || !data.pages || data.pages.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="color:var(--grigio);text-align:center;">Nessun dato. Aggiorna i dati GSC.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.pages.sort((a, b) => (b.clic || 0) - (a.clic || 0)).map(p => {
+    const pos = p.posizione || 99;
+    let status = '', statusClass = '';
+    if (pos <= 5) { status = 'TOP'; statusClass = 'attivo'; }
+    else if (pos <= 10) { status = 'CRESCITA'; statusClass = 'in-scadenza'; }
+    else if (pos <= 15) { status = 'NUOVO'; statusClass = 'paid'; }
+    else { status = 'DA MIGLIORARE'; statusClass = 'scaduto'; }
+    return `<tr>
+      <td><a href="https://www.raasautomazioni.it${esc(p.pagina)}" target="_blank" style="color:var(--blu);text-decoration:none;">${esc(p.pagina)}</a></td>
+      <td style="color:var(--oro);font-weight:600;">${p.clic || 0}</td>
+      <td>${p.impressioni || 0}</td>
+      <td>${p.ctr || '-'}%</td>
+      <td style="font-weight:600;">${pos}</td>
+      <td><span class="badge ${statusClass}">${status}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderWAGoals(data) {
+  const cont = document.getElementById('waGoals');
+  if (!data) { cont.innerHTML = '<p style="color:var(--grigio);font-size:0.85rem;">Aggiorna i dati per vedere gli obiettivi.</p>'; return; }
+  const goals = [
+    { label: 'Clic mensili GSC', current: data.clic || 0, targets: [400, 1000, 3000] },
+    { label: 'Impressioni mensili', current: data.impressioni || 0, targets: [5000, 15000, 50000] },
+    { label: 'CTR media', current: parseFloat(data.ctr) || 0, targets: [10, 12, 15], suffix: '%' },
+    { label: 'Posizione media', current: parseFloat(data.posMedia) || 99, targets: [6, 4, 3], invert: true },
+    { label: 'Utenti settimanali GA', current: data.utenti || 0, targets: [300, 800, 2000] },
+    { label: 'Pagine indicizzate', current: data.pagineIndicizzate || 0, targets: [65, 80, 120] }
+  ];
+
+  cont.innerHTML = goals.map(g => {
+    const maxTarget = g.invert ? g.targets[0] : g.targets[2];
+    const pct = g.invert
+      ? Math.min(100, Math.max(0, ((g.targets[0] / Math.max(g.current, 0.1)) * 100)))
+      : Math.min(100, (g.current / maxTarget) * 100);
+    const color = pct >= 80 ? 'var(--verde)' : pct >= 40 ? 'var(--blu)' : 'var(--rosso)';
+    return `<div style="margin-bottom:16px;padding:12px 16px;background:var(--sfondo);border-radius:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <strong style="font-size:0.88rem;">${g.label}</strong>
+        <span style="font-size:0.88rem;color:var(--oro);font-weight:700;">Attuale: ${g.current}${g.suffix || ''}</span>
+      </div>
+      <div style="background:#ddd;border-radius:4px;height:8px;overflow:hidden;">
+        <div style="width:${pct}%;height:100%;background:${color};border-radius:4px;transition:width 0.5s;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:0.72rem;color:var(--grigio);">
+        <span>3 mesi: ${g.targets[0]}${g.suffix || ''}</span>
+        <span>6 mesi: ${g.targets[1]}${g.suffix || ''}</span>
+        <span>12 mesi: ${g.targets[2]}${g.suffix || ''}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderWASnapshots() {
+  const snapshots = getWASnapshots();
+  const tbody = document.getElementById('waSnapshotTable');
+  if (snapshots.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8" style="color:var(--grigio);text-align:center;">Nessuno snapshot. Salva i dati per creare il primo.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = snapshots.map((s, i) => {
+    const prev = snapshots[i + 1];
+    let trend = '—';
+    if (prev) {
+      const diff = (s.clic || 0) - (prev.clic || 0);
+      if (diff > 0) trend = '<span style="color:var(--verde);">&#9650; +' + diff + '</span>';
+      else if (diff < 0) trend = '<span style="color:var(--rosso);">&#9660; ' + diff + '</span>';
+      else trend = '<span style="color:var(--grigio);">&#9654; 0</span>';
+    }
+    return `<tr>
+      <td><strong>${new Date(s.date).toLocaleDateString('it-IT')}</strong></td>
+      <td style="color:var(--oro);font-weight:600;">${s.clic || '-'}</td>
+      <td>${s.impressioni || '-'}</td>
+      <td>${s.ctr || '-'}%</td>
+      <td>${s.posMedia || '-'}</td>
+      <td>${s.utenti || '-'}</td>
+      <td>${s.eventi || '-'}</td>
+      <td>${trend}</td>
+    </tr>`;
+  }).join('');
+}
+
+function openUpdateWAModal() {
+  const form = document.getElementById('waUpdateForm');
+  form.style.display = 'block';
+  // Pre-fill con dati esistenti
+  const data = getWAData();
+  if (data) {
+    document.getElementById('waInputClic').value = data.clic || '';
+    document.getElementById('waInputImpr').value = data.impressioni || '';
+    document.getElementById('waInputCTR').value = data.ctr || '';
+    document.getElementById('waInputPos').value = data.posMedia || '';
+    document.getElementById('waInputUtenti').value = data.utenti || '';
+    document.getElementById('waInputEventi').value = data.eventi || '';
+    document.getElementById('waInputNuovi').value = data.nuoviUtenti || '';
+    document.getElementById('waInputPagine').value = data.pagineIndicizzate || '';
+  }
+  // Aggiungi righe query/pagina se non ce ne sono
+  if (!document.querySelector('.wa-query-input')) { addQueryRow(); addQueryRow(); addQueryRow(); }
+  if (!document.querySelector('.wa-page-input')) { addPageRow(); addPageRow(); addPageRow(); }
+}
+
+function addQueryRow() {
+  const cont = document.getElementById('waQueryRows');
+  const row = document.createElement('div');
+  row.className = 'wa-query-input';
+  row.style.cssText = 'display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 30px;gap:8px;margin-bottom:6px;';
+  row.innerHTML = '<input type="text" placeholder="query..." style="padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:0.82rem;">' +
+    '<input type="number" placeholder="clic" style="padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:0.82rem;">' +
+    '<input type="number" placeholder="impr" style="padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:0.82rem;">' +
+    '<input type="number" step="0.1" placeholder="ctr%" style="padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:0.82rem;">' +
+    '<input type="number" step="0.1" placeholder="pos" style="padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:0.82rem;">' +
+    '<button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--rosso);cursor:pointer;font-size:1.1rem;">&#10007;</button>';
+  cont.appendChild(row);
+}
+
+function addPageRow() {
+  const cont = document.getElementById('waPageRows');
+  const row = document.createElement('div');
+  row.className = 'wa-page-input';
+  row.style.cssText = 'display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 30px;gap:8px;margin-bottom:6px;';
+  row.innerHTML = '<input type="text" placeholder="/pagina" style="padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:0.82rem;">' +
+    '<input type="number" placeholder="clic" style="padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:0.82rem;">' +
+    '<input type="number" placeholder="impr" style="padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:0.82rem;">' +
+    '<input type="number" step="0.1" placeholder="ctr%" style="padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:0.82rem;">' +
+    '<input type="number" step="0.1" placeholder="pos" style="padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:0.82rem;">' +
+    '<button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--rosso);cursor:pointer;font-size:1.1rem;">&#10007;</button>';
+  cont.appendChild(row);
+}
+
+function saveWebAnalytics() {
+  const data = {
+    clic: document.getElementById('waInputClic').value || 0,
+    impressioni: document.getElementById('waInputImpr').value || 0,
+    ctr: document.getElementById('waInputCTR').value || 0,
+    posMedia: document.getElementById('waInputPos').value || 0,
+    utenti: document.getElementById('waInputUtenti').value || 0,
+    eventi: document.getElementById('waInputEventi').value || 0,
+    nuoviUtenti: document.getElementById('waInputNuovi').value || 0,
+    pagineIndicizzate: document.getElementById('waInputPagine').value || 0,
+    lastUpdate: new Date().toISOString(),
+    queries: [],
+    pages: []
+  };
+
+  // Raccogli queries
+  document.querySelectorAll('.wa-query-input').forEach(row => {
+    const inputs = row.querySelectorAll('input');
+    if (inputs[0].value.trim()) {
+      data.queries.push({
+        query: inputs[0].value.trim(),
+        clic: parseInt(inputs[1].value) || 0,
+        impressioni: parseInt(inputs[2].value) || 0,
+        ctr: parseFloat(inputs[3].value) || 0,
+        posizione: parseFloat(inputs[4].value) || 0
+      });
+    }
+  });
+
+  // Raccogli pagine
+  document.querySelectorAll('.wa-page-input').forEach(row => {
+    const inputs = row.querySelectorAll('input');
+    if (inputs[0].value.trim()) {
+      data.pages.push({
+        pagina: inputs[0].value.trim(),
+        clic: parseInt(inputs[1].value) || 0,
+        impressioni: parseInt(inputs[2].value) || 0,
+        ctr: parseFloat(inputs[3].value) || 0,
+        posizione: parseFloat(inputs[4].value) || 0
+      });
+    }
+  });
+
+  localStorage.setItem(WA_DATA_KEY, JSON.stringify(data));
+
+  // Salva snapshot
+  const snapshots = getWASnapshots();
+  const today = new Date().toISOString().split('T')[0];
+  // Evita duplicati per lo stesso giorno
+  const existing = snapshots.findIndex(s => s.date.split('T')[0] === today);
+  const snapshot = {
+    date: new Date().toISOString(),
+    clic: data.clic, impressioni: data.impressioni, ctr: data.ctr,
+    posMedia: data.posMedia, utenti: data.utenti, eventi: data.eventi
+  };
+  if (existing >= 0) snapshots[existing] = snapshot;
+  else snapshots.unshift(snapshot);
+  localStorage.setItem(WA_SNAPSHOTS_KEY, JSON.stringify(snapshots.slice(0, 52)));
+
+  document.getElementById('waUpdateForm').style.display = 'none';
+  toast('Dati Web Analytics salvati', 'success');
+  loadWebAnalytics();
+}
+
+function drawWATrendChart() {
+  const snapshots = getWASnapshots().slice().reverse();
+  if (snapshots.length < 2) {
+    const canvas = document.getElementById('chartWebTrend');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#8b95a5';
+    ctx.font = '14px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Aggiungi almeno 2 snapshot per vedere il grafico trend', canvas.width / 2, canvas.height / 2);
+    ctx.fillText('Gli snapshot vengono registrati automaticamente ogni 7 giorni', canvas.width / 2, canvas.height / 2 + 24);
+    return;
+  }
+
+  const data = {};
+  snapshots.forEach(s => { data[s.date.split('T')[0]] = parseInt(s.clic) || 0; });
+  drawLineChart('chartWebTrend', data, 'Clic GSC');
+}
+
+// ══════════ NAVIGATION UPDATE ══════════
+// Patch showSection per le nuove sezioni
+const _origShowSection = showSection;
+// Redefine non necessario, aggiorniamo solo il loader
+const origSectionHandler = {
+  'manutenzione': loadManutenzione,
+  'web-analytics': loadWebAnalytics
+};
+
+// Override showSection inline
+(function() {
+  const origFn = showSection;
+  window.showSection = function(name) {
+    origFn(name);
+    if (name === 'manutenzione') loadManutenzione();
+    else if (name === 'web-analytics') loadWebAnalytics();
+  };
+})();
+
+// Aggiorna sectionTitles
+sectionTitles['manutenzione'] = 'Manutenzione Bandi';
+sectionTitles['web-analytics'] = 'Web Analytics — GSC + GA4';
 
 // ══════════ UTILITY ══════════
 function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
