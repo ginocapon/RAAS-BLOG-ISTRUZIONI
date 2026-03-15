@@ -429,47 +429,43 @@ Deno.serve(async (req: Request) => {
     addLog(`  Totale bandi trovati da tutte le fonti: ${tuttiBandiNuovi.length}`);
 
     // ═══ STEP 3: Deduplica e inserisci nuovi ═══
-    // Logica: data scadenza uguale + stesso ente = duplicato certo
-    //         titolo similarita' > 90% = duplicato certo
+    // Logica a 3 fattori:
+    //   1. Stesso URL = duplicato certo
+    //   2. Stesso titolo + stessa data = duplicato certo
+    //   3. Date diverse = MAI duplicato (anche con titolo identico)
+    const normUrl = (u: string) => (u || "").toLowerCase().replace(/\/+$/, "").replace(/^https?:\/\/(www\.)?/, "");
+
     if (tuttiBandiNuovi.length > 0) {
       addLog("Deduplicazione e inserimento nuovi bandi...");
-      addLog("  Regola: stessa scadenza + stesso ente = duplicato");
-      addLog("  Regola: similarita' titolo > 90% = duplicato");
+      addLog("  Fattore 1: stesso URL = duplicato");
+      addLog("  Fattore 2: stesso titolo + stessa data = duplicato");
+      addLog("  Fattore 3: date diverse = NON duplicato");
 
+      const urlEsistenti = new Set(bandiEsistenti.map((eb) => normUrl(eb.url)).filter((u) => u && u !== "#"));
       const bandiDaInserire: Bando[] = [];
+
       for (const nb of tuttiBandiNuovi) {
-        const normNuovo = normalizeTitle(nb.titolo);
-
-        // Regola 1: stessa data scadenza + stesso ente = duplicato certo
-        const stessaDataEnte = bandiEsistenti.some(
-          (eb) =>
-            eb.scadenza &&
-            nb.scadenza &&
-            eb.scadenza === nb.scadenza &&
-            eb.ente &&
-            nb.ente &&
-            eb.ente.toLowerCase() === nb.ente.toLowerCase()
-        );
-        if (stessaDataEnte) continue;
-
-        // Regola 2: titolo similarita' > 90% = duplicato
-        const titoloTroppSimile = bandiEsistenti.some(
-          (eb) => similarity(normalizeTitle(eb.titolo), normNuovo) > 0.9
-        );
-        if (titoloTroppSimile) continue;
-
-        // Controlla anche contro i bandi gia' selezionati per l'inserimento
-        const dupInterno = bandiDaInserire.some(
-          (bi) =>
-            (bi.scadenza && nb.scadenza && bi.scadenza === nb.scadenza && bi.ente.toLowerCase() === nb.ente.toLowerCase()) ||
-            similarity(normalizeTitle(bi.titolo), normNuovo) > 0.9
-        );
-        if (dupInterno) continue;
-
         // Skip link vuoti o placeholder
         if (!nb.url || nb.url === "#") continue;
 
+        // Fattore 1: stesso URL = duplicato certo
+        if (urlEsistenti.has(normUrl(nb.url))) continue;
+
+        // Fattore 2: stesso titolo + stessa data = duplicato
+        const normNuovo = normalizeTitle(nb.titolo);
+        const dupTitoloData = bandiEsistenti.some(
+          (eb) => normalizeTitle(eb.titolo) === normNuovo && eb.scadenza === nb.scadenza
+        );
+        if (dupTitoloData) continue;
+
+        // Check contro bandi gia' selezionati per inserimento
+        const dupInterno = bandiDaInserire.some(
+          (bi) => normUrl(bi.url) === normUrl(nb.url)
+        );
+        if (dupInterno) continue;
+
         bandiDaInserire.push(nb);
+        urlEsistenti.add(normUrl(nb.url));
       }
 
       if (bandiDaInserire.length > 0) {
@@ -507,46 +503,45 @@ Deno.serve(async (req: Request) => {
       addLog("  Nessun bando scaduto trovato");
     }
 
-    // ═══ STEP 5: Rileva e rimuovi duplicati ═══
-    // Stessa logica: data scadenza uguale + stesso ente = duplicato, oppure titolo > 90%
-    addLog("Controllo duplicati nel database...");
+    // ═══ STEP 5: Rileva e rimuovi duplicati (3 fattori) ═══
+    addLog("Controllo duplicati nel database (3 fattori)...");
+    addLog("  Fattore 1: stesso URL = duplicato certo");
+    addLog("  Fattore 2: stesso titolo + stessa data = duplicato");
+    addLog("  Fattore 3: date diverse = NON duplicato");
     const { data: allAttivi } = await sb
       .from("bandi")
-      .select("id, titolo, scadenza, ente")
+      .select("id, titolo, scadenza, url, ente")
       .eq("attivo", true);
 
     if (allAttivi && allAttivi.length > 1) {
-      const norm = allAttivi.map((b) => ({
+      const enriched = allAttivi.map((b) => ({
         ...b,
-        norm: normalizeTitle(b.titolo),
+        normT: normalizeTitle(b.titolo),
+        normU: normUrl(b.url),
       }));
       const idsToRemove: number[] = [];
 
-      for (let i = 0; i < norm.length; i++) {
-        if (idsToRemove.includes(norm[i].id)) continue;
-        for (let j = i + 1; j < norm.length; j++) {
-          if (idsToRemove.includes(norm[j].id)) continue;
+      for (let i = 0; i < enriched.length; i++) {
+        if (idsToRemove.includes(enriched[i].id)) continue;
+        for (let j = i + 1; j < enriched.length; j++) {
+          if (idsToRemove.includes(enriched[j].id)) continue;
 
-          // Regola 1: stessa scadenza + stesso ente = duplicato
-          const stessaDataEnte =
-            norm[i].scadenza &&
-            norm[j].scadenza &&
-            norm[i].scadenza === norm[j].scadenza &&
-            norm[i].ente &&
-            norm[j].ente &&
-            norm[i].ente.toLowerCase() === norm[j].ente.toLowerCase();
+          // Fattore 1: stesso URL = duplicato certo
+          if (enriched[i].normU && enriched[j].normU && enriched[i].normU === enriched[j].normU && enriched[i].normU !== "" && enriched[i].normU !== "#") {
+            idsToRemove.push(enriched[j].id);
+            addLog(`  Dup [URL]: "${enriched[j].titolo.substring(0, 50)}..."`);
+            continue;
+          }
 
-          // Regola 2: similarita' titolo > 90%
-          const titoloSimile =
-            norm[i].norm === norm[j].norm ||
-            similarity(norm[i].norm, norm[j].norm) > 0.9;
+          // Fattore 3: date diverse = MAI duplicato
+          if (enriched[i].scadenza && enriched[j].scadenza && enriched[i].scadenza !== enriched[j].scadenza) {
+            continue;
+          }
 
-          if (stessaDataEnte || titoloSimile) {
-            idsToRemove.push(norm[j].id);
-            const motivo = stessaDataEnte ? "stessa data+ente" : "titolo simile >90%";
-            addLog(
-              `  Duplicato (${motivo}): "${norm[j].titolo}" vs "${norm[i].titolo}"`
-            );
+          // Fattore 2: stesso titolo + stessa data (o entrambi senza data)
+          if (enriched[i].normT === enriched[j].normT && enriched[i].scadenza === enriched[j].scadenza) {
+            idsToRemove.push(enriched[j].id);
+            addLog(`  Dup [titolo+data]: "${enriched[j].titolo.substring(0, 50)}..."`);
           }
         }
       }
@@ -557,7 +552,7 @@ Deno.serve(async (req: Request) => {
           .update({ attivo: false })
           .in("id", idsToRemove);
         duplicatiRimossi = idsToRemove.length;
-        addLog(`  Disattivati ${duplicatiRimossi} bandi duplicati`);
+        addLog(`  Rimossi ${duplicatiRimossi} duplicati certi`);
       } else {
         addLog("  Nessun duplicato trovato");
       }

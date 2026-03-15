@@ -1222,7 +1222,7 @@ select.filter-select {
           </div>
         </div>
         <p style="color:var(--grigio);font-size:0.85rem;margin-bottom:16px;">
-          Un clic = ciclo completo: cerca nuovi bandi da fonti ufficiali, elimina scaduti, rimuovi duplicati, verifica titoli e link. Automatico ogni 7 giorni.
+          Un clic = ciclo completo: riattiva bandi validi, cerca nuovi da fonti ufficiali, elimina solo veri scaduti, rimuovi duplicati certi (stesso URL o stesso titolo+data), verifica titoli e link. Automatico ogni 7 giorni.
         </p>
         <div id="maintProgress" style="display:none;margin-bottom:12px;">
           <div style="background:var(--grigio2);border-radius:8px;height:6px;overflow:hidden;">
@@ -1243,7 +1243,7 @@ select.filter-select {
           <p>&#10003; <strong>Parser multi-formato</strong> — JSON per API strutturate, CSV per open data, HTML scraping per portali regionali e enti senza API</p>
           <p>&#10003; <strong>Anti-plagio titoli</strong> — I titoli vengono riformattati in "NomeBando — Descrizione Breve Originale"</p>
           <p>&#10003; <strong>Pulizia bandi scaduti</strong> — Bandi con scadenza passata vengono disattivati automaticamente</p>
-          <p>&#10003; <strong>Deduplicazione avanzata</strong> — Stessa scadenza + stesso ente = duplicato, oppure similarita' titolo >90% (indice Jaccard)</p>
+          <p>&#10003; <strong>Deduplicazione avanzata</strong> — 3 fattori: stesso URL = duplicato certo, stesso titolo + stessa data = duplicato, date diverse = MAI duplicato</p>
           <p>&#10003; <strong>Verifica link</strong> — URL controllati con HEAD request + rilevamento link generici (homepage, /bandi/, /index.html)</p>
           <p>&#10003; <strong>Data aggiornamento</strong> — Registrata ad ogni esecuzione (manuale o automatica)</p>
         </div>
@@ -2723,56 +2723,60 @@ async function runManutenzioneFull(tipo = 'manuale') {
   }
 }
 
-// Fallback locale con ricerca bandi client-side
+// Manutenzione completa client-side (unico bottone)
+// Logica: riattiva tutto → cerca nuovi → elimina solo scaduti → dedup a 3 fattori (URL + titolo+data) → pulizia → verifica
 async function runManutenzioneFallback(tipo = 'manuale') {
   const log = document.getElementById('maintLog');
   const addLog = (msg) => { log.textContent += new Date().toLocaleTimeString('it-IT') + ' — ' + msg + '\n'; log.scrollTop = log.scrollHeight; };
   const setProgress = (pct, text) => { document.getElementById('maintProgressBar').style.width = pct + '%'; document.getElementById('maintProgressText').textContent = text; };
 
-  let nuoviCount = 0, scadutiCount = 0, dupeCount = 0, linkErrors = 0, titoliCorrected = 0;
-
-  // Similarita' Jaccard per deduplicazione
-  const simFn = (a, b) => { const w1 = new Set(a.split(/\s+/)); const w2 = new Set(b.split(/\s+/)); const inter = [...w1].filter(x => w2.has(x)).length; const uni = new Set([...w1, ...w2]).size; return uni === 0 ? 0 : inter / uni; };
+  let nuoviCount = 0, scadutiCount = 0, dupeCount = 0, linkErrors = 0, titoliCorrected = 0, riattivatiCount = 0;
   const normTitle = (t) => t.toLowerCase().replace(/[^a-z0-9àèéìòù\s]/g, '').trim();
+  const normUrl = (u) => (u || '').toLowerCase().replace(/\/+$/, '').replace(/^https?:\/\/(www\.)?/, '');
 
   try {
-    // ═══ STEP 1: Carica bandi esistenti ═══
-    setProgress(5, 'Caricamento bandi esistenti...');
-    addLog('Caricamento bandi esistenti dal database...');
-    // Paginazione: Supabase limita a 1000 righe per query
-    let bandiEsistenti = [], offset = 0;
+    const oggi = new Date().toISOString().split('T')[0];
+
+    // ═══ STEP 1: Riattiva tutti i bandi disattivati ═══
+    setProgress(5, 'Riattivazione bandi validi...');
+    addLog('═══ STEP 1: RIATTIVAZIONE BANDI ═══');
+    const { count: disattivatiBefore } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', false);
+    if (disattivatiBefore && disattivatiBefore > 0) {
+      await sb.from('bandi').update({ attivo: true }).eq('attivo', false);
+      riattivatiCount = disattivatiBefore;
+      addLog('  Riattivati ' + riattivatiCount + ' bandi precedentemente disattivati');
+    } else {
+      addLog('  Nessun bando disattivato da riattivare');
+    }
+
+    // ═══ STEP 2: Carica TUTTI i bandi (ora tutti attivi) ═══
+    setProgress(10, 'Caricamento database...');
+    addLog('');
+    addLog('═══ STEP 2: CARICAMENTO DATABASE ═══');
+    let allBandi = [], off = 0;
     while (true) {
-      const { data, error } = await sb.from('bandi').select('id, titolo, scadenza, url, attivo, ente').range(offset, offset + 999);
+      const { data, error } = await sb.from('bandi').select('id, titolo, scadenza, url, ente, attivo').range(off, off + 999);
       if (error) throw new Error('Errore DB: ' + error.message);
       if (!data || data.length === 0) break;
-      bandiEsistenti = bandiEsistenti.concat(data);
+      allBandi = allBandi.concat(data);
       if (data.length < 1000) break;
-      offset += 1000;
+      off += 1000;
     }
-    const bandiAttivi = bandiEsistenti.filter(b => b.attivo);
-    const bandiDisattivati = bandiEsistenti.filter(b => !b.attivo);
-    addLog('  ' + bandiEsistenti.length + ' bandi totali nel database');
-    addLog('  ' + bandiAttivi.length + ' attivi, ' + bandiDisattivati.length + ' disattivati');
+    addLog('  ' + allBandi.length + ' bandi totali nel database');
 
-    // ═══ STEP 2: Cerca nuovi bandi da fonti API (client-side) ═══
-    setProgress(10, 'Ricerca nuovi bandi da fonti ufficiali...');
+    // ═══ STEP 3: Cerca nuovi bandi da API ═══
+    setProgress(15, 'Ricerca nuovi bandi...');
     addLog('');
-    addLog('═══ RICERCA NUOVI BANDI (client-side) ═══');
-    addLog('Interrogo API incentivi.gov.it e portali con accesso CORS...');
+    addLog('═══ STEP 3: RICERCA NUOVI BANDI ═══');
 
-    // Fonti API accessibili dal browser (JSON)
     const FONTI_API = [
       { id: 'incentivi_gov_1', nome: 'Incentivi.gov.it — Tutti gli attivi', url: 'https://www.incentivi.gov.it/it/api/incentivi?stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
       { id: 'incentivi_gov_2', nome: 'Incentivi.gov.it — Imprese', url: 'https://www.incentivi.gov.it/it/api/incentivi?beneficiari=imprese&stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
       { id: 'incentivi_gov_3', nome: 'Incentivi.gov.it — Professionisti', url: 'https://www.incentivi.gov.it/it/api/incentivi?beneficiari=professionisti&stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
-      { id: 'incentivi_gov_4', nome: 'Incentivi.gov.it — Comuni', url: 'https://www.incentivi.gov.it/it/api/incentivi?beneficiari=comuni&stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
-      { id: 'incentivi_gov_5', nome: 'Incentivi.gov.it — PA', url: 'https://www.incentivi.gov.it/it/api/incentivi?beneficiari=pa&stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
-      { id: 'incentivi_gov_6', nome: 'Incentivi.gov.it — Associazioni', url: 'https://www.incentivi.gov.it/it/api/incentivi?beneficiari=associazioni&stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
-      { id: 'incentivi_gov_7', nome: 'Incentivi.gov.it — In apertura', url: 'https://www.incentivi.gov.it/it/api/incentivi?stato=in_apertura&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
+      { id: 'incentivi_gov_4', nome: 'Incentivi.gov.it — In apertura', url: 'https://www.incentivi.gov.it/it/api/incentivi?stato=in_apertura&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
       { id: 'opencoesione', nome: 'OpenCoesione — Progetti', url: 'https://opencoesione.gov.it/api/progetti.json?stato_progetto=in_corso&limit=100', ente: 'OpenCoesione', tipo_ente: 'ente_nazionale', regione: 'Nazionale' },
     ];
 
-    // Parser JSON per incentivi.gov.it
     function parseIncentiviResponse(body, fonte) {
       try {
         const json = typeof body === 'string' ? JSON.parse(body) : body;
@@ -2781,289 +2785,277 @@ async function runManutenzioneFallback(tipo = 'manuale') {
           const titolo = item.titolo || item.title || item.nome || 'Senza titolo';
           const titoloF = titolo.includes('—') ? titolo : titolo.includes(' - ') ? titolo.replace(' - ', ' — ') : titolo;
           return {
-            titolo: titoloF,
-            descrizione: item.descrizione || item.abstract || '',
-            ente: item.ente_erogatore || item.ente || fonte.ente,
-            regione: item.regione || fonte.regione,
-            importo_max: item.contributo_max || item.importo_max || null,
-            tipo_contributo: item.tipo_contributo || 'misto',
-            tipo_ente: fonte.tipo_ente,
-            settore: Array.isArray(item.settori) ? (item.settori[0] || 'tutti') : 'tutti',
-            scadenza: item.data_scadenza || null,
-            url: item.url || item.link || item.url_domanda || '#',
-            attivo: true,
-            fonte: fonte.id,
-            data_inserimento: new Date().toISOString()
+            titolo: titoloF, descrizione: item.descrizione || item.abstract || '',
+            ente: item.ente_erogatore || item.ente || fonte.ente, regione: item.regione || fonte.regione,
+            importo_max: item.contributo_max || item.importo_max || null, tipo_contributo: item.tipo_contributo || 'misto',
+            tipo_ente: fonte.tipo_ente, settore: Array.isArray(item.settori) ? (item.settori[0] || 'tutti') : 'tutti',
+            scadenza: item.data_scadenza || null, url: item.url || item.link || item.url_domanda || '#',
+            attivo: true, fonte: fonte.id, data_inserimento: new Date().toISOString()
           };
         });
       } catch { return []; }
     }
 
-    const tuttiBandiNuovi = [];
-
-    // CORS proxy per aggirare il blocco CORS delle API governative
-    // allorigins.win restituisce JSON: { contents: "...", status: { ... } }
     const CORS_PROXIES = [
-      (url) => 'https://api.allorigins.win/get?url=' + encodeURIComponent(url),
-      (url) => 'https://corsproxy.io/?' + encodeURIComponent(url),
+      (u) => 'https://api.allorigins.win/get?url=' + encodeURIComponent(u),
+      (u) => 'https://corsproxy.io/?' + encodeURIComponent(u),
     ];
-
     async function fetchViaCorsProxy(url) {
-      // Prima prova diretto (nel caso l'API supporti CORS)
-      try {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 10000);
-        const res = await fetch(url, { headers: { 'Accept': 'application/json' }, signal: controller.signal });
-        clearTimeout(timeout);
-        if (res.ok) return await res.text();
-      } catch {}
-
-      // Poi prova con i CORS proxy
-      for (const proxyFn of CORS_PROXIES) {
-        try {
-          const proxyUrl = proxyFn(url);
-          const controller = new AbortController();
-          const timeout = setTimeout(() => controller.abort(), 15000);
-          const res = await fetch(proxyUrl, { signal: controller.signal });
-          clearTimeout(timeout);
-          if (res.ok) {
-            const data = await res.json();
-            // allorigins restituisce { contents: "..." }
-            if (data.contents) return data.contents;
-            // corsproxy.io restituisce il body diretto
-            return JSON.stringify(data);
-          }
-        } catch {}
+      try { const r = await fetch(url, { headers: { 'Accept': 'application/json' }, signal: AbortSignal.timeout(10000) }); if (r.ok) return await r.text(); } catch {}
+      for (const pFn of CORS_PROXIES) {
+        try { const r = await fetch(pFn(url), { signal: AbortSignal.timeout(15000) }); if (r.ok) { const d = await r.json(); return d.contents || JSON.stringify(d); } } catch {}
       }
       return null;
     }
 
-    // Fetch per ogni fonte (con pausa per non sovraccaricare i proxy)
+    const tuttiBandiNuovi = [];
     for (let fi = 0; fi < FONTI_API.length; fi++) {
       const fonte = FONTI_API[fi];
-      setProgress(10 + Math.round((fi / FONTI_API.length) * 30), 'Interrogo ' + fonte.nome + '...');
-      addLog('  Interrogo ' + fonte.nome + '...');
+      setProgress(15 + Math.round((fi / FONTI_API.length) * 20), 'Interrogo ' + fonte.nome + '...');
+      addLog('  ' + fonte.nome + '...');
       const body = await fetchViaCorsProxy(fonte.url);
       if (body) {
         const parsed = parseIncentiviResponse(body, fonte);
-        addLog('    Trovati ' + parsed.length + ' bandi');
+        addLog('    ' + parsed.length + ' bandi trovati');
         tuttiBandiNuovi.push(...parsed);
       } else {
-        addLog('    Fonte non raggiungibile');
+        addLog('    Non raggiungibile');
       }
-      // Pausa 800ms tra le richieste per non sovraccaricare i proxy
-      if (fi < FONTI_API.length - 1) await new Promise(r => setTimeout(r, 800));
+      if (fi < FONTI_API.length - 1) await new Promise(r => setTimeout(r, 500));
     }
+    addLog('  Totale da API: ' + tuttiBandiNuovi.length);
 
-    addLog('  Totale bandi trovati dalle API: ' + tuttiBandiNuovi.length);
-
-    // ═══ STEP 3: Deduplica e inserisci nuovi ═══
+    // Dedup nuovi contro DB: stesso URL = duplicato certo
     if (tuttiBandiNuovi.length > 0) {
-      setProgress(45, 'Deduplicazione e inserimento...');
-      addLog('');
-      addLog('Deduplicazione contro DB esistente...');
-      addLog('  Regola: stessa scadenza + stesso ente = duplicato');
-      addLog('  Regola: similarita titolo > 90% = duplicato');
-
+      const urlEsistenti = new Set(allBandi.map(b => normUrl(b.url)).filter(u => u && u !== '#'));
       const bandiDaInserire = [];
       for (const nb of tuttiBandiNuovi) {
-        const normNuovo = normTitle(nb.titolo);
-
-        // Skip link vuoti
         if (!nb.url || nb.url === '#') continue;
-
-        // Regola 1: stessa data scadenza + stesso ente = duplicato certo
-        const stessaDataEnte = bandiEsistenti.some(eb =>
-          eb.scadenza && nb.scadenza && eb.scadenza === nb.scadenza &&
-          eb.ente && nb.ente && eb.ente.toLowerCase() === nb.ente.toLowerCase()
-        );
-        if (stessaDataEnte) continue;
-
-        // Regola 2: titolo similarita > 90% = duplicato
-        const titoloTroppoSimile = bandiEsistenti.some(eb =>
-          simFn(normTitle(eb.titolo), normNuovo) > 0.9
-        );
-        if (titoloTroppoSimile) continue;
-
-        // Controlla anche contro i bandi gia selezionati per inserimento
-        const dupInterno = bandiDaInserire.some(bi =>
-          (bi.scadenza && nb.scadenza && bi.scadenza === nb.scadenza && bi.ente.toLowerCase() === nb.ente.toLowerCase()) ||
-          simFn(normTitle(bi.titolo), normNuovo) > 0.9
-        );
+        if (urlEsistenti.has(normUrl(nb.url))) continue;
+        // Anche check titolo identico + stessa data
+        const dupTitoloData = allBandi.some(eb => normTitle(eb.titolo) === normTitle(nb.titolo) && eb.scadenza === nb.scadenza);
+        if (dupTitoloData) continue;
+        // Check contro bandi gia selezionati
+        const dupInterno = bandiDaInserire.some(bi => normUrl(bi.url) === normUrl(nb.url));
         if (dupInterno) continue;
-
         bandiDaInserire.push(nb);
+        urlEsistenti.add(normUrl(nb.url));
       }
-
       if (bandiDaInserire.length > 0) {
-        addLog('  ' + bandiDaInserire.length + ' nuovi bandi da inserire...');
-        // Inserisci in batch da 50 per evitare timeout
-        const BATCH_INSERT = 50;
-        for (let b = 0; b < bandiDaInserire.length; b += BATCH_INSERT) {
-          const batch = bandiDaInserire.slice(b, b + BATCH_INSERT);
+        for (let b = 0; b < bandiDaInserire.length; b += 50) {
+          const batch = bandiDaInserire.slice(b, b + 50);
           const { error: errIns } = await sb.from('bandi').insert(batch);
-          if (errIns) {
-            addLog('    Errore inserimento batch: ' + errIns.message);
-          } else {
-            nuoviCount += batch.length;
-            addLog('    Inseriti batch ' + (Math.floor(b / BATCH_INSERT) + 1) + ': ' + batch.length + ' bandi');
-          }
+          if (errIns) { addLog('    Errore inserimento: ' + errIns.message); }
+          else { nuoviCount += batch.length; }
         }
-        addLog('  Totale inseriti: ' + nuoviCount + ' nuovi bandi');
-        // Mostra primi 10 titoli inseriti
-        bandiDaInserire.slice(0, 10).forEach(b => addLog('    + ' + b.titolo));
-        if (bandiDaInserire.length > 10) addLog('    ... e altri ' + (bandiDaInserire.length - 10));
+        addLog('  Inseriti ' + nuoviCount + ' nuovi bandi');
+        // Aggiorna allBandi con i nuovi
+        allBandi = allBandi.concat(bandiDaInserire);
       } else {
-        addLog('  Nessun nuovo bando da inserire (tutti gia presenti)');
+        addLog('  Nessun nuovo bando (tutti gia presenti)');
       }
     }
 
-    // ═══ STEP 4: Disattiva bandi scaduti ═══
-    setProgress(55, 'Pulizia bandi scaduti...');
+    // ═══ STEP 4: Disattiva SOLO bandi con scadenza passata ═══
+    setProgress(40, 'Eliminazione scaduti...');
     addLog('');
-    addLog('Controllo bandi scaduti...');
-    const oggi = new Date().toISOString().split('T')[0];
-    const { data: scaduti } = await sb.from('bandi').select('id, titolo, scadenza').eq('attivo', true).lt('scadenza', oggi).not('scadenza', 'is', null);
-    if (scaduti && scaduti.length > 0) {
+    addLog('═══ STEP 4: ELIMINAZIONE SCADUTI ═══');
+    addLog('  Regola: scadenza < ' + oggi + ' = scaduto');
+    addLog('  Regola: senza scadenza = a esaurimento fondi (resta attivo)');
+
+    const scaduti = allBandi.filter(b => b.scadenza && b.scadenza < oggi);
+    if (scaduti.length > 0) {
       const ids = scaduti.map(b => b.id);
-      await sb.from('bandi').update({ attivo: false }).in('id', ids);
+      for (let b = 0; b < ids.length; b += 100) {
+        await sb.from('bandi').update({ attivo: false }).in('id', ids.slice(b, b + 100));
+      }
       scadutiCount = ids.length;
-      addLog('  Disattivati ' + scadutiCount + ' bandi scaduti');
-      scaduti.forEach(b => addLog('    - ' + b.titolo + ' (scadenza: ' + b.scadenza + ')'));
+      addLog('  Disattivati ' + scadutiCount + ' bandi scaduti:');
+      scaduti.slice(0, 15).forEach(b => addLog('    - ' + b.titolo + ' (scad: ' + b.scadenza + ')'));
+      if (scaduti.length > 15) addLog('    ... e altri ' + (scaduti.length - 15));
+      // Rimuovi dalla lista
+      const idsSet = new Set(ids);
+      allBandi = allBandi.filter(b => !idsSet.has(b.id));
     } else {
-      addLog('  Nessun bando scaduto trovato');
+      addLog('  Nessun bando scaduto');
     }
 
-    // ═══ STEP 5: Cerca duplicati ═══
-    setProgress(65, 'Deduplicazione database...');
-    addLog('Controllo duplicati nel database...');
-    const { data: allBandi } = await sb.from('bandi').select('id, titolo, scadenza, ente').eq('attivo', true);
-    if (allBandi && allBandi.length > 1) {
-      const norm = allBandi.map(b => ({ ...b, norm: normTitle(b.titolo) }));
-      const idsToRemove = [];
-      for (let i = 0; i < norm.length; i++) {
-        if (idsToRemove.includes(norm[i].id)) continue;
-        for (let j = i + 1; j < norm.length; j++) {
-          if (idsToRemove.includes(norm[j].id)) continue;
-          const stessaDataEnte = norm[i].scadenza && norm[j].scadenza && norm[i].scadenza === norm[j].scadenza && norm[i].ente && norm[j].ente && norm[i].ente.toLowerCase() === norm[j].ente.toLowerCase();
-          const titoloSimile = norm[i].norm === norm[j].norm || simFn(norm[i].norm, norm[j].norm) > 0.9;
-          if (stessaDataEnte || titoloSimile) {
-            idsToRemove.push(norm[j].id);
-            const motivo = stessaDataEnte ? 'stessa data+ente' : 'titolo >90%';
-            addLog('    Duplicato (' + motivo + '): "' + norm[j].titolo + '"');
+    // ═══ STEP 5: Deduplicazione a 3 fattori ═══
+    setProgress(55, 'Deduplicazione intelligente...');
+    addLog('');
+    addLog('═══ STEP 5: DEDUPLICAZIONE A 3 FATTORI ═══');
+    addLog('  Fattore 1: Stesso URL = duplicato certo');
+    addLog('  Fattore 2: Stesso titolo + stessa data = duplicato certo');
+    addLog('  Fattore 3: Date diverse = NON duplicato (anche con titolo simile)');
+
+    // Ricarica bandi attivi
+    let bandiAttivi = [], off2 = 0;
+    while (true) {
+      const { data } = await sb.from('bandi').select('id, titolo, scadenza, url, ente').eq('attivo', true).range(off2, off2 + 999);
+      if (!data || data.length === 0) break;
+      bandiAttivi = bandiAttivi.concat(data);
+      if (data.length < 1000) break;
+      off2 += 1000;
+    }
+    addLog('  ' + bandiAttivi.length + ' bandi attivi da analizzare');
+
+    const idsToRemove = [];
+    const enriched = bandiAttivi.map(b => ({ ...b, normT: normTitle(b.titolo), normU: normUrl(b.url) }));
+
+    for (let i = 0; i < enriched.length; i++) {
+      if (idsToRemove.includes(enriched[i].id)) continue;
+      for (let j = i + 1; j < enriched.length; j++) {
+        if (idsToRemove.includes(enriched[j].id)) continue;
+
+        // FATTORE 1: Stesso URL (normalizzato) = duplicato certo
+        if (enriched[i].normU && enriched[j].normU && enriched[i].normU === enriched[j].normU && enriched[i].normU !== '' && enriched[i].normU !== '#') {
+          idsToRemove.push(enriched[j].id);
+          addLog('    Dup [stesso URL]: "' + enriched[j].titolo.substring(0, 50) + '..."');
+          continue;
+        }
+
+        // FATTORE 3: Date diverse = NON duplicato (skip, anche se titolo identico)
+        if (enriched[i].scadenza && enriched[j].scadenza && enriched[i].scadenza !== enriched[j].scadenza) {
+          continue; // Date diverse, non e' un duplicato
+        }
+
+        // FATTORE 2: Stesso titolo (normalizzato identico) + stessa data (o entrambi senza data) = duplicato
+        if (enriched[i].normT === enriched[j].normT) {
+          // Se entrambi hanno stessa data O entrambi senza data = duplicato
+          const stessaData = enriched[i].scadenza === enriched[j].scadenza; // include null === null
+          if (stessaData) {
+            idsToRemove.push(enriched[j].id);
+            addLog('    Dup [titolo+data]: "' + enriched[j].titolo.substring(0, 50) + '..."');
           }
         }
       }
-      dupeCount = idsToRemove.length;
-      if (idsToRemove.length > 0) {
-        await sb.from('bandi').update({ attivo: false }).in('id', idsToRemove);
-        addLog('  Disattivati ' + dupeCount + ' duplicati');
-      } else {
-        addLog('  Nessun duplicato trovato');
-      }
     }
 
-    // ═══ STEP 6: Verifica titoli ═══
+    dupeCount = idsToRemove.length;
+    if (idsToRemove.length > 0) {
+      for (let b = 0; b < idsToRemove.length; b += 100) {
+        await sb.from('bandi').update({ attivo: false }).in('id', idsToRemove.slice(b, b + 100));
+      }
+      addLog('  Rimossi ' + dupeCount + ' duplicati certi');
+    } else {
+      addLog('  Nessun duplicato trovato');
+    }
+
+    // ═══ STEP 6: Elimina definitivamente i disattivati ═══
+    setProgress(70, 'Pulizia database...');
+    addLog('');
+    addLog('═══ STEP 6: PULIZIA DATABASE ═══');
+    const { count: daEliminare } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', false);
+    if (daEliminare && daEliminare > 0) {
+      await sb.from('bandi').delete().eq('attivo', false);
+      addLog('  Eliminati definitivamente ' + daEliminare + ' bandi (scaduti + duplicati)');
+    } else {
+      addLog('  Nessun bando da eliminare');
+    }
+
+    // ═══ STEP 7: Verifica titoli anti-plagio ═══
     setProgress(80, 'Verifica titoli...');
-    addLog('Controllo formato titoli anti-plagio...');
-    if (allBandi) {
-      const badTitles = allBandi.filter(b => !b.titolo.includes('—') && !b.titolo.includes(' - '));
+    addLog('');
+    addLog('═══ STEP 7: VERIFICA TITOLI ═══');
+    const { data: checkTitoli } = await sb.from('bandi').select('id, titolo').eq('attivo', true);
+    if (checkTitoli) {
+      const badTitles = checkTitoli.filter(b => !b.titolo.includes('—') && !b.titolo.includes(' - '));
       titoliCorrected = badTitles.length;
-      if (badTitles.length > 0) {
-        addLog('  ' + badTitles.length + ' titoli senza formato anti-plagio');
-        badTitles.slice(0, 10).forEach(b => addLog('    - "' + b.titolo + '"'));
-      } else {
-        addLog('  Tutti i titoli OK');
-      }
+      addLog('  ' + (titoliCorrected > 0 ? titoliCorrected + ' titoli senza formato anti-plagio' : 'Tutti i titoli OK'));
     }
 
-    // ═══ STEP 7: Verifica link ═══
-    setProgress(90, 'Verifica link...');
-    addLog('Controllo link bandi...');
-    const { data: noLink } = await sb.from('bandi').select('id, titolo, url').eq('attivo', true);
-    if (noLink) {
-      const missingLinks = noLink.filter(b => !b.url || b.url.trim() === '' || b.url === '#');
+    // ═══ STEP 8: Verifica link + corrispondenza titolo ═══
+    setProgress(85, 'Verifica link e corrispondenza...');
+    addLog('');
+    addLog('═══ STEP 8: VERIFICA LINK + CORRISPONDENZA TITOLO ═══');
+    const { data: checkLinks } = await sb.from('bandi').select('id, titolo, url').eq('attivo', true);
+    let linkInaffidabili = 0;
+    if (checkLinks) {
+      const missingLinks = checkLinks.filter(b => !b.url || b.url.trim() === '' || b.url === '#');
       linkErrors = missingLinks.length;
-      if (missingLinks.length > 0) {
-        addLog('  ' + linkErrors + ' bandi senza link valido');
-        missingLinks.slice(0, 10).forEach(b => addLog('    - "' + b.titolo + '"'));
+      addLog('  ' + (linkErrors > 0 ? linkErrors + ' bandi senza URL valido' : 'Tutti i link presenti'));
+
+      // Verifica corrispondenza titolo-link su un campione (max 15 bandi per non rallentare)
+      const bandiDaVerificare = checkLinks.filter(b => b.url && b.url.startsWith('http') && b.url !== '#');
+      const campione = bandiDaVerificare.sort(() => Math.random() - 0.5).slice(0, 15);
+      addLog('  Verifica corrispondenza titolo-link su ' + campione.length + ' bandi campione...');
+
+      for (const b of campione) {
+        try {
+          // Usa CORS proxy per accedere alla pagina
+          let html = null;
+          for (const pFn of CORS_PROXIES) {
+            try { const r = await fetch(pFn(b.url), { signal: AbortSignal.timeout(10000) }); if (r.ok) { const d = await r.json(); html = d.contents || ''; break; } } catch {}
+          }
+          if (!html) { addLog('    ? Non verificabile: "' + b.titolo.substring(0, 40) + '..."'); continue; }
+
+          // Estrai parole chiave dal titolo (minimo 4 caratteri) e cerca nella pagina
+          const parole = normTitle(b.titolo).split(/\s+/).filter(p => p.length >= 4);
+          const htmlLower = html.toLowerCase();
+          const trovate = parole.filter(p => htmlLower.includes(p));
+          const affidabilita = parole.length > 0 ? Math.round((trovate.length / parole.length) * 100) : 0;
+
+          if (affidabilita >= 40) {
+            addLog('    OK [' + affidabilita + '%]: "' + b.titolo.substring(0, 40) + '..."');
+          } else {
+            linkInaffidabili++;
+            addLog('    ! SOSPETTO [' + affidabilita + '%]: "' + b.titolo.substring(0, 40) + '..." -> ' + b.url.substring(0, 50));
+          }
+        } catch (ev) {
+          addLog('    ? Errore verifica: "' + b.titolo.substring(0, 40) + '..."');
+        }
+        await new Promise(r => setTimeout(r, 300));
+      }
+      if (linkInaffidabili > 0) {
+        addLog('  ' + linkInaffidabili + ' link sospetti (titolo non corrisponde alla pagina)');
       } else {
-        addLog('  Tutti i link OK');
+        addLog('  Tutti i link verificati corrispondono al titolo');
       }
     }
 
-    // ═══ RIEPILOGO ═══
+    // ═══ AUTO-VERIFICA FINALE ═══
+    setProgress(90, 'Verifica finale...');
+    addLog('');
+    addLog('═══ VERIFICA FINALE ═══');
+    const { count: totaleFinale } = await sb.from('bandi').select('*', { count: 'exact', head: true });
+    const { count: attiviFinale } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true);
+    const { count: conScadenza } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true).not('scadenza', 'is', null);
+    const { count: senzaScadenza } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true).is('scadenza', null);
+
+    const { data: regioni } = await sb.from('bandi').select('regione').eq('attivo', true);
+    const regioniUniche = regioni ? [...new Set(regioni.map(r => r.regione).filter(Boolean))].sort() : [];
+    const { data: enti } = await sb.from('bandi').select('ente').eq('attivo', true);
+    const entiUnici = enti ? [...new Set(enti.map(e => e.ente).filter(Boolean))] : [];
+
+    addLog('  Bandi nel DB: ' + (totaleFinale || 0));
+    addLog('  Bandi attivi: ' + (attiviFinale || 0));
+    addLog('    - Con scadenza: ' + (conScadenza || 0));
+    addLog('    - Senza scadenza (a esaurimento): ' + (senzaScadenza || 0));
+    addLog('  Regioni: ' + regioniUniche.length + ' (' + regioniUniche.join(', ') + ')');
+    addLog('  Enti: ' + entiUnici.length);
+    addLog('');
+    addLog('  RIEPILOGO OPERAZIONI:');
+    addLog('    Riattivati: ' + riattivatiCount);
+    addLog('    Nuovi da API: ' + nuoviCount);
+    addLog('    Scaduti rimossi: ' + scadutiCount);
+    addLog('    Duplicati rimossi: ' + dupeCount);
+    addLog('    Link mancanti: ' + linkErrors);
+    addLog('    Titoli da correggere: ' + titoliCorrected);
+
+    // Salva
     const now = new Date().toISOString();
     localStorage.setItem(MAINT_LAST_KEY, now);
     if (tipo === 'auto') localStorage.setItem(MAINT_AUTO_KEY, now);
-
-    const recordType = nuoviCount > 0 ? (tipo === 'auto' ? 'auto' : 'manuale') : (tipo === 'auto' ? 'auto' : 'fallback');
-    const record = { date: now, type: recordType, nuovi: nuoviCount, scaduti: scadutiCount, duplicati: dupeCount, linkErrori: linkErrors, titoliCorretti: titoliCorrected };
+    const record = { date: now, type: tipo === 'auto' ? 'auto' : 'manuale', nuovi: nuoviCount, scaduti: scadutiCount, duplicati: dupeCount, linkErrori: linkErrors, titoliCorretti: titoliCorrected };
     const hist = getMaintHistory();
     hist.unshift(record);
     saveMaintHistory(hist);
 
-    addLog('');
-    addLog('═══ MANUTENZIONE COMPLETATA ═══');
-    addLog('  Nuovi bandi aggiunti: ' + nuoviCount);
-    addLog('  Scaduti disattivati: ' + scadutiCount);
-    addLog('  Duplicati rimossi: ' + dupeCount);
-    addLog('  Link mancanti: ' + linkErrors);
-    addLog('  Titoli da correggere: ' + titoliCorrected);
-
-    // ═══ AUTO-VERIFICA FINALE ═══
-    addLog('');
-    addLog('═══ AUTO-VERIFICA SISTEMA ═══');
-    setProgress(95, 'Auto-verifica...');
-    try {
-      // Conta totale esatto dal DB
-      const { count: totaleDB } = await sb.from('bandi').select('*', { count: 'exact', head: true });
-      const { count: totaleAttivi } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true);
-      const { count: totaleDisattivati } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', false);
-      const oggi2 = new Date().toISOString().split('T')[0];
-      const { count: conScadenza } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true).not('scadenza', 'is', null);
-      const { count: senzaScadenza } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true).is('scadenza', null);
-      const { count: scadutiMaAttivi } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true).lt('scadenza', oggi2).not('scadenza', 'is', null);
-
-      addLog('  Bandi totali nel DB: ' + (totaleDB || 0));
-      addLog('    - Attivi: ' + (totaleAttivi || 0));
-      addLog('    - Disattivati: ' + (totaleDisattivati || 0));
-      addLog('    - Con scadenza: ' + (conScadenza || 0));
-      addLog('    - Senza scadenza (a esaurimento): ' + (senzaScadenza || 0));
-      if (scadutiMaAttivi > 0) {
-        addLog('    ! ATTENZIONE: ' + scadutiMaAttivi + ' bandi scaduti ancora attivi');
-      }
-
-      // Verifica regioni coperte
-      const { data: regioni } = await sb.from('bandi').select('regione').eq('attivo', true);
-      if (regioni) {
-        const regioniUniche = [...new Set(regioni.map(r => r.regione).filter(Boolean))].sort();
-        addLog('  Regioni coperte: ' + regioniUniche.length + ' (' + regioniUniche.join(', ') + ')');
-      }
-
-      // Verifica enti
-      const { data: enti } = await sb.from('bandi').select('ente').eq('attivo', true);
-      if (enti) {
-        const entiUnici = [...new Set(enti.map(e => e.ente).filter(Boolean))];
-        addLog('  Enti unici: ' + entiUnici.length);
-      }
-
-      // Stato sistema
-      addLog('');
-      const stato = (totaleAttivi || 0) >= 50 ? 'OK' : (totaleAttivi || 0) >= 20 ? 'SUFFICIENTE' : 'INSUFFICIENTE';
-      addLog('  STATO SISTEMA: ' + stato + ' (' + (totaleAttivi || 0) + ' bandi attivi)');
-      if (stato === 'INSUFFICIENTE') {
-        addLog('  ! Il sistema necessita di piu fonti o la Edge Function deve essere deployata su Supabase');
-      }
-    } catch (ev) {
-      addLog('  Errore auto-verifica: ' + ev.message);
-    }
-
-    setProgress(100, 'Completato! (' + nuoviCount + ' nuovi bandi)');
-    toast('Manutenzione completata: ' + nuoviCount + ' nuovi bandi, ' + scadutiCount + ' scaduti, ' + dupeCount + ' duplicati', 'success');
+    setProgress(100, 'Completato! ' + (attiviFinale || 0) + ' bandi attivi');
+    toast('Manutenzione: ' + (attiviFinale || 0) + ' bandi attivi, ' + scadutiCount + ' scaduti rimossi, ' + dupeCount + ' duplicati rimossi', 'success');
     loadManutenzione();
   } catch (e) {
-    addLog('ERRORE FALLBACK: ' + e.message);
+    addLog('ERRORE: ' + e.message);
     toast('Errore: ' + e.message, 'error');
   }
 }
