@@ -2964,15 +2964,53 @@ async function runManutenzioneFallback(tipo = 'manuale') {
       addLog('  ' + (titoliCorrected > 0 ? titoliCorrected + ' titoli senza formato anti-plagio' : 'Tutti i titoli OK'));
     }
 
-    // ═══ STEP 8: Verifica link ═══
-    setProgress(85, 'Verifica link...');
+    // ═══ STEP 8: Verifica link + corrispondenza titolo ═══
+    setProgress(85, 'Verifica link e corrispondenza...');
     addLog('');
-    addLog('═══ STEP 8: VERIFICA LINK ═══');
+    addLog('═══ STEP 8: VERIFICA LINK + CORRISPONDENZA TITOLO ═══');
     const { data: checkLinks } = await sb.from('bandi').select('id, titolo, url').eq('attivo', true);
+    let linkInaffidabili = 0;
     if (checkLinks) {
       const missingLinks = checkLinks.filter(b => !b.url || b.url.trim() === '' || b.url === '#');
       linkErrors = missingLinks.length;
-      addLog('  ' + (linkErrors > 0 ? linkErrors + ' bandi senza URL valido' : 'Tutti i link OK'));
+      addLog('  ' + (linkErrors > 0 ? linkErrors + ' bandi senza URL valido' : 'Tutti i link presenti'));
+
+      // Verifica corrispondenza titolo-link su un campione (max 15 bandi per non rallentare)
+      const bandiDaVerificare = checkLinks.filter(b => b.url && b.url.startsWith('http') && b.url !== '#');
+      const campione = bandiDaVerificare.sort(() => Math.random() - 0.5).slice(0, 15);
+      addLog('  Verifica corrispondenza titolo-link su ' + campione.length + ' bandi campione...');
+
+      for (const b of campione) {
+        try {
+          // Usa CORS proxy per accedere alla pagina
+          let html = null;
+          for (const pFn of CORS_PROXIES) {
+            try { const r = await fetch(pFn(b.url), { signal: AbortSignal.timeout(10000) }); if (r.ok) { const d = await r.json(); html = d.contents || ''; break; } } catch {}
+          }
+          if (!html) { addLog('    ? Non verificabile: "' + b.titolo.substring(0, 40) + '..."'); continue; }
+
+          // Estrai parole chiave dal titolo (minimo 4 caratteri) e cerca nella pagina
+          const parole = normTitle(b.titolo).split(/\s+/).filter(p => p.length >= 4);
+          const htmlLower = html.toLowerCase();
+          const trovate = parole.filter(p => htmlLower.includes(p));
+          const affidabilita = parole.length > 0 ? Math.round((trovate.length / parole.length) * 100) : 0;
+
+          if (affidabilita >= 40) {
+            addLog('    OK [' + affidabilita + '%]: "' + b.titolo.substring(0, 40) + '..."');
+          } else {
+            linkInaffidabili++;
+            addLog('    ! SOSPETTO [' + affidabilita + '%]: "' + b.titolo.substring(0, 40) + '..." -> ' + b.url.substring(0, 50));
+          }
+        } catch (ev) {
+          addLog('    ? Errore verifica: "' + b.titolo.substring(0, 40) + '..."');
+        }
+        await new Promise(r => setTimeout(r, 300));
+      }
+      if (linkInaffidabili > 0) {
+        addLog('  ' + linkInaffidabili + ' link sospetti (titolo non corrisponde alla pagina)');
+      } else {
+        addLog('  Tutti i link verificati corrispondono al titolo');
+      }
     }
 
     // ═══ AUTO-VERIFICA FINALE ═══
