@@ -1219,10 +1219,12 @@ select.filter-select {
           <h3>&#128736; Manutenzione Completa Bandi</h3>
           <div class="toolbar">
             <button class="btn btn-primary" id="btnManutenzione" onclick="runManutenzioneFull()">&#9654; Cerca + Pulisci + Aggiorna</button>
+            <button class="btn" style="background:var(--success);color:#fff;margin-left:8px;" id="btnRiattiva" onclick="riattivaBandiValidi()">&#9851; Riattiva Bandi Validi</button>
           </div>
         </div>
         <p style="color:var(--grigio);font-size:0.85rem;margin-bottom:16px;">
-          Un clic = ciclo completo: cerca nuovi bandi da fonti ufficiali, elimina scaduti, rimuovi duplicati, verifica titoli e link. Automatico ogni 7 giorni.
+          Un clic = ciclo completo: cerca nuovi bandi da fonti ufficiali, elimina scaduti, rimuovi duplicati, verifica titoli e link. Automatico ogni 7 giorni.<br>
+          <strong>Riattiva Bandi Validi</strong>: riattiva i bandi disattivati erroneamente (scadenza futura o senza scadenza), poi elimina solo i veri scaduti.
         </p>
         <div id="maintProgress" style="display:none;margin-bottom:12px;">
           <div style="background:var(--grigio2);border-radius:8px;height:6px;overflow:hidden;">
@@ -1243,7 +1245,7 @@ select.filter-select {
           <p>&#10003; <strong>Parser multi-formato</strong> — JSON per API strutturate, CSV per open data, HTML scraping per portali regionali e enti senza API</p>
           <p>&#10003; <strong>Anti-plagio titoli</strong> — I titoli vengono riformattati in "NomeBando — Descrizione Breve Originale"</p>
           <p>&#10003; <strong>Pulizia bandi scaduti</strong> — Bandi con scadenza passata vengono disattivati automaticamente</p>
-          <p>&#10003; <strong>Deduplicazione avanzata</strong> — Stessa scadenza + stesso ente = duplicato, oppure similarita' titolo >90% (indice Jaccard)</p>
+          <p>&#10003; <strong>Deduplicazione avanzata</strong> — Stessa scadenza + stesso ente = duplicato, oppure similarita' titolo >95% (indice Jaccard, soglia alta per evitare falsi positivi)</p>
           <p>&#10003; <strong>Verifica link</strong> — URL controllati con HEAD request + rilevamento link generici (homepage, /bandi/, /index.html)</p>
           <p>&#10003; <strong>Data aggiornamento</strong> — Registrata ad ogni esecuzione (manuale o automatica)</p>
         </div>
@@ -2881,14 +2883,14 @@ async function runManutenzioneFallback(tipo = 'manuale') {
 
         // Regola 2: titolo similarita > 90% = duplicato
         const titoloTroppoSimile = bandiEsistenti.some(eb =>
-          simFn(normTitle(eb.titolo), normNuovo) > 0.9
+          simFn(normTitle(eb.titolo), normNuovo) > 0.95
         );
         if (titoloTroppoSimile) continue;
 
         // Controlla anche contro i bandi gia selezionati per inserimento
         const dupInterno = bandiDaInserire.some(bi =>
           (bi.scadenza && nb.scadenza && bi.scadenza === nb.scadenza && bi.ente.toLowerCase() === nb.ente.toLowerCase()) ||
-          simFn(normTitle(bi.titolo), normNuovo) > 0.9
+          simFn(normTitle(bi.titolo), normNuovo) > 0.95
         );
         if (dupInterno) continue;
 
@@ -2946,7 +2948,7 @@ async function runManutenzioneFallback(tipo = 'manuale') {
         for (let j = i + 1; j < norm.length; j++) {
           if (idsToRemove.includes(norm[j].id)) continue;
           const stessaDataEnte = norm[i].scadenza && norm[j].scadenza && norm[i].scadenza === norm[j].scadenza && norm[i].ente && norm[j].ente && norm[i].ente.toLowerCase() === norm[j].ente.toLowerCase();
-          const titoloSimile = norm[i].norm === norm[j].norm || simFn(norm[i].norm, norm[j].norm) > 0.9;
+          const titoloSimile = norm[i].norm === norm[j].norm || simFn(norm[i].norm, norm[j].norm) > 0.95;
           if (stessaDataEnte || titoloSimile) {
             idsToRemove.push(norm[j].id);
             const motivo = stessaDataEnte ? 'stessa data+ente' : 'titolo >90%';
@@ -3065,6 +3067,175 @@ async function runManutenzioneFallback(tipo = 'manuale') {
   } catch (e) {
     addLog('ERRORE FALLBACK: ' + e.message);
     toast('Errore: ' + e.message, 'error');
+  }
+}
+
+// ══════════ RIATTIVA BANDI VALIDI ══════════
+// Riattiva bandi disattivati erroneamente, poi disattiva solo i veri scaduti e veri duplicati
+async function riattivaBandiValidi() {
+  const btn = document.getElementById('btnRiattiva');
+  const log = document.getElementById('maintLog');
+  const progress = document.getElementById('maintProgress');
+  const progressBar = document.getElementById('maintProgressBar');
+  const progressText = document.getElementById('maintProgressText');
+
+  log.style.display = 'block';
+  log.textContent = '';
+  progress.style.display = 'block';
+  btn.disabled = true;
+  btn.textContent = 'Riattivazione...';
+
+  const addLog = (msg) => { log.textContent += new Date().toLocaleTimeString('it-IT') + ' — ' + msg + '\n'; log.scrollTop = log.scrollHeight; };
+  const setProgress = (pct, text) => { progressBar.style.width = pct + '%'; progressText.textContent = text; };
+
+  const simFn = (a, b) => { const w1 = new Set(a.split(/\s+/)); const w2 = new Set(b.split(/\s+/)); const inter = [...w1].filter(x => w2.has(x)).length; const uni = new Set([...w1, ...w2]).size; return uni === 0 ? 0 : inter / uni; };
+  const normTitle = (t) => t.toLowerCase().replace(/[^a-z0-9àèéìòù\s]/g, '').trim();
+
+  try {
+    const oggi = new Date().toISOString().split('T')[0];
+
+    // ═══ STEP 1: Conta stato attuale ═══
+    setProgress(5, 'Analisi database...');
+    addLog('═══ RIATTIVAZIONE BANDI VALIDI ═══');
+    addLog('');
+    const { count: totale } = await sb.from('bandi').select('*', { count: 'exact', head: true });
+    const { count: attivi } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true);
+    const { count: disattivati } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', false);
+    addLog('Stato attuale DB:');
+    addLog('  Totale: ' + (totale || 0));
+    addLog('  Attivi: ' + (attivi || 0));
+    addLog('  Disattivati: ' + (disattivati || 0));
+    addLog('');
+
+    // ═══ STEP 2: Riattiva TUTTI i bandi disattivati ═══
+    setProgress(15, 'Riattivazione bandi...');
+    addLog('STEP 1: Riattivo TUTTI i bandi disattivati...');
+    const { error: errRiattiva } = await sb.from('bandi').update({ attivo: true }).eq('attivo', false);
+    if (errRiattiva) {
+      addLog('  Errore riattivazione: ' + errRiattiva.message);
+    } else {
+      addLog('  Riattivati ' + (disattivati || 0) + ' bandi');
+    }
+
+    // ═══ STEP 3: Ora disattiva SOLO i veri scaduti (scadenza passata) ═══
+    setProgress(30, 'Rimozione scaduti...');
+    addLog('');
+    addLog('STEP 2: Disattivo solo bandi con scadenza GIA\' PASSATA...');
+    const { data: scaduti, error: errScaduti } = await sb.from('bandi').select('id, titolo, scadenza').eq('attivo', true).lt('scadenza', oggi).not('scadenza', 'is', null);
+    let scadutiCount = 0;
+    if (scaduti && scaduti.length > 0) {
+      const ids = scaduti.map(b => b.id);
+      await sb.from('bandi').update({ attivo: false }).in('id', ids);
+      scadutiCount = ids.length;
+      addLog('  Disattivati ' + scadutiCount + ' bandi con scadenza passata');
+      scaduti.slice(0, 10).forEach(b => addLog('    - ' + b.titolo + ' (scad: ' + b.scadenza + ')'));
+      if (scaduti.length > 10) addLog('    ... e altri ' + (scaduti.length - 10));
+    } else {
+      addLog('  Nessun bando scaduto trovato');
+    }
+
+    // ═══ STEP 4: Rimuovi VERI duplicati (titolo identico normalizzato) ═══
+    setProgress(50, 'Rimozione duplicati reali...');
+    addLog('');
+    addLog('STEP 3: Rimuovo solo duplicati CERTI (titolo identico o >95%)...');
+
+    // Carica tutti i bandi attivi con paginazione
+    let allAttivi = [], off = 0;
+    while (true) {
+      const { data } = await sb.from('bandi').select('id, titolo, scadenza, ente').eq('attivo', true).range(off, off + 999);
+      if (!data || data.length === 0) break;
+      allAttivi = allAttivi.concat(data);
+      if (data.length < 1000) break;
+      off += 1000;
+    }
+
+    addLog('  ' + allAttivi.length + ' bandi attivi da verificare');
+
+    const norm = allAttivi.map(b => ({ ...b, norm: normTitle(b.titolo) }));
+    const idsToRemove = [];
+
+    for (let i = 0; i < norm.length; i++) {
+      if (idsToRemove.includes(norm[i].id)) continue;
+      for (let j = i + 1; j < norm.length; j++) {
+        if (idsToRemove.includes(norm[j].id)) continue;
+
+        // Solo duplicati CERTI: titolo identico normalizzato o similarita' > 95% (non 90%)
+        const titoloIdentico = norm[i].norm === norm[j].norm;
+        const titoloQuasiIdentico = !titoloIdentico && norm[i].norm.length > 20 && simFn(norm[i].norm, norm[j].norm) > 0.955;
+
+        if (titoloIdentico || titoloQuasiIdentico) {
+          idsToRemove.push(norm[j].id);
+          addLog('    Duplicato: "' + norm[j].titolo.substring(0, 60) + '..."');
+        }
+      }
+    }
+
+    let dupeCount = 0;
+    if (idsToRemove.length > 0) {
+      // Disattiva in batch da 100
+      for (let b = 0; b < idsToRemove.length; b += 100) {
+        const batch = idsToRemove.slice(b, b + 100);
+        await sb.from('bandi').update({ attivo: false }).in('id', batch);
+      }
+      dupeCount = idsToRemove.length;
+      addLog('  Disattivati ' + dupeCount + ' duplicati certi');
+    } else {
+      addLog('  Nessun duplicato certo trovato');
+    }
+
+    // ═══ STEP 5: Elimina definitivamente i bandi disattivati (pulizia DB) ═══
+    setProgress(75, 'Pulizia database...');
+    addLog('');
+    addLog('STEP 4: Elimino definitivamente i bandi disattivati dal DB...');
+    const { count: daEliminare } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', false);
+    if (daEliminare && daEliminare > 0) {
+      const { error: errDel } = await sb.from('bandi').delete().eq('attivo', false);
+      if (errDel) {
+        addLog('  Errore eliminazione: ' + errDel.message);
+      } else {
+        addLog('  Eliminati ' + daEliminare + ' bandi dal database');
+      }
+    } else {
+      addLog('  Nessun bando da eliminare');
+    }
+
+    // ═══ STEP 6: Verifica finale ═══
+    setProgress(90, 'Verifica finale...');
+    addLog('');
+    addLog('═══ VERIFICA FINALE ═══');
+    const { count: nuovoTotale } = await sb.from('bandi').select('*', { count: 'exact', head: true });
+    const { count: nuoviAttivi } = await sb.from('bandi').select('*', { count: 'exact', head: true }).eq('attivo', true);
+    const { data: regioni } = await sb.from('bandi').select('regione').eq('attivo', true);
+    const regioniUniche = regioni ? [...new Set(regioni.map(r => r.regione).filter(Boolean))].sort() : [];
+    const { data: enti } = await sb.from('bandi').select('ente').eq('attivo', true);
+    const entiUnici = enti ? [...new Set(enti.map(e => e.ente).filter(Boolean))] : [];
+
+    addLog('  Bandi nel DB: ' + (nuovoTotale || 0) + ' (tutti attivi)');
+    addLog('  Bandi attivi: ' + (nuoviAttivi || 0));
+    addLog('  Regioni coperte: ' + regioniUniche.length + ' (' + regioniUniche.join(', ') + ')');
+    addLog('  Enti unici: ' + entiUnici.length);
+    addLog('');
+    addLog('  Variazione: da ' + (attivi || 0) + ' a ' + (nuoviAttivi || 0) + ' bandi attivi');
+    addLog('  Scaduti eliminati: ' + scadutiCount);
+    addLog('  Duplicati eliminati: ' + dupeCount);
+
+    // Salva nello storico
+    const now = new Date().toISOString();
+    localStorage.setItem(MAINT_LAST_KEY, now);
+    const record = { date: now, type: 'riattivazione', nuovi: (nuoviAttivi || 0) - (attivi || 0), scaduti: scadutiCount, duplicati: dupeCount, linkErrori: 0, titoliCorretti: 0 };
+    const hist = getMaintHistory();
+    hist.unshift(record);
+    saveMaintHistory(hist);
+
+    setProgress(100, 'Riattivazione completata! ' + (nuoviAttivi || 0) + ' bandi attivi');
+    toast('Riattivazione completata: ' + (nuoviAttivi || 0) + ' bandi attivi (prima: ' + (attivi || 0) + ')', 'success');
+    loadManutenzione();
+  } catch (e) {
+    addLog('ERRORE: ' + e.message);
+    toast('Errore: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '\u267B Riattiva Bandi Validi';
   }
 }
 

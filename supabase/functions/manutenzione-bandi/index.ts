@@ -454,7 +454,7 @@ Deno.serve(async (req: Request) => {
 
         // Regola 2: titolo similarita' > 90% = duplicato
         const titoloTroppSimile = bandiEsistenti.some(
-          (eb) => similarity(normalizeTitle(eb.titolo), normNuovo) > 0.9
+          (eb) => similarity(normalizeTitle(eb.titolo), normNuovo) > 0.95
         );
         if (titoloTroppSimile) continue;
 
@@ -462,7 +462,7 @@ Deno.serve(async (req: Request) => {
         const dupInterno = bandiDaInserire.some(
           (bi) =>
             (bi.scadenza && nb.scadenza && bi.scadenza === nb.scadenza && bi.ente.toLowerCase() === nb.ente.toLowerCase()) ||
-            similarity(normalizeTitle(bi.titolo), normNuovo) > 0.9
+            similarity(normalizeTitle(bi.titolo), normNuovo) > 0.95
         );
         if (dupInterno) continue;
 
@@ -539,7 +539,7 @@ Deno.serve(async (req: Request) => {
           // Regola 2: similarita' titolo > 90%
           const titoloSimile =
             norm[i].norm === norm[j].norm ||
-            similarity(norm[i].norm, norm[j].norm) > 0.9;
+            similarity(norm[i].norm, norm[j].norm) > 0.95;
 
           if (stessaDataEnte || titoloSimile) {
             idsToRemove.push(norm[j].id);
