@@ -2714,17 +2714,169 @@ async function runManutenzioneFull(tipo = 'manuale') {
   }
 }
 
-// Fallback locale se la Edge Function non e' raggiungibile
+// Fallback locale con ricerca bandi client-side
 async function runManutenzioneFallback(tipo = 'manuale') {
   const log = document.getElementById('maintLog');
   const addLog = (msg) => { log.textContent += new Date().toLocaleTimeString('it-IT') + ' — ' + msg + '\n'; log.scrollTop = log.scrollHeight; };
   const setProgress = (pct, text) => { document.getElementById('maintProgressBar').style.width = pct + '%'; document.getElementById('maintProgressText').textContent = text; };
 
-  let scadutiCount = 0, dupeCount = 0, linkErrors = 0, titoliCorrected = 0;
+  let nuoviCount = 0, scadutiCount = 0, dupeCount = 0, linkErrors = 0, titoliCorrected = 0;
+
+  // Similarita' Jaccard per deduplicazione
+  const simFn = (a, b) => { const w1 = new Set(a.split(/\s+/)); const w2 = new Set(b.split(/\s+/)); const inter = [...w1].filter(x => w2.has(x)).length; const uni = new Set([...w1, ...w2]).size; return uni === 0 ? 0 : inter / uni; };
+  const normTitle = (t) => t.toLowerCase().replace(/[^a-z0-9àèéìòù\s]/g, '').trim();
 
   try {
-    // 1. Disattiva bandi scaduti
-    setProgress(30, 'Pulizia bandi scaduti...');
+    // ═══ STEP 1: Carica bandi esistenti ═══
+    setProgress(5, 'Caricamento bandi esistenti...');
+    addLog('Caricamento bandi esistenti dal database...');
+    const { data: esistenti, error: errEsistenti } = await sb.from('bandi').select('id, titolo, scadenza, link, attivo, ente');
+    if (errEsistenti) throw new Error('Errore DB: ' + errEsistenti.message);
+    const bandiEsistenti = esistenti || [];
+    addLog('  ' + bandiEsistenti.length + ' bandi totali nel database');
+
+    // ═══ STEP 2: Cerca nuovi bandi da fonti API (client-side) ═══
+    setProgress(10, 'Ricerca nuovi bandi da fonti ufficiali...');
+    addLog('');
+    addLog('═══ RICERCA NUOVI BANDI (client-side) ═══');
+    addLog('Interrogo API incentivi.gov.it e portali con accesso CORS...');
+
+    // Fonti API accessibili dal browser (JSON)
+    const FONTI_API = [
+      { id: 'incentivi_gov_1', nome: 'Incentivi.gov.it — Tutti gli attivi', url: 'https://www.incentivi.gov.it/it/api/incentivi?stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
+      { id: 'incentivi_gov_2', nome: 'Incentivi.gov.it — Imprese', url: 'https://www.incentivi.gov.it/it/api/incentivi?beneficiari=imprese&stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
+      { id: 'incentivi_gov_3', nome: 'Incentivi.gov.it — Professionisti', url: 'https://www.incentivi.gov.it/it/api/incentivi?beneficiari=professionisti&stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
+      { id: 'incentivi_gov_4', nome: 'Incentivi.gov.it — Comuni', url: 'https://www.incentivi.gov.it/it/api/incentivi?beneficiari=comuni&stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
+      { id: 'incentivi_gov_5', nome: 'Incentivi.gov.it — PA', url: 'https://www.incentivi.gov.it/it/api/incentivi?beneficiari=pa&stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
+      { id: 'incentivi_gov_6', nome: 'Incentivi.gov.it — Associazioni', url: 'https://www.incentivi.gov.it/it/api/incentivi?beneficiari=associazioni&stato=attivo&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
+      { id: 'incentivi_gov_7', nome: 'Incentivi.gov.it — In apertura', url: 'https://www.incentivi.gov.it/it/api/incentivi?stato=in_apertura&limit=200', ente: 'MIMIT', tipo_ente: 'ministero', regione: 'Nazionale' },
+      { id: 'opencoesione', nome: 'OpenCoesione — Progetti', url: 'https://opencoesione.gov.it/api/progetti.json?stato_progetto=in_corso&limit=100', ente: 'OpenCoesione', tipo_ente: 'ente_nazionale', regione: 'Nazionale' },
+    ];
+
+    // Parser JSON per incentivi.gov.it
+    function parseIncentiviResponse(body, fonte) {
+      try {
+        const json = typeof body === 'string' ? JSON.parse(body) : body;
+        const items = json.results || json.data || json.incentivi || (Array.isArray(json) ? json : []);
+        return items.map(item => {
+          const titolo = item.titolo || item.title || item.nome || 'Senza titolo';
+          const titoloF = titolo.includes('—') ? titolo : titolo.includes(' - ') ? titolo.replace(' - ', ' — ') : titolo;
+          return {
+            titolo: titoloF,
+            descrizione: item.descrizione || item.abstract || '',
+            ente: item.ente_erogatore || item.ente || fonte.ente,
+            regione: item.regione || fonte.regione,
+            importo_max: item.contributo_max || item.importo_max || null,
+            tipo_contributo: item.tipo_contributo || 'misto',
+            tipo_ente: fonte.tipo_ente,
+            settore: Array.isArray(item.settori) ? (item.settori[0] || 'tutti') : 'tutti',
+            scadenza: item.data_scadenza || null,
+            link: item.url || item.link || item.url_domanda || '#',
+            attivo: true,
+            fonte: fonte.id,
+            data_inserimento: new Date().toISOString()
+          };
+        });
+      } catch { return []; }
+    }
+
+    const tuttiBandiNuovi = [];
+
+    // Fetch con retry per ogni fonte
+    for (let fi = 0; fi < FONTI_API.length; fi++) {
+      const fonte = FONTI_API[fi];
+      setProgress(10 + Math.round((fi / FONTI_API.length) * 30), 'Interrogo ' + fonte.nome + '...');
+      addLog('  Interrogo ' + fonte.nome + '...');
+      let body = null;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 15000);
+          const res = await fetch(fonte.url, {
+            headers: { 'Accept': 'application/json' },
+            signal: controller.signal
+          });
+          clearTimeout(timeout);
+          if (res.ok) { body = await res.text(); break; }
+        } catch (e) {
+          if (attempt < 2) await new Promise(r => setTimeout(r, Math.pow(2, attempt) * 1000));
+        }
+      }
+      if (body) {
+        const parsed = parseIncentiviResponse(body, fonte);
+        addLog('    Trovati ' + parsed.length + ' bandi');
+        tuttiBandiNuovi.push(...parsed);
+      } else {
+        addLog('    Fonte non raggiungibile (possibile blocco CORS)');
+      }
+    }
+
+    addLog('  Totale bandi trovati dalle API: ' + tuttiBandiNuovi.length);
+
+    // ═══ STEP 3: Deduplica e inserisci nuovi ═══
+    if (tuttiBandiNuovi.length > 0) {
+      setProgress(45, 'Deduplicazione e inserimento...');
+      addLog('');
+      addLog('Deduplicazione contro DB esistente...');
+      addLog('  Regola: stessa scadenza + stesso ente = duplicato');
+      addLog('  Regola: similarita titolo > 90% = duplicato');
+
+      const bandiDaInserire = [];
+      for (const nb of tuttiBandiNuovi) {
+        const normNuovo = normTitle(nb.titolo);
+
+        // Skip link vuoti
+        if (!nb.link || nb.link === '#') continue;
+
+        // Regola 1: stessa data scadenza + stesso ente = duplicato certo
+        const stessaDataEnte = bandiEsistenti.some(eb =>
+          eb.scadenza && nb.scadenza && eb.scadenza === nb.scadenza &&
+          eb.ente && nb.ente && eb.ente.toLowerCase() === nb.ente.toLowerCase()
+        );
+        if (stessaDataEnte) continue;
+
+        // Regola 2: titolo similarita > 90% = duplicato
+        const titoloTroppoSimile = bandiEsistenti.some(eb =>
+          simFn(normTitle(eb.titolo), normNuovo) > 0.9
+        );
+        if (titoloTroppoSimile) continue;
+
+        // Controlla anche contro i bandi gia selezionati per inserimento
+        const dupInterno = bandiDaInserire.some(bi =>
+          (bi.scadenza && nb.scadenza && bi.scadenza === nb.scadenza && bi.ente.toLowerCase() === nb.ente.toLowerCase()) ||
+          simFn(normTitle(bi.titolo), normNuovo) > 0.9
+        );
+        if (dupInterno) continue;
+
+        bandiDaInserire.push(nb);
+      }
+
+      if (bandiDaInserire.length > 0) {
+        addLog('  ' + bandiDaInserire.length + ' nuovi bandi da inserire...');
+        // Inserisci in batch da 50 per evitare timeout
+        const BATCH_INSERT = 50;
+        for (let b = 0; b < bandiDaInserire.length; b += BATCH_INSERT) {
+          const batch = bandiDaInserire.slice(b, b + BATCH_INSERT);
+          const { error: errIns } = await sb.from('bandi').insert(batch);
+          if (errIns) {
+            addLog('    Errore inserimento batch: ' + errIns.message);
+          } else {
+            nuoviCount += batch.length;
+            addLog('    Inseriti batch ' + (Math.floor(b / BATCH_INSERT) + 1) + ': ' + batch.length + ' bandi');
+          }
+        }
+        addLog('  Totale inseriti: ' + nuoviCount + ' nuovi bandi');
+        // Mostra primi 10 titoli inseriti
+        bandiDaInserire.slice(0, 10).forEach(b => addLog('    + ' + b.titolo));
+        if (bandiDaInserire.length > 10) addLog('    ... e altri ' + (bandiDaInserire.length - 10));
+      } else {
+        addLog('  Nessun nuovo bando da inserire (tutti gia presenti)');
+      }
+    }
+
+    // ═══ STEP 4: Disattiva bandi scaduti ═══
+    setProgress(55, 'Pulizia bandi scaduti...');
+    addLog('');
     addLog('Controllo bandi scaduti...');
     const oggi = new Date().toISOString().split('T')[0];
     const { data: scaduti } = await sb.from('bandi').select('id, titolo, scadenza').eq('attivo', true).lt('scadenza', oggi).not('scadenza', 'is', null);
@@ -2738,13 +2890,12 @@ async function runManutenzioneFallback(tipo = 'manuale') {
       addLog('  Nessun bando scaduto trovato');
     }
 
-    // 2. Cerca duplicati (stessa data+ente = duplicato, oppure titolo > 90%)
-    setProgress(50, 'Deduplicazione...');
-    addLog('Controllo duplicati (data+ente e titolo >90%)...');
+    // ═══ STEP 5: Cerca duplicati ═══
+    setProgress(65, 'Deduplicazione database...');
+    addLog('Controllo duplicati nel database...');
     const { data: allBandi } = await sb.from('bandi').select('id, titolo, scadenza, ente').eq('attivo', true);
-    if (allBandi) {
-      const norm = allBandi.map(b => ({ ...b, norm: b.titolo.toLowerCase().replace(/[^a-z0-9àèéìòù]/g, '') }));
-      const simFn = (a, b) => { const w1 = new Set(a.split(/\s+/)); const w2 = new Set(b.split(/\s+/)); const inter = [...w1].filter(x => w2.has(x)).length; const uni = new Set([...w1, ...w2]).size; return uni === 0 ? 0 : inter / uni; };
+    if (allBandi && allBandi.length > 1) {
+      const norm = allBandi.map(b => ({ ...b, norm: normTitle(b.titolo) }));
       const idsToRemove = [];
       for (let i = 0; i < norm.length; i++) {
         if (idsToRemove.includes(norm[i].id)) continue;
@@ -2768,8 +2919,8 @@ async function runManutenzioneFallback(tipo = 'manuale') {
       }
     }
 
-    // 3. Verifica titoli
-    setProgress(70, 'Verifica titoli...');
+    // ═══ STEP 6: Verifica titoli ═══
+    setProgress(80, 'Verifica titoli...');
     addLog('Controllo formato titoli anti-plagio...');
     if (allBandi) {
       const badTitles = allBandi.filter(b => !b.titolo.includes('—') && !b.titolo.includes(' - '));
@@ -2782,8 +2933,8 @@ async function runManutenzioneFallback(tipo = 'manuale') {
       }
     }
 
-    // 4. Verifica link
-    setProgress(85, 'Verifica link...');
+    // ═══ STEP 7: Verifica link ═══
+    setProgress(90, 'Verifica link...');
     addLog('Controllo link bandi...');
     const { data: noLink } = await sb.from('bandi').select('id, titolo, link').eq('attivo', true);
     if (noLink) {
@@ -2797,20 +2948,27 @@ async function runManutenzioneFallback(tipo = 'manuale') {
       }
     }
 
-    // Salva
+    // ═══ RIEPILOGO ═══
     const now = new Date().toISOString();
     localStorage.setItem(MAINT_LAST_KEY, now);
     if (tipo === 'auto') localStorage.setItem(MAINT_AUTO_KEY, now);
 
-    const record = { date: now, type: tipo === 'auto' ? 'auto' : 'fallback', nuovi: 0, scaduti: scadutiCount, duplicati: dupeCount, linkErrori: linkErrors, titoliCorretti: titoliCorrected };
+    const recordType = nuoviCount > 0 ? (tipo === 'auto' ? 'auto' : 'manuale') : (tipo === 'auto' ? 'auto' : 'fallback');
+    const record = { date: now, type: recordType, nuovi: nuoviCount, scaduti: scadutiCount, duplicati: dupeCount, linkErrori: linkErrors, titoliCorretti: titoliCorrected };
     const hist = getMaintHistory();
     hist.unshift(record);
     saveMaintHistory(hist);
 
-    setProgress(100, 'Fallback completato (senza ricerca nuovi)');
     addLog('');
-    addLog('Manutenzione fallback completata (ricerca nuovi bandi non disponibile).');
-    toast('Pulizia completata (senza ricerca nuovi bandi)', 'success');
+    addLog('═══ MANUTENZIONE COMPLETATA ═══');
+    addLog('  Nuovi bandi aggiunti: ' + nuoviCount);
+    addLog('  Scaduti disattivati: ' + scadutiCount);
+    addLog('  Duplicati rimossi: ' + dupeCount);
+    addLog('  Link mancanti: ' + linkErrors);
+    addLog('  Titoli da correggere: ' + titoliCorrected);
+
+    setProgress(100, 'Completato! (' + nuoviCount + ' nuovi bandi)');
+    toast('Manutenzione completata: ' + nuoviCount + ' nuovi bandi, ' + scadutiCount + ' scaduti, ' + dupeCount + ' duplicati', 'success');
     loadManutenzione();
   } catch (e) {
     addLog('ERRORE FALLBACK: ' + e.message);
