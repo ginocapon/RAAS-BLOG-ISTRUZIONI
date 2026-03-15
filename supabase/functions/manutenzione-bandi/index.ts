@@ -162,7 +162,7 @@ interface Bando {
   tipo_ente: string;
   settore: string;
   scadenza: string | null;
-  link: string;
+  url: string;
   attivo: boolean;
   fonte: string;
   data_inserimento: string;
@@ -194,7 +194,7 @@ function parseIncentiviGov(body: string, fonte: FonteBandi): Bando[] {
           ? item.settori[0] || "tutti"
           : "tutti",
         scadenza: item.data_scadenza || null,
-        link: item.url || item.link || item.url_domanda || "#",
+        url: item.url || item.link || item.url_domanda || "#",
         attivo: true,
         fonte: fonte.id,
         data_inserimento: new Date().toISOString(),
@@ -233,7 +233,7 @@ function parseCsv(body: string, fonte: FonteBandi): Bando[] {
         tipo_ente: fonte.tipo_ente,
         settore: row["settore"] || "tutti",
         scadenza: row["data_scadenza"] || row["scadenza"] || null,
-        link: row["url"] || row["link"] || "#",
+        url: row["url"] || row["link"] || "#",
         attivo: true,
         fonte: fonte.id,
         data_inserimento: new Date().toISOString(),
@@ -302,7 +302,7 @@ function parseHtml(body: string, fonte: FonteBandi): Bando[] {
           tipo_ente: fonte.tipo_ente,
           settore: "tutti",
           scadenza: null,
-          link: href,
+          url: href,
           attivo: true,
           fonte: fonte.id,
           data_inserimento: new Date().toISOString(),
@@ -376,7 +376,7 @@ Deno.serve(async (req: Request) => {
     addLog("Caricamento bandi esistenti dal database...");
     const { data: esistenti, error: errEsistenti } = await sb
       .from("bandi")
-      .select("id, titolo, scadenza, link, attivo, ente");
+      .select("id, titolo, scadenza, url, attivo, ente");
     if (errEsistenti) throw new Error("Errore DB: " + errEsistenti.message);
     const bandiEsistenti = esistenti || [];
     addLog(`  ${bandiEsistenti.length} bandi totali nel database`);
@@ -467,7 +467,7 @@ Deno.serve(async (req: Request) => {
         if (dupInterno) continue;
 
         // Skip link vuoti o placeholder
-        if (!nb.link || nb.link === "#") continue;
+        if (!nb.url || nb.url === "#") continue;
 
         bandiDaInserire.push(nb);
       }
@@ -587,25 +587,25 @@ Deno.serve(async (req: Request) => {
     let linkVerificati = 0;
     const { data: bandiConLink } = await sb
       .from("bandi")
-      .select("id, titolo, link")
+      .select("id, titolo, url")
       .eq("attivo", true);
 
     if (bandiConLink) {
-      // Prima: link vuoti o placeholder
+      // Prima: URL vuoti o placeholder
       const missingLinks = bandiConLink.filter(
-        (b) => !b.link || b.link.trim() === "" || b.link === "#"
+        (b) => !b.url || b.url.trim() === "" || b.url === "#"
       );
       if (missingLinks.length > 0) {
         linkErrori += missingLinks.length;
-        addLog(`  ${missingLinks.length} bandi senza link:`);
+        addLog(`  ${missingLinks.length} bandi senza URL:`);
         missingLinks.slice(0, 5).forEach((b) => addLog(`    ! "${b.titolo}"`));
       }
 
-      // Poi: verifica che i link siano raggiungibili e specifici (non homepage generica)
+      // Poi: verifica che gli URL siano raggiungibili e specifici (non homepage generica)
       const bandiDaVerificare = bandiConLink.filter(
-        (b) => b.link && b.link.startsWith("http") && b.link !== "#"
+        (b) => b.url && b.url.startsWith("http") && b.url !== "#"
       );
-      addLog(`  Verifica ${bandiDaVerificare.length} link attivi...`);
+      addLog(`  Verifica ${bandiDaVerificare.length} URL attivi...`);
 
       // Pattern pagine generiche (homepage enti, non pagina specifica bando)
       const GENERIC_PATTERNS = [
@@ -619,10 +619,10 @@ Deno.serve(async (req: Request) => {
 
       for (const b of bandiDaVerificare) {
         // Controlla se URL e' generico
-        const isGeneric = GENERIC_PATTERNS.some((p) => p.test(b.link));
+        const isGeneric = GENERIC_PATTERNS.some((p) => p.test(b.url));
         if (isGeneric) {
           linkErrori++;
-          addLog(`    ! Link generico (non specifico del bando): "${b.titolo}" -> ${b.link}`);
+          addLog(`    ! URL generico (non specifico del bando): "${b.titolo}" -> ${b.url}`);
           continue;
         }
 
@@ -631,7 +631,7 @@ Deno.serve(async (req: Request) => {
           try {
             const controller = new AbortController();
             const timeout = setTimeout(() => controller.abort(), 8000);
-            const res = await fetch(b.link, {
+            const res = await fetch(b.url, {
               method: "HEAD",
               headers: { "User-Agent": "BandiItalia-LinkChecker/1.0" },
               signal: controller.signal,
@@ -642,11 +642,11 @@ Deno.serve(async (req: Request) => {
 
             if (!res.ok) {
               linkErrori++;
-              addLog(`    ! HTTP ${res.status}: "${b.titolo}" -> ${b.link}`);
+              addLog(`    ! HTTP ${res.status}: "${b.titolo}" -> ${b.url}`);
             }
           } catch {
             linkErrori++;
-            addLog(`    ! Non raggiungibile: "${b.titolo}" -> ${b.link}`);
+            addLog(`    ! Non raggiungibile: "${b.titolo}" -> ${b.url}`);
           }
           // Pausa 500ms tra le richieste per non sovraccaricare
           await new Promise((r) => setTimeout(r, 500));

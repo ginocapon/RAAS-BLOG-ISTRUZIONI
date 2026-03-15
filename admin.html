@@ -1750,7 +1750,7 @@ async function saveBando(e) {
     tipo_contributo: document.getElementById('bandoTipo').value,
     settore: document.getElementById('bandoSettore').value.trim() || null,
     scadenza: document.getElementById('bandoScadenza').value || null,
-    link: document.getElementById('bandoLink').value.trim() || null,
+    url: document.getElementById('bandoLink').value.trim() || null,
     attivo: document.getElementById('bandoAttivo').classList.contains('on')
   };
   try {
@@ -1784,7 +1784,7 @@ async function editBando(id) {
     document.getElementById('bandoTipo').value = data.tipo_contributo || '';
     document.getElementById('bandoSettore').value = data.settore || '';
     document.getElementById('bandoScadenza').value = data.scadenza || '';
-    document.getElementById('bandoLink').value = data.link || '';
+    document.getElementById('bandoLink').value = data.url || '';
     const toggle = document.getElementById('bandoAttivo');
     toggle.classList.toggle('on', data.attivo !== false);
     document.getElementById('formBandoTitle').textContent = 'Modifica Bando';
@@ -2042,7 +2042,7 @@ async function loadNLBandi() {
       return;
     }
     cont.innerHTML = data.map(b => `<label style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f0f0f0;cursor:pointer;">
-      <input type="checkbox" class="nl-bando-check" value="${b.id}" data-titolo="${esc(b.titolo)}" data-ente="${esc(b.ente || '')}" data-importo="${b.importo_max || ''}" data-tipo="${esc(b.tipo_contributo || '')}" data-scadenza="${b.scadenza || ''}" data-link="${esc(b.link || '')}" data-descrizione="${esc((b.descrizione || '').substring(0, 150))}">
+      <input type="checkbox" class="nl-bando-check" value="${b.id}" data-titolo="${esc(b.titolo)}" data-ente="${esc(b.ente || '')}" data-importo="${b.importo_max || ''}" data-tipo="${esc(b.tipo_contributo || '')}" data-scadenza="${b.scadenza || ''}" data-link="${esc(b.url || '')}" data-descrizione="${esc((b.descrizione || '').substring(0, 150))}">
       <div>
         <strong style="font-size:0.88rem;">${esc(b.titolo)}</strong>
         <span style="font-size:0.75rem;color:var(--grigio);display:block;">${esc(b.ente || '')} ${b.regione ? '— ' + b.regione : ''} ${b.scadenza ? '| Scad: ' + new Date(b.scadenza).toLocaleDateString('it-IT') : ''}</span>
@@ -2730,7 +2730,7 @@ async function runManutenzioneFallback(tipo = 'manuale') {
     // ═══ STEP 1: Carica bandi esistenti ═══
     setProgress(5, 'Caricamento bandi esistenti...');
     addLog('Caricamento bandi esistenti dal database...');
-    const { data: esistenti, error: errEsistenti } = await sb.from('bandi').select('id, titolo, scadenza, link, attivo, ente');
+    const { data: esistenti, error: errEsistenti } = await sb.from('bandi').select('id, titolo, scadenza, url, attivo, ente');
     if (errEsistenti) throw new Error('Errore DB: ' + errEsistenti.message);
     const bandiEsistenti = esistenti || [];
     addLog('  ' + bandiEsistenti.length + ' bandi totali nel database');
@@ -2771,7 +2771,7 @@ async function runManutenzioneFallback(tipo = 'manuale') {
             tipo_ente: fonte.tipo_ente,
             settore: Array.isArray(item.settori) ? (item.settori[0] || 'tutti') : 'tutti',
             scadenza: item.data_scadenza || null,
-            link: item.url || item.link || item.url_domanda || '#',
+            url: item.url || item.link || item.url_domanda || '#',
             attivo: true,
             fonte: fonte.id,
             data_inserimento: new Date().toISOString()
@@ -2826,7 +2826,7 @@ async function runManutenzioneFallback(tipo = 'manuale') {
         const normNuovo = normTitle(nb.titolo);
 
         // Skip link vuoti
-        if (!nb.link || nb.link === '#') continue;
+        if (!nb.url || nb.url === '#') continue;
 
         // Regola 1: stessa data scadenza + stesso ente = duplicato certo
         const stessaDataEnte = bandiEsistenti.some(eb =>
@@ -2936,9 +2936,9 @@ async function runManutenzioneFallback(tipo = 'manuale') {
     // ═══ STEP 7: Verifica link ═══
     setProgress(90, 'Verifica link...');
     addLog('Controllo link bandi...');
-    const { data: noLink } = await sb.from('bandi').select('id, titolo, link').eq('attivo', true);
+    const { data: noLink } = await sb.from('bandi').select('id, titolo, url').eq('attivo', true);
     if (noLink) {
-      const missingLinks = noLink.filter(b => !b.link || b.link.trim() === '' || b.link === '#');
+      const missingLinks = noLink.filter(b => !b.url || b.url.trim() === '' || b.url === '#');
       linkErrors = missingLinks.length;
       if (missingLinks.length > 0) {
         addLog('  ' + linkErrors + ' bandi senza link valido');
