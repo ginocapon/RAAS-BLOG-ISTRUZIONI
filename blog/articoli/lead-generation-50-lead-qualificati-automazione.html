@@ -37,7 +37,7 @@
       "@type": "FAQPage",
       "mainEntity": [
         {"@type": "Question", "name": "Cos'è un funnel automatizzato per la lead generation?", "acceptedAnswer": {"@type": "Answer", "text": "Un funnel automatizzato è un percorso digitale che guida il visitatore dal primo contatto alla richiesta di preventivo senza intervento manuale. Include landing page, form intelligenti, email automatiche di follow-up e chatbot che qualificano il lead in tempo reale."}},
-        {"@type": "Question", "name": "Quanto costa implementare un sistema di lead generation automatizzato?", "acceptedAnswer": {"@type": "Answer", "text": "Con RaaS il sistema è incluso nel canone di 299€/anno. Le soluzioni tradizionali con CRM, email marketing e chatbot separati possono costare 200-500€/mese tra licenze e gestione."}},
+        {"@type": "Question", "name": "Quanto costa implementare un sistema di lead generation automatizzato?", "acceptedAnswer": {"@type": "Answer", "text": "Con RaaS il sistema è incluso nel canone di 399€/anno. Le soluzioni tradizionali con CRM, email marketing e chatbot separati possono costare 200-500€/mese tra licenze e gestione."}},
         {"@type": "Question", "name": "50 lead qualificati al mese è un obiettivo realistico per una PMI?", "acceptedAnswer": {"@type": "Answer", "text": "Sì, con un sito ottimizzato e automazioni corrette. Servono circa 1.500-2.500 visitatori mensili con un tasso di conversione del 2-3%, obiettivi raggiungibili in 3-6 mesi di lavoro strutturato."}},
         {"@type": "Question", "name": "Che differenza c'è tra un lead e un lead qualificato?", "acceptedAnswer": {"@type": "Answer", "text": "Un lead è chiunque lasci i propri dati. Un lead qualificato ha espresso un interesse specifico per il tuo servizio, ha un budget compatibile e una tempistica di acquisto definita. Le automazioni aiutano a filtrare i lead qualificati automaticamente."}},
         {"@type": "Question", "name": "I chatbot funzionano davvero per generare lead?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Secondo Drift (2025), i chatbot aumentano la lead generation del 35-45% rispetto ai soli form statici. I chatbot intelligenti qualificano il visitatore in tempo reale e lo indirizzano verso l'azione più appropriata."}},
@@ -159,6 +159,18 @@
             .sponsor-grid { grid-template-columns: 1fr; }
             .hero-meta { flex-direction: column; gap: 6px; }
         }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFM8JG9C2R"></script>
@@ -390,7 +402,7 @@
             <div class="sponsor-item"><span class="check">✓</span> Chatbot AI integrato</div>
             <div class="sponsor-item"><span class="check">✓</span> Email automatiche personalizzate</div>
             <div class="sponsor-item"><span class="check">✓</span> Lead scoring automatico</div>
-            <div class="sponsor-item"><span class="check">✓</span> 299€/anno tutto incluso</div>
+            <div class="sponsor-item"><span class="check">✓</span> 399€/anno tutto incluso</div>
             <div class="sponsor-item"><span class="check">✓</span> Report mensili trasparenti</div>
         </div>
         <a href="https://www.raasautomazioni.it/contatti" class="sponsor-cta">📲 Scopri il Sistema RaaS</a>
@@ -400,7 +412,7 @@
 
     <div class="faq-section">
         <div class="faq-item"><div class="faq-question">Cos'è un funnel automatizzato per la lead generation?</div><div class="faq-answer"><p>È un percorso digitale che guida il visitatore dal primo contatto alla richiesta di preventivo senza intervento manuale. Include landing page, form intelligenti, email automatiche di follow-up e chatbot che qualificano il lead in tempo reale.</p></div></div>
-        <div class="faq-item"><div class="faq-question">Quanto costa un sistema di lead generation automatizzato?</div><div class="faq-answer"><p>Con RaaS il sistema è incluso nel canone di 299€/anno. Le soluzioni tradizionali con CRM, email marketing e chatbot separati possono costare 200-500€/mese tra licenze e gestione.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Quanto costa un sistema di lead generation automatizzato?</div><div class="faq-answer"><p>Con RaaS il sistema è incluso nel canone di 399€/anno. Le soluzioni tradizionali con CRM, email marketing e chatbot separati possono costare 200-500€/mese tra licenze e gestione.</p></div></div>
         <div class="faq-item"><div class="faq-question">50 lead qualificati al mese è realistico per una PMI?</div><div class="faq-answer"><p>Sì, con un sito ottimizzato e automazioni corrette. Servono circa 1.500-2.500 visitatori mensili con tasso di conversione del 2-3%, raggiungibili in 3-6 mesi di lavoro strutturato.</p></div></div>
         <div class="faq-item"><div class="faq-question">Che differenza c'è tra lead e lead qualificato?</div><div class="faq-answer"><p>Un lead è chiunque lasci i propri dati. Un lead qualificato ha interesse specifico, budget compatibile e tempistica d'acquisto definita. Le automazioni filtrano automaticamente i lead qualificati.</p></div></div>
         <div class="faq-item"><div class="faq-question">I chatbot funzionano davvero?</div><div class="faq-answer"><p>Sì. Secondo Drift (2025), i chatbot aumentano la lead generation del 35-45% rispetto ai soli form statici. Qualificano il visitatore in tempo reale e lo indirizzano verso l'azione più appropriata.</p></div></div>
@@ -444,6 +456,15 @@
     <h2>📌 Conclusioni</h2>
     <p>La lead generation automatizzata non è fantascienza: è un sistema collaudato che combina tecnologia, strategia e ottimizzazione continua. I 50 lead qualificati al mese non arrivano per magia, arrivano perché ogni pezzo del puzzle è al posto giusto e lavora in modo sinergico. Il chatbot cattura, le email nutrono, lo scoring qualifica e il tuo team chiude. Questo è il futuro della lead generation per le PMI italiane, e con RaaS è già il presente.</p>
 
+    <!-- CTA AGGANCIO -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
+            <p class="cta-aggancio-text">Ogni mese aiutiamo PMI italiane a trovare clienti online. Richiedi una <strong>consulenza gratuita personalizzata</strong> sul tuo progetto digitale.</p>
+            <a href="https://www.raasautomazioni.it/#contatti" class="cta-aggancio-btn">RICHIEDI CONSULENZA GRATUITA</a>
+            <span class="cta-aggancio-sub">+ scopri come portare clienti al tuo business</span>
+        </div>
+    </div>
 </main>
 
 <script>

@@ -151,6 +151,18 @@
         .metric-card .metric-source { font-size: 11px; color: var(--text-light); margin-top: 4px; font-style: italic; }
         .update-badge { display: inline-block; background: var(--green); color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-bottom: 20px; }
         @media (max-width: 768px) { .hero { padding: 60px 20px 40px; } .sponsor-grid { grid-template-columns: 1fr; } .hero-meta { flex-direction: column; gap: 8px; } .related-grid { grid-template-columns: 1fr; } .metric-grid { grid-template-columns: 1fr; } }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 </head>
 <body>
@@ -507,16 +519,16 @@
 
     <p>Per i siti che generano contatti anziche vendite dirette, il calcolo si basa sul valore del lead. Con un valore medio del lead di 50-200 euro per le PMI italiane e un incremento dell'8-12% nelle conversioni grazie all'ottimizzazione LCP (fonte: Webgaro), il ROI resta significativo. Un sito che genera 50 lead al mese con un valore di 100 euro ciascuno e che migliora le conversioni del 10% recupera 6.000 euro all'anno, un multiplo dell'investimento necessario per l'ottimizzazione.</p>
 
-    <p>Il modello RaaS Automazioni e progettato proprio su questo principio: un sito in codice puro a 299 EUR/anno + 3% sul fatturato generato dai nuovi clienti. Il prezzo e bloccato per sempre e include hosting, SSL e PageSpeed 90+ garantito. Il sito parte gia ottimizzato, senza necessita di interventi correttivi sulle performance.</p>
+    <p>Il modello RaaS Automazioni e progettato proprio su questo principio: un sito in codice puro a 399 EUR/anno + 3% sul fatturato generato dai nuovi clienti. Il prezzo e bloccato per sempre e include hosting, SSL e PageSpeed 90+ garantito. Il sito parte gia ottimizzato, senza necessita di interventi correttivi sulle performance.</p>
 
     <!-- SPONSOR BOX -->
     <div class="sponsor-box">
         <h3>Ottimizza le Performance con RaaS Automazioni</h3>
-        <p>I nostri siti in codice puro raggiungono PageSpeed 90+ e Core Web Vitals nella fascia Good dal primo giorno. Zero plugin, zero overhead, massima velocita. Tutto a 299 EUR/anno + 3% performance.</p>
+        <p>I nostri siti in codice puro raggiungono PageSpeed 90+ e Core Web Vitals nella fascia Good dal primo giorno. Zero plugin, zero overhead, massima velocita. Tutto a 399 EUR/anno + 3% performance.</p>
         <div class="sponsor-grid">
             <div class="sponsor-item"><span class="check">✓</span> PageSpeed 90+ garantito</div>
             <div class="sponsor-item"><span class="check">✓</span> LCP sotto 1 secondo</div>
-            <div class="sponsor-item"><span class="check">✓</span> 299 EUR/anno bloccato per sempre</div>
+            <div class="sponsor-item"><span class="check">✓</span> 399 EUR/anno bloccato per sempre</div>
             <div class="sponsor-item"><span class="check">✓</span> Zero plugin, zero vulnerabilita</div>
             <div class="sponsor-item"><span class="check">✓</span> Core Web Vitals 2.0 ready</div>
             <div class="sponsor-item"><span class="check">✓</span> Hosting e SSL inclusi</div>
@@ -616,6 +628,15 @@
                 <h4>Come Ottenere 30-50 Lead Qualificati al Mese</h4>
                 <p>SEO locale, landing page, conversione per PMI italiane.</p>
             </a>
+        </div>
+    </div>
+    <!-- CTA AGGANCIO -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
+            <p class="cta-aggancio-text">Ogni mese aiutiamo PMI italiane a trovare clienti online. Richiedi una <strong>consulenza gratuita personalizzata</strong> sul tuo progetto digitale.</p>
+            <a href="https://www.raasautomazioni.it/#contatti" class="cta-aggancio-btn">RICHIEDI CONSULENZA GRATUITA</a>
+            <span class="cta-aggancio-sub">+ scopri come portare clienti al tuo business</span>
         </div>
     </div>
 </main>

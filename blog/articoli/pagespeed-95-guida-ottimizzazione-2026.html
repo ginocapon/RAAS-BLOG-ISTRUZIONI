@@ -38,7 +38,7 @@
         {"@type": "Question","name": "Quali sono i Core Web Vitals nel 2026?","acceptedAnswer": {"@type": "Answer","text": "LCP (Largest Contentful Paint, velocità), INP (Interaction to Next Paint, reattività) e CLS (Cumulative Layout Shift, stabilità visiva)."}},
         {"@type": "Question","name": "Quanto impatta il PageSpeed sulle vendite?","acceptedAnswer": {"@type": "Answer","text": "Ogni secondo di ritardo riduce le conversioni del 7% secondo Google."}},
         {"@type": "Question","name": "Il mio sito WordPress può raggiungere PageSpeed 90?","acceptedAnswer": {"@type": "Answer","text": "Tecnicamente possibile ma molto difficile. Nella pratica la maggior parte dei siti WordPress raggiunge 50-70 su mobile."}},
-        {"@type": "Question","name": "Quanto costa ottimizzare il PageSpeed?","acceptedAnswer": {"@type": "Answer","text": "Ottimizzazione WordPress: 300-800€ base, 1.000-3.000€ avanzata. Ricostruzione in codice puro con RaaS: 299€/anno tutto incluso con PageSpeed 90+ garantito."}},
+        {"@type": "Question","name": "Quanto costa ottimizzare il PageSpeed?","acceptedAnswer": {"@type": "Answer","text": "Ottimizzazione WordPress: 300-800€ base, 1.000-3.000€ avanzata. Ricostruzione in codice puro con RaaS: 399€/anno tutto incluso con PageSpeed 90+ garantito."}},
         {"@type": "Question","name": "Come misuro il PageSpeed?","acceptedAnswer": {"@type": "Answer","text": "Usa pagespeed.web.dev, inserisci URL e ottieni punteggio con suggerimenti dettagliati."}},
         {"@type": "Question","name": "Cosa sono LCP, INP e CLS?","acceptedAnswer": {"@type": "Answer","text": "LCP: tempo caricamento elemento più grande (ideale <2.5s). INP: reattività interazioni (ideale <200ms). CLS: spostamenti layout (ideale <0.1)."}},
         {"@type": "Question","name": "Il lazy loading migliora il PageSpeed?","acceptedAnswer": {"@type": "Answer","text": "Sì, significativamente. Carica le immagini solo quando entrano nel viewport, riducendo il peso iniziale della pagina."}},
@@ -128,6 +128,18 @@
         .related-card h4 { font-size: 15px; font-weight: 700; color: var(--primary); line-height: 1.4; margin-bottom: 8px; }
         .related-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; margin: 0; }
         @media (max-width: 768px) { .hero { padding: 60px 20px 40px; } .metric-cards { grid-template-columns: 1fr; } .sponsor-grid { grid-template-columns: 1fr; } .hero-meta { flex-direction: column; gap: 8px; } .related-grid { grid-template-columns: 1fr; } }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 </head>
 <body>
@@ -259,7 +271,7 @@
         <div class="sponsor-grid">
             <div class="sponsor-item"><span class="check">✓</span> PageSpeed 90+ garantito</div>
             <div class="sponsor-item"><span class="check">✓</span> Codice puro ottimizzato</div>
-            <div class="sponsor-item"><span class="check">✓</span> 299€/anno tutto incluso</div>
+            <div class="sponsor-item"><span class="check">✓</span> 399€/anno tutto incluso</div>
             <div class="sponsor-item"><span class="check">✓</span> Monitoraggio continuo</div>
         </div>
         <a href="https://www.raasautomazioni.it/contatti" class="sponsor-cta">📲 Testa il Tuo Sito Gratis</a>
@@ -272,7 +284,7 @@
         <div class="faq-item"><div class="faq-question">Quali sono i Core Web Vitals 2026?</div><div class="faq-answer"><p>LCP (velocità caricamento, ideale <2.5s), INP (reattività, ideale <200ms), CLS (stabilità layout, ideale <0.1).</p></div></div>
         <div class="faq-item"><div class="faq-question">Il PageSpeed impatta sulle vendite?</div><div class="faq-answer"><p>Sì: ogni secondo di ritardo riduce le conversioni del 7% secondo Google.</p></div></div>
         <div class="faq-item"><div class="faq-question">WordPress può raggiungere PageSpeed 90?</div><div class="faq-answer"><p>Molto difficile. La maggior parte si ferma tra 50 e 70 su mobile.</p></div></div>
-        <div class="faq-item"><div class="faq-question">Quanto costa ottimizzare il PageSpeed?</div><div class="faq-answer"><p>Ottimizzazione WP: 300-3.000€. Ricostruzione codice puro con RaaS: 299€/anno con 90+ garantito.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Quanto costa ottimizzare il PageSpeed?</div><div class="faq-answer"><p>Ottimizzazione WP: 300-3.000€. Ricostruzione codice puro con RaaS: 399€/anno con 90+ garantito.</p></div></div>
         <div class="faq-item"><div class="faq-question">Come misuro il PageSpeed?</div><div class="faq-answer"><p>Vai su pagespeed.web.dev, inserisci URL, ottieni punteggio dettagliato.</p></div></div>
         <div class="faq-item"><div class="faq-question">Cosa sono LCP, INP e CLS?</div><div class="faq-answer"><p>LCP: tempo elemento più grande. INP: reattività interazioni. CLS: spostamenti layout imprevisti.</p></div></div>
         <div class="faq-item"><div class="faq-question">Il lazy loading aiuta?</div><div class="faq-answer"><p>Sì, riduce il peso iniziale caricando immagini solo quando visibili.</p></div></div>
@@ -310,6 +322,15 @@
                 <h4>Come Ottenere 30-50 Lead Qualificati al Mese</h4>
                 <p>SEO locale, landing page, conversione per PMI italiane.</p>
             </a>
+        </div>
+    </div>
+    <!-- CTA AGGANCIO -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
+            <p class="cta-aggancio-text">Ogni mese aiutiamo PMI italiane a trovare clienti online. Richiedi una <strong>consulenza gratuita personalizzata</strong> sul tuo progetto digitale.</p>
+            <a href="https://www.raasautomazioni.it/#contatti" class="cta-aggancio-btn">RICHIEDI CONSULENZA GRATUITA</a>
+            <span class="cta-aggancio-sub">+ scopri come portare clienti al tuo business</span>
         </div>
     </div>
 </main>

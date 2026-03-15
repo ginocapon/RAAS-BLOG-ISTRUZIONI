@@ -28,8 +28,8 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 6. **Performance** — mai animazioni sull'elemento LCP; usare opacity/transform, mai filter
 7. **CTA contrast** — minimo 4.5:1 (WCAG AA)
 8. **Prezzi bloccati** — ogni riferimento ai prezzi DEVE essere coerente:
-   - **Base:** 299€/anno (sito vetrina/aziendale)
-   - **E-commerce:** 399€/anno (tutto Base + catalogo, carrello, pagamenti)
+   - **Base:** 399€/anno (sito vetrina/aziendale)
+   - **E-commerce:** 599€/anno (tutto Base + catalogo, carrello, pagamenti)
    - **Commissione performance:** 3% sul fatturato generato dai nuovi clienti
    - **Abbonamento bandi:** 50€/anno (€61 IVA inclusa)
 9. **Dati verificati** — ogni dato numerico DEVE avere fonte citata. Se non hai fonte, scrivi "dato non disponibile"
@@ -71,7 +71,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 
 | Componente | Dettaglio |
 |---|---|
-| **Fee d'ingresso (sito)** | Base 299€/anno, E-commerce 399€/anno |
+| **Fee d'ingresso (sito)** | Base 399€/anno, E-commerce 599€/anno |
 | **Commissione performance** | 3% sul fatturato totale generato dai nuovi lead/contatti portati |
 | **Dashboard trasparenza** | Ogni cliente accede a una pagina per verificare performance, lead, contatti generati |
 | **Contratto** | Lock-in con doppia sottoscrizione (Art. 1341 c.c.), penale decrescente, diritto audit |
@@ -79,8 +79,8 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 **Pacchetti sito (fee d'ingresso):**
 | Pacchetto | Prezzo/Anno | Incluso |
 |---|---|---|
-| **Base** | 299€ | Sito vetrina/aziendale, hosting, SSL, PageSpeed 90+, SEO base, chatbot AI |
-| **E-commerce** | 399€ | Tutto Base + catalogo prodotti, carrello, pagamenti, gestione ordini |
+| **Base** | 399€ | Sito vetrina/aziendale, hosting, SSL, PageSpeed 90+, SEO base, chatbot AI |
+| **E-commerce** | 599€ | Tutto Base + catalogo prodotti, carrello, pagamenti, gestione ordini |
 
 **Servizio Bandi:**
 | Servizio | Prezzo | Incluso |
@@ -97,7 +97,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 **Riferimenti modelli simili nel mondo:**
 - Wunderkind (USA): $204.7M fatturato 2024, pioniere "Revenue as a Service"
 - Il 3% e' aggressivamente competitivo (mercato: 5-15%)
-- Fee d'ingresso 299-399€ molto bassa (mercato: $2.500-$10.000+)
+- Fee d'ingresso 399-599€ molto bassa (mercato: $2.500-$10.000+)
 
 **Clausole contrattuali obbligatorie (legge italiana):**
 - Doppia sottoscrizione specifica per clausola lock-in (Art. 1341 c.c.)
@@ -120,7 +120,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 1. Performance-based: portiamo clienti, paghi solo sui risultati
 2. Trasparenza: dashboard verificabile, tutto nero su bianco
 3. Tecnologia: codice puro, AI, SEO/GEO, PageSpeed 90+
-4. Prezzo d'ingresso accessibile: 299-399€/anno per il sito
+4. Prezzo d'ingresso accessibile: 399-599€/anno per il sito
 
 **NON dire mai:**
 - "Vendiamo siti web" (il sito e' il mezzo, non il prodotto)
@@ -481,7 +481,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 - [x] llms.txt presente
 - [x] Google Site Verification meta tag
 - [x] Hreflang IT/EN su homepage
-- [ ] **Prezzi blog corretti** — 8 articoli avevano 249€ anziché 299€ → CORRETTO
+- [x] **Prezzi blog corretti** — aggiornati da 299€ a 399€ Base e da 399€ a 599€ E-commerce (Marzo 2026)
 - [ ] **Branding BandiItalia** — admin.html e cookie.html avevano titolo "BandiItalia" → CORRETTO
 - [ ] **Date 2025** — index.html schema e privacy.html avevano date 2025 → CORRETTO
 - [ ] **sameAs vuoto** — index.html schema Organization aveva array vuoto → DA COMPLETARE con social
@@ -599,7 +599,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 ### 11.1 Prezzi Web Agency 2026
 | Provider | Anno 1 | Anno 2 | Anno 5 | Totale 5 Anni | Fonte |
 |---|---|---|---|---|---|
-| RaaS Base | 299€ | 299€ | 299€ | 1.495€ | Listino pubblico |
+| RaaS Base | 399€ | 399€ | 399€ | 1.995€ | Listino pubblico |
 | Aruba Hosting | 9,90€ | 59,99€ | 59,99€ | 4.159€* | Preventivo 10/01/26 |
 | Register.it | 890€ | 600€ | 600€ | 3.290€ | Preventivo 15/01/26 |
 | Keliweb | 1.200€ | 540€ | 540€ | 3.360€ | Preventivo 18/01/26 |

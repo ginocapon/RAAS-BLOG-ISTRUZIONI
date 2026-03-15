@@ -47,12 +47,12 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type": "Question", "name": "How much does web design cost in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Web design costs range from $1,000 to $30,000+ in 2026 according to WebFX. The average project cost on Clutch is $38,105. Small business websites typically cost $3,000 to $15,000 at agencies. However, performance-based models like RaaS offer entry from as low as €299/year with costs tied to results rather than upfront fees."}},
+        {"@type": "Question", "name": "How much does web design cost in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Web design costs range from $1,000 to $30,000+ in 2026 according to WebFX. The average project cost on Clutch is $38,105. Small business websites typically cost $3,000 to $15,000 at agencies. However, performance-based models like RaaS offer entry from as low as €399/year with costs tied to results rather than upfront fees."}},
         {"@type": "Question", "name": "What is performance-based web design pricing?", "acceptedAnswer": {"@type": "Answer", "text": "Performance-based web design pricing is a model where the agency charges a low upfront fee and earns a commission based on measurable business results — such as revenue generated from new leads. This aligns the agency's incentives with the client's success, unlike fixed-fee models where the agency gets paid regardless of outcomes."}},
         {"@type": "Question", "name": "What are the main web design pricing models in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "The four main web design pricing models in 2026 are: hourly ($75–$200+/hour for agencies), fixed/project-based ($5,000–$100,000+), retainer ($1,000–$10,000+/month), and performance-based (low entry fee plus commission on results). Each model has distinct advantages depending on project scope and business goals."}},
         {"@type": "Question", "name": "Is fixed-fee or hourly pricing better for web design?", "acceptedAnswer": {"@type": "Answer", "text": "Fixed-fee pricing offers cost predictability and clear deliverables, making it better for well-defined projects. Hourly pricing provides flexibility for evolving scopes but makes budgeting difficult. Neither model ties the agency's payment to actual business results, which is why performance-based models are gaining traction in 2026."}},
         {"@type": "Question", "name": "What is the ROI of investing in professional web design?", "acceptedAnswer": {"@type": "Answer", "text": "According to Forrester Research, every $1 invested in UX design returns $100 — a 9,900% ROI. A well-designed user interface can raise conversion rates by 200%, and a superior user experience can increase conversions by 400%. Design-led companies outperform the S&P index by 228% over 10 years according to the Design Value Index."}},
-        {"@type": "Question", "name": "How does the RaaS (Revenue as a Service) model work?", "acceptedAnswer": {"@type": "Answer", "text": "The RaaS model charges a low annual fee (€299 for a base website, €399 for e-commerce) plus a 3% commission on revenue generated from new clients brought through the website. This means the agency earns only when the client earns, creating full incentive alignment. The 3% rate is significantly below the industry range of 5–15%."}},
+        {"@type": "Question", "name": "How does the RaaS (Revenue as a Service) model work?", "acceptedAnswer": {"@type": "Answer", "text": "The RaaS model charges a low annual fee (€399 for a base website, €599 for e-commerce) plus a 3% commission on revenue generated from new clients brought through the website. This means the agency earns only when the client earns, creating full incentive alignment. The 3% rate is significantly below the industry range of 5–15%."}},
         {"@type": "Question", "name": "What is the average hourly rate for web design agencies?", "acceptedAnswer": {"@type": "Answer", "text": "According to Clutch's 2026 pricing data based on 79,260+ agencies, the most common hourly rate for web design agencies is $100–$149/hour. Senior designers and creative directors at top agencies can charge $300–$500/hour. Freelance web designers typically charge $25–$100/hour depending on experience and location."}},
         {"@type": "Question", "name": "Why are web design prices increasing in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Industry experts predict web design prices will increase 8–12% in 2026 compared to 2025 due to increased complexity requirements, AI integration demands, and rising talent costs. The AgencyAnalytics 2025 Benchmark Report found average retainers rose 8% year-over-year driven by software costs and talent competition."}},
         {"@type": "Question", "name": "What should a small business budget for a website in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "According to WebFX, small businesses typically spend $2,501–$5,000 on web design in 2026. Clutch reports the average small business website costs $3,000–$15,000 depending on complexity. A general budgeting benchmark suggests allocating 5–10% of annual revenue to marketing, with 30–50% of that going to web and branding during a redesign year."}},
@@ -178,6 +178,18 @@
             .table-wrapper { font-size: 14px; }
             .table-wrapper th, .table-wrapper td { padding: 10px 12px; }
         }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 </head>
 <body>
@@ -378,7 +390,7 @@
             <div class="sponsor-item"><span class="check">&#10003;</span> Transparent performance dashboard</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> We earn only when you earn</div>
         </div>
-        <p style="font-size:15px; margin-top:16px;"><strong style="color:#fff;">Base plan: 299&#8364;/year</strong> &mdash; E-commerce: 399&#8364;/year + 3% performance commission on generated revenue.</p>
+        <p style="font-size:15px; margin-top:16px;"><strong style="color:#fff;">Base plan: 599&#8364;/year</strong> &mdash; E-commerce: 599&#8364;/year + 3% performance commission on generated revenue.</p>
         <a href="https://www.raasautomazioni.it/en/#contact" class="sponsor-cta">Get Your Free Consultation &#8594;</a>
     </div>
 
@@ -477,7 +489,7 @@
     <div class="faq-section">
         <div class="faq-item">
             <div class="faq-question">How much does web design cost in 2026?</div>
-            <div class="faq-answer"><p>Web design costs range from $1,000 to $30,000+ in 2026 according to WebFX. The average project cost on Clutch is $38,105 based on data from 79,260+ agencies. Small business websites typically cost $3,000 to $15,000 at agencies. Performance-based models like RaaS offer entry from as low as &euro;299/year with costs tied to results rather than upfront fees.</p></div>
+            <div class="faq-answer"><p>Web design costs range from $1,000 to $30,000+ in 2026 according to WebFX. The average project cost on Clutch is $38,105 based on data from 79,260+ agencies. Small business websites typically cost $3,000 to $15,000 at agencies. Performance-based models like RaaS offer entry from as low as &euro;399/year with costs tied to results rather than upfront fees.</p></div>
         </div>
         <div class="faq-item">
             <div class="faq-question">What is performance-based web design pricing?</div>
@@ -497,7 +509,7 @@
         </div>
         <div class="faq-item">
             <div class="faq-question">How does the RaaS (Revenue as a Service) model work?</div>
-            <div class="faq-answer"><p>The RaaS model charges a low annual fee (&euro;299 for a base website, &euro;399 for e-commerce) plus a 3% commission on revenue generated from new clients brought through the website. The agency earns only when the client earns, creating full incentive alignment. The 3% rate is significantly below the industry standard range of 5&ndash;15% for performance-based marketing services.</p></div>
+            <div class="faq-answer"><p>The RaaS model charges a low annual fee (&euro;399 for a base website, &euro;599 for e-commerce) plus a 3% commission on revenue generated from new clients brought through the website. The agency earns only when the client earns, creating full incentive alignment. The 3% rate is significantly below the industry standard range of 5&ndash;15% for performance-based marketing services.</p></div>
         </div>
         <div class="faq-item">
             <div class="faq-question">What is the average hourly rate for web design agencies?</div>
@@ -562,6 +574,15 @@
         </ul>
     </div>
 
+    <!-- CTA HOOK -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Found this useful? <em>Get more!</em></h2>
+            <p class="cta-aggancio-text">Every month we help businesses find clients online. Request a <strong>free personalized consultation</strong> on your digital project.</p>
+            <a href="https://www.raasautomazioni.it/en/#contact" class="cta-aggancio-btn">GET FREE CONSULTATION</a>
+            <span class="cta-aggancio-sub">+ discover how to bring clients to your business</span>
+        </div>
+    </div>
 </main>
 
 <footer class="blog-footer">

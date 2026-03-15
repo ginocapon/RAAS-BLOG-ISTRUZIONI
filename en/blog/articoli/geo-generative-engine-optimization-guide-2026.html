@@ -172,6 +172,18 @@
             .table-wrapper { font-size: 14px; }
             .table-wrapper th, .table-wrapper td { padding: 10px 12px; }
         }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 </head>
 <body>
@@ -500,7 +512,7 @@ Allow: /
             <div class="sponsor-item"><span class="check">&#10003;</span> Pure code, zero WordPress bloat</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> Performance-based: we earn when you earn</div>
         </div>
-        <p style="font-size:15px; margin-top:16px;"><strong style="color:#fff;">Base plan: 299&#8364;/year</strong> &mdash; E-commerce: 399&#8364;/year + 3% performance commission on generated revenue.</p>
+        <p style="font-size:15px; margin-top:16px;"><strong style="color:#fff;">Base plan: 599&#8364;/year</strong> &mdash; E-commerce: 599&#8364;/year + 3% performance commission on generated revenue.</p>
         <a href="https://www.raasautomazioni.it/en/#contatti" class="sponsor-cta">Get Your GEO Audit Free &#8594;</a>
     </div>
 
@@ -605,6 +617,15 @@ Allow: /
 
     <p><strong>The businesses that act now will be the ones AI engines cite tomorrow.</strong> The question is not whether GEO matters — the data has already answered that. The question is whether your business will be part of the answer.</p>
 
+    <!-- CTA HOOK -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Found this useful? <em>Get more!</em></h2>
+            <p class="cta-aggancio-text">Every month we help businesses find clients online. Request a <strong>free personalized consultation</strong> on your digital project.</p>
+            <a href="https://www.raasautomazioni.it/en/#contact" class="cta-aggancio-btn">GET FREE CONSULTATION</a>
+            <span class="cta-aggancio-sub">+ discover how to bring clients to your business</span>
+        </div>
+    </div>
 </main>
 
 <footer class="blog-footer">

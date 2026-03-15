@@ -29,7 +29,7 @@
         {"@type":"Question","name":"Quali metriche devo monitorare?","acceptedAnswer":{"@type":"Answer","text":"Le metriche essenziali sono: traffico organico, tasso di conversione, numero di lead, costo per lead, tasso di apertura email e PageSpeed. RaaS le traccia tutte automaticamente con report mensili."}},
         {"@type":"Question","name":"Serve investire in advertising per vedere risultati?","acceptedAnswer":{"@type":"Answer","text":"Non necessariamente. Il percorso RaaS si basa su SEO organico e automazioni che generano lead gratuiti. L'advertising può accelerare i risultati ma non è obbligatorio."}},
         {"@type":"Question","name":"Posso farlo da solo senza un'agenzia?","acceptedAnswer":{"@type":"Answer","text":"Tecnicamente sì, ma servono competenze in SEO, sviluppo web, email marketing e analisi dati. Un'agenzia specializzata accelera i tempi da 12-18 mesi a 90 giorni."}},
-        {"@type":"Question","name":"Quanto costa la trasformazione completa?","acceptedAnswer":{"@type":"Answer","text":"Con RaaS il costo è di 299€/anno che include sito performante, automazioni, SEO e monitoraggio. Con agenzie tradizionali la stessa trasformazione costa 5.000-15.000€."}},
+        {"@type":"Question","name":"Quanto costa la trasformazione completa?","acceptedAnswer":{"@type":"Answer","text":"Con RaaS il costo è di 399€/anno che include sito performante, automazioni, SEO e monitoraggio. Con agenzie tradizionali la stessa trasformazione costa 5.000-15.000€."}},
         {"@type":"Question","name":"I risultati sono garantiti?","acceptedAnswer":{"@type":"Answer","text":"RaaS si impegna contrattualmente su PageSpeed 90+ e su un obiettivo di 30-50 lead/mese entro 6 mesi. Se non raggiunto, lavora gratuitamente fino al target."}},
         {"@type":"Question","name":"Cosa succede dopo i 90 giorni?","acceptedAnswer":{"@type":"Answer","text":"Dopo i 90 giorni il sistema è attivo e genera lead in autonomia. L'attività successiva è di ottimizzazione continua: miglioramento conversioni, nuovi contenuti SEO e scaling dei risultati."}},
         {"@type":"Question","name":"Funziona per tutti i settori?","acceptedAnswer":{"@type":"Answer","text":"Sì, il modello è adattabile a qualsiasi settore locale: servizi professionali, ristorazione, edilizia, salute, estetica, immobiliare. I tempi e i numeri variano in base alla competitività del settore."}}
@@ -111,6 +111,18 @@
         .sources li { padding: 5px 0; font-size: 13px; color: var(--text-light); }
         .sources li::before { content: '📎'; margin-right: 8px; }
         @media (max-width: 640px) { .hero { padding: 48px 20px 36px; } .sponsor-grid { grid-template-columns: 1fr; } .hero-meta { flex-direction: column; gap: 6px; } .timeline-month { grid-template-columns: 60px 1fr; } }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFM8JG9C2R"></script>
@@ -364,7 +376,7 @@
             <div class="sponsor-item"><span class="check">✓</span> PageSpeed 90+ garantito</div>
             <div class="sponsor-item"><span class="check">✓</span> Automazioni complete</div>
             <div class="sponsor-item"><span class="check">✓</span> 30-50 lead/mese obiettivo</div>
-            <div class="sponsor-item"><span class="check">✓</span> 299€/anno tutto incluso</div>
+            <div class="sponsor-item"><span class="check">✓</span> 399€/anno tutto incluso</div>
             <div class="sponsor-item"><span class="check">✓</span> Report mensili trasparenti</div>
         </div>
         <a href="https://www.raasautomazioni.it/contatti" class="sponsor-cta">📲 Inizia la Trasformazione</a>
@@ -379,7 +391,7 @@
         <div class="faq-item"><div class="faq-question">Quali metriche devo monitorare?</div><div class="faq-answer"><p>Traffico organico, tasso di conversione, numero lead, costo per lead, tasso apertura email e PageSpeed. RaaS le traccia tutte con report mensili automatici.</p></div></div>
         <div class="faq-item"><div class="faq-question">Serve investire in advertising?</div><div class="faq-answer"><p>Non necessariamente. Il percorso RaaS si basa su SEO organico e automazioni. L'advertising può accelerare ma non è obbligatorio.</p></div></div>
         <div class="faq-item"><div class="faq-question">Posso farlo da solo?</div><div class="faq-answer"><p>Servono competenze in SEO, sviluppo web, email marketing e analisi dati. Un'agenzia specializzata accelera da 12-18 mesi a 90 giorni.</p></div></div>
-        <div class="faq-item"><div class="faq-question">Quanto costa la trasformazione?</div><div class="faq-answer"><p>Con RaaS 299€/anno tutto incluso. Con agenzie tradizionali la stessa trasformazione costa 5.000-15.000€.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Quanto costa la trasformazione?</div><div class="faq-answer"><p>Con RaaS 399€/anno tutto incluso. Con agenzie tradizionali la stessa trasformazione costa 5.000-15.000€.</p></div></div>
         <div class="faq-item"><div class="faq-question">I risultati sono garantiti?</div><div class="faq-answer"><p>RaaS si impegna su PageSpeed 90+ e obiettivo 30-50 lead/mese entro 6 mesi. Se non raggiunto, lavora gratuitamente fino al target.</p></div></div>
         <div class="faq-item"><div class="faq-question">Cosa succede dopo i 90 giorni?</div><div class="faq-answer"><p>Il sistema genera lead in autonomia. L'attività successiva è ottimizzazione continua: miglioramento conversioni, nuovi contenuti SEO e scaling.</p></div></div>
         <div class="faq-item"><div class="faq-question">Funziona per tutti i settori?</div><div class="faq-answer"><p>Sì, adattabile a servizi professionali, ristorazione, edilizia, salute, estetica, immobiliare. Tempi e numeri variano per competitività del settore.</p></div></div>
@@ -413,6 +425,15 @@
     <h2>📌 Conclusioni</h2>
     <p>90 giorni. È tutto quello che serve per trasformare un sito che non genera nulla in uno che produce 30-50 lead qualificati al mese. Il percorso è chiaro, le metriche sono definite, i risultati sono documentati. La differenza tra un sito vetrina e una macchina di business non è il budget, è la strategia. E con il modello RaaS, quella strategia è accessibile a qualsiasi PMI italiana.</p>
 
+    <!-- CTA AGGANCIO -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
+            <p class="cta-aggancio-text">Ogni mese aiutiamo PMI italiane a trovare clienti online. Richiedi una <strong>consulenza gratuita personalizzata</strong> sul tuo progetto digitale.</p>
+            <a href="https://www.raasautomazioni.it/#contatti" class="cta-aggancio-btn">RICHIEDI CONSULENZA GRATUITA</a>
+            <span class="cta-aggancio-sub">+ scopri come portare clienti al tuo business</span>
+        </div>
+    </div>
 </main>
 
 <script>document.querySelectorAll('.faq-question').forEach(q=>{q.addEventListener('click',()=>q.parentElement.classList.toggle('open'))});</script>

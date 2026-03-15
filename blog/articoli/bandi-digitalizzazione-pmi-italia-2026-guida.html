@@ -141,6 +141,18 @@
         .blog-footer a { color: var(--accent-light); text-decoration: none; }
         .blog-footer a:hover { text-decoration: underline; }
         @media (max-width: 768px) { .hero { padding: 60px 20px 40px; } .sponsor-grid { grid-template-columns: 1fr; } .hero-meta { flex-direction: column; gap: 8px; } .related-grid { grid-template-columns: 1fr; } }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 </head>
 <body>
@@ -363,13 +375,13 @@
     <!-- SPONSOR BOX -->
     <div class="sponsor-box">
         <h3>📋 RaaS: Il Partner per i Bandi e la Digitalizzazione</h3>
-        <p>Non perdere nessun bando. Con l'abbonamento bandi di RaaS Automazioni monitori oltre 150 fonti ufficiali e ricevi notifiche personalizzate ogni settimana. E se hai bisogno di un sito web performante per il tuo progetto di digitalizzazione, il pacchetto Base parte da soli 299 euro/anno.</p>
+        <p>Non perdere nessun bando. Con l'abbonamento bandi di RaaS Automazioni monitori oltre 150 fonti ufficiali e ricevi notifiche personalizzate ogni settimana. E se hai bisogno di un sito web performante per il tuo progetto di digitalizzazione, il pacchetto Base parte da soli 399 euro/anno.</p>
         <div class="sponsor-grid">
             <div class="sponsor-item"><span class="check">✓</span> Abbonamento Bandi: 50 euro/anno (61 euro IVA incl.)</div>
             <div class="sponsor-item"><span class="check">✓</span> Monitoraggio 150+ fonti ufficiali</div>
             <div class="sponsor-item"><span class="check">✓</span> Newsletter settimanale personalizzata</div>
             <div class="sponsor-item"><span class="check">✓</span> Filtri avanzati per settore e regione</div>
-            <div class="sponsor-item"><span class="check">✓</span> Sito web Base: 299 euro/anno tutto incluso</div>
+            <div class="sponsor-item"><span class="check">✓</span> Sito web Base: 399 euro/anno tutto incluso</div>
             <div class="sponsor-item"><span class="check">✓</span> PageSpeed 90+ garantito</div>
         </div>
         <a href="https://www.raasautomazioni.it/bandi" class="sponsor-cta">📲 Scopri i Bandi Disponibili</a>
@@ -399,7 +411,7 @@
         <div class="faq-item"><div class="faq-question">Si possono cumulare piu bandi?</div><div class="faq-answer"><p>In molti casi si. La novita 2026 e la piena cumulabilita tra ZES Unica e Transizione 5.0. I voucher Cloud e Cyber Security sono cumulabili con Transizione 5.0, purche la somma totale non superi il 100% dell'investimento.</p></div></div>
         <div class="faq-item"><div class="faq-question">Quali spese sono ammissibili per la digitalizzazione?</div><div class="faq-answer"><p>Tipicamente: software gestionali, CRM, e-commerce, cybersecurity, cloud computing, beni strumentali 4.0, consulenza specializzata, formazione digitale del personale e brevetti. Ogni bando ha il proprio elenco specifico di spese ammissibili.</p></div></div>
         <div class="faq-item"><div class="faq-question">Quanto tempo ci vuole per ottenere i fondi?</div><div class="faq-answer"><p>I voucher camerali hanno tempi rapidi (2-4 mesi). La Nuova Sabatini richiede 3-6 mesi. Transizione 5.0 opera con meccanismo di credito d'imposta utilizzabile dopo la certificazione energetica. Molti bandi funzionano a sportello con ordine cronologico.</p></div></div>
-        <div class="faq-item"><div class="faq-question">Serve un sito web per accedere ai bandi digitalizzazione?</div><div class="faq-answer"><p>Molti bandi includono il sito web tra le spese ammissibili. Un sito performante con PageSpeed 90+ dimostra competenza digitale ed e spesso parte integrante del piano di investimento. Con RaaS Automazioni il sito parte da 299 euro/anno.</p></div></div>
+        <div class="faq-item"><div class="faq-question">Serve un sito web per accedere ai bandi digitalizzazione?</div><div class="faq-answer"><p>Molti bandi includono il sito web tra le spese ammissibili. Un sito performante con PageSpeed 90+ dimostra competenza digitale ed e spesso parte integrante del piano di investimento. Con RaaS Automazioni il sito parte da 399 euro/anno.</p></div></div>
         <div class="faq-item"><div class="faq-question">Cosa succede ai fondi PNRR dopo giugno 2026?</div><div class="faq-answer"><p>Il PNRR si chiude il 30 giugno 2026. Tuttavia, Transizione 5.0 e stata prorogata fino al 2028 con fondi nazionali. La programmazione FESR 2021-2027 prosegue, cosi come la Nuova Sabatini rifinanziata fino al 2029.</p></div></div>
     </div>
 
@@ -450,6 +462,15 @@
                 <h4>Come Ottenere 30-50 Lead Qualificati al Mese</h4>
                 <p>SEO locale, landing page e automazione per PMI italiane.</p>
             </a>
+        </div>
+    </div>
+    <!-- CTA AGGANCIO -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
+            <p class="cta-aggancio-text">Ogni mese aiutiamo PMI italiane a trovare clienti online. Richiedi una <strong>consulenza gratuita personalizzata</strong> sul tuo progetto digitale.</p>
+            <a href="https://www.raasautomazioni.it/#contatti" class="cta-aggancio-btn">RICHIEDI CONSULENZA GRATUITA</a>
+            <span class="cta-aggancio-sub">+ scopri come portare clienti al tuo business</span>
         </div>
     </div>
 </main>

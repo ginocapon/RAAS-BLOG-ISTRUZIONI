@@ -402,6 +402,47 @@ select.filter-select {
   font-size: 0.85rem;
 }
 .btn-icon:hover { border-color: var(--oro); background: var(--oro3); }
+a.btn-icon { text-decoration: none; color: var(--testo); }
+.actions-cell { white-space: nowrap; display: flex; gap: 4px; align-items: center; }
+
+/* PREVIEW OVERLAY */
+.preview-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9000;
+  padding: 16px;
+}
+.preview-card {
+  background: var(--bianco);
+  border-radius: 16px;
+  width: 100%; max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+}
+.preview-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #eee;
+}
+.preview-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--testo); flex: 1; margin-right: 12px; }
+.preview-close {
+  width: 36px; height: 36px;
+  border: none; background: #f0f0f0;
+  border-radius: 50%; font-size: 1.4rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--grigio); transition: all 0.2s; flex-shrink: 0;
+}
+.preview-close:hover { background: var(--rosso); color: white; }
+.preview-body { padding: 20px 24px 24px; }
+.preview-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.preview-meta-item { display: flex; flex-direction: column; gap: 2px; }
+.preview-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--grigio); font-weight: 600; }
+.preview-meta-item span:last-child { font-size: 0.88rem; font-weight: 500; }
+.preview-desc { background: #f8f8f5; border-radius: 10px; padding: 16px; }
+.preview-desc strong { font-size: 0.78rem; text-transform: uppercase; color: var(--grigio); letter-spacing: 0.3px; display: block; margin-bottom: 8px; }
+.preview-desc p { font-size: 0.88rem; line-height: 1.6; color: var(--testo); }
 
 /* FORMS */
 .form-grid {
@@ -663,6 +704,13 @@ select.filter-select {
   .card { padding: 16px; }
   #sec-analytics > div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr; }
   #sec-analytics .card div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr; }
+  #sec-bandi .data-table th:nth-child(2), #sec-bandi .data-table td:nth-child(2),
+  #sec-bandi .data-table th:nth-child(4), #sec-bandi .data-table td:nth-child(4),
+  #sec-bandi .data-table th:nth-child(5), #sec-bandi .data-table td:nth-child(5) { display: none; }
+  #sec-articoli .data-table th:nth-child(2), #sec-articoli .data-table td:nth-child(2) { display: none; }
+  #sec-landing .data-table th:nth-child(2), #sec-landing .data-table td:nth-child(2) { display: none; }
+  .actions-cell { flex-wrap: wrap; }
+  .preview-meta { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .login-box { padding: 32px 24px; margin: 16px; }
@@ -710,6 +758,16 @@ select.filter-select {
     <div class="nav-item" onclick="showSection('nuovo-bando')" data-sec="nuovo-bando">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
       Nuovo Bando
+    </div>
+    <div class="nav-item" onclick="showSection('articoli')" data-sec="articoli">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      Articoli Blog
+      <span class="nav-badge" id="badgeArticoli" style="display:none">0</span>
+    </div>
+    <div class="nav-item" onclick="showSection('landing')" data-sec="landing">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10,17 15,12 10,7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+      Landing Page
+      <span class="nav-badge" id="badgeLanding" style="display:none">0</span>
     </div>
     <div class="nav-item" onclick="showSection('iscritti')" data-sec="iscritti">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
@@ -946,6 +1004,7 @@ select.filter-select {
                 <th>Regione</th>
                 <th>Importo Max</th>
                 <th>Tipo</th>
+                <th>Creato il</th>
                 <th>Scadenza</th>
                 <th>Stato</th>
                 <th>Azioni</th>
@@ -1032,6 +1091,70 @@ select.filter-select {
             <button type="button" class="btn btn-secondary" onclick="resetBandoForm();showSection('bandi')">Annulla</button>
           </div>
         </form>
+      </div>
+    </div>
+
+    <!-- ══════════ ARTICOLI BLOG ══════════ -->
+    <div class="section" id="sec-articoli">
+      <div class="card">
+        <div class="card-header">
+          <h3>Articoli Blog</h3>
+          <div class="toolbar">
+            <input class="search-box" type="text" id="searchArticoli" placeholder="Cerca articolo..." oninput="debounceArticoli()">
+            <select class="filter-select" id="filterLingua" onchange="loadArticoliBlog()">
+              <option value="">Tutte le Lingue</option>
+              <option value="it">Italiano</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap" style="position:relative;">
+          <table class="data-table" id="tableArticoli">
+            <thead>
+              <tr>
+                <th>Titolo</th>
+                <th>Lingua</th>
+                <th>Creato il</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyArticoli"></tbody>
+          </table>
+          <div id="articoliLoading" class="loading-overlay" style="display:none;"><div class="spinner"></div></div>
+        </div>
+        <div class="pagination" id="pagArticoli"></div>
+      </div>
+    </div>
+
+    <!-- ══════════ LANDING PAGE ══════════ -->
+    <div class="section" id="sec-landing">
+      <div class="card">
+        <div class="card-header">
+          <h3>Landing Page</h3>
+          <div class="toolbar">
+            <input class="search-box" type="text" id="searchLanding" placeholder="Cerca landing..." oninput="debounceLanding()">
+            <select class="filter-select" id="filterLinguaLanding" onchange="loadLandingPages()">
+              <option value="">Tutte le Lingue</option>
+              <option value="it">Italiano</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap" style="position:relative;">
+          <table class="data-table" id="tableLanding">
+            <thead>
+              <tr>
+                <th>Titolo</th>
+                <th>Lingua</th>
+                <th>Creato il</th>
+                <th>Azioni</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyLanding"></tbody>
+          </table>
+          <div id="landingLoading" class="loading-overlay" style="display:none;"><div class="spinner"></div></div>
+        </div>
+        <div class="pagination" id="pagLanding"></div>
       </div>
     </div>
 
@@ -1513,7 +1636,11 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const EDGE_FN_URL = SUPABASE_URL + '/functions/v1/send-email';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const PAGE_SIZE = 20;
+const PAGE_SIZE_DESKTOP = 20;
+const PAGE_SIZE_MOBILE = 8;
+function getPageSize() { return window.innerWidth <= 768 ? PAGE_SIZE_MOBILE : PAGE_SIZE_DESKTOP; }
+let PAGE_SIZE = getPageSize();
+window.addEventListener('resize', () => { const newSize = getPageSize(); if (newSize !== PAGE_SIZE) { PAGE_SIZE = newSize; } });
 let bandiPage = 1, bandiTotal = 0, allBandiCache = [];
 let iscrittiPage = 1, iscrittiTotal = 0, allIscrittiCache = [];
 let bandiSearchTimer = null, iscrittiSearchTimer = null;
@@ -1575,6 +1702,8 @@ const sectionTitles = {
   'iscritti': 'Gestione Iscritti',
   'email': 'Componi Email',
   'newsletter': 'Campagna Newsletter',
+  'articoli': 'Articoli Blog',
+  'landing': 'Landing Page',
   'scadenze': 'Calendario Scadenze',
   'impostazioni': 'Impostazioni'
 };
@@ -1593,6 +1722,8 @@ function showSection(name) {
   if (name === 'dashboard') loadDashboard();
   else if (name === 'analytics') loadAnalytics();
   else if (name === 'bandi') loadBandiAdmin();
+  else if (name === 'articoli') loadArticoliBlog();
+  else if (name === 'landing') loadLandingPages();
   else if (name === 'iscritti') loadIscrittiAdmin();
   else if (name === 'scadenze') loadScadenze();
   else if (name === 'newsletter') loadNLBandi();
@@ -1717,32 +1848,86 @@ async function loadBandiAdmin() {
 function renderBandiTable() {
   const tbody = document.getElementById('tbodyBandi');
   if (allBandiCache.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="8" style="color:var(--grigio);text-align:center;">Nessun bando trovato</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="9" style="color:var(--grigio);text-align:center;">Nessun bando trovato</td></tr>';
     return;
   }
   const oggi = new Date();
   tbody.innerHTML = allBandiCache.map(b => {
     const scad = b.scadenza ? new Date(b.scadenza) : null;
     const giorni = scad ? Math.ceil((scad - oggi) / 86400000) : 999;
+    const creato = b.created_at ? new Date(b.created_at).toLocaleDateString('it-IT') : '-';
     let statusBadge = '';
     if (!b.attivo) statusBadge = '<span class="badge scaduto">Disattivo</span>';
     else if (giorni < 0) statusBadge = '<span class="badge scaduto">Scaduto</span>';
     else if (giorni <= 7) statusBadge = '<span class="badge in-scadenza">In Scadenza</span>';
     else statusBadge = '<span class="badge attivo">Attivo</span>';
+    const linkUrl = b.url || b.link || '';
     return `<tr>
       <td style="max-width:250px;"><strong>${esc(b.titolo)}</strong></td>
       <td>${esc(b.ente || '-')}</td>
       <td>${esc(b.regione || 'Nazionale')}</td>
       <td>${b.importo_max ? '€' + Number(b.importo_max).toLocaleString('it-IT') : '-'}</td>
       <td>${esc(b.tipo_contributo || '-')}</td>
+      <td>${creato}</td>
       <td>${scad ? scad.toLocaleDateString('it-IT') : '-'}</td>
       <td>${statusBadge}</td>
-      <td>
-        <button class="btn-icon" title="Modifica" onclick="editBando(${b.id})">&#9998;</button>
-        <button class="btn-icon" title="Elimina" onclick="confirmDeleteBando(${b.id},'${esc(b.titolo)}')">&#128465;</button>
+      <td class="actions-cell">
+        <button class="btn-icon" title="Anteprima" onclick="previewBando(${b.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+        <button class="btn-icon" title="Modifica" onclick="editBando(${b.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></button>
+        <button class="btn-icon" title="Elimina" onclick="confirmDeleteBando(${b.id},'${esc(b.titolo)}')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
+        ${linkUrl ? `<a class="btn-icon" title="Apri nel browser" href="${esc(linkUrl)}" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>` : ''}
       </td>
     </tr>`;
   }).join('');
+}
+
+// ══════════ ANTEPRIMA BANDO ══════════
+async function previewBando(id) {
+  try {
+    const bando = allBandiCache.find(b => b.id === id);
+    if (!bando) {
+      const { data, error } = await sb.from('bandi').select('*').eq('id', id).single();
+      if (error) throw error;
+      showBandoPreview(data);
+    } else {
+      showBandoPreview(bando);
+    }
+  } catch (e) {
+    toast('Errore caricamento anteprima', 'error');
+  }
+}
+
+function showBandoPreview(b) {
+  const scad = b.scadenza ? new Date(b.scadenza).toLocaleDateString('it-IT') : 'Non specificata';
+  const creato = b.created_at ? new Date(b.created_at).toLocaleDateString('it-IT') : '-';
+  const importo = b.importo_max ? '€' + Number(b.importo_max).toLocaleString('it-IT') : 'Non specificato';
+  const linkUrl = b.url || b.link || '';
+  const overlay = document.createElement('div');
+  overlay.className = 'preview-overlay';
+  overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+  overlay.innerHTML = `
+    <div class="preview-card">
+      <div class="preview-header">
+        <h3>${esc(b.titolo)}</h3>
+        <button class="preview-close" onclick="this.closest('.preview-overlay').remove()">&times;</button>
+      </div>
+      <div class="preview-body">
+        <div class="preview-meta">
+          <div class="preview-meta-item"><span class="preview-label">Ente</span><span>${esc(b.ente || '-')}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Regione</span><span>${esc(b.regione || 'Nazionale')}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Importo Max</span><span>${importo}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Tipo</span><span>${esc(b.tipo_contributo || '-')}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Settore</span><span>${esc(b.settore || '-')}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Scadenza</span><span>${scad}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Creato il</span><span>${creato}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Stato</span><span>${b.attivo !== false ? 'Attivo' : 'Disattivo'}</span></div>
+        </div>
+        ${b.descrizione ? `<div class="preview-desc"><strong>Descrizione:</strong><p>${esc(b.descrizione)}</p></div>` : ''}
+        ${linkUrl ? `<a href="${esc(linkUrl)}" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:16px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Apri Bando Originale</a>` : ''}
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
 }
 
 async function saveBando(e) {
@@ -1821,6 +2006,324 @@ function resetBandoForm() {
   document.getElementById('bandoId').value = '';
   document.getElementById('bandoAttivo').classList.add('on');
   document.getElementById('formBandoTitle').textContent = 'Nuovo Bando';
+}
+
+// ══════════ ARTICOLI BLOG ══════════
+const ARTICOLI_BLOG = [
+  { id: 1, titolo: '5 Automazioni che Fanno Risparmiare 20 Ore alla Settimana', lingua: 'it', url: '/blog/articoli/5-automazioni-risparmiare-20-ore-settimana(1).html', data: '2026-02-15' },
+  { id: 2, titolo: 'Bandi Digitalizzazione PMI Italia 2026: Guida Completa ai Finanziamenti', lingua: 'it', url: '/blog/articoli/bandi-digitalizzazione-pmi-italia-2026-guida.html', data: '2026-03-08' },
+  { id: 3, titolo: 'Bandi e Finanziamenti Imprese Emilia-Romagna 2026: Guida Completa', lingua: 'it', url: '/blog/articoli/bandi-imprese-emilia-romagna-2026-guida.html', data: '2026-03-10' },
+  { id: 4, titolo: 'Codice Puro vs WordPress 2026: La Verita\' su Performance e Costi', lingua: 'it', url: '/blog/articoli/codice-puro-vs-wordpress-2026.html', data: '2026-01-20' },
+  { id: 5, titolo: 'Core Web Vitals e Fatturato: Come la Velocita\' del Sito Impatta le Conversioni', lingua: 'it', url: '/blog/articoli/core-web-vitals-fatturato-velocita-conversioni-2026.html', data: '2026-03-12' },
+  { id: 6, titolo: 'GEO: Generative Engine Optimization — Guida Completa', lingua: 'it', url: '/blog/articoli/geo-generative-engine-optimization-guida-2026.html', data: '2026-03-05' },
+  { id: 7, titolo: 'Lead Generation 2026: Come Ottenere 30-50 Lead Qualificati al Mese', lingua: 'it', url: '/blog/articoli/lead-generation-30-50-lead-mese-2026.html', data: '2026-01-28' },
+  { id: 8, titolo: 'Come Ottenere 50 Lead Qualificati al Mese con l\'Automazione', lingua: 'it', url: '/blog/articoli/lead-generation-50-lead-qualificati-automazione.html', data: '2026-02-10' },
+  { id: 9, titolo: 'Lead Generation Automatizzata per PMI: Guida Completa al ROI nel 2026', lingua: 'it', url: '/blog/articoli/lead-generation-automatizzata-pmi-guida-roi-2026.html', data: '2026-03-06' },
+  { id: 10, titolo: 'Perche\' il Tuo Sito Deve Avere PageSpeed 90+: Dati e ROI', lingua: 'it', url: '/blog/articoli/pagespeed-95-dati-roi.html', data: '2026-02-05' },
+  { id: 11, titolo: 'PageSpeed 90+: Guida Completa all\'Ottimizzazione nel 2026', lingua: 'it', url: '/blog/articoli/pagespeed-95-guida-ottimizzazione-2026.html', data: '2026-02-01' },
+  { id: 12, titolo: 'Revenue as a Service: Il Modello che Sta Rivoluzionando le Web Agency nel 2026', lingua: 'it', url: '/blog/articoli/revenue-as-a-service-modello-web-agency-2026.html', data: '2026-03-01' },
+  { id: 13, titolo: 'Da Sito Vetrina a Macchina di Business: La Trasformazione in 90 Giorni', lingua: 'it', url: '/blog/articoli/sito-vetrina-macchina-business-90-giorni.html', data: '2026-02-20' },
+  { id: 14, titolo: 'AI Automation ROI for Small Business: Case Studies and Strategies', lingua: 'en', url: '/en/blog/articoli/ai-automation-roi-small-business-case-studies-2026.html', data: '2026-03-10' },
+  { id: 15, titolo: 'AI Chatbot Lead Generation: The Complete ROI Guide for 2026', lingua: 'en', url: '/en/blog/articoli/ai-chatbot-lead-generation-roi-guide-2026.html', data: '2026-03-08' },
+  { id: 16, titolo: 'AI-Powered Lead Generation for Small Businesses: Guide 2026', lingua: 'en', url: '/en/blog/articoli/ai-lead-generation-small-business-2026.html', data: '2026-02-15' },
+  { id: 17, titolo: 'GEO: Generative Engine Optimization — The Complete Guide', lingua: 'en', url: '/en/blog/articoli/geo-generative-engine-optimization-guide-2026.html', data: '2026-03-05' },
+  { id: 18, titolo: 'Performance-Based Marketing: Why Revenue Share Models Win in 2026', lingua: 'en', url: '/en/blog/articoli/performance-based-marketing-revenue-share-model-2026.html', data: '2026-02-25' },
+  { id: 19, titolo: 'Performance-Based Web Design Pricing: A Complete Guide for 2026', lingua: 'en', url: '/en/blog/articoli/performance-based-web-design-pricing-guide-2026.html', data: '2026-03-12' },
+  { id: 20, titolo: 'Revenue as a Service: The Performance-Based Web Agency Model', lingua: 'en', url: '/en/blog/articoli/revenue-as-a-service-performance-based-web-agency-2026.html', data: '2026-03-01' },
+  { id: 21, titolo: 'Static Websites vs WordPress: Speed, Security and SEO in 2026', lingua: 'en', url: '/en/blog/articoli/static-website-vs-wordpress-speed-security-seo-2026.html', data: '2026-03-06' },
+  { id: 22, titolo: 'Website Speed, SEO, and ROI: Why Pure Code Beats WordPress in 2026', lingua: 'en', url: '/en/blog/articoli/website-speed-seo-roi-pure-code-vs-wordpress-2026.html', data: '2026-02-10' }
+];
+
+let articoliPage = 1;
+let articoliSearchTimer = null;
+
+function debounceArticoli() {
+  clearTimeout(articoliSearchTimer);
+  articoliSearchTimer = setTimeout(() => { articoliPage = 1; loadArticoliBlog(); }, 400);
+}
+
+function loadArticoliBlog() {
+  const loading = document.getElementById('articoliLoading');
+  loading.style.display = 'flex';
+
+  const search = (document.getElementById('searchArticoli').value || '').trim().toLowerCase();
+  const lingua = document.getElementById('filterLingua').value;
+
+  let filtered = ARTICOLI_BLOG.filter(a => {
+    if (search && !a.titolo.toLowerCase().includes(search)) return false;
+    if (lingua && a.lingua !== lingua) return false;
+    return true;
+  });
+
+  // Sort by date descending
+  filtered.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+  const pageSize = getPageSize();
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / pageSize);
+  const offset = (articoliPage - 1) * pageSize;
+  const paginated = filtered.slice(offset, offset + pageSize);
+
+  renderArticoliTable(paginated, total);
+  renderArticoliPagination(total, totalPages);
+
+  // Badge
+  const badge = document.getElementById('badgeArticoli');
+  badge.textContent = ARTICOLI_BLOG.length;
+  badge.style.display = ARTICOLI_BLOG.length > 0 ? 'inline' : 'none';
+
+  loading.style.display = 'none';
+}
+
+function renderArticoliTable(articoli, total) {
+  const tbody = document.getElementById('tbodyArticoli');
+  if (articoli.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="4" style="color:var(--grigio);text-align:center;">Nessun articolo trovato</td></tr>';
+    return;
+  }
+  tbody.innerHTML = articoli.map(a => {
+    const dataFormatted = new Date(a.data).toLocaleDateString('it-IT');
+    const linguaBadge = a.lingua === 'it'
+      ? '<span class="badge attivo">IT</span>'
+      : '<span class="badge paid">EN</span>';
+    const fullUrl = 'https://www.raasautomazioni.it' + a.url;
+    return `<tr>
+      <td style="max-width:320px;"><strong>${esc(a.titolo)}</strong></td>
+      <td>${linguaBadge}</td>
+      <td>${dataFormatted}</td>
+      <td class="actions-cell">
+        <button class="btn-icon" title="Anteprima" onclick="previewArticolo(${a.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+        <button class="btn-icon" title="Modifica" onclick="editArticolo(${a.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></button>
+        <button class="btn-icon" title="Elimina" onclick="confirmDeleteArticolo(${a.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
+        <a class="btn-icon" title="Apri nel browser" href="${esc(fullUrl)}" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function renderArticoliPagination(total, totalPages) {
+  const pageSize = getPageSize();
+  const c = document.getElementById('pagArticoli');
+  if (totalPages <= 1) { c.innerHTML = ''; return; }
+  let html = `<button ${articoliPage <= 1 ? 'disabled' : ''}>&#8592;</button>`;
+  const start = Math.max(1, articoliPage - 2);
+  const end = Math.min(totalPages, articoliPage + 2);
+  for (let i = start; i <= end; i++) {
+    html += `<button class="${i === articoliPage ? 'active' : ''}">${i}</button>`;
+  }
+  html += `<button ${articoliPage >= totalPages ? 'disabled' : ''}>&#8594;</button>`;
+  c.innerHTML = html;
+  c.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const txt = btn.textContent;
+      if (txt === '\u2190' && articoliPage > 1) { articoliPage--; loadArticoliBlog(); }
+      else if (txt === '\u2192' && articoliPage < totalPages) { articoliPage++; loadArticoliBlog(); }
+      else { const n = parseInt(txt); if (!isNaN(n)) { articoliPage = n; loadArticoliBlog(); } }
+    });
+  });
+}
+
+function previewArticolo(id) {
+  const a = ARTICOLI_BLOG.find(x => x.id === id);
+  if (!a) return;
+  const fullUrl = 'https://www.raasautomazioni.it' + a.url;
+  const dataFormatted = new Date(a.data).toLocaleDateString('it-IT');
+  const overlay = document.createElement('div');
+  overlay.className = 'preview-overlay';
+  overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+  overlay.innerHTML = `
+    <div class="preview-card" style="max-width:700px;">
+      <div class="preview-header">
+        <h3>${esc(a.titolo)}</h3>
+        <button class="preview-close" onclick="this.closest('.preview-overlay').remove()">&times;</button>
+      </div>
+      <div class="preview-body">
+        <div class="preview-meta" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:16px;">
+          <div class="preview-meta-item"><span class="preview-label">Lingua</span><span>${a.lingua === 'it' ? 'Italiano' : 'English'}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Pubblicato</span><span>${dataFormatted}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">URL</span><span style="font-size:0.75rem;word-break:break-all;">${a.url}</span></div>
+        </div>
+        <div style="border:1px solid #eee;border-radius:10px;overflow:hidden;height:400px;">
+          <iframe src="${esc(fullUrl)}" style="width:100%;height:100%;border:none;" loading="lazy"></iframe>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:10px;">
+          <a href="${esc(fullUrl)}" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Apri Articolo</a>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+}
+
+function editArticolo(id) {
+  const a = ARTICOLI_BLOG.find(x => x.id === id);
+  if (!a) return;
+  const fullUrl = 'https://www.raasautomazioni.it' + a.url;
+  toast('Per modificare l\'articolo, apri il file HTML nel repository: ' + a.url, 'info');
+  window.open(fullUrl, '_blank');
+}
+
+function confirmDeleteArticolo(id) {
+  const a = ARTICOLI_BLOG.find(x => x.id === id);
+  if (!a) return;
+  showModal('Elimina Articolo', 'Vuoi eliminare "' + a.titolo + '"? L\'articolo verra\' rimosso dal registro admin.', () => {
+    const idx = ARTICOLI_BLOG.findIndex(x => x.id === id);
+    if (idx > -1) ARTICOLI_BLOG.splice(idx, 1);
+    toast('Articolo rimosso dal registro', 'success');
+    loadArticoliBlog();
+  });
+}
+
+// ══════════ LANDING PAGE ══════════
+const LANDING_PAGES = [
+  { id: 1, titolo: 'Landing Page Conversione Bandi', lingua: 'it', url: '/landing.html', data: '2026-01-15' },
+  { id: 2, titolo: 'Lead Generation per PMI — Ottieni Clienti Online', lingua: 'it', url: '/landing-lead-generation.html', data: '2026-02-20' },
+  { id: 3, titolo: 'Bandi Digitalizzazione PMI Italia 2026', lingua: 'it', url: '/landing-bandi-digitalizzazione.html', data: '2026-03-01' },
+  { id: 4, titolo: 'Quanto Costa un Sito Web nel 2026? Confronto Prezzi', lingua: 'it', url: '/landing-costo-sito-web-2026.html', data: '2026-03-15' },
+  { id: 5, titolo: 'Sito Web per PMI: Da Vetrina a Macchina Clienti', lingua: 'it', url: '/landing-sito-web-pmi-2026.html', data: '2026-03-15' },
+  { id: 6, titolo: 'Digitalizzazione PMI: Incentivi e Soluzioni 2026', lingua: 'it', url: '/landing-digitalizzazione-pmi.html', data: '2026-03-15' },
+  { id: 7, titolo: 'Voucher Digitalizzazione PMI 2026: Incentivi e Finanziamenti', lingua: 'it', url: '/landing-voucher-digitalizzazione-pmi-2026.html', data: '2026-03-15' },
+  { id: 11, titolo: 'E-commerce per PMI 2026: Vendi Online da 599€/anno', lingua: 'it', url: '/landing-ecommerce-pmi-2026.html', data: '2026-03-15' },
+  { id: 8, titolo: 'AI Lead Generation for Small Business', lingua: 'en', url: '/en/landing-ai-lead-generation.html', data: '2026-02-25' },
+  { id: 9, titolo: 'Revenue as a Service — Performance-Based Web Agency', lingua: 'en', url: '/en/landing-revenue-as-a-service.html', data: '2026-03-01' },
+  { id: 10, titolo: 'Performance Web Design — Pure Code, No WordPress', lingua: 'en', url: '/en/landing-performance-web-design.html', data: '2026-03-05' }
+];
+
+let landingPage = 1;
+let landingSearchTimer = null;
+
+function debounceLanding() {
+  clearTimeout(landingSearchTimer);
+  landingSearchTimer = setTimeout(() => { landingPage = 1; loadLandingPages(); }, 400);
+}
+
+function loadLandingPages() {
+  const loading = document.getElementById('landingLoading');
+  loading.style.display = 'flex';
+
+  const search = (document.getElementById('searchLanding').value || '').trim().toLowerCase();
+  const lingua = document.getElementById('filterLinguaLanding').value;
+
+  let filtered = LANDING_PAGES.filter(a => {
+    if (search && !a.titolo.toLowerCase().includes(search)) return false;
+    if (lingua && a.lingua !== lingua) return false;
+    return true;
+  });
+
+  filtered.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+  const pageSize = getPageSize();
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / pageSize);
+  const offset = (landingPage - 1) * pageSize;
+  const paginated = filtered.slice(offset, offset + pageSize);
+
+  renderLandingTable(paginated);
+  renderLandingPagination(totalPages);
+
+  const badge = document.getElementById('badgeLanding');
+  badge.textContent = LANDING_PAGES.length;
+  badge.style.display = LANDING_PAGES.length > 0 ? 'inline' : 'none';
+
+  loading.style.display = 'none';
+}
+
+function renderLandingTable(items) {
+  const tbody = document.getElementById('tbodyLanding');
+  if (items.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="4" style="color:var(--grigio);text-align:center;">Nessuna landing page trovata</td></tr>';
+    return;
+  }
+  tbody.innerHTML = items.map(a => {
+    const dataFormatted = new Date(a.data).toLocaleDateString('it-IT');
+    const linguaBadge = a.lingua === 'it'
+      ? '<span class="badge attivo">IT</span>'
+      : '<span class="badge paid">EN</span>';
+    const fullUrl = 'https://www.raasautomazioni.it' + a.url;
+    return `<tr>
+      <td style="max-width:320px;"><strong>${esc(a.titolo)}</strong></td>
+      <td>${linguaBadge}</td>
+      <td>${dataFormatted}</td>
+      <td class="actions-cell">
+        <button class="btn-icon" title="Anteprima" onclick="previewLanding(${a.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+        <button class="btn-icon" title="Modifica" onclick="editLanding(${a.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></button>
+        <button class="btn-icon" title="Elimina" onclick="confirmDeleteLanding(${a.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
+        <a class="btn-icon" title="Apri nel browser" href="${esc(fullUrl)}" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function renderLandingPagination(totalPages) {
+  const c = document.getElementById('pagLanding');
+  if (totalPages <= 1) { c.innerHTML = ''; return; }
+  let html = `<button ${landingPage <= 1 ? 'disabled' : ''}>&#8592;</button>`;
+  const start = Math.max(1, landingPage - 2);
+  const end = Math.min(totalPages, landingPage + 2);
+  for (let i = start; i <= end; i++) {
+    html += `<button class="${i === landingPage ? 'active' : ''}">${i}</button>`;
+  }
+  html += `<button ${landingPage >= totalPages ? 'disabled' : ''}>&#8594;</button>`;
+  c.innerHTML = html;
+  c.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const txt = btn.textContent;
+      if (txt === '\u2190' && landingPage > 1) { landingPage--; loadLandingPages(); }
+      else if (txt === '\u2192' && landingPage < totalPages) { landingPage++; loadLandingPages(); }
+      else { const n = parseInt(txt); if (!isNaN(n)) { landingPage = n; loadLandingPages(); } }
+    });
+  });
+}
+
+function previewLanding(id) {
+  const a = LANDING_PAGES.find(x => x.id === id);
+  if (!a) return;
+  const fullUrl = 'https://www.raasautomazioni.it' + a.url;
+  const dataFormatted = new Date(a.data).toLocaleDateString('it-IT');
+  const overlay = document.createElement('div');
+  overlay.className = 'preview-overlay';
+  overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+  overlay.innerHTML = `
+    <div class="preview-card" style="max-width:700px;">
+      <div class="preview-header">
+        <h3>${esc(a.titolo)}</h3>
+        <button class="preview-close" onclick="this.closest('.preview-overlay').remove()">&times;</button>
+      </div>
+      <div class="preview-body">
+        <div class="preview-meta" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:16px;">
+          <div class="preview-meta-item"><span class="preview-label">Lingua</span><span>${a.lingua === 'it' ? 'Italiano' : 'English'}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Pubblicata</span><span>${dataFormatted}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">URL</span><span style="font-size:0.75rem;word-break:break-all;">${a.url}</span></div>
+        </div>
+        <div style="border:1px solid #eee;border-radius:10px;overflow:hidden;height:400px;">
+          <iframe src="${esc(fullUrl)}" style="width:100%;height:100%;border:none;" loading="lazy"></iframe>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:10px;">
+          <a href="${esc(fullUrl)}" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Apri Landing</a>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+}
+
+function editLanding(id) {
+  const a = LANDING_PAGES.find(x => x.id === id);
+  if (!a) return;
+  const fullUrl = 'https://www.raasautomazioni.it' + a.url;
+  toast('Per modificare la landing, apri il file HTML nel repository: ' + a.url, 'info');
+  window.open(fullUrl, '_blank');
+}
+
+function confirmDeleteLanding(id) {
+  const a = LANDING_PAGES.find(x => x.id === id);
+  if (!a) return;
+  showModal('Elimina Landing Page', 'Vuoi eliminare "' + a.titolo + '"? La landing verra\' rimossa dal registro admin.', () => {
+    const idx = LANDING_PAGES.findIndex(x => x.id === id);
+    if (idx > -1) LANDING_PAGES.splice(idx, 1);
+    toast('Landing page rimossa dal registro', 'success');
+    loadLandingPages();
+  });
 }
 
 // ══════════ ISCRITTI ══════════

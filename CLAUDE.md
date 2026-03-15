@@ -22,7 +22,7 @@ SKILL.md (versione 2.0) e' l'unica fonte di verita' per questo progetto.
 - 2500+ parole, 15+ H2/H3, 35% transition words
 - OGNI dato numerico DEVE avere fonte verificata
 - Zero claim inventati, zero dialetto, tono B2B professionale
-- Prezzi: Base 299€/anno, E-commerce 399€/anno + 3% commissione performance (bloccati)
+- Prezzi: Base 399€/anno, E-commerce 599€/anno + 3% commissione performance (bloccati)
 
 ### Dopo ogni modifica:
 - Aggiornare sitemap.xml se pagine aggiunte/rimosse

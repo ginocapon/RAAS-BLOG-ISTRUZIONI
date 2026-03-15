@@ -63,7 +63,7 @@
         {"@type": "Question","name": "Devo bloccare o permettere i crawler AI nel robots.txt?","acceptedAnswer": {"@type": "Answer","text": "La strategia consigliata nel 2026 è permettere il crawling ai bot AI (GPTBot, Google-Extended, PerplexityBot, ClaudeBot, Applebot-Extended). Se blocchi i crawler AI, il tuo sito non potrà essere citato. È una scelta strategica: visibilità AI vs controllo dei contenuti."}},
         {"@type": "Question","name": "Cos'è il file llms.txt e a cosa serve?","acceptedAnswer": {"@type": "Answer","text": "Il file llms.txt (standard llmstxt.org) è un file di testo nella root del sito che fornisce informazioni strutturate leggibili dalle AI. Include una descrizione del sito, dei servizi e dei contenuti principali. È l'equivalente del robots.txt per comunicare direttamente con le AI."}},
         {"@type": "Question","name": "Quanto traffico generano le citazioni AI nel 2026?","acceptedAnswer": {"@type": "Answer","text": "Secondo Bain & Company, il 60% delle ricerche Google finisce senza click. Tuttavia, il traffico proveniente da citazioni AI converte 23 volte meglio del traffico organico tradizionale (fonte: Agentive Digital). Le citazioni AI portano meno volume ma utenti con intento di acquisto molto più alto."}},
-        {"@type": "Question","name": "Quanto costa implementare una strategia GEO?","acceptedAnswer": {"@type": "Answer","text": "Una strategia GEO base può essere implementata senza costi aggiuntivi: robots.txt, llms.txt, dati strutturati e contenuti ottimizzati. Con RaaS Automazioni, la GEO è inclusa nei pacchetti sito da 299€/anno (Base) e 399€/anno (E-commerce), comprensivi di Schema.org, robots.txt AI e contenuti strutturati per AI."}}
+        {"@type": "Question","name": "Quanto costa implementare una strategia GEO?","acceptedAnswer": {"@type": "Answer","text": "Una strategia GEO base può essere implementata senza costi aggiuntivi: robots.txt, llms.txt, dati strutturati e contenuti ottimizzati. Con RaaS Automazioni, la GEO è inclusa nei pacchetti sito da 399€/anno (Base) e 599€/anno (E-commerce), comprensivi di Schema.org, robots.txt AI e contenuti strutturati per AI."}}
       ]
     }
     </script>
@@ -150,6 +150,18 @@
         code { font-family: 'JetBrains Mono', monospace; background: #f0f0f4; padding: 2px 8px; border-radius: 4px; font-size: 14px; color: var(--accent); }
         pre { background: var(--primary); color: #e0e0e0; padding: 24px; border-radius: 12px; overflow-x: auto; margin: 20px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; }
         @media (max-width: 768px) { .hero { padding: 60px 20px 40px; } .vs-box { grid-template-columns: 1fr; } .vs-center { writing-mode: horizontal-tb; padding: 16px; } .sponsor-grid { grid-template-columns: 1fr; } .hero-meta { flex-direction: column; gap: 8px; } .related-grid { grid-template-columns: 1fr; } }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 </head>
 <body>
@@ -466,8 +478,8 @@ Allow: /</pre>
         <div class="sponsor-grid">
             <div class="sponsor-item"><span class="check">&#10003;</span> robots.txt con whitelist AI bots</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> Schema.org JSON-LD completo</div>
-            <div class="sponsor-item"><span class="check">&#10003;</span> Base 299&#8364;/anno tutto incluso</div>
-            <div class="sponsor-item"><span class="check">&#10003;</span> E-commerce 399&#8364;/anno + 3% commissione</div>
+            <div class="sponsor-item"><span class="check">&#10003;</span> Base 399&#8364;/anno tutto incluso</div>
+            <div class="sponsor-item"><span class="check">&#10003;</span> E-commerce 599&#8364;/anno + 3% commissione</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> llms.txt e file AI configurati</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> Contenuti GEO-ottimizzati</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> PageSpeed 90+ garantito</div>
@@ -488,7 +500,7 @@ Allow: /</pre>
         <div class="faq-item"><div class="faq-question">Devo permettere o bloccare i crawler AI nel robots.txt?</div><div class="faq-answer"><p>La strategia consigliata &egrave; permettere il crawling a GPTBot, Google-Extended, PerplexityBot, ClaudeBot e Applebot-Extended. Bloccarli significa rinunciare alla visibilit&agrave; AI.</p></div></div>
         <div class="faq-item"><div class="faq-question">Cos'&egrave; il file llms.txt?</div><div class="faq-answer"><p>Un file nella root del sito (standard llmstxt.org) che fornisce informazioni strutturate leggibili dalle AI: descrizione azienda, servizi, contatti. &Egrave; l'equivalente del robots.txt per comunicare con le AI.</p></div></div>
         <div class="faq-item"><div class="faq-question">Quanto traffico generano le citazioni AI nel 2026?</div><div class="faq-answer"><p>Il volume &egrave; inferiore al traffico organico tradizionale, ma la qualit&agrave; &egrave; enormemente superiore: il traffico AI converte 23 volte meglio (Agentive Digital). Meno click, ma utenti con intento di acquisto molto pi&ugrave; alto.</p></div></div>
-        <div class="faq-item"><div class="faq-question">Quanto costa implementare una strategia GEO?</div><div class="faq-answer"><p>Una strategia GEO base (robots.txt, llms.txt, Schema.org) &egrave; implementabile senza costi aggiuntivi. Con RaaS Automazioni, la GEO &egrave; inclusa nei pacchetti sito da 299&#8364;/anno (Base) e 399&#8364;/anno (E-commerce).</p></div></div>
+        <div class="faq-item"><div class="faq-question">Quanto costa implementare una strategia GEO?</div><div class="faq-answer"><p>Una strategia GEO base (robots.txt, llms.txt, Schema.org) &egrave; implementabile senza costi aggiuntivi. Con RaaS Automazioni, la GEO &egrave; inclusa nei pacchetti sito da 399&#8364;/anno (Base) e 599&#8364;/anno (E-commerce).</p></div></div>
     </div>
 
     <h2>Fonti Verificate</h2>
@@ -539,6 +551,15 @@ Allow: /</pre>
                 <h4>Come Ottenere 30-50 Lead Qualificati al Mese</h4>
                 <p>SEO locale, landing page e strategie di conversione per PMI italiane.</p>
             </a>
+        </div>
+    </div>
+    <!-- CTA AGGANCIO -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
+            <p class="cta-aggancio-text">Ogni mese aiutiamo PMI italiane a trovare clienti online. Richiedi una <strong>consulenza gratuita personalizzata</strong> sul tuo progetto digitale.</p>
+            <a href="https://www.raasautomazioni.it/#contatti" class="cta-aggancio-btn">RICHIEDI CONSULENZA GRATUITA</a>
+            <span class="cta-aggancio-sub">+ scopri come portare clienti al tuo business</span>
         </div>
     </div>
 </main>

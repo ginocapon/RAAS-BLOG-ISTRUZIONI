@@ -62,7 +62,7 @@
         {"@type": "Question", "name": "Is pure code more secure than WordPress?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. WordPress accounts for 96% of all CMS-related cyberattacks according to Sucuri's 2025 Website Threat Research Report. Pure code websites have no plugins, third-party themes, or exposed databases to exploit."}},
         {"@type": "Question", "name": "How much does a WordPress site really cost per year?", "acceptedAnswer": {"@type": "Answer", "text": "A typical business WordPress site costs 800-1,200 EUR per year in maintenance: hosting, premium theme, plugin licenses, security, backups, and updates. With an agency, Year 1 can exceed 2,000-3,500 EUR."}},
         {"@type": "Question", "name": "Does website speed actually affect Google rankings?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Core Web Vitals have been confirmed ranking factors since June 2021. Google research shows that sites with PageSpeed scores above 90 achieve approximately 24% more SERP visibility."}},
-        {"@type": "Question", "name": "Can I have an e-commerce site without WordPress?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. Pure code e-commerce solutions offer superior performance compared to WooCommerce, especially for catalogs under 500 products. RaaS offers e-commerce packages starting at 399 EUR/year."}},
+        {"@type": "Question", "name": "Can I have an e-commerce site without WordPress?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. Pure code e-commerce solutions offer superior performance compared to WooCommerce, especially for catalogs under 500 products. RaaS offers e-commerce packages starting at 599 EUR/year."}},
         {"@type": "Question", "name": "Is WordPress still the most popular CMS in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "WordPress remains the most-used CMS but its market share is declining: from 43.2% in 2023 to 39.8% in 2025 according to W3Techs. This downward trend reflects growing adoption of lighter, faster alternatives."}},
         {"@type": "Question", "name": "How do I check my website's PageSpeed score?", "acceptedAnswer": {"@type": "Answer", "text": "Use Google PageSpeed Insights at pagespeed.web.dev. Enter your URL and you will receive a score from 0-100 along with specific optimization recommendations for both mobile and desktop."}},
         {"@type": "Question", "name": "What are Core Web Vitals and why do they matter?", "acceptedAnswer": {"@type": "Answer", "text": "Core Web Vitals are three metrics Google uses to measure user experience: LCP (Largest Contentful Paint, under 2.5s), INP (Interaction to Next Paint, under 200ms), and CLS (Cumulative Layout Shift, under 0.1). They directly affect search rankings."}},
@@ -199,6 +199,18 @@
             .stat-grid { grid-template-columns: 1fr; }
             .content h2 { font-size: 22px; }
         }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 </head>
 <body>
@@ -426,12 +438,12 @@
             <tbody>
                 <tr class="highlight-row">
                     <td><strong>RaaS Base (Pure Code)</strong></td>
-                    <td>299&euro;</td>
-                    <td>299&euro;</td>
-                    <td>299&euro;</td>
-                    <td>299&euro;</td>
-                    <td>299&euro;</td>
-                    <td><strong>1,495&euro;</strong></td>
+                    <td>399&euro;</td>
+                    <td>399&euro;</td>
+                    <td>399&euro;</td>
+                    <td>399&euro;</td>
+                    <td>399&euro;</td>
+                    <td><strong>1,995&euro;</strong></td>
                 </tr>
                 <tr>
                     <td><strong>WordPress Agency (Average)</strong></td>
@@ -456,9 +468,9 @@
     </div>
     <p class="table-source">RaaS pricing: raasautomazioni.it — locked for life, no hidden fees. WordPress estimates based on average agency market rates in Europe.</p>
 
-    <h3>6.1 What RaaS Base Includes at 299&euro;/Year</h3>
+    <h3>6.1 What RaaS Base Includes at 399&euro;/Year</h3>
 
-    <p>The RaaS Base package is not a stripped-down offering. For 299&euro; per year — locked for life with no price increases — you receive:</p>
+    <p>The RaaS Base package is not a stripped-down offering. For 399&euro; per year — locked for life with no price increases — you receive:</p>
 
     <ul>
         <li>Professional website in pure code (HTML/CSS/JS)</li>
@@ -470,7 +482,7 @@
         <li>Content updates handled by the technical team</li>
     </ul>
 
-    <p>For e-commerce businesses, the E-commerce package at <strong>399&euro;/year</strong> adds product catalog, shopping cart, payment integration, and order management. Both packages include a <strong>3% performance commission</strong> — meaning RaaS earns only when your site generates measurable results. This alignment of incentives is fundamentally different from the traditional agency model.</p>
+    <p>For e-commerce businesses, the E-commerce package at <strong>599&euro;/year</strong> adds product catalog, shopping cart, payment integration, and order management. Both packages include a <strong>3% performance commission</strong> — meaning RaaS earns only when your site generates measurable results. This alignment of incentives is fundamentally different from the traditional agency model.</p>
 
     <h3>6.2 WordPress Hidden Costs Breakdown</h3>
 
@@ -684,22 +696,22 @@
 
     <p>Traditional web agencies operate on a project-based model: you pay a large upfront fee for development, then ongoing fees for maintenance. The agency's incentive is to build what was specified — not necessarily what performs best for your business.</p>
 
-    <p>RaaS (Revenue as a Service) inverts this model. With a low entry fee of <strong>299&euro;/year for the Base package</strong> (or 399&euro;/year for E-commerce) and a <strong>3% performance commission</strong>, RaaS is financially incentivized to build a site that actually generates business results. If the site does not perform, RaaS does not earn. This alignment of interests is unique in the market.</p>
+    <p>RaaS (Revenue as a Service) inverts this model. With a low entry fee of <strong>599&euro;/year for the Base package</strong> (or 599&euro;/year for E-commerce) and a <strong>3% performance commission</strong>, RaaS is financially incentivized to build a site that actually generates business results. If the site does not perform, RaaS does not earn. This alignment of interests is unique in the market.</p>
 
     <div class="sponsor-box">
         <h3>RaaS Automazioni: We Bring You Clients</h3>
         <p>Your website should not just exist — it should generate revenue. With RaaS, you get a pure code website built for speed, security, and conversions. We earn only when you earn.</p>
         <div class="sponsor-grid">
             <div class="sponsor-item"><span class="check">&#10003;</span> Pure code site, PageSpeed 90+</div>
-            <div class="sponsor-item"><span class="check">&#10003;</span> Base: 299&euro;/year, locked forever</div>
-            <div class="sponsor-item"><span class="check">&#10003;</span> E-commerce: 399&euro;/year</div>
+            <div class="sponsor-item"><span class="check">&#10003;</span> Base: 599&euro;/year, locked forever</div>
+            <div class="sponsor-item"><span class="check">&#10003;</span> E-commerce: 599&euro;/year</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> 3% commission on results only</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> Hosting + SSL included</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> AI chatbot + SEO included</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> Transparent performance dashboard</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> No hidden costs, ever</div>
         </div>
-        <a href="/en/#prezzi" class="sponsor-cta">Get Your Website at 299&euro;/Year &rarr;</a>
+        <a href="/en/#prezzi" class="sponsor-cta">Get Your Website at 399&euro;/Year &rarr;</a>
     </div>
 
     <h2>17. How to Evaluate Your Current Site</h2>
@@ -743,7 +755,7 @@
         <div class="faq-item">
             <div class="faq-question">How much does a WordPress site really cost per year?</div>
             <div class="faq-answer">
-                <p>A typical business WordPress site costs 800-1,200&euro; per year in maintenance: hosting (150-300&euro;), premium theme (50-100&euro;), plugin licenses (200-400&euro;), agency maintenance (300-600&euro;), and emergency fixes (100-300&euro;). Year 1 development adds 2,000-3,500&euro;. Over 5 years, total costs range from 5,200 to 8,300&euro; — compared to 1,495&euro; with RaaS.</p>
+                <p>A typical business WordPress site costs 800-1,200&euro; per year in maintenance: hosting (150-300&euro;), premium theme (50-100&euro;), plugin licenses (200-400&euro;), agency maintenance (300-600&euro;), and emergency fixes (100-300&euro;). Year 1 development adds 2,000-3,500&euro;. Over 5 years, total costs range from 5,200 to 8,300&euro; — compared to 1,995&euro; with RaaS.</p>
             </div>
         </div>
         <div class="faq-item">
@@ -755,7 +767,7 @@
         <div class="faq-item">
             <div class="faq-question">Can I have an e-commerce site without WordPress or WooCommerce?</div>
             <div class="faq-answer">
-                <p>Absolutely. Pure code e-commerce solutions offer superior performance compared to WooCommerce, especially for catalogs under 500 products. RaaS offers a dedicated E-commerce package at 399&euro;/year that includes product catalog, shopping cart, payment integration, and order management — all built in pure code for maximum speed.</p>
+                <p>Absolutely. Pure code e-commerce solutions offer superior performance compared to WooCommerce, especially for catalogs under 500 products. RaaS offers a dedicated E-commerce package at 599&euro;/year that includes product catalog, shopping cart, payment integration, and order management — all built in pure code for maximum speed.</p>
             </div>
         </div>
         <div class="faq-item">
@@ -824,9 +836,18 @@
 
     <p style="margin-top:40px; text-align:center; font-size:15px; color:var(--text-light);">
         <strong>Ready to upgrade your online presence?</strong><br>
-        <a href="/en/#prezzi" style="color:var(--accent); font-weight:700;">Discover RaaS: from 299&euro;/year, pure code, PageSpeed 90+ guaranteed &rarr;</a>
+        <a href="/en/#prezzi" style="color:var(--accent); font-weight:700;">Discover RaaS: from 599&euro;/year, pure code, PageSpeed 90+ guaranteed &rarr;</a>
     </p>
 
+    <!-- CTA HOOK -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Found this useful? <em>Get more!</em></h2>
+            <p class="cta-aggancio-text">Every month we help businesses find clients online. Request a <strong>free personalized consultation</strong> on your digital project.</p>
+            <a href="https://www.raasautomazioni.it/en/#contact" class="cta-aggancio-btn">GET FREE CONSULTATION</a>
+            <span class="cta-aggancio-sub">+ discover how to bring clients to your business</span>
+        </div>
+    </div>
 </main>
 
 <footer class="article-footer">

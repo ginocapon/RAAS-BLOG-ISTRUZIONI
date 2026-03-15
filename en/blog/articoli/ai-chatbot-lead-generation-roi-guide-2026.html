@@ -47,7 +47,7 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type": "Question", "name": "How much does an AI chatbot cost for a small business?", "acceptedAnswer": {"@type": "Answer", "text": "AI chatbot costs vary widely. Standalone platforms like Drift or Intercom range from $50 to $500+ per month depending on features and volume. However, some web agencies like RaaS Automazioni include AI chatbots in their website packages starting at 299 euros per year, making the marginal cost of the chatbot effectively zero."}},
+        {"@type": "Question", "name": "How much does an AI chatbot cost for a small business?", "acceptedAnswer": {"@type": "Answer", "text": "AI chatbot costs vary widely. Standalone platforms like Drift or Intercom range from $50 to $500+ per month depending on features and volume. However, some web agencies like RaaS Automazioni include AI chatbots in their website packages starting at 399 euros per year, making the marginal cost of the chatbot effectively zero."}},
         {"@type": "Question", "name": "What is the average ROI of an AI chatbot for lead generation?", "acceptedAnswer": {"@type": "Answer", "text": "According to Salesforce's State of the Connected Customer report, businesses using AI chatbots see an average 67% increase in lead volume. Drift's 2023 State of Conversational Marketing report found that companies using conversational AI generate leads 1.7 times faster than those relying solely on traditional forms."}},
         {"@type": "Question", "name": "Can AI chatbots replace human sales teams?", "acceptedAnswer": {"@type": "Answer", "text": "No. AI chatbots are best used to augment human sales teams, not replace them. They handle initial qualification, 24/7 availability, and routine queries. According to Intercom's Customer Service Trends report, the most effective model is AI handling first contact and routing qualified leads to human agents for complex conversations."}},
         {"@type": "Question", "name": "How long does it take to see ROI from a lead generation chatbot?", "acceptedAnswer": {"@type": "Answer", "text": "Most businesses see measurable improvements within 30 to 90 days of deployment. According to Drift's research, companies typically see a 10 to 15 percent increase in qualified leads within the first month. Full ROI realization, including optimization and learning from conversation data, usually occurs within 3 to 6 months."}},
@@ -175,6 +175,18 @@
             .table-wrapper { font-size: 14px; }
             .table-wrapper th, .table-wrapper td { padding: 10px 12px; }
         }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 </head>
 <body>
@@ -303,7 +315,7 @@
 
     <h3>The Integrated Approach: Chatbot as Part of Your Website</h3>
 
-    <p>A more cost-effective strategy is choosing a web provider that includes AI chatbot functionality in their standard offering. This eliminates the separate subscription cost entirely. For example, RaaS Automazioni includes a fully configured AI chatbot in their Base website package at 299&#8364;/year, making the incremental cost of the chatbot effectively zero.</p>
+    <p>A more cost-effective strategy is choosing a web provider that includes AI chatbot functionality in their standard offering. This eliminates the separate subscription cost entirely. For example, RaaS Automazioni includes a fully configured AI chatbot in their Base website package at 599&#8364;/year, making the incremental cost of the chatbot effectively zero.</p>
 
     <div class="table-wrapper">
         <table>
@@ -311,11 +323,11 @@
                 <tr><th>Cost Component</th><th>Standalone Platform</th><th>Integrated (e.g., RaaS)</th></tr>
             </thead>
             <tbody>
-                <tr><td><strong>Monthly platform fee</strong></td><td>$39 - $2,500+/month</td><td>Included in 299&#8364;/year</td></tr>
-                <tr><td><strong>Annual cost</strong></td><td>$468 - $30,000+</td><td>299&#8364; total</td></tr>
+                <tr><td><strong>Monthly platform fee</strong></td><td>$39 - $2,500+/month</td><td>Included in 599&#8364;/year</td></tr>
+                <tr><td><strong>Annual cost</strong></td><td>$468 - $30,000+</td><td>399&#8364; total</td></tr>
                 <tr><td><strong>Setup and customization</strong></td><td>$500 - $5,000</td><td>Included</td></tr>
                 <tr><td><strong>Ongoing maintenance</strong></td><td>$100 - $500/month</td><td>Included</td></tr>
-                <tr class="highlight-row"><td><strong>5-year total cost</strong></td><td>$8,340 - $210,000+</td><td>1,495&#8364;</td></tr>
+                <tr class="highlight-row"><td><strong>5-year total cost</strong></td><td>$8,340 - $210,000+</td><td>1,995&#8364;</td></tr>
             </tbody>
         </table>
     </div>
@@ -443,7 +455,7 @@
                 <tr><td><strong>Mid-Range (Intercom)</strong></td><td>$1,200 - $6,000</td><td>Medium</td><td><span class="vs-badge vs-yes">Good</span></td><td>Growing SaaS, tech companies</td></tr>
                 <tr><td><strong>Budget Standalone (Tidio)</strong></td><td>$348 - $948</td><td>Low</td><td><span class="vs-badge vs-partial">Moderate</span></td><td>E-commerce, simple lead capture</td></tr>
                 <tr><td><strong>Free Tools (HubSpot Free)</strong></td><td>$0</td><td>Low</td><td><span class="vs-badge vs-partial">Basic</span></td><td>Startups, testing the concept</td></tr>
-                <tr class="highlight-row"><td><strong>Integrated Website (RaaS)</strong></td><td>299&#8364;</td><td>None (included)</td><td><span class="vs-badge vs-yes">Good</span></td><td>SMBs, local businesses, services</td></tr>
+                <tr class="highlight-row"><td><strong>Integrated Website (RaaS)</strong></td><td>399&#8364;</td><td>None (included)</td><td><span class="vs-badge vs-yes">Good</span></td><td>SMBs, local businesses, services</td></tr>
             </tbody>
         </table>
     </div>
@@ -488,7 +500,7 @@
             <div class="sponsor-item"><span class="check">&#10003;</span> Pure code, zero WordPress bloat</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> Performance-based: we earn when you earn</div>
         </div>
-        <p style="font-size:15px; margin-top:16px;"><strong style="color:#fff;">Base plan: 299&#8364;/year</strong> &mdash; E-commerce: 399&#8364;/year + 3% performance commission on generated revenue.</p>
+        <p style="font-size:15px; margin-top:16px;"><strong style="color:#fff;">Base plan: 599&#8364;/year</strong> &mdash; E-commerce: 599&#8364;/year + 3% performance commission on generated revenue.</p>
         <a href="https://www.raasautomazioni.it/en/#contact" class="sponsor-cta">Get Your Free Chatbot Consultation &#8594;</a>
     </div>
 
@@ -533,7 +545,7 @@
     <div class="faq-section">
         <div class="faq-item">
             <div class="faq-question">How much does an AI chatbot cost for a small business?</div>
-            <div class="faq-answer"><p>AI chatbot costs vary widely. Standalone platforms like Drift or Intercom range from $50 to $500+ per month depending on features and volume. However, some web agencies like RaaS Automazioni include AI chatbots in their website packages starting at 299 euros per year, making the marginal cost of the chatbot effectively zero.</p></div>
+            <div class="faq-answer"><p>AI chatbot costs vary widely. Standalone platforms like Drift or Intercom range from $50 to $500+ per month depending on features and volume. However, some web agencies like RaaS Automazioni include AI chatbots in their website packages starting at 399 euros per year, making the marginal cost of the chatbot effectively zero.</p></div>
         </div>
         <div class="faq-item">
             <div class="faq-question">What is the average ROI of an AI chatbot for lead generation?</div>
@@ -610,6 +622,15 @@
         </ul>
     </div>
 
+    <!-- CTA HOOK -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Found this useful? <em>Get more!</em></h2>
+            <p class="cta-aggancio-text">Every month we help businesses find clients online. Request a <strong>free personalized consultation</strong> on your digital project.</p>
+            <a href="https://www.raasautomazioni.it/en/#contact" class="cta-aggancio-btn">GET FREE CONSULTATION</a>
+            <span class="cta-aggancio-sub">+ discover how to bring clients to your business</span>
+        </div>
+    </div>
 </main>
 
 <footer class="blog-footer">

@@ -48,7 +48,7 @@
       "@type": "FAQPage",
       "mainEntity": [
         {"@type": "Question", "name": "What is the average ROI of AI automation for small businesses?", "acceptedAnswer": {"@type": "Answer", "text": "According to McKinsey's 2025 Global AI Survey, companies that have fully adopted AI report an average profit margin increase of 20% or more. For small businesses specifically, IBM's 2024 Global AI Adoption Index found that 30% of IT professionals at companies using AI automation reported reduced labor costs, while 36% reported revenue increases directly attributed to AI."}},
-        {"@type": "Question", "name": "How much does AI automation cost for a small business?", "acceptedAnswer": {"@type": "Answer", "text": "AI automation costs for small businesses vary widely. Basic chatbot and email automation tools range from $20-$200 per month. Workflow automation platforms like Zapier or Make cost $20-$100 per month. Custom AI solutions can range from $5,000-$50,000 for implementation. Performance-based models like RaaS Automazioni offer entry from 299 euros per year with a 3% commission on generated revenue."}},
+        {"@type": "Question", "name": "How much does AI automation cost for a small business?", "acceptedAnswer": {"@type": "Answer", "text": "AI automation costs for small businesses vary widely. Basic chatbot and email automation tools range from $20-$200 per month. Workflow automation platforms like Zapier or Make cost $20-$100 per month. Custom AI solutions can range from $5,000-$50,000 for implementation. Performance-based models like RaaS Automazioni offer entry from 399 euros per year with a 3% commission on generated revenue."}},
         {"@type": "Question", "name": "Which business processes should SMBs automate first?", "acceptedAnswer": {"@type": "Answer", "text": "According to Salesforce's State of IT report, the highest-impact areas for initial automation are customer service inquiries (saving 30-50% of agent time), email marketing sequences, invoice and payment processing, lead qualification and scoring, and appointment scheduling. Start with repetitive, rules-based tasks that consume significant employee hours."}},
         {"@type": "Question", "name": "How long does it take to see ROI from AI automation?", "acceptedAnswer": {"@type": "Answer", "text": "Most small businesses see measurable ROI within 3-6 months of implementing AI automation. McKinsey's research indicates that 72% of organizations now adopt AI in at least one business function, and those that deploy AI in marketing and sales report the fastest returns. Simple automations like chatbots and email sequences can show results within weeks."}},
         {"@type": "Question", "name": "Can AI automation replace employees in small businesses?", "acceptedAnswer": {"@type": "Answer", "text": "AI automation is most effective as an augmentation tool rather than a replacement. According to IBM's AI Adoption Index, 43% of companies use AI to reduce manual or repetitive tasks, freeing employees for higher-value work. The World Economic Forum estimates AI will create 97 million new roles by 2025 while displacing 85 million, resulting in a net positive for employment."}},
@@ -179,6 +179,18 @@
             .table-wrapper th, .table-wrapper td { padding: 10px 12px; }
             .case-study-box .cs-results { grid-template-columns: 1fr; }
         }
+            /* CTA AGGANCIO */
+        .cta-aggancio { background: #e63946; color: white; padding: 56px 24px; margin: 48px -24px 0; text-align: center; position: relative; overflow: hidden; }
+        .cta-aggancio::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%); border-radius: 50%; }
+        .cta-aggancio::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(0,0,0,0.08), transparent 70%); border-radius: 50%; }
+        .cta-aggancio-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .cta-aggancio-title { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .cta-aggancio-title em { font-style: italic; color: #f4a261; }
+        .cta-aggancio-text { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 28px; }
+        .cta-aggancio-text strong { color: white; }
+        .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+        .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
     </style>
 </head>
 <body>
@@ -388,7 +400,7 @@
                 <tr class="highlight-row"><td><strong>AI Content Tools</strong></td><td>ChatGPT, Jasper, Copy.ai</td><td>$0-$100</td><td>Content drafts, copy</td><td>Immediate</td></tr>
                 <tr><td><strong>Accounting AI</strong></td><td>QuickBooks, Xero, FreshBooks</td><td>$15-$80</td><td>Invoicing, expenses</td><td>1-2 weeks</td></tr>
                 <tr><td><strong>Scheduling AI</strong></td><td>Calendly, Reclaim.ai</td><td>$0-$20</td><td>Meetings, availability</td><td>1 day</td></tr>
-                <tr><td><strong>Performance-Based</strong></td><td>RaaS Automazioni</td><td>From 299&#8364;/year</td><td>Full website + AI + leads</td><td>2-4 weeks</td></tr>
+                <tr><td><strong>Performance-Based</strong></td><td>RaaS Automazioni</td><td>From 599&#8364;/year</td><td>Full website + AI + leads</td><td>2-4 weeks</td></tr>
             </tbody>
         </table>
     </div>
@@ -411,7 +423,7 @@
             <div class="sponsor-item"><span class="check">&#10003;</span> Pure code, zero WordPress bloat</div>
             <div class="sponsor-item"><span class="check">&#10003;</span> Performance-based: we earn when you earn</div>
         </div>
-        <p style="font-size:15px; margin-top:16px;"><strong style="color:#fff;">Base plan: 299&#8364;/year</strong> &mdash; E-commerce: 399&#8364;/year + 3% performance commission on generated revenue.</p>
+        <p style="font-size:15px; margin-top:16px;"><strong style="color:#fff;">Base plan: 599&#8364;/year</strong> &mdash; E-commerce: 599&#8364;/year + 3% performance commission on generated revenue.</p>
         <a href="https://www.raasautomazioni.it/en/#contact" class="sponsor-cta">Get Your Free AI Automation Audit &#8594;</a>
     </div>
 
@@ -516,7 +528,7 @@
         </div>
         <div class="faq-item">
             <div class="faq-question">How much does AI automation cost for a small business?</div>
-            <div class="faq-answer"><p>AI automation costs for small businesses vary by scope. Basic chatbot and email automation tools range from $20-$200 per month. Workflow automation platforms cost $20-$100 per month. Custom AI solutions range from $5,000-$50,000 for implementation. Performance-based models like RaaS Automazioni offer entry from 299 euros per year with a 3% commission on generated revenue, aligning costs with results.</p></div>
+            <div class="faq-answer"><p>AI automation costs for small businesses vary by scope. Basic chatbot and email automation tools range from $20-$200 per month. Workflow automation platforms cost $20-$100 per month. Custom AI solutions range from $5,000-$50,000 for implementation. Performance-based models like RaaS Automazioni offer entry from 399 euros per year with a 3% commission on generated revenue, aligning costs with results.</p></div>
         </div>
         <div class="faq-item">
             <div class="faq-question">Which business processes should SMBs automate first?</div>
@@ -536,7 +548,7 @@
         </div>
         <div class="faq-item">
             <div class="faq-question">Is AI automation affordable for businesses with fewer than 10 employees?</div>
-            <div class="faq-answer"><p>Yes. The cost of AI automation tools has decreased dramatically. Free or low-cost options include ChatGPT for content creation, Zapier free tier for basic automations, and built-in AI features in platforms like Google Workspace. Performance-based models like RaaS Automazioni eliminate upfront risk by tying costs directly to measurable results, starting from 299 euros per year.</p></div>
+            <div class="faq-answer"><p>Yes. The cost of AI automation tools has decreased dramatically. Free or low-cost options include ChatGPT for content creation, Zapier free tier for basic automations, and built-in AI features in platforms like Google Workspace. Performance-based models like RaaS Automazioni eliminate upfront risk by tying costs directly to measurable results, starting from 399 euros per year.</p></div>
         </div>
         <div class="faq-item">
             <div class="faq-question">How do I measure AI automation ROI accurately?</div>
@@ -588,6 +600,15 @@
 
     <p style="margin-top: 32px; font-size: 13px; color: var(--text-light);"><em>Last updated: March 15, 2026. All statistics verified from published sources. For automation consulting tailored to your business, <a href="https://www.raasautomazioni.it/en/#contact">contact RaaS Automazioni</a>.</em></p>
 
+    <!-- CTA HOOK -->
+    <div class="cta-aggancio">
+        <div class="cta-aggancio-inner">
+            <h2 class="cta-aggancio-title">Found this useful? <em>Get more!</em></h2>
+            <p class="cta-aggancio-text">Every month we help businesses find clients online. Request a <strong>free personalized consultation</strong> on your digital project.</p>
+            <a href="https://www.raasautomazioni.it/en/#contact" class="cta-aggancio-btn">GET FREE CONSULTATION</a>
+            <span class="cta-aggancio-sub">+ discover how to bring clients to your business</span>
+        </div>
+    </div>
 </main>
 
 <footer class="blog-footer">
