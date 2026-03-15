@@ -3,7 +3,7 @@
 
   <!-- RAAS AUTOMAZIONI - IT -->
   <url><loc>https://www.raasautomazioni.it/</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.raasautomazioni.it/blog</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.raasautomazioni.it/blog</loc><lastmod>2026-03-15</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.raasautomazioni.it/bandi</loc><lastmod>2026-03-13</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.raasautomazioni.it/privacy</loc><lastmod>2026-02-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://www.raasautomazioni.it/cookie</loc><lastmod>2026-02-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
@@ -22,6 +22,27 @@
   <url><loc>https://www.raasautomazioni.it/blog/articoli/codice-puro-vs-wordpress-2026</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/blog/articoli/lead-generation-30-50-lead-mese-2026</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/blog/articoli/pagespeed-95-guida-ottimizzazione-2026</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/blog/articoli/geo-generative-engine-optimization-guida-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/blog/articoli/revenue-as-a-service-modello-web-agency-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/blog/articoli/lead-generation-automatizzata-pmi-guida-roi-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/blog/articoli/bandi-digitalizzazione-pmi-italia-2026-guida</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/blog/articoli/core-web-vitals-fatturato-velocita-conversioni-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- BLOG EN (NUOVI) -->
+  <url><loc>https://www.raasautomazioni.it/en/blog/articoli/revenue-as-a-service-performance-based-web-agency-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/en/blog/articoli/ai-chatbot-lead-generation-roi-guide-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/en/blog/articoli/static-website-vs-wordpress-speed-security-seo-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/en/blog/articoli/performance-based-web-design-pricing-guide-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/en/blog/articoli/ai-automation-roi-small-business-case-studies-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- LANDING PAGES IT -->
+  <url><loc>https://www.raasautomazioni.it/landing-lead-generation</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.raasautomazioni.it/landing-bandi-digitalizzazione</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- LANDING PAGES EN -->
+  <url><loc>https://www.raasautomazioni.it/en/landing-revenue-as-a-service</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.raasautomazioni.it/en/landing-ai-lead-generation</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.raasautomazioni.it/en/landing-performance-web-design</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- PLAYZONE HOMEPAGE -->
   <url><loc>https://www.raasautomazioni.it/playzone/</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
