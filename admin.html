@@ -2782,33 +2782,58 @@ async function runManutenzioneFallback(tipo = 'manuale') {
 
     const tuttiBandiNuovi = [];
 
-    // Fetch con retry per ogni fonte
+    // CORS proxy per aggirare il blocco CORS delle API governative
+    // allorigins.win restituisce JSON: { contents: "...", status: { ... } }
+    const CORS_PROXIES = [
+      (url) => 'https://api.allorigins.win/get?url=' + encodeURIComponent(url),
+      (url) => 'https://corsproxy.io/?' + encodeURIComponent(url),
+    ];
+
+    async function fetchViaCorsProxy(url) {
+      // Prima prova diretto (nel caso l'API supporti CORS)
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 10000);
+        const res = await fetch(url, { headers: { 'Accept': 'application/json' }, signal: controller.signal });
+        clearTimeout(timeout);
+        if (res.ok) return await res.text();
+      } catch {}
+
+      // Poi prova con i CORS proxy
+      for (const proxyFn of CORS_PROXIES) {
+        try {
+          const proxyUrl = proxyFn(url);
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 15000);
+          const res = await fetch(proxyUrl, { signal: controller.signal });
+          clearTimeout(timeout);
+          if (res.ok) {
+            const data = await res.json();
+            // allorigins restituisce { contents: "..." }
+            if (data.contents) return data.contents;
+            // corsproxy.io restituisce il body diretto
+            return JSON.stringify(data);
+          }
+        } catch {}
+      }
+      return null;
+    }
+
+    // Fetch per ogni fonte (con pausa per non sovraccaricare i proxy)
     for (let fi = 0; fi < FONTI_API.length; fi++) {
       const fonte = FONTI_API[fi];
       setProgress(10 + Math.round((fi / FONTI_API.length) * 30), 'Interrogo ' + fonte.nome + '...');
       addLog('  Interrogo ' + fonte.nome + '...');
-      let body = null;
-      for (let attempt = 0; attempt < 3; attempt++) {
-        try {
-          const controller = new AbortController();
-          const timeout = setTimeout(() => controller.abort(), 15000);
-          const res = await fetch(fonte.url, {
-            headers: { 'Accept': 'application/json' },
-            signal: controller.signal
-          });
-          clearTimeout(timeout);
-          if (res.ok) { body = await res.text(); break; }
-        } catch (e) {
-          if (attempt < 2) await new Promise(r => setTimeout(r, Math.pow(2, attempt) * 1000));
-        }
-      }
+      const body = await fetchViaCorsProxy(fonte.url);
       if (body) {
         const parsed = parseIncentiviResponse(body, fonte);
         addLog('    Trovati ' + parsed.length + ' bandi');
         tuttiBandiNuovi.push(...parsed);
       } else {
-        addLog('    Fonte non raggiungibile (possibile blocco CORS)');
+        addLog('    Fonte non raggiungibile');
       }
+      // Pausa 800ms tra le richieste per non sovraccaricare i proxy
+      if (fi < FONTI_API.length - 1) await new Promise(r => setTimeout(r, 800));
     }
 
     addLog('  Totale bandi trovati dalle API: ' + tuttiBandiNuovi.length);
