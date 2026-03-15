@@ -402,6 +402,47 @@ select.filter-select {
   font-size: 0.85rem;
 }
 .btn-icon:hover { border-color: var(--oro); background: var(--oro3); }
+a.btn-icon { text-decoration: none; color: var(--testo); }
+.actions-cell { white-space: nowrap; display: flex; gap: 4px; align-items: center; }
+
+/* PREVIEW OVERLAY */
+.preview-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9000;
+  padding: 16px;
+}
+.preview-card {
+  background: var(--bianco);
+  border-radius: 16px;
+  width: 100%; max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+}
+.preview-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #eee;
+}
+.preview-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--testo); flex: 1; margin-right: 12px; }
+.preview-close {
+  width: 36px; height: 36px;
+  border: none; background: #f0f0f0;
+  border-radius: 50%; font-size: 1.4rem;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--grigio); transition: all 0.2s; flex-shrink: 0;
+}
+.preview-close:hover { background: var(--rosso); color: white; }
+.preview-body { padding: 20px 24px 24px; }
+.preview-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.preview-meta-item { display: flex; flex-direction: column; gap: 2px; }
+.preview-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--grigio); font-weight: 600; }
+.preview-meta-item span:last-child { font-size: 0.88rem; font-weight: 500; }
+.preview-desc { background: #f8f8f5; border-radius: 10px; padding: 16px; }
+.preview-desc strong { font-size: 0.78rem; text-transform: uppercase; color: var(--grigio); letter-spacing: 0.3px; display: block; margin-bottom: 8px; }
+.preview-desc p { font-size: 0.88rem; line-height: 1.6; color: var(--testo); }
 
 /* FORMS */
 .form-grid {
@@ -663,6 +704,11 @@ select.filter-select {
   .card { padding: 16px; }
   #sec-analytics > div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr; }
   #sec-analytics .card div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr; }
+  .data-table th:nth-child(2), .data-table td:nth-child(2),
+  .data-table th:nth-child(4), .data-table td:nth-child(4),
+  .data-table th:nth-child(5), .data-table td:nth-child(5) { display: none; }
+  .actions-cell { flex-wrap: wrap; }
+  .preview-meta { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .login-box { padding: 32px 24px; margin: 16px; }
@@ -946,6 +992,7 @@ select.filter-select {
                 <th>Regione</th>
                 <th>Importo Max</th>
                 <th>Tipo</th>
+                <th>Creato il</th>
                 <th>Scadenza</th>
                 <th>Stato</th>
                 <th>Azioni</th>
@@ -1513,7 +1560,11 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const EDGE_FN_URL = SUPABASE_URL + '/functions/v1/send-email';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const PAGE_SIZE = 20;
+const PAGE_SIZE_DESKTOP = 20;
+const PAGE_SIZE_MOBILE = 8;
+function getPageSize() { return window.innerWidth <= 768 ? PAGE_SIZE_MOBILE : PAGE_SIZE_DESKTOP; }
+let PAGE_SIZE = getPageSize();
+window.addEventListener('resize', () => { const newSize = getPageSize(); if (newSize !== PAGE_SIZE) { PAGE_SIZE = newSize; } });
 let bandiPage = 1, bandiTotal = 0, allBandiCache = [];
 let iscrittiPage = 1, iscrittiTotal = 0, allIscrittiCache = [];
 let bandiSearchTimer = null, iscrittiSearchTimer = null;
@@ -1717,32 +1768,86 @@ async function loadBandiAdmin() {
 function renderBandiTable() {
   const tbody = document.getElementById('tbodyBandi');
   if (allBandiCache.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="8" style="color:var(--grigio);text-align:center;">Nessun bando trovato</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="9" style="color:var(--grigio);text-align:center;">Nessun bando trovato</td></tr>';
     return;
   }
   const oggi = new Date();
   tbody.innerHTML = allBandiCache.map(b => {
     const scad = b.scadenza ? new Date(b.scadenza) : null;
     const giorni = scad ? Math.ceil((scad - oggi) / 86400000) : 999;
+    const creato = b.created_at ? new Date(b.created_at).toLocaleDateString('it-IT') : '-';
     let statusBadge = '';
     if (!b.attivo) statusBadge = '<span class="badge scaduto">Disattivo</span>';
     else if (giorni < 0) statusBadge = '<span class="badge scaduto">Scaduto</span>';
     else if (giorni <= 7) statusBadge = '<span class="badge in-scadenza">In Scadenza</span>';
     else statusBadge = '<span class="badge attivo">Attivo</span>';
+    const linkUrl = b.url || b.link || '';
     return `<tr>
       <td style="max-width:250px;"><strong>${esc(b.titolo)}</strong></td>
       <td>${esc(b.ente || '-')}</td>
       <td>${esc(b.regione || 'Nazionale')}</td>
       <td>${b.importo_max ? '€' + Number(b.importo_max).toLocaleString('it-IT') : '-'}</td>
       <td>${esc(b.tipo_contributo || '-')}</td>
+      <td>${creato}</td>
       <td>${scad ? scad.toLocaleDateString('it-IT') : '-'}</td>
       <td>${statusBadge}</td>
-      <td>
-        <button class="btn-icon" title="Modifica" onclick="editBando(${b.id})">&#9998;</button>
-        <button class="btn-icon" title="Elimina" onclick="confirmDeleteBando(${b.id},'${esc(b.titolo)}')">&#128465;</button>
+      <td class="actions-cell">
+        <button class="btn-icon" title="Anteprima" onclick="previewBando(${b.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+        <button class="btn-icon" title="Modifica" onclick="editBando(${b.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></button>
+        <button class="btn-icon" title="Elimina" onclick="confirmDeleteBando(${b.id},'${esc(b.titolo)}')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
+        ${linkUrl ? `<a class="btn-icon" title="Apri nel browser" href="${esc(linkUrl)}" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>` : ''}
       </td>
     </tr>`;
   }).join('');
+}
+
+// ══════════ ANTEPRIMA BANDO ══════════
+async function previewBando(id) {
+  try {
+    const bando = allBandiCache.find(b => b.id === id);
+    if (!bando) {
+      const { data, error } = await sb.from('bandi').select('*').eq('id', id).single();
+      if (error) throw error;
+      showBandoPreview(data);
+    } else {
+      showBandoPreview(bando);
+    }
+  } catch (e) {
+    toast('Errore caricamento anteprima', 'error');
+  }
+}
+
+function showBandoPreview(b) {
+  const scad = b.scadenza ? new Date(b.scadenza).toLocaleDateString('it-IT') : 'Non specificata';
+  const creato = b.created_at ? new Date(b.created_at).toLocaleDateString('it-IT') : '-';
+  const importo = b.importo_max ? '€' + Number(b.importo_max).toLocaleString('it-IT') : 'Non specificato';
+  const linkUrl = b.url || b.link || '';
+  const overlay = document.createElement('div');
+  overlay.className = 'preview-overlay';
+  overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+  overlay.innerHTML = `
+    <div class="preview-card">
+      <div class="preview-header">
+        <h3>${esc(b.titolo)}</h3>
+        <button class="preview-close" onclick="this.closest('.preview-overlay').remove()">&times;</button>
+      </div>
+      <div class="preview-body">
+        <div class="preview-meta">
+          <div class="preview-meta-item"><span class="preview-label">Ente</span><span>${esc(b.ente || '-')}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Regione</span><span>${esc(b.regione || 'Nazionale')}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Importo Max</span><span>${importo}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Tipo</span><span>${esc(b.tipo_contributo || '-')}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Settore</span><span>${esc(b.settore || '-')}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Scadenza</span><span>${scad}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Creato il</span><span>${creato}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Stato</span><span>${b.attivo !== false ? 'Attivo' : 'Disattivo'}</span></div>
+        </div>
+        ${b.descrizione ? `<div class="preview-desc"><strong>Descrizione:</strong><p>${esc(b.descrizione)}</p></div>` : ''}
+        ${linkUrl ? `<a href="${esc(linkUrl)}" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:16px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Apri Bando Originale</a>` : ''}
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
 }
 
 async function saveBando(e) {
