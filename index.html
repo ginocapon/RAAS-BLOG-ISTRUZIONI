@@ -2647,10 +2647,10 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
             .video-showcase{background:linear-gradient(180deg,#0e2240 0%,#1a2f47 40%,#1a2f47 60%,var(--bg) 100%);padding:4rem 0 3rem;overflow:hidden;position:relative;}
 
             /* Container relativo: la foto fa da cornice, il video si sovrappone */
-            .video-wrap{position:relative;max-width:1050px;margin:0 auto;display:flex;align-items:center;min-height:420px;}
+            .video-wrap{position:relative;max-width:1050px;margin:0 auto;display:flex;align-items:flex-end;min-height:420px;}
 
             /* Foto grande — occupa il lato sinistro e fa da sfondo/cornice */
-            .video-img-wrap{position:relative;z-index:2;width:680px;flex-shrink:0;}
+            .video-img-wrap{position:relative;z-index:2;width:680px;flex-shrink:0;max-height:420px;overflow:hidden;}
             .video-img-wrap img{display:block;width:100%;height:auto;object-fit:cover;}
 
             /* Video — sovrapposto, entra nella zona della foto */
