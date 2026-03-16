@@ -223,6 +223,23 @@ body {
   font-size: 0.8rem;
   color: var(--grigio);
 }
+.btn-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--oro);
+  color: var(--nero);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-home:hover { opacity: 0.85; }
+.btn-home svg { flex-shrink: 0; }
 #adminBurger {
   display: none;
   background: none;
@@ -815,6 +832,10 @@ a.btn-icon { text-decoration: none; color: var(--testo); }
       <h2 id="topbarTitle">Dashboard</h2>
     </div>
     <div class="topbar-right">
+      <a href="https://www.raasautomazioni.it" target="_blank" rel="noopener" class="btn-home" title="Vai al sito">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        Home
+      </a>
       <span id="topbarDate"></span>
     </div>
   </div>
@@ -1115,6 +1136,7 @@ a.btn-icon { text-decoration: none; color: var(--testo); }
                 <th>Titolo</th>
                 <th>Lingua</th>
                 <th>Creato il</th>
+                <th>Ultima Modifica</th>
                 <th>Azioni</th>
               </tr>
             </thead>
@@ -2010,28 +2032,28 @@ function resetBandoForm() {
 
 // ══════════ ARTICOLI BLOG ══════════
 const ARTICOLI_BLOG = [
-  { id: 1, titolo: '5 Automazioni che Fanno Risparmiare 20 Ore alla Settimana', lingua: 'it', url: '/blog/articoli/5-automazioni-risparmiare-20-ore-settimana(1).html', data: '2026-02-15' },
-  { id: 2, titolo: 'Bandi Digitalizzazione PMI Italia 2026: Guida Completa ai Finanziamenti', lingua: 'it', url: '/blog/articoli/bandi-digitalizzazione-pmi-italia-2026-guida.html', data: '2026-03-08' },
-  { id: 3, titolo: 'Bandi e Finanziamenti Imprese Emilia-Romagna 2026: Guida Completa', lingua: 'it', url: '/blog/articoli/bandi-imprese-emilia-romagna-2026-guida.html', data: '2026-03-10' },
-  { id: 4, titolo: 'Codice Puro vs WordPress 2026: La Verita\' su Performance e Costi', lingua: 'it', url: '/blog/articoli/codice-puro-vs-wordpress-2026.html', data: '2026-01-20' },
-  { id: 5, titolo: 'Core Web Vitals e Fatturato: Come la Velocita\' del Sito Impatta le Conversioni', lingua: 'it', url: '/blog/articoli/core-web-vitals-fatturato-velocita-conversioni-2026.html', data: '2026-03-12' },
-  { id: 6, titolo: 'GEO: Generative Engine Optimization — Guida Completa', lingua: 'it', url: '/blog/articoli/geo-generative-engine-optimization-guida-2026.html', data: '2026-03-05' },
-  { id: 7, titolo: 'Lead Generation 2026: Come Ottenere 30-50 Lead Qualificati al Mese', lingua: 'it', url: '/blog/articoli/lead-generation-30-50-lead-mese-2026.html', data: '2026-01-28' },
-  { id: 8, titolo: 'Come Ottenere 50 Lead Qualificati al Mese con l\'Automazione', lingua: 'it', url: '/blog/articoli/lead-generation-50-lead-qualificati-automazione.html', data: '2026-02-10' },
-  { id: 9, titolo: 'Lead Generation Automatizzata per PMI: Guida Completa al ROI nel 2026', lingua: 'it', url: '/blog/articoli/lead-generation-automatizzata-pmi-guida-roi-2026.html', data: '2026-03-06' },
-  { id: 10, titolo: 'Perche\' il Tuo Sito Deve Avere PageSpeed 90+: Dati e ROI', lingua: 'it', url: '/blog/articoli/pagespeed-95-dati-roi.html', data: '2026-02-05' },
-  { id: 11, titolo: 'PageSpeed 90+: Guida Completa all\'Ottimizzazione nel 2026', lingua: 'it', url: '/blog/articoli/pagespeed-95-guida-ottimizzazione-2026.html', data: '2026-02-01' },
-  { id: 12, titolo: 'Revenue as a Service: Il Modello che Sta Rivoluzionando le Web Agency nel 2026', lingua: 'it', url: '/blog/articoli/revenue-as-a-service-modello-web-agency-2026.html', data: '2026-03-01' },
-  { id: 13, titolo: 'Da Sito Vetrina a Macchina di Business: La Trasformazione in 90 Giorni', lingua: 'it', url: '/blog/articoli/sito-vetrina-macchina-business-90-giorni.html', data: '2026-02-20' },
-  { id: 14, titolo: 'AI Automation ROI for Small Business: Case Studies and Strategies', lingua: 'en', url: '/en/blog/articoli/ai-automation-roi-small-business-case-studies-2026.html', data: '2026-03-10' },
-  { id: 15, titolo: 'AI Chatbot Lead Generation: The Complete ROI Guide for 2026', lingua: 'en', url: '/en/blog/articoli/ai-chatbot-lead-generation-roi-guide-2026.html', data: '2026-03-08' },
-  { id: 16, titolo: 'AI-Powered Lead Generation for Small Businesses: Guide 2026', lingua: 'en', url: '/en/blog/articoli/ai-lead-generation-small-business-2026.html', data: '2026-02-15' },
-  { id: 17, titolo: 'GEO: Generative Engine Optimization — The Complete Guide', lingua: 'en', url: '/en/blog/articoli/geo-generative-engine-optimization-guide-2026.html', data: '2026-03-05' },
-  { id: 18, titolo: 'Performance-Based Marketing: Why Revenue Share Models Win in 2026', lingua: 'en', url: '/en/blog/articoli/performance-based-marketing-revenue-share-model-2026.html', data: '2026-02-25' },
-  { id: 19, titolo: 'Performance-Based Web Design Pricing: A Complete Guide for 2026', lingua: 'en', url: '/en/blog/articoli/performance-based-web-design-pricing-guide-2026.html', data: '2026-03-12' },
-  { id: 20, titolo: 'Revenue as a Service: The Performance-Based Web Agency Model', lingua: 'en', url: '/en/blog/articoli/revenue-as-a-service-performance-based-web-agency-2026.html', data: '2026-03-01' },
-  { id: 21, titolo: 'Static Websites vs WordPress: Speed, Security and SEO in 2026', lingua: 'en', url: '/en/blog/articoli/static-website-vs-wordpress-speed-security-seo-2026.html', data: '2026-03-06' },
-  { id: 22, titolo: 'Website Speed, SEO, and ROI: Why Pure Code Beats WordPress in 2026', lingua: 'en', url: '/en/blog/articoli/website-speed-seo-roi-pure-code-vs-wordpress-2026.html', data: '2026-02-10' }
+  { id: 1, titolo: '5 Automazioni che Fanno Risparmiare 20 Ore alla Settimana', lingua: 'it', url: '/blog/articoli/5-automazioni-risparmiare-20-ore-settimana(1).html', data: '2026-02-15', modificato: '2026-03-16' },
+  { id: 2, titolo: 'Bandi Digitalizzazione PMI Italia 2026: Guida Completa ai Finanziamenti', lingua: 'it', url: '/blog/articoli/bandi-digitalizzazione-pmi-italia-2026-guida.html', data: '2026-03-08', modificato: '2026-03-16' },
+  { id: 3, titolo: 'Bandi e Finanziamenti Imprese Emilia-Romagna 2026: Guida Completa', lingua: 'it', url: '/blog/articoli/bandi-imprese-emilia-romagna-2026-guida.html', data: '2026-03-10', modificato: '2026-03-16' },
+  { id: 4, titolo: 'Codice Puro vs WordPress 2026: La Verita\' su Performance e Costi', lingua: 'it', url: '/blog/articoli/codice-puro-vs-wordpress-2026.html', data: '2026-01-20', modificato: '2026-01-20' },
+  { id: 5, titolo: 'Core Web Vitals e Fatturato: Come la Velocita\' del Sito Impatta le Conversioni', lingua: 'it', url: '/blog/articoli/core-web-vitals-fatturato-velocita-conversioni-2026.html', data: '2026-03-12', modificato: '2026-03-16' },
+  { id: 6, titolo: 'GEO: Generative Engine Optimization — Guida Completa', lingua: 'it', url: '/blog/articoli/geo-generative-engine-optimization-guida-2026.html', data: '2026-03-05', modificato: '2026-03-16' },
+  { id: 7, titolo: 'Lead Generation 2026: Come Ottenere 30-50 Lead Qualificati al Mese', lingua: 'it', url: '/blog/articoli/lead-generation-30-50-lead-mese-2026.html', data: '2026-01-28', modificato: '2026-01-28' },
+  { id: 8, titolo: 'Come Ottenere 50 Lead Qualificati al Mese con l\'Automazione', lingua: 'it', url: '/blog/articoli/lead-generation-50-lead-qualificati-automazione.html', data: '2026-02-10', modificato: '2026-03-16' },
+  { id: 9, titolo: 'Lead Generation Automatizzata per PMI: Guida Completa al ROI nel 2026', lingua: 'it', url: '/blog/articoli/lead-generation-automatizzata-pmi-guida-roi-2026.html', data: '2026-03-06', modificato: '2026-03-16' },
+  { id: 10, titolo: 'Perche\' il Tuo Sito Deve Avere PageSpeed 90+: Dati e ROI', lingua: 'it', url: '/blog/articoli/pagespeed-95-dati-roi.html', data: '2026-02-05', modificato: '2026-03-16' },
+  { id: 11, titolo: 'PageSpeed 90+: Guida Completa all\'Ottimizzazione nel 2026', lingua: 'it', url: '/blog/articoli/pagespeed-95-guida-ottimizzazione-2026.html', data: '2026-02-01', modificato: '2026-03-16' },
+  { id: 12, titolo: 'Revenue as a Service: Il Modello che Sta Rivoluzionando le Web Agency nel 2026', lingua: 'it', url: '/blog/articoli/revenue-as-a-service-modello-web-agency-2026.html', data: '2026-03-01', modificato: '2026-03-16' },
+  { id: 13, titolo: 'Da Sito Vetrina a Macchina di Business: La Trasformazione in 90 Giorni', lingua: 'it', url: '/blog/articoli/sito-vetrina-macchina-business-90-giorni.html', data: '2026-02-20', modificato: '2026-03-16' },
+  { id: 14, titolo: 'AI Automation ROI for Small Business: Case Studies and Strategies', lingua: 'en', url: '/en/blog/articoli/ai-automation-roi-small-business-case-studies-2026.html', data: '2026-03-10', modificato: '2026-03-10' },
+  { id: 15, titolo: 'AI Chatbot Lead Generation: The Complete ROI Guide for 2026', lingua: 'en', url: '/en/blog/articoli/ai-chatbot-lead-generation-roi-guide-2026.html', data: '2026-03-08', modificato: '2026-03-08' },
+  { id: 16, titolo: 'AI-Powered Lead Generation for Small Businesses: Guide 2026', lingua: 'en', url: '/en/blog/articoli/ai-lead-generation-small-business-2026.html', data: '2026-02-15', modificato: '2026-02-15' },
+  { id: 17, titolo: 'GEO: Generative Engine Optimization — The Complete Guide', lingua: 'en', url: '/en/blog/articoli/geo-generative-engine-optimization-guide-2026.html', data: '2026-03-05', modificato: '2026-03-05' },
+  { id: 18, titolo: 'Performance-Based Marketing: Why Revenue Share Models Win in 2026', lingua: 'en', url: '/en/blog/articoli/performance-based-marketing-revenue-share-model-2026.html', data: '2026-02-25', modificato: '2026-02-25' },
+  { id: 19, titolo: 'Performance-Based Web Design Pricing: A Complete Guide for 2026', lingua: 'en', url: '/en/blog/articoli/performance-based-web-design-pricing-guide-2026.html', data: '2026-03-12', modificato: '2026-03-12' },
+  { id: 20, titolo: 'Revenue as a Service: The Performance-Based Web Agency Model', lingua: 'en', url: '/en/blog/articoli/revenue-as-a-service-performance-based-web-agency-2026.html', data: '2026-03-01', modificato: '2026-03-01' },
+  { id: 21, titolo: 'Static Websites vs WordPress: Speed, Security and SEO in 2026', lingua: 'en', url: '/en/blog/articoli/static-website-vs-wordpress-speed-security-seo-2026.html', data: '2026-03-06', modificato: '2026-03-06' },
+  { id: 22, titolo: 'Website Speed, SEO, and ROI: Why Pure Code Beats WordPress in 2026', lingua: 'en', url: '/en/blog/articoli/website-speed-seo-roi-pure-code-vs-wordpress-2026.html', data: '2026-02-10', modificato: '2026-02-10' }
 ];
 
 let articoliPage = 1;
@@ -2078,11 +2100,12 @@ function loadArticoliBlog() {
 function renderArticoliTable(articoli, total) {
   const tbody = document.getElementById('tbodyArticoli');
   if (articoli.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="4" style="color:var(--grigio);text-align:center;">Nessun articolo trovato</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="5" style="color:var(--grigio);text-align:center;">Nessun articolo trovato</td></tr>';
     return;
   }
   tbody.innerHTML = articoli.map(a => {
     const dataFormatted = new Date(a.data).toLocaleDateString('it-IT');
+    const modFormatted = a.modificato ? new Date(a.modificato).toLocaleDateString('it-IT') : dataFormatted;
     const linguaBadge = a.lingua === 'it'
       ? '<span class="badge attivo">IT</span>'
       : '<span class="badge paid">EN</span>';
@@ -2091,6 +2114,7 @@ function renderArticoliTable(articoli, total) {
       <td style="max-width:320px;"><strong>${esc(a.titolo)}</strong></td>
       <td>${linguaBadge}</td>
       <td>${dataFormatted}</td>
+      <td>${modFormatted}</td>
       <td class="actions-cell">
         <button class="btn-icon" title="Anteprima" onclick="previewArticolo(${a.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
         <button class="btn-icon" title="Modifica" onclick="editArticolo(${a.id})"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></button>
@@ -2128,6 +2152,7 @@ function previewArticolo(id) {
   if (!a) return;
   const fullUrl = 'https://www.raasautomazioni.it' + a.url;
   const dataFormatted = new Date(a.data).toLocaleDateString('it-IT');
+  const modFormatted = a.modificato ? new Date(a.modificato).toLocaleDateString('it-IT') : dataFormatted;
   const overlay = document.createElement('div');
   overlay.className = 'preview-overlay';
   overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
@@ -2138,9 +2163,10 @@ function previewArticolo(id) {
         <button class="preview-close" onclick="this.closest('.preview-overlay').remove()">&times;</button>
       </div>
       <div class="preview-body">
-        <div class="preview-meta" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:16px;">
+        <div class="preview-meta" style="grid-template-columns:1fr 1fr 1fr 1fr;margin-bottom:16px;">
           <div class="preview-meta-item"><span class="preview-label">Lingua</span><span>${a.lingua === 'it' ? 'Italiano' : 'English'}</span></div>
           <div class="preview-meta-item"><span class="preview-label">Pubblicato</span><span>${dataFormatted}</span></div>
+          <div class="preview-meta-item"><span class="preview-label">Ultima Modifica</span><span>${modFormatted}</span></div>
           <div class="preview-meta-item"><span class="preview-label">URL</span><span style="font-size:0.75rem;word-break:break-all;">${a.url}</span></div>
         </div>
         <div style="border:1px solid #eee;border-radius:10px;overflow:hidden;height:400px;">
