@@ -135,7 +135,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 - Garanzia PageSpeed 90+
 - Prezzo sito bloccato per sempre (anti-rincaro)
 - SEO + GEO (Generative Engine Optimization)
-- Aggregatore bandi: monitoraggio 150+ fonti ufficiali
+- Aggregatore bandi: monitoraggio 55+ fonti dirette ufficiali
 - Automazioni business
 - Sito bilingue IT/EN
 
@@ -146,7 +146,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 ├── SKILL.md                    # Questo file — unica fonte di verita'
 ├── index.html                  # Homepage (hero, servizi, prezzi, FAQ, stats)
 ├── blog.html                   # Pagina blog principale
-├── bandi.html                  # Aggregatore bandi (150+ fonti ufficiali)
+├── bandi.html                  # Aggregatore bandi (55+ fonti dirette ufficiali)
 ├── landing.html                # Landing page conversione bandi
 ├── postapremium.html           # Posta premium
 ├── brobot.html                 # Chatbot/assistente
@@ -212,29 +212,88 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 | Componente | Dettaglio |
 |---|---|
 | **Scraper** | `tools/scrape-bandi.js` — scraping da fonti ufficiali |
+| **Edge Function** | `supabase/functions/manutenzione-bandi/index.ts` — 55+ fonti, anti-plagio descrizioni |
 | **Verificatore** | `tools/verify-links-perplexity.js` — Claude + Perplexity sonar-pro |
 | **Sync** | `tools/sync-bandi.js` — sincronizzazione con Supabase |
 | **Cron** | GitHub Actions ogni lunedi 08:00 UTC |
 | **API Keys** | `ANTHROPIC_API_KEY` + `PERPLEXITY_API_KEY` (GitHub Secrets) |
+| **Anti-plagio** | Titoli riformattati ("Ente — Descrizione"), descrizioni riscritte con sinonimi + riordino frasi |
+
+### 2.9 Strumenti Scraping e Automazione (Riferimenti)
+
+**Tool di scraping web:**
+| Strumento | Punti di Forza | URL |
+|---|---|---|
+| **Octoparse** | Scraping AI, parallelizzazione massiva, siti dinamici | https://www.octoparse.ai |
+| **NoCoding Data Scraper** | Estrazione HTML in Excel/Sheets, RPA browser | Chrome Web Store |
+| **ZeroWork** | Builder drag-and-drop, anti-bot, AI lead gen | https://www.toolmage.com/en/tool/zerowork/ |
+
+**Piattaforme automazione:**
+| Piattaforma | Punti di Forza | URL |
+|---|---|---|
+| **UiPath** | Drag-and-drop, AI/ML, #1 su G2 (4.6/5, 7000+ recensioni) | https://www.uipath.com |
+| **Automation Anywhere** | Cloud-native, bot AI-powered, analytics avanzati | https://www.automationanywhere.com |
+| **Microsoft Power Automate** | Integrazione Office 365, low-code, scalabile | https://powerautomate.microsoft.com |
+| **Zapier** | 5000+ integrazioni, trigger/actions, no-code puro | https://zapier.com |
 
 ---
 
 ## 3. STATO SEO E PERFORMANCE — PUNTEGGIO SITO
 
-> Audit verificato: 15 Marzo 2026
+> Audit verificato: 16 Marzo 2026
 
 | Area | Punteggio | Note |
 |---|---|---|
-| SEO on-page | **8/10** | Schema.org presente, migliorabile con LocalBusiness specifico |
-| Schema.org | **7/10** | Organization + FAQPage + Service OK, manca AggregateRating |
-| Contenuti/Blog | **7/10** | 7 articoli IT + 4 EN, cluster da espandere |
+| SEO on-page | **9/10** | Schema LocalBusiness + AggregateRating + og:image + twitter card |
+| Schema.org | **9/10** | LocalBusiness, FAQPage, Service, AggregateRating, BlogPosting, WebSite |
+| Contenuti/Blog | **7/10** | 13 articoli IT + 9 EN, cluster da espandere |
 | GEO/AEO | **8/10** | robots.txt AI bots OK, llms.txt presente, format GEO su articoli |
 | Core Web Vitals | **8/10** | Codice puro = veloce, target LCP <2s da raggiungere |
-| Bandi Aggregatore | **9/10** | 150+ fonti, verifica AI link, filtri avanzati |
+| Bandi Aggregatore | **9/10** | 55+ fonti dirette, anti-plagio descrizioni, verifica AI link |
 | Pannello Admin | **8/10** | Dashboard, analytics, CRUD bandi, email, newsletter |
-| Sito Bilingue | **7/10** | IT completo, EN homepage + 4 articoli |
+| Sito Bilingue | **7/10** | IT completo, EN homepage + articoli |
 | Domain Authority | **4/10** | Problema #1 — backlink da costruire |
-| **TOTALE** | **7.3/10** | Buona base tecnica, contenuti e DA da migliorare |
+| **TOTALE** | **7.7/10** | Schema eccellente, contenuti e DA da migliorare |
+
+### 3.1 Analisi Competitor — Marzo 2026
+
+**Competitor italiani diretti:**
+| Competitor | Modello | Prezzo | Differenziatore |
+|---|---|---|---|
+| SitoAutomatico | Abbonamento | 9,90-49€/mese | Semplicita', prezzo basso |
+| Italiaonline | Consulenza + fee | 500-10.000€ | Brand awareness, rete fisica |
+| PerformAd | Performance-based | 0€ sviluppo | Zero costi fissi |
+| Valentino Mea | Pay per Lead/Sale | 1.500€ + performance | Modelli flessibili |
+
+**Competitor esteri (WaaS):**
+| Competitor | Modello | Prezzo | Differenziatore |
+|---|---|---|---|
+| Wix | Abbonamento | 17-159$/mese | 15+ tool AI, DA altissimo |
+| Squarespace | Abbonamento | 16-99$/mese | Design premium, AI builder |
+| Duda | Per agenzie | 19-149$/mese | White label, Core Web Vitals #1 |
+| Always Fresh | WaaS subscription | 300-2000$/mese | Managed service |
+
+**GAP critici da colmare:**
+1. Creare profilo Trustpilot (recensioni esterne)
+2. Pagina "Chi Siamo" dedicata (/chi-siamo) — E-E-A-T
+3. Case study dettagliati con numeri reali
+4. Backlink building: Sortlist, Clutch, DesignRush, guest posting
+5. Contenuto "Website as a Service Italia" (zero competitor IT)
+
+**Keyword ad alto potenziale (bassa competizione):**
+- "website as a service Italia" — zero risultati IT
+- "web agency performance based Italia" — solo 2-3 player
+- "sito web prezzo fisso annuale" — nessun competitor
+- "dashboard clienti web agency" — zero concorrenza
+- "aggregatore bandi fondo perduto" — differenziatore unico
+- "bandi digitalizzazione [regione] 2026" — 18 regioni da coprire
+
+**Nuove pagine da creare (priorita'):**
+1. /chi-siamo — Team, storia, Person schema (E-E-A-T)
+2. /website-as-a-service — Intercettare trend WaaS
+3. /confronto-prezzi-web-agency-2026 — Pagina comparativa
+4. /case-study — Risultati clienti con numeri
+5. Serie blog "Bandi [Regione] 2026" — 18 articoli regionali
 
 ---
 

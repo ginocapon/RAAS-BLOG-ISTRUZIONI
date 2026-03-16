@@ -195,6 +195,67 @@ interface Bando {
   data_inserimento: string;
 }
 
+// ══════════ RISCRITTURA ANTI-PLAGIO DESCRIZIONI ══════════
+// I testi dei bandi vengono leggermente rielaborati per evitare contenuto duplicato.
+// Strategia: riordina frasi, sostituisci sinonimi comuni, aggiungi contesto fonte.
+const SINONIMI: [RegExp, string][] = [
+  [/\bè possibile\b/gi, "si può"],
+  [/\bal fine di\b/gi, "per"],
+  [/\bfinalizzato a\b/gi, "mirato a"],
+  [/\bnell'ambito di\b/gi, "nel contesto di"],
+  [/\battraverso\b/gi, "tramite"],
+  [/\bcontributo a fondo perduto\b/gi, "finanziamento non rimborsabile"],
+  [/\bfinanziamento agevolato\b/gi, "prestito a condizioni vantaggiose"],
+  [/\bpossono beneficiare\b/gi, "possono accedere"],
+  [/\bpossono presentare domanda\b/gi, "possono fare richiesta"],
+  [/\bla misura prevede\b/gi, "l'intervento include"],
+  [/\bil bando prevede\b/gi, "l'avviso contempla"],
+  [/\bsoggetti beneficiari\b/gi, "destinatari"],
+  [/\brisorse disponibili\b/gi, "dotazione finanziaria"],
+  [/\bpresentazione delle domande\b/gi, "invio delle richieste"],
+  [/\bspese ammissibili\b/gi, "costi finanziabili"],
+  [/\bintensità dell'aiuto\b/gi, "quota di contributo"],
+  [/\bregime de minimis\b/gi, "regime de minimis (aiuti minori)"],
+  [/\bPMI\b/g, "piccole e medie imprese"],
+  [/\bstart-?up\b/gi, "nuove imprese innovative"],
+  [/\bdigitalizzazione\b/gi, "trasformazione digitale"],
+  [/\binnovazione tecnologica\b/gi, "sviluppo tecnologico"],
+  [/\btransizione ecologica\b/gi, "sostenibilità ambientale"],
+  [/\bcompetitività\b/gi, "capacità competitiva"],
+];
+
+function riscriviDescrizione(desc: string, fonte: FonteBandi): string {
+  if (!desc || desc.length < 20) return desc;
+
+  let testo = desc;
+
+  // 1. Applica sostituzione sinonimi (alterna: applica solo in base a hash del testo per variare)
+  const hash = testo.length + testo.charCodeAt(0);
+  SINONIMI.forEach(([pattern, replacement], idx) => {
+    // Applica ~60% dei sinonimi, variando per ogni bando
+    if ((hash + idx) % 5 !== 0) {
+      testo = testo.replace(pattern, replacement);
+    }
+  });
+
+  // 2. Se ci sono più frasi, riordina leggermente (sposta la prima frase dopo la seconda)
+  const frasi = testo.split(/(?<=\.)\s+/).filter(f => f.length > 10);
+  if (frasi.length >= 3) {
+    // Scambia prima e seconda frase per variare struttura
+    const temp = frasi[0];
+    frasi[0] = frasi[1];
+    frasi[1] = temp;
+    testo = frasi.join(" ");
+  }
+
+  // 3. Aggiungi nota fonte se non presente
+  if (!testo.includes("Fonte:") && fonte.ente) {
+    testo = testo.replace(/\.\s*$/, "") + `. Fonte: ${fonte.ente}.`;
+  }
+
+  return testo;
+}
+
 // ══════════ PARSER INCENTIVI.GOV.IT (JSON) ══════════
 function parseIncentiviGov(body: string, fonte: FonteBandi): Bando[] {
   try {
@@ -209,9 +270,11 @@ function parseIncentiviGov(body: string, fonte: FonteBandi): Bando[] {
           ? titolo.replace(" - ", " — ")
           : titolo;
 
+      const descOriginale = item.descrizione || item.abstract || "";
+
       return {
         titolo: titoloFormattato,
-        descrizione: item.descrizione || item.abstract || "",
+        descrizione: riscriviDescrizione(descOriginale, fonte),
         ente: item.ente_erogatore || item.ente || fonte.ente,
         regione: item.regione || fonte.regione,
         importo_max: item.contributo_max || item.importo_max || null,
@@ -250,9 +313,11 @@ function parseCsv(body: string, fonte: FonteBandi): Bando[] {
 
       const titoloFormattato = titolo.includes("—") ? titolo : titolo.includes(" - ") ? titolo.replace(" - ", " — ") : titolo;
 
+      const descCsv = row["descrizione"] || row["abstract"] || "";
+
       bandi.push({
         titolo: titoloFormattato,
-        descrizione: row["descrizione"] || row["abstract"] || "",
+        descrizione: riscriviDescrizione(descCsv, fonte),
         ente: row["ente_erogatore"] || row["ente"] || fonte.ente,
         regione: row["regione"] || fonte.regione,
         importo_max: parseFloat(row["importo_max"] || row["contributo_max"] || "") || null,
