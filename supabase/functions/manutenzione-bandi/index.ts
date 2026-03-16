@@ -1,9 +1,9 @@
-// Supabase Edge Function — Manutenzione completa bandi v3.0
+// Supabase Edge Function — Manutenzione completa bandi v4.0
 // Deploy: supabase functions deploy manutenzione-bandi
 // Env vars richieste: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY (automatiche in Supabase)
 //
 // Ciclo completo:
-// 1. Cerca nuovi bandi da 30+ fonti ufficiali (incentivi.gov.it, portali regionali, enti nazionali, UE)
+// 1. Cerca nuovi bandi da 55+ fonti ufficiali (incentivi.gov.it, portali regionali, enti nazionali, CCIAA, aggregatori, UE)
 // 2. Scraping HTML per portali senza API (regioni, CCIAA, Invitalia, SIMEST)
 // 3. Deduplica contro DB esistente
 // 4. Inserisce nuovi bandi
@@ -11,8 +11,9 @@
 // 6. Rimuove duplicati
 // 7. Verifica formato titoli e link
 //
-// Fonti coperte: MIMIT, MUR, MASE, MASAF, Invitalia, SIMEST, INAIL, SACE,
-//   20 Regioni, 105+ CCIAA, incentivi.gov.it, RNA, OpenCoesione, Horizon Europe, COSME, LIFE
+// Fonti coperte: MIMIT, MUR, MASE, MASAF, Invitalia, SIMEST, INAIL, SACE, InPA,
+//   20 Regioni + 2 Province Autonome, 105+ CCIAA, incentivi.gov.it, RNA, OpenCoesione,
+//   Horizon Europe, COSME, LIFE, 8+ aggregatori nazionali (bandi.it, telemat, bandiweb, finera, ecc.)
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
@@ -23,7 +24,7 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
-// ══════════ FONTI BANDI — 30+ FONTI UFFICIALI ══════════
+// ══════════ FONTI BANDI — 55+ FONTI UFFICIALI ══════════
 // Tipo: "json" = risposta JSON con parser generico
 //       "html" = scraping HTML di pagine bandi
 //       "csv"  = file CSV open data
@@ -44,6 +45,7 @@ const FONTI: FonteBandi[] = [
   { id: "incentivi_gov_1", nome: "Incentivi.gov.it — Tutti gli attivi", url: "https://www.incentivi.gov.it/it/api/incentivi?stato=attivo&limit=200", tipo: "json", regione: "Nazionale", ente: "MIMIT", tipo_ente: "ministero" },
   { id: "incentivi_gov_2", nome: "Incentivi.gov.it — Imprese", url: "https://www.incentivi.gov.it/it/api/incentivi?beneficiari=imprese&stato=attivo&limit=200", tipo: "json", regione: "Nazionale", ente: "MIMIT", tipo_ente: "ministero" },
   { id: "incentivi_gov_3", nome: "Incentivi.gov.it — Professionisti", url: "https://www.incentivi.gov.it/it/api/incentivi?beneficiari=professionisti&stato=attivo&limit=100", tipo: "json", regione: "Nazionale", ente: "MIMIT", tipo_ente: "ministero" },
+  { id: "incentivi_gov_apertura", nome: "Incentivi.gov.it — In Apertura", url: "https://www.incentivi.gov.it/it/api/incentivi?stato=in_apertura&limit=200", tipo: "json", regione: "Nazionale", ente: "MIMIT", tipo_ente: "ministero" },
   { id: "incentivi_gov_csv", nome: "Incentivi.gov.it — Open Data CSV", url: "https://www.incentivi.gov.it/sites/default/files/open-data/opendata-export.csv", tipo: "csv", regione: "Nazionale", ente: "MIMIT", tipo_ente: "ministero" },
 
   // ═══ ENTI NAZIONALI ═══
@@ -52,6 +54,7 @@ const FONTI: FonteBandi[] = [
   { id: "simest", nome: "SIMEST — Finanziamenti Agevolati", url: "https://www.simest.it/prodotti-e-servizi", tipo: "html", regione: "Nazionale", ente: "SIMEST", tipo_ente: "ente_nazionale" },
   { id: "inail", nome: "INAIL — Bandi ISI", url: "https://www.inail.it/cs/internet/attivita/prevenzione-e-sicurezza/agevolazioni-e-finanziamenti.html", tipo: "html", regione: "Nazionale", ente: "INAIL", tipo_ente: "ente_nazionale" },
   { id: "sace", nome: "SACE — Prodotti", url: "https://www.sace.it/soluzioni", tipo: "html", regione: "Nazionale", ente: "SACE", tipo_ente: "ente_nazionale" },
+  { id: "inpa", nome: "InPA — Portale Reclutamento PA", url: "https://www.inpa.gov.it", tipo: "html", regione: "Nazionale", ente: "InPA", tipo_ente: "ente_nazionale" },
 
   // ═══ MINISTERI ═══
   { id: "mimit_bandi", nome: "MIMIT — Bandi e Gare", url: "https://www.mimit.gov.it/it/incentivi", tipo: "html", regione: "Nazionale", ente: "MIMIT", tipo_ente: "ministero" },
@@ -60,12 +63,21 @@ const FONTI: FonteBandi[] = [
 
   // ═══ PORTALI AGGREGATORI ═══
   { id: "opencoesione", nome: "OpenCoesione — Progetti", url: "https://opencoesione.gov.it/api/progetti.json?stato_progetto=in_corso&limit=100", tipo: "json", regione: "Nazionale", ente: "OpenCoesione", tipo_ente: "ente_nazionale" },
+  { id: "bandicameredicommercio", nome: "BandiCamereDiCommercio.it — Aggregatore CCIAA", url: "https://www.bandicameredicommercio.it/bandi-e-contributi", tipo: "html", regione: "Nazionale", ente: "BandiCamereDiCommercio", tipo_ente: "cciaa" },
+  { id: "bandi_it", nome: "Bandi.it — Aggregatore Nazionale", url: "https://bandi.it", tipo: "html", regione: "Nazionale", ente: "Bandi.it", tipo_ente: "ente_nazionale" },
+  { id: "contributieuropa", nome: "ContributiEuropa — Tutti i Bandi", url: "https://www.contributieuropa.com/tuttibandi/", tipo: "html", regione: "Nazionale", ente: "ContributiEuropa", tipo_ente: "ente_nazionale" },
+  { id: "telemat", nome: "Telemat — Gare per Regione", url: "https://www.telemat.it/gare-in-italia/gare-per-regione/", tipo: "html", regione: "Nazionale", ente: "Telemat", tipo_ente: "ente_nazionale" },
+  { id: "banchedati_biz", nome: "BancheDati.biz — Bandi di Gara", url: "https://www.banchedati.biz/bandi-di-gara/", tipo: "html", regione: "Nazionale", ente: "BancheDati", tipo_ente: "ente_nazionale" },
+  { id: "finera", nome: "Finera — Finanza Agevolata", url: "https://finera.it/articoli/finanza-agevolata/la-guida-definitiva-ai-bandi-regionali/", tipo: "html", regione: "Nazionale", ente: "Finera", tipo_ente: "ente_nazionale" },
+  { id: "bandiweb", nome: "BandiWeb.it — Aggregatore", url: "https://bandiweb.it", tipo: "html", regione: "Nazionale", ente: "BandiWeb", tipo_ente: "ente_nazionale" },
+  { id: "infobandi_csvnet", nome: "InfoBandi CSVnet — Bandi Attivi", url: "https://infobandi.csvnet.it/home/bandi-attivi/", tipo: "html", regione: "Nazionale", ente: "CSVnet", tipo_ente: "ente_nazionale" },
 
-  // ═══ 20 REGIONI ITALIANE ═══
+  // ═══ 20 REGIONI ITALIANE + PROVINCE AUTONOME ═══
   { id: "reg_piemonte", nome: "Regione Piemonte", url: "https://bandi.regione.piemonte.it/contributi-finanziamenti", tipo: "html", regione: "Piemonte", ente: "Regione Piemonte", tipo_ente: "regione" },
   { id: "reg_vda", nome: "Regione Valle d'Aosta", url: "https://www.regione.vda.it/finanze/finanziamenti_i.aspx", tipo: "html", regione: "Valle d'Aosta", ente: "Regione Valle d'Aosta", tipo_ente: "regione" },
   { id: "reg_lombardia", nome: "Regione Lombardia", url: "https://www.bandi.regione.lombardia.it/procedimenti/new/bandi/bandi", tipo: "html", regione: "Lombardia", ente: "Regione Lombardia", tipo_ente: "regione" },
   { id: "reg_taa", nome: "Provincia Autonoma Trento", url: "https://www.provincia.tn.it/Servizi/Contributi-e-agevolazioni", tipo: "html", regione: "Trentino-Alto Adige", ente: "Provincia Autonoma Trento", tipo_ente: "regione" },
+  { id: "reg_bolzano", nome: "Provincia Autonoma Bolzano", url: "https://www.provincia.bz.it/economia-finanze/economia/contributi-agevolazioni.asp", tipo: "html", regione: "Trentino-Alto Adige", ente: "Provincia Autonoma Bolzano", tipo_ente: "regione" },
   { id: "reg_veneto", nome: "Regione Veneto", url: "https://bandi.regione.veneto.it/Public/Elenco?Tipo=1", tipo: "html", regione: "Veneto", ente: "Regione Veneto", tipo_ente: "regione" },
   { id: "reg_fvg", nome: "Regione Friuli Venezia Giulia", url: "https://www.regione.fvg.it/rafvg/cms/RAFVG/economia-imprese/incentivi-contributi/", tipo: "html", regione: "Friuli Venezia Giulia", ente: "Regione FVG", tipo_ente: "regione" },
   { id: "reg_liguria", nome: "Regione Liguria", url: "https://www.regione.liguria.it/homepage/economia/bandi-e-contributi.html", tipo: "html", regione: "Liguria", ente: "Regione Liguria", tipo_ente: "regione" },
@@ -85,9 +97,24 @@ const FONTI: FonteBandi[] = [
   { id: "reg_sicilia", nome: "Regione Sicilia", url: "https://pti.regione.sicilia.it/portal/page/portal/PIR_PORTALE", tipo: "html", regione: "Sicilia", ente: "Regione Sicilia", tipo_ente: "regione" },
   { id: "reg_sardegna", nome: "Regione Sardegna", url: "https://www.regione.sardegna.it/argomenti/imprese/contributi-finanziamenti-incentivi", tipo: "html", regione: "Sardegna", ente: "Regione Sardegna", tipo_ente: "regione" },
 
-  // ═══ CAMERE DI COMMERCIO (aggregatori) ═══
+  // ═══ CAMERE DI COMMERCIO (aggregatori + singole CCIAA) ═══
   { id: "cciaa_unioncamere", nome: "Unioncamere — Bandi PID", url: "https://www.unioncamere.gov.it/comunicazione/primo-piano", tipo: "html", regione: "Nazionale", ente: "Unioncamere", tipo_ente: "cciaa" },
+  { id: "cciaa_unioncamere_concorso", nome: "Unioncamere — Bandi di Concorso", url: "https://www.unioncamere.gov.it/amministrazione-trasparente/bandi-di-concorso", tipo: "html", regione: "Nazionale", ente: "Unioncamere", tipo_ente: "cciaa" },
+  { id: "cciaa_unioncamere_gare", nome: "Unioncamere — Gare e Contratti", url: "https://www.unioncamere.gov.it/amministrazione-trasparente/bandi-di-gara-e-contratti", tipo: "html", regione: "Nazionale", ente: "Unioncamere", tipo_ente: "cciaa" },
   { id: "cciaa_contributiregione", nome: "ContributiRegione.it — Aggregatore", url: "https://bandi.contributiregione.it/", tipo: "html", regione: "Nazionale", ente: "ContributiRegione", tipo_ente: "cciaa" },
+  { id: "cciaa_treviso_belluno", nome: "CCIAA Treviso-Belluno", url: "https://www.tb.camcom.gov.it/bandi", tipo: "html", regione: "Veneto", ente: "CCIAA Treviso-Belluno", tipo_ente: "cciaa" },
+  { id: "cciaa_vicenza", nome: "CCIAA Vicenza", url: "https://www.vi.camcom.it/it/servizi/contributi-e-finanziamenti.html", tipo: "html", regione: "Veneto", ente: "CCIAA Vicenza", tipo_ente: "cciaa" },
+  { id: "cciaa_verona", nome: "CCIAA Verona", url: "https://www.vr.camcom.it/it/content/bandi-e-contributi", tipo: "html", regione: "Veneto", ente: "CCIAA Verona", tipo_ente: "cciaa" },
+  { id: "cciaa_padova", nome: "CCIAA Padova", url: "https://www.pd.camcom.it/bandi-contributi-e-finanziamenti", tipo: "html", regione: "Veneto", ente: "CCIAA Padova", tipo_ente: "cciaa" },
+  { id: "cciaa_venezia_rovigo", nome: "CCIAA Venezia Rovigo", url: "https://www.dl.camcom.it/bandi-e-contributi", tipo: "html", regione: "Veneto", ente: "CCIAA Venezia Rovigo", tipo_ente: "cciaa" },
+  { id: "cciaa_cosenza", nome: "CCIAA Cosenza", url: "https://www.cs.camcom.gov.it/it/content/service/avvisi-e-bandi-della-camera", tipo: "html", regione: "Calabria", ente: "CCIAA Cosenza", tipo_ente: "cciaa" },
+  { id: "cciaa_milano", nome: "CCIAA Milano", url: "https://www.milomb.camcom.it/bandi-e-contributi", tipo: "html", regione: "Lombardia", ente: "CCIAA Milano", tipo_ente: "cciaa" },
+  { id: "cciaa_roma", nome: "CCIAA Roma", url: "https://www.rm.camcom.it/pagina1816_bandi-e-avvisi.html", tipo: "html", regione: "Lazio", ente: "CCIAA Roma", tipo_ente: "cciaa" },
+  { id: "cciaa_torino", nome: "CCIAA Torino", url: "https://www.to.camcom.it/bandi-e-contributi", tipo: "html", regione: "Piemonte", ente: "CCIAA Torino", tipo_ente: "cciaa" },
+  { id: "cciaa_napoli", nome: "CCIAA Napoli", url: "https://www.na.camcom.gov.it/bandi-e-avvisi", tipo: "html", regione: "Campania", ente: "CCIAA Napoli", tipo_ente: "cciaa" },
+  { id: "cciaa_bari", nome: "CCIAA Bari", url: "https://www.ba.camcom.it/attivit%C3%A0/bandi-e-avvisi", tipo: "html", regione: "Puglia", ente: "CCIAA Bari", tipo_ente: "cciaa" },
+  { id: "cciaa_firenze", nome: "CCIAA Firenze", url: "https://www.fi.camcom.gov.it/bandi-e-contributi", tipo: "html", regione: "Toscana", ente: "CCIAA Firenze", tipo_ente: "cciaa" },
+  { id: "cciaa_bologna", nome: "CCIAA Bologna", url: "https://www.bo.camcom.gov.it/it/opportunita-e-bandi", tipo: "html", regione: "Emilia-Romagna", ente: "CCIAA Bologna", tipo_ente: "cciaa" },
 
   // ═══ FONDI UE ═══
   { id: "eu_horizon", nome: "Horizon Europe — Calls Open", url: "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals?status=31094501,31094502&programmePart=43108390", tipo: "html", regione: "Nazionale", ente: "Commissione Europea", tipo_ente: "ue" },
@@ -385,8 +412,8 @@ Deno.serve(async (req: Request) => {
     addLog("Ricerca nuovi bandi dalle fonti ufficiali...");
     const tuttiBandiNuovi: Bando[] = [];
 
-    // Processa fonti in batch paralleli (5 alla volta) per rispettare timeout Edge Function
-    const BATCH_SIZE = 5;
+    // Processa fonti in batch paralleli (8 alla volta) per massima efficienza
+    const BATCH_SIZE = 8;
     for (let b = 0; b < FONTI.length; b += BATCH_SIZE) {
       const batch = FONTI.slice(b, b + BATCH_SIZE);
       const results = await Promise.allSettled(
