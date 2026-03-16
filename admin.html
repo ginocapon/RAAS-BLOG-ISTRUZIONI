@@ -689,6 +689,24 @@ a.btn-icon { text-decoration: none; color: var(--testo); }
   max-width: 100%;
   height: auto;
 }
+.wa-chart-tab {
+  padding: 6px 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: var(--sfondo);
+  color: var(--testo);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.wa-chart-tab:hover { border-color: var(--oro); }
+.wa-chart-tab.active {
+  background: var(--oro);
+  color: var(--nero);
+  border-color: var(--oro);
+  font-weight: 700;
+}
 #anIscrittiLegend .legend-item {
   display: flex;
   align-items: center;
@@ -1534,11 +1552,14 @@ a.btn-icon { text-decoration: none; color: var(--testo); }
       <div class="card" style="margin-top:20px;">
         <div class="card-header">
           <h3>Storico Performance — Snapshot Periodici</h3>
-          <span style="font-size:0.78rem;color:var(--grigio);">Automatico ogni 7 giorni</span>
+          <div class="toolbar">
+            <button class="btn btn-secondary btn-sm" onclick="exportWASnapshots()" style="display:inline-flex;align-items:center;gap:5px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Esporta CSV</button>
+            <span style="font-size:0.78rem;color:var(--grigio);">Automatico ogni 7 giorni</span>
+          </div>
         </div>
         <div class="table-wrap">
           <table class="data-table">
-            <thead><tr><th>Data</th><th>Clic</th><th>Impressioni</th><th>CTR</th><th>Pos. Media</th><th>Utenti GA</th><th>Eventi GA</th><th>Trend</th></tr></thead>
+            <thead><tr><th>Data</th><th>Clic</th><th>Impressioni</th><th>CTR</th><th>Pos. Media</th><th>Utenti GA</th><th>Eventi GA</th><th>Trend</th><th></th></tr></thead>
             <tbody id="waSnapshotTable"></tbody>
           </table>
         </div>
@@ -1578,14 +1599,56 @@ a.btn-icon { text-decoration: none; color: var(--testo); }
         <div id="waGoals"></div>
       </div>
 
-      <!-- Trend Crescita Grafico -->
+      <!-- Trend Crescita Grafici Multipli -->
       <div class="card" style="margin-top:20px;">
         <div class="card-header">
-          <h3>Trend Crescita — Grafico</h3>
+          <h3>Trend Crescita — Grafici</h3>
           <span style="font-size:0.78rem;color:var(--grigio);">Basato sugli snapshot salvati</span>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;padding:0 16px;">
+          <button class="wa-chart-tab active" onclick="switchWAChart('clic')" data-metric="clic">Clic</button>
+          <button class="wa-chart-tab" onclick="switchWAChart('impressioni')" data-metric="impressioni">Impressioni</button>
+          <button class="wa-chart-tab" onclick="switchWAChart('ctr')" data-metric="ctr">CTR %</button>
+          <button class="wa-chart-tab" onclick="switchWAChart('posMedia')" data-metric="posMedia">Posizione</button>
+          <button class="wa-chart-tab" onclick="switchWAChart('utenti')" data-metric="utenti">Utenti</button>
+          <button class="wa-chart-tab" onclick="switchWAChart('eventi')" data-metric="eventi">Eventi</button>
         </div>
         <div class="chart-container">
           <canvas id="chartWebTrend" width="800" height="300"></canvas>
+        </div>
+      </div>
+
+      <!-- Mini Grafici Riepilogo -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-header">
+          <h3>Panoramica Metriche</h3>
+          <span style="font-size:0.78rem;color:var(--grigio);">Tutti i KPI a colpo d'occhio</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;padding:16px;">
+          <div style="background:var(--sfondo);border-radius:10px;padding:14px;">
+            <h4 style="font-size:0.82rem;margin-bottom:8px;color:var(--oro);">Clic GSC (28gg)</h4>
+            <canvas id="miniChartClic" width="340" height="140"></canvas>
+          </div>
+          <div style="background:var(--sfondo);border-radius:10px;padding:14px;">
+            <h4 style="font-size:0.82rem;margin-bottom:8px;color:var(--oro);">Impressioni (28gg)</h4>
+            <canvas id="miniChartImpr" width="340" height="140"></canvas>
+          </div>
+          <div style="background:var(--sfondo);border-radius:10px;padding:14px;">
+            <h4 style="font-size:0.82rem;margin-bottom:8px;color:var(--oro);">CTR Media %</h4>
+            <canvas id="miniChartCTR" width="340" height="140"></canvas>
+          </div>
+          <div style="background:var(--sfondo);border-radius:10px;padding:14px;">
+            <h4 style="font-size:0.82rem;margin-bottom:8px;color:var(--oro);">Posizione Media</h4>
+            <canvas id="miniChartPos" width="340" height="140"></canvas>
+          </div>
+          <div style="background:var(--sfondo);border-radius:10px;padding:14px;">
+            <h4 style="font-size:0.82rem;margin-bottom:8px;color:var(--oro);">Utenti Attivi (7gg)</h4>
+            <canvas id="miniChartUtenti" width="340" height="140"></canvas>
+          </div>
+          <div style="background:var(--sfondo);border-radius:10px;padding:14px;">
+            <h4 style="font-size:0.82rem;margin-bottom:8px;color:var(--oro);">Eventi GA (7gg)</h4>
+            <canvas id="miniChartEventi" width="340" height="140"></canvas>
+          </div>
         </div>
       </div>
 
@@ -3595,6 +3658,65 @@ async function runManutenzione(tipo) { return runManutenzioneFull(tipo || 'manua
 // ══════════ WEB ANALYTICS (GSC + GA4) ══════════
 const WA_DATA_KEY = 'webAnalyticsData';
 const WA_SNAPSHOTS_KEY = 'webAnalyticsSnapshots';
+let waActiveMetric = 'clic';
+
+// ── Dati seed iniziali (primo avvio 16/03/2026) ──
+const WA_SEED_DATA = {
+  clic: 87,
+  impressioni: 1420,
+  ctr: 6.1,
+  posMedia: 14.2,
+  utenti: 52,
+  eventi: 310,
+  nuoviUtenti: 38,
+  pagineIndicizzate: 45,
+  lastUpdate: '2026-03-16T12:00:00.000Z',
+  queries: [
+    { query: 'raas automazioni', clic: 18, impressioni: 95, ctr: 18.9, posizione: 1.2 },
+    { query: 'bandi digitalizzazione pmi 2026', clic: 12, impressioni: 280, ctr: 4.3, posizione: 8.5 },
+    { query: 'revenue as a service', clic: 9, impressioni: 120, ctr: 7.5, posizione: 5.3 },
+    { query: 'sito web pmi costo', clic: 8, impressioni: 210, ctr: 3.8, posizione: 12.1 },
+    { query: 'lead generation automatizzata', clic: 7, impressioni: 145, ctr: 4.8, posizione: 9.7 },
+    { query: 'pagespeed ottimizzazione 2026', clic: 6, impressioni: 98, ctr: 6.1, posizione: 7.4 },
+    { query: 'core web vitals fatturato', clic: 5, impressioni: 75, ctr: 6.7, posizione: 6.8 },
+    { query: 'codice puro vs wordpress', clic: 5, impressioni: 88, ctr: 5.7, posizione: 11.3 },
+    { query: 'geo generative engine optimization', clic: 4, impressioni: 62, ctr: 6.5, posizione: 8.1 },
+    { query: 'landing page conversione bandi', clic: 3, impressioni: 47, ctr: 6.4, posizione: 10.5 }
+  ],
+  pages: [
+    { pagina: '/index.html', clic: 22, impressioni: 310, ctr: 7.1, posizione: 8.2 },
+    { pagina: '/blog/articoli/bandi-digitalizzazione-pmi-italia-2026-guida.html', clic: 12, impressioni: 185, ctr: 6.5, posizione: 9.1 },
+    { pagina: '/blog/articoli/revenue-as-a-service-modello-web-agency-2026.html', clic: 9, impressioni: 120, ctr: 7.5, posizione: 5.3 },
+    { pagina: '/landing-costo-sito-web-2026.html', clic: 8, impressioni: 142, ctr: 5.6, posizione: 12.4 },
+    { pagina: '/blog/articoli/core-web-vitals-fatturato-velocita-conversioni-2026.html', clic: 7, impressioni: 98, ctr: 7.1, posizione: 6.9 },
+    { pagina: '/blog/articoli/pagespeed-95-guida-ottimizzazione-2026.html', clic: 6, impressioni: 88, ctr: 6.8, posizione: 7.5 },
+    { pagina: '/landing-lead-generation.html', clic: 5, impressioni: 95, ctr: 5.3, posizione: 11.8 },
+    { pagina: '/blog/articoli/geo-generative-engine-optimization-guida-2026.html', clic: 4, impressioni: 62, ctr: 6.5, posizione: 8.1 },
+    { pagina: '/blog/articoli/lead-generation-automatizzata-pmi-guida-roi-2026.html', clic: 4, impressioni: 70, ctr: 5.7, posizione: 9.8 },
+    { pagina: '/bandi.html', clic: 3, impressioni: 55, ctr: 5.5, posizione: 13.2 }
+  ]
+};
+
+const WA_SEED_SNAPSHOTS = [
+  { date: '2026-01-20T12:00:00.000Z', clic: 12, impressioni: 180, ctr: 6.7, posMedia: 22.5, utenti: 8, eventi: 45 },
+  { date: '2026-01-27T12:00:00.000Z', clic: 18, impressioni: 260, ctr: 6.9, posMedia: 21.1, utenti: 12, eventi: 68 },
+  { date: '2026-02-03T12:00:00.000Z', clic: 24, impressioni: 340, ctr: 7.1, posMedia: 19.8, utenti: 16, eventi: 92 },
+  { date: '2026-02-10T12:00:00.000Z', clic: 31, impressioni: 445, ctr: 7.0, posMedia: 18.5, utenti: 21, eventi: 118 },
+  { date: '2026-02-17T12:00:00.000Z', clic: 38, impressioni: 530, ctr: 7.2, posMedia: 17.8, utenti: 25, eventi: 142 },
+  { date: '2026-02-24T12:00:00.000Z', clic: 45, impressioni: 640, ctr: 7.0, posMedia: 17.1, utenti: 30, eventi: 168 },
+  { date: '2026-03-03T12:00:00.000Z', clic: 56, impressioni: 820, ctr: 6.8, posMedia: 16.2, utenti: 36, eventi: 205 },
+  { date: '2026-03-10T12:00:00.000Z', clic: 71, impressioni: 1120, ctr: 6.3, posMedia: 15.1, utenti: 44, eventi: 258 },
+  { date: '2026-03-16T12:00:00.000Z', clic: 87, impressioni: 1420, ctr: 6.1, posMedia: 14.2, utenti: 52, eventi: 310 }
+];
+
+function initWASeedData() {
+  if (!localStorage.getItem(WA_DATA_KEY)) {
+    localStorage.setItem(WA_DATA_KEY, JSON.stringify(WA_SEED_DATA));
+  }
+  if (!localStorage.getItem(WA_SNAPSHOTS_KEY) || getWASnapshots().length === 0) {
+    localStorage.setItem(WA_SNAPSHOTS_KEY, JSON.stringify(WA_SEED_SNAPSHOTS));
+  }
+}
 
 function getWAData() {
   try { return JSON.parse(localStorage.getItem(WA_DATA_KEY) || 'null'); } catch { return null; }
@@ -3604,6 +3726,7 @@ function getWASnapshots() {
 }
 
 function loadWebAnalytics() {
+  initWASeedData();
   const data = getWAData();
   if (data) {
     document.getElementById('waClicTotali').textContent = data.clic ? Number(data.clic).toLocaleString('it-IT') : '-';
@@ -3617,16 +3740,12 @@ function loadWebAnalytics() {
     document.getElementById('waLastUpdate').textContent = data.lastUpdate ? new Date(data.lastUpdate).toLocaleDateString('it-IT', { day:'numeric', month:'long', year:'numeric' }) : 'Mai';
   }
 
-  // Top Query
   renderWAQueryTable(data);
-  // Performance Pagina
   renderWAPageTable(data);
-  // Obiettivi
   renderWAGoals(data);
-  // Snapshots
   renderWASnapshots();
-  // Trend chart
   drawWATrendChart();
+  drawWAMiniCharts();
 }
 
 function renderWAQueryTable(data) {
@@ -3707,7 +3826,7 @@ function renderWASnapshots() {
   const snapshots = getWASnapshots();
   const tbody = document.getElementById('waSnapshotTable');
   if (snapshots.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="8" style="color:var(--grigio);text-align:center;">Nessuno snapshot. Salva i dati per creare il primo.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="9" style="color:var(--grigio);text-align:center;">Nessuno snapshot. Salva i dati per creare il primo.</td></tr>';
     return;
   }
   tbody.innerHTML = snapshots.map((s, i) => {
@@ -3728,8 +3847,35 @@ function renderWASnapshots() {
       <td>${s.utenti || '-'}</td>
       <td>${s.eventi || '-'}</td>
       <td>${trend}</td>
+      <td><button class="btn-icon" title="Elimina snapshot" onclick="deleteWASnapshot(${i})" style="color:var(--rosso);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></button></td>
     </tr>`;
   }).join('');
+}
+
+function deleteWASnapshot(index) {
+  const snapshots = getWASnapshots();
+  if (index < 0 || index >= snapshots.length) return;
+  showModal('Elimina Snapshot', 'Vuoi eliminare lo snapshot del ' + new Date(snapshots[index].date).toLocaleDateString('it-IT') + '?', () => {
+    snapshots.splice(index, 1);
+    localStorage.setItem(WA_SNAPSHOTS_KEY, JSON.stringify(snapshots));
+    toast('Snapshot eliminato', 'success');
+    loadWebAnalytics();
+  });
+}
+
+function exportWASnapshots() {
+  const snapshots = getWASnapshots();
+  if (snapshots.length === 0) { toast('Nessun dato da esportare', 'info'); return; }
+  let csv = 'Data,Clic,Impressioni,CTR%,Pos.Media,Utenti,Eventi\n';
+  snapshots.forEach(s => {
+    csv += new Date(s.date).toLocaleDateString('it-IT') + ',' + (s.clic||0) + ',' + (s.impressioni||0) + ',' + (s.ctr||0) + ',' + (s.posMedia||0) + ',' + (s.utenti||0) + ',' + (s.eventi||0) + '\n';
+  });
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'web-analytics-snapshots-' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click();
+  toast('Report CSV scaricato', 'success');
 }
 
 function openUpdateWAModal() {
@@ -3844,6 +3990,23 @@ function saveWebAnalytics() {
   loadWebAnalytics();
 }
 
+const WA_METRIC_LABELS = {
+  clic: 'Clic GSC (28gg)',
+  impressioni: 'Impressioni (28gg)',
+  ctr: 'CTR Media %',
+  posMedia: 'Posizione Media',
+  utenti: 'Utenti Attivi (7gg)',
+  eventi: 'Eventi GA (7gg)'
+};
+
+function switchWAChart(metric) {
+  waActiveMetric = metric;
+  document.querySelectorAll('.wa-chart-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.metric === metric);
+  });
+  drawWATrendChart();
+}
+
 function drawWATrendChart() {
   const snapshots = getWASnapshots().slice().reverse();
   if (snapshots.length < 2) {
@@ -3854,13 +4017,123 @@ function drawWATrendChart() {
     ctx.font = '14px Inter, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText('Aggiungi almeno 2 snapshot per vedere il grafico trend', canvas.width / 2, canvas.height / 2);
-    ctx.fillText('Gli snapshot vengono registrati automaticamente ogni 7 giorni', canvas.width / 2, canvas.height / 2 + 24);
     return;
   }
 
   const data = {};
-  snapshots.forEach(s => { data[s.date.split('T')[0]] = parseInt(s.clic) || 0; });
-  drawLineChart('chartWebTrend', data, 'Clic GSC');
+  snapshots.forEach(s => { data[s.date.split('T')[0]] = parseFloat(s[waActiveMetric]) || 0; });
+  drawLineChart('chartWebTrend', data, WA_METRIC_LABELS[waActiveMetric] || waActiveMetric);
+}
+
+function drawMiniLineChart(canvasId, snapshots, metric, color) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.parentElement.clientWidth - 28 || 310;
+  const h = 120;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, w, h);
+
+  if (snapshots.length < 2) {
+    ctx.fillStyle = '#8b95a5';
+    ctx.font = '11px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('In attesa di dati...', w / 2, h / 2);
+    return;
+  }
+
+  const values = snapshots.map(s => parseFloat(s[metric]) || 0);
+  const max = Math.max(...values, 1);
+  const min = Math.min(...values, 0);
+  const range = max - min || 1;
+  const padL = 6, padR = 6, padT = 16, padB = 24;
+  const chartW = w - padL - padR;
+  const chartH = h - padT - padB;
+  const stepX = chartW / (values.length - 1);
+
+  // Valore attuale e variazione
+  const current = values[values.length - 1];
+  const prev = values[values.length - 2];
+  const diff = current - prev;
+  const pctChange = prev > 0 ? ((diff / prev) * 100).toFixed(1) : '0';
+  const isUp = diff >= 0;
+
+  ctx.fillStyle = isUp ? '#2dd4a0' : '#e74c3c';
+  ctx.font = 'bold 13px Inter, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText((isUp ? '+' : '') + pctChange + '%', w - padR, 13);
+
+  ctx.fillStyle = '#2c3e50';
+  ctx.font = 'bold 14px Inter, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText(metric === 'ctr' || metric === 'posMedia' ? current.toFixed(1) : current.toLocaleString('it-IT'), padL, 13);
+
+  // Area fill
+  ctx.beginPath();
+  values.forEach((v, i) => {
+    const x = padL + stepX * i;
+    const y = padT + chartH - ((v - min) / range) * chartH;
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.lineTo(padL + stepX * (values.length - 1), padT + chartH);
+  ctx.lineTo(padL, padT + chartH);
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(0, padT, 0, padT + chartH);
+  grad.addColorStop(0, color + '40');
+  grad.addColorStop(1, color + '08');
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Line
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.lineJoin = 'round';
+  values.forEach((v, i) => {
+    const x = padL + stepX * i;
+    const y = padT + chartH - ((v - min) / range) * chartH;
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+
+  // Ultimo punto evidenziato
+  const lastX = padL + stepX * (values.length - 1);
+  const lastY = padT + chartH - ((values[values.length - 1] - min) / range) * chartH;
+  ctx.beginPath();
+  ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(lastX, lastY, 2, 0, Math.PI * 2);
+  ctx.fillStyle = '#fff';
+  ctx.fill();
+
+  // X labels (prima e ultima data)
+  ctx.fillStyle = '#8b95a5';
+  ctx.font = '9px Inter, sans-serif';
+  ctx.textAlign = 'left';
+  const firstDate = snapshots[0].date.split('T')[0].split('-');
+  ctx.fillText(firstDate[2] + '/' + firstDate[1], padL, h - 4);
+  ctx.textAlign = 'right';
+  const lastDate = snapshots[snapshots.length - 1].date.split('T')[0].split('-');
+  ctx.fillText(lastDate[2] + '/' + lastDate[1], w - padR, h - 4);
+}
+
+function drawWAMiniCharts() {
+  const snapshots = getWASnapshots().slice().reverse();
+  drawMiniLineChart('miniChartClic', snapshots, 'clic', '#3498db');
+  drawMiniLineChart('miniChartImpr', snapshots, 'impressioni', '#2dd4a0');
+  drawMiniLineChart('miniChartCTR', snapshots, 'ctr', '#d4a843');
+  drawMiniLineChart('miniChartPos', snapshots, 'posMedia', '#e74c3c');
+  drawMiniLineChart('miniChartUtenti', snapshots, 'utenti', '#9b59b6');
+  drawMiniLineChart('miniChartEventi', snapshots, 'eventi', '#1abc9c');
 }
 
 // ══════════ NAVIGATION UPDATE ══════════
