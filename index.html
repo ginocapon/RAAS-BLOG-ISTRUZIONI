@@ -2625,61 +2625,20 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
         <div class="container">
             <div style="display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;max-width:1000px;margin:0 auto;">
 
-                <!-- ROBOT 3D stile Star Wars (lato sinistro, dall'alto) -->
-                <div style="position:relative;width:180px;height:260px;perspective:800px;flex-shrink:0;">
-                    <div class="robot-3d" style="transform-style:preserve-3d;animation:robotFloat 4s ease-in-out infinite;">
-                        <!-- Testa -->
-                        <div style="width:90px;height:60px;background:linear-gradient(135deg,#c0c0c0,#e8e8e8);border-radius:45px 45px 10px 10px;margin:0 auto;position:relative;box-shadow:0 4px 20px rgba(0,0,0,0.3),inset 0 -5px 15px rgba(0,0,0,0.1);border:2px solid #a0a0a0;">
-                            <!-- Occhio/sensore -->
-                            <div style="position:absolute;top:18px;left:50%;transform:translateX(-50%);width:28px;height:28px;background:radial-gradient(circle,#e63946,#c1121f);border-radius:50%;box-shadow:0 0 15px rgba(230,57,70,0.6),0 0 30px rgba(230,57,70,0.3);border:3px solid #888;"></div>
-                            <!-- Antenna -->
-                            <div style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:4px;height:18px;background:linear-gradient(to top,#a0a0a0,#d0d0d0);border-radius:2px;"></div>
-                            <div style="position:absolute;top:-24px;left:50%;transform:translateX(-50%);width:10px;height:10px;background:var(--primary);border-radius:50%;box-shadow:0 0 10px rgba(230,57,70,0.8);animation:blink 2s ease-in-out infinite;"></div>
-                        </div>
-                        <!-- Corpo -->
-                        <div style="width:100px;height:100px;background:linear-gradient(180deg,#d0d0d0 0%,#b0b0b0 50%,#909090 100%);border-radius:12px;margin:4px auto 0;position:relative;box-shadow:0 8px 30px rgba(0,0,0,0.3),inset 0 2px 10px rgba(255,255,255,0.2);border:2px solid #a0a0a0;">
-                            <!-- Pannello centrale -->
-                            <div style="position:absolute;top:12px;left:50%;transform:translateX(-50%);width:50px;height:40px;background:linear-gradient(180deg,#1a2f47,#0e2240);border-radius:6px;border:2px solid #666;padding:6px;">
-                                <div style="width:8px;height:8px;background:#4ade80;border-radius:50%;box-shadow:0 0 8px rgba(74,222,128,0.6);margin-bottom:4px;animation:blink 1.5s ease-in-out infinite;"></div>
-                                <div style="width:100%;height:3px;background:var(--primary);border-radius:2px;opacity:0.8;margin-bottom:3px;"></div>
-                                <div style="width:70%;height:3px;background:var(--accent);border-radius:2px;opacity:0.8;"></div>
-                            </div>
-                            <!-- Dettagli laterali -->
-                            <div style="position:absolute;top:60px;left:8px;width:24px;height:24px;background:linear-gradient(135deg,#888,#aaa);border-radius:50%;border:2px solid #777;"></div>
-                            <div style="position:absolute;top:60px;right:8px;width:24px;height:24px;background:linear-gradient(135deg,#888,#aaa);border-radius:50%;border:2px solid #777;"></div>
-                        </div>
-                        <!-- Gambe/Base -->
-                        <div style="display:flex;justify-content:center;gap:20px;margin-top:4px;">
-                            <div style="width:30px;height:45px;background:linear-gradient(180deg,#a0a0a0,#808080);border-radius:6px 6px 10px 10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);border:1px solid #999;"></div>
-                            <div style="width:30px;height:45px;background:linear-gradient(180deg,#a0a0a0,#808080);border-radius:6px 6px 10px 10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);border:1px solid #999;"></div>
-                        </div>
-                        <!-- Braccio che indica verso destra -->
-                        <div style="position:absolute;top:85px;right:-55px;width:70px;height:14px;background:linear-gradient(90deg,#a0a0a0,#c0c0c0);border-radius:7px;transform:rotate(-15deg);transform-origin:left center;animation:pointRight 2s ease-in-out infinite;box-shadow:0 3px 10px rgba(0,0,0,0.2);">
-                            <div style="position:absolute;right:-10px;top:-3px;width:20px;height:20px;background:#c0c0c0;border-radius:50%;border:2px solid #aaa;"></div>
-                        </div>
-                    </div>
+                <!-- IMMAGINE (lato sinistro) -->
+                <div style="flex-shrink:0;width:220px;">
+                    <img src="file/drsjs-man-320276_640.png" alt="RaaS Automazioni - Ti portiamo clienti" width="220" height="320" style="border-radius:16px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,0.3);width:100%;height:auto;">
                 </div>
 
-                <!-- VIDEO (lato destro) -->
+                <!-- VIDEO YouTube (lato destro) -->
                 <div style="position:relative;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.4);aspect-ratio:16/9;background:#000;">
-                    <div id="videoPlaceholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1a2f47,#0e2240);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="this.outerHTML='<iframe width=100% height=100% src=\'https://www.youtube.com/embed/VIDEO_ID?autoplay=1\' frameborder=0 allow=autoplay allowfullscreen style=position:absolute;top:0;left:0;width:100%;height:100%;></iframe>'">
-                        <!-- Play button -->
-                        <div style="width:80px;height:80px;background:rgba(230,57,70,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 0 30px rgba(230,57,70,0.4);transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
-                            <svg width="30" height="34" viewBox="0 0 30 34" fill="white"><polygon points="5,2 28,17 5,32"/></svg>
-                        </div>
-                        <p style="color:white;font-size:1.1rem;font-weight:700;margin-bottom:0.3rem;">Scopri Come Ti Portiamo Clienti</p>
-                        <p style="color:rgba(255,255,255,0.6);font-size:0.85rem;">2 minuti che possono cambiare il tuo business</p>
-                    </div>
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/EIYuosivXz0" title="Raasautomazioni" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
                 </div>
             </div>
         </div>
         <style>
-            @keyframes robotFloat{0%,100%{transform:translateY(0) rotateY(-5deg)}50%{transform:translateY(-12px) rotateY(5deg)}}
-            @keyframes pointRight{0%,100%{transform:rotate(-15deg)}50%{transform:rotate(-5deg)}}
-            @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
             @media(max-width:768px){
                 .container > div[style*="grid-template-columns:auto 1fr"]{grid-template-columns:1fr !important;text-align:center;}
-                .robot-3d{margin:0 auto;}
             }
         </style>
     </section>
