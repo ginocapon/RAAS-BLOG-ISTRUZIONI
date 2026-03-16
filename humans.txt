@@ -1,0 +1,22 @@
+/* TEAM */
+Fondatore: Gino Capon
+Ruolo: CEO & Lead Developer
+Sede: Limena (PD), Italia
+Contatto: info@raasautomazioni.it
+Twitter: @raasautomazioni
+
+/* SITO */
+Tecnologia: HTML5, CSS3, JavaScript vanilla
+Framework: Nessuno — codice puro, zero dipendenze
+Database: Supabase (PostgreSQL)
+Hosting: GitHub Pages
+Analytics: Google Analytics 4
+Performance: PageSpeed 90+
+Ultimo aggiornamento: 2026-03-16
+
+/* STANDARD */
+HTML5, CSS3, JavaScript ES6+
+Schema.org JSON-LD
+WCAG 2.1 AA
+Core Web Vitals ottimizzati
+GEO (Generative Engine Optimization)

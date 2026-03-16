@@ -36,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 
 <style>
 :root{--primary:#0ea5e9;--primary-dark:#0284c7;--primary-glow:rgba(14,165,233,0.25);--accent:#f59e0b;--accent-dark:#d97706;--dark:#0f172a;--dark-mid:#1e293b;--dark-light:#334155;--text:#1e293b;--text-light:#64748b;--text-muted:#94a3b8;--bg:#f8fafc;--white:#fff;--success:#10b981;--danger:#ef4444;--border:#e2e8f0;--radius-sm:8px;--radius-md:14px;--radius-lg:20px;--radius-xl:28px;--shadow-sm:0 1px 3px rgba(15,23,42,0.06);--shadow-md:0 4px 20px rgba(15,23,42,0.08);--shadow-lg:0 20px 50px rgba(15,23,42,0.12)}
@@ -513,7 +513,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
         <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
     </div>
     <div class="chat-messages" id="chatMessages">
-        <div class="chat-msg bot">Ciao! &#x1F44B; Sono l'assistente BandiItalia. Posso aiutarti su bandi, finanziamenti e incentivi. Cosa vuoi sapere?</div>
+        <div class="chat-msg bot">Ciao! &#x1F44B; Sono l'assistente RaaS Bandi. Posso aiutarti su bandi, finanziamenti e incentivi. Cosa vuoi sapere?</div>
     </div>
     <div class="chat-suggestions" id="chatSuggestions">
         <button class="chat-suggestion" onclick="askBot(this.textContent)">Cos'&egrave; un fondo perduto?</button>
@@ -614,7 +614,7 @@ function initPayPal(){
     const c=document.getElementById('paypal-button-container');if(c.innerHTML)return;
     if(typeof paypal==='undefined'){c.innerHTML='<p style="color:var(--danger);font-size:.85rem;text-align:center;">PayPal non disponibile. Usa carta.</p>';return}
     paypal.Buttons({style:{layout:'horizontal',color:'gold',shape:'pill',label:'paypal'},
-        createOrder:function(d,a){if(!validateForm())return a.reject();return a.order.create({purchase_units:[{description:'Abbonamento BandiItalia 12 mesi',amount:{value:'61.00',currency_code:'EUR'}}]})},
+        createOrder:function(d,a){if(!validateForm())return a.reject();return a.order.create({purchase_units:[{description:'Abbonamento RaaS Bandi 12 mesi',amount:{value:'61.00',currency_code:'EUR'}}]})},
         onApprove:function(d,a){return a.order.capture().then(function(){const fd=getFormData();showSuccessModal(activateSubscription(fd.email,fd.name,fd.company,fd.vatNumber,fd.newsletter))})},
         onError:function(e){alert('Errore PayPal.')}
     }).render('#paypal-button-container');
@@ -945,7 +945,7 @@ const chatQA=[
 {k:["aggiornamento","ogni quanto"],a:"Database aggiornato <b>ogni giorno</b> tramite scraping automatico. Nuovi bandi inseriti entro 24 ore dalla pubblicazione."},
 {k:["consulenza","aiuto","assistenza"],a:"<b>Consulenza dedicata</b> per clienti RaaS: identificazione bandi, documentazione, compilazione domande. <a href='/#contatti'>Contattaci</a>."},
 {k:["newsletter","email"],a:"Registrati per la <b>newsletter settimanale</b> con nuovi bandi. Abbonati premium ricevono alert personalizzati. Iscriviti in basso!"},
-{k:["raas","raas automazioni","chi siete"],a:"<b>RaaS Automazioni</b>: digital agency italiana, siti web ad alte prestazioni + automazioni. BandiItalia nasce dalla nostra esperienza in aggregazione dati."},
+{k:["raas","raas automazioni","chi siete"],a:"<b>RaaS Automazioni</b>: digital agency italiana, siti web ad alte prestazioni + automazioni. RaaS Bandi nasce dalla nostra esperienza in aggregazione dati."},
 {k:["business plan","piano aziendale"],a:"<b>Business plan</b> richiesto per la maggior parte dei bandi: descrizione progetto, analisi mercato, piano finanziario 3-5 anni, team, investimenti. Invitalia ha template specifici."},
 {k:["documentazione","documenti necessari"],a:"Documenti tipici: visura camerale, bilanci 2-3 anni, DURC, dichiarazione de minimis, business plan, preventivi, CV team, carta d'identità."},
 {k:["durc"],a:"<b>DURC</b>: attesta regolarità INPS/INAIL/Cassa Edile. Obbligatorio per tutti i bandi. Richiesta tramite portale INPS."},

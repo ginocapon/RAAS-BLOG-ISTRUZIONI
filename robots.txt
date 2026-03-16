@@ -28,4 +28,23 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Applebot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
 Sitemap: https://www.raasautomazioni.it/sitemap.xml
+
+# AI Discovery Files
+# llms.txt: https://www.raasautomazioni.it/llms.txt
+# llms-full.txt: https://www.raasautomazioni.it/llms-full.txt
+# ai.json: https://www.raasautomazioni.it/ai.json
+# agent.json: https://www.raasautomazioni.it/.well-known/agent.json
+# mcp.json: https://www.raasautomazioni.it/.well-known/mcp.json

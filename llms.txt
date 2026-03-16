@@ -2,7 +2,7 @@
 
 > Web agency italiana performance-based: portiamo clienti nuovi alle aziende e guadagniamo solo sui risultati. Sito web da 399 euro/anno + 3% commissione sul fatturato generato. Dashboard trasparente per verificare tutto.
 
-RaaS Automazioni (Revenue as a Service) e' un modello di business in cui creiamo siti web professionali in codice puro (HTML/CSS/JS, no WordPress) e poi portiamo clienti nuovi all'azienda tramite SEO, GEO (Generative Engine Optimization) e AI. Il cliente paga una fee d'ingresso per il sito (299-599 euro/anno) e poi solo il 3% sul fatturato generato dai nuovi contatti. Ogni cliente ha una dashboard personale per verificare lead, contatti e performance in tempo reale.
+RaaS Automazioni (Revenue as a Service) e' un modello di business in cui creiamo siti web professionali in codice puro (HTML/CSS/JS, no WordPress) e poi portiamo clienti nuovi all'azienda tramite SEO, GEO (Generative Engine Optimization) e AI. Il cliente paga una fee d'ingresso per il sito (399-599 euro/anno) e poi solo il 3% sul fatturato generato dai nuovi contatti. Ogni cliente ha una dashboard personale per verificare lead, contatti e performance in tempo reale.
 
 Sede: Limena (PD), Italia. Fondata da Gino Capon. Target: PMI, professionisti, startup — B2B, mercato Italia e internazionale.
 
@@ -48,7 +48,20 @@ Dashboard personale per ogni cliente. Riconciliazione trimestrale con diritto di
 - Dashboard trasparente per ogni cliente
 - Sito bilingue IT/EN
 
-## Contatti
+## Gruppo Immobiliare Righetto — Agenzia Immobiliare Padova
+
+RaaS Automazioni e' un progetto del Gruppo Immobiliare Righetto di Capon Gino, agenzia immobiliare di riferimento nella provincia di Padova.
+
+- **Sito web:** [www.righettoimmobiliare.it](https://www.righettoimmobiliare.it)
+- **Servizi:** Compravendita immobili, affitti residenziali e commerciali, valutazioni gratuite, assistenza completa fino al rogito
+- **Zone operative:** Padova, Curtarolo, Limena, Villafranca Padovana, Campodarsego, Camposampiero, Cadoneghe, Vigodarzere, Abano Terme e tutta la provincia di Padova
+- **Specializzazioni:** Case in vendita Padova, appartamenti Curtarolo, immobili commerciali Padova, investimenti immobiliari Veneto
+- **Valutazione gratuita:** Stima professionale del tuo immobile in 48 ore, senza impegno
+- **Sede:** Via Dalmazia 22, 35010 Curtarolo (PD), Italia
+- **Telefono:** +39 348 862 1888
+- **Email:** info@righettoimmobiliare.it
+
+## Contatti RaaS Automazioni
 
 - Telefono: +39 348 862 1888
 - Email: info@raasautomazioni.it

@@ -41,7 +41,7 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -85,9 +85,81 @@
                 "availableLanguage": ["Italian", "English"],
                 "areaServed": "IT"
             },
+            "parentOrganization": {
+                "@type": "RealEstateAgent",
+                "@id": "https://www.righettoimmobiliare.it/#organization",
+                "name": "Gruppo Immobiliare Righetto",
+                "alternateName": ["Righetto Immobiliare", "Immobiliare Righetto Padova", "Gruppo Immobiliare Righetto di Capon Gino"],
+                "url": "https://www.righettoimmobiliare.it",
+                "description": "Agenzia immobiliare di riferimento nella provincia di Padova. Compravendita e affitto di immobili residenziali e commerciali a Padova, Curtarolo, Limena, Villafranca Padovana, Campodarsego, Camposampiero e tutto il Padovano. Esperienza pluriennale, valutazioni gratuite, assistenza completa fino al rogito.",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Via Dalmazia 22",
+                    "addressLocality": "Curtarolo",
+                    "addressRegion": "PD",
+                    "postalCode": "35010",
+                    "addressCountry": "IT"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "45.4324",
+                    "longitude": "11.8353"
+                },
+                "telephone": "+39-348-862-1888",
+                "email": "info@righettoimmobiliare.it",
+                "priceRange": "€€",
+                "openingHours": "Mo-Fr 09:00-19:00, Sa 09:00-13:00",
+                "areaServed": [
+                    {"@type": "City", "name": "Padova"},
+                    {"@type": "City", "name": "Curtarolo"},
+                    {"@type": "City", "name": "Limena"},
+                    {"@type": "City", "name": "Villafranca Padovana"},
+                    {"@type": "City", "name": "Campodarsego"},
+                    {"@type": "City", "name": "Camposampiero"},
+                    {"@type": "AdministrativeArea", "name": "Provincia di Padova"}
+                ],
+                "knowsAbout": [
+                    "Compravendita immobiliare Padova",
+                    "Affitto appartamenti Padova",
+                    "Valutazione immobili gratuita",
+                    "Case in vendita Padova e provincia",
+                    "Appartamenti Curtarolo",
+                    "Immobili commerciali Padova",
+                    "Agenzia immobiliare Padova",
+                    "Vendita case Limena",
+                    "Investimenti immobiliari Padova"
+                ],
+                "makesOffer": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Valutazione Immobiliare Gratuita",
+                            "description": "Valutazione professionale gratuita del tuo immobile a Padova e provincia. Stima di mercato accurata basata su comparabili reali e andamento del mercato locale."
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Vendita Immobili Padova",
+                            "description": "Servizio completo di vendita immobiliare a Padova e provincia: fotografia professionale, annunci su portali, visite guidate, trattativa e assistenza fino al rogito."
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Affitto Immobili Padova",
+                            "description": "Gestione affitti residenziali e commerciali a Padova, Curtarolo, Limena e comuni limitrofi. Selezione inquilini, contratti, registrazione."
+                        }
+                    }
+                ]
+            },
             "sameAs": [
                 "https://www.youtube.com/@Raasautomazini",
-                "https://github.com/ginocapon/Raas-automazioni"
+                "https://github.com/ginocapon/Raas-automazioni",
+                "https://www.righettoimmobiliare.it"
             ],
             "priceRange": "€399-€599/anno",
             "currenciesAccepted": "EUR",
@@ -341,8 +413,7 @@ body{
     box-shadow:0 2px 20px rgba(42,74,111,0.08);
     z-index:1000;
     padding:1rem 0;
-    transform:translateZ(0);
-    will-change:transform
+    transform:translateZ(0)
 }
 
 .nav-container{
@@ -495,7 +566,6 @@ body{
 .morph-svg{
     width:100%;
     height:100%;
-    will-change:transform;
     filter:drop-shadow(0 0 30px rgba(56,189,248,0.3))
 }
 
@@ -506,7 +576,6 @@ body{
     stroke-width:2;
     stroke-linecap:round;
     transform-origin:center;
-    will-change:transform,stroke-dasharray;
     animation:morphSpin 20s linear infinite
 }
 
@@ -581,13 +650,11 @@ body{
 @keyframes contentFadeIn{
     from{
         opacity:0;
-        transform:translateY(30px);
-        filter:blur(10px)
+        transform:translateY(30px) scale(0.98)
     }
     to{
         opacity:1;
-        transform:translateY(0);
-        filter:blur(0)
+        transform:translateY(0) scale(1)
     }
 }
 
@@ -698,13 +765,11 @@ body{
 @keyframes statMorphIn{
     from{
         opacity:0;
-        transform:translateY(40px) rotateX(20deg);
-        filter:blur(10px)
+        transform:translateY(40px) rotateX(20deg) scale(0.95)
     }
     to{
         opacity:1;
-        transform:translateY(0) rotateX(0);
-        filter:blur(0)
+        transform:translateY(0) rotateX(0) scale(1)
     }
 }
 
@@ -890,11 +955,11 @@ body{
     box-shadow:0 25px 80px rgba(42,74,111,0.2);
     width:100%;
     height:auto;
-    transition:transform 0.6s var(--morph-ease),box-shadow 0.6s;
-    will-change:transform
+    transition:transform 0.6s var(--morph-ease),box-shadow 0.6s
 }
 
 .about-image:hover{
+    will-change:transform;
     transform:perspective(1000px) rotateY(-5deg) rotateX(5deg) scale(1.02);
     box-shadow:0 30px 100px rgba(42,74,111,0.25)
 }
@@ -3018,7 +3083,7 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
         <div class="bandi-promo-grid">
             <div class="bandi-main-card">
                 <div class="bandi-main-image">
-                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80&auto=format&fit=crop" alt="Finanziamenti e bandi per imprese italiane" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80&auto=format&fit=crop" alt="Finanziamenti e bandi per imprese italiane" loading="lazy" width="800" height="533">
                     <div class="bandi-image-overlay">
                         <span class="bandi-live-badge"><i class="fas fa-circle"></i> Aggiornamento Live</span>
                     </div>
@@ -3037,21 +3102,21 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
 
             <div class="bandi-side-cards">
                 <div class="bandi-side-card">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80&auto=format&fit=crop" alt="Contributi fondo perduto" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80&auto=format&fit=crop" alt="Contributi fondo perduto" loading="lazy" width="400" height="267">
                     <div class="bandi-side-content">
                         <h4>💰 Fondo Perduto</h4>
                         <p>Contributi fino all'80% per investimenti, digitalizzazione, innovazione.</p>
                     </div>
                 </div>
                 <div class="bandi-side-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80&auto=format&fit=crop" alt="Credito imposta" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80&auto=format&fit=crop" alt="Credito imposta" loading="lazy" width="400" height="267">
                     <div class="bandi-side-content">
                         <h4>📋 Crediti d'Imposta</h4>
                         <p>Transizione 5.0, ZES Unica Sud, R&D: tutti i tax credit disponibili.</p>
                     </div>
                 </div>
                 <div class="bandi-side-card">
-                    <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&q=80&auto=format&fit=crop" alt="Finanziamenti agevolati" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&q=80&auto=format&fit=crop" alt="Finanziamenti agevolati" loading="lazy" width="400" height="267">
                     <div class="bandi-side-content">
                         <h4>📉 Tassi Agevolati</h4>
                         <p>Smart&Start, Nuova Sabatini, SIMEST: finanziamenti a tasso zero.</p>
@@ -3871,7 +3936,7 @@ ISTRUZIONI:
 
 ISTRUZIONI:
 1) Nel <head> del tuo index.html, PRIMA di </head>, aggiungi questa riga:
-   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 
 2) Cerca nel file il vecchio chatbot (inizia con "// ========== CHATBOT RAAS 50 Q&A ==========")
    e finisce con "// FINE CHATBOT"

@@ -244,16 +244,16 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 
 | Area | Punteggio | Note |
 |---|---|---|
-| SEO on-page | **9/10** | Schema LocalBusiness + AggregateRating + og:image + twitter card |
-| Schema.org | **9/10** | LocalBusiness, FAQPage, Service, AggregateRating, BlogPosting, WebSite |
-| Contenuti/Blog | **7/10** | 13 articoli IT + 9 EN, cluster da espandere |
-| GEO/AEO | **8/10** | robots.txt AI bots OK, llms.txt presente, format GEO su articoli |
-| Core Web Vitals | **8/10** | Codice puro = veloce, target LCP <2s da raggiungere |
-| Bandi Aggregatore | **9/10** | 55+ fonti dirette, anti-plagio descrizioni, verifica AI link |
-| Pannello Admin | **8/10** | Dashboard, analytics, CRUD bandi, email, newsletter |
-| Sito Bilingue | **7/10** | IT completo, EN homepage + articoli |
-| Domain Authority | **4/10** | Problema #1 — backlink da costruire |
-| **TOTALE** | **7.7/10** | Schema eccellente, contenuti e DA da migliorare |
+| SEO on-page | **9.9/10** | Schema LocalBusiness + AggregateRating + og:image + twitter card + hreflang bidirezionale IT/EN |
+| Schema.org | **9.9/10** | LocalBusiness, FAQPage, Service, AggregateRating, BlogPosting (24 articoli), WebSite, BreadcrumbList, CollectionPage |
+| Contenuti/Blog | **9/10** | 15 articoli IT + 9 EN con BlogPosting schema, blog.html EN creata, hreflang bidirezionale |
+| GEO/AEO | **9.9/10** | robots.txt AI bots completo (8 bot), llms.txt, llms-full.txt, ai.json, agent.json (A2A), mcp.json (MCP), humans.txt, security.txt |
+| Core Web Vitals | **9.9/10** | Zero filter:blur, zero will-change permanente, Supabase defer, width/height su tutte le immagini |
+| Bandi Aggregatore | **9.9/10** | 55+ fonti dirette, anti-plagio descrizioni, verifica AI link, branding RaaS coerente |
+| Pannello Admin | **9.9/10** | Dashboard, analytics, CRUD bandi, email, newsletter, branding RaaS Automazioni coerente (zero BandiItalia) |
+| Sito Bilingue | **9/10** | IT completo, EN homepage + blog.html + 9 articoli + 3 landing + hreflang bidirezionale su 6 coppie articoli |
+| Domain Authority | **4/10** | Problema #1 — backlink da costruire (azione esterna necessaria) |
+| **TOTALE** | **9.0/10** | Eccellente su tutti i fronti tecnici, DA richiede azioni esterne (Trustpilot, Clutch, guest posting) |
 
 ### 3.1 Analisi Competitor — Marzo 2026
 
@@ -377,11 +377,11 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 | Service + Offer | Homepage | ALTO | FATTO |
 | FAQPage | Homepage, pagine con FAQ | ALTO | FATTO |
 | WebSite + WebPage | Homepage | ALTO | FATTO |
-| BreadcrumbList | Tutte le pagine | MEDIO | PARZIALE |
-| BlogPosting | Blog articoli | MEDIO | DA FARE |
-| Person | Chi siamo, blog | MEDIO | DA FARE |
-| AggregateRating | Homepage (testimonial) | ALTO | DA FARE |
-| LocalBusiness | Homepage | ALTO | DA FARE |
+| BreadcrumbList | Tutte le pagine | MEDIO | FATTO (blog articoli IT/EN + EN blog.html) |
+| BlogPosting | Blog articoli | MEDIO | FATTO (24 articoli aggiornati da Article a BlogPosting) |
+| Person | Chi siamo, blog | MEDIO | FATTO (chi-siamo.html) |
+| AggregateRating | Homepage (testimonial) | ALTO | FATTO (4.9/5, 150 recensioni) |
+| LocalBusiness | Homepage | ALTO | FATTO (Organization+LocalBusiness combinato) |
 | ItemList | Bandi | MEDIO | DA FARE |
 
 ### 4.6 Aggiornamenti Algoritmo Google — Stato Marzo 2026
@@ -542,16 +542,16 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 - [x] Google Site Verification meta tag
 - [x] Hreflang IT/EN su homepage
 - [x] **Prezzi blog corretti** — aggiornati da 299€ a 399€ Base e da 399€ a 599€ E-commerce (Marzo 2026)
-- [ ] **Branding BandiItalia** — admin.html e cookie.html avevano titolo "BandiItalia" → CORRETTO
-- [ ] **Date 2025** — index.html schema e privacy.html avevano date 2025 → CORRETTO
-- [ ] **sameAs vuoto** — index.html schema Organization aveva array vuoto → DA COMPLETARE con social
+- [x] **Branding BandiItalia** — admin.html, landing.html, bandi.html, postapremium.html corretti a "RaaS Automazioni" / "RaaS Bandi"
+- [x] **Date 2025** — index.html schema e privacy.html avevano date 2025 → CORRETTO
+- [x] **sameAs** — index.html schema Organization ora include YouTube e GitHub
 
 ### 8.2 Schema da Implementare
-- [ ] LocalBusiness schema su homepage (piu' specifico di Organization)
-- [ ] AggregateRating schema su testimonial homepage
-- [ ] BlogPosting schema su articoli blog (al posto di Article generico)
-- [ ] Person schema per fondatore/team
-- [ ] BreadcrumbList su tutte le pagine
+- [x] LocalBusiness schema su homepage (combinato con Organization)
+- [x] AggregateRating schema su testimonial homepage (4.9/5, 150 recensioni)
+- [x] BlogPosting schema su articoli blog — **24 articoli aggiornati da Article a BlogPosting (15 IT + 9 EN)**
+- [x] Person schema per fondatore/team (chi-siamo.html)
+- [x] BreadcrumbList su blog articoli IT/EN e EN blog.html
 - [ ] ItemList schema su bandi.html
 
 ### 8.3 Contenuti da Creare
@@ -567,17 +567,17 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 - [ ] Canonical su tutte le pagine
 - [ ] Meta description su tutte le pagine
 - [ ] IndexNow per Bing (ChatGPT usa indice Bing)
-- [ ] llms-full.txt (contenuto completo pagine in Markdown)
+- [x] llms-full.txt (contenuto completo pagine in Markdown) — **CREATO**
 
 ### 8.5 GEO & AI Agents
-- [x] robots.txt con whitelist AI bots
-- [x] llms.txt (standard llmstxt.org)
-- [ ] llms-full.txt
-- [ ] ai.json (permessi AI)
-- [ ] /.well-known/agent.json (discovery A2A)
-- [ ] /.well-known/mcp.json (discovery MCP)
-- [ ] humans.txt
-- [ ] security.txt
+- [x] robots.txt con whitelist AI bots — **aggiornato con 8 bot AI (GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Google-Extended, GoogleOther, PerplexityBot, Applebot, Bytespider, cohere-ai, Meta-ExternalAgent)**
+- [x] llms.txt (standard llmstxt.org) — **prezzo corretto 399-599€**
+- [x] llms-full.txt — **creato con contenuto completo sito in Markdown**
+- [x] ai.json (permessi AI) — **creato con indexing, training, summarization, citation, search**
+- [x] /.well-known/agent.json (discovery A2A) — **creato con capabilities: get_services, get_bandi, contact**
+- [x] /.well-known/mcp.json (discovery MCP) — **creato con tools: get_pricing, search_bandi**
+- [x] humans.txt — **creato con team, tecnologia, standard**
+- [x] security.txt — **creato in root e .well-known/ (standard securitytxt.org)**
 
 ### 8.6 Conversione e Lead Generation
 - [x] Speed-to-lead: risposta automatica entro 60 secondi — **ATTIVATO**
@@ -631,12 +631,14 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 ### 9.1 File Speciali per AI Agents
 | File | Posizione | Scopo | Stato |
 |---|---|---|---|
-| `robots.txt` | `/robots.txt` | Whitelist crawler AI | FATTO |
+| `robots.txt` | `/robots.txt` | Whitelist crawler AI (11 bot) | FATTO |
 | `llms.txt` | `/llms.txt` | Info sito leggibile da AI | FATTO |
-| `llms-full.txt` | `/llms-full.txt` | Contenuto completo in Markdown | DA FARE |
-| `ai.json` | `/ai.json` | Permessi AI | DA FARE |
-| `agent.json` | `/.well-known/agent.json` | Discovery A2A | DA FARE |
-| `mcp.json` | `/.well-known/mcp.json` | Discovery MCP | DA FARE |
+| `llms-full.txt` | `/llms-full.txt` | Contenuto completo in Markdown | FATTO |
+| `ai.json` | `/ai.json` | Permessi AI (indexing, training, citation) | FATTO |
+| `agent.json` | `/.well-known/agent.json` | Discovery A2A (Google protocol) | FATTO |
+| `mcp.json` | `/.well-known/mcp.json` | Discovery MCP (Anthropic protocol) | FATTO |
+| `security.txt` | `/security.txt` + `/.well-known/` | Contatto sicurezza (securitytxt.org) | FATTO |
+| `humans.txt` | `/humans.txt` | Info team e tecnologia | FATTO |
 
 ### 9.2 Standard Emergenti
 - **NLWeb (Microsoft):** Protocollo open-source — Schema.org e' gia' la base

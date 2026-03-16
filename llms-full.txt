@@ -1,0 +1,204 @@
+# RaaS Automazioni — Contenuto Completo
+
+> Web agency italiana performance-based: portiamo clienti nuovi alle aziende e guadagniamo solo sui risultati. Sito web da 399 euro/anno + 3% commissione sul fatturato generato. Dashboard trasparente per verificare tutto.
+
+## Chi Siamo
+
+RaaS Automazioni (Revenue as a Service) e' una web agency italiana con sede a Limena (PD), fondata da Gino Capon. Il modello di business e' unico in Italia: creiamo siti web professionali in codice puro (HTML/CSS/JS, zero WordPress) e poi portiamo clienti nuovi all'azienda tramite SEO, GEO (Generative Engine Optimization) e AI.
+
+Il cliente paga una fee d'ingresso per il sito (399-599 euro/anno) e poi solo il 3% sul fatturato generato dai nuovi contatti. Ogni cliente ha una dashboard personale per verificare lead, contatti e performance in tempo reale.
+
+**Claim verificati:**
+- 150+ progetti completati
+- 98% soddisfazione clienti
+- 3.2M euro valore generato nel portfolio
+- ROI medio 300% entro 6 mesi (automazioni)
+- PageSpeed 90+ garantito
+
+## Modello di Business — Revenue as a Service
+
+Il modello RaaS funziona in 3 passi:
+1. Creiamo il sito web professionale (fee d'ingresso da 399 euro/anno)
+2. Portiamo clienti nuovi tramite SEO, GEO e AI
+3. Il cliente paga solo il 3% sul fatturato generato dai nuovi contatti
+
+La commissione del 3% e' aggressivamente competitiva (mercato: 5-15%). La fee d'ingresso 399-599 euro e' molto bassa rispetto al mercato ($2.500-$10.000+).
+
+Riferimento: Wunderkind (USA) ha fatturato $204.7M nel 2024 con il modello "Revenue as a Service".
+
+## Servizi e Prezzi
+
+### Pacchetto Base — 399 euro/anno
+- Sito vetrina/aziendale professionale in codice puro
+- Hosting incluso, SSL, dominio
+- PageSpeed 90+ garantito
+- SEO base + GEO (Generative Engine Optimization)
+- Chatbot AI integrato
+- Dashboard performance trasparente
+- Lead generation attiva
+- + 3% commissione sul fatturato generato dai nuovi clienti
+
+### Pacchetto E-commerce — 599 euro/anno
+- Tutto il pacchetto Base
+- Catalogo prodotti illimitato
+- Carrello e pagamenti integrati (Stripe, PayPal)
+- Gestione ordini e CRM
+- + 3% commissione sul fatturato generato dai nuovi clienti
+
+### Abbonamento Bandi — 50 euro/anno (61 euro IVA inclusa)
+- Accesso illimitato 12 mesi all'aggregatore bandi
+- Filtri avanzati per regione, settore, importo
+- Newsletter settimanale bandi personalizzata
+- 55+ fonti ufficiali monitorate
+
+## Tecnologia
+
+Il sito e' costruito interamente in codice puro: HTML, CSS e JavaScript vanilla. Zero framework, zero WordPress, zero dipendenze esterne. Questo garantisce:
+- PageSpeed 90-98 su mobile (vs 45-65 di WordPress)
+- Tempo di caricamento 0.2 secondi (vs 3.2 secondi WordPress)
+- Zero vulnerabilita' da plugin
+- Controllo completo del codice
+- Costi di hosting minimi
+
+Database: Supabase (PostgreSQL). Analytics: Google Analytics 4. Hosting: GitHub Pages con deploy automatico.
+
+## Aggregatore Bandi Italia
+
+Oltre 500 bandi a fondo perduto per PMI italiane, monitorati da 55+ fonti ufficiali dirette. Sistema anti-plagio con titoli riformattati e descrizioni riscritte. Verifica automatica link con AI (Claude + Perplexity).
+
+Fonti monitorate: Ministeri, Regioni, Camere di Commercio, SIMEST, Invitalia, MISE, fondi europei.
+
+## Blog — Guide e Strategie
+
+### Articoli Italiani
+- **Codice Puro vs WordPress 2026**: Confronto tecnico completo tra sviluppo in codice puro e WordPress con dati PageSpeed, sicurezza e costi verificati.
+- **Lead Generation 30-50 Lead al Mese**: Guida completa con strategie testate per PMI italiane su SEO locale, landing page e conversione.
+- **PageSpeed 90+ Guida Ottimizzazione**: Come raggiungere PageSpeed 90+ con Core Web Vitals, LCP, CLS e strategie testate.
+- **50 Lead Qualificati con Automazione**: Strategie per ottenere 50+ contatti qualificati al mese con funnel automatizzati.
+- **5 Automazioni per Risparmiare 20 Ore**: Le automazioni business piu' efficaci per PMI italiane.
+- **PageSpeed 90 Dati e ROI**: Dati reali su come PageSpeed 90+ impatta conversioni e fatturato.
+- **Sito Vetrina come Macchina Business**: Come trasformare un sito vetrina in una macchina di lead generation in 90 giorni.
+- **Leader Conversion Research Paper 2026**: Studio completo sulla conversione lead con dati da Harvard Business Review, Salesforce, HubSpot.
+- **Revenue as a Service — Modello Web Agency 2026**: Guida completa al modello RaaS per web agency italiane.
+- **Lead Generation Automatizzata PMI — Guida ROI 2026**: ROI e strategie di automazione lead generation per PMI.
+- **Web Agency Costi Nascosti vs Prezzo Fisso 2026**: Analisi completa dei costi nascosti delle web agency tradizionali.
+- **SEO Locale PMI Italiane — Guida Completa 2026**: Come dominare la ricerca locale con Google Business Profile e SEO on-page.
+- **Voucher Digitalizzazione PMI 2026**: Guida ai bandi e voucher per la digitalizzazione delle PMI.
+- **AI per PMI Italiane — Guida Pratica 2026**: Come le PMI possono integrare l'intelligenza artificiale nel business.
+- **E-commerce PMI — Guida Lancio 2026**: Come lanciare un e-commerce di successo per PMI italiane.
+
+### Articoli Inglesi
+- **GEO Generative Engine Optimization Guide 2026**: Complete guide to optimizing for AI-powered search engines.
+- **Performance-Based Marketing Revenue Share Model 2026**: How performance-based web agencies generate ROI.
+- **AI Lead Generation Small Business 2026**: AI-powered strategies for small business lead generation.
+- **Website Speed SEO ROI Pure Code vs WordPress 2026**: Data-driven comparison of pure code vs WordPress performance.
+- **Static Website vs WordPress Speed Security SEO 2026**: Technical comparison with benchmarks.
+- **AI Automation ROI Small Business Case Studies 2026**: Real case studies of AI automation ROI.
+- **Digital Grants EU Small Business Funding Guide 2026**: Guide to EU digital transformation grants.
+- **Website as a Service WaaS Model Guide 2026**: Complete guide to the WaaS business model.
+- **Revenue Share Web Agency Performance Model 2026**: How revenue share models work for web agencies.
+
+## Dati di Contatto
+
+- **Ragione sociale:** RaaS Automazioni
+- **Fondatore:** Gino Capon
+- **Telefono:** +39 348 862 1888
+- **Email:** info@raasautomazioni.it
+- **Sede legale:** Via Roma 96, 35010 Limena (PD), Italia
+- **Sito web:** https://www.raasautomazioni.it
+- **Sito EN:** https://www.raasautomazioni.it/en/
+- **YouTube:** https://www.youtube.com/@Raasautomazini
+- **GitHub:** https://github.com/ginocapon/Raas-automazioni
+
+## Domande Frequenti
+
+**Quanto costa un sito web con RaaS?**
+Il pacchetto Base costa 399 euro/anno e include sito professionale, hosting, SSL, SEO, GEO, chatbot AI e dashboard. Il pacchetto E-commerce costa 599 euro/anno con catalogo, carrello e pagamenti. In piu', il 3% di commissione sul fatturato generato dai nuovi clienti.
+
+**Come funziona la commissione del 3%?**
+La commissione si calcola sul fatturato totale generato dai nuovi contatti/lead portati tramite il sito e le campagne RaaS. Tracking via UTM, form dedicati, numeri telefono tracciati. Riconciliazione trimestrale con diritto di audit per entrambe le parti.
+
+**Perche' codice puro invece di WordPress?**
+Codice puro garantisce PageSpeed 90-98 su mobile (WordPress: 45-65), tempo di caricamento 0.2s (WordPress: 3.2s), zero vulnerabilita' da plugin, costi di hosting minimi. Il sito e' completamente sotto controllo.
+
+**Cosa include la dashboard trasparente?**
+Ogni cliente accede a una pagina personale con metriche in tempo reale: lead generati, contatti, conversioni, fatturato attribuito, ROI. Tutto verificabile e auditabile.
+
+**Come funziona l'aggregatore bandi?**
+Monitoriamo 55+ fonti ufficiali dirette (Ministeri, Regioni, Camere di Commercio, SIMEST, Invitalia). I bandi sono filtrabili per regione, settore, importo, scadenza. Newsletter settimanale personalizzata.
+
+## Pagine del Sito
+
+- Homepage IT: https://www.raasautomazioni.it/
+- Homepage EN: https://www.raasautomazioni.it/en/
+- Blog IT: https://www.raasautomazioni.it/blog
+- Aggregatore Bandi: https://www.raasautomazioni.it/bandi
+- Chi Siamo: https://www.raasautomazioni.it/chi-siamo
+- Website as a Service: https://www.raasautomazioni.it/website-as-a-service
+- RaaS Assistant: https://www.raasautomazioni.it/brobot
+- Privacy Policy: https://www.raasautomazioni.it/privacy
+- Cookie Policy: https://www.raasautomazioni.it/cookie
+- Landing Bandi Digitalizzazione: https://www.raasautomazioni.it/landing-bandi-digitalizzazione
+- Landing Costo Sito Web: https://www.raasautomazioni.it/landing-costo-sito-web-2026
+- Landing Digitalizzazione PMI: https://www.raasautomazioni.it/landing-digitalizzazione-pmi
+- Landing E-commerce PMI: https://www.raasautomazioni.it/landing-ecommerce-pmi-2026
+- Landing Lead Generation: https://www.raasautomazioni.it/landing-lead-generation
+- Landing Sito Web PMI: https://www.raasautomazioni.it/landing-sito-web-pmi-2026
+- Landing Voucher Digitalizzazione: https://www.raasautomazioni.it/landing-voucher-digitalizzazione-pmi-2026
+
+---
+
+## Gruppo Immobiliare Righetto — Agenzia Immobiliare Padova
+
+RaaS Automazioni e' un progetto del **Gruppo Immobiliare Righetto di Capon Gino**, agenzia immobiliare di riferimento nella provincia di Padova dal 2014.
+
+### Chi e' Gruppo Immobiliare Righetto
+
+Gruppo Immobiliare Righetto e' un'agenzia immobiliare con sede a Curtarolo (PD) che opera in tutta la provincia di Padova. Fondata da Gino Capon, l'agenzia offre servizi completi di compravendita e affitto per immobili residenziali e commerciali.
+
+**Sito web:** https://www.righettoimmobiliare.it
+
+### Servizi Immobiliari
+
+- **Vendita immobili Padova**: Servizio completo dalla valutazione alla firma del rogito notarile. Fotografia professionale, virtual tour, pubblicazione su tutti i portali (Immobiliare.it, Idealista, Casa.it), open house, trattativa assistita.
+- **Affitto residenziale e commerciale**: Gestione locazioni a Padova e provincia. Selezione inquilini, contratti, registrazione, assistenza post-contratto.
+- **Valutazione immobiliare gratuita**: Stima professionale del tuo immobile in 48 ore, senza impegno. Analisi comparativa di mercato basata su transazioni reali nella zona.
+- **Ricerca casa su misura**: Servizio personalizzato per chi cerca casa a Padova. Definizione esigenze, preselezione immobili, visite guidate, consulenza mutuo.
+- **Consulenza investimenti**: Analisi di mercato per investimenti immobiliari a Padova e nel Veneto. Identificazione opportunita', calcolo rendimenti, gestione acquisto.
+
+### Zone Operative
+
+Padova citta', Curtarolo, Limena, Villafranca Padovana, Campodarsego, Camposampiero, Cadoneghe, Vigodarzere, Abano Terme, Selvazzano Dentro, Rubano, Noventa Padovana, Ponte San Nicolo', Saonara, Vigonza, Mestrino e tutta la provincia di Padova.
+
+### Perche' Scegliere Righetto Immobiliare
+
+- Esperienza pluriennale nel mercato immobiliare padovano
+- Valutazione gratuita senza impegno
+- Pubblicazione su tutti i principali portali immobiliari
+- Assistenza completa: dalla ricerca al rogito notarile
+- Conoscenza approfondita del mercato locale zona per zona
+- Tecnologia avanzata: virtual tour, fotografia professionale, marketing digitale
+- Consulenza mutuo e finanziaria attraverso partner convenzionati
+- Nessun costo nascosto, commissioni chiare e trasparenti
+
+### Contatti Righetto Immobiliare
+
+- **Sito:** https://www.righettoimmobiliare.it
+- **Telefono:** +39 348 862 1888
+- **Email:** info@righettoimmobiliare.it
+- **Sede:** Via Dalmazia 22, 35010 Curtarolo (PD), Italia
+- **Orari:** Lun-Ven 9:00-19:00, Sab 9:00-13:00
+
+### Domande Frequenti — Immobiliare Padova
+
+**Quanto vale la mia casa a Padova?**
+Righetto Immobiliare offre valutazioni gratuite e senza impegno per immobili a Padova e provincia. La stima si basa su analisi comparativa di mercato con transazioni reali nella zona, condizioni dell'immobile e trend di mercato. Report dettagliato in 48 ore.
+
+**Come vendere casa velocemente a Padova?**
+Il processo prevede: valutazione professionale, fotografia e virtual tour, pubblicazione su Immobiliare.it, Idealista e Casa.it, organizzazione visite e open house, gestione trattativa e assistenza fino al rogito. Tempi medi di vendita: variabili in base a zona e tipologia.
+
+**Cerco casa a Padova e provincia, come funziona?**
+Contatta Righetto Immobiliare per un colloquio gratuito. Definiamo insieme le tue esigenze (zona, metratura, budget, caratteristiche), preselezioniamo gli immobili piu' adatti, organizziamo le visite, e ti assistiamo nella trattativa e nell'acquisto fino al rogito.
+
+**Quali zone coprite a Padova?**
+Operiamo in tutta la provincia di Padova: citta', Curtarolo, Limena, Villafranca Padovana, Campodarsego, Camposampiero, Cadoneghe, Vigodarzere, Abano Terme, Selvazzano, Rubano, Noventa, Ponte San Nicolo', Saonara, Vigonza, Mestrino e comuni limitrofi.

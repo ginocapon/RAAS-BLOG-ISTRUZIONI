@@ -1,0 +1,23 @@
+{
+  "name": "RaaS Automazioni MCP",
+  "description": "Model Context Protocol endpoint for RaaS Automazioni — web agency performance-based italiana",
+  "version": "1.0",
+  "url": "https://www.raasautomazioni.it",
+  "tools": [
+    {
+      "name": "get_pricing",
+      "description": "Get RaaS Automazioni pricing: Base 399 euro/year, E-commerce 599 euro/year, + 3% performance commission",
+      "input_schema": {"type": "object", "properties": {}},
+      "output_schema": {"type": "object"}
+    },
+    {
+      "name": "search_bandi",
+      "description": "Search Italian business grants from 55+ official sources",
+      "input_schema": {"type": "object", "properties": {"region": {"type": "string"}, "sector": {"type": "string"}}},
+      "output_schema": {"type": "object"}
+    }
+  ],
+  "contact": {
+    "email": "info@raasautomazioni.it"
+  }
+}

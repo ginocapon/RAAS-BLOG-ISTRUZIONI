@@ -1,0 +1,8 @@
+# Security Policy — RaaS Automazioni
+# https://securitytxt.org/
+
+Contact: mailto:info@raasautomazioni.it
+Contact: tel:+39-348-862-1888
+Preferred-Languages: it, en
+Canonical: https://www.raasautomazioni.it/.well-known/security.txt
+Expires: 2027-03-16T00:00:00.000Z

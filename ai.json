@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "name": "RaaS Automazioni",
+  "description": "Web agency italiana performance-based. Portiamo clienti nuovi alle aziende e guadagniamo solo sui risultati. Sito web da 399 euro/anno + 3% commissione sul fatturato generato.",
+  "url": "https://www.raasautomazioni.it",
+  "permissions": {
+    "indexing": true,
+    "training": true,
+    "summarization": true,
+    "citation": true,
+    "search": true
+  },
+  "contact": {
+    "email": "info@raasautomazioni.it",
+    "phone": "+39-348-862-1888"
+  },
+  "languages": ["it", "en"],
+  "content_types": [
+    "website",
+    "blog",
+    "landing_pages",
+    "service_pages"
+  ],
+  "llms_txt": "https://www.raasautomazioni.it/llms.txt",
+  "llms_full_txt": "https://www.raasautomazioni.it/llms-full.txt",
+  "sitemap": "https://www.raasautomazioni.it/sitemap.xml",
+  "robots_txt": "https://www.raasautomazioni.it/robots.txt"
+}
