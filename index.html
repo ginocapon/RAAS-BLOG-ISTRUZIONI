@@ -2620,27 +2620,88 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
         </div>
     </section>
 
-    <!-- VIDEO SHOWCASE + ROBOT 3D -->
-    <section class="section" style="background:linear-gradient(180deg,#0e2240 0%,var(--bg) 100%);padding:4rem 0 3rem;overflow:hidden;" aria-label="Video presentazione">
+    <!-- VIDEO SHOWCASE + IMMAGINE — Fusione visiva -->
+    <section class="section video-showcase" aria-label="Video presentazione">
         <div class="container">
-            <div style="display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;max-width:1000px;margin:0 auto;">
+            <div class="video-grid">
 
-                <!-- IMMAGINE (lato sinistro) -->
-                <div style="flex-shrink:0;width:220px;">
-                    <img src="file/drsjs-man-320276_640.png" alt="RaaS Automazioni - Ti portiamo clienti" width="220" height="320" style="border-radius:16px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,0.3);width:100%;height:auto;">
+                <!-- IMMAGINE (lato sinistro) con alone di fusione -->
+                <div class="video-img-wrap">
+                    <img src="file/drsjs-man-320276_640.png" alt="RaaS Automazioni - Ti portiamo clienti" width="220" height="320">
                 </div>
 
-                <!-- VIDEO YouTube (lato destro) -->
-                <div style="position:relative;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.4);aspect-ratio:16/9;background:#000;">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/EIYuosivXz0" title="Raasautomazioni" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                <!-- VIDEO YouTube (lato destro) — caricato dopo 3s -->
+                <div class="video-frame" id="videoFrame">
+                    <div class="video-placeholder" id="videoPlaceholder">
+                        <div class="video-play-btn">
+                            <svg width="30" height="34" viewBox="0 0 30 34" fill="white"><polygon points="5,2 28,17 5,32"/></svg>
+                        </div>
+                        <p style="color:#fff;font-size:1.1rem;font-weight:700;margin:0 0 .3rem;">Scopri Come Ti Portiamo Clienti</p>
+                        <p style="color:rgba(255,255,255,.55);font-size:.85rem;margin:0;">Caricamento video...</p>
+                    </div>
                 </div>
             </div>
         </div>
+
         <style>
+            .video-showcase{background:linear-gradient(180deg,#0e2240 0%,#1a2f47 40%,#1a2f47 60%,var(--bg) 100%);padding:4rem 0 3rem;overflow:hidden;position:relative;}
+            .video-grid{display:grid;grid-template-columns:240px 1fr;gap:0;align-items:center;max-width:1050px;margin:0 auto;position:relative;}
+
+            /* Alone luminoso dietro la griglia per fusione */
+            .video-grid::before{content:'';position:absolute;top:50%;left:220px;transform:translate(-50%,-50%);width:300px;height:120%;background:radial-gradient(ellipse,rgba(230,57,70,.12) 0%,rgba(26,47,71,.3) 40%,transparent 70%);pointer-events:none;z-index:0;}
+
+            /* Immagine */
+            .video-img-wrap{position:relative;z-index:1;width:240px;flex-shrink:0;}
+            .video-img-wrap img{display:block;width:100%;height:auto;border-radius:18px 0 0 18px;object-fit:cover;box-shadow:4px 0 30px rgba(0,0,0,.4);}
+            /* Sfumatura destra sulla foto per fondere col video */
+            .video-img-wrap::after{content:'';position:absolute;top:0;right:0;width:60px;height:100%;background:linear-gradient(90deg,transparent,rgba(0,0,0,.6));border-radius:0;pointer-events:none;z-index:2;}
+
+            /* Video */
+            .video-frame{position:relative;z-index:1;border-radius:0 18px 18px 0;overflow:hidden;box-shadow:-4px 0 30px rgba(0,0,0,.4),0 8px 40px rgba(0,0,0,.35);aspect-ratio:16/9;background:linear-gradient(135deg,#0e2240,#1a2f47);}
+            .video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;opacity:0;transition:opacity .6s ease;}
+            .video-frame iframe.loaded{opacity:1;}
+
+            /* Placeholder animato */
+            .video-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:3;transition:opacity .5s ease;pointer-events:none;}
+            .video-placeholder.hidden{opacity:0;}
+            .video-play-btn{width:70px;height:70px;background:rgba(230,57,70,.85);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;box-shadow:0 0 25px rgba(230,57,70,.4);animation:pulsePlay 2s ease-in-out infinite;}
+
+            /* Linea luminosa di giunzione */
+            .video-grid::after{content:'';position:absolute;top:10%;left:240px;width:2px;height:80%;background:linear-gradient(180deg,transparent,rgba(230,57,70,.3),rgba(244,162,97,.2),transparent);z-index:5;pointer-events:none;}
+
+            @keyframes pulsePlay{0%,100%{transform:scale(1);box-shadow:0 0 25px rgba(230,57,70,.4);}50%{transform:scale(1.08);box-shadow:0 0 40px rgba(230,57,70,.6);}}
+
             @media(max-width:768px){
-                .container > div[style*="grid-template-columns:auto 1fr"]{grid-template-columns:1fr !important;text-align:center;}
+                .video-grid{grid-template-columns:1fr !important;gap:0;text-align:center;}
+                .video-img-wrap{width:100%;max-width:320px;margin:0 auto;}
+                .video-img-wrap img{border-radius:18px 18px 0 0;}
+                .video-img-wrap::after{display:none;}
+                .video-frame{border-radius:0 0 18px 18px;}
+                .video-grid::before,.video-grid::after{display:none;}
             }
         </style>
+
+        <script>
+        // Carica iframe YouTube dopo 3 secondi per non pesare su LCP
+        setTimeout(function(){
+            var frame=document.getElementById('videoFrame');
+            var ph=document.getElementById('videoPlaceholder');
+            var iframe=document.createElement('iframe');
+            iframe.width='100%';iframe.height='100%';
+            iframe.src='https://www.youtube.com/embed/EIYuosivXz0';
+            iframe.title='Raasautomazioni';
+            iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            iframe.referrerPolicy='strict-origin-when-cross-origin';
+            iframe.allowFullscreen=true;
+            iframe.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;border:none;opacity:0;transition:opacity .6s ease;';
+            frame.appendChild(iframe);
+            iframe.onload=function(){
+                iframe.classList.add('loaded');
+                iframe.style.opacity='1';
+                if(ph)ph.classList.add('hidden');
+            };
+        },3000);
+        </script>
     </section>
 
     <!-- COME FUNZIONA — Sezione chiave del modello RaaS -->
