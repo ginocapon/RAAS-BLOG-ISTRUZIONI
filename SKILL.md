@@ -63,7 +63,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 | **Lingue** | Italiano (principale), Inglese (/en/) |
 | **Target** | PMI, professionisti, startup — B2B |
 | **Mercato** | Italia + UK/USA/Global (bilingue) |
-| **Analytics** | Google Analytics 4 (G-JFM8JG9C2R) |
+| **Analytics** | Google Analytics 4 (G-4T83494XDB) |
 | **Repository** | GitHub — ginocapon/Raas-automazioni |
 
 ### 2.2 Modello di Business — RaaS (Revenue as a Service)
@@ -441,7 +441,7 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 - [ ] CTA primario con contrasto >= 4.5:1
 - [ ] Registrato in sitemap.xml
 - [ ] Cookie banner presente
-- [ ] GA4 (G-JFM8JG9C2R) presente
+- [ ] GA4 (G-4T83494XDB) presente
 - [ ] Risposta diretta nelle prime 2 righe di ogni sezione H2 (GEO)
 - [ ] Mobile responsive
 
