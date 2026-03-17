@@ -153,13 +153,28 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
 
 /* Hero */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,#0a1628 0%,#1a2f47 50%,#0e2240 100%);color:var(--white);padding-top:80px;overflow:hidden}
-.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;margin:0 auto}
+.hero-content{position:relative;z-index:2;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;align-items:center;gap:2rem;color:var(--white);padding:2rem 1.5rem}
+.hero-top{text-align:left;grid-column:1;grid-row:1}
+.hero-bottom{text-align:left;grid-column:1;grid-row:2}
 .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.1);padding:0.5rem 1.2rem;border-radius:30px;font-size:0.9rem;margin-bottom:2rem;backdrop-filter:blur(10px)}
-.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.15;margin-bottom:1.5rem}
-.hero h1 span{color:var(--primary);display:inline}
-.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;margin-top:2rem}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:700px;margin:0 auto}
-.stat-item{text-align:center}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.02em}
+.hero h1 span{background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;display:inline-block}
+.hero h1 span::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px;transform:scaleX(0);transform-origin:left;animation:lineGrow 1s ease 1.2s both}
+@keyframes lineGrow{to{transform:scaleX(1)}}
+.hero-subtitle{font-size:clamp(1rem,2.5vw,1.25rem);line-height:1.7;opacity:0.95;max-width:700px;margin:0 0 1.5rem;font-weight:400;color:rgba(255,255,255,0.9)}
+.hero-services{list-style:none;margin:1.5rem 0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.hero-services li{font-size:1rem;opacity:.85;display:flex;align-items:center;gap:.6rem;font-weight:500}
+.hero-services li i{color:var(--accent);font-size:.85rem;width:20px;text-align:center}
+.hero-right{display:flex;justify-content:center;align-items:center;position:relative;overflow:visible;grid-column:2;grid-row:1/3}
+.hero-right img{width:100%;height:auto;display:block;transform:scaleX(-1) scale(1.12) translateX(15%);transform-origin:center center;-webkit-mask-image:linear-gradient(to bottom,#000 60%,transparent 100%);mask-image:linear-gradient(to bottom,#000 60%,transparent 100%);position:relative;z-index:2}
+.hero-right::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:340px;height:340px;border-radius:50%;border:2px solid rgba(14,165,233,0.2);animation:heroRingPulse 4s ease-in-out infinite;z-index:1}
+.hero-right::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:450px;height:450px;border-radius:50%;border:1px solid rgba(14,165,233,0.1);animation:heroRingPulse 4s ease-in-out infinite 1s;z-index:1}
+@keyframes heroRingPulse{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:.8;transform:translate(-50%,-50%) scale(1.05)}}
+.hero-claim{font-size:1.2rem;font-weight:800;color:var(--primary);margin:1.5rem 0 .25rem;line-height:1.4}
+.hero-claim-sub{font-size:1.2rem;font-weight:800;color:var(--primary);margin-bottom:1.5rem}
+.hero-cta{display:flex;gap:1rem;justify-content:flex-start;flex-wrap:wrap;margin-bottom:2rem}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:700px}
+.stat-item{text-align:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.2rem 0.5rem}
 .stat-number{font-size:2rem;font-weight:800;color:var(--primary)}
 .stat-label{font-size:0.85rem;opacity:0.7}
 
@@ -216,6 +231,16 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem;gap:1rem;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
     .nav-links.active{display:flex}
     .mobile-menu-toggle{display:block}
+    .hero-content{grid-template-columns:1fr;grid-template-rows:auto;text-align:center}
+    .hero-top{text-align:center;grid-column:1;grid-row:auto;order:1}
+    .hero-right{max-width:280px;margin:0 auto;grid-column:1;grid-row:auto;order:2}
+    .hero-right img{max-width:100%}
+    .hero-right::before,.hero-right::after{display:none}
+    .hero-bottom{text-align:center;grid-column:1;grid-row:auto;order:3}
+    .hero-services{display:none}
+    .hero-subtitle{display:none}
+    .hero-claim,.hero-claim-sub{text-align:center}
+    .hero-cta{justify-content:center}
     .hero h1{font-size:2rem}
     .hero-stats{grid-template-columns:repeat(2,1fr)}
     .contact-grid{grid-template-columns:1fr}
@@ -247,84 +272,72 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
     <section class="hero" aria-label="Introduction">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Revenue as a Service — Performance-Based Model</span>
-                </div>
+                <div class="hero-top">
+                    <div class="hero-badge">
+                        <i class="fas fa-bolt"></i>
+                        <span>Revenue as a Service</span>
+                    </div>
 
-                <h1>
-    We Bring You <span>New Clients</span>.<br>
-    We Only Earn When You Earn.
+                    <h1>
+    Your Marketing Is Already <span>Automated</span>.
 </h1>
-                <p style="font-size:1.15rem;max-width:700px;margin:1rem auto;opacity:0.9;line-height:1.7;">
-                    We build your professional website and bring you clients through SEO, AI, and the most advanced techniques.
-                    You only pay <strong>3% on the revenue</strong> we generate for you. Everything verifiable in your personal dashboard.
-                </p>
+                    <p class="hero-subtitle">A robot works for you 24/7: website, SEO, lead generation. You only pay for results.</p>
 
-                <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i>
-                        Start Growing
-                    </a>
-                    <a href="#how-it-works" class="btn btn-secondary" style="border-color:var(--accent);color:var(--accent);">
-                        <i class="fas fa-play-circle"></i>
-                        How It Works
-                    </a>
+                    <ul class="hero-services">
+                        <li><i class="fas fa-globe"></i> <strong>Website that converts</strong> &mdash; Pure code, PageSpeed 90+</li>
+                        <li><i class="fas fa-robot"></i> <strong>Found on Google</strong> &mdash; SEO and AI work for you</li>
+                        <li><i class="fas fa-magnet"></i> <strong>New clients</strong> &mdash; Automatic lead generation 24/7</li>
+                        <li><i class="fas fa-chart-bar"></i> <strong>Full control</strong> &mdash; Transparent real-time dashboard</li>
+                    </ul>
                 </div>
 
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">150+</div>
-                        <div class="stat-label">Active clients</div>
+                <div class="hero-right">
+                    <img src="/file/drsjs-man-320276_640-removebg-preview.png" alt="RaaS Automazioni - AI Automated Marketing" width="400" height="580" loading="eager">
+                </div>
+
+                <div class="hero-bottom">
+                    <div class="hero-claim">Website from &euro;399/year, all included.</div>
+                    <div class="hero-claim-sub">Then we only earn 3% on results.</div>
+
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Start Now &mdash; It's Free
+                        </a>
+                        <a href="#how-it-works" class="btn btn-secondary" style="border-color:var(--accent);color:var(--accent);">
+                            <i class="fas fa-play-circle"></i>
+                            How It Works
+                        </a>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3%</div>
-                        <div class="stat-label">Only on results</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3.2M+</div>
-                        <div class="stat-label">Revenue generated</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Client satisfaction</div>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Active clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3%</div>
+                            <div class="stat-label">Fee</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3.2M&euro;</div>
+                            <div class="stat-label">Revenue</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Satisfied</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- VIDEO SHOWCASE + 3D ROBOT -->
+    <!-- VIDEO SHOWCASE -->
     <section style="background:linear-gradient(180deg,#0e2240 0%,var(--bg) 100%);padding:4rem 0 3rem;overflow:hidden;" aria-label="Video presentation">
         <div class="container">
-            <div style="display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;max-width:1000px;margin:0 auto;">
-                <!-- 3D ROBOT Star Wars style (left side, pointing right) -->
-                <div style="position:relative;width:180px;height:260px;perspective:800px;flex-shrink:0;">
-                    <div class="robot-3d" style="transform-style:preserve-3d;animation:robotFloat 4s ease-in-out infinite;">
-                        <div style="width:90px;height:60px;background:linear-gradient(135deg,#c0c0c0,#e8e8e8);border-radius:45px 45px 10px 10px;margin:0 auto;position:relative;box-shadow:0 4px 20px rgba(0,0,0,0.3),inset 0 -5px 15px rgba(0,0,0,0.1);border:2px solid #a0a0a0;">
-                            <div style="position:absolute;top:18px;left:50%;transform:translateX(-50%);width:28px;height:28px;background:radial-gradient(circle,#e63946,#c1121f);border-radius:50%;box-shadow:0 0 15px rgba(230,57,70,0.6),0 0 30px rgba(230,57,70,0.3);border:3px solid #888;"></div>
-                            <div style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:4px;height:18px;background:linear-gradient(to top,#a0a0a0,#d0d0d0);border-radius:2px;"></div>
-                            <div style="position:absolute;top:-24px;left:50%;transform:translateX(-50%);width:10px;height:10px;background:var(--primary);border-radius:50%;box-shadow:0 0 10px rgba(230,57,70,0.8);animation:blink 2s ease-in-out infinite;"></div>
-                        </div>
-                        <div style="width:100px;height:100px;background:linear-gradient(180deg,#d0d0d0 0%,#b0b0b0 50%,#909090 100%);border-radius:12px;margin:4px auto 0;position:relative;box-shadow:0 8px 30px rgba(0,0,0,0.3),inset 0 2px 10px rgba(255,255,255,0.2);border:2px solid #a0a0a0;">
-                            <div style="position:absolute;top:12px;left:50%;transform:translateX(-50%);width:50px;height:40px;background:linear-gradient(180deg,#1a2f47,#0e2240);border-radius:6px;border:2px solid #666;padding:6px;">
-                                <div style="width:8px;height:8px;background:#4ade80;border-radius:50%;box-shadow:0 0 8px rgba(74,222,128,0.6);margin-bottom:4px;animation:blink 1.5s ease-in-out infinite;"></div>
-                                <div style="width:100%;height:3px;background:var(--primary);border-radius:2px;opacity:0.8;margin-bottom:3px;"></div>
-                                <div style="width:70%;height:3px;background:var(--accent);border-radius:2px;opacity:0.8;"></div>
-                            </div>
-                            <div style="position:absolute;top:60px;left:8px;width:24px;height:24px;background:linear-gradient(135deg,#888,#aaa);border-radius:50%;border:2px solid #777;"></div>
-                            <div style="position:absolute;top:60px;right:8px;width:24px;height:24px;background:linear-gradient(135deg,#888,#aaa);border-radius:50%;border:2px solid #777;"></div>
-                        </div>
-                        <div style="display:flex;justify-content:center;gap:20px;margin-top:4px;">
-                            <div style="width:30px;height:45px;background:linear-gradient(180deg,#a0a0a0,#808080);border-radius:6px 6px 10px 10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);border:1px solid #999;"></div>
-                            <div style="width:30px;height:45px;background:linear-gradient(180deg,#a0a0a0,#808080);border-radius:6px 6px 10px 10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);border:1px solid #999;"></div>
-                        </div>
-                        <div style="position:absolute;top:85px;right:-55px;width:70px;height:14px;background:linear-gradient(90deg,#a0a0a0,#c0c0c0);border-radius:7px;transform:rotate(-15deg);transform-origin:left center;animation:pointRight 2s ease-in-out infinite;box-shadow:0 3px 10px rgba(0,0,0,0.2);">
-                            <div style="position:absolute;right:-10px;top:-3px;width:20px;height:20px;background:#c0c0c0;border-radius:50%;border:2px solid #aaa;"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- VIDEO -->
+            <div style="max-width:800px;margin:0 auto;text-align:center;">
+                <p style="color:#fff;font-size:1.4rem;font-weight:700;margin-bottom:2rem;line-height:1.5;">Stop chasing clients.<br><strong style="color:var(--accent);">Let them come to you.</strong></p>
                 <div style="position:relative;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.4);aspect-ratio:16/9;background:#000;">
                     <div id="videoPlaceholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1a2f47,#0e2240);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="this.outerHTML='<iframe width=100% height=100% src=\'https://www.youtube.com/embed/VIDEO_ID?autoplay=1\' frameborder=0 allow=autoplay allowfullscreen style=position:absolute;top:0;left:0;width:100%;height:100%;></iframe>'">
                         <div style="width:80px;height:80px;background:rgba(230,57,70,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 0 30px rgba(230,57,70,0.4);transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
@@ -336,15 +349,6 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
                 </div>
             </div>
         </div>
-        <style>
-            @keyframes robotFloat{0%,100%{transform:translateY(0) rotateY(-5deg)}50%{transform:translateY(-12px) rotateY(5deg)}}
-            @keyframes pointRight{0%,100%{transform:rotate(-15deg)}50%{transform:rotate(-5deg)}}
-            @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-            @media(max-width:768px){
-                .container > div[style*="grid-template-columns:auto 1fr"]{grid-template-columns:1fr !important;text-align:center;}
-                .robot-3d{margin:0 auto;}
-            }
-        </style>
     </section>
 
     <!-- HOW IT WORKS -->
@@ -360,7 +364,7 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
                 <article style="background:var(--white);border-radius:16px;padding:2.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.06);text-align:center;">
                     <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:var(--white);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.5rem;font-weight:800;">1</div>
                     <h3 style="margin-bottom:0.75rem;color:var(--dark);">We Build Your Website</h3>
-                    <p style="color:var(--text-light);line-height:1.7;">Professional website in pure code. PageSpeed 90+, SEO optimized, AI chatbot included. <strong>From 299/year</strong> — your entry investment.</p>
+                    <p style="color:var(--text-light);line-height:1.7;">Professional website in pure code. PageSpeed 90+, SEO optimized, AI chatbot included. <strong>From &euro;399/year</strong> — your entry investment.</p>
                 </article>
 
                 <article style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:16px;padding:2.5rem;box-shadow:0 4px 20px rgba(230,57,70,0.2);text-align:center;color:var(--white);">
@@ -508,7 +512,7 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            <strong>RaaS (Revenue as a Service)</strong> works in 3 steps: 1) We build your professional website (entry fee 299-399/year).
+                            <strong>RaaS (Revenue as a Service)</strong> works in 3 steps: 1) We build your professional website (entry fee &euro;399-599/year).
                             2) We bring you new clients through SEO, GEO, and AI. 3) You pay only 3% on the revenue generated by the new contacts we bring.
                             Your personal dashboard lets you verify everything in real-time.
                         </div>
