@@ -626,7 +626,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 <script>
 const SUPABASE_URL='https://ieeriszlalrsbfsnarih.supabase.co';
 const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZXJpc3psYWxyc2Jmc25hcmloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNjEyNjAsImV4cCI6MjA4MzczNzI2MH0.Sjwu1620mMTAAoKVHgXHQ1cA-m3hFXqtCtqjAQNErQo';
-const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+var supabaseClient=null;
+try{if(window.supabase&&window.supabase.createClient)supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)}catch(e){console.warn('Supabase init fallback:',e)}
 const PREVIEW_COUNT=12;const SUBSCRIPTION_DAYS=365;
 let allBandi=[],filteredBandi=[];
 
@@ -637,7 +638,7 @@ function activateSubscription(email,name,company,vatNumber,newsletter){
     const start=new Date(),expiry=new Date();expiry.setDate(expiry.getDate()+SUBSCRIPTION_DAYS);
     const sub={email,name,company:company||'',vatNumber:vatNumber||'',newsletter,startDate:start.toISOString(),expiryDate:expiry.toISOString(),transactionId:'TXN-'+Date.now()};
     localStorage.setItem('bandiSubscription',JSON.stringify(sub));
-    try{supabaseClient.from('subscribers').insert([{email:sub.email,name:sub.name,company:sub.company,vat_number:sub.vatNumber,newsletter:sub.newsletter,start_date:sub.startDate,expiry_date:sub.expiryDate,transaction_id:sub.transactionId,type:'paid'}])}catch(e){}
+    try{if(supabaseClient)supabaseClient.from('subscribers').insert([{email:sub.email,name:sub.name,company:sub.company,vat_number:sub.vatNumber,newsletter:sub.newsletter,start_date:sub.startDate,expiry_date:sub.expiryDate,transaction_id:sub.transactionId,type:'paid'}])}catch(e){}
     return sub;
 }
 function updateStatusBar(){
@@ -692,9 +693,9 @@ async function submitRegistration(){
     if(!nome||!cognome||!email){alert('Compila Nome, Cognome e Email.');return}
     if(!email.includes('@')){alert('Email non valida.');return}
     if(!priv){alert('Accetta la Privacy Policy.');return}
-    try{await supabaseClient.from('subscribers').insert([{email,name:nome+' '+cognome,company:document.getElementById('reg-azienda').value.trim(),region_interest:document.getElementById('reg-regione').value,newsletter:true,type:'free'}])}catch(e){}
+    try{if(supabaseClient)await supabaseClient.from('subscribers').insert([{email,name:nome+' '+cognome,company:document.getElementById('reg-azienda').value.trim(),region_interest:document.getElementById('reg-regione').value,newsletter:true,type:'free'}])}catch(e){}
     localStorage.setItem('freeRegEmail',email);
-    try{await supabaseClient.from('user_search_preferences').upsert({email:email,regione:document.getElementById('reg-regione').value||'',updated_at:new Date().toISOString()},{onConflict:'email'})}catch(e){}
+    try{if(supabaseClient)await supabaseClient.from('user_search_preferences').upsert({email:email,regione:document.getElementById('reg-regione').value||'',updated_at:new Date().toISOString()},{onConflict:'email'})}catch(e){}
     try{
         await fetch('https://api.brevo.com/v3/contacts',{
             method:'POST',
@@ -724,30 +725,34 @@ async function loadBandiFromJson(){
     return bandi.map(mapJsonBando);
 }
 async function loadBandi(){
-    try{
-        var supabasePromise=new Promise(async function(resolve,reject){
-            try{
-                var countRes=await supabaseClient.from('bandi').select('*',{count:'exact',head:true}).eq('attivo',true);
-                var totalCount=countRes.count||0;
-                document.getElementById('stat-bandi').textContent=totalCount;
-                document.getElementById('totalBandiCount').textContent=totalCount;
-                var all=[],offset=0;
-                while(true){
-                    var res=await supabaseClient.from('bandi').select('*').eq('attivo',true).order('id',{ascending:false}).range(offset,offset+999);
-                    if(res.error)throw res.error;
-                    if(!res.data||!res.data.length)break;
-                    all=all.concat(res.data);
-                    if(res.data.length<1000)break;
-                    offset+=1000;
-                }
-                resolve(all);
-            }catch(e){reject(e)}
-        });
-        var timeout=new Promise(function(_,reject){setTimeout(function(){reject(new Error('timeout'))},5000)});
-        allBandi=await Promise.race([supabasePromise,timeout]);
-    }catch(e){
-        try{allBandi=await loadBandiFromJson();document.getElementById('stat-bandi').textContent=allBandi.length;document.getElementById('totalBandiCount').textContent=allBandi.length}catch(e2){allBandi=[];document.getElementById('stat-bandi').textContent='0'}
+    // Prova Supabase solo se il client e' disponibile
+    if(supabaseClient){
+        try{
+            var supabasePromise=new Promise(async function(resolve,reject){
+                try{
+                    var countRes=await supabaseClient.from('bandi').select('*',{count:'exact',head:true}).eq('attivo',true);
+                    var totalCount=countRes.count||0;
+                    document.getElementById('stat-bandi').textContent=totalCount;
+                    document.getElementById('totalBandiCount').textContent=totalCount;
+                    var all=[],offset=0;
+                    while(true){
+                        var res=await supabaseClient.from('bandi').select('*').eq('attivo',true).order('id',{ascending:false}).range(offset,offset+999);
+                        if(res.error)throw res.error;
+                        if(!res.data||!res.data.length)break;
+                        all=all.concat(res.data);
+                        if(res.data.length<1000)break;
+                        offset+=1000;
+                    }
+                    resolve(all);
+                }catch(e){reject(e)}
+            });
+            var timeout=new Promise(function(_,reject){setTimeout(function(){reject(new Error('timeout'))},5000)});
+            allBandi=await Promise.race([supabasePromise,timeout]);
+            if(allBandi&&allBandi.length)return;
+        }catch(e){console.warn('Supabase fallback al JSON locale:',e)}
     }
+    // Fallback: carica da JSON locale
+    try{allBandi=await loadBandiFromJson();document.getElementById('stat-bandi').textContent=allBandi.length;document.getElementById('totalBandiCount').textContent=allBandi.length}catch(e2){allBandi=[];document.getElementById('stat-bandi').textContent='0'}
 }
 function renderPreview(){
     const grid=document.getElementById('preview-grid'),load=document.getElementById('loading-preview');
@@ -798,7 +803,7 @@ function saveSearchPreferences(){
             keywords:document.getElementById('search').value.trim()||'',
             updated_at:new Date().toISOString()
         };
-        try{await supabaseClient.from('user_search_preferences').upsert(prefs,{onConflict:'email'})}catch(e){console.warn('Pref save err:',e)}
+        try{if(supabaseClient)await supabaseClient.from('user_search_preferences').upsert(prefs,{onConflict:'email'})}catch(e){console.warn('Pref save err:',e)}
     },2000);
 }
 
@@ -822,6 +827,8 @@ testimonialTimer=setInterval(nextTestimonial,5000);
 
 function debounce(fn,w){let t;return function(...a){clearTimeout(t);t=setTimeout(()=>fn(...a),w)}}
 async function initPage(){
+    // Riprova init Supabase se non era pronto prima (defer)
+    if(!supabaseClient&&window.supabase&&window.supabase.createClient){try{supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)}catch(e){}}
     updateStatusBar();await loadBandi();renderPreview();
     if(isSubscriptionActive()){document.getElementById('filtersSection').classList.add('unlocked');document.getElementById('resultsSection').classList.add('unlocked');document.getElementById('pricingHero').style.display='none';document.getElementById('paywallBanner').style.display='none';applyFilters()}
 }
@@ -941,7 +948,7 @@ function submitChatForm(){
     
     // Salva su Supabase se disponibile
     try {
-        if(typeof supabaseClient !== 'undefined'){
+        if(supabaseClient){
             supabaseClient.from('subscribers').insert([{
                 email: email,
                 name: name,
