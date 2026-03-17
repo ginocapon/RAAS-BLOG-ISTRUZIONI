@@ -585,7 +585,7 @@ body{
 }
 .hero-left{text-align:left}
 .hero-right{display:flex;justify-content:center;align-items:center;position:relative}
-.hero-right img{max-width:130%;height:auto;display:block;transform:scaleX(-1);-webkit-mask-image:linear-gradient(to bottom,#000 60%,transparent 100%);mask-image:linear-gradient(to bottom,#000 60%,transparent 100%);position:relative;z-index:2}
+.hero-right img{max-width:140%;height:auto;display:block;transform:scaleX(-1) translateX(2cm);-webkit-mask-image:linear-gradient(to bottom,#000 60%,transparent 100%);mask-image:linear-gradient(to bottom,#000 60%,transparent 100%);position:relative;z-index:2}
 .hero-right::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:340px;height:340px;border-radius:50%;border:2px solid rgba(14,165,233,0.2);animation:heroRingPulse 4s ease-in-out infinite;z-index:1}
 .hero-right::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:450px;height:450px;border-radius:50%;border:1px solid rgba(14,165,233,0.1);animation:heroRingPulse 4s ease-in-out infinite 1s;z-index:1}
 @keyframes heroRingPulse{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:.8;transform:translate(-50%,-50%) scale(1.05)}}
