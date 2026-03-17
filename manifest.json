@@ -2,7 +2,7 @@
   "name": "RaaS Bandi — Aggregatore Bandi Italia",
   "short_name": "RaaS Bandi",
   "description": "Bandi a fondo perduto, finanziamenti e incentivi per PMI italiane. Filtri avanzati, aggiornamento giornaliero.",
-  "start_url": "/bandi.html?source=pwa",
+  "start_url": "/app.html?source=pwa",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
@@ -35,7 +35,7 @@
     {
       "name": "Cerca Bandi",
       "short_name": "Cerca",
-      "url": "/bandi.html?source=pwa#filtersSection",
+      "url": "/app.html?source=pwa",
       "icons": [{"src": "/favicon.svg", "sizes": "any"}]
     }
   ]

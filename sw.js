@@ -1,15 +1,18 @@
 // Service Worker — RaaS Bandi PWA
 // Strategia: cache-first per assets statici, network-first per dati bandi
 
-var CACHE_NAME = 'raas-bandi-v1';
-var DATA_CACHE = 'raas-bandi-data-v1';
+var CACHE_NAME = 'raas-bandi-v2';
+var DATA_CACHE = 'raas-bandi-data-v2';
 
 var STATIC_ASSETS = [
+  '/app.html',
   '/bandi.html',
   '/manifest.json',
   '/favicon.svg',
   '/favicon.ico',
-  '/css/styles.css'
+  '/css/styles.css',
+  '/icons/icon-192.png',
+  '/icons/icon-512.png'
 ];
 
 // Install: pre-cache pagina bandi e assets statici

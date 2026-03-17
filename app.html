@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<title>RaaS Bandi App</title>
+<meta name="description" content="App bandi e finanziamenti per PMI italiane. Cerca, filtra e salva i bandi che ti interessano.">
+<meta name="theme-color" content="#0a1628">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="RaaS Bandi">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<style>
+:root{
+--primary:#0ea5e9;--primary-dark:#0284c7;--primary-glow:rgba(14,165,233,0.15);
+--accent:#f59e0b;--accent-dark:#d97706;
+--dark:#0f172a;--dark-mid:#1e293b;--dark-light:#334155;
+--text:#1e293b;--text-light:#64748b;--text-muted:#94a3b8;
+--bg:#f8fafc;--white:#fff;--card-bg:#fff;
+--success:#10b981;--danger:#ef4444;--warning:#f59e0b;
+--border:#e2e8f0;
+--radius:14px;--radius-sm:8px;--radius-lg:20px;
+--shadow:0 2px 12px rgba(15,23,42,0.08);
+--shadow-lg:0 8px 30px rgba(15,23,42,0.12);
+--tab-height:64px;
+--header-height:56px;
+--safe-top:env(safe-area-inset-top,0px);
+--safe-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+background:var(--bg);color:var(--text);
+overflow-x:hidden;
+-webkit-tap-highlight-color:transparent;
+}
+
+/* ===== APP HEADER ===== */
+.app-header{
+position:fixed;top:0;left:0;right:0;z-index:100;
+height:calc(var(--header-height) + var(--safe-top));
+padding-top:var(--safe-top);
+background:var(--dark);color:var(--white);
+display:flex;align-items:center;justify-content:space-between;
+padding-left:1rem;padding-right:1rem;
+}
+.app-header h1{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+.app-header h1 .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);display:inline-block}
+.header-actions{display:flex;gap:.75rem;align-items:center}
+.header-btn{background:none;border:none;color:var(--white);font-size:1.15rem;cursor:pointer;padding:.4rem;border-radius:8px;opacity:.8;transition:opacity .2s}
+.header-btn:hover,.header-btn:active{opacity:1;background:rgba(255,255,255,.1)}
+.header-btn .badge{position:absolute;top:-.2rem;right:-.2rem;background:var(--danger);color:white;font-size:.6rem;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+.header-btn{position:relative}
+
+/* ===== OFFLINE BAR ===== */
+.offline-bar{
+display:none;position:fixed;top:calc(var(--header-height) + var(--safe-top));left:0;right:0;
+background:var(--warning);color:var(--dark);padding:.4rem;text-align:center;
+font-weight:600;font-size:.78rem;z-index:99;
+}
+.offline-bar.show{display:block}
+
+/* ===== MAIN CONTENT ===== */
+.app-content{
+padding-top:calc(var(--header-height) + var(--safe-top));
+padding-bottom:calc(var(--tab-height) + var(--safe-bottom));
+min-height:100vh;
+}
+.tab-page{display:none;animation:fadeIn .25s ease}
+.tab-page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== TAB BAR ===== */
+.tab-bar{
+position:fixed;bottom:0;left:0;right:0;z-index:100;
+height:calc(var(--tab-height) + var(--safe-bottom));
+padding-bottom:var(--safe-bottom);
+background:var(--white);
+border-top:1px solid var(--border);
+display:flex;align-items:center;justify-content:space-around;
+}
+.tab-item{
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+gap:2px;cursor:pointer;padding:.4rem .8rem;border-radius:12px;
+transition:all .2s;border:none;background:none;color:var(--text-muted);
+font-size:.65rem;font-weight:600;font-family:inherit;min-width:60px;
+}
+.tab-item i{font-size:1.2rem;transition:all .2s}
+.tab-item.active{color:var(--primary)}
+.tab-item.active i{transform:scale(1.1)}
+.tab-item:active{transform:scale(.92)}
+
+/* ===== HOME TAB ===== */
+.home-hero{
+background:linear-gradient(160deg,var(--dark) 0%,var(--dark-mid) 50%,#0c4a6e 100%);
+color:var(--white);padding:2rem 1rem 1.5rem;text-align:center;
+}
+.home-hero h2{font-size:1.4rem;font-weight:800;margin-bottom:.4rem}
+.home-hero p{font-size:.85rem;opacity:.75;max-width:320px;margin:0 auto}
+.stats-row{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem}
+.stat-box{text-align:center}
+.stat-box .num{font-size:1.5rem;font-weight:800;color:var(--primary)}
+.stat-box .lbl{font-size:.7rem;opacity:.6;text-transform:uppercase;letter-spacing:.5px}
+
+.section-title{
+font-size:.85rem;font-weight:700;color:var(--text-light);
+text-transform:uppercase;letter-spacing:.5px;
+padding:1rem 1rem .5rem;display:flex;align-items:center;gap:.5rem;
+}
+.section-title i{color:var(--primary);font-size:.9rem}
+
+.bandi-scroll{display:flex;gap:.75rem;overflow-x:auto;padding:0 1rem 1rem;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scrollbar-width:none}
+.bandi-scroll::-webkit-scrollbar{display:none}
+
+/* ===== BANDO CARD ===== */
+.bando-card{
+background:var(--card-bg);border-radius:var(--radius);
+box-shadow:var(--shadow);border:1px solid var(--border);
+padding:1rem;min-width:280px;max-width:320px;
+scroll-snap-align:start;flex-shrink:0;
+display:flex;flex-direction:column;gap:.6rem;
+transition:transform .2s;
+}
+.bando-card:active{transform:scale(.98)}
+.bando-card .tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.tag{font-size:.65rem;font-weight:600;padding:.2rem .5rem;border-radius:20px;white-space:nowrap}
+.tag-stato{background:rgba(16,185,129,0.12);color:var(--success)}
+.tag-stato.chiuso{background:rgba(239,68,68,0.12);color:var(--danger)}
+.tag-stato.in_arrivo{background:rgba(245,158,11,0.12);color:var(--accent-dark)}
+.tag-tipo{background:var(--primary-glow);color:var(--primary-dark)}
+.tag-regione{background:rgba(100,116,139,0.1);color:var(--text-light)}
+.bando-card h3{font-size:.9rem;font-weight:700;line-height:1.3;color:var(--text)}
+.bando-card .ente{font-size:.75rem;color:var(--text-light);display:flex;align-items:center;gap:.3rem}
+.bando-details{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.detail{background:var(--bg);padding:.4rem .6rem;border-radius:var(--radius-sm)}
+.detail .label{font-size:.6rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.3px}
+.detail .value{font-size:.8rem;font-weight:700;color:var(--text)}
+.detail .value.highlight{color:var(--primary)}
+.bando-card .actions{display:flex;gap:.5rem;margin-top:auto}
+.btn{border:none;padding:.55rem 1rem;border-radius:50px;font-weight:700;font-size:.78rem;cursor:pointer;display:flex;align-items:center;gap:.35rem;transition:all .2s;font-family:inherit}
+.btn-primary{background:var(--primary);color:var(--white);flex:1;justify-content:center}
+.btn-primary:active{background:var(--primary-dark);transform:scale(.97)}
+.btn-save{background:var(--bg);color:var(--text-light);border:1px solid var(--border);padding:.55rem .7rem}
+.btn-save:active{transform:scale(.92)}
+.btn-save.saved{color:var(--danger);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.06)}
+
+/* ===== FULL-WIDTH CARD (lista) ===== */
+.bando-list{padding:0 1rem;display:flex;flex-direction:column;gap:.75rem;padding-bottom:1rem}
+.bando-list .bando-card{min-width:unset;max-width:unset;width:100%}
+
+/* ===== SEARCH TAB ===== */
+.search-bar{
+position:sticky;top:calc(var(--header-height) + var(--safe-top));z-index:50;
+background:var(--bg);padding:.75rem 1rem;
+display:flex;gap:.5rem;align-items:center;
+}
+.search-input{
+flex:1;background:var(--white);border:1px solid var(--border);border-radius:50px;
+padding:.65rem 1rem .65rem 2.5rem;font-size:.88rem;font-family:inherit;
+color:var(--text);outline:none;transition:border-color .2s;
+}
+.search-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-glow)}
+.search-icon{position:absolute;left:1.8rem;color:var(--text-muted);font-size:.9rem;pointer-events:none}
+.filter-toggle{
+background:var(--white);border:1px solid var(--border);border-radius:12px;
+padding:.65rem .8rem;cursor:pointer;color:var(--text-light);font-size:1rem;
+transition:all .2s;display:flex;align-items:center;gap:.3rem;
+}
+.filter-toggle.has-filters{border-color:var(--primary);color:var(--primary);background:var(--primary-glow)}
+.filter-toggle:active{transform:scale(.95)}
+
+.filters-panel{
+display:none;background:var(--white);margin:0 1rem;border-radius:var(--radius);
+padding:1rem;box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.filters-panel.show{display:block;animation:fadeIn .2s ease}
+.filter-group{margin-bottom:.8rem}
+.filter-group:last-child{margin-bottom:0}
+.filter-group label{font-size:.75rem;font-weight:600;color:var(--text-light);display:block;margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.3px}
+.filter-select{
+width:100%;padding:.5rem .7rem;border:1px solid var(--border);border-radius:var(--radius-sm);
+font-size:.85rem;color:var(--text);background:var(--bg);font-family:inherit;
+}
+.filter-actions{display:flex;gap:.5rem;margin-top:.8rem}
+.filter-actions .btn{flex:1;justify-content:center}
+.btn-outline{background:transparent;color:var(--text-light);border:1px solid var(--border)}
+
+.results-info{padding:.5rem 1rem;font-size:.78rem;color:var(--text-muted);font-weight:500}
+.empty-state{text-align:center;padding:3rem 1.5rem;color:var(--text-light)}
+.empty-state i{font-size:3rem;opacity:.3;margin-bottom:1rem;display:block}
+.empty-state h3{font-size:1rem;margin-bottom:.4rem;color:var(--text)}
+.empty-state p{font-size:.85rem}
+
+/* ===== PREFERITI TAB ===== */
+.empty-favorites{text-align:center;padding:4rem 1.5rem;color:var(--text-light)}
+.empty-favorites i{font-size:4rem;opacity:.2;margin-bottom:1rem;display:block;color:var(--danger)}
+.empty-favorites h3{font-size:1.1rem;margin-bottom:.5rem;color:var(--text)}
+.empty-favorites p{font-size:.85rem;max-width:280px;margin:0 auto}
+
+/* ===== PROFILO TAB ===== */
+.profile-header{
+background:linear-gradient(160deg,var(--dark) 0%,var(--dark-mid) 100%);
+color:var(--white);padding:2rem 1.5rem;text-align:center;
+}
+.profile-avatar{
+width:72px;height:72px;border-radius:50%;
+background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+display:flex;align-items:center;justify-content:center;
+font-size:1.8rem;margin:0 auto .75rem;
+border:3px solid rgba(255,255,255,.2);
+}
+.profile-header h3{font-size:1.1rem;font-weight:700}
+.profile-header p{font-size:.8rem;opacity:.6;margin-top:.2rem}
+.profile-section{padding:1rem}
+.profile-card{
+background:var(--white);border-radius:var(--radius);padding:1rem;
+box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:.75rem;
+}
+.profile-card h4{font-size:.8rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.profile-card h4 i{color:var(--primary)}
+.profile-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid var(--border)}
+.profile-row:last-child{border:none}
+.profile-row .label{font-size:.82rem;color:var(--text-light)}
+.profile-row .value{font-size:.82rem;font-weight:600;color:var(--text)}
+.profile-row .value.active{color:var(--success)}
+.profile-row .value.expired{color:var(--danger)}
+.btn-full{width:100%;justify-content:center;padding:.7rem;font-size:.88rem;margin-top:.5rem;border-radius:var(--radius-sm)}
+.btn-danger{background:rgba(239,68,68,.1);color:var(--danger);border:1px solid rgba(239,68,68,.2)}
+.btn-success{background:var(--success);color:var(--white)}
+.btn-accent{background:var(--accent);color:var(--dark)}
+
+/* ===== INSTALL PROMPT (fullscreen overlay) ===== */
+.install-prompt{
+display:none;position:fixed;inset:0;z-index:200;
+background:linear-gradient(160deg,var(--dark) 0%,var(--dark-mid) 50%,#0c4a6e 100%);
+color:var(--white);
+flex-direction:column;align-items:center;justify-content:center;
+text-align:center;padding:2rem;
+}
+.install-prompt.show{display:flex}
+.install-prompt .app-icon{
+width:96px;height:96px;border-radius:24px;
+background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+display:flex;align-items:center;justify-content:center;
+font-size:2.5rem;margin-bottom:1.5rem;
+box-shadow:0 12px 40px rgba(14,165,233,.4);
+}
+.install-prompt h2{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+.install-prompt p{font-size:.9rem;opacity:.7;max-width:300px;margin-bottom:2rem;line-height:1.6}
+.install-prompt .features{
+display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem;
+text-align:left;width:100%;max-width:300px;
+}
+.install-prompt .feature{display:flex;align-items:center;gap:.75rem;font-size:.88rem}
+.install-prompt .feature i{color:var(--primary);font-size:1.1rem;width:24px;text-align:center}
+.install-prompt .install-btn{
+background:var(--primary);color:var(--white);border:none;
+padding:.9rem 2.5rem;border-radius:50px;font-size:1rem;font-weight:700;
+cursor:pointer;font-family:inherit;transition:all .2s;
+box-shadow:0 4px 20px rgba(14,165,233,.4);
+}
+.install-prompt .install-btn:active{transform:scale(.96);background:var(--primary-dark)}
+.install-prompt .skip-btn{
+background:none;border:none;color:rgba(255,255,255,.5);
+font-size:.82rem;cursor:pointer;margin-top:1rem;padding:.5rem;font-family:inherit;
+}
+.install-prompt .ios-steps{
+background:rgba(255,255,255,.08);border-radius:var(--radius);padding:1rem;
+margin-top:.5rem;font-size:.85rem;line-height:1.7;max-width:300px;
+}
+.install-prompt .ios-steps .step{display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem}
+.install-prompt .ios-steps .step-num{
+background:var(--primary);color:white;width:22px;height:22px;border-radius:50%;
+font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+
+/* ===== LOADING ===== */
+.loading{text-align:center;padding:3rem;color:var(--text-muted)}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:0;height:0}
+
+/* ===== PULL TO REFRESH ===== */
+.pull-indicator{
+text-align:center;padding:.5rem;font-size:.75rem;color:var(--primary);
+font-weight:600;display:none;
+}
+.pull-indicator.show{display:block}
+</style>
+</head>
+<body>
+
+<!-- APP HEADER -->
+<header class="app-header">
+    <h1><span class="logo-dot"></span> RaaS Bandi</h1>
+    <div class="header-actions">
+        <button class="header-btn" id="offlineIcon" style="display:none" title="Offline">
+            <i class="fas fa-wifi-slash"></i>
+        </button>
+        <button class="header-btn" onclick="switchTab('profilo')" title="Profilo">
+            <i class="fas fa-user-circle"></i>
+        </button>
+    </div>
+</header>
+
+<!-- OFFLINE BAR -->
+<div class="offline-bar" id="offlineBar"><i class="fas fa-cloud-slash"></i> Sei offline — dati salvati in cache</div>
+
+<!-- MAIN CONTENT -->
+<main class="app-content">
+
+<!-- ========== HOME TAB ========== -->
+<div class="tab-page active" id="page-home">
+    <div class="home-hero">
+        <h2>Bandi per la tua Impresa</h2>
+        <p>Finanziamenti, incentivi e agevolazioni aggiornati ogni giorno</p>
+        <div class="stats-row">
+            <div class="stat-box"><div class="num" id="stat-total">—</div><div class="lbl">Bandi attivi</div></div>
+            <div class="stat-box"><div class="num">150+</div><div class="lbl">Fonti</div></div>
+            <div class="stat-box"><div class="num" id="stat-saved">0</div><div class="lbl">Salvati</div></div>
+        </div>
+    </div>
+
+    <div class="pull-indicator" id="pullIndicator"><i class="fas fa-arrow-down"></i> Rilascia per aggiornare</div>
+
+    <div class="section-title"><i class="fas fa-bolt"></i> Ultimi bandi aggiunti</div>
+    <div class="bandi-scroll" id="latestScroll">
+        <div class="loading"><div class="spinner"></div>Caricamento...</div>
+    </div>
+
+    <div class="section-title"><i class="fas fa-fire"></i> Fondo perduto</div>
+    <div class="bandi-scroll" id="fondoScroll"></div>
+
+    <div class="section-title"><i class="fas fa-chart-line"></i> Tasso agevolato</div>
+    <div class="bandi-scroll" id="tassoScroll"></div>
+</div>
+
+<!-- ========== CERCA TAB ========== -->
+<div class="tab-page" id="page-cerca">
+    <div class="search-bar">
+        <i class="fas fa-search search-icon"></i>
+        <input type="search" class="search-input" id="searchInput" placeholder="Cerca bandi..." autocomplete="off">
+        <button class="filter-toggle" id="filterToggle">
+            <i class="fas fa-sliders"></i>
+        </button>
+    </div>
+
+    <div class="filters-panel" id="filtersPanel">
+        <div class="filter-group">
+            <label>Regione</label>
+            <select class="filter-select" id="f-regione">
+                <option value="">Tutte le regioni</option>
+                <option>Nazionale</option><option>Abruzzo</option><option>Basilicata</option>
+                <option>Calabria</option><option>Campania</option><option>Emilia-Romagna</option>
+                <option>Friuli Venezia Giulia</option><option>Lazio</option><option>Liguria</option>
+                <option>Lombardia</option><option>Marche</option><option>Molise</option>
+                <option>Piemonte</option><option>Puglia</option><option>Sardegna</option>
+                <option>Sicilia</option><option>Toscana</option><option>Trentino-Alto Adige</option>
+                <option>Umbria</option><option>Valle d'Aosta</option><option>Veneto</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Tipo contributo</label>
+            <select class="filter-select" id="f-tipo">
+                <option value="">Tutti i tipi</option>
+                <option value="fondo_perduto">Fondo perduto</option>
+                <option value="tasso_agevolato">Tasso agevolato</option>
+                <option value="misto">Misto</option>
+                <option value="credito_imposta">Credito d'imposta</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>Tipo ente</label>
+            <select class="filter-select" id="f-ente">
+                <option value="">Tutti gli enti</option>
+                <option value="ministero">Ministero</option>
+                <option value="ente_nazionale">Ente Nazionale</option>
+                <option value="regione">Regione</option>
+                <option value="cciaa">Camera di Commercio</option>
+            </select>
+        </div>
+        <div class="filter-actions">
+            <button class="btn btn-outline" onclick="resetFilters()"><i class="fas fa-times"></i> Reset</button>
+            <button class="btn btn-primary" onclick="applySearch()"><i class="fas fa-search"></i> Cerca</button>
+        </div>
+    </div>
+
+    <div class="results-info" id="resultsInfo" style="display:none"></div>
+    <div class="bando-list" id="searchResults"></div>
+    <div class="empty-state" id="searchEmpty" style="display:none">
+        <i class="fas fa-search"></i>
+        <h3>Nessun bando trovato</h3>
+        <p>Prova a cambiare i filtri o la ricerca</p>
+    </div>
+    <div class="loading" id="searchLoading" style="display:none"><div class="spinner"></div>Cercando...</div>
+</div>
+
+<!-- ========== PREFERITI TAB ========== -->
+<div class="tab-page" id="page-preferiti">
+    <div class="section-title" style="padding-top:1.2rem"><i class="fas fa-heart"></i> I tuoi bandi salvati</div>
+    <div class="bando-list" id="favList"></div>
+    <div class="empty-favorites" id="favEmpty">
+        <i class="fas fa-heart"></i>
+        <h3>Nessun bando salvato</h3>
+        <p>Tocca il cuore su un bando per salvarlo qui e ritrovarlo facilmente</p>
+    </div>
+</div>
+
+<!-- ========== PROFILO TAB ========== -->
+<div class="tab-page" id="page-profilo">
+    <div class="profile-header">
+        <div class="profile-avatar"><i class="fas fa-building"></i></div>
+        <h3 id="profileName">La tua Impresa</h3>
+        <p id="profileEmail">Configura il tuo profilo</p>
+    </div>
+    <div class="profile-section">
+        <div class="profile-card">
+            <h4><i class="fas fa-crown"></i> Abbonamento</h4>
+            <div class="profile-row">
+                <span class="label">Stato</span>
+                <span class="value" id="subStatus">Non attivo</span>
+            </div>
+            <div class="profile-row" id="subExpiryRow" style="display:none">
+                <span class="label">Scadenza</span>
+                <span class="value" id="subExpiry">—</span>
+            </div>
+            <div id="subAction">
+                <a href="/bandi.html" class="btn btn-accent btn-full"><i class="fas fa-unlock"></i> Attiva abbonamento</a>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <h4><i class="fas fa-chart-bar"></i> Statistiche</h4>
+            <div class="profile-row">
+                <span class="label">Bandi salvati</span>
+                <span class="value" id="profSaved">0</span>
+            </div>
+            <div class="profile-row">
+                <span class="label">Bandi disponibili</span>
+                <span class="value" id="profTotal">0</span>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <h4><i class="fas fa-info-circle"></i> App</h4>
+            <div class="profile-row">
+                <span class="label">Versione</span>
+                <span class="value">1.0.0</span>
+            </div>
+            <div class="profile-row">
+                <span class="label">Dati aggiornati</span>
+                <span class="value" id="lastUpdate">—</span>
+            </div>
+        </div>
+
+        <button class="btn btn-danger btn-full" onclick="clearFavorites()"><i class="fas fa-trash"></i> Cancella preferiti</button>
+    </div>
+</div>
+
+</main>
+
+<!-- TAB BAR -->
+<nav class="tab-bar">
+    <button class="tab-item active" data-tab="home" onclick="switchTab('home')">
+        <i class="fas fa-home"></i><span>Home</span>
+    </button>
+    <button class="tab-item" data-tab="cerca" onclick="switchTab('cerca')">
+        <i class="fas fa-search"></i><span>Cerca</span>
+    </button>
+    <button class="tab-item" data-tab="preferiti" onclick="switchTab('preferiti')">
+        <i class="fas fa-heart"></i><span>Salvati</span>
+    </button>
+    <button class="tab-item" data-tab="profilo" onclick="switchTab('profilo')">
+        <i class="fas fa-user"></i><span>Profilo</span>
+    </button>
+</nav>
+
+<!-- INSTALL PROMPT (fullscreen) -->
+<div class="install-prompt" id="installPrompt">
+    <div class="app-icon"><i class="fas fa-landmark"></i></div>
+    <h2>RaaS Bandi</h2>
+    <p>Installa l'app per accedere ai bandi anche offline, con notifiche e ricerca veloce</p>
+    <div class="features">
+        <div class="feature"><i class="fas fa-bolt"></i> Accesso istantaneo</div>
+        <div class="feature"><i class="fas fa-wifi-slash"></i> Funziona offline</div>
+        <div class="feature"><i class="fas fa-heart"></i> Salva i tuoi bandi</div>
+        <div class="feature"><i class="fas fa-search"></i> Ricerca avanzata</div>
+    </div>
+    <button class="install-btn" id="installBtn">Installa App</button>
+    <div class="ios-steps" id="iosSteps" style="display:none">
+        <div class="step"><span class="step-num">1</span> Tocca <i class="fas fa-share-from-square"></i> in basso</div>
+        <div class="step"><span class="step-num">2</span> Scorri e tocca <strong>"Aggiungi a Home"</strong></div>
+        <div class="step"><span class="step-num">3</span> Conferma con <strong>"Aggiungi"</strong></div>
+    </div>
+    <button class="skip-btn" id="skipInstall">Continua senza installare</button>
+</div>
+
+<script>
+// ===== CONFIG =====
+var SUPABASE_URL='https://ieeriszlalrsbfsnarih.supabase.co';
+var SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZXJpc3psYWxyc2Jmc25hcmloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNjEyNjAsImV4cCI6MjA4MzczNzI2MH0.Sjwu1620mMTAAoKVHgXHQ1cA-m3hFXqtCtqjAQNErQo';
+var supabaseClient=null;
+var allBandi=[];
+var favorites=JSON.parse(localStorage.getItem('raas-favorites')||'[]');
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded',function(){
+    // Supabase init
+    try{
+        if(window.supabase&&window.supabase.createClient)
+            supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+    }catch(e){}
+
+    // Load data
+    loadBandi();
+
+    // Update favorites count
+    updateFavCount();
+
+    // Profile
+    updateProfile();
+
+    // Install prompt
+    checkInstallPrompt();
+
+    // Search events
+    var searchTimer;
+    document.getElementById('searchInput').addEventListener('input',function(){
+        clearTimeout(searchTimer);
+        searchTimer=setTimeout(applySearch,300);
+    });
+    document.getElementById('filterToggle').addEventListener('click',function(){
+        var p=document.getElementById('filtersPanel');
+        p.classList.toggle('show');
+        this.classList.toggle('has-filters',p.classList.contains('show'));
+    });
+
+    // Online/offline
+    function updateOnline(){
+        var bar=document.getElementById('offlineBar');
+        var icon=document.getElementById('offlineIcon');
+        if(!navigator.onLine){bar.classList.add('show');icon.style.display=''}
+        else{bar.classList.remove('show');icon.style.display='none'}
+    }
+    window.addEventListener('online',updateOnline);
+    window.addEventListener('offline',updateOnline);
+    updateOnline();
+
+    // Service Worker
+    if('serviceWorker' in navigator){
+        navigator.serviceWorker.register('/sw.js').catch(function(){});
+    }
+});
+
+// ===== TAB NAVIGATION =====
+function switchTab(tab){
+    document.querySelectorAll('.tab-page').forEach(function(p){p.classList.remove('active')});
+    document.querySelectorAll('.tab-item').forEach(function(t){t.classList.remove('active')});
+    document.getElementById('page-'+tab).classList.add('active');
+    document.querySelector('[data-tab="'+tab+'"]').classList.add('active');
+
+    // Scroll to top
+    window.scrollTo(0,0);
+
+    // Lazy load tab content
+    if(tab==='preferiti')renderFavorites();
+    if(tab==='cerca'&&!document.getElementById('searchResults').innerHTML)applySearch();
+    if(tab==='profilo')updateProfile();
+}
+
+// ===== LOAD BANDI =====
+async function loadBandi(){
+    try{
+        // Try Supabase first
+        if(supabaseClient){
+            try{
+                var all=[],offset=0;
+                while(true){
+                    var res=await supabaseClient.from('bandi').select('*').eq('attivo',true).order('id',{ascending:false}).range(offset,offset+999);
+                    if(res.error)throw res.error;
+                    if(!res.data||!res.data.length)break;
+                    all=all.concat(res.data);
+                    if(res.data.length<1000)break;
+                    offset+=1000;
+                }
+                if(all.length){allBandi=all;renderHome();return}
+            }catch(e){}
+        }
+        // Fallback: local JSON
+        var jsonRes=await fetch('/data/bandi.json');
+        var data=await jsonRes.json();
+        allBandi=(data.bandi||[]).filter(function(b){return b.stato==='aperto'||b.stato==='in_arrivo'}).map(mapBando);
+        renderHome();
+    }catch(e){
+        allBandi=[];
+        document.getElementById('latestScroll').innerHTML='<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><h3>Errore caricamento</h3><p>Controlla la connessione</p></div>';
+    }
+}
+
+function mapBando(b){
+    return{
+        id:b.id,titolo:b.titolo,ente:b.ente,tipo_ente:b.tipo_ente,regione:b.regione,
+        stato:b.stato,tipo_contributo:b.tipo_contributo,
+        url:b.url_bando||b.url||'#',
+        contributo_max:b.contributo_max,
+        percentuale:b.percentuale,
+        scadenza:b.data_scadenza?new Date(b.data_scadenza).toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'}):null,
+        data_scadenza:b.data_scadenza,
+        descrizione:b.descrizione,keywords:b.keywords,settori:b.settori,beneficiari:b.beneficiari
+    };
+}
+
+// ===== RENDER HOME =====
+function renderHome(){
+    document.getElementById('stat-total').textContent=allBandi.length;
+    document.getElementById('lastUpdate').textContent=new Date().toLocaleDateString('it-IT');
+    document.getElementById('profTotal').textContent=allBandi.length;
+
+    // Latest bandi (first 8)
+    var latest=allBandi.slice(0,8);
+    document.getElementById('latestScroll').innerHTML=latest.map(function(b){return renderCard(b)}).join('');
+
+    // Fondo perduto
+    var fondo=allBandi.filter(function(b){return b.tipo_contributo==='fondo_perduto'}).slice(0,8);
+    document.getElementById('fondoScroll').innerHTML=fondo.length?fondo.map(function(b){return renderCard(b)}).join(''):'<p style="padding:1rem;color:var(--text-muted);font-size:.85rem">Nessun bando a fondo perduto al momento</p>';
+
+    // Tasso agevolato
+    var tasso=allBandi.filter(function(b){return b.tipo_contributo==='tasso_agevolato'||b.tipo_contributo==='misto'}).slice(0,8);
+    document.getElementById('tassoScroll').innerHTML=tasso.length?tasso.map(function(b){return renderCard(b)}).join(''):'<p style="padding:1rem;color:var(--text-muted);font-size:.85rem">Nessun bando a tasso agevolato al momento</p>';
+}
+
+// ===== RENDER CARD =====
+function renderCard(b){
+    var isFav=favorites.indexOf(b.id)!==-1;
+    var cmax=b.contributo_max;
+    if(typeof cmax==='number'&&cmax>=1000)cmax='\u20AC'+cmax.toLocaleString('it-IT');
+    else if(typeof cmax==='number')cmax='\u20AC'+cmax;
+    var perc=b.percentuale;
+    if(typeof perc==='number')perc=perc+'%';
+    var scad=b.scadenza||'Da definire';
+    var link=b.url||'#';
+
+    return '<article class="bando-card">'+
+        '<div class="tags">'+
+            '<span class="tag tag-stato '+(b.stato||'')+'">'+getStatoLabel(b.stato)+'</span>'+
+            '<span class="tag tag-tipo">'+getTipoLabel(b.tipo_contributo)+'</span>'+
+            (b.regione?'<span class="tag tag-regione">'+b.regione+'</span>':'')+
+        '</div>'+
+        '<h3>'+escapeHtml(b.titolo||'')+'</h3>'+
+        '<div class="ente"><i class="fas fa-building"></i> '+escapeHtml(b.ente||'')+'</div>'+
+        '<div class="bando-details">'+
+            '<div class="detail"><div class="label">Contributo</div><div class="value highlight">'+(cmax||'Variabile')+'</div></div>'+
+            '<div class="detail"><div class="label">Percentuale</div><div class="value">'+(perc||'Variabile')+'</div></div>'+
+            '<div class="detail"><div class="label">Scadenza</div><div class="value">'+scad+'</div></div>'+
+            '<div class="detail"><div class="label">Ente</div><div class="value">'+getTipoEnteLabel(b.tipo_ente)+'</div></div>'+
+        '</div>'+
+        '<div class="actions">'+
+            '<a href="'+escapeAttr(link)+'" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Vai al Bando</a>'+
+            '<button class="btn btn-save'+(isFav?' saved':'')+'" onclick="toggleFav('+b.id+',this)" aria-label="Salva">'+
+                '<i class="fa'+(isFav?'s':'r')+' fa-heart"></i>'+
+            '</button>'+
+        '</div>'+
+    '</article>';
+}
+
+function escapeHtml(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function escapeAttr(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function getStatoLabel(s){return{aperto:'Aperto',chiuso:'Chiuso',in_arrivo:'In arrivo'}[s]||s||'N/D'}
+function getTipoLabel(t){return{fondo_perduto:'Fondo Perduto',tasso_agevolato:'Tasso Agevolato',misto:'Misto',credito_imposta:"Credito d'Imposta"}[t]||t||'N/D'}
+function getTipoEnteLabel(t){return{ministero:'Ministero',ente_nazionale:'Ente Naz.',regione:'Regione',cciaa:'CCIAA',altro:'Altro'}[t]||t||'-'}
+
+// ===== FAVORITES =====
+function toggleFav(id,btn){
+    var idx=favorites.indexOf(id);
+    if(idx===-1){
+        favorites.push(id);
+        btn.classList.add('saved');
+        btn.querySelector('i').className='fas fa-heart';
+    }else{
+        favorites.splice(idx,1);
+        btn.classList.remove('saved');
+        btn.querySelector('i').className='far fa-heart';
+    }
+    localStorage.setItem('raas-favorites',JSON.stringify(favorites));
+    updateFavCount();
+}
+
+function updateFavCount(){
+    document.getElementById('stat-saved').textContent=favorites.length;
+    document.getElementById('profSaved').textContent=favorites.length;
+}
+
+function renderFavorites(){
+    var list=document.getElementById('favList');
+    var empty=document.getElementById('favEmpty');
+    if(!favorites.length){
+        list.innerHTML='';empty.style.display='';
+        return;
+    }
+    empty.style.display='none';
+    var favBandi=allBandi.filter(function(b){return favorites.indexOf(b.id)!==-1});
+    if(!favBandi.length){
+        list.innerHTML='<div class="empty-state"><p>I bandi salvati non sono piu\' disponibili</p></div>';
+        return;
+    }
+    list.innerHTML=favBandi.map(function(b){return renderCard(b)}).join('');
+}
+
+function clearFavorites(){
+    if(!confirm('Cancellare tutti i bandi salvati?'))return;
+    favorites=[];
+    localStorage.removeItem('raas-favorites');
+    updateFavCount();
+    renderFavorites();
+}
+
+// ===== SEARCH =====
+function applySearch(){
+    var q=document.getElementById('searchInput').value.toLowerCase().trim();
+    var reg=document.getElementById('f-regione').value;
+    var tipo=document.getElementById('f-tipo').value;
+    var ente=document.getElementById('f-ente').value;
+
+    var results=allBandi.filter(function(b){
+        if(q&&!JSON.stringify(b).toLowerCase().includes(q))return false;
+        if(reg&&b.regione!==reg&&!(b.regione||'').includes(reg))return false;
+        if(tipo&&b.tipo_contributo!==tipo)return false;
+        if(ente&&b.tipo_ente!==ente)return false;
+        return true;
+    });
+
+    var info=document.getElementById('resultsInfo');
+    var list=document.getElementById('searchResults');
+    var empty=document.getElementById('searchEmpty');
+
+    if(!results.length){
+        info.style.display='none';
+        list.innerHTML='';
+        empty.style.display='';
+        return;
+    }
+    empty.style.display='none';
+    info.style.display='';
+    info.textContent=results.length+' bandi trovati';
+    list.innerHTML=results.map(function(b){return renderCard(b)}).join('');
+
+    // Update filter toggle indicator
+    var hasFilters=reg||tipo||ente;
+    document.getElementById('filterToggle').classList.toggle('has-filters',!!hasFilters||document.getElementById('filtersPanel').classList.contains('show'));
+}
+
+function resetFilters(){
+    document.getElementById('f-regione').value='';
+    document.getElementById('f-tipo').value='';
+    document.getElementById('f-ente').value='';
+    document.getElementById('searchInput').value='';
+    applySearch();
+}
+
+// ===== PROFILE =====
+function updateProfile(){
+    var sub=getSubscription();
+    var statusEl=document.getElementById('subStatus');
+    var expiryRow=document.getElementById('subExpiryRow');
+    var expiryEl=document.getElementById('subExpiry');
+    var actionEl=document.getElementById('subAction');
+
+    if(sub&&new Date()<new Date(sub.expiryDate)){
+        statusEl.textContent='Attivo';
+        statusEl.className='value active';
+        expiryRow.style.display='';
+        expiryEl.textContent=new Date(sub.expiryDate).toLocaleDateString('it-IT');
+        actionEl.innerHTML='';
+        if(sub.name)document.getElementById('profileName').textContent=sub.name;
+        if(sub.email)document.getElementById('profileEmail').textContent=sub.email;
+    }else if(sub){
+        statusEl.textContent='Scaduto';
+        statusEl.className='value expired';
+        expiryRow.style.display='';
+        expiryEl.textContent=new Date(sub.expiryDate).toLocaleDateString('it-IT');
+        actionEl.innerHTML='<a href="/bandi.html" class="btn btn-accent btn-full"><i class="fas fa-redo"></i> Rinnova abbonamento</a>';
+    }
+}
+
+function getSubscription(){
+    var s=localStorage.getItem('bandiSubscription');
+    if(!s)return null;
+    try{return JSON.parse(s)}catch(e){return null}
+}
+
+// ===== INSTALL PROMPT =====
+function checkInstallPrompt(){
+    var isStandalone=window.navigator.standalone===true||window.matchMedia('(display-mode: standalone)').matches;
+    if(isStandalone)return; // Already installed
+    if(sessionStorage.getItem('install-skipped'))return;
+
+    var isIos=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+    var prompt=document.getElementById('installPrompt');
+    var installBtn=document.getElementById('installBtn');
+    var skipBtn=document.getElementById('skipInstall');
+
+    if(isIos){
+        // Show iOS-specific steps
+        document.getElementById('iosSteps').style.display='';
+        installBtn.style.display='none';
+        setTimeout(function(){prompt.classList.add('show')},1500);
+    }
+
+    // Android/Chrome
+    var deferredPrompt=null;
+    window.addEventListener('beforeinstallprompt',function(e){
+        e.preventDefault();
+        deferredPrompt=e;
+        setTimeout(function(){prompt.classList.add('show')},1500);
+    });
+
+    installBtn.addEventListener('click',function(){
+        if(!deferredPrompt)return;
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(choice){
+            deferredPrompt=null;
+            prompt.classList.remove('show');
+        });
+    });
+
+    skipBtn.addEventListener('click',function(){
+        prompt.classList.remove('show');
+        sessionStorage.setItem('install-skipped','1');
+    });
+
+    window.addEventListener('appinstalled',function(){
+        prompt.classList.remove('show');
+    });
+}
+</script>
+</body>
+</html>

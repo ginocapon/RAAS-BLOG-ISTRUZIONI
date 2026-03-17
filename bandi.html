@@ -11,11 +11,6 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.raasautomazioni.it/bandi">
     <meta name="theme-color" content="#0a1628">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="RaaS Bandi">
-    <link rel="apple-touch-icon" href="/icons/icon-192.png">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -368,27 +363,27 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 .cookie-reject:hover{border-color:rgba(255,255,255,.3);color:var(--white)}
 @media(max-width:768px){.cookie-banner{flex-direction:column;text-align:center;padding:16px}.cookie-banner p{font-size:.82rem}}
 
-/* PWA INSTALL BANNER */
-.pwa-install-banner{display:none;position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:1100;background:linear-gradient(135deg,var(--dark),var(--dark-mid));color:var(--white);padding:1rem 1.5rem;border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(0,0,0,.35);max-width:420px;width:calc(100% - 2rem);align-items:center;gap:1rem;border:1px solid rgba(14,165,233,0.3)}
-.pwa-install-banner.show{display:flex}
-.pwa-install-banner .pwa-icon{font-size:2rem;flex-shrink:0}
-.pwa-install-banner .pwa-text{flex:1}
-.pwa-install-banner .pwa-text strong{display:block;font-size:.95rem;margin-bottom:.2rem}
-.pwa-install-banner .pwa-text span{font-size:.8rem;opacity:.75}
-.pwa-install-banner .pwa-btn{background:var(--primary);color:var(--white);border:none;padding:.6rem 1.2rem;border-radius:50px;font-weight:700;font-size:.85rem;cursor:pointer;white-space:nowrap;transition:all .3s}
-.pwa-install-banner .pwa-btn:hover{background:var(--primary-dark);transform:translateY(-1px)}
-.pwa-install-banner .pwa-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:1.2rem;cursor:pointer;padding:.25rem;line-height:1}
-.pwa-install-banner .pwa-close:hover{color:var(--white)}
-
-/* iOS-specific install instructions */
-.pwa-ios-steps{display:none;margin-top:.6rem;font-size:.78rem;opacity:.85;line-height:1.6}
-.pwa-install-banner.ios-mode .pwa-ios-steps{display:block}
-.pwa-install-banner.ios-mode .pwa-btn{display:none}
-.pwa-ios-steps .ios-icon{display:inline-block;background:rgba(14,165,233,0.25);padding:.1rem .4rem;border-radius:4px;font-size:.85rem;vertical-align:middle}
-
-/* OFFLINE INDICATOR */
-.offline-bar{display:none;position:fixed;top:56px;left:0;right:0;background:var(--accent);color:var(--dark);padding:.5rem;text-align:center;font-weight:600;font-size:.82rem;z-index:998}
-.offline-bar.show{display:block}
+/* SCARICA APP BUTTON */
+.scarica-app-box{background:rgba(14,165,233,0.12);border:2px solid var(--primary);border-radius:var(--radius-lg);padding:1.2rem;margin-top:1.2rem;text-align:center}
+.scarica-app-box .app-title{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.3rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.scarica-app-box .app-desc{font-size:.8rem;color:rgba(255,255,255,.7);margin-bottom:.8rem}
+.scarica-app-btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--primary);color:var(--white);border:none;padding:.85rem 2rem;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 20px rgba(14,165,233,.4)}
+.scarica-app-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 6px 28px rgba(14,165,233,.5)}
+.scarica-app-btn:active{transform:scale(.97)}
+.scarica-app-btn i{font-size:1.2rem}
+.scarica-app-btn .btn-sub{font-size:.7rem;font-weight:400;opacity:.8;display:block}
+.app-installed-msg{display:none;color:var(--success);font-weight:600;font-size:.88rem;padding:.5rem}
+.app-installed-msg i{margin-right:.3rem}
+/* iOS install modal */
+.ios-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center;padding:1.5rem}
+.ios-modal-overlay.show{display:flex}
+.ios-modal{background:var(--dark-mid);border-radius:var(--radius-lg);padding:2rem;max-width:360px;width:100%;color:var(--white);text-align:center;position:relative}
+.ios-modal h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.ios-modal p{font-size:.85rem;opacity:.7;margin-bottom:1.2rem}
+.ios-steps{text-align:left;display:flex;flex-direction:column;gap:.8rem}
+.ios-step{display:flex;align-items:center;gap:.75rem;font-size:.9rem}
+.ios-step .step-n{background:var(--primary);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
+.ios-modal .close-ios{background:rgba(255,255,255,.1);border:none;color:var(--white);padding:.6rem 1.5rem;border-radius:50px;cursor:pointer;font-family:inherit;font-size:.85rem;margin-top:1.2rem}
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -417,23 +412,6 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
         <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
     </div>
 </nav>
-
-<!-- PWA Install Banner -->
-<div class="pwa-install-banner" id="pwaInstallBanner">
-    <div class="pwa-icon"><i class="fas fa-mobile-alt"></i></div>
-    <div class="pwa-text">
-        <strong>Installa RaaS Bandi</strong>
-        <span>Accedi ai bandi anche offline, direttamente dal telefono</span>
-        <div class="pwa-ios-steps" id="pwaIosSteps">
-            Tocca <span class="ios-icon"><i class="fas fa-share-from-square"></i></span> in basso, poi <strong>&ldquo;Aggiungi a Home&rdquo;</strong>
-        </div>
-    </div>
-    <button class="pwa-btn" id="pwaInstallBtn">Installa</button>
-    <button class="pwa-close" id="pwaCloseBtn" aria-label="Chiudi">&times;</button>
-</div>
-
-<!-- Offline Indicator -->
-<div class="offline-bar" id="offlineBar"><i class="fas fa-wifi"></i> Modalit&agrave; offline &mdash; stai vedendo i dati salvati</div>
 
 <section class="hero-bandi">
     <div class="hero-particles">
@@ -465,8 +443,32 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
                 <i class="fas fa-unlock"></i> Attiva Abbonamento
             </button>
         </div>
+        <!-- SCARICA APP -->
+        <div class="scarica-app-box" id="scaricaAppBox">
+            <div class="app-title"><i class="fas fa-mobile-screen-button"></i> Disponibile come App</div>
+            <div class="app-desc">Installa sul telefono, accedi ai bandi anche offline</div>
+            <button class="scarica-app-btn" id="scaricaAppBtn" onclick="installApp()">
+                <i class="fas fa-download"></i>
+                <span>Scarica App<span class="btn-sub">Gratis &middot; Nessuno store</span></span>
+            </button>
+            <div class="app-installed-msg" id="appInstalled"><i class="fas fa-check-circle"></i> App installata!</div>
+        </div>
     </div>
 </section>
+
+<!-- iOS Install Modal -->
+<div class="ios-modal-overlay" id="iosModal">
+    <div class="ios-modal">
+        <h3><i class="fas fa-mobile-screen-button"></i> Installa RaaS Bandi</h3>
+        <p>Su iPhone/iPad segui questi 3 passi:</p>
+        <div class="ios-steps">
+            <div class="ios-step"><span class="step-n">1</span> Tocca <i class="fas fa-share-from-square" style="color:var(--primary)"></i> <strong>Condividi</strong> (in basso)</div>
+            <div class="ios-step"><span class="step-n">2</span> Scorri e tocca <strong>"Aggiungi a Home"</strong></div>
+            <div class="ios-step"><span class="step-n">3</span> Tocca <strong>"Aggiungi"</strong> in alto a destra</div>
+        </div>
+        <button class="close-ios" onclick="document.getElementById('iosModal').classList.remove('show')">Ho capito</button>
+    </div>
+</div>
 
 <!-- PREVIEW: 3 latest bandi -->
 <section class="preview-section" id="previewSection">
@@ -1313,88 +1315,75 @@ if(!document.cookie.includes('cookie_consent=')){
 </div>
 <script src="https://www.paypal.com/sdk/js?client-id=AeBeG13urvj5m4BX-e4gt5xOnCFlrbxStYUmEIZ3d0xrAsULyXSB12-wT3-eMn3vQEtDzHUv_oe1lD-y&currency=EUR"></script>
 
-<!-- PWA: Service Worker + Install Prompt -->
+<!-- SCARICA APP: Service Worker + Install -->
 <script>
-// Registrazione Service Worker
+// Registra Service Worker
 if('serviceWorker' in navigator){
-    window.addEventListener('load',function(){
-        navigator.serviceWorker.register('/sw.js').then(function(reg){
-            console.log('SW registrato, scope:',reg.scope);
-        }).catch(function(err){
-            console.warn('SW registrazione fallita:',err);
-        });
-    });
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
 }
 
-// Install Prompt — intercetta evento beforeinstallprompt
-var deferredPrompt=null;
-var installBanner=document.getElementById('pwaInstallBanner');
-var installBtn=document.getElementById('pwaInstallBtn');
-var closeBtn=document.getElementById('pwaCloseBtn');
+// Manifest link
+(function(){
+    var link=document.createElement('link');
+    link.rel='manifest';link.href='/manifest.json';
+    document.head.appendChild(link);
+    var meta1=document.createElement('meta');meta1.name='apple-mobile-web-app-capable';meta1.content='yes';document.head.appendChild(meta1);
+    var meta2=document.createElement('meta');meta2.name='apple-mobile-web-app-title';meta2.content='RaaS Bandi';document.head.appendChild(meta2);
+    var icon=document.createElement('link');icon.rel='apple-touch-icon';icon.href='/icons/icon-192.png';document.head.appendChild(icon);
+})();
 
-// Rileva iOS/iPadOS (Safari non supporta beforeinstallprompt)
-var isIos=/iPad|iPhone|iPod/.test(navigator.userAgent)||
-    (navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-var isStandalone=window.navigator.standalone===true||
-    window.matchMedia('(display-mode: standalone)').matches;
+// Install logic
+var _deferredInstall=null;
+var _isIos=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+var _isStandalone=window.navigator.standalone===true||window.matchMedia('(display-mode: standalone)').matches;
 
-if(isIos&&!isStandalone){
-    // iOS/iPadOS: mostra istruzioni manuali "Aggiungi a Home"
-    installBanner.classList.add('ios-mode');
-    if(!sessionStorage.getItem('pwa-banner-closed')){
-        setTimeout(function(){installBanner.classList.add('show')},2000);
-    }
+// Se gia' installata, nascondi il box
+if(_isStandalone){
+    var box=document.getElementById('scaricaAppBox');
+    if(box){box.querySelector('.scarica-app-btn').style.display='none';
+    box.querySelector('.app-installed-msg').style.display='block'}
 }
 
-// Android/Chrome/Edge: intercetta evento nativo
+// Intercetta prompt nativo (Android/Chrome/Edge)
 window.addEventListener('beforeinstallprompt',function(e){
     e.preventDefault();
-    deferredPrompt=e;
-    if(!sessionStorage.getItem('pwa-banner-closed')){
-        setTimeout(function(){installBanner.classList.add('show')},3000);
-    }
+    _deferredInstall=e;
 });
 
-if(installBtn){
-    installBtn.addEventListener('click',function(){
-        if(!deferredPrompt)return;
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(function(choice){
+function installApp(){
+    if(_isStandalone)return;
+
+    if(_isIos){
+        // iOS: mostra modale con istruzioni
+        document.getElementById('iosModal').classList.add('show');
+        return;
+    }
+
+    if(_deferredInstall){
+        // Android/Chrome: installa direttamente
+        _deferredInstall.prompt();
+        _deferredInstall.userChoice.then(function(choice){
             if(choice.outcome==='accepted'){
-                console.log('PWA installata');
+                var btn=document.getElementById('scaricaAppBtn');
+                var msg=document.getElementById('appInstalled');
+                btn.style.display='none';msg.style.display='block';
                 if(typeof gtag==='function')gtag('event','pwa_install',{event_category:'engagement'});
             }
-            deferredPrompt=null;
-            installBanner.classList.remove('show');
+            _deferredInstall=null;
         });
-    });
+    }else{
+        // Fallback: apri app.html che ha il suo prompt
+        window.location.href='/app.html';
+    }
 }
 
-if(closeBtn){
-    closeBtn.addEventListener('click',function(){
-        installBanner.classList.remove('show');
-        sessionStorage.setItem('pwa-banner-closed','1');
-    });
-}
-
-// Nascondi banner se gia' installata come PWA
+// Evento: app installata
 window.addEventListener('appinstalled',function(){
-    installBanner.classList.remove('show');
-    deferredPrompt=null;
+    var btn=document.getElementById('scaricaAppBtn');
+    var msg=document.getElementById('appInstalled');
+    if(btn)btn.style.display='none';
+    if(msg)msg.style.display='block';
 });
-
-// Se aperta in standalone (gia' installata), nascondi banner
-if(isStandalone)installBanner.style.display='none';
-
-// Offline/Online indicator
-var offlineBar=document.getElementById('offlineBar');
-function updateOnlineStatus(){
-    if(!navigator.onLine){offlineBar.classList.add('show')}
-    else{offlineBar.classList.remove('show')}
-}
-window.addEventListener('online',updateOnlineStatus);
-window.addEventListener('offline',updateOnlineStatus);
-updateOnlineStatus();
 </script>
 </body>
 </html>
