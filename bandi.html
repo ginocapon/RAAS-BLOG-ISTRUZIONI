@@ -380,6 +380,12 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 .pwa-install-banner .pwa-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:1.2rem;cursor:pointer;padding:.25rem;line-height:1}
 .pwa-install-banner .pwa-close:hover{color:var(--white)}
 
+/* iOS-specific install instructions */
+.pwa-ios-steps{display:none;margin-top:.6rem;font-size:.78rem;opacity:.85;line-height:1.6}
+.pwa-install-banner.ios-mode .pwa-ios-steps{display:block}
+.pwa-install-banner.ios-mode .pwa-btn{display:none}
+.pwa-ios-steps .ios-icon{display:inline-block;background:rgba(14,165,233,0.25);padding:.1rem .4rem;border-radius:4px;font-size:.85rem;vertical-align:middle}
+
 /* OFFLINE INDICATOR */
 .offline-bar{display:none;position:fixed;top:56px;left:0;right:0;background:var(--accent);color:var(--dark);padding:.5rem;text-align:center;font-weight:600;font-size:.82rem;z-index:998}
 .offline-bar.show{display:block}
@@ -418,6 +424,9 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
     <div class="pwa-text">
         <strong>Installa RaaS Bandi</strong>
         <span>Accedi ai bandi anche offline, direttamente dal telefono</span>
+        <div class="pwa-ios-steps" id="pwaIosSteps">
+            Tocca <span class="ios-icon"><i class="fas fa-share-from-square"></i></span> in basso, poi <strong>&ldquo;Aggiungi a Home&rdquo;</strong>
+        </div>
     </div>
     <button class="pwa-btn" id="pwaInstallBtn">Installa</button>
     <button class="pwa-close" id="pwaCloseBtn" aria-label="Chiudi">&times;</button>
@@ -1323,10 +1332,24 @@ var installBanner=document.getElementById('pwaInstallBanner');
 var installBtn=document.getElementById('pwaInstallBtn');
 var closeBtn=document.getElementById('pwaCloseBtn');
 
+// Rileva iOS/iPadOS (Safari non supporta beforeinstallprompt)
+var isIos=/iPad|iPhone|iPod/.test(navigator.userAgent)||
+    (navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+var isStandalone=window.navigator.standalone===true||
+    window.matchMedia('(display-mode: standalone)').matches;
+
+if(isIos&&!isStandalone){
+    // iOS/iPadOS: mostra istruzioni manuali "Aggiungi a Home"
+    installBanner.classList.add('ios-mode');
+    if(!sessionStorage.getItem('pwa-banner-closed')){
+        setTimeout(function(){installBanner.classList.add('show')},2000);
+    }
+}
+
+// Android/Chrome/Edge: intercetta evento nativo
 window.addEventListener('beforeinstallprompt',function(e){
     e.preventDefault();
     deferredPrompt=e;
-    // Non mostrare se l'utente ha gia' chiuso il banner in questa sessione
     if(!sessionStorage.getItem('pwa-banner-closed')){
         setTimeout(function(){installBanner.classList.add('show')},3000);
     }
@@ -1339,7 +1362,6 @@ if(installBtn){
         deferredPrompt.userChoice.then(function(choice){
             if(choice.outcome==='accepted'){
                 console.log('PWA installata');
-                // Traccia installazione in GA4
                 if(typeof gtag==='function')gtag('event','pwa_install',{event_category:'engagement'});
             }
             deferredPrompt=null;
@@ -1360,6 +1382,9 @@ window.addEventListener('appinstalled',function(){
     installBanner.classList.remove('show');
     deferredPrompt=null;
 });
+
+// Se aperta in standalone (gia' installata), nascondi banner
+if(isStandalone)installBanner.style.display='none';
 
 // Offline/Online indicator
 var offlineBar=document.getElementById('offlineBar');
