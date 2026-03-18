@@ -372,9 +372,21 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 .scarica-app-btn:active{transform:scale(.97)}
 .scarica-app-btn i{font-size:1.3rem}
 .scarica-app-btn .btn-sub{font-size:.7rem;font-weight:400;opacity:.8;display:block}
-.scarica-app-btn .arrow-flash{display:inline-block;animation:arrowBlink .7s ease-in-out infinite;margin-left:.3rem;font-size:1.2rem}
+/* Arrow indicators pointing to button */
+.scarica-app-wrapper{display:flex;align-items:center;justify-content:center;gap:0}
+.arrows-group{display:flex;align-items:center;width:3cm;flex-shrink:0;overflow:hidden}
+.arrows-group.left{justify-content:flex-end}
+.arrows-group.right{justify-content:flex-start}
+.arrows-group .chevron{color:#dc2626;font-weight:900;line-height:1;opacity:0;font-size:1.6rem}
+.arrows-group.left .chevron{animation:slideLeft 1.5s ease-in-out infinite}
+.arrows-group.right .chevron{animation:slideRight 1.5s ease-in-out infinite}
+.arrows-group .chevron:nth-child(1){animation-delay:0s}
+.arrows-group .chevron:nth-child(2){animation-delay:.2s}
+.arrows-group .chevron:nth-child(3){animation-delay:.4s}
+@keyframes slideLeft{0%{opacity:0;transform:translateX(-20px)}35%{opacity:1}75%{opacity:1;transform:translateX(4px)}100%{opacity:0;transform:translateX(4px)}}
+@keyframes slideRight{0%{opacity:0;transform:translateX(20px)}35%{opacity:1}75%{opacity:1;transform:translateX(-4px)}100%{opacity:0;transform:translateX(-4px)}}
+@media(max-width:768px){.arrows-group{width:1.5cm}.arrows-group .chevron{font-size:1.1rem}}
 @keyframes pulseRed{0%,100%{box-shadow:0 4px 25px rgba(220,38,38,.4)}50%{box-shadow:0 4px 40px rgba(220,38,38,.7),0 0 60px rgba(220,38,38,.3)}}
-@keyframes arrowBlink{0%,100%{opacity:1;transform:translateX(0)}50%{opacity:.3;transform:translateX(5px)}}
 .app-installed-msg{display:none;color:var(--success);font-weight:600;font-size:.88rem;padding:.5rem}
 .app-installed-msg i{margin-right:.3rem}
 /* iOS install modal */
@@ -450,10 +462,14 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
         <div class="scarica-app-box" id="scaricaAppBox">
             <div class="app-title"><i class="fas fa-mobile-screen-button"></i> Disponibile come App</div>
             <div class="app-desc">Installa sul telefono, accedi ai bandi anche offline</div>
-            <button class="scarica-app-btn" id="scaricaAppBtn" onclick="installApp()">
-                <i class="fas fa-download"></i>
-                <span>Scarica App <span class="arrow-flash">&raquo;</span><span class="btn-sub">Gratis &middot; Nessuno store</span></span>
-            </button>
+            <div class="scarica-app-wrapper">
+                <div class="arrows-group left"><span class="chevron">&#x276F;</span><span class="chevron">&#x276F;</span><span class="chevron">&#x276F;</span></div>
+                <button class="scarica-app-btn" id="scaricaAppBtn" onclick="installApp()">
+                    <i class="fas fa-download"></i>
+                    <span>Scarica App<span class="btn-sub">Gratis &middot; Nessuno store</span></span>
+                </button>
+                <div class="arrows-group right"><span class="chevron">&#x276E;</span><span class="chevron">&#x276E;</span><span class="chevron">&#x276E;</span></div>
+            </div>
             <div class="app-installed-msg" id="appInstalled"><i class="fas fa-check-circle"></i> App installata!</div>
         </div>
     </div>
