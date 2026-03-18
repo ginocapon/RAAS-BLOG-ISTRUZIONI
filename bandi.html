@@ -364,14 +364,17 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 @media(max-width:768px){.cookie-banner{flex-direction:column;text-align:center;padding:16px}.cookie-banner p{font-size:.82rem}}
 
 /* SCARICA APP BUTTON */
-.scarica-app-box{background:rgba(14,165,233,0.12);border:2px solid var(--primary);border-radius:var(--radius-lg);padding:1.2rem;margin-top:1.2rem;text-align:center}
-.scarica-app-box .app-title{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.3rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
-.scarica-app-box .app-desc{font-size:.8rem;color:rgba(255,255,255,.7);margin-bottom:.8rem}
-.scarica-app-btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--primary);color:var(--white);border:none;padding:.85rem 2rem;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 20px rgba(14,165,233,.4)}
-.scarica-app-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 6px 28px rgba(14,165,233,.5)}
+.scarica-app-box{background:rgba(220,38,38,0.10);border:2px solid #dc2626;border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.2rem;text-align:center;position:relative;overflow:hidden}
+.scarica-app-box .app-title{font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:.3rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+.scarica-app-box .app-desc{font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:1rem}
+.scarica-app-btn{display:inline-flex;align-items:center;gap:.6rem;background:#dc2626;color:var(--white);border:none;padding:1rem 2.5rem;border-radius:50px;font-size:1.1rem;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 25px rgba(220,38,38,.5);animation:pulseRed 2s ease-in-out infinite;position:relative}
+.scarica-app-btn:hover{background:#b91c1c;transform:translateY(-3px) scale(1.03);box-shadow:0 8px 35px rgba(220,38,38,.6)}
 .scarica-app-btn:active{transform:scale(.97)}
-.scarica-app-btn i{font-size:1.2rem}
+.scarica-app-btn i{font-size:1.3rem}
 .scarica-app-btn .btn-sub{font-size:.7rem;font-weight:400;opacity:.8;display:block}
+.scarica-app-btn .arrow-flash{display:inline-block;animation:arrowBlink .7s ease-in-out infinite;margin-left:.3rem;font-size:1.2rem}
+@keyframes pulseRed{0%,100%{box-shadow:0 4px 25px rgba(220,38,38,.4)}50%{box-shadow:0 4px 40px rgba(220,38,38,.7),0 0 60px rgba(220,38,38,.3)}}
+@keyframes arrowBlink{0%,100%{opacity:1;transform:translateX(0)}50%{opacity:.3;transform:translateX(5px)}}
 .app-installed-msg{display:none;color:var(--success);font-weight:600;font-size:.88rem;padding:.5rem}
 .app-installed-msg i{margin-right:.3rem}
 /* iOS install modal */
@@ -449,7 +452,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
             <div class="app-desc">Installa sul telefono, accedi ai bandi anche offline</div>
             <button class="scarica-app-btn" id="scaricaAppBtn" onclick="installApp()">
                 <i class="fas fa-download"></i>
-                <span>Scarica App<span class="btn-sub">Gratis &middot; Nessuno store</span></span>
+                <span>Scarica App <span class="arrow-flash">&raquo;</span><span class="btn-sub">Gratis &middot; Nessuno store</span></span>
             </button>
             <div class="app-installed-msg" id="appInstalled"><i class="fas fa-check-circle"></i> App installata!</div>
         </div>
