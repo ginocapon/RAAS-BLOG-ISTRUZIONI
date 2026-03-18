@@ -367,11 +367,10 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 .scarica-app-box{background:rgba(220,38,38,0.10);border:2px solid #dc2626;border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.2rem;text-align:center;position:relative;overflow:hidden}
 .scarica-app-box .app-title{font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:.3rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
 .scarica-app-box .app-desc{font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:1rem}
-.scarica-app-btn{display:inline-flex;align-items:center;gap:.6rem;background:#dc2626;color:var(--white);border:none;padding:1rem 2.5rem;border-radius:50px;font-size:1.1rem;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 25px rgba(220,38,38,.5);animation:pulseRed 2s ease-in-out infinite;position:relative}
+.scarica-app-btn{display:inline-flex;align-items:center;gap:.8rem;background:#dc2626;color:var(--white);border:none;padding:.85rem 3.5rem;border-radius:50px;font-size:1.4rem;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 25px rgba(220,38,38,.5);animation:pulseRed 2s ease-in-out infinite;position:relative;letter-spacing:.3px}
 .scarica-app-btn:hover{background:#b91c1c;transform:translateY(-3px) scale(1.03);box-shadow:0 8px 35px rgba(220,38,38,.6)}
 .scarica-app-btn:active{transform:scale(.97)}
-.scarica-app-btn i{font-size:1.3rem}
-.scarica-app-btn .btn-sub{font-size:.7rem;font-weight:400;opacity:.8;display:block}
+.scarica-app-btn i{font-size:1.5rem}
 /* Arrow indicators pointing to button */
 .scarica-app-wrapper{display:flex;align-items:center;justify-content:center;gap:0}
 .arrows-group{display:flex;align-items:center;width:3cm;flex-shrink:0;overflow:hidden}
@@ -385,7 +384,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 .arrows-group .chevron:nth-child(3){animation-delay:.4s}
 @keyframes slideLeft{0%{opacity:0;transform:translateX(-20px)}35%{opacity:1}75%{opacity:1;transform:translateX(4px)}100%{opacity:0;transform:translateX(4px)}}
 @keyframes slideRight{0%{opacity:0;transform:translateX(20px)}35%{opacity:1}75%{opacity:1;transform:translateX(-4px)}100%{opacity:0;transform:translateX(-4px)}}
-@media(max-width:768px){.arrows-group{width:1.5cm}.arrows-group .chevron{font-size:1.1rem}}
+@media(min-width:769px){.scarica-app-btn{padding:1rem 5rem;font-size:1.6rem}.scarica-app-btn i{font-size:1.7rem}.arrows-group{width:4cm}.arrows-group .chevron{font-size:2rem}}
+@media(max-width:768px){.arrows-group{width:1.5cm}.arrows-group .chevron{font-size:1.1rem}.scarica-app-btn{padding:.75rem 2.5rem;font-size:1.2rem}}
 @keyframes pulseRed{0%,100%{box-shadow:0 4px 25px rgba(220,38,38,.4)}50%{box-shadow:0 4px 40px rgba(220,38,38,.7),0 0 60px rgba(220,38,38,.3)}}
 .app-installed-msg{display:none;color:var(--success);font-weight:600;font-size:.88rem;padding:.5rem}
 .app-installed-msg i{margin-right:.3rem}
@@ -466,7 +466,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
                 <div class="arrows-group left"><span class="chevron">&#x276F;</span><span class="chevron">&#x276F;</span><span class="chevron">&#x276F;</span></div>
                 <button class="scarica-app-btn" id="scaricaAppBtn" onclick="installApp()">
                     <i class="fas fa-download"></i>
-                    <span>Scarica App<span class="btn-sub">Gratis &middot; Nessuno store</span></span>
+                    Scarica App
                 </button>
                 <div class="arrows-group right"><span class="chevron">&#x276E;</span><span class="chevron">&#x276E;</span><span class="chevron">&#x276E;</span></div>
             </div>
