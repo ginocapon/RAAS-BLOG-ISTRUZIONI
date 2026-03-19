@@ -41,6 +41,12 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
     - `sitemap.xml` → nuovo URL
 14. **Auto-registrazione admin** — ogni nuova pagina creata DEVE essere registrata in sitemap.xml
 15. **Branding coerente** — usare sempre "RaaS Automazioni" (MAI "BandiItalia" come brand principale)
+16. **og:image obbligatorio** — ogni pagina DEVE avere `<meta property="og:image">` per condivisione social
+17. **Skip navigation** — ogni pagina DEVE avere un link skip-nav per accessibilita'
+18. **Focus visible** — ogni pagina DEVE avere stili `*:focus-visible` per elementi interattivi
+19. **Preconnect** — aggiungere `<link rel="preconnect">` per tutti i domini esterni usati
+20. **Font-Awesome defer** — caricare con media swap (`as="style" onload="this.onload=null;this.rel='stylesheet'"`)
+21. **Immagini width/height** — TUTTE le `<img>` DEVONO avere attributi `width` e `height` espliciti (prevenzione CLS)
 
 ### 1.3 Stile di Comunicazione
 - Rispondi in italiano
@@ -302,20 +308,42 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 ### 4.1 Core Web Vitals — Soglie 2026
 | Metrica | Buono | Da migliorare | Scarso |
 |---|---|---|---|
-| **LCP** (Largest Contentful Paint) | < 2.5s (target competitivo: <2s) | 2.5s - 4.0s | > 4.0s |
+| **LCP** (Largest Contentful Paint) | < 2.0s (target competitivo) | 2.0s - 4.0s | > 4.0s |
 | **INP** (Interaction to Next Paint) | < 200ms | 200ms - 500ms | > 500ms |
 | **CLS** (Cumulative Layout Shift) | < 0.1 | 0.1 - 0.25 | > 0.25 |
 | **SVT** (Smooth Visual Transitions) | Penalizza caricamenti "scattosi" |
 | **VSI** (Visual Stability Index) | Stabilita' layout per tutta la sessione |
 | **ER** (Engagement Reliability) | Affidabilita' interazioni su tutti i device |
 
+> **Nota:** Il target LCP competitivo nel 2026 e' sotto 2 secondi (non piu' 2.5s). Il 43% dei siti ancora non passa la soglia INP di 200ms.
+
 ### 4.2 Performance Rules — OBBLIGATORIO
 1. **No `filter: blur` su animazioni** — usare `opacity` e `transform` (GPU-accelerated)
 2. **No `will-change` permanente** — solo al `:hover` o quando serve
-3. **Hero animations ritardate** — nessuna animazione above-the-fold nei primi 3s
+3. **Hero animations ritardate** — nessuna animazione above-the-fold nei primi 3s, usare `animation-play-state: paused` e attivare dopo primo render
 4. **Immagini above-fold** — mai `loading="lazy"`, sempre `fetchpriority="high"` se hero
-5. **Font** — preload woff2, `font-display: swap`
-6. **Iframe** (YouTube etc.) — sempre `loading="lazy"`
+5. **Font** — preload woff2, `font-display: swap`, self-hosted WOFF2 preferibile (GDPR + velocita')
+6. **Iframe** (YouTube etc.) — sempre `loading="lazy"`, usare **facade pattern** (thumbnail + click per caricare iframe)
+7. **Critical CSS** — CSS per hero/nav/above-fold inline nel `<style>` del `<head>`, CSS non critico defer con media swap: `<link rel="stylesheet" href="..." media="print" onload="this.media='all'">`
+8. **No `@import`** nei CSS — causa richieste sequenziali
+9. **JavaScript** — script non critici con `defer` o `async`, lazy load con IntersectionObserver per below-fold
+10. **Preconnect** — obbligatorio per tutti i domini esterni usati: `<link rel="preconnect" href="...">`
+11. **Immagini** — WebP obbligatorio, TUTTE con `width` + `height` espliciti, `loading="lazy"` solo su below-fold
+12. **Network** — minimizzare richieste HTTP, abilitare compressione gzip/brotli lato server
+
+### 4.2.1 Fattori di Ranking Google 2026
+1. **Qualita' del contenuto** — E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness)
+2. **Rilevanza semantica** — Contenuto che risponde all'intento di ricerca
+3. **Core Web Vitals** — Performance come fattore decisivo a parita' di contenuto
+4. **Mobile-first** — Google indicizza prima la versione mobile
+5. **Dati strutturati** — Schema.org per rich snippets
+6. **GEO** — Ottimizzazione per essere citati da AI
+7. **AEO** — Ottimizzazione per featured snippets
+8. **Link interni** — Ogni pagina importante deve essere collegata internamente
+9. **HTTPS** — Obbligatorio
+10. **Contenuto originale** — Penalizzazione per clickbait e contenuti superficiali
+11. **Topical Authority** — Google valuta la copertura complessiva di un topic, non singole pagine
+12. **Page Experience consistency** — Siti con performance inconsistente (home veloce, blog lento) penalizzati
 
 ### 4.3 E-E-A-T — Segnali di Fiducia (Cruciale nel 2026)
 
@@ -401,23 +429,45 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 ### 5.1 Regole Obbligatorie per Ogni Pagina
 
 **LCP Element:**
-- Hero image preloaded nel `<head>`: `<link rel="preload" href="..." as="image" fetchpriority="high">`
+- Hero image preloaded nel `<head>`: `<link rel="preload" href="img/hero.webp" as="image">`
 - MAI `loading="lazy"` su elementi above-the-fold
 - WebP obbligatorio per immagini locali
+- Il path del preload DEVE corrispondere al path effettivo nell'HTML
+- Animazioni sull'elemento LCP: partire in **pausa**, avviare dopo il primo render:
+  ```css
+  .hero-bg { animation-play-state: paused; }
+  .hero-bg.loaded { animation-play-state: running; }
+  ```
 
 **Font Loading:**
+- **Preload obbligatorio** per font above-the-fold:
+  ```html
+  <link rel="preload" href="fonts/mio-font-400.woff2" as="font" type="font/woff2" crossorigin>
+  ```
 - `font-display: swap` su tutti i `@font-face`
 - Preconnect per Google Fonts
+- **Self-hosted WOFF2** preferibile (no Google Fonts esterni = GDPR compliance + velocita')
 
 **CLS Prevention:**
-- TUTTE le immagini con `width` + `height` espliciti
-- Navbar fissa: usare `height` con CSS variable
-- Mai contenuto asincrono above-the-fold senza placeholder dimensionato
+- TUTTE le immagini DEVONO avere `width` + `height` espliciti nel tag HTML
+- Immagini caricate via JS: aggiungere `width`, `height` e `style="aspect-ratio:..."`
+- Navbar fissa: usare `height` con CSS variable (`var(--nav-h)`)
+- Mai contenuto asincrono above-the-fold senza **placeholder dimensionato**
 
 **CTA Above-the-Fold:**
-- UN solo CTA primario per hero (Hick's Law)
-- Contrast ratio minimo 4.5:1 (WCAG AA)
-- Hover: feedback visivo chiaro (`translateY(-2px)` + box-shadow)
+- **UN solo CTA primario** per hero (Hick's Law: troppe scelte = paralisi)
+- Contrast ratio minimo **4.5:1** (WCAG AA) — meglio **7:1** (WCAG AAA)
+- MAI glass morphism (bianco su bianco) per CTA primarie
+- Hover: feedback visivo chiaro (`translateY(-2px)` + `box-shadow`)
+
+**Critical CSS:**
+- CSS per hero/nav/above-fold: **inline** nel `<style>` del `<head>`
+- CSS per contenuto below-fold: caricare via `<link rel="stylesheet">`
+- Mai caricare l'intero CSS inline se supera **50KB**
+- CSS non critico: defer con tecnica media swap:
+  ```html
+  <link rel="stylesheet" href="css/below-fold.css" media="print" onload="this.media='all'">
+  ```
 
 ### 5.2 Palette Colori CTA (Contrast-Safe)
 | Elemento | Background | Testo | Ratio |
@@ -426,6 +476,108 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 | CTA secondario | #1a2f47 (dark) | white | ~12:1 |
 | CTA accent | #f4a261 (arancione) | #1a2f47 | ~4.5:1 |
 | CTA admin | #d4a843 (oro) | #0a1628 | ~5.2:1 |
+
+### 5.3 SEO On-Page — Checklist per Ogni Pagina
+
+**Meta Tag e Struttura:**
+- [ ] **Title tag** unico (max 60 caratteri)
+- [ ] **Meta description** unica (max 160 caratteri)
+- [ ] **H1 unico** per pagina
+- [ ] **Alt text** su tutte le immagini
+- [ ] **URL SEO-friendly** (slug descrittivi)
+- [ ] **Canonical URL** impostato
+- [ ] **Open Graph tags** completi (og:title, og:description, og:url, og:type, og:locale, og:image)
+- [ ] **HTTPS** obbligatorio
+
+**Link e Struttura:**
+- [ ] **Link interni** verso pagine correlate (cross-linking contestuale)
+- [ ] **Breadcrumbs** con schema BreadcrumbList
+- [ ] Nessun **broken link** (audit periodico)
+
+**Immagini:**
+- [ ] Formato **WebP** per tutte le immagini locali
+- [ ] `loading="lazy"` su immagini **below-the-fold**
+- [ ] `width` + `height` espliciti su **tutte** le immagini
+- [ ] Alt text descrittivo e con keyword dove naturale
+
+**Dati Strutturati (Schema.org):**
+- [ ] Schema appropriato al tipo di pagina (LocalBusiness, Product, Article, FAQPage, ecc.)
+- [ ] **GeoCoordinates** nello schema per attivita' locali
+- [ ] **FAQPage** schema per pagine con domande frequenti (minimo 5 FAQ)
+- [ ] **Review** schema per pagine con testimonianze/recensioni
+- [ ] Validare con Google Rich Results Test
+
+**File Tecnici:**
+- [ ] `sitemap.xml` aggiornata con tutte le pagine pubbliche
+- [ ] `robots.txt` configurato correttamente
+- [ ] `llms.txt` — standard per guidare AI bots
+
+### 5.4 Mobile-First — Regole
+- **Progettare prima per mobile**, poi adattare per desktop
+- Touch target minimo: **44x44px** (Apple HIG) / **48x48px** (Material Design)
+- Font size minimo: **16px** per body text (evita zoom automatico su iOS)
+- Viewport meta tag obbligatorio: `<meta name="viewport" content="width=device-width, initial-scale=1">`
+- Menu hamburger: area tocco generosa, animazione fluida
+- Form: input `type` appropriati (`tel`, `email`, `number`) per tastiera corretta
+
+### 5.5 Accessibilita' (WCAG)
+- Contrast ratio minimo **4.5:1** per testo normale, **3:1** per testo grande
+- **Alt text** su tutte le immagini informative, `alt=""` per immagini decorative
+- **Focus visible** su tutti gli elementi interattivi (`*:focus-visible` con outline)
+- Struttura heading gerarchica (H1 → H2 → H3, senza salti)
+- **aria-label** su icone/bottoni senza testo visibile
+- Form: ogni input ha un `<label>` associato
+- **Skip navigation link** per screen reader su tutte le pagine
+
+### 5.6 Sicurezza
+- **HTTPS** obbligatorio su tutto il sito
+- **Content Security Policy** headers dove possibile
+- Sanitizzare tutti gli input utente (prevenzione XSS)
+- **SameSite** cookies
+- API keys: mai esposte nel frontend se sono segrete
+- Form: protezione CSRF + rate limiting
+
+### 5.7 GEO — AEO per Featured Snippets
+1. **Risposta 40-60 parole** come primo paragrafo dopo ogni H2
+2. **Formato is-snippet:** "[Keyword] e' [definizione/risposta]"
+3. **Min 5 FAQ** in formato Q&A con Schema FAQPage
+4. **Tabelle comparative** per dati numerici
+
+**Checklist GEO/AEO:**
+- [ ] Frasi dichiarative nelle prime 2 righe di ogni sezione
+- [ ] Dati numerici specifici e verificabili
+- [ ] Formato: Domanda H2 + Risposta diretta + Approfondimento
+- [ ] Liste, tabelle, definizioni chiare
+- [ ] Min 5 FAQ con Schema FAQPage
+- [ ] Risposta 40-60 parole come primo paragrafo per ogni H2
+- [ ] Citazioni fonti ufficiali
+
+### 5.8 Checklist Visual Saliency (per ogni pagina)
+- [ ] Hero image preloaded nel `<head>`
+- [ ] Font above-fold preloaded
+- [ ] Nessun `loading="lazy"` su elementi above-the-fold
+- [ ] Tutte le immagini con `width` + `height` espliciti
+- [ ] CTA primario con contrast ratio >= 4.5:1
+- [ ] Un solo CTA primario nel hero
+- [ ] Animazioni hero: partono dopo il primo render
+- [ ] Critical CSS inline, rest deferred
+- [ ] Skip navigation link presente
+- [ ] Focus visible styles presenti
+
+### 5.9 Monitoraggio
+
+**Routine Consigliata:**
+- **Settimanale:** Controllare report performance in Search Console
+- **Mensile:** Analisi dettagliata metriche SEO e Core Web Vitals
+- **Trimestrale:** Audit completo contenuti e struttura sito
+- **Ad ogni aggiornamento Google:** Verificare impatto sul sito
+
+**Strumenti:**
+- Google Search Console
+- Google PageSpeed Insights
+- Google Rich Results Test
+- Web Vitals Extension (Chrome)
+- Lighthouse (DevTools)
 
 ---
 
@@ -494,16 +646,22 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 - [ ] Meta description unica (max 160 char)
 - [ ] H1 unico con keyword conversazionale
 - [ ] Schema.org JSON-LD (BreadcrumbList + tipo specifico)
-- [ ] Open Graph tags (og:title, og:description, og:url, og:type, og:locale)
+- [ ] Open Graph tags (og:title, og:description, og:url, og:type, og:locale, **og:image**)
 - [ ] `<meta name="theme-color">`
 - [ ] `<link rel="canonical">`
 - [ ] Hero image con `fetchpriority="high"`, mai `loading="lazy"` above-fold
+- [ ] Tutte le immagini con `width` + `height` espliciti
 - [ ] CTA primario con contrasto >= 4.5:1
 - [ ] Registrato in sitemap.xml
 - [ ] Cookie banner presente
 - [ ] GA4 (G-4T83494XDB) presente
 - [ ] Risposta diretta nelle prime 2 righe di ogni sezione H2 (GEO)
 - [ ] Mobile responsive
+- [ ] **Skip navigation link** presente
+- [ ] **Focus visible** styles presenti
+- [ ] **Preconnect** per domini esterni (fonts, CDN, analytics)
+- [ ] Font-Awesome e CSS non critici **defer** con media swap
+- [ ] Animazioni hero con `animation-play-state: paused` (attivare dopo render)
 
 ### Per Ogni Nuovo Articolo Blog
 - [ ] 2500+ parole strutturate
@@ -522,8 +680,11 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 ### Per Ogni Modifica CSS
 - [ ] Mobile-first: stili base per mobile, `@media` per desktop
 - [ ] No `filter` su animazioni — solo `opacity` e `transform`
-- [ ] No `will-change` permanente
+- [ ] No `will-change` permanente (solo su `:hover`)
 - [ ] Contrasto minimo 4.5:1 su CTA
+- [ ] No `@import` nei CSS (causa richieste sequenziali)
+- [ ] Critical CSS inline nel `<head>`, non-critico defer
+- [ ] `*:focus-visible` con outline visibile su elementi interattivi
 
 ### Commit
 - [ ] Messaggio in italiano, descrittivo

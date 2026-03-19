@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RaaS Automazioni — Trova Bandi e Agevolazioni per la Tua Azienda</title>
 <meta name="description" content="Scopri oltre 1000 bandi e agevolazioni attivi in Italia. Filtri intelligenti e notifiche personalizzate per la tua azienda.">
+<meta name="theme-color" content="#0a1628">
+<link rel="canonical" href="https://www.raasautomazioni.it/landing">
+<meta property="og:title" content="RaaS Automazioni — Trova Bandi e Agevolazioni per la Tua Azienda">
+<meta property="og:description" content="Scopri oltre 1000 bandi e agevolazioni attivi in Italia. Filtri intelligenti e notifiche personalizzate.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.raasautomazioni.it/landing">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="RaaS Automazioni">
+<meta property="og:image" content="https://www.raasautomazioni.it/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -266,9 +277,8 @@ footer a{color:var(--gold);text-decoration:none}
       ctx.ellipse(0,0,d.rx,d.ry,0,0,Math.PI*2);
       ctx.strokeStyle='hsla('+d.hue+',60%,90%,'+(d.alpha*.35)+')';
       ctx.lineWidth=d.width+5;
-      ctx.filter='blur(5px)';
       ctx.stroke();
-      ctx.filter='none';
+      ctx.globalAlpha=1;
       ctx.restore();
     }
     requestAnimationFrame(draw);

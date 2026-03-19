@@ -14,8 +14,15 @@ SKILL.md (versione 2.0) e' l'unica fonte di verita' per questo progetto.
 ### Codice:
 - Solo HTML/CSS/JS vanilla — zero framework, zero librerie esterne
 - No `filter: blur` su animazioni — solo `opacity` e `transform`
-- No `will-change` permanente
+- No `will-change` permanente (solo su `:hover`)
 - CTA contrasto minimo 4.5:1 (WCAG AA)
+- TUTTE le `<img>` con `width` + `height` espliciti (prevenzione CLS)
+- `og:image` obbligatorio su ogni pagina
+- Skip navigation link + `*:focus-visible` su ogni pagina
+- Font-Awesome e CSS non critici in defer con media swap
+- `<link rel="preconnect">` per tutti i domini esterni
+- Animazioni hero con `animation-play-state: paused` (attivare dopo render)
+- Seguire WEB-PERFORMANCE-RULES.md per regole complete
 
 ### Contenuti Blog:
 - Seguire template e checklist in SKILL.md Sezione 6 e 7
