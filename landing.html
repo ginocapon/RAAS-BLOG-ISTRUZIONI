@@ -17,6 +17,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -144,6 +145,10 @@ footer a{color:var(--gold);text-decoration:none}
 .cookie-accept:hover{background:var(--gold-light)}
 .cookie-reject{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--text-light)}
 .cookie-reject:hover{border-color:rgba(255,255,255,.3);color:var(--white)}
+/* Skip Navigation */
+.skip-nav{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--navy);padding:8px 16px;z-index:10001;font-weight:700;text-decoration:none;transition:top 0.3s}
+.skip-nav:focus{top:0}
+*:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
 @media(max-width:768px){
   .cookie-banner{flex-direction:column;text-align:center;padding:20px}
   .cookie-banner p{font-size:13px}
@@ -159,6 +164,7 @@ footer a{color:var(--gold);text-decoration:none}
 </script>
 </head>
 <body>
+<a href="#how-it-works" class="skip-nav">Vai al contenuto principale</a>
 <div class="spiral-bg"><canvas id="spiralCanvas"></canvas></div>
 
 <section class="hero">

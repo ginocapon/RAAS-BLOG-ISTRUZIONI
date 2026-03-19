@@ -186,6 +186,11 @@
             overflow-x: hidden;
         }
 
+        /* Skip Navigation */
+        .skip-nav { position: absolute; top: -40px; left: 0; background: var(--primary); color: #fff; padding: 8px 16px; z-index: 10001; font-weight: 700; text-decoration: none; transition: top 0.3s; }
+        .skip-nav:focus { top: 0; }
+        *:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+
         a {
             text-decoration: none;
             color: inherit;
@@ -919,6 +924,7 @@
     </style>
 </head>
 <body>
+    <a href="#chi-siamo-content" class="skip-nav">Vai al contenuto principale</a>
 
     <!-- NAVBAR -->
     <nav class="navbar" role="navigation" aria-label="Navigazione principale">

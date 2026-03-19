@@ -90,6 +90,9 @@ body{font-family:'Inter',sans-serif;line-height:1.8;color:#2b3d52;background:#ff
 .info-box p{margin:0;color:#2b3d52}
 .footer{background:#1a2f47;color:rgba(255,255,255,0.7);padding:2rem 0;text-align:center}
 .footer a{color:#00b4d8;text-decoration:none}
+.skip-nav{position:absolute;top:-40px;left:0;background:#00b4d8;color:#fff;padding:8px 16px;z-index:10001;font-weight:700;text-decoration:none;transition:top 0.3s}
+.skip-nav:focus{top:0}
+*:focus-visible{outline:3px solid #00b4d8;outline-offset:2px;border-radius:4px}
 @media(max-width:768px){.nav-links{display:none}}
     </style>
 <!-- Google tag (gtag.js) -->
@@ -102,6 +105,7 @@ body{font-family:'Inter',sans-serif;line-height:1.8;color:#2b3d52;background:#ff
 </script>
 </head>
 <body>
+    <a href="#privacy-content" class="skip-nav">Vai al contenuto principale</a>
     <div class="mobile-sticky-buttons">
         <a href="tel:+393488621888" class="sticky-btn"><i class="fas fa-phone"></i><span>Chiama</span></a>
         <a href="mailto:info@raasautomazioni.it" class="sticky-btn"><i class="fas fa-envelope"></i><span>Email</span></a>

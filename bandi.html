@@ -40,7 +40,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 
 <style>
@@ -48,6 +50,10 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden}
+/* Skip Navigation */
+.skip-nav{position:absolute;top:-40px;left:0;background:var(--primary);color:var(--white);padding:8px 16px;z-index:10001;font-weight:700;text-decoration:none;transition:top 0.3s}
+.skip-nav:focus{top:0}
+*:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:4px}
 
 /* ANIMATED BG */
 .hero-bandi{margin-top:56px;padding:5rem 0 4rem;background:linear-gradient(160deg,var(--dark) 0%,var(--dark-mid) 40%,#0c4a6e 100%);color:var(--white);text-align:center;position:relative;overflow:hidden}
@@ -416,6 +422,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 </script>
 </head>
 <body>
+<a href="#bandi-list" class="skip-nav">Vai ai bandi</a>
 <div class="user-status-bar" id="userStatusBar"><span id="statusMessage"></span></div>
 <nav class="navbar">
     <div class="nav-container">

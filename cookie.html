@@ -37,6 +37,9 @@ table{width:100%;border-collapse:collapse;margin:16px 0}
 th,td{padding:12px 14px;text-align:left;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.06)}
 th{color:#d4a843;font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.5px}
 td{color:#c8cdd5}
+.skip-nav{position:absolute;top:-40px;left:0;background:#d4a843;color:#0a1628;padding:8px 16px;z-index:10001;font-weight:700;text-decoration:none;transition:top 0.3s}
+.skip-nav:focus{top:0}
+*:focus-visible{outline:3px solid #d4a843;outline-offset:2px;border-radius:4px}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T83494XDB"></script>
@@ -48,6 +51,7 @@ td{color:#c8cdd5}
 </script>
 </head>
 <body>
+<a href="#cookie-content" class="skip-nav">Vai al contenuto</a>
 <div class="container">
 <a href="/" class="back">← Torna alla home</a>
 <h1>Cookie Policy</h1>
