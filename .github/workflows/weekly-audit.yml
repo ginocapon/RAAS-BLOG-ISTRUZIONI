@@ -1,0 +1,190 @@
+name: "Audit Settimanale SKILL.md"
+
+# Ogni venerdi alle 06:00 UTC = 07:00 CET (08:00 CEST in estate)
+on:
+  schedule:
+    - cron: '0 6 * * 5'
+  workflow_dispatch: # Permette esecuzione manuale
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    name: "Audit conformita' SKILL.md"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Esegui audit conformita'
+        id: audit
+        run: |
+          echo "## RAPPORTO AUDIT SETTIMANALE — $(date +'%d %B %Y')" > audit-report.md
+          echo "" >> audit-report.md
+
+          VIOLATIONS=0
+          REPORT_BODY=""
+
+          # Lista pagine pubbliche da controllare
+          PAGES="index.html blog.html bandi.html landing.html en/index.html privacy.html cookie.html brobot.html chi-siamo.html admin.html"
+
+          for page in $PAGES; do
+            if [ ! -f "$page" ]; then
+              continue
+            fi
+
+            # 1. og:image (skip admin.html se noindex)
+            if ! grep -q 'noindex' "$page" 2>/dev/null; then
+              if ! grep -q 'og:image' "$page" 2>/dev/null; then
+                REPORT_BODY="$REPORT_BODY| $page | og:image mancante | Meta tag og:image non trovato | Alta |\n"
+                VIOLATIONS=$((VIOLATIONS + 1))
+              fi
+            fi
+
+            # 2. meta description
+            if ! grep -qi 'meta name="description"' "$page" 2>/dev/null && ! grep -qi "meta name='description'" "$page" 2>/dev/null; then
+              REPORT_BODY="$REPORT_BODY| $page | meta description mancante | Tag meta description non trovato | Alta |\n"
+              VIOLATIONS=$((VIOLATIONS + 1))
+            fi
+
+            # 3. canonical
+            if ! grep -q 'rel="canonical"' "$page" 2>/dev/null; then
+              # Skip admin e postapremium (noindex/email template)
+              if ! grep -q 'noindex' "$page" 2>/dev/null && [ "$page" != "postapremium.html" ]; then
+                REPORT_BODY="$REPORT_BODY| $page | canonical mancante | Link rel=canonical non trovato | Media |\n"
+                VIOLATIONS=$((VIOLATIONS + 1))
+              fi
+            fi
+
+            # 4. theme-color
+            if ! grep -q 'theme-color' "$page" 2>/dev/null; then
+              if [ "$page" != "postapremium.html" ]; then
+                REPORT_BODY="$REPORT_BODY| $page | theme-color mancante | Meta theme-color non trovato | Bassa |\n"
+                VIOLATIONS=$((VIOLATIONS + 1))
+              fi
+            fi
+
+            # 5. skip-nav
+            if ! grep -q 'skip-nav' "$page" 2>/dev/null; then
+              if [ "$page" != "admin.html" ] && [ "$page" != "postapremium.html" ]; then
+                REPORT_BODY="$REPORT_BODY| $page | skip-nav mancante | Link skip navigation non trovato | Media |\n"
+                VIOLATIONS=$((VIOLATIONS + 1))
+              fi
+            fi
+
+            # 6. focus-visible
+            if ! grep -q 'focus-visible' "$page" 2>/dev/null; then
+              if [ "$page" != "admin.html" ] && [ "$page" != "postapremium.html" ]; then
+                REPORT_BODY="$REPORT_BODY| $page | focus-visible mancante | Stile *:focus-visible non trovato | Media |\n"
+                VIOLATIONS=$((VIOLATIONS + 1))
+              fi
+            fi
+
+            # 7. filter:blur su animazioni (escluso backdrop-filter)
+            if grep -v 'backdrop-filter' "$page" 2>/dev/null | grep -q 'filter:.*blur\|filter: *blur'; then
+              REPORT_BODY="$REPORT_BODY| $page | filter:blur trovato | filter:blur su elemento (non backdrop-filter) — verificare se animato | Alta |\n"
+              VIOLATIONS=$((VIOLATIONS + 1))
+            fi
+
+            # 8. will-change permanente (non in :hover)
+            if grep -q 'will-change' "$page" 2>/dev/null; then
+              # Controlla se will-change e' fuori da :hover
+              if ! grep -B2 'will-change' "$page" 2>/dev/null | grep -q ':hover'; then
+                REPORT_BODY="$REPORT_BODY| $page | will-change permanente | will-change trovato fuori da :hover — verificare | Bassa |\n"
+                VIOLATIONS=$((VIOLATIONS + 1))
+              fi
+            fi
+
+            # 9. Immagini senza width/height
+            IMG_COUNT=$(grep -c '<img ' "$page" 2>/dev/null || echo "0")
+            IMG_WH=$(grep '<img ' "$page" 2>/dev/null | grep -c 'width=' || echo "0")
+            if [ "$IMG_COUNT" -gt 0 ] && [ "$IMG_WH" -lt "$IMG_COUNT" ]; then
+              MISSING=$((IMG_COUNT - IMG_WH))
+              REPORT_BODY="$REPORT_BODY| $page | img senza width/height | $MISSING immagini su $IMG_COUNT senza attributi dimensione | Alta |\n"
+              VIOLATIONS=$((VIOLATIONS + 1))
+            fi
+
+          done
+
+          # 10. Prezzi coerenti
+          for page in index.html blog.html en/index.html landing.html bandi.html; do
+            if [ -f "$page" ]; then
+              if grep -qi '299.*anno\|€299\|299€' "$page" 2>/dev/null; then
+                REPORT_BODY="$REPORT_BODY| $page | Prezzo errato | Trovato riferimento a 299 EUR (deve essere 399 EUR) | CRITICA |\n"
+                VIOLATIONS=$((VIOLATIONS + 1))
+              fi
+            fi
+          done
+
+          # 11. Branding BandiItalia
+          for page in index.html admin.html bandi.html landing.html; do
+            if [ -f "$page" ]; then
+              if grep -q 'BandiItalia' "$page" 2>/dev/null; then
+                REPORT_BODY="$REPORT_BODY| $page | Branding errato | Trovato 'BandiItalia' (deve essere 'RaaS Automazioni') | CRITICA |\n"
+                VIOLATIONS=$((VIOLATIONS + 1))
+              fi
+            fi
+          done
+
+          # 12. sitemap.xml check
+          if [ -f "sitemap.xml" ]; then
+            for page in index.html blog.html bandi.html chi-siamo.html privacy.html cookie.html brobot.html; do
+              PAGE_SLUG=$(echo "$page" | sed 's/.html$//' | sed 's/index//')
+              if [ -n "$PAGE_SLUG" ] && ! grep -q "$PAGE_SLUG" sitemap.xml 2>/dev/null; then
+                REPORT_BODY="$REPORT_BODY| sitemap.xml | Pagina mancante | $page non trovata in sitemap.xml | Media |\n"
+                VIOLATIONS=$((VIOLATIONS + 1))
+              fi
+            done
+          fi
+
+          # Genera rapporto
+          if [ "$VIOLATIONS" -eq 0 ]; then
+            echo "### Stato: ALL PASS" >> audit-report.md
+            echo "### Violazioni trovate: 0" >> audit-report.md
+            echo "" >> audit-report.md
+            echo "Tutte le regole SKILL.md sono rispettate. Nessuna azione necessaria." >> audit-report.md
+          else
+            echo "### Stato: FAIL" >> audit-report.md
+            echo "### Violazioni trovate: $VIOLATIONS" >> audit-report.md
+            echo "" >> audit-report.md
+            echo "| Pagina | Regola Violata | Dettaglio | Priorita' |" >> audit-report.md
+            echo "|--------|---------------|-----------|-----------|" >> audit-report.md
+            echo -e "$REPORT_BODY" >> audit-report.md
+          fi
+
+          echo "" >> audit-report.md
+          echo "---" >> audit-report.md
+          echo "*Audit automatico eseguito da GitHub Actions — Rif. SKILL.md §10.4*" >> audit-report.md
+          echo "*Prossimo audit: venerdi prossimo ore 07:00 CET*" >> audit-report.md
+
+          # Output per step successivo
+          echo "violations=$VIOLATIONS" >> $GITHUB_OUTPUT
+
+          cat audit-report.md
+
+      - name: Crea GitHub Issue con rapporto
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('audit-report.md', 'utf8');
+            const violations = ${{ steps.audit.outputs.violations }};
+            const date = new Date().toLocaleDateString('it-IT', { day: '2-digit', month: 'long', year: 'numeric' });
+
+            const title = violations === 0
+              ? `Audit ${date} — ALL PASS`
+              : `Audit ${date} — ${violations} violazioni trovate`;
+
+            const labels = ['audit-settimanale'];
+            if (violations > 0) labels.push('bug');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: report,
+              labels: labels
+            });

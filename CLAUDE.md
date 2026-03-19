@@ -36,6 +36,13 @@ SKILL.md (versione 2.0) e' l'unica fonte di verita' per questo progetto.
 - Commit in italiano, descrittivo
 - Verificare checklist automatiche in SKILL.md Sezione 7
 
+### Cronolog Audit Automatico:
+- **Ogni venerdi ore 07:00 CET** — audit automatico conformita' SKILL.md
+- GitHub Actions workflow `.github/workflows/weekly-audit.yml`
+- Rapporto creato come GitHub Issue con label `audit-settimanale`
+- Autorizzazione **permanente** — attivo fino a revoca esplicita
+- Riferimento regole: SKILL.md §10.4
+
 ### Pubblicazione:
 - Regola d'oro: "Se non hai fonte verificabile, NON inserire il dato"
 - Sostituire TUTTI i placeholder [DATO], [COMPETITOR], [FONTE] prima di pubblicare

@@ -854,6 +854,58 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 - **Trimestrale:** Audit completo contenuti + struttura + competitor
 - **Ad ogni Google Update:** Verificare impatto sul sito
 
+### 10.4 CRONOLOG — Audit Automatico Settimanale
+
+> **Stato:** ATTIVO — Autorizzazione permanente
+> **Frequenza:** Ogni venerdi, ore 07:00 CET
+> **Automazione:** GitHub Actions (`.github/workflows/weekly-audit.yml`)
+> **Autorizzazione:** Permanente fino a revoca esplicita del proprietario
+
+**Cosa viene controllato (checklist completa SKILL.md):**
+
+| # | Controllo | Riferimento SKILL.md |
+|---|-----------|---------------------|
+| 1 | `og:image` presente su tutte le pagine pubbliche | §5.3, §7 |
+| 2 | `width` + `height` su tutte le `<img>` | §4.2.11, §5.1 |
+| 3 | Skip navigation link presente | §5.5, §1.2.17 |
+| 4 | `*:focus-visible` styles presenti | §5.5, §1.2.18 |
+| 5 | `<link rel="preconnect">` per domini esterni | §4.2.10, §1.2.19 |
+| 6 | Font-Awesome/CSS non critici in defer (media swap) | §4.2.7, §1.2.20 |
+| 7 | Zero `filter: blur()` su elementi animati | §4.2.1 |
+| 8 | Zero `will-change` permanente (solo su `:hover`) | §4.2.2 |
+| 9 | Nessun `loading="lazy"` su elementi above-fold | §4.2.4, §5.1 |
+| 10 | `<meta name="description">` su tutte le pagine | §5.3 |
+| 11 | `<link rel="canonical">` su tutte le pagine | §5.3 |
+| 12 | `<meta name="theme-color">` su tutte le pagine | §7 |
+| 13 | Prezzi coerenti (399€ Base, 599€ E-commerce, 3%) | §1.2.8 |
+| 14 | Branding coerente ("RaaS Automazioni", mai "BandiItalia") | §1.2.15 |
+| 15 | sitemap.xml aggiornata con tutte le pagine pubbliche | §5.3 |
+| 16 | Schema.org JSON-LD valido su ogni pagina | §4.5 |
+| 17 | Immagini locali in formato WebP | §4.2.11 |
+| 18 | Script non critici con `defer` o `async` | §4.2.9 |
+
+**Formato rapporto:**
+```
+## RAPPORTO AUDIT SETTIMANALE — [DATA]
+### Stato: [PASS / FAIL]
+### Violazioni trovate: [N]
+
+| Pagina | Regola Violata | Dettaglio | Priorita' |
+|--------|---------------|-----------|-----------|
+| ... | ... | ... | Alta/Media/Bassa |
+
+### Azioni correttive eseguite: [elenco]
+### Azioni che richiedono approvazione: [elenco]
+```
+
+**Regole operative del cronolog:**
+1. L'audit viene eseguito AUTOMATICAMENTE ogni venerdi alle 07:00 CET
+2. Se tutte le regole sono rispettate: rapporto "ALL PASS" + nessuna azione
+3. Se ci sono violazioni: rapporto dettagliato + fix automatici dove possibile
+4. Violazioni critiche (prezzi, branding, sicurezza): segnalazione immediata, nessun fix automatico
+5. Il cronolog resta attivo finche' il proprietario non lo disattiva esplicitamente
+6. Ogni rapporto viene creato come GitHub Issue con label `audit-settimanale`
+
 ---
 
 ## 11. TABELLE COMPETITIVE (Solo Dati Verificati)
