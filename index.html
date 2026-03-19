@@ -35,6 +35,8 @@
     <!-- Preconnect ottimizzato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"></noscript>
     
@@ -322,6 +324,12 @@ body{
     background:var(--white);
     overflow-x:hidden
 }
+
+/* Skip Navigation */
+.skip-nav{position:absolute;top:-40px;left:0;background:var(--primary);color:var(--white);padding:8px 16px;z-index:10001;font-weight:700;text-decoration:none;transition:top 0.3s}
+.skip-nav:focus{top:0}
+/* Focus Visible */
+*:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:4px}
 
 /* Performance: content-visibility per sezioni below-fold */
 .section{
@@ -2617,6 +2625,7 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
 </script>
 </head>
 <body>
+    <a href="#come-funziona" class="skip-nav">Vai al contenuto principale</a>
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="/" class="logo" aria-label="RaaSAutomazioni Homepage">RaaS<span>Automazioni</span></a>

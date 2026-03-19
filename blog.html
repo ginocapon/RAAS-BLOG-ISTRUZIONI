@@ -13,6 +13,9 @@
     <meta property="og:url" content="https://www.raasautomazioni.it/blog">
     <meta property="og:locale" content="it_IT">
     <meta property="og:site_name" content="RaaS Automazioni">
+    <meta property="og:image" content="https://www.raasautomazioni.it/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <script type="application/ld+json">
     {
@@ -38,7 +41,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     
     <style>
 :root{
@@ -205,8 +210,8 @@ body{
 }
 
 @keyframes textGlow{
-    0%,100%{filter:drop-shadow(0 0 20px rgba(0,180,216,0.3))}
-    50%{filter:drop-shadow(0 0 40px rgba(0,180,216,0.6))}
+    0%,100%{opacity:0.9}
+    50%{opacity:1}
 }
 
 .hero-content p{
@@ -498,6 +503,12 @@ body{
 .blog-read-more:hover i { transform: translateX(4px); }
 
 /* ========== RESPONSIVE ========== */
+/* Skip Navigation */
+.skip-nav{position:absolute;top:-40px;left:0;background:var(--neon-cyan);color:var(--dark);padding:8px 16px;z-index:10001;font-weight:700;text-decoration:none;transition:top 0.3s}
+.skip-nav:focus{top:0}
+/* Focus Visible */
+*:focus-visible{outline:3px solid var(--neon-cyan);outline-offset:2px;border-radius:4px}
+
 @media(max-width:768px){
     .nav-links{
         display:none;
@@ -537,6 +548,7 @@ body{
 </script>
 </head>
 <body>
+    <a href="#articlesGrid" class="skip-nav">Vai al contenuto principale</a>
     <!-- ========== NAVBAR - LINK ASSOLUTI CORRETTI ========== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -583,7 +595,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop"
                          alt="Dashboard lead generation automatizzata per PMI"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Lead Generation</span>
                         <h2 class="blog-card-title">Lead Generation Automatizzata per PMI: Guida Pratica con Dati ROI 2026</h2>
@@ -610,7 +623,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&auto=format&fit=crop"
                          alt="Modello Revenue as a Service per web agency"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Business Model</span>
                         <h2 class="blog-card-title">Revenue as a Service: Il Modello che Sta Rivoluzionando le Web Agency nel 2026</h2>
@@ -633,7 +647,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop"
                          alt="Leader Conversion Research Paper 2026 dati statistiche conversione lead"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category" style="background:rgba(230,57,70,0.15);color:#e63946;">Research Paper</span>
                         <h2 class="blog-card-title">Leader Conversion Research Paper 2026: 18+ Statistiche Verificate per Convertire Lead in Clienti</h2>
@@ -656,7 +671,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1513581166391-887a96ddeafd?w=800&q=80&auto=format&fit=crop"
                          alt="Bandi e finanziamenti imprese Lombardia Milano"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Bandi & Finanziamenti</span>
                         <h2 class="blog-card-title">Bandi e Finanziamenti Imprese Lombardia 2026: Guida Completa</h2>
@@ -679,7 +695,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1564648351416-3eec9f3e85de?w=800&q=80&auto=format&fit=crop"
                          alt="Bandi e finanziamenti imprese Emilia-Romagna Bologna"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Bandi & Finanziamenti</span>
                         <h2 class="blog-card-title">Bandi e Finanziamenti Imprese Emilia-Romagna 2026: Guida Completa</h2>
@@ -702,7 +719,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80&auto=format&fit=crop"
                          alt="Bandi e finanziamenti digitalizzazione PMI Italia"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Bandi & Finanziamenti</span>
                         <h2 class="blog-card-title">Bandi Digitalizzazione PMI Italia 2026: Guida Completa ai Finanziamenti</h2>
@@ -725,7 +743,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop"
                          alt="Core Web Vitals performance e conversioni"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Performance Web</span>
                         <h2 class="blog-card-title">Core Web Vitals e Fatturato: Come la Velocità Impatta le Conversioni nel 2026</h2>
@@ -748,7 +767,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&auto=format&fit=crop"
                          alt="Intelligenza artificiale e ricerca generativa"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">GEO</span>
                         <h2 class="blog-card-title">GEO: Come Farsi Trovare dalle AI nel 2026 — Guida alla Generative Engine Optimization</h2>
@@ -775,7 +795,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80&auto=format&fit=crop"
                          alt="Schermo con codice sorgente pulito"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Confronto Tecnico</span>
                         <h2 class="blog-card-title">Codice Puro vs WordPress 2026: Performance, Sicurezza e Costi Reali</h2>
@@ -802,7 +823,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&q=80&auto=format&fit=crop"
                          alt="Funnel di lead generation digitale"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Lead Generation</span>
                         <h2 class="blog-card-title">Lead Generation 2026: Come Ottenere 30-50 Lead Qualificati al Mese</h2>
@@ -829,7 +851,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80&auto=format&fit=crop"
                          alt="Performance web e velocita' di caricamento"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Performance Web</span>
                         <h2 class="blog-card-title">PageSpeed 90+: Guida Completa Ottimizzazione Sito Web 2026</h2>
@@ -856,7 +879,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop"
                          alt="Dashboard con grafici di performance di lead generation"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Lead Generation</span>
                         <h2 class="blog-card-title">Come Ottenere 50 Lead Qualificati al Mese con l'Automazione</h2>
@@ -883,7 +907,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop"
                          alt="Grafici di crescita e analytics su schermo"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Automazioni</span>
                         <h2 class="blog-card-title">5 Automazioni che Fanno Risparmiare 20 Ore alla Settimana</h2>
@@ -910,7 +935,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=800&q=80&auto=format&fit=crop"
                          alt="Laptop con codice e design di sito web"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Siti Web</span>
                         <h2 class="blog-card-title">Perché il Tuo Sito Deve Avere PageSpeed 90+: Dati e ROI</h2>
@@ -937,7 +963,8 @@ body{
                     <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&auto=format&fit=crop"
                          alt="Team che lavora su strategia digitale con lavagna"
                          class="blog-card-image"
-                         loading="lazy">
+                         loading="lazy"
+                         width="800" height="533">
                     <div class="blog-card-content">
                         <span class="blog-category">Strategie</span>
                         <h2 class="blog-card-title">Da Sito Vetrina a Macchina di Business: La Trasformazione in 90 Giorni</h2>

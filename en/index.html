@@ -16,6 +16,9 @@
     <meta property="og:url" content="https://www.raasautomazioni.it/en/">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="RaaS Automazioni">
+    <meta property="og:image" content="https://www.raasautomazioni.it/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -228,6 +231,10 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
 .footer a{color:var(--primary);text-decoration:none}
 
 /* Mobile */
+/* Skip Navigation */
+.skip-nav{position:absolute;top:-40px;left:0;background:var(--primary);color:var(--white);padding:8px 16px;z-index:10001;font-weight:700;text-decoration:none;transition:top 0.3s}
+.skip-nav:focus{top:0}
+*:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:4px}
 .mobile-menu-toggle{display:none;background:none;border:none;font-size:1.3rem;color:var(--dark);cursor:pointer}
 @media(max-width:768px){
     .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem;gap:1rem;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
@@ -252,6 +259,7 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
     </style>
 </head>
 <body>
+    <a href="#how-it-works" class="skip-nav">Skip to main content</a>
     <nav class="navbar">
         <div class="nav-container">
             <a href="/en/" class="logo">RaaS<span>Automazioni</span></a>
@@ -335,7 +343,7 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
             <div style="max-width:800px;margin:0 auto;text-align:center;">
                 <p style="color:#fff;font-size:1.4rem;font-weight:700;margin-bottom:2rem;line-height:1.5;">Stop chasing clients.<br><strong style="color:var(--accent);">Let them come to you.</strong></p>
                 <div style="position:relative;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.4);aspect-ratio:16/9;background:#000;">
-                    <div id="videoPlaceholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1a2f47,#0e2240);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="this.outerHTML='<iframe width=100% height=100% src=\'https://www.youtube.com/embed/VIDEO_ID?autoplay=1\' frameborder=0 allow=autoplay allowfullscreen style=position:absolute;top:0;left:0;width:100%;height:100%;></iframe>'">
+                    <div id="videoPlaceholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1a2f47,#0e2240);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="this.outerHTML='<iframe width=&quot;100%&quot; height=&quot;100%&quot; src=&quot;https://www.youtube.com/embed/VIDEO_ID?autoplay=1&quot; frameborder=&quot;0&quot; allow=&quot;autoplay&quot; allowfullscreen loading=&quot;lazy&quot; style=&quot;position:absolute;top:0;left:0;width:100%;height:100%;&quot;></iframe>'"
                         <div style="width:80px;height:80px;background:rgba(230,57,70,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;box-shadow:0 0 30px rgba(230,57,70,0.4);transition:transform 0.3s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                             <svg width="30" height="34" viewBox="0 0 30 34" fill="white"><polygon points="5,2 28,17 5,32"/></svg>
                         </div>
