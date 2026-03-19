@@ -188,3 +188,16 @@ jobs:
               body: report,
               labels: labels
             });
+
+      - name: Invia rapporto via email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "Audit RaaS ${{ steps.audit.outputs.violations == '0' && '— ALL PASS' || format('— {0} violazioni', steps.audit.outputs.violations) }} — ${{ github.event.repository.name }}"
+          to: info@raasautomazioni.it
+          from: "RaaS Audit Bot <${{ secrets.SMTP_USERNAME }}>"
+          body: file://audit-report.md
+          content_type: text/plain
