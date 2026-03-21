@@ -20,10 +20,15 @@
     <meta property="og:url" content="https://www.raasautomazioni.it/website-as-a-service">
     <meta property="og:locale" content="it_IT">
     <meta property="og:site_name" content="RaaS Automazioni">
+    <meta property="og:image" content="https://www.raasautomazioni.it/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Website as a Service Italia — RaaS Automazioni">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Website as a Service Italia: Sito Web in Abbonamento | RaaS">
     <meta name="twitter:description" content="Website as a Service in Italia: sito web professionale in abbonamento da 399€ + IVA/anno. Il primo WaaS italiano performance-based.">
+    <meta name="twitter:image" content="https://www.raasautomazioni.it/og-image.jpg">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -222,6 +227,11 @@
         .blog-footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
         .blog-footer a:hover { color: var(--accent-light); }
 
+        /* SKIP NAV & ACCESSIBILITY */
+        .skip-nav { position: absolute; top: -40px; left: 0; background: var(--accent); color: #fff; padding: 8px 16px; z-index: 10001; font-weight: 700; text-decoration: none; transition: top 0.3s; }
+        .skip-nav:focus { top: 0; }
+        *:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero { padding: 60px 20px 40px; }
@@ -231,6 +241,7 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-nav">Vai al contenuto principale</a>
 
 <!-- NAV -->
 <nav class="blog-nav">
@@ -255,7 +266,7 @@
 </header>
 
 <!-- CONTENUTO -->
-<div class="article-container">
+<div class="article-container" id="main-content">
     <div class="content">
 
         <p>Il mercato dei siti web sta cambiando radicalmente. Nel 2026, il modello tradizionale che prevede un investimento iniziale di migliaia di euro per un sito web sta lasciando spazio a un approccio completamente diverso: il <strong>Website as a Service (WaaS)</strong>. Questo articolo spiega nel dettaglio come funziona il WaaS in Italia, quanto costa, quali vantaggi offre rispetto al modello tradizionale e perche' RaaS Automazioni ha sviluppato il primo WaaS italiano interamente performance-based.</p>

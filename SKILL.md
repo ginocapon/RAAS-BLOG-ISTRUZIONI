@@ -246,20 +246,21 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 
 ## 3. STATO SEO E PERFORMANCE — PUNTEGGIO SITO
 
-> Audit verificato: 16 Marzo 2026
+> Audit verificato: 21 Marzo 2026
 
 | Area | Punteggio | Note |
 |---|---|---|
-| SEO on-page | **9.9/10** | Schema LocalBusiness + AggregateRating + og:image + twitter card + hreflang bidirezionale IT/EN |
-| Schema.org | **9.9/10** | LocalBusiness, FAQPage, Service, AggregateRating, BlogPosting (24 articoli), WebSite, BreadcrumbList, CollectionPage |
-| Contenuti/Blog | **9/10** | 15 articoli IT + 9 EN con BlogPosting schema, blog.html EN creata, hreflang bidirezionale |
-| GEO/AEO | **9.9/10** | robots.txt AI bots completo (8 bot), llms.txt, llms-full.txt, ai.json, agent.json (A2A), mcp.json (MCP), humans.txt, security.txt |
+| SEO on-page | **9.9/10** | Schema LocalBusiness + AggregateRating + og:image + twitter card + hreflang bidirezionale IT/EN + canonical + meta desc su tutte le pagine |
+| Schema.org | **10/10** | LocalBusiness, FAQPage, Service, AggregateRating, BlogPosting (24 articoli), WebSite, BreadcrumbList, CollectionPage, ItemList (bandi) |
+| Contenuti/Blog | **9.5/10** | 15 articoli IT + 9 EN con BlogPosting schema, author bio, TOC, "Ultimo aggiornamento" visibile, internal linking completo |
+| GEO/AEO | **10/10** | robots.txt AI bots completo (11 bot), llms.txt, llms-full.txt, ai.json, agent.json (A2A), mcp.json (MCP), humans.txt, security.txt, IndexNow |
 | Core Web Vitals | **9.9/10** | Zero filter:blur, zero will-change permanente, Supabase defer, width/height su tutte le immagini |
 | Bandi Aggregatore | **9.9/10** | 55+ fonti dirette, anti-plagio descrizioni, verifica AI link, branding RaaS coerente |
 | Pannello Admin | **9.9/10** | Dashboard, analytics, CRUD bandi, email, newsletter, branding RaaS Automazioni coerente (zero BandiItalia) |
 | Sito Bilingue | **9/10** | IT completo, EN homepage + blog.html + 9 articoli + 3 landing + hreflang bidirezionale su 6 coppie articoli |
+| Accessibilita' | **9.9/10** | Skip-nav + focus-visible su tutte le pagine, WCAG AA compliance, og:image:alt |
 | Domain Authority | **4/10** | Problema #1 — backlink da costruire (azione esterna necessaria) |
-| **TOTALE** | **9.0/10** | Eccellente su tutti i fronti tecnici, DA richiede azioni esterne (Trustpilot, Clutch, guest posting) |
+| **TOTALE** | **9.2/10** | Eccellente su tutti i fronti tecnici, DA richiede azioni esterne (Trustpilot, Clutch, guest posting) |
 
 ### 3.1 Analisi Competitor — Marzo 2026
 
@@ -713,21 +714,21 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 - [x] BlogPosting schema su articoli blog — **24 articoli aggiornati da Article a BlogPosting (15 IT + 9 EN)**
 - [x] Person schema per fondatore/team (chi-siamo.html)
 - [x] BreadcrumbList su blog articoli IT/EN e EN blog.html
-- [ ] ItemList schema su bandi.html
+- [x] ItemList schema su bandi.html — **FATTO (5 ListItem, 500+ bandi)**
 
 ### 8.3 Contenuti da Creare
 - [ ] Nuovi articoli blog IT (2/mese minimo)
-- [ ] Author bio su articoli blog
-- [ ] Table of Contents su articoli blog
-- [ ] Date "Ultimo aggiornamento" visibili su blog
-- [ ] Pagina chi-siamo dedicata
+- [x] Author bio su articoli blog — **FATTO (tutti 24 articoli IT+EN con author-bio)**
+- [x] Table of Contents su articoli blog — **FATTO (TOC presente su tutti gli articoli)**
+- [x] Date "Ultimo aggiornamento" visibili su blog — **FATTO (tutti 24 articoli IT+EN)**
+- [x] Pagina chi-siamo dedicata — **FATTO (chi-siamo.html con Person schema)**
 - [ ] Landing page per ogni servizio
 
 ### 8.4 SEO Tecnico
-- [ ] Internal linking tra blog posts
-- [ ] Canonical su tutte le pagine
-- [ ] Meta description su tutte le pagine
-- [ ] IndexNow per Bing (ChatGPT usa indice Bing)
+- [x] Internal linking tra blog posts — **FATTO (tutti 15 articoli IT con sezione "Leggi Anche")**
+- [x] Canonical su tutte le pagine — **FATTO (tutte le pagine hanno rel=canonical)**
+- [x] Meta description su tutte le pagine — **FATTO (tutte le pagine hanno meta description)**
+- [x] IndexNow per Bing (ChatGPT usa indice Bing) — **FATTO (API key + GitHub Actions workflow .github/workflows/indexnow.yml)**
 - [x] llms-full.txt (contenuto completo pagine in Markdown) — **CREATO**
 
 ### 8.5 GEO & AI Agents
@@ -800,13 +801,15 @@ Confronta con la sezione "Stato Aggiornamenti Google" e aggiorna questo file se 
 | `mcp.json` | `/.well-known/mcp.json` | Discovery MCP (Anthropic protocol) | FATTO |
 | `security.txt` | `/security.txt` + `/.well-known/` | Contatto sicurezza (securitytxt.org) | FATTO |
 | `humans.txt` | `/humans.txt` | Info team e tecnologia | FATTO |
+| `IndexNow key` | `/4a241e3d003d4e050bb3ec834d11d0ea.txt` | API key IndexNow per Bing | FATTO |
+| `indexnow.yml` | `/.github/workflows/indexnow.yml` | GitHub Actions: notifica Bing ad ogni deploy | FATTO |
 
 ### 9.2 Standard Emergenti
 - **NLWeb (Microsoft):** Protocollo open-source — Schema.org e' gia' la base
 - **MCP (Anthropic):** Donato alla Linux Foundation — preparare endpoint discovery
 - **A2A (Google):** Agent-to-Agent protocol — preparare agent card
 - **WebMCP (Chrome 145+):** Form e strumenti come tool per AI agents nel browser
-- **IndexNow (Bing):** 80M+ siti — ChatGPT usa indice Bing, indicizzazione rapida
+- **IndexNow (Bing):** 80M+ siti — ChatGPT usa indice Bing, indicizzazione rapida — **IMPLEMENTATO**
 
 ### 9.3 Zero-Click Search
 - 60% delle ricerche Google finisce senza click (fonte: Bain & Company)

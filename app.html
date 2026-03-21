@@ -305,9 +305,13 @@ text-align:center;padding:.5rem;font-size:.75rem;color:var(--primary);
 font-weight:600;display:none;
 }
 .pull-indicator.show{display:block}
+.skip-nav{position:absolute;top:-40px;left:0;background:var(--primary);color:var(--white);padding:8px 16px;z-index:10001;font-weight:700;text-decoration:none;transition:top 0.3s}
+.skip-nav:focus{top:0}
+*:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
 </style>
 </head>
 <body>
+    <a href="#page-home" class="skip-nav">Vai al contenuto principale</a>
 
 <!-- APP HEADER -->
 <header class="app-header">

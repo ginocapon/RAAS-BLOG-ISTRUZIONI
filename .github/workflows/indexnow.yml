@@ -1,0 +1,61 @@
+name: IndexNow — Notifica Bing
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'blog/**'
+      - 'en/**'
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Trova pagine modificate
+        id: changed
+        run: |
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- '*.html' | head -50)
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Invia a IndexNow (Bing)
+        run: |
+          KEY="4a241e3d003d4e050bb3ec834d11d0ea"
+          HOST="www.raasautomazioni.it"
+
+          URLS=""
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            # Converti path file in URL
+            slug="${file%.html}"
+            [ "$slug" = "index" ] && slug=""
+            URLS="$URLS\"https://$HOST/$slug\","
+          done <<< "${{ steps.changed.outputs.files }}"
+
+          # Rimuovi ultima virgola
+          URLS="${URLS%,}"
+
+          if [ -z "$URLS" ]; then
+            echo "Nessuna pagina HTML modificata, skip."
+            exit 0
+          fi
+
+          echo "Invio a IndexNow: $URLS"
+
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"host\": \"$HOST\",
+              \"key\": \"$KEY\",
+              \"keyLocation\": \"https://$HOST/$KEY.txt\",
+              \"urlList\": [$URLS]
+            }"
+
+          echo ""
+          echo "IndexNow notifica inviata."
