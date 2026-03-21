@@ -3018,7 +3018,7 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
             <div class="section-header">
     <span class="section-tag">Chi Siamo</span>
     <h2>La Nostra Storia</h2>
-    <p>Web Agency italiana specializzata nella creazione di siti web aziendali veloci, ottimizzati SEO e responsive. Prezzi trasparenti da €199/anno, prezzo bloccato per sempre. In più, accedi al nostro aggregatore di bandi a fondo perduto con 150+ fonti monitorate quotidianamente.</p>
+    <p>Web Agency italiana specializzata nella creazione di siti web aziendali veloci, ottimizzati SEO e responsive. Prezzi trasparenti da €399/anno, prezzo bloccato per sempre. In più, accedi al nostro aggregatore di bandi a fondo perduto con 150+ fonti monitorate quotidianamente.</p>
 </div>
 
             <div class="portfolio-grid">
@@ -4505,10 +4505,10 @@ function scrollToBottom(){chatMessages.scrollTop=chatMessages.scrollHeight;}
     if(params.get('payment')==='success'){
         const plan=params.get('plan')||'essential';
         const planNames={base:'Base',ecommerce:'E-commerce'};
-        const planPrices={essential:'€199/anno',business:'€249/anno',professional:'€399/anno'};
-        const planPages={essential:'3 pagine',business:'5 pagine + Chatbot AI',professional:'7 pagine + CRM'};
-        const planName=planNames[plan]||'Essential';
-        const planPrice=planPrices[plan]||'€199/anno';
+        const planPrices={base:'€399/anno',ecommerce:'€599/anno'};
+        const planPages={base:'Sito vetrina + SEO + Chatbot AI',ecommerce:'Tutto Base + catalogo + carrello + pagamenti'};
+        const planName=planNames[plan]||'Base';
+        const planPrice=planPrices[plan]||'€399/anno';
         const planPage=planPages[plan]||'3 pagine';
 
         const overlay=document.createElement('div');
