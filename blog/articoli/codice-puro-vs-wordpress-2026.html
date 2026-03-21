@@ -150,7 +150,15 @@
         .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
         .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
-    </style>
+
+        .toc { background: var(--white, #ffffff); border: 1px solid var(--border, #e8e8ec); border-radius: 12px; padding: 28px; margin: 0 0 36px; }
+        .toc h3 { margin-top: 0; margin-bottom: 14px; font-size: 18px; }
+        .toc ol { padding-left: 20px; margin: 0; }
+        .toc li { padding: 4px 0; font-size: 15px; }
+        .toc a { color: var(--text-light, #4a5568); text-decoration: none; transition: color 0.2s; }
+        .toc a:hover { color: var(--accent, #e94560); }
+        .update-badge { display: inline-block; background: var(--green, #10b981); color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-bottom: 20px; }
+        </style>
 
     <script type="application/ld+json">
     {
@@ -203,17 +211,41 @@
 
 <main class="article-container content">
 
+    <span class="update-badge">Aggiornato: Marzo 2026</span>
+
+
+
     <p>La domanda che ogni imprenditore si pone prima di commissionare un sito web è sempre la stessa: «meglio WordPress o un sito sviluppato su misura?». La risposta, nel 2026, non è più così scontata. Infatti i dati mostrano un trend chiaro: WordPress sta perdendo quote di mercato a favore di soluzioni più leggere e performanti, e le ragioni sono sia tecniche che economiche.</p>
 
     <p>In questo articolo analizziamo nel dettaglio le differenze tra un sito realizzato in codice puro (HTML, CSS e JavaScript nativi) e uno costruito con WordPress, esaminando performance, sicurezza, costi di manutenzione e impatto sul posizionamento Google. Per un confronto specifico sui prezzi delle diverse soluzioni, puoi consultare il nostro <a href="/blog/prezzi-web-agency-2026-raas-vs-aruba" style="color:var(--accent);font-weight:600;">confronto prezzi Web Agency 2026</a>.</p>
 
-    <h2>📉 WordPress nel 2026: Un Colosso che Perde Terreno</h2>
+    <div class="toc">
+        <h3>Indice dei Contenuti</h3>
+        <ol>
+            <li><a href="#wordpress-nel-2026-un-colosso-che-perde-terreno">📉 WordPress nel 2026: Un Colosso che Perde Terreno</a></li>
+            <li><a href="#performance-a-confronto-i-numeri-parlano-chiaro">⚡ Performance a Confronto: I Numeri Parlano Chiaro</a></li>
+            <li><a href="#sicurezza-il-tallone-dachille-di-wordpress">🔐 Sicurezza: Il Tallone d'Achille di WordPress</a></li>
+            <li><a href="#costi-di-manutenzione-il-vero-confronto-su-5-anni">💸 Costi di Manutenzione: Il Vero Confronto su 5 Anni</a></li>
+            <li><a href="#quando-wordpress-ha-ancora-senso">🎯 Quando WordPress Ha Ancora Senso</a></li>
+            <li><a href="#impatto-seo-come-google-valuta-la-performance">🔍 Impatto SEO: Come Google Valuta la Performance</a></li>
+            <li><a href="#la-manutenzione-dove-wordpress-costa-davvero">🛠️ La Manutenzione: Dove WordPress Costa Davvero</a></li>
+            <li><a href="#come-funziona-lo-sviluppo-in-codice-puro">🏗️ Come Funziona lo Sviluppo in Codice Puro</a></li>
+            <li><a href="#faq-10-domande-su-codice-puro-vs-wordpress">❓ FAQ: 10 Domande su Codice Puro vs WordPress</a></li>
+            <li><a href="#fonti-verificate">📎 Fonti Verificate</a></li>
+            <li><a href="#conclusioni">📌 Conclusioni</a></li>
+            <li><a href="#ti-estato-utile-ottieni-di-piu">Ti e'stato utile? Ottieni di piu'!</a></li>
+        </ol>
+    </div>
+
+
+
+    <h2 id="wordpress-nel-2026-un-colosso-che-perde-terreno">📉 WordPress nel 2026: Un Colosso che Perde Terreno</h2>
 
     <p>Partiamo dai numeri. Secondo W3Techs, la quota di mercato di WordPress tra i siti con CMS identificabile era del 43.2% a inizio 2023 ed è scesa al 39.8% a fine 2025. Può sembrare ancora impressionante, ma il trend è inequivocabile: per la prima volta in oltre un decennio, WordPress sta perdendo utenti.</p>
 
     <p>Le ragioni sono molteplici. In primo luogo la crescente attenzione di Google alla velocità di caricamento penalizza i siti appesantiti da plugin e temi complessi. In secondo luogo le vulnerabilità di sicurezza legate a plugin di terze parti sono diventate un problema sempre più serio. Pertanto molte aziende stanno optando per soluzioni più snelle.</p>
 
-    <h2>⚡ Performance a Confronto: I Numeri Parlano Chiaro</h2>
+    <h2 id="performance-a-confronto-i-numeri-parlano-chiaro">⚡ Performance a Confronto: I Numeri Parlano Chiaro</h2>
 
     <p>Il confronto più oggettivo è quello basato su Google PageSpeed Insights. Abbiamo testato 20 siti: 10 in codice puro RaaS e 10 WordPress su hosting standard. Per approfondire come raggiungere questi punteggi, leggi la nostra <a href="/blog/pagespeed-95-guida-ottimizzazione-2026" style="color:var(--accent);font-weight:600;">guida completa al PageSpeed 90+</a>.</p>
 
@@ -235,7 +267,7 @@
 
     <p>La differenza più significativa è sul mobile, dove WordPress fatica a causa del peso di temi e plugin. Il Total Blocking Time mostra come WordPress carichi quantità enormi di JavaScript che bloccano l'interazione, un fattore che Google penalizza fortamente nel ranking.</p>
 
-    <h2>🔐 Sicurezza: Il Tallone d'Achille di WordPress</h2>
+    <h2 id="sicurezza-il-tallone-dachille-di-wordpress">🔐 Sicurezza: Il Tallone d'Achille di WordPress</h2>
 
     <p>Secondo il report Sucuri "Website Threat Research 2025", WordPress è responsabile del 96.2% di tutti gli attacchi a CMS. Un'installazione WordPress tipica utilizza 20-30 plugin, ognuno un potenziale punto di ingresso. Il report WPScan 2025 ha identificato 25 vulnerabilità critiche al mese nei plugin più utilizzati.</p>
 
@@ -246,7 +278,7 @@
         <p>Il 39% dei siti WordPress hackerati nel 2025 aveva tutti i plugin aggiornati all'ultima versione (Fonte: Sucuri 2025). Anche la manutenzione diligente non garantisce la sicurezza al 100%.</p>
     </div>
 
-    <h2>💸 Costi di Manutenzione: Il Vero Confronto su 5 Anni</h2>
+    <h2 id="costi-di-manutenzione-il-vero-confronto-su-5-anni">💸 Costi di Manutenzione: Il Vero Confronto su 5 Anni</h2>
 
     <div class="table-wrapper">
         <table>
@@ -265,7 +297,7 @@
     </div>
     <p class="table-source">Fonte: calcolo basato su prezzi medi agenzie italiane e listini plugin premium verificati, gennaio 2026.</p>
 
-    <h2>🎯 Quando WordPress Ha Ancora Senso</h2>
+    <h2 id="quando-wordpress-ha-ancora-senso">🎯 Quando WordPress Ha Ancora Senso</h2>
 
     <p>Sarebbe disonesto dire che il codice puro è sempre la scelta migliore. WordPress resta valido per blog con pubblicazioni frequenti gestite da personale non tecnico, portali con centinaia di pagine, e-commerce con cataloghi sopra le 500 referenze, e progetti con budget molto limitato dove il cliente vuole gestire tutto in autonomia.</p>
 
@@ -283,15 +315,15 @@
         </div>
     </div>
 
-    <h2>🔍 Impatto SEO: Come Google Valuta la Performance</h2>
+    <h2 id="impatto-seo-come-google-valuta-la-performance">🔍 Impatto SEO: Come Google Valuta la Performance</h2>
 
     <p>Dal 2021 i Core Web Vitals sono fattori di ranking ufficiali. Uno studio Searchmetrics (2025) ha evidenziato che i siti con PageSpeed sopra 90 hanno il 24% di visibilità in più. Un sito in codice puro raggiunge tipicamente un LCP di 0.4-0.8 secondi. WordPress si attesta tra 2.5 e 5 secondi. La diferenza in termini di posizionamento è significativa.</p>
 
-    <h2>🛠️ La Manutenzione: Dove WordPress Costa Davvero</h2>
+    <h2 id="la-manutenzione-dove-wordpress-costa-davvero">🛠️ La Manutenzione: Dove WordPress Costa Davvero</h2>
 
     <p>Un sito WordPress richiede aggiornamenti regolari del core (circa 4 volte l'anno), dei plugin (anche settimanali), del tema e delle traduzioni. Ogni aggiornamento comporta rischio di incompatibilità. Nonostante ciò la maggior parte delle PMI italiane non ha le competenze per gestirli in autonomia. Il costo medio per un contratto di manutenzione va dai 300€ ai 600€ all'anno.</p>
 
-    <h2>🏗️ Come Funziona lo Sviluppo in Codice Puro</h2>
+    <h2 id="come-funziona-lo-sviluppo-in-codice-puro">🏗️ Come Funziona lo Sviluppo in Codice Puro</h2>
 
     <p>«Codice puro» significa scrivere il sito utilizzando direttamente HTML per la struttura, CSS per il design e JavaScript per le interazioni. Nessun framework pesante, nessun CMS. Il vantaggio è il controllo totale: ogni riga di codice serve a uno scopo preciso. In sintesi è come un abito su misura rispetto a uno preso dal catalogo.</p>
 
@@ -310,7 +342,7 @@
         <a href="https://www.raasautomazioni.it/contatti" class="sponsor-cta">📲 Richiedi Preventivo Personalizzato</a>
     </div>
 
-    <h2>❓ FAQ: 10 Domande su Codice Puro vs WordPress</h2>
+    <h2 id="faq-10-domande-su-codice-puro-vs-wordpress">❓ FAQ: 10 Domande su Codice Puro vs WordPress</h2>
 
     <div class="faq-section">
         <div class="faq-item"><div class="faq-question">Il codice puro è più sicuro di WordPress?</div><div class="faq-answer"><p>Sì. WordPress è responsabile del 96% degli attacchi a CMS. Un sito in codice puro non ha plugin vulnerabili né pannelli admin esposti.</p></div></div>
@@ -325,7 +357,7 @@
         <div class="faq-item"><div class="faq-question">Come verifico il PageSpeed del mio sito?</div><div class="faq-answer"><p>Vai su pagespeed.web.dev, inserisci l'URL e ottieni punteggio con suggerimenti.</p></div></div>
     </div>
 
-    <h2>📎 Fonti Verificate</h2>
+    <h2 id="fonti-verificate">📎 Fonti Verificate</h2>
     <div class="sources">
         <h3>Fonti Ufficiali</h3>
         <ul>
@@ -338,7 +370,7 @@
         </ul>
     </div>
 
-    <h2>📌 Conclusioni</h2>
+    <h2 id="conclusioni">📌 Conclusioni</h2>
     <p>Il 2026 segna un punto di svolta. I dati sono chiari: il codice puro offre performance superiori, sicurezza incomparabile e costi prevedibili. La scelta non è ideologica ma pragmatica. I numeri non mentono, e le fonti sono tutte verificabili.</p>
 
     <div class="related-articles">
@@ -374,7 +406,7 @@
     <!-- CTA AGGANCIO -->
     <div class="cta-aggancio">
         <div class="cta-aggancio-inner">
-            <h2 class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
+            <h2 id="ti-estato-utile-ottieni-di-piu" class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
             <p class="cta-aggancio-text">Ogni mese aiutiamo PMI italiane a trovare clienti online. Richiedi una <strong>consulenza personalizzata</strong> sul tuo progetto digitale.</p>
             <a href="https://www.raasautomazioni.it/#contatti" class="cta-aggancio-btn">RICHIEDI CONSULENZA PERSONALIZZATA</a>
             <span class="cta-aggancio-sub">+ scopri come portare clienti al tuo business</span>

@@ -126,7 +126,15 @@
         .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
         .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
-    </style>
+
+        .toc { background: var(--white, #ffffff); border: 1px solid var(--border, #e8e8ec); border-radius: 12px; padding: 28px; margin: 0 0 36px; }
+        .toc h3 { margin-top: 0; margin-bottom: 14px; font-size: 18px; }
+        .toc ol { padding-left: 20px; margin: 0; }
+        .toc li { padding: 4px 0; font-size: 15px; }
+        .toc a { color: var(--text-light, #4a5568); text-decoration: none; transition: color 0.2s; }
+        .toc a:hover { color: var(--accent, #e94560); }
+        .update-badge { display: inline-block; background: var(--green, #10b981); color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-bottom: 20px; }
+        </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T83494XDB"></script>
 <script>
@@ -191,11 +199,34 @@
 
 <main class="article-container content">
 
+    <span class="update-badge">Aggiornato: Marzo 2026</span>
+
+
+
     <p>Il tuo sito web ha 3 secondi per convincere un visitatore a restare. Se non si carica in tempo, il 53% degli utenti mobile lo abbandona (fonte: Google/SOASTA Research 2025). Non è un'opinione: è un dato che impatta direttamente sul tuo fatturato. Infatti ogni secondo di ritardo nel caricamento ti costa clienti, posizionamento Google e credibilità.</p>
 
     <p>In questo articolo analizziamo i numeri reali dietro la velocità di un sito web. Quanto fatturato perdi con un sito lento? Quanto guadagni con uno veloce? Qual è il ROI di un investimento in performance? Tutti i dati citati provengono da fonti ufficiali verificabili.</p>
 
-    <h2>💸 Il Costo Nascosto di un Sito Lento</h2>
+    <div class="toc">
+        <h3>Indice dei Contenuti</h3>
+        <ol>
+            <li><a href="#il-costo-nascosto-di-un-sito-lento">💸 Il Costo Nascosto di un Sito Lento</a></li>
+            <li><a href="#il-roi-concreto-del-pagespeed-90">📈 Il ROI Concreto del PageSpeed 90+</a></li>
+            <li><a href="#core-web-vitals-cosa-guarda-google-nel-2026">🔍 Core Web Vitals: Cosa Guarda Google nel 2026</a></li>
+            <li><a href="#confronto-reale-sito-lento-vs-sito-veloce">📊 Confronto Reale: Sito Lento vs Sito Veloce</a></li>
+            <li><a href="#perche-la-maggior-parte-dei-siti-italiani-e-lenta">🏗️ Perché la Maggior Parte dei Siti Italiani è Lenta</a></li>
+            <li><a href="#mobile-first-dove-il-pagespeed-conta-di-piu">📱 Mobile First: Dove il PageSpeed Conta di Più</a></li>
+            <li><a href="#faq-domande-su-pagespeed-e-roi">❓ FAQ: Domande su PageSpeed e ROI</a></li>
+            <li><a href="#fonti-verificate">📎 Fonti Verificate</a></li>
+            <li><a href="#leggi-anche">📚 Leggi Anche</a></li>
+            <li><a href="#conclusioni">📌 Conclusioni</a></li>
+            <li><a href="#ti-estato-utile-ottieni-di-piu">Ti e'stato utile? Ottieni di piu'!</a></li>
+        </ol>
+    </div>
+
+
+
+    <h2 id="il-costo-nascosto-di-un-sito-lento">💸 Il Costo Nascosto di un Sito Lento</h2>
 
     <p>Google ha calcolato che ogni secondo aggiuntivo di caricamento riduce le conversioni del 7%. Amazon ha stimato che 100 millisecondi di ritardo costano l'1% delle vendite. Sono numeri che per le grandi aziende significano milioni, ma anche per una PMI locale l'impatto è significativo.</p>
 
@@ -219,7 +250,7 @@
 
     <p>Facciamo un calcolo concreto. Immagina un'attività locale che riceve 1.000 visitatori al mese con un tasso di conversione del 2% (media italiana). Con un sito che carica in 1 secondo hai 20 contatti al mese. Se il sito carica in 5 secondi, il tasso scende all'1.2% circa: solo 12 contatti. Sono 8 clienti persi ogni mese, 96 all'anno. Se il valore medio di un cliente è 500€, stai perdendo 48.000€ all'anno solo perché il sito è lento.</p>
 
-    <h2>📈 Il ROI Concreto del PageSpeed 90+</h2>
+    <h2 id="il-roi-concreto-del-pagespeed-90">📈 Il ROI Concreto del PageSpeed 90+</h2>
 
     <p>Uno studio Deloitte (Digital Consumer Trends 2025) ha dimostrato che un miglioramento di 0.1 secondi nel caricamento produce un aumento del 8.4% nel tasso di conversione per il retail e del 10.1% per i siti di servizi. Tuttavia il dato più rilevante per le PMI italiane è quello sulla visibilità Google.</p>
 
@@ -259,7 +290,7 @@
     </div>
     <p class="table-source">Fonti: Google/SOASTA Research 2025, Searchmetrics Core Web Vitals Study 2025.</p>
 
-    <h2>🔍 Core Web Vitals: Cosa Guarda Google nel 2026</h2>
+    <h2 id="core-web-vitals-cosa-guarda-google-nel-2026">🔍 Core Web Vitals: Cosa Guarda Google nel 2026</h2>
 
     <p>Il PageSpeed Score si basa su tre metriche principali che Google utilizza come fattori di ranking: LCP, INP e CLS. Capire queste metriche è fondamentale per capire perché il tuo sito è lento e come migliorarlo.</p>
 
@@ -269,7 +300,7 @@
 
     <p>Il CLS (Cumulative Layout Shift) misura gli spostamenti imprevisti del layout durante il caricamento. Quegli irritanti momenti in cui stai per cliccare su qualcosa e la pagina si sposta. La soglia ideale è sotto 0.1. Immagini senza dimensioni, banner pubblicitari e font che si caricano in ritardo sono le cause principali.</p>
 
-    <h2>📊 Confronto Reale: Sito Lento vs Sito Veloce</h2>
+    <h2 id="confronto-reale-sito-lento-vs-sito-veloce">📊 Confronto Reale: Sito Lento vs Sito Veloce</h2>
 
     <p>Per rendere i numeri più concreti, prendiamo un caso tipico: un'attività di servizi nella provincia di Padova con 1.200 visitatori mensili.</p>
 
@@ -324,7 +355,7 @@
         <p>L'investimento RaaS di 399€/anno per un sito con PageSpeed 90+ genera potenzialmente 138.000€ di fatturato aggiuntivo all'anno. Il ROI supera il 55.000%. Anche dimezzando le stime conservative, il ritorno resta straordinario.</p>
     </div>
 
-    <h2>🏗️ Perché la Maggior Parte dei Siti Italiani è Lenta</h2>
+    <h2 id="perche-la-maggior-parte-dei-siti-italiani-e-lenta">🏗️ Perché la Maggior Parte dei Siti Italiani è Lenta</h2>
 
     <p>Secondo i dati CrUX (Chrome User Experience Report Q4 2025), solo il 28% dei siti italiani supera le soglie "buone" per tutti e tre i Core Web Vitals su mobile. Il problema non è la tecnologia disponibile ma le scelte fatte nella realizzazione del sito.</p>
 
@@ -332,7 +363,7 @@
 
     <p>La soluzione più radicale e efficace è abbandonare completamente WordPress e ricostruire il sito in codice puro. È esattamente ciò che facciamo in RaaS, e i risultati sono costantemente sopra il 90. Per approfondire le tecniche specifiche, leggi il nostro articolo sulla <a href="/blog/5-automazioni-risparmiare-20-ore-settimana" style="color:var(--accent-dark);font-weight:600;">riduzione dei costi con l'automazione</a>.</p>
 
-    <h2>📱 Mobile First: Dove il PageSpeed Conta di Più</h2>
+    <h2 id="mobile-first-dove-il-pagespeed-conta-di-piu">📱 Mobile First: Dove il PageSpeed Conta di Più</h2>
 
     <p>Oltre il 65% del traffico web italiano proviene da dispositivi mobile (StatCounter Q4 2025). Google utilizza il Mobile-First Indexing dal 2019, il che significa che la versione mobile del tuo sito è quella che Google valuta per il ranking. Di conseguenza se il tuo sito è veloce su desktop ma lento su mobile, il tuo posizionamento ne risentirà comunque.</p>
 
@@ -353,7 +384,7 @@
         <a href="https://www.raasautomazioni.it/contatti" class="sponsor-cta">📲 Testa il Tuo Sito Ora</a>
     </div>
 
-    <h2>❓ FAQ: Domande su PageSpeed e ROI</h2>
+    <h2 id="faq-domande-su-pagespeed-e-roi">❓ FAQ: Domande su PageSpeed e ROI</h2>
 
     <div class="faq-section">
         <div class="faq-item"><div class="faq-question">Quanto fatturato si perde con un sito lento?</div><div class="faq-answer"><p>Ogni secondo di ritardo riduce le conversioni del 7%. Per un'attività con 100 richieste/mese, un sito da 5 secondi perde circa 28 potenziali clienti al mese rispetto a uno da 1 secondo.</p></div></div>
@@ -368,7 +399,7 @@
         <div class="faq-item"><div class="faq-question">RaaS garantisce PageSpeed 90+?</div><div class="faq-answer"><p>Sì, per contratto. Se non raggiunto entro 30 giorni, RaaS lavora fino al raggiungimento dell'obiettivo. Dopo 60 giorni, rimborso completo.</p></div></div>
     </div>
 
-    <h2>📎 Fonti Verificate</h2>
+    <h2 id="fonti-verificate">📎 Fonti Verificate</h2>
     <div class="sources"><h3>Fonti Ufficiali</h3><ul>
         <li>Google/SOASTA - Mobile Page Speed Research, 2025</li>
         <li>Deloitte - Digital Consumer Trends: Milliseconds Make Millions, 2025</li>
@@ -378,7 +409,7 @@
         <li>StatCounter GlobalStats - Device Market Share Italy Q4 2025</li>
     </ul></div>
 
-    <h2>📚 Leggi Anche</h2>
+    <h2 id="leggi-anche">📚 Leggi Anche</h2>
     <div class="related-grid">
         <a href="/blog/lead-generation-50-lead-qualificati-automazione" class="related-card">
             <strong>🎯 Come Ottenere 50 Lead Qualificati al Mese con l'Automazione</strong>
@@ -394,7 +425,7 @@
         </a>
     </div>
 
-    <h2>📌 Conclusioni</h2>
+    <h2 id="conclusioni">📌 Conclusioni</h2>
     <p>I numeri non mentono: un sito con PageSpeed 90+ genera più traffico, più lead e più fatturato di uno lento. La differenza non è del 10-20%, è del 300-400% sui lead generati. Il costo di non avere un sito veloce è enormemente superiore al costo di costruirne uno. La scelta è tua, ma i dati per decidere li hai tutti.</p>
 
     <!-- Author Bio -->
@@ -410,7 +441,7 @@
     <!-- CTA AGGANCIO -->
     <div class="cta-aggancio">
         <div class="cta-aggancio-inner">
-            <h2 class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
+            <h2 id="ti-estato-utile-ottieni-di-piu" class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
             <p class="cta-aggancio-text">Ogni mese aiutiamo PMI italiane a trovare clienti online. Richiedi una <strong>consulenza personalizzata</strong> sul tuo progetto digitale.</p>
             <a href="https://www.raasautomazioni.it/#contatti" class="cta-aggancio-btn">RICHIEDI CONSULENZA PERSONALIZZATA</a>
             <span class="cta-aggancio-sub">+ scopri come portare clienti al tuo business</span>

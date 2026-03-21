@@ -148,7 +148,15 @@
         .cta-aggancio-btn { display: inline-block; background: #f4a261; color: #1a2f47; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; padding: 18px 40px; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
         .cta-aggancio-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
         .cta-aggancio-sub { display: block; margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
-    </style>
+
+        .toc { background: var(--white, #ffffff); border: 1px solid var(--border, #e8e8ec); border-radius: 12px; padding: 28px; margin: 0 0 36px; }
+        .toc h3 { margin-top: 0; margin-bottom: 14px; font-size: 18px; }
+        .toc ol { padding-left: 20px; margin: 0; }
+        .toc li { padding: 4px 0; font-size: 15px; }
+        .toc a { color: var(--text-light, #4a5568); text-decoration: none; transition: color 0.2s; }
+        .toc a:hover { color: var(--accent, #e94560); }
+        .update-badge { display: inline-block; background: var(--green, #10b981); color: white; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-bottom: 20px; }
+        </style>
 
     <script type="application/ld+json">
     {
@@ -201,11 +209,33 @@
 
 <main class="article-container content">
 
+    <span class="update-badge">Aggiornato: Marzo 2026</span>
+
+
+
     <p>La velocità del tuo sito web non è più un optional: è un fattore di ranking, un elemento che impatta direttamente sulle conversioni e, nel 2026, una delle prime cose che Google valuta per decidere dove posizionarti. Eppure la maggior parte dei siti italiani ha un punteggio PageSpeed inferiore a 60 su mobile. Questo articolo è una guida completa per capire perché il PageSpeed conta, come misurarlo e come raggiungere il fatidico 90+.</p>
 
     <p>Per un confronto tra le tecnologie che influenzano maggiormente il PageSpeed, leggi il nostro articolo <a href="/blog/codice-puro-vs-wordpress-2026" style="color:var(--accent-dark);font-weight:600;">Codice Puro vs WordPress 2026</a>.</p>
 
-    <h2>📊 Cos'è il PageSpeed Score e Perché Conta</h2>
+    <div class="toc">
+        <h3>Indice dei Contenuti</h3>
+        <ol>
+            <li><a href="#cose-il-pagespeed-score-e-perche-conta">📊 Cos'è il PageSpeed Score e Perché Conta</a></li>
+            <li><a href="#i-tre-core-web-vitals-spiegati">🔍 I Tre Core Web Vitals Spiegati</a></li>
+            <li><a href="#strategie-di-ottimizzazione-da-50-a-90">🛠️ Strategie di Ottimizzazione: Da 50 a 90+</a></li>
+            <li><a href="#i-7-errori-piu-comuni">❌ I 7 Errori Più Comuni</a></li>
+            <li><a href="#case-study-da-pagespeed-38-a-97-in-14-giorni">📈 Case Study: Da PageSpeed 38 a 97 in 14 Giorni</a></li>
+            <li><a href="#checklist-pagespeed-90">🔧 Checklist PageSpeed 90+</a></li>
+            <li><a href="#faq-10-domande-sul-pagespeed">❓ FAQ: 10 Domande sul PageSpeed</a></li>
+            <li><a href="#fonti-verificate">📎 Fonti Verificate</a></li>
+            <li><a href="#conclusioni">📌 Conclusioni</a></li>
+            <li><a href="#ti-estato-utile-ottieni-di-piu">Ti e'stato utile? Ottieni di piu'!</a></li>
+        </ol>
+    </div>
+
+
+
+    <h2 id="cose-il-pagespeed-score-e-perche-conta">📊 Cos'è il PageSpeed Score e Perché Conta</h2>
 
     <p>Google PageSpeed Insights (PSI) è lo strumento ufficiale per misurare velocità ed esperienza utente. Il punteggio si basa su sei metriche, di cui tre sono i Core Web Vitals. Secondo i dati CrUX, solo il 28% dei siti italiani raggiunge punteggi buoni. Di conseguenza chi ottimizza ha un vantaggio competitivo significativo.</p>
 
@@ -215,7 +245,7 @@
         <div class="metric-card"><div class="label">CLS</div><div class="value">≤ 0.1</div><div class="target">✓ Soglia "Buono"</div></div>
     </div>
 
-    <h2>🔍 I Tre Core Web Vitals Spiegati</h2>
+    <h2 id="i-tre-core-web-vitals-spiegati">🔍 I Tre Core Web Vitals Spiegati</h2>
 
     <h3>LCP - Largest Contentful Paint</h3>
     <p>Misura il tempo per visualizzare l'elemento più grande del viewport. Google considera "buono" un LCP sotto 2.5 secondi. I siti RaaS raggiungono 0.4-0.8 secondi. Le cause di LCP lento: immagini non ottimizzate, font ritardati e blocking JavaScript.</p>
@@ -226,7 +256,7 @@
     <h3>CLS - Cumulative Layout Shift</h3>
     <p>Misura gli spostamenti imprevisti durante il caricamento. Soglia ideale: sotto 0.1. Colpevoli comuni: immagini senza dimensioni, banner caricati in ritardo, font che cambiano layout.</p>
 
-    <h2>🛠️ Strategie di Ottimizzazione: Da 50 a 90+</h2>
+    <h2 id="strategie-di-ottimizzazione-da-50-a-90">🛠️ Strategie di Ottimizzazione: Da 50 a 90+</h2>
 
     <h3>1. Critical CSS Inline</h3>
     <p>La tecnica più efficace: inserire nel &lt;head&gt; il CSS necessario per il contenuto above-the-fold. Da sola può migliorare il punteggio di 15-25 punti.</p>
@@ -259,7 +289,7 @@
     <h3>5. Font Optimization</h3>
     <p>Font-display: swap + preload dei font critici. Limitare varianti di peso e stile.</p>
 
-    <h2>❌ I 7 Errori Più Comuni</h2>
+    <h2 id="i-7-errori-piu-comuni">❌ I 7 Errori Più Comuni</h2>
 
     <div class="checklist">
         <h4>Errori da Evitare</h4>
@@ -272,7 +302,7 @@
         <div class="checklist-item"><span class="icon">🔴</span><div><strong>Script terze parti non differiti</strong> — Analytics, pixel, chat possono aggiungere 1-3s.</div></div>
     </div>
 
-    <h2>📈 Case Study: Da PageSpeed 38 a 97 in 14 Giorni</h2>
+    <h2 id="case-study-da-pagespeed-38-a-97-in-14-giorni">📈 Case Study: Da PageSpeed 38 a 97 in 14 Giorni</h2>
 
     <p>Uno studio professionale con PageSpeed mobile di 38, WordPress, 24 plugin, caricamento 6.2 secondi. Ricostruzione completa in codice puro in 14 giorni.</p>
 
@@ -293,7 +323,7 @@
 
     <p>Nei 3 mesi successivi alla migrazzione il traffico organico è aumentato del 42% e i contatti sono passati da 8 a 23 al mese (+187%). Per capire come questi numeri si traducono in lead concreti, leggi il nostro articolo sulla <a href="/blog/lead-generation-30-50-lead-mese-2026" style="color:var(--accent-dark);font-weight:600;">lead generation per PMI</a>.</p>
 
-    <h2>🔧 Checklist PageSpeed 90+</h2>
+    <h2 id="checklist-pagespeed-90">🔧 Checklist PageSpeed 90+</h2>
 
     <div class="checklist">
         <h4>✅ Checklist Completa</h4>
@@ -321,7 +351,7 @@
         <a href="https://www.raasautomazioni.it/contatti" class="sponsor-cta">📲 Testa il Tuo Sito Ora</a>
     </div>
 
-    <h2>❓ FAQ: 10 Domande sul PageSpeed</h2>
+    <h2 id="faq-10-domande-sul-pagespeed">❓ FAQ: 10 Domande sul PageSpeed</h2>
 
     <div class="faq-section">
         <div class="faq-item"><div class="faq-question">Cos'è il PageSpeed Score?</div><div class="faq-answer"><p>Punteggio da 0 a 100 di Google che misura velocità ed esperienza utente. Sopra 90 è "buono". Influenza ranking e conversioni.</p></div></div>
@@ -336,7 +366,7 @@
         <div class="faq-item"><div class="faq-question">Ogni quanto ricontrollare?</div><div class="faq-answer"><p>Almeno mensilmente. I punteggi cambiano con aggiornamenti Google e modifiche al sito.</p></div></div>
     </div>
 
-    <h2>📎 Fonti Verificate</h2>
+    <h2 id="fonti-verificate">📎 Fonti Verificate</h2>
     <div class="sources"><h3>Fonti Ufficiali</h3><ul>
         <li>Google Web.dev - Core Web Vitals documentation, 2025</li>
         <li>Google CrUX Report - Italia, Q4 2025</li>
@@ -345,7 +375,7 @@
         <li>Google PageSpeed Insights - Test gennaio 2026</li>
     </ul></div>
 
-    <h2>📌 Conclusioni</h2>
+    <h2 id="conclusioni">📌 Conclusioni</h2>
     <p>Nel 2026 un sito veloce non è un plus, è una necessità. Google lo premia, gli utenti lo premiano con più conversioni. Se il tuo sito fatica a superare il 60 su mobile, hai due strade: ottimizzare WordPress con risultati incerti, o ripartire in codice puro con performance garantite dal primo giorno.</p>
 
     <div class="related-articles">
@@ -381,7 +411,7 @@
     <!-- CTA AGGANCIO -->
     <div class="cta-aggancio">
         <div class="cta-aggancio-inner">
-            <h2 class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
+            <h2 id="ti-estato-utile-ottieni-di-piu" class="cta-aggancio-title">Ti e'stato utile? <em>Ottieni di piu'!</em></h2>
             <p class="cta-aggancio-text">Ogni mese aiutiamo PMI italiane a trovare clienti online. Richiedi una <strong>consulenza personalizzata</strong> sul tuo progetto digitale.</p>
             <a href="https://www.raasautomazioni.it/#contatti" class="cta-aggancio-btn">RICHIEDI CONSULENZA PERSONALIZZATA</a>
             <span class="cta-aggancio-sub">+ scopri come portare clienti al tuo business</span>
