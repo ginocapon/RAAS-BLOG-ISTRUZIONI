@@ -71,6 +71,11 @@
   <url><loc>https://www.raasautomazioni.it/landing-sito-web-pmi-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.raasautomazioni.it/landing-voucher-digitalizzazione-pmi-2026</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
+  <!-- PAGINE PRINCIPALI EN (NUOVE) -->
+  <url><loc>https://www.raasautomazioni.it/en/landing</loc><lastmod>2026-03-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/en/privacy</loc><lastmod>2026-03-23</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.raasautomazioni.it/en/cookie</loc><lastmod>2026-03-23</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
   <!-- LANDING PAGES EN -->
   <url><loc>https://www.raasautomazioni.it/en/landing-revenue-as-a-service</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.raasautomazioni.it/en/landing-ai-lead-generation</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
