@@ -1,9 +1,9 @@
-name: Sincronizza Bandi
+name: "Scraping Bandi — Venerdì 07:00 CET"
 
 on:
   schedule:
-    # Ogni lunedi alle 08:00 UTC (10:00 ora italiana)
-    - cron: '0 8 * * 1'
+    # Ogni venerdi alle 06:00 UTC = 07:00 CET (08:00 CEST in estate)
+    - cron: '0 6 * * 5'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -16,18 +16,25 @@ permissions:
   contents: write
 
 jobs:
-  sync:
+  scrape:
     runs-on: ubuntu-latest
+    name: "Scraping e aggiornamento bandi"
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
+
+      - name: Installa dipendenze scraper
+        run: |
+          cd tools
+          npm install --no-save node-fetch cheerio 2>/dev/null || true
 
       - name: Scrape nuovi bandi
         id: scrape
@@ -53,12 +60,13 @@ jobs:
       - name: Commit e push aggiornamenti
         if: github.event.inputs.dry_run != 'true'
         run: |
-          git config user.name "BandiItalia Bot"
+          git config user.name "RaaS Automazioni Bot"
           git config user.email "bot@raasautomazioni.it"
           git add data/bandi.json
           if git diff --staged --quiet; then
-            echo "Nessuna modifica da committare"
+            echo "Nessuna modifica — bandi già aggiornati"
           else
-            git commit -m "Aggiornamento automatico bandi — $(date +%Y-%m-%d)"
+            NUOVI=$(git diff --staged -- data/bandi.json | grep '^+' | grep -c '"id"' || echo "0")
+            git commit -m "Scraping automatico bandi — $(date +'%d/%m/%Y') — ${NUOVI} bandi aggiornati"
             git push
           fi
