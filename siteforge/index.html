@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SiteForge AI — Crea il tuo sito in 60 secondi con l'AI</title>
+  <meta name="description" content="Website builder con AI integrata. Template pronti o generazione automatica — nessun codice richiesto. Inizia gratis.">
+  <meta property="og:title" content="SiteForge AI — Website Builder con AI">
+  <meta property="og:description" content="Crea il tuo sito in 60 secondi con l'intelligenza artificiale. Template pronti o generazione automatica.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630/6c5ce7/ffffff?text=SiteForge+AI">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* === RESET E BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #e0e0e0;
+      background: #0f0f1a;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; }
+
+    /* === SKIP NAVIGATION === */
+    .skip-nav {
+      position: absolute;
+      top: -100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #6c5ce7;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0 0 8px 8px;
+      z-index: 1000;
+      font-weight: 600;
+    }
+    .skip-nav:focus { top: 0; }
+    *:focus-visible {
+      outline: 2px solid #6c5ce7;
+      outline-offset: 2px;
+    }
+
+    /* === NAVBAR === */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15, 15, 26, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .navbar-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .navbar-links { display: flex; gap: 2rem; align-items: center; }
+    .navbar-links a { font-size: 0.9rem; font-weight: 500; opacity: 0.8; transition: opacity 0.2s; }
+    .navbar-links a:hover { opacity: 1; }
+    .navbar-cta {
+      background: #6c5ce7;
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .navbar-cta:hover { background: #5a4bd1; }
+
+    /* === CONTAINER === */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(108, 92, 231, 0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(162, 155, 254, 0.1) 0%, transparent 50%);
+      z-index: 0;
+      animation: hero-glow 8s ease-in-out infinite alternate;
+      animation-play-state: paused;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(108, 92, 231, 0.15);
+      border: 1px solid rgba(108, 92, 231, 0.3);
+      color: #a29bfe;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      color: #fff;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe, #74b9ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.75;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(108, 92, 231, 0.4);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    @keyframes hero-glow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(3deg); }
+    }
+
+    /* === SEZIONE GENERICA === */
+    .section {
+      padding: 6rem 1.5rem;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      opacity: 0.6;
+      margin-bottom: 3.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* === COME FUNZIONA === */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .step-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .step-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108, 92, 231, 0.3);
+    }
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .step-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: 0.75rem; }
+    .step-card p { font-size: 0.95rem; opacity: 0.65; }
+
+    /* === TEMPLATE SHOWCASE === */
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .template-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s, border-color 0.3s;
+      background: rgba(255,255,255,0.03);
+    }
+    .template-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108, 92, 231, 0.3);
+    }
+    .template-preview {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+    .template-info { padding: 1.25rem; }
+    .template-info h3 { color: #fff; font-size: 1rem; margin-bottom: 0.35rem; }
+    .template-info p { font-size: 0.85rem; opacity: 0.55; }
+
+    /* === PRICING === */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108, 92, 231, 0.3);
+    }
+    .pricing-card.featured {
+      border-color: #6c5ce7;
+      background: rgba(108, 92, 231, 0.08);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: #fff;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .pricing-card h3 { color: #fff; font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .pricing-price {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 1rem 0;
+    }
+    .pricing-price span { font-size: 1rem; font-weight: 400; opacity: 0.5; }
+    .pricing-features { list-style: none; margin: 1.5rem 0 2rem; text-align: left; }
+    .pricing-features li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.95rem;
+      opacity: 0.75;
+    }
+    .pricing-features li::before { content: '✓ '; color: #6c5ce7; font-weight: 700; }
+
+    /* === FAQ === */
+    .faq-list {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 1.25rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: inherit;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      font-weight: 300;
+      opacity: 0.5;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-question::after { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding-bottom: 1.25rem;
+    }
+    .faq-answer p { font-size: 0.95rem; opacity: 0.6; line-height: 1.7; }
+
+    /* === FOOTER === */
+    .footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.9rem; opacity: 0.5; transition: opacity 0.2s; }
+    .footer-links a:hover { opacity: 1; }
+    .footer p { font-size: 0.85rem; opacity: 0.35; }
+
+    /* === ANIMAZIONE FADE-IN ON SCROLL === */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === AUTH MODAL === */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #1a1a2e;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+    }
+    .modal h2 { color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .modal p { font-size: 0.9rem; opacity: 0.6; margin-bottom: 1.5rem; }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.5;
+    }
+    .modal-close:hover { opacity: 1; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #fff;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: #6c5ce7;
+    }
+    .modal .btn-primary { width: 100%; margin-top: 0.5rem; }
+    .modal-switch {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+    .modal-switch a { color: #a29bfe; font-weight: 600; }
+    .modal-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.25rem 0;
+      font-size: 0.85rem;
+      opacity: 0.4;
+    }
+    .modal-divider::before, .modal-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+    .btn-magic-link {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .btn-magic-link:hover { background: rgba(255,255,255,0.08); }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .navbar-links { display: none; }
+      .hero { padding: 7rem 1rem 3rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .section { padding: 4rem 1rem; }
+      .section-title { font-size: 1.7rem; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .templates-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Skip navigation -->
+<a href="#main" class="skip-nav">Vai al contenuto principale</a>
+
+<!-- Navbar -->
+<nav class="navbar" role="navigation" aria-label="Navigazione principale">
+  <a href="/" class="navbar-logo">SiteForge AI</a>
+  <div class="navbar-links">
+    <a href="#come-funziona">Come funziona</a>
+    <a href="#templates">Template</a>
+    <a href="#pricing">Prezzi</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <button class="navbar-cta" id="btn-login" aria-label="Accedi o registrati">Inizia gratis</button>
+</nav>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content fade-in">
+      <div class="hero-badge">Nuovo — Generazione AI integrata</div>
+      <h1>Crea il tuo sito in 60 secondi <span>con l'AI</span></h1>
+      <p>Template pronti o generazione automatica — nessun codice richiesto. Scegli, personalizza, pubblica.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary" id="hero-cta">Inizia gratis &rarr;</button>
+        <a href="#come-funziona" class="btn-secondary">Guarda demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Come funziona -->
+  <section class="section" id="come-funziona">
+    <div class="container">
+      <h2 class="section-title fade-in">Come funziona</h2>
+      <p class="section-subtitle fade-in">Tre semplici passaggi per il tuo sito professionale</p>
+      <div class="steps-grid">
+        <div class="step-card fade-in">
+          <div class="step-number">1</div>
+          <h3>Scegli un template</h3>
+          <p>Seleziona tra 5 template professionali oppure lascia che l'AI generi il sito perfetto per te.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-number">2</div>
+          <h3>Personalizza</h3>
+          <p>Usa il builder drag-and-drop per modificare testi, colori, immagini e aggiungere nuove sezioni.</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-number">3</div>
+          <h3>Pubblica</h3>
+          <p>Esporta il sito come HTML statico e pubblicalo su GitHub Pages, Netlify o qualsiasi hosting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Template showcase -->
+  <section class="section" id="templates" style="background: rgba(255,255,255,0.01);">
+    <div class="container">
+      <h2 class="section-title fade-in">Template professionali</h2>
+      <p class="section-subtitle fade-in">Pronti all'uso, completamente personalizzabili</p>
+      <div class="templates-grid">
+        <div class="template-card fade-in">
+          <div class="template-preview" style="background: linear-gradient(135deg, #3A5578, #CEE08F);">&#127969;</div>
+          <div class="template-info">
+            <h3>Immobiliare</h3>
+            <p>Agenzie immobiliari e property manager</p>
+          </div>
+        </div>
+        <div class="template-card fade-in">
+          <div class="template-preview" style="background: linear-gradient(135deg, #1a1a1a, #c8a96e);">&#127860;</div>
+          <div class="template-info">
+            <h3>Ristorante</h3>
+            <p>Ristoranti, trattorie e pizzerie</p>
+          </div>
+        </div>
+        <div class="template-card fade-in">
+          <div class="template-preview" style="background: linear-gradient(135deg, #2c3e50, #3498db);">&#9878;</div>
+          <div class="template-info">
+            <h3>Studio Professionale</h3>
+            <p>Studi legali, commercialisti, consulenti</p>
+          </div>
+        </div>
+        <div class="template-card fade-in">
+          <div class="template-preview" style="background: linear-gradient(135deg, #6c5ce7, #00cec9);">&#128722;</div>
+          <div class="template-info">
+            <h3>E-commerce</h3>
+            <p>Shop online e vendita prodotti</p>
+          </div>
+        </div>
+        <div class="template-card fade-in">
+          <div class="template-preview" style="background: linear-gradient(135deg, #2d3436, #fdcb6e);">&#127912;</div>
+          <div class="template-info">
+            <h3>Portfolio</h3>
+            <p>Designer, fotografi e creativi</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <h2 class="section-title fade-in">Prezzi semplici e trasparenti</h2>
+      <p class="section-subtitle fade-in">Inizia gratis, scala quando vuoi</p>
+      <div class="pricing-grid">
+        <div class="pricing-card fade-in">
+          <h3>Free</h3>
+          <div class="pricing-price">0&euro; <span>/mese</span></div>
+          <ul class="pricing-features">
+            <li>5 crediti inclusi</li>
+            <li>Tutti i template base</li>
+            <li>Builder drag-and-drop</li>
+            <li>Export HTML statico</li>
+            <li>1 progetto</li>
+          </ul>
+          <button class="btn-primary" style="width:100%;" onclick="document.getElementById('btn-login').click()">Inizia gratis</button>
+        </div>
+        <div class="pricing-card featured fade-in">
+          <div class="pricing-badge">Consigliato</div>
+          <h3>Pro</h3>
+          <div class="pricing-price">9&euro; <span>/mese</span></div>
+          <ul class="pricing-features">
+            <li>50 crediti / mese</li>
+            <li>Tutti i template</li>
+            <li>Generazione AI illimitata</li>
+            <li>Export illimitati</li>
+            <li>10 progetti</li>
+            <li>Supporto prioritario</li>
+          </ul>
+          <button class="btn-primary" style="width:100%;" onclick="document.getElementById('btn-login').click()">Scegli Pro</button>
+        </div>
+        <div class="pricing-card fade-in">
+          <h3>Agency</h3>
+          <div class="pricing-price">29&euro; <span>/mese</span></div>
+          <ul class="pricing-features">
+            <li>Crediti illimitati</li>
+            <li>Tutti i template + custom</li>
+            <li>Generazione AI illimitata</li>
+            <li>Export illimitati</li>
+            <li>Progetti illimitati</li>
+            <li>White-label export</li>
+            <li>Supporto dedicato</li>
+          </ul>
+          <button class="btn-primary" style="width:100%;" onclick="document.getElementById('btn-login').click()">Scegli Agency</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="background: rgba(255,255,255,0.01);">
+    <div class="container">
+      <h2 class="section-title fade-in">Domande frequenti</h2>
+      <p class="section-subtitle fade-in">Tutto quello che devi sapere su SiteForge AI</p>
+      <div class="faq-list fade-in">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Come funziona la generazione AI?</button>
+          <div class="faq-answer" role="region">
+            <p>Inserisci il nome della tua attività, il settore e una breve descrizione. L'AI genererà un sito completo con testi, sezioni e struttura ottimizzati per il tuo business in pochi secondi.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Cosa sono i crediti?</button>
+          <div class="faq-answer" role="region">
+            <p>I crediti sono la valuta interna di SiteForge AI. Generare un sito con AI costa 3 crediti, esportare in HTML costa 1 credito. I template base sono gratuiti. Ogni nuovo utente riceve 5 crediti gratuiti.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Devo saper programmare?</button>
+          <div class="faq-answer" role="region">
+            <p>Assolutamente no. Il builder drag-and-drop ti permette di personalizzare ogni aspetto del sito senza scrivere una riga di codice. Se sei uno sviluppatore, puoi anche esportare e modificare il codice HTML.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Dove posso pubblicare il sito?</button>
+          <div class="faq-answer" role="region">
+            <p>Puoi pubblicare il sito esportato su qualsiasi hosting statico: GitHub Pages, Netlify, Vercel, o il tuo server. Il sito esportato è HTML statico puro, compatibile con qualsiasi piattaforma.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Posso usare un dominio personalizzato?</button>
+          <div class="faq-answer" role="region">
+            <p>Sì. Dopo aver esportato il sito, puoi collegare qualsiasi dominio personalizzato tramite il tuo hosting provider. Forniamo anche istruzioni dettagliate per la configurazione.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">I siti generati sono responsive?</button>
+          <div class="faq-answer" role="region">
+            <p>Sì, tutti i template e i siti generati dall'AI sono completamente responsive e ottimizzati per mobile, tablet e desktop. Il builder include anche un'anteprima multi-dispositivo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="#come-funziona">Come funziona</a>
+    <a href="#templates">Template</a>
+    <a href="#pricing">Prezzi</a>
+    <a href="#faq">FAQ</a>
+    <a href="mailto:info@siteforge.ai">Contatti</a>
+  </div>
+  <p>&copy; 2026 SiteForge AI — Tutti i diritti riservati</p>
+</footer>
+
+<!-- Modal Auth -->
+<div class="modal-overlay" id="auth-modal" role="dialog" aria-modal="true" aria-label="Accesso">
+  <div class="modal">
+    <button class="modal-close" aria-label="Chiudi">&times;</button>
+    <div id="modal-login">
+      <h2>Accedi</h2>
+      <p>Accedi al tuo account SiteForge AI</p>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" placeholder="tuo@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="La tua password" required>
+        </div>
+        <button type="submit" class="btn-primary">Accedi</button>
+      </form>
+      <div class="modal-divider">oppure</div>
+      <button class="btn-magic-link" id="btn-magic-link">Accedi con Magic Link</button>
+      <div class="modal-switch">Non hai un account? <a href="#" id="show-signup">Registrati</a></div>
+    </div>
+    <div id="modal-signup" style="display:none;">
+      <h2>Registrati</h2>
+      <p>Crea il tuo account e ricevi 5 crediti gratuiti</p>
+      <form id="signup-form">
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" placeholder="tuo@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" placeholder="Minimo 6 caratteri" required minlength="6">
+        </div>
+        <button type="submit" class="btn-primary">Registrati gratis</button>
+      </form>
+      <div class="modal-switch">Hai già un account? <a href="#" id="show-login">Accedi</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Attiva animazione hero dopo il render
+  document.addEventListener('DOMContentLoaded', function() {
+    var heroBg = document.querySelector('.hero::before');
+    document.querySelector('.hero').style.setProperty('--play', 'running');
+    var style = document.createElement('style');
+    style.textContent = '.hero::before { animation-play-state: running !important; }';
+    document.head.appendChild(style);
+  });
+
+  // Fade-in on scroll con IntersectionObserver
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.parentElement;
+      var isOpen = item.classList.contains('open');
+      // Chiudi tutti
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      document.querySelectorAll('.faq-question').forEach(function(q) { q.setAttribute('aria-expanded', 'false'); });
+      // Apri quello cliccato (se era chiuso)
+      if (!isOpen) {
+        item.classList.add('open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Auth modal
+  var authModal = document.getElementById('auth-modal');
+  var modalLogin = document.getElementById('modal-login');
+  var modalSignup = document.getElementById('modal-signup');
+
+  function openModal() { authModal.classList.add('active'); }
+  function closeModal() { authModal.classList.remove('active'); }
+
+  document.getElementById('btn-login').addEventListener('click', openModal);
+  document.getElementById('hero-cta').addEventListener('click', openModal);
+  document.querySelector('.modal-close').addEventListener('click', closeModal);
+  authModal.addEventListener('click', function(e) {
+    if (e.target === authModal) closeModal();
+  });
+
+  document.getElementById('show-signup').addEventListener('click', function(e) {
+    e.preventDefault();
+    modalLogin.style.display = 'none';
+    modalSignup.style.display = 'block';
+  });
+  document.getElementById('show-login').addEventListener('click', function(e) {
+    e.preventDefault();
+    modalSignup.style.display = 'none';
+    modalLogin.style.display = 'block';
+  });
+
+  // Form submit — collegamento a Supabase (implementato in supabase-client.js)
+  document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('login-email').value;
+    var password = document.getElementById('login-password').value;
+    if (typeof SiteForgeAuth !== 'undefined') {
+      SiteForgeAuth.signIn(email, password);
+    } else {
+      alert('Accesso in fase di configurazione. Riprova tra poco.');
+    }
+  });
+
+  document.getElementById('signup-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('signup-email').value;
+    var password = document.getElementById('signup-password').value;
+    if (typeof SiteForgeAuth !== 'undefined') {
+      SiteForgeAuth.signUp(email, password);
+    } else {
+      alert('Registrazione in fase di configurazione. Riprova tra poco.');
+    }
+  });
+
+  document.getElementById('btn-magic-link').addEventListener('click', function() {
+    var email = document.getElementById('login-email').value;
+    if (!email) {
+      alert('Inserisci la tua email prima di richiedere il Magic Link.');
+      return;
+    }
+    if (typeof SiteForgeAuth !== 'undefined') {
+      SiteForgeAuth.magicLink(email);
+    } else {
+      alert('Funzione in fase di configurazione.');
+    }
+  });
+</script>
+
+</body>
+</html>

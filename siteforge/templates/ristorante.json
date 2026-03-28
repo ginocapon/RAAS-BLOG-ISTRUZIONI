@@ -1,0 +1,244 @@
+{
+  "meta": {
+    "title": "Trattoria Da Nonna Maria",
+    "description": "Cucina tradizionale italiana — piatti della tradizione con ingredienti freschi e di stagione",
+    "favicon": "",
+    "fonts": ["Playfair Display", "Lato"],
+    "colors": {
+      "primary": "#1a1a1a",
+      "accent": "#c8a96e",
+      "cta": "#e74c3c"
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "name": "Home",
+      "slug": "/",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "La vera cucina italiana",
+            "subheadline": "Sapori autentici e ingredienti freschi dal 1985 — nel cuore di Roma",
+            "cta_text": "Prenota un tavolo",
+            "cta_link": "/prenota",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "features_grid",
+          "props": {
+            "headline": "La nostra filosofia",
+            "items": [
+              {
+                "icon": "leaf",
+                "title": "Ingredienti freschi",
+                "text": "Selezioniamo ogni giorno i migliori prodotti dal mercato locale e da produttori di fiducia"
+              },
+              {
+                "icon": "utensils",
+                "title": "Ricette della tradizione",
+                "text": "Le ricette di Nonna Maria tramandate di generazione in generazione, dal 1985"
+              },
+              {
+                "icon": "wine-glass",
+                "title": "Carta vini selezionata",
+                "text": "Oltre 80 etichette italiane scelte dal nostro sommelier per accompagnare ogni piatto"
+              },
+              {
+                "icon": "heart",
+                "title": "Atmosfera familiare",
+                "text": "Un ambiente caldo e accogliente dove sentirsi a casa, perfetto per ogni occasione"
+              }
+            ]
+          }
+        },
+        {
+          "type": "gallery",
+          "props": {
+            "headline": "I nostri piatti",
+            "columns": 3,
+            "items": [
+              { "image": "", "caption": "Cacio e pepe tradizionale" },
+              { "image": "", "caption": "Carbonara con guanciale stagionato" },
+              { "image": "", "caption": "Saltimbocca alla romana" },
+              { "image": "", "caption": "Tiramisù della Nonna" },
+              { "image": "", "caption": "Bruschette miste" },
+              { "image": "", "caption": "Tagliere di salumi e formaggi" }
+            ]
+          }
+        },
+        {
+          "type": "text_image",
+          "props": {
+            "headline": "Una storia di famiglia",
+            "text": "Dal 1985 la famiglia Esposito porta in tavola i sapori della tradizione romana. Nonna Maria ha aperto il ristorante con una sola missione: far sentire ogni cliente come a casa. Oggi, la terza generazione continua questa tradizione con la stessa passione e lo stesso amore per la buona cucina.",
+            "cta_text": "Scopri la nostra storia",
+            "cta_link": "/chi-siamo",
+            "image": "",
+            "reversed": true
+          }
+        },
+        {
+          "type": "testimonials",
+          "props": {
+            "headline": "Dicono di noi",
+            "items": [
+              {
+                "name": "Francesca P.",
+                "role": "Cliente abituale",
+                "text": "La migliore carbonara di Roma, senza ombra di dubbio. Torno ogni settimana da 5 anni.",
+                "stars": 5,
+                "avatar": ""
+              },
+              {
+                "name": "John S.",
+                "role": "Turista — New York",
+                "text": "Best Italian food I've had. Authentic, delicious, and the staff is incredibly welcoming.",
+                "stars": 5,
+                "avatar": ""
+              },
+              {
+                "name": "Alessandro M.",
+                "role": "Food blogger",
+                "text": "Un'esperienza culinaria autentica. Ingredienti di prima qualità e ricette che sanno di casa.",
+                "stars": 5,
+                "avatar": ""
+              }
+            ]
+          }
+        },
+        {
+          "type": "map_embed",
+          "props": {
+            "headline": "Vieni a trovarci",
+            "embed_url": "",
+            "address": "Via del Corso 123, 00186 Roma (RM)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "menu",
+      "name": "Menu",
+      "slug": "/menu",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Il nostro menu",
+            "subheadline": "Piatti della tradizione preparati con amore ogni giorno",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "pricing_cards",
+          "props": {
+            "headline": "I nostri menu degustazione",
+            "items": [
+              {
+                "name": "Menu Tradizione",
+                "price": "35€",
+                "period": "a persona",
+                "features": ["Antipasto misto", "Primo a scelta", "Secondo a scelta", "Dolce della casa", "Acqua e caffè inclusi"],
+                "cta_text": "Prenota",
+                "cta_link": "/prenota",
+                "featured": false
+              },
+              {
+                "name": "Menu Nonna Maria",
+                "price": "55€",
+                "period": "a persona",
+                "features": ["Degustazione antipasti", "Due primi della tradizione", "Secondo con contorno", "Dolce e frutta", "Vino della casa incluso", "Amaro offerto"],
+                "cta_text": "Prenota",
+                "cta_link": "/prenota",
+                "featured": true
+              },
+              {
+                "name": "Menu Veloce",
+                "price": "22€",
+                "period": "a persona",
+                "features": ["Primo a scelta", "Contorno", "Acqua e caffè inclusi"],
+                "cta_text": "Prenota",
+                "cta_link": "/prenota",
+                "featured": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "prenota",
+      "name": "Prenota",
+      "slug": "/prenota",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Prenota il tuo tavolo",
+            "subheadline": "Aperto dal martedì alla domenica — 12:00-15:00 / 19:00-23:00",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "contact_form",
+          "props": {
+            "headline": "Richiedi una prenotazione",
+            "fields": ["nome", "email", "telefono", "messaggio"],
+            "submit_text": "Prenota ora",
+            "formspree_id": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "chi-siamo",
+      "name": "Chi Siamo",
+      "slug": "/chi-siamo",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "La nostra storia",
+            "subheadline": "Tre generazioni di passione per la cucina italiana",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "text_image",
+          "props": {
+            "headline": "Dal 1985 con amore",
+            "text": "Nonna Maria aprì le porte del ristorante nel 1985 con un sogno: portare i sapori della sua cucina casalinga a tutti. Oggi il suo nipote Marco continua questa tradizione, unendo rispetto per le ricette originali e attenzione alla qualità degli ingredienti. Ogni piatto racconta una storia di famiglia.",
+            "image": "",
+            "reversed": false
+          }
+        },
+        {
+          "type": "team_grid",
+          "props": {
+            "headline": "La nostra famiglia",
+            "items": [
+              { "name": "Marco Esposito", "role": "Chef & Proprietario", "photo": "", "linkedin": "" },
+              { "name": "Giulia Esposito", "role": "Sala & Eventi", "photo": "", "linkedin": "" },
+              { "name": "Roberto Conti", "role": "Sommelier", "photo": "", "linkedin": "" }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "nav_links": ["Home", "Menu", "Prenota", "Chi Siamo"],
+    "footer_text": "© 2026 Trattoria Da Nonna Maria — P.IVA 09876543210",
+    "whatsapp": "+39 06 1234567",
+    "google_maps_embed": ""
+  }
+}

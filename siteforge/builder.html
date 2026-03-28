@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Builder — SiteForge AI</title>
+  <meta property="og:image" content="https://via.placeholder.com/1200x630/6c5ce7/ffffff?text=SiteForge+AI">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="css/builder.css">
+  <!-- Skip navigation -->
+  <style>
+    .skip-nav {
+      position: absolute; top: -100%; left: 50%; transform: translateX(-50%);
+      background: #6c5ce7; color: #fff; padding: 0.75rem 1.5rem;
+      border-radius: 0 0 8px 8px; z-index: 1000; font-weight: 600;
+    }
+    .skip-nav:focus { top: 0; }
+    *:focus-visible { outline: 2px solid #e94560; outline-offset: 2px; }
+  </style>
+</head>
+<body>
+
+<a href="#canvas-content" class="skip-nav">Vai al canvas</a>
+
+<div class="builder-layout">
+
+  <!-- Toolbar superiore -->
+  <div class="builder-toolbar">
+    <div class="toolbar-left">
+      <a href="dashboard.html" class="toolbar-logo" id="btn-back">Site<span>Forge</span></a>
+      <div class="toolbar-pages" id="toolbar-pages"></div>
+    </div>
+    <div class="toolbar-center">
+      <button class="viewport-btn active" data-viewport="desktop" title="Desktop (1280px)">&#128421; Desktop</button>
+      <button class="viewport-btn" data-viewport="tablet" title="Tablet (768px)">&#128241; Tablet</button>
+      <button class="viewport-btn" data-viewport="mobile" title="Mobile (375px)">&#128241; Mobile</button>
+    </div>
+    <div class="toolbar-right">
+      <span id="save-status" style="font-size:0.8rem;margin-right:8px;"></span>
+      <button class="toolbar-btn" id="btn-save">&#128190; Salva</button>
+      <button class="toolbar-btn" id="btn-preview">&#128065; Anteprima</button>
+      <button class="toolbar-btn primary" id="btn-export">&#128230; Esporta ZIP</button>
+    </div>
+  </div>
+
+  <!-- Sidebar sinistra — Sezioni disponibili -->
+  <aside class="sidebar-left" aria-label="Sezioni disponibili">
+    <div class="sidebar-title">Aggiungi sezione</div>
+    <div class="section-list" id="section-list"></div>
+  </aside>
+
+  <!-- Canvas centrale -->
+  <div class="canvas-area">
+    <div class="canvas-frame" id="canvas-frame">
+      <div id="canvas-content">
+        <div class="drop-placeholder">Caricamento progetto...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar destra — Proprietà -->
+  <aside class="sidebar-right" aria-label="Proprietà sezione">
+    <div id="props-panel">
+      <div class="props-empty">
+        <p>Seleziona una sezione nel canvas per modificarne le proprietà</p>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js"></script>
+<script src="config.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/credits.js"></script>
+<script src="js/exporter.js"></script>
+<script src="js/builder.js"></script>
+
+</body>
+</html>

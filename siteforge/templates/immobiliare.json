@@ -1,0 +1,253 @@
+{
+  "meta": {
+    "title": "Immobiliare Mediterranea",
+    "description": "Agenzia immobiliare di prestigio — vendita e affitto immobili residenziali e commerciali",
+    "favicon": "",
+    "fonts": ["Cormorant", "Montserrat"],
+    "colors": {
+      "primary": "#3A5578",
+      "accent": "#CEE08F",
+      "cta": "#E67E22"
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "name": "Home",
+      "slug": "/",
+      "sections": [
+        {
+          "type": "hero_search",
+          "props": {
+            "headline": "Trova la casa dei tuoi sogni",
+            "subheadline": "Oltre 350 immobili selezionati nelle migliori zone della città",
+            "cta_text": "Cerca immobili",
+            "cta_link": "/immobili",
+            "bg_image": "",
+            "search_placeholder": "Cerca per zona, tipologia o prezzo..."
+          }
+        },
+        {
+          "type": "stats_counter",
+          "props": {
+            "items": [
+              { "number": 350, "suffix": "+", "label": "Immobili in portafoglio" },
+              { "number": 25, "suffix": "", "label": "Anni di esperienza" },
+              { "number": 1200, "suffix": "+", "label": "Clienti soddisfatti" },
+              { "number": 98, "suffix": "%", "label": "Tasso di soddisfazione" }
+            ]
+          }
+        },
+        {
+          "type": "features_grid",
+          "props": {
+            "headline": "Perché scegliere noi",
+            "items": [
+              {
+                "icon": "home",
+                "title": "Selezione esclusiva",
+                "text": "Immobili verificati e selezionati con cura per garantire qualità e valore"
+              },
+              {
+                "icon": "handshake",
+                "title": "Consulenza personalizzata",
+                "text": "Un agente dedicato ti guida in ogni fase, dalla ricerca al rogito"
+              },
+              {
+                "icon": "chart-line",
+                "title": "Valutazioni gratuite",
+                "text": "Analisi di mercato e perizie professionali per il tuo immobile"
+              },
+              {
+                "icon": "shield",
+                "title": "Garanzia e trasparenza",
+                "text": "Documentazione completa e verificata su ogni proprietà"
+              }
+            ]
+          }
+        },
+        {
+          "type": "text_image",
+          "props": {
+            "headline": "La tua agenzia di fiducia dal 1998",
+            "text": "Immobiliare Mediterranea opera nel mercato immobiliare da oltre 25 anni, con una profonda conoscenza del territorio e delle dinamiche di mercato. Il nostro team di professionisti certificati è a tua disposizione per trovare la soluzione abitativa perfetta per te e la tua famiglia.",
+            "cta_text": "Scopri chi siamo",
+            "cta_link": "/chi-siamo",
+            "image": "",
+            "reversed": false
+          }
+        },
+        {
+          "type": "testimonials",
+          "props": {
+            "headline": "Cosa dicono i nostri clienti",
+            "items": [
+              {
+                "name": "Marco Rossi",
+                "role": "Acquirente",
+                "text": "Professionalità e competenza eccezionali. Hanno trovato l'appartamento perfetto per noi in tempi record.",
+                "stars": 5,
+                "avatar": ""
+              },
+              {
+                "name": "Laura Bianchi",
+                "role": "Venditrice",
+                "text": "Venduto il mio immobile in meno di 2 mesi al prezzo richiesto. Servizio impeccabile dall'inizio alla fine.",
+                "stars": 5,
+                "avatar": ""
+              },
+              {
+                "name": "Giuseppe Verdi",
+                "role": "Investitore",
+                "text": "Collaboro con loro da anni per i miei investimenti immobiliari. Consigli sempre puntuali e affidabili.",
+                "stars": 5,
+                "avatar": ""
+              }
+            ]
+          }
+        },
+        {
+          "type": "cta_banner",
+          "props": {
+            "headline": "Hai un immobile da vendere?",
+            "subheadline": "Richiedi una valutazione gratuita e senza impegno",
+            "cta_text": "Valutazione gratuita",
+            "cta_link": "/contatti",
+            "bg_color": "#3A5578"
+          }
+        }
+      ]
+    },
+    {
+      "id": "immobili",
+      "name": "Immobili in Vendita",
+      "slug": "/immobili",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "I nostri immobili",
+            "subheadline": "Esplora la nostra selezione di proprietà in vendita e in affitto",
+            "cta_text": "Filtra risultati",
+            "cta_link": "#filtri",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "gallery",
+          "props": {
+            "headline": "Immobili in evidenza",
+            "columns": 3,
+            "items": [
+              { "image": "", "caption": "Villa bifamiliare — Zona Collina — €320.000" },
+              { "image": "", "caption": "Appartamento 3 locali — Centro — €185.000" },
+              { "image": "", "caption": "Attico con terrazza — Lungomare — €450.000" },
+              { "image": "", "caption": "Bilocale ristrutturato — Zona Università — €125.000" },
+              { "image": "", "caption": "Loft open space — Zona Industriale — €95.000" },
+              { "image": "", "caption": "Rustico con giardino — Campagna — €210.000" }
+            ]
+          }
+        },
+        {
+          "type": "cta_banner",
+          "props": {
+            "headline": "Non trovi quello che cerchi?",
+            "subheadline": "Contattaci e ti aiuteremo a trovare l'immobile perfetto",
+            "cta_text": "Contattaci ora",
+            "cta_link": "/contatti",
+            "bg_color": "#E67E22"
+          }
+        }
+      ]
+    },
+    {
+      "id": "chi-siamo",
+      "name": "Chi Siamo",
+      "slug": "/chi-siamo",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Chi siamo",
+            "subheadline": "La passione per l'immobiliare dal 1998",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "text_image",
+          "props": {
+            "headline": "La nostra storia",
+            "text": "Fondata nel 1998, Immobiliare Mediterranea nasce dalla passione di un giovane agente immobiliare per il territorio e le persone. Oggi siamo un team di 12 professionisti certificati, con 3 uffici sul territorio e una reputazione costruita su competenza e integrità.",
+            "image": "",
+            "reversed": false
+          }
+        },
+        {
+          "type": "team_grid",
+          "props": {
+            "headline": "Il nostro team",
+            "items": [
+              { "name": "Antonio Ferrara", "role": "Fondatore & CEO", "photo": "", "linkedin": "" },
+              { "name": "Claudia Marini", "role": "Responsabile Vendite", "photo": "", "linkedin": "" },
+              { "name": "Luca Santoro", "role": "Agente Senior", "photo": "", "linkedin": "" },
+              { "name": "Sara Colombo", "role": "Agente Affitti", "photo": "", "linkedin": "" }
+            ]
+          }
+        },
+        {
+          "type": "stats_counter",
+          "props": {
+            "items": [
+              { "number": 25, "suffix": "+", "label": "Anni di attività" },
+              { "number": 12, "suffix": "", "label": "Professionisti" },
+              { "number": 3, "suffix": "", "label": "Uffici" },
+              { "number": 5000, "suffix": "+", "label": "Transazioni concluse" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "contatti",
+      "name": "Contatti",
+      "slug": "/contatti",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Contattaci",
+            "subheadline": "Siamo qui per aiutarti — rispondiamo entro 24 ore",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "contact_form",
+          "props": {
+            "headline": "Inviaci un messaggio",
+            "fields": ["nome", "email", "telefono", "messaggio"],
+            "submit_text": "Invia richiesta",
+            "formspree_id": ""
+          }
+        },
+        {
+          "type": "map_embed",
+          "props": {
+            "headline": "Dove siamo",
+            "embed_url": "",
+            "address": "Via Roma 42, 80100 Napoli (NA)"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "nav_links": ["Home", "Immobili in Vendita", "Chi Siamo", "Contatti"],
+    "footer_text": "© 2026 Immobiliare Mediterranea — P.IVA 01234567890",
+    "whatsapp": "+39 333 1234567",
+    "google_maps_embed": ""
+  }
+}

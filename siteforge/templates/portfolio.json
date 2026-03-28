@@ -1,0 +1,182 @@
+{
+  "meta": {
+    "title": "Giulia Moretti — Designer & Art Director",
+    "description": "Portfolio creativo — branding, web design e art direction per brand che vogliono distinguersi",
+    "favicon": "",
+    "fonts": ["Space Grotesk", "Inter"],
+    "colors": {
+      "primary": "#2d3436",
+      "accent": "#fdcb6e",
+      "cta": "#6c5ce7"
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "name": "Home",
+      "slug": "/",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Design che racconta storie",
+            "subheadline": "Sono Giulia Moretti — creo identità visive e esperienze digitali per brand ambiziosi",
+            "cta_text": "Vedi i miei lavori",
+            "cta_link": "/portfolio",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "gallery",
+          "props": {
+            "headline": "Progetti selezionati",
+            "columns": 2,
+            "items": [
+              { "image": "", "caption": "Rebranding — Caffè Centrale Milano" },
+              { "image": "", "caption": "Web Design — Atelier Boutique Roma" },
+              { "image": "", "caption": "Brand Identity — StartupTech" },
+              { "image": "", "caption": "Packaging — Olio Ferrante Puglia" },
+              { "image": "", "caption": "UI/UX — App Fitness GoMove" },
+              { "image": "", "caption": "Editorial — Rivista Architettura+" }
+            ]
+          }
+        },
+        {
+          "type": "text_image",
+          "props": {
+            "headline": "Il mio approccio",
+            "text": "Ogni progetto inizia dall'ascolto. Capire il brand, il pubblico e gli obiettivi è il primo passo per creare un design che funziona davvero. Unisco strategia e creatività per costruire identità visive memorabili e coerenti su ogni touchpoint.",
+            "cta_text": "Scopri di più",
+            "cta_link": "/about",
+            "image": "",
+            "reversed": true
+          }
+        },
+        {
+          "type": "stats_counter",
+          "props": {
+            "items": [
+              { "number": 80, "suffix": "+", "label": "Progetti completati" },
+              { "number": 8, "suffix": "", "label": "Anni di esperienza" },
+              { "number": 35, "suffix": "+", "label": "Clienti attivi" },
+              { "number": 12, "suffix": "", "label": "Premi vinti" }
+            ]
+          }
+        },
+        {
+          "type": "contact_form",
+          "props": {
+            "headline": "Parliamo del tuo progetto",
+            "fields": ["nome", "email", "messaggio"],
+            "submit_text": "Invia brief",
+            "formspree_id": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "name": "Portfolio",
+      "slug": "/portfolio",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Portfolio",
+            "subheadline": "Una selezione dei miei lavori più recenti",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "gallery",
+          "props": {
+            "headline": "",
+            "columns": 2,
+            "items": [
+              { "image": "", "caption": "Rebranding — Caffè Centrale Milano" },
+              { "image": "", "caption": "Web Design — Atelier Boutique Roma" },
+              { "image": "", "caption": "Brand Identity — StartupTech" },
+              { "image": "", "caption": "Packaging — Olio Ferrante Puglia" },
+              { "image": "", "caption": "UI/UX — App Fitness GoMove" },
+              { "image": "", "caption": "Editorial — Rivista Architettura+" },
+              { "image": "", "caption": "Social Media — Brand Fashion X" },
+              { "image": "", "caption": "Motion Graphics — Festival della Musica" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "name": "About",
+      "slug": "/about",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Ciao, sono Giulia",
+            "subheadline": "Designer con 8 anni di esperienza nel branding e web design",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "text_image",
+          "props": {
+            "headline": "La mia storia",
+            "text": "Mi sono laureata allo IED di Milano nel 2016 e dopo esperienze in agenzie come Armando Testa e H-FARM, nel 2020 ho avviato il mio studio indipendente. Lavoro con startup, PMI e brand internazionali, aiutandoli a comunicare la loro essenza attraverso il design. Credo che il buon design non sia solo bello — deve risolvere problemi e creare connessioni.",
+            "image": "",
+            "reversed": false
+          }
+        },
+        {
+          "type": "features_grid",
+          "props": {
+            "headline": "Servizi",
+            "items": [
+              { "icon": "palette", "title": "Brand Identity", "text": "Logo, palette colori, tipografia e linee guida complete" },
+              { "icon": "desktop", "title": "Web Design", "text": "Siti web responsive, landing page e e-commerce" },
+              { "icon": "image", "title": "Art Direction", "text": "Direzione creativa per campagne, shooting e contenuti" },
+              { "icon": "box", "title": "Packaging", "text": "Design packaging per prodotti food, beauty e lifestyle" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "contatti",
+      "name": "Contatti",
+      "slug": "/contatti",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Lavoriamo insieme",
+            "subheadline": "Raccontami il tuo progetto — ti rispondo entro 48 ore",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "contact_form",
+          "props": {
+            "headline": "Scrivimi",
+            "fields": ["nome", "email", "messaggio"],
+            "submit_text": "Invia brief",
+            "formspree_id": ""
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "nav_links": ["Home", "Portfolio", "About", "Contatti"],
+    "footer_text": "© 2026 Giulia Moretti — P.IVA 33445566778",
+    "whatsapp": "",
+    "google_maps_embed": ""
+  }
+}

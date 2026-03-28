@@ -1,0 +1,241 @@
+{
+  "meta": {
+    "title": "Studio Legale Avv. Martini & Associati",
+    "description": "Studio legale specializzato in diritto civile, commerciale e del lavoro — consulenze personalizzate",
+    "favicon": "",
+    "fonts": ["Libre Baskerville", "Source Sans Pro"],
+    "colors": {
+      "primary": "#2c3e50",
+      "accent": "#3498db",
+      "cta": "#e67e22"
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "name": "Home",
+      "slug": "/",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Il diritto al tuo fianco",
+            "subheadline": "Consulenza legale professionale e personalizzata per privati e imprese dal 2003",
+            "cta_text": "Richiedi consulenza",
+            "cta_link": "/contatti",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "features_grid",
+          "props": {
+            "headline": "Aree di competenza",
+            "items": [
+              {
+                "icon": "balance-scale",
+                "title": "Diritto Civile",
+                "text": "Controversie contrattuali, risarcimento danni, diritto di famiglia e successioni"
+              },
+              {
+                "icon": "briefcase",
+                "title": "Diritto Commerciale",
+                "text": "Costituzione società, contrattualistica aziendale, fusioni e acquisizioni"
+              },
+              {
+                "icon": "users",
+                "title": "Diritto del Lavoro",
+                "text": "Licenziamenti, vertenze sindacali, contratti di lavoro e consulenza HR"
+              },
+              {
+                "icon": "building",
+                "title": "Diritto Immobiliare",
+                "text": "Compravendite, locazioni, condominio e regolarizzazione urbanistica"
+              }
+            ]
+          }
+        },
+        {
+          "type": "team_grid",
+          "props": {
+            "headline": "I nostri professionisti",
+            "items": [
+              { "name": "Avv. Paolo Martini", "role": "Fondatore — Diritto Civile", "photo": "", "linkedin": "" },
+              { "name": "Avv. Elena Ferretti", "role": "Partner — Diritto Commerciale", "photo": "", "linkedin": "" },
+              { "name": "Avv. Davide Conti", "role": "Associate — Diritto del Lavoro", "photo": "", "linkedin": "" },
+              { "name": "Avv. Sofia Romano", "role": "Associate — Diritto Immobiliare", "photo": "", "linkedin": "" }
+            ]
+          }
+        },
+        {
+          "type": "testimonials",
+          "props": {
+            "headline": "La fiducia dei nostri clienti",
+            "items": [
+              {
+                "name": "Ing. Roberto Sala",
+                "role": "Amministratore delegato — TechCorp Srl",
+                "text": "Lo Studio Martini ci assiste da oltre 10 anni in tutte le questioni societarie. Competenza e disponibilità eccezionali.",
+                "stars": 5,
+                "avatar": ""
+              },
+              {
+                "name": "Maria Grazia Longo",
+                "role": "Privato",
+                "text": "Mi hanno assistito in una causa di successione complessa con grande professionalità e umanità. Risultato eccellente.",
+                "stars": 5,
+                "avatar": ""
+              },
+              {
+                "name": "Dott. Andrea Moretti",
+                "role": "Commercialista",
+                "text": "Collaboro con lo Studio Martini per i miei clienti. Risposte rapide, consulenze precise e tariffe trasparenti.",
+                "stars": 5,
+                "avatar": ""
+              }
+            ]
+          }
+        },
+        {
+          "type": "cta_banner",
+          "props": {
+            "headline": "Prima consulenza gratuita",
+            "subheadline": "Parlaci del tuo caso — ti ricontatteremo entro 24 ore",
+            "cta_text": "Prenota consulenza",
+            "cta_link": "/contatti",
+            "bg_color": "#2c3e50"
+          }
+        }
+      ]
+    },
+    {
+      "id": "servizi",
+      "name": "Servizi",
+      "slug": "/servizi",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "I nostri servizi",
+            "subheadline": "Assistenza legale completa per ogni esigenza",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "features_grid",
+          "props": {
+            "headline": "Cosa possiamo fare per te",
+            "items": [
+              { "icon": "file-contract", "title": "Contrattualistica", "text": "Redazione, revisione e negoziazione di contratti commerciali e privati" },
+              { "icon": "gavel", "title": "Contenzioso", "text": "Rappresentanza in giudizio davanti a tribunali civili e del lavoro" },
+              { "icon": "landmark", "title": "Recupero crediti", "text": "Procedure stragiudiziali e giudiziali per il recupero di crediti insoluti" },
+              { "icon": "shield-alt", "title": "Privacy e GDPR", "text": "Adeguamento normativo, DPO esterno e gestione data breach" },
+              { "icon": "hand-holding-usd", "title": "Diritto Tributario", "text": "Consulenza fiscale, contenziosi tributari e pianificazione fiscale" },
+              { "icon": "globe", "title": "Diritto Internazionale", "text": "Contratti internazionali, commercio estero e arbitrato internazionale" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "team",
+      "name": "Team",
+      "slug": "/team",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Il nostro team",
+            "subheadline": "Professionisti dedicati al tuo caso",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "team_grid",
+          "props": {
+            "headline": "",
+            "items": [
+              { "name": "Avv. Paolo Martini", "role": "Fondatore — Diritto Civile e Successioni", "photo": "", "linkedin": "" },
+              { "name": "Avv. Elena Ferretti", "role": "Partner — Diritto Commerciale e Societario", "photo": "", "linkedin": "" },
+              { "name": "Avv. Davide Conti", "role": "Associate — Diritto del Lavoro e Sindacale", "photo": "", "linkedin": "" },
+              { "name": "Avv. Sofia Romano", "role": "Associate — Diritto Immobiliare e Urbanistico", "photo": "", "linkedin": "" },
+              { "name": "Dott.ssa Chiara Neri", "role": "Paralegal — Ricerca e Documentazione", "photo": "", "linkedin": "" },
+              { "name": "Ing. Fabio Greco", "role": "Consulente Tecnico — Perizie e CTU", "photo": "", "linkedin": "" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "blog",
+      "name": "Blog",
+      "slug": "/blog",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Blog & Aggiornamenti",
+            "subheadline": "Approfondimenti legali e novità normative",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "blog_grid",
+          "props": {
+            "headline": "Ultimi articoli",
+            "items": [
+              { "image": "", "title": "Riforma del processo civile 2026: cosa cambia", "excerpt": "Le principali novità della riforma e l'impatto sulle tempistiche processuali...", "date": "2026-03-15", "link": "#" },
+              { "image": "", "title": "GDPR e PMI: gli errori più comuni", "excerpt": "Una guida pratica per evitare le sanzioni più frequenti in materia di privacy...", "date": "2026-03-01", "link": "#" },
+              { "image": "", "title": "Successioni: come tutelarsi con il testamento", "excerpt": "Tutto quello che c'è da sapere sulla pianificazione successoria...", "date": "2026-02-18", "link": "#" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "contatti",
+      "name": "Contatti",
+      "slug": "/contatti",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Contattaci",
+            "subheadline": "Studio aperto dal lunedì al venerdì — 9:00-13:00 / 14:30-18:30",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "contact_form",
+          "props": {
+            "headline": "Richiedi una consulenza",
+            "fields": ["nome", "email", "telefono", "messaggio"],
+            "submit_text": "Invia richiesta",
+            "formspree_id": ""
+          }
+        },
+        {
+          "type": "map_embed",
+          "props": {
+            "headline": "Il nostro studio",
+            "embed_url": "",
+            "address": "Corso Vittorio Emanuele II 180, 10138 Torino (TO)"
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "nav_links": ["Home", "Servizi", "Team", "Blog", "Contatti"],
+    "footer_text": "© 2026 Studio Legale Avv. Martini & Associati — P.IVA 11223344556",
+    "whatsapp": "+39 011 9876543",
+    "google_maps_embed": ""
+  }
+}

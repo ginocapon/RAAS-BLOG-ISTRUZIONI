@@ -1,0 +1,245 @@
+{
+  "meta": {
+    "title": "Bottega Digitale",
+    "description": "Shop online di prodotti artigianali italiani — design, moda e accessori made in Italy",
+    "favicon": "",
+    "fonts": ["Poppins", "DM Sans"],
+    "colors": {
+      "primary": "#6c5ce7",
+      "accent": "#00cec9",
+      "cta": "#fd79a8"
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "name": "Home",
+      "slug": "/",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Artigianato italiano, a casa tua",
+            "subheadline": "Scopri prodotti unici fatti a mano dai migliori artigiani d'Italia",
+            "cta_text": "Esplora il catalogo",
+            "cta_link": "/prodotti",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "features_grid",
+          "props": {
+            "headline": "Perché Bottega Digitale",
+            "items": [
+              {
+                "icon": "gem",
+                "title": "100% Made in Italy",
+                "text": "Ogni prodotto è realizzato a mano da artigiani italiani selezionati"
+              },
+              {
+                "icon": "truck",
+                "title": "Spedizione gratuita",
+                "text": "Spedizione gratuita in Italia per ordini superiori a 49€"
+              },
+              {
+                "icon": "undo",
+                "title": "Reso facile",
+                "text": "30 giorni per restituire il prodotto, senza domande"
+              },
+              {
+                "icon": "lock",
+                "title": "Pagamenti sicuri",
+                "text": "Carta di credito, PayPal e bonifico — transazioni crittografate"
+              }
+            ]
+          }
+        },
+        {
+          "type": "gallery",
+          "props": {
+            "headline": "Prodotti in evidenza",
+            "columns": 3,
+            "items": [
+              { "image": "", "caption": "Borsa in pelle artigianale — €89" },
+              { "image": "", "caption": "Portafoglio minimalista — €45" },
+              { "image": "", "caption": "Cintura in cuoio toscano — €55" },
+              { "image": "", "caption": "Orecchini in ceramica — €32" },
+              { "image": "", "caption": "Agenda in pelle — €65" },
+              { "image": "", "caption": "Occhiali da sole in legno — €78" }
+            ]
+          }
+        },
+        {
+          "type": "pricing_cards",
+          "props": {
+            "headline": "Gift Box — Idee regalo",
+            "items": [
+              {
+                "name": "Box Essenziale",
+                "price": "49€",
+                "period": "",
+                "features": ["1 prodotto a scelta", "Confezione regalo", "Biglietto personalizzato"],
+                "cta_text": "Acquista",
+                "cta_link": "/prodotti",
+                "featured": false
+              },
+              {
+                "name": "Box Premium",
+                "price": "99€",
+                "period": "",
+                "features": ["3 prodotti a scelta", "Confezione regalo luxury", "Biglietto personalizzato", "Spedizione express gratuita"],
+                "cta_text": "Acquista",
+                "cta_link": "/prodotti",
+                "featured": true
+              },
+              {
+                "name": "Box Corporate",
+                "price": "Su misura",
+                "period": "",
+                "features": ["Da 10 box in su", "Personalizzazione logo", "Prodotti esclusivi", "Account manager dedicato"],
+                "cta_text": "Contattaci",
+                "cta_link": "/contatti",
+                "featured": false
+              }
+            ]
+          }
+        },
+        {
+          "type": "testimonials",
+          "props": {
+            "headline": "Recensioni clienti",
+            "items": [
+              {
+                "name": "Valentina R.",
+                "role": "Cliente verificata",
+                "text": "La borsa in pelle è meravigliosa! Qualità altissima e spedizione veloce. Acquisterò sicuramente di nuovo.",
+                "stars": 5,
+                "avatar": ""
+              },
+              {
+                "name": "Matteo G.",
+                "role": "Cliente verificato",
+                "text": "Ho regalato la Box Premium per Natale — un successo! Prodotti bellissimi e confezione curatissima.",
+                "stars": 5,
+                "avatar": ""
+              },
+              {
+                "name": "Chiara L.",
+                "role": "Cliente verificata",
+                "text": "Finalmente un e-commerce con prodotti davvero artigianali. Si vede la cura in ogni dettaglio.",
+                "stars": 4,
+                "avatar": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "prodotti",
+      "name": "Prodotti",
+      "slug": "/prodotti",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Il nostro catalogo",
+            "subheadline": "Prodotti artigianali selezionati con cura",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "gallery",
+          "props": {
+            "headline": "Tutti i prodotti",
+            "columns": 3,
+            "items": [
+              { "image": "", "caption": "Borsa in pelle artigianale — €89" },
+              { "image": "", "caption": "Portafoglio minimalista — €45" },
+              { "image": "", "caption": "Cintura in cuoio toscano — €55" },
+              { "image": "", "caption": "Orecchini in ceramica — €32" },
+              { "image": "", "caption": "Agenda in pelle — €65" },
+              { "image": "", "caption": "Occhiali da sole in legno — €78" },
+              { "image": "", "caption": "Sciarpa in seta — €42" },
+              { "image": "", "caption": "Bracciale in argento — €58" },
+              { "image": "", "caption": "Portachiavi in cuoio — €18" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "chi-siamo",
+      "name": "Chi Siamo",
+      "slug": "/chi-siamo",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "La nostra missione",
+            "subheadline": "Valorizzare l'artigianato italiano attraverso il digitale",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "text_image",
+          "props": {
+            "headline": "Chi siamo",
+            "text": "Bottega Digitale nasce nel 2022 con l'obiettivo di portare online i migliori artigiani italiani. Selezioniamo personalmente ogni produttore, visitando i laboratori e verificando la qualità dei materiali e delle lavorazioni. Ogni prodotto nel nostro catalogo racconta una storia di passione e maestria.",
+            "cta_text": "",
+            "cta_link": "",
+            "image": "",
+            "reversed": false
+          }
+        },
+        {
+          "type": "stats_counter",
+          "props": {
+            "items": [
+              { "number": 45, "suffix": "+", "label": "Artigiani partner" },
+              { "number": 300, "suffix": "+", "label": "Prodotti unici" },
+              { "number": 5000, "suffix": "+", "label": "Clienti soddisfatti" },
+              { "number": 4.8, "suffix": "/5", "label": "Valutazione media" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "contatti",
+      "name": "Contatti",
+      "slug": "/contatti",
+      "sections": [
+        {
+          "type": "hero",
+          "props": {
+            "headline": "Contattaci",
+            "subheadline": "Hai domande? Siamo qui per te — rispondiamo entro 4 ore",
+            "cta_text": "",
+            "cta_link": "",
+            "bg_image": ""
+          }
+        },
+        {
+          "type": "contact_form",
+          "props": {
+            "headline": "Scrivici",
+            "fields": ["nome", "email", "telefono", "messaggio"],
+            "submit_text": "Invia messaggio",
+            "formspree_id": ""
+          }
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "nav_links": ["Home", "Prodotti", "Chi Siamo", "Contatti"],
+    "footer_text": "© 2026 Bottega Digitale Srl — P.IVA 55667788990",
+    "whatsapp": "+39 02 5551234",
+    "google_maps_embed": ""
+  }
+}
