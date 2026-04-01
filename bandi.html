@@ -418,42 +418,19 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 .cookie-reject:hover{border-color:rgba(255,255,255,.3);color:var(--white)}
 @media(max-width:768px){.cookie-banner{flex-direction:column;text-align:center;padding:16px}.cookie-banner p{font-size:.82rem}}
 
-/* SCARICA APP BUTTON */
-.scarica-app-box{background:rgba(220,38,38,0.10);border:2px solid #dc2626;border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.2rem;text-align:center;position:relative;overflow:hidden}
-.scarica-app-box .app-title{font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:.3rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
-.scarica-app-box .app-desc{font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:1rem}
-.scarica-app-btn{display:inline-flex;align-items:center;gap:.8rem;background:#dc2626;color:var(--white);border:none;padding:.85rem 3.5rem;border-radius:50px;font-size:1.4rem;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 25px rgba(220,38,38,.5);animation:pulseRed 2s ease-in-out infinite;position:relative;letter-spacing:.3px}
-.scarica-app-btn:hover{background:#b91c1c;transform:translateY(-3px) scale(1.03);box-shadow:0 8px 35px rgba(220,38,38,.6)}
-.scarica-app-btn:active{transform:scale(.97)}
-.scarica-app-btn i{font-size:1.5rem}
-/* Arrow indicators pointing to button */
-.scarica-app-wrapper{display:flex;align-items:center;justify-content:center;gap:0}
-.arrows-group{display:flex;align-items:center;width:3cm;flex-shrink:0;overflow:hidden}
-.arrows-group.left{justify-content:flex-end}
-.arrows-group.right{justify-content:flex-start}
-.arrows-group .chevron{color:#dc2626;font-weight:900;line-height:1;opacity:0;font-size:1.6rem}
-.arrows-group.left .chevron{animation:slideLeft 1.5s ease-in-out infinite}
-.arrows-group.right .chevron{animation:slideRight 1.5s ease-in-out infinite}
-.arrows-group .chevron:nth-child(1){animation-delay:0s}
-.arrows-group .chevron:nth-child(2){animation-delay:.2s}
-.arrows-group .chevron:nth-child(3){animation-delay:.4s}
-@keyframes slideLeft{0%{opacity:0;transform:translateX(-20px)}35%{opacity:1}75%{opacity:1;transform:translateX(4px)}100%{opacity:0;transform:translateX(4px)}}
-@keyframes slideRight{0%{opacity:0;transform:translateX(20px)}35%{opacity:1}75%{opacity:1;transform:translateX(-4px)}100%{opacity:0;transform:translateX(-4px)}}
-@media(min-width:769px){.scarica-app-btn{padding:1rem 5rem;font-size:1.6rem}.scarica-app-btn i{font-size:1.7rem}.arrows-group{width:4cm}.arrows-group .chevron{font-size:2rem}}
-@media(max-width:768px){.arrows-group{width:1.5cm}.arrows-group .chevron{font-size:1.1rem}.scarica-app-btn{padding:.75rem 2.5rem;font-size:1.2rem}}
-@keyframes pulseRed{0%,100%{box-shadow:0 4px 25px rgba(220,38,38,.4)}50%{box-shadow:0 4px 40px rgba(220,38,38,.7),0 0 60px rgba(220,38,38,.3)}}
-.app-installed-msg{display:none;color:var(--success);font-weight:600;font-size:.88rem;padding:.5rem}
-.app-installed-msg i{margin-right:.3rem}
-/* iOS install modal */
-.ios-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center;padding:1.5rem}
-.ios-modal-overlay.show{display:flex}
-.ios-modal{background:var(--dark-mid);border-radius:var(--radius-lg);padding:2rem;max-width:360px;width:100%;color:var(--white);text-align:center;position:relative}
-.ios-modal h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
-.ios-modal p{font-size:.85rem;opacity:.7;margin-bottom:1.2rem}
-.ios-steps{text-align:left;display:flex;flex-direction:column;gap:.8rem}
-.ios-step{display:flex;align-items:center;gap:.75rem;font-size:.9rem}
-.ios-step .step-n{background:var(--primary);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;flex-shrink:0}
-.ios-modal .close-ios{background:rgba(255,255,255,.1);border:none;color:var(--white);padding:.6rem 1.5rem;border-radius:50px;cursor:pointer;font-family:inherit;font-size:.85rem;margin-top:1.2rem}
+/* Collegamento schermata home (solo HTML / browser, niente PWA che reindirizza altrove) */
+.bandi-shortcut-tip{background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.35);border-radius:var(--radius-lg);padding:1.25rem 1.35rem;margin-top:1.2rem;text-align:left}
+.bandi-shortcut-tip .shortcut-title{font-size:1.05rem;font-weight:800;color:var(--white);margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem}
+.bandi-shortcut-tip .shortcut-desc{font-size:.86rem;color:rgba(255,255,255,.75);line-height:1.55;margin-bottom:.75rem}
+.bandi-shortcut-tip .shortcut-url{font-size:.86rem;color:rgba(255,255,255,.9);margin-bottom:.85rem;word-break:break-all}
+.bandi-shortcut-tip .shortcut-url a{color:var(--primary);font-weight:600;text-decoration:underline}
+.bandi-shortcut-tip .shortcut-details{border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-md);margin-top:.5rem;background:rgba(15,23,42,.35)}
+.bandi-shortcut-tip .shortcut-details summary{cursor:pointer;font-weight:700;font-size:.88rem;color:var(--white);padding:.65rem .9rem;list-style:none}
+.bandi-shortcut-tip .shortcut-details summary::-webkit-details-marker{display:none}
+.bandi-shortcut-tip .shortcut-details[open] summary{border-bottom:1px solid rgba(255,255,255,.1)}
+.bandi-shortcut-tip .shortcut-details ol{margin:0;padding:.75rem 1rem .9rem 1.85rem;font-size:.84rem;color:rgba(255,255,255,.78);line-height:1.55}
+.bandi-shortcut-tip .shortcut-details li{margin-bottom:.35rem}
+.bandi-shortcut-tip summary:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:var(--radius-sm)}
 </style>
 
 <!-- Google tag (gtag.js) -->
@@ -514,36 +491,29 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
                 <i class="fas fa-unlock"></i> Attiva Abbonamento
             </button>
         </div>
-        <!-- SCARICA APP -->
-        <div class="scarica-app-box" id="scaricaAppBox">
-            <div class="app-title"><i class="fas fa-mobile-screen-button"></i> Disponibile come App</div>
-            <div class="app-desc">Installa sul telefono, accedi ai bandi anche offline</div>
-            <div class="scarica-app-wrapper">
-                <div class="arrows-group left"><span class="chevron">&#x276F;</span><span class="chevron">&#x276F;</span><span class="chevron">&#x276F;</span></div>
-                <button class="scarica-app-btn" id="scaricaAppBtn" onclick="installApp()">
-                    <i class="fas fa-download"></i>
-                    Scarica App
-                </button>
-                <div class="arrows-group right"><span class="chevron">&#x276E;</span><span class="chevron">&#x276E;</span><span class="chevron">&#x276E;</span></div>
-            </div>
-            <div class="app-installed-msg" id="appInstalled"><i class="fas fa-check-circle"></i> App installata!</div>
+        <div class="bandi-shortcut-tip" aria-labelledby="shortcut-heading">
+            <div class="shortcut-title" id="shortcut-heading"><i class="fas fa-bookmark" aria-hidden="true"></i> Collegamento sulla schermata home</div>
+            <p class="shortcut-desc">Aggiungi questa pagina ai preferiti del telefono: è il modo sicuro per aprire sempre <strong>questo stesso indirizzo</strong> dal browser, senza installazioni che possono aprire altre schermate.</p>
+            <p class="shortcut-url"><strong>Pagina ufficiale:</strong> <a href="https://www.raasautomazioni.it/bandi">https://www.raasautomazioni.it/bandi</a></p>
+            <details class="shortcut-details">
+                <summary>iPhone / iPad (Safari)</summary>
+                <ol>
+                    <li>Apri questa pagina in <strong>Safari</strong>.</li>
+                    <li>Tocca il pulsante <strong>Condividi</strong> (quadrato con freccia in alto).</li>
+                    <li>Scorri e scegli <strong>Aggiungi a Home</strong>, poi <strong>Aggiungi</strong>.</li>
+                </ol>
+            </details>
+            <details class="shortcut-details">
+                <summary>Android (Chrome o browser consigliato)</summary>
+                <ol>
+                    <li>Apri questa pagina nel browser.</li>
+                    <li>Tocca il menu <strong>⋮</strong> in alto a destra.</li>
+                    <li>Scegli <strong>Aggiungi a schermata Home</strong> o <strong>Installa app</strong> (il nome dipende dal dispositivo): verifica che l&apos;indirizzo sia sempre <strong>raasautomazioni.it/bandi</strong>.</li>
+                </ol>
+            </details>
         </div>
     </div>
 </section>
-
-<!-- iOS Install Modal -->
-<div class="ios-modal-overlay" id="iosModal">
-    <div class="ios-modal">
-        <h3><i class="fas fa-mobile-screen-button"></i> Installa RaaS Bandi</h3>
-        <p>Su iPhone/iPad segui questi 3 passi:</p>
-        <div class="ios-steps">
-            <div class="ios-step"><span class="step-n">1</span> Tocca <i class="fas fa-share-from-square" style="color:var(--primary)"></i> <strong>Condividi</strong> (in basso)</div>
-            <div class="ios-step"><span class="step-n">2</span> Scorri e tocca <strong>"Aggiungi a Home"</strong></div>
-            <div class="ios-step"><span class="step-n">3</span> Tocca <strong>"Aggiungi"</strong> in alto a destra</div>
-        </div>
-        <button class="close-ios" onclick="document.getElementById('iosModal').classList.remove('show')">Ho capito</button>
-    </div>
-</div>
 
 <!-- PREVIEW: 3 latest bandi -->
 <section class="preview-section" id="previewSection">
@@ -1479,76 +1449,5 @@ if(!document.cookie.includes('cookie_consent=')){
   </div>
 </div>
 <script src="https://www.paypal.com/sdk/js?client-id=AeBeG13urvj5m4BX-e4gt5xOnCFlrbxStYUmEIZ3d0xrAsULyXSB12-wT3-eMn3vQEtDzHUv_oe1lD-y&currency=EUR"></script>
-
-<!-- SCARICA APP: Service Worker + Install -->
-<script>
-// Registra Service Worker
-if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('/sw.js').catch(function(){});
-}
-
-// Manifest link
-(function(){
-    var link=document.createElement('link');
-    link.rel='manifest';link.href='/manifest.json';
-    document.head.appendChild(link);
-    var meta1=document.createElement('meta');meta1.name='apple-mobile-web-app-capable';meta1.content='yes';document.head.appendChild(meta1);
-    var meta2=document.createElement('meta');meta2.name='apple-mobile-web-app-title';meta2.content='RaaS Bandi';document.head.appendChild(meta2);
-    var icon=document.createElement('link');icon.rel='apple-touch-icon';icon.href='/icons/icon-192.png';document.head.appendChild(icon);
-})();
-
-// Install logic
-var _deferredInstall=null;
-var _isIos=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-var _isStandalone=window.navigator.standalone===true||window.matchMedia('(display-mode: standalone)').matches;
-
-// Se gia' installata, nascondi il box
-if(_isStandalone){
-    var box=document.getElementById('scaricaAppBox');
-    if(box){box.querySelector('.scarica-app-btn').style.display='none';
-    box.querySelector('.app-installed-msg').style.display='block'}
-}
-
-// Intercetta prompt nativo (Android/Chrome/Edge)
-window.addEventListener('beforeinstallprompt',function(e){
-    e.preventDefault();
-    _deferredInstall=e;
-});
-
-function installApp(){
-    if(_isStandalone)return;
-
-    if(_isIos){
-        // iOS: mostra modale con istruzioni
-        document.getElementById('iosModal').classList.add('show');
-        return;
-    }
-
-    if(_deferredInstall){
-        // Android/Chrome: installa direttamente
-        _deferredInstall.prompt();
-        _deferredInstall.userChoice.then(function(choice){
-            if(choice.outcome==='accepted'){
-                var btn=document.getElementById('scaricaAppBtn');
-                var msg=document.getElementById('appInstalled');
-                btn.style.display='none';msg.style.display='block';
-                if(typeof gtag==='function')gtag('event','pwa_install',{event_category:'engagement'});
-            }
-            _deferredInstall=null;
-        });
-    }else{
-        // Fallback: apri app.html che ha il suo prompt
-        window.location.href='/app.html';
-    }
-}
-
-// Evento: app installata
-window.addEventListener('appinstalled',function(){
-    var btn=document.getElementById('scaricaAppBtn');
-    var msg=document.getElementById('appInstalled');
-    if(btn)btn.style.display='none';
-    if(msg)msg.style.display='block';
-});
-</script>
 </body>
 </html>
