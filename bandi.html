@@ -418,18 +418,84 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 .cookie-reject:hover{border-color:rgba(255,255,255,.3);color:var(--white)}
 @media(max-width:768px){.cookie-banner{flex-direction:column;text-align:center;padding:16px}.cookie-banner p{font-size:.82rem}}
 
-/* Collegamento schermata home (solo HTML / browser, niente PWA che reindirizza altrove) */
-.bandi-shortcut-tip{background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.35);border-radius:var(--radius-lg);padding:1.25rem 1.35rem;margin-top:1.2rem;text-align:left}
-.bandi-shortcut-tip .shortcut-title{font-size:1.05rem;font-weight:800;color:var(--white);margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem}
-.bandi-shortcut-tip .shortcut-desc{font-size:.86rem;color:rgba(255,255,255,.75);line-height:1.55;margin-bottom:.75rem}
-.bandi-shortcut-tip .shortcut-url{font-size:.86rem;color:rgba(255,255,255,.9);margin-bottom:.85rem;word-break:break-all}
-.bandi-shortcut-tip .shortcut-url a{color:var(--primary);font-weight:600;text-decoration:underline}
-.bandi-shortcut-tip .shortcut-details{border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-md);margin-top:.5rem;background:rgba(15,23,42,.35)}
-.bandi-shortcut-tip .shortcut-details summary{cursor:pointer;font-weight:700;font-size:.88rem;color:var(--white);padding:.65rem .9rem;list-style:none}
+/* Collegamento schermata home + mockup telefono (SVG, zero immagini esterne) */
+.bandi-shortcut-tip{
+  margin-top:1.35rem;
+  padding:0;
+  overflow:hidden;
+  border-radius:var(--radius-xl);
+  border:1px solid rgba(14,165,233,0.4);
+  background:linear-gradient(145deg,rgba(8,47,73,0.55) 0%,rgba(15,23,42,0.92) 45%,rgba(12,74,110,0.35) 100%);
+  box-shadow:0 12px 40px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.bandi-shortcut-tip .shortcut-layout{display:flex;flex-direction:column;align-items:center;gap:1.35rem;padding:1.35rem 1.25rem 1.5rem}
+@media(min-width:769px){
+  .bandi-shortcut-tip .shortcut-layout{flex-direction:row;align-items:stretch;justify-content:space-between;gap:2rem;padding:1.5rem 1.75rem 1.65rem 1.5rem;text-align:left}
+}
+.bandi-shortcut-tip .shortcut-phone-wrap{
+  flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  position:relative;
+}
+@media(min-width:769px){
+  .bandi-shortcut-tip .shortcut-phone-wrap{padding:.25rem 0}
+}
+.bandi-shortcut-tip .shortcut-phone-caption{
+  font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:rgba(245,158,11,.95);text-align:center;max-width:11rem;line-height:1.35;
+}
+.bandi-shortcut-tip .shortcut-phone-float{
+  animation:shortcutPhoneFloat 5s ease-in-out infinite;
+}
+@media(prefers-reduced-motion:reduce){
+  .bandi-shortcut-tip .shortcut-phone-float{animation:none}
+}
+@keyframes shortcutPhoneFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+.bandi-shortcut-tip .shortcut-phone-svg{
+  display:block;width:min(200px,46vw);height:auto;max-width:220px;
+  filter:drop-shadow(0 16px 28px rgba(0,0,0,.45));
+}
+.bandi-shortcut-tip .shortcut-copy{flex:1;min-width:0;width:100%;max-width:26rem}
+@media(min-width:769px){
+  .bandi-shortcut-tip .shortcut-copy{max-width:none;padding-top:.15rem}
+}
+.bandi-shortcut-tip .shortcut-badge{
+  display:inline-flex;align-items:center;gap:.35rem;font-size:.68rem;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;color:#0f172a;
+  background:linear-gradient(135deg,#f59e0b,#fbbf24);padding:.35rem .65rem;border-radius:50px;
+  margin-bottom:.55rem;box-shadow:0 2px 12px rgba(245,158,11,.35)
+}
+.bandi-shortcut-tip .shortcut-title{font-size:clamp(1.05rem,3.5vw,1.2rem);font-weight:800;color:var(--white);margin-bottom:.45rem;line-height:1.25;display:flex;flex-wrap:wrap;align-items:center;gap:.45rem}
+.bandi-shortcut-tip .shortcut-title .ti-ico{color:var(--primary);font-size:1.15em}
+.bandi-shortcut-tip .shortcut-desc{font-size:.88rem;color:rgba(255,255,255,.82);line-height:1.6;margin-bottom:.85rem}
+.bandi-shortcut-tip .shortcut-url{
+  font-size:.84rem;color:rgba(255,255,255,.92);margin-bottom:1rem;padding:.65rem .85rem;border-radius:var(--radius-md);
+  background:rgba(0,0,0,.22);border:1px dashed rgba(14,165,233,.45);word-break:break-all;line-height:1.45
+}
+.bandi-shortcut-tip .shortcut-url strong{color:#7dd3fc;font-weight:700}
+.bandi-shortcut-tip .shortcut-url a{color:#38bdf8;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.bandi-shortcut-tip .shortcut-hint{
+  display:flex;align-items:flex-start;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,.65);
+  margin-bottom:.85rem;line-height:1.45
+}
+.bandi-shortcut-tip .shortcut-hint i{color:var(--accent);margin-top:.12rem;flex-shrink:0}
+.bandi-shortcut-tip .shortcut-details{border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-md);margin-top:.45rem;background:rgba(0,0,0,.2)}
+.bandi-shortcut-tip .shortcut-details summary{
+  cursor:pointer;font-weight:700;font-size:.9rem;color:var(--white);
+  padding:.85rem 2.5rem .85rem 1rem;list-style:none;position:relative;min-height:48px;display:flex;align-items:center
+}
 .bandi-shortcut-tip .shortcut-details summary::-webkit-details-marker{display:none}
+.bandi-shortcut-tip .shortcut-details summary::after{
+  content:'\002B';position:absolute;right:1rem;top:50%;transform:translateY(-50%);
+  width:1.65rem;height:1.65rem;border-radius:50%;background:rgba(14,165,233,.2);color:var(--primary);
+  font-weight:800;font-size:1.1rem;line-height:1.65rem;text-align:center;transition:transform .2s ease
+}
+.bandi-shortcut-tip .shortcut-details[open] summary::after{content:'\2212';transform:translateY(-50%) rotate(0deg)}
 .bandi-shortcut-tip .shortcut-details[open] summary{border-bottom:1px solid rgba(255,255,255,.1)}
-.bandi-shortcut-tip .shortcut-details ol{margin:0;padding:.75rem 1rem .9rem 1.85rem;font-size:.84rem;color:rgba(255,255,255,.78);line-height:1.55}
-.bandi-shortcut-tip .shortcut-details li{margin-bottom:.35rem}
+.bandi-shortcut-tip .shortcut-details ol{margin:0;padding:.85rem 1rem 1rem 1.75rem;font-size:.86rem;color:rgba(255,255,255,.82);line-height:1.6}
+.bandi-shortcut-tip .shortcut-details li{margin-bottom:.45rem;padding-left:.15rem}
 .bandi-shortcut-tip summary:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:var(--radius-sm)}
 </style>
 
@@ -492,25 +558,88 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
             </button>
         </div>
         <div class="bandi-shortcut-tip" aria-labelledby="shortcut-heading">
-            <div class="shortcut-title" id="shortcut-heading"><i class="fas fa-bookmark" aria-hidden="true"></i> Collegamento sulla schermata home</div>
-            <p class="shortcut-desc">Aggiungi questa pagina ai preferiti del telefono: è il modo sicuro per aprire sempre <strong>questo stesso indirizzo</strong> dal browser, senza installazioni che possono aprire altre schermate.</p>
-            <p class="shortcut-url"><strong>Pagina ufficiale:</strong> <a href="https://www.raasautomazioni.it/bandi">https://www.raasautomazioni.it/bandi</a></p>
-            <details class="shortcut-details">
-                <summary>iPhone / iPad (Safari)</summary>
-                <ol>
-                    <li>Apri questa pagina in <strong>Safari</strong>.</li>
-                    <li>Tocca il pulsante <strong>Condividi</strong> (quadrato con freccia in alto).</li>
-                    <li>Scorri e scegli <strong>Aggiungi a Home</strong>, poi <strong>Aggiungi</strong>.</li>
-                </ol>
-            </details>
-            <details class="shortcut-details">
-                <summary>Android (Chrome o browser consigliato)</summary>
-                <ol>
-                    <li>Apri questa pagina nel browser.</li>
-                    <li>Tocca il menu <strong>⋮</strong> in alto a destra.</li>
-                    <li>Scegli <strong>Aggiungi a schermata Home</strong> o <strong>Installa app</strong> (il nome dipende dal dispositivo): verifica che l&apos;indirizzo sia sempre <strong>raasautomazioni.it/bandi</strong>.</li>
-                </ol>
-            </details>
+            <div class="shortcut-layout">
+                <div class="shortcut-phone-wrap">
+                    <div class="shortcut-phone-float">
+                        <!-- Mockup telefono: illustrazione vettoriale (width/height fissi = no CLS) -->
+                        <svg class="shortcut-phone-svg" width="208" height="420" viewBox="0 0 208 420" role="img" aria-label="Illustrazione smartphone: schermata con indirizzo bandi e icona sulla home" focusable="false">
+                            <defs>
+                                <linearGradient id="scrn" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#0c4a6e"/><stop offset="100%" style="stop-color:#082f49"/>
+                                </linearGradient>
+                                <linearGradient id="bezel" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#334155"/><stop offset="100%" style="stop-color:#1e293b"/>
+                                </linearGradient>
+                                <linearGradient id="appIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#0ea5e9"/><stop offset="100%" style="stop-color:#0369a1"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Cornice telefono -->
+                            <rect x="8" y="6" width="192" height="408" rx="28" fill="url(#bezel)" stroke="#475569" stroke-width="2"/>
+                            <rect x="18" y="18" width="172" height="384" rx="20" fill="#020617"/>
+                            <!-- Schermo -->
+                            <rect x="22" y="22" width="164" height="376" rx="16" fill="url(#scrn)"/>
+                            <!-- Dynamic island -->
+                            <rect x="72" y="30" width="64" height="22" rx="11" fill="#020617"/>
+                            <!-- Barra stato -->
+                            <text x="34" y="52" fill="rgba(255,255,255,.9)" font-family="system-ui,sans-serif" font-size="11" font-weight="600">9:41</text>
+                            <rect x="150" y="40" width="22" height="10" rx="2" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1"/>
+                            <rect x="152" y="42" width="14" height="6" rx="1" fill="rgba(255,255,255,.75)"/>
+                            <!-- Barra URL Safari-style -->
+                            <rect x="30" y="64" width="148" height="28" rx="8" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.2)"/>
+                            <circle cx="42" cy="78" r="5" fill="#0ea5e9"/>
+                            <text x="52" y="81" fill="rgba(255,255,255,.88)" font-family="system-ui,sans-serif" font-size="8">raasautomazioni.it/bandi</text>
+                            <!-- Icona condividi (freccia su) -->
+                            <g transform="translate(158 70)">
+                                <rect x="0" y="0" width="22" height="22" rx="6" fill="rgba(245,158,11,.35)" stroke="#f59e0b" stroke-width="1"/>
+                                <path d="M11 5v8M8 8l3-4 3 4" fill="none" stroke="#fbbf24" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <!-- Contenuto pagina stilizzato -->
+                            <text x="36" y="118" fill="white" font-family="system-ui,sans-serif" font-size="13" font-weight="800">&#x1F1EE;&#x1F1F9; Bandi</text>
+                            <rect x="30" y="128" width="100" height="5" rx="2" fill="rgba(255,255,255,.2)"/>
+                            <rect x="30" y="138" width="140" height="4" rx="2" fill="rgba(255,255,255,.12)"/>
+                            <rect x="30" y="146" width="120" height="4" rx="2" fill="rgba(255,255,255,.1)"/>
+                            <rect x="30" y="168" width="148" height="36" rx="8" fill="rgba(14,165,233,.15)" stroke="rgba(14,165,233,.4)"/>
+                            <text x="44" y="190" fill="#7dd3fc" font-family="system-ui,sans-serif" font-size="9" font-weight="700">Ultimi bandi caricati</text>
+                            <!-- Freccia verso icona home -->
+                            <path d="M104 210 Q104 248 104 268" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3" opacity=".85"/>
+                            <polygon points="100,268 108,268 104,278" fill="#f59e0b"/>
+                            <!-- Riga “home screen” con icona app -->
+                            <text x="36" y="298" fill="rgba(255,255,255,.55)" font-family="system-ui,sans-serif" font-size="7" font-weight="600">Sulla home del telefono</text>
+                            <g transform="translate(36 308)">
+                                <rect x="0" y="0" width="52" height="52" rx="12" fill="url(#appIconGrad)" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+                                <text x="26" y="34" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="20" font-weight="900">R</text>
+                            </g>
+                            <text x="36" y="376" fill="white" font-family="system-ui,sans-serif" font-size="9" font-weight="700">RaaS Bandi</text>
+                            <text x="36" y="388" fill="rgba(245,158,11,.95)" font-family="system-ui,sans-serif" font-size="7" font-weight="700">tocco = stesso sito</text>
+                        </svg>
+                    </div>
+                    <p class="shortcut-phone-caption">Così compare l&apos;icona quando salvi la pagina</p>
+                </div>
+                <div class="shortcut-copy">
+                    <span class="shortcut-badge"><i class="fas fa-mobile-screen-button" aria-hidden="true"></i> Sul cellulare</span>
+                    <h2 class="shortcut-title" id="shortcut-heading"><span class="ti-ico" aria-hidden="true"><i class="fas fa-house-chimney"></i></span> Metti i Bandi sulla schermata home</h2>
+                    <p class="shortcut-desc">Un collegamento diretto al nostro aggregatore: niente store, niente redirect strani. Apri sempre <strong>la pagina che stai già usando</strong>, con un tap dall&apos;icona come fosse un&apos;app.</p>
+                    <p class="shortcut-hint"><i class="fas fa-hand-pointer" aria-hidden="true"></i><span>Suggerimento: dopo aver aggiunto l&apos;icona, prova a chiudere il browser e ad aprire da lì: deve mostrare esattamente <strong>bandi</strong> su <strong>raasautomazioni.it</strong>.</span></p>
+                    <p class="shortcut-url"><strong>Link da salvare</strong><br><a href="https://www.raasautomazioni.it/bandi">https://www.raasautomazioni.it/bandi</a></p>
+                    <details class="shortcut-details">
+                        <summary>iPhone o iPad &mdash; Safari</summary>
+                        <ol>
+                            <li>Resta su questa pagina con <strong>Safari</strong> (non la barra di ricerca Google in incognito).</li>
+                            <li>Tocca <strong>Condividi</strong> <span aria-hidden="true">&#x2197;</span> (quadrato con freccia).</li>
+                            <li>Tocca <strong>Aggiungi a Home</strong>, poi <strong>Aggiungi</strong> in alto a destra.</li>
+                        </ol>
+                    </details>
+                    <details class="shortcut-details">
+                        <summary>Android &mdash; Chrome o browser predefinito</summary>
+                        <ol>
+                            <li>Apri questo indirizzo nel browser (Chrome consigliato).</li>
+                            <li>Menu <strong>&#x22EE;</strong> in alto a destra.</li>
+                            <li>Scegli <strong>Aggiungi a schermata Home</strong> o <strong>Installa app</strong>: controlla che sotto ci sia sempre <strong>raasautomazioni.it/bandi</strong>.</li>
+                        </ol>
+                    </details>
+                </div>
+            </div>
         </div>
     </div>
 </section>
