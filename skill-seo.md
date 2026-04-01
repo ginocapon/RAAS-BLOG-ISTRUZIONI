@@ -11,18 +11,21 @@
 
 | Area | Punteggio | Note |
 |---|---|---|
-| SEO on-page | **10/10** | Schema LocalBusiness + AggregateRating + og:image + hreflang IT/EN su 10 coppie |
-| Schema.org | **10/10** | LocalBusiness, FAQPage, Service, AggregateRating, BlogPosting (24 art.), WebSite, BreadcrumbList |
-| Contenuti/Blog | **9.5/10** | 15 IT + 9 EN con BlogPosting schema, author bio, TOC, "Ultimo aggiornamento" |
-| GEO/AEO | **10/10** | robots.txt AI bots (11 bot), llms.txt, llms-full.txt, ai.json, agent.json, mcp.json |
-| Core Web Vitals | **10/10** | Zero filter:blur, zero will-change, Supabase defer, width/height su tutte le img |
-| Bandi | **10/10** | 55+ fonti, anti-plagio, verifica AI link, ItemList schema |
+| SEO on-page | **9.5/10** | Schema, og:image, hreflang; **regola:** canonical/og:url/hreflang devono coincidere con URL reale del file (es. `/en/blog/articoli/...`, non `/en/blog/...` senza `articoli`) |
+| Schema.org | **9.5/10** | LocalBusiness, FAQPage, Service, BlogPosting, BreadcrumbList; verificare `item` ultimo breadcrumb sempre valorizzato |
+| Contenuti/Blog | **9.5/10** | Articoli IT + EN; evitare claim numerici aggregati in llms.txt senza fonte |
+| GEO/AEO | **9.5/10** | robots.txt AI bots, llms.txt, llms-full.txt, ai.json, agent.json, mcp.json; **llms.txt:** solo dati verificabili o prezzi contrattuali pubblici |
+| Core Web Vitals | **9.5/10** | No blur su animazioni; img con dimensioni; evitare `backdrop-filter` su nav se non necessario |
+| Bandi | **10/10** | 55+ fonti, anti-plagio, ItemList schema |
 | Pannello Admin | **9.9/10** | Dashboard, CRUD, branding RaaS coerente |
-| Sito Bilingue | **9.8/10** | IT + EN (10 coppie hreflang, 4 pagine strategiche EN) |
-| Accessibilità | **10/10** | Skip-nav + focus-visible su 42+ file, WCAG AA |
-| Audit Automatico | **10/10** | 19/19 controlli automatizzati |
-| Domain Authority | **4/10** | Problema #1 — backlink da costruire (azione esterna) |
-| **TOTALE** | **9.5/10** | Ottimo su tecnica, DA richiede azioni esterne |
+| Sito bilingue | **9.5/10** | Pagine EN strategiche: `en/about-us`, `en/website-as-a-service`, case studies, blog; hreflang reciprocità IT/EN |
+| Sitemap | **9/10** | Nessun URL duplicato; rimuovere path senza file (es. playzone fantasma); dopo rimozione sezioni sito, pulire sitemap |
+| Accessibilità | **9.5/10** | Skip-nav + focus-visible sulle pagine business; playzone/demos = priorità bassa |
+| Audit Automatico | **10/10** | Workflow settimanale 19 controlli |
+| Domain Authority | **4/10** | Backlink da costruire (esterno al repo) |
+| **TOTALE** | **~9.2/10** | Tecnica solida; manutenzione hreflang/canonical/sitemap continua |
+
+**Rimosso da prodotto pubblico (non citare come URL attivi):** builder AI / `siteforge/` / `/ai/` — posizionamento: percorso cliente semplice (brief + consegna), senza tool self-service pubblico.
 
 ---
 
@@ -210,8 +213,9 @@
 
 **Link e Struttura:**
 - [ ] Link interni verso pagine correlate
-- [ ] Breadcrumbs con schema BreadcrumbList
+- [ ] Breadcrumbs con schema BreadcrumbList (ogni `ListItem` con `item` URL assoluto dove richiesto)
 - [ ] Nessun broken link
+- [ ] **URL effettivo = canonical:** file in `/blog/articoli/slug` → canonical `.../blog/articoli/slug` (GitHub Pages non ha rewrite path)
 
 **Immagini:**
 - [ ] Formato WebP per immagini locali

@@ -36,17 +36,13 @@ Dashboard personale per ogni cliente. Riconciliazione trimestrale con diritto di
 - [PageSpeed 90 Dati e ROI](https://www.raasautomazioni.it/blog/articoli/pagespeed-95-dati-roi): Dati reali su come PageSpeed 90+ impatta conversioni e fatturato.
 - [Sito Vetrina come Macchina Business](https://www.raasautomazioni.it/blog/articoli/sito-vetrina-macchina-business-90-giorni): Come trasformare un sito vetrina in una macchina di lead generation in 90 giorni.
 
-## Dati Chiave
+## Dati chiave (solo fatti verificabili o offerta contrattuale)
 
-- 150+ clienti attivi
-- 98% soddisfazione clienti
-- 3.2M euro di fatturato generato per i clienti
-- PageSpeed 90+ garantito
-- Prezzo bloccato per sempre (clausola contrattuale)
-- Zero WordPress, codice proprietario HTML/CSS/JS
-- Modello performance-based: 3% solo sul fatturato generato
-- Dashboard trasparente per ogni cliente
-- Sito bilingue IT/EN
+- Prezzi pubblici pacchetti: Base 399 euro/anno + IVA, E-commerce 599 euro/anno + IVA (commissione 3% solo su risultati attribuibili come da contratto).
+- Sviluppo sito pubblico in HTML/CSS/JS vanilla (niente WordPress sul sito consegnato).
+- Dashboard trasparente per il cliente; sede e contatti su ogni pagina istituzionale.
+- Sito bilingue IT/EN (homepage, pagine strategiche, blog).
+- Per metriche di portfolio (volumi clienti, soddisfazione, fatturato generato) richiedere materiale contrattuale o case study: non riportare numeri aggregati in llms.txt senza fonte verificabile.
 
 ## Titolare
 

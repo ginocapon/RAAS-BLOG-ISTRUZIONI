@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "project": "RaaS Automazioni",
   "description": "Mappa dei file skill da caricare per ogni tipo di task. Obiettivo: ridurre token consumati caricando solo le regole necessarie.",
   "always_load": ["skill-essentials.md"],
@@ -80,6 +80,11 @@
       "description": "Ottimizzazione GEO, llms.txt, AI agents, robots.txt",
       "load": ["skill-essentials.md", "skill-seo.md"],
       "token_saving": "medio"
+    },
+    "audit-progetto": {
+      "description": "Controllo incrociato sitemap, hreflang, canonical, link rotti, llms.txt vs skill",
+      "load": ["skill-essentials.md", "skill-seo.md", "skill-context.md"],
+      "token_saving": "basso"
     }
   },
   "token_estimate": {

@@ -15,8 +15,6 @@
   <url><loc>https://www.raasautomazioni.it/en/</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.raasautomazioni.it/en/blog</loc><lastmod>2026-03-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
-  <url><loc>https://www.raasautomazioni.it/en/landing-performance-web-design</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
   <!-- BLOG EN -->
   <url><loc>https://www.raasautomazioni.it/en/blog/articoli/geo-generative-engine-optimization-guide-2026</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/en/blog/articoli/performance-based-marketing-revenue-share-model-2026</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -46,12 +44,12 @@
   <url><loc>https://www.raasautomazioni.it/blog/articoli/sito-vetrina-macchina-business-90-giorni</loc><lastmod>2026-03-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/blog/articoli/leader-conversion-research-paper-2026</loc><lastmod>2026-03-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.raasautomazioni.it/blog/articoli/bandi-imprese-lombardia-2026-guida</loc><lastmod>2026-03-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.raasautomazioni.it/blog/articoli/5-automazioni-risparmiare-20-ore-settimana</loc><lastmod>2026-03-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.raasautomazioni.it/blog/articoli/5-automazioni-risparmiare-20-ore-settimana</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- PAGINE STRATEGICHE EN -->
-  <url><loc>https://www.raasautomazioni.it/en/about-us</loc><lastmod>2026-03-22</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.raasautomazioni.it/en/about-us</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.raasautomazioni.it/en/case-studies</loc><lastmod>2026-03-22</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.raasautomazioni.it/en/website-as-a-service</loc><lastmod>2026-03-22</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.raasautomazioni.it/en/website-as-a-service</loc><lastmod>2026-03-31</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.raasautomazioni.it/en/web-agency-pricing-comparison-2026</loc><lastmod>2026-03-22</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
   <!-- BLOG EN (NUOVI) -->
@@ -87,7 +85,6 @@
   <url><loc>https://www.raasautomazioni.it/playzone/pages/categorie</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.raasautomazioni.it/playzone/pages/puzzle</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/playzone/pages/idle</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.raasautomazioni.it/playzone/pages/arcade</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/playzone/pages/multiplayer</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/playzone/pages/racing</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/playzone/pages/sport</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -95,12 +92,6 @@
   <url><loc>https://www.raasautomazioni.it/playzone/pages/azione</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/playzone/pages/strategia</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/playzone/pages/creativi</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.raasautomazioni.it/playzone/pages/carte</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.raasautomazioni.it/playzone/pages/brain</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.raasautomazioni.it/playzone/pages/fashion</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.raasautomazioni.it/playzone/pages/simulazione</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.raasautomazioni.it/playzone/pages/shooting</loc><lastmod>2026-02-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-
   <!-- PLAYZONE QUIZ -->
   <url><loc>https://www.raasautomazioni.it/playzone/pages/quiz-personalita</loc><lastmod>2026-02-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.raasautomazioni.it/playzone/pages/quiz-skill</loc><lastmod>2026-02-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -122,7 +113,6 @@
   <url><loc>https://www.raasautomazioni.it/playzone/pages/cookie</loc><lastmod>2026-02-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://www.raasautomazioni.it/playzone/pages/termini</loc><lastmod>2026-02-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 
-  <!-- SITEFORGE AI -->
   <!-- FILE UTILITY (LLM, AI, HUMANS) -->
   <url><loc>https://www.raasautomazioni.it/llms.txt</loc><lastmod>2026-03-16</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://www.raasautomazioni.it/llms-full.txt</loc><lastmod>2026-03-16</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>

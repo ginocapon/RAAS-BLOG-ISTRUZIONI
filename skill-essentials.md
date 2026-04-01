@@ -1,7 +1,7 @@
 # SKILL-ESSENTIALS — RaaS Automazioni
 ## Regole Operative Core (caricare SEMPRE)
 
-> **Versione:** 2.1 — Marzo 2026
+> **Versione:** 2.2 — Marzo 2026
 > **Quando caricare:** SEMPRE, per qualsiasi task
 > **Dimensione target:** piccolo — solo regole operative essenziali
 > **Fonte completa:** SKILL.md §1, §2.7, §7 (checklist base)
@@ -32,6 +32,7 @@
 20. **Font-Awesome defer** — `as="style" onload="this.onload=null;this.rel='stylesheet'"`
 21. **Immagini width/height** — TUTTE le `<img>` con attributi espliciti (prevenzione CLS)
 22. **Sitemap auto-registrazione** — ogni nuova pagina DEVE essere in sitemap.xml
+23. **Canonical = URL reale** — `canonical`, `og:url`, JSON-LD `@id` / `mainEntityOfPage` DEVONO coincidere con il path del file servito (es. articoli blog sotto `/blog/articoli/` e `/en/blog/articoli/`); hreflang EN/IT reciprocità su coppie equivalenti
 
 ---
 
