@@ -3,15 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Sito — Crea il tuo sito in 60 secondi con l'AI</title>
-  <meta name="description" content="AI Sito: genera il tuo sito professionale in 60 secondi con l'intelligenza artificiale. Template per settore, builder drag-and-drop, export HTML. Gratis per iniziare.">
-  <meta property="og:title" content="AI Sito — Website Builder con AI">
-  <meta property="og:description" content="Crea il tuo sito in 60 secondi con l'intelligenza artificiale. Template pronti o generazione automatica.">
-  <meta property="og:image" content="https://via.placeholder.com/1200x630/6c5ce7/ffffff?text=AI Sito+AI">
+  <title>AI Sito — Crea il tuo sito in 60 secondi con l'AI | RaaS Automazioni</title>
+  <meta name="description" content="AI Sito: genera il tuo sito professionale in 60 secondi con l'intelligenza artificiale. Template per settore, builder SiteForge drag-and-drop, export HTML. Gratis per iniziare.">
+  <meta name="theme-color" content="#0f0f1a">
+  <link rel="canonical" href="https://www.raasautomazioni.it/ai/">
+  <meta property="og:title" content="AI Sito — Website Builder con AI | RaaS Automazioni">
+  <meta property="og:description" content="Crea il tuo sito in 60 secondi con l'intelligenza artificiale. Template pronti o generazione automatica. Apri il builder SiteForge.">
+  <meta property="og:url" content="https://www.raasautomazioni.it/ai/">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:image" content="https://www.raasautomazioni.it/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="RaaS Automazioni — AI Sito builder">
   <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.raasautomazioni.it/og-image.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <style>
     /* === RESET E BASE === */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,8 +74,16 @@
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .navbar-logo {
-      font-size: 1.4rem;
+    .navbar-brand { display: flex; flex-direction: column; gap: 0.15rem; line-height: 1.15; }
+    .navbar-back {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+    }
+    .navbar-back:hover { color: #fff; }
+    .navbar-product {
+      font-size: 1.35rem;
       font-weight: 800;
       background: linear-gradient(135deg, #6c5ce7, #a29bfe);
       -webkit-background-clip: text;
@@ -94,8 +115,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 8rem 1.5rem 4rem;
+      padding: 6rem 1.5rem 4rem;
       position: relative;
       overflow: hidden;
     }
@@ -111,6 +131,50 @@
       z-index: 0;
       animation: hero-glow 8s ease-in-out infinite alternate;
       animation-play-state: paused;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-col-text { text-align: left; }
+    .hero-col-visual { position: relative; }
+    .browser-mock {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      background: #0d0d14;
+    }
+    .browser-chrome {
+      height: 42px;
+      background: rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .browser-chrome span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+    }
+    .browser-chrome span:nth-child(1) { background: #ff5f57; }
+    .browser-chrome span:nth-child(2) { background: #febc2e; }
+    .browser-chrome span:nth-child(3) { background: #28c840; }
+    .browser-mock img {
+      display: block;
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
     }
     .hero-content { position: relative; z-index: 1; max-width: 800px; }
     .hero-badge {
@@ -137,13 +201,15 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .hero p {
-      font-size: 1.2rem;
-      opacity: 0.75;
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
+    .hero .hero-col-text p {
+      font-size: 1.15rem;
+      opacity: 0.78;
+      max-width: 32rem;
+      margin: 0 0 2rem;
+      line-height: 1.65;
     }
-    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: flex-start; flex-wrap: wrap; align-items: center; }
+    a.btn-primary { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
     .btn-primary {
       background: linear-gradient(135deg, #6c5ce7, #a29bfe);
       color: #fff;
@@ -233,6 +299,62 @@
     }
     .step-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: 0.75rem; }
     .step-card p { font-size: 0.95rem; opacity: 0.65; }
+
+    /* === PERCORSO GUIDATO (flusso tipo Wix) === */
+    .journey-section {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(108,92,231,0.06) 100%);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .journey-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .journey-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108, 92, 231, 0.4);
+    }
+    .journey-card .jn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: #fff;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.1rem;
+    }
+    .journey-card h3 { color: #fff; font-size: 1rem; margin-bottom: 0.5rem; }
+    .journey-card p { font-size: 0.85rem; opacity: 0.6; line-height: 1.5; }
+    .journey-cta {
+      text-align: center;
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .journey-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .journey-grid { grid-template-columns: 1fr; }
+    }
 
     /* === TEMPLATE SHOWCASE === */
     .templates-grid {
@@ -506,9 +628,14 @@
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
       .navbar-links { display: none; }
-      .hero { padding: 7rem 1rem 3rem; }
+      .hero { padding: 6rem 1rem 3rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-col-text { text-align: center; }
+      .hero .hero-col-text p { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-col-visual { order: -1; max-width: 400px; margin: 0 auto; }
       .hero h1 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
+      .hero .hero-col-text p { font-size: 1rem; }
       .section { padding: 4rem 1rem; }
       .section-title { font-size: 1.7rem; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
@@ -523,27 +650,76 @@
 
 <!-- Navbar -->
 <nav class="navbar" role="navigation" aria-label="Navigazione principale">
-  <a href="/" class="navbar-logo"><a href="/" style="color:rgba(255,255,255,0.55);font-size:0.75rem;font-weight:500;text-decoration:none;">RaaS</a> · AI Sito</a>
+  <div class="navbar-brand">
+    <a href="/" class="navbar-back">RaaS Automazioni</a>
+    <span class="navbar-product">AI Sito</span>
+  </div>
   <div class="navbar-links">
+    <a href="/siteforge/builder.html">Builder</a>
+    <a href="#percorso">Percorso</a>
     <a href="#come-funziona">Come funziona</a>
     <a href="#templates">Template</a>
     <a href="#pricing">Prezzi</a>
     <a href="#faq">FAQ</a>
+    <a href="/">Sito principale</a>
   </div>
-  <button class="navbar-cta" id="btn-login" aria-label="Accedi o registrati">Inizia gratis</button>
+  <button type="button" class="navbar-cta" id="btn-login" aria-label="Accedi o registrati">Account</button>
 </nav>
 
 <main id="main">
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-content fade-in">
-      <div class="hero-badge">✨ Powered by Anthropic Claude</div>
-      <h1>Il tuo sito professionale <span>pronto in 60 secondi</span></h1>
-      <p>Scegli il template per il tuo settore o lascia che l'AI generi il sito completo. Nessun codice richiesto. Pubblica ovunque.</p>
-      <div class="hero-buttons">
-        <button class="btn-primary" id="hero-cta">Inizia gratis &rarr;</button>
-        <a href="#come-funziona" class="btn-secondary">Guarda demo</a>
+    <div class="hero-inner fade-in">
+      <div class="hero-col-text">
+        <div class="hero-badge">✨ Builder SiteForge + AI</div>
+        <h1>Il tuo sito professionale <span>pronto in pochi minuti</span></h1>
+        <p>Scegli un template per il tuo settore oppure genera testi e struttura con l&rsquo;AI. Editor visuale, export HTML statico: stesso tipo di percorso dei builder moderni, con codice pulito e velocit&agrave; sotto controllo.</p>
+        <div class="hero-buttons">
+          <a href="/siteforge/builder.html" class="btn-primary"><i class="fas fa-rocket" aria-hidden="true"></i> Apri il builder</a>
+          <button type="button" class="btn-secondary" id="hero-cta">Account / crediti</button>
+          <a href="#percorso" class="btn-secondary" style="text-decoration:none;display:inline-flex;align-items:center;">Percorso guidato</a>
+        </div>
+      </div>
+      <div class="hero-col-visual">
+        <div class="browser-mock">
+          <div class="browser-chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&amp;h=520&amp;q=80&amp;auto=format&amp;fit=crop" alt="Team al lavoro su progetto web e interfaccia builder" width="800" height="520" fetchpriority="high" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Percorso guidato -->
+  <section class="section journey-section" id="percorso" aria-label="Percorso guidato creazione sito">
+    <div class="container">
+      <h2 class="section-title fade-in">Ti guidiamo passo dopo passo</h2>
+      <p class="section-subtitle fade-in">Dall&rsquo;idea al sito pubblicato: flusso chiaro come nei migliori website builder.</p>
+      <div class="journey-grid">
+        <div class="journey-card fade-in">
+          <div class="jn">1</div>
+          <h3>Apri SiteForge</h3>
+          <p>Vai al builder: nessun install, tutto nel browser.</p>
+        </div>
+        <div class="journey-card fade-in">
+          <div class="jn">2</div>
+          <h3>Template o AI</h3>
+          <p>Scegli il verticale o descrivi l&rsquo;attivit&agrave; e genera.</p>
+        </div>
+        <div class="journey-card fade-in">
+          <div class="jn">3</div>
+          <h3>Personalizza</h3>
+          <p>Testi, colori, sezioni con anteprima responsive.</p>
+        </div>
+        <div class="journey-card fade-in">
+          <div class="jn">4</div>
+          <h3>Esporta</h3>
+          <p>HTML statico su GitHub Pages, Netlify o il tuo hosting.</p>
+        </div>
+      </div>
+      <div class="journey-cta fade-in">
+        <a href="/siteforge/builder.html" class="btn-primary" style="text-decoration:none;">Inizia dal builder <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="/#analisi-sito" class="btn-secondary" style="text-decoration:none;">Analisi salute sito (homepage RaaS)</a>
       </div>
     </div>
   </section>
@@ -739,11 +915,13 @@
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-links">
+    <a href="/siteforge/builder.html">Builder</a>
+    <a href="#percorso">Percorso</a>
     <a href="#come-funziona">Come funziona</a>
     <a href="#templates">Template</a>
     <a href="#pricing">Prezzi</a>
     <a href="#faq">FAQ</a>
-    <a href="mailto:info@siteforge.ai">Contatti</a>
+    <a href="/#contatti">Contatti RaaS</a>
   </div>
   <p>&copy; 2026 <a href="/" style="color:#a29bfe;">RaaS Automazioni</a> &mdash; AI Sito — Tutti i diritti riservati</p>
 </footer>
@@ -859,8 +1037,8 @@
     e.preventDefault();
     var email = document.getElementById('login-email').value;
     var password = document.getElementById('login-password').value;
-    if (typeof AI SitoAuth !== 'undefined') {
-      AI SitoAuth.signIn(email, password);
+    if (typeof SiteForgeAuth !== 'undefined') {
+      SiteForgeAuth.signIn(email, password);
     } else {
       alert('Accesso in fase di configurazione. Riprova tra poco.');
     }
@@ -870,8 +1048,8 @@
     e.preventDefault();
     var email = document.getElementById('signup-email').value;
     var password = document.getElementById('signup-password').value;
-    if (typeof AI SitoAuth !== 'undefined') {
-      AI SitoAuth.signUp(email, password);
+    if (typeof SiteForgeAuth !== 'undefined') {
+      SiteForgeAuth.signUp(email, password);
     } else {
       alert('Registrazione in fase di configurazione. Riprova tra poco.');
     }
@@ -883,8 +1061,8 @@
       alert('Inserisci la tua email prima di richiedere il Magic Link.');
       return;
     }
-    if (typeof AI SitoAuth !== 'undefined') {
-      AI SitoAuth.magicLink(email);
+    if (typeof SiteForgeAuth !== 'undefined') {
+      SiteForgeAuth.magicLink(email);
     } else {
       alert('Funzione in fase di configurazione.');
     }

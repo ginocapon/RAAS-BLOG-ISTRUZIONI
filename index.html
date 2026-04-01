@@ -468,6 +468,37 @@ body{
     }
 }
 
+/* Sezione percorso AI / SiteForge (stile chiaro tipo builder) */
+.ai-wix-section{background:linear-gradient(180deg,#fff 0%,#f0f4f8 100%);padding:5rem 0;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
+.ai-wix-inner{max-width:1240px;margin:0 auto;padding:0 1.5rem;display:grid;grid-template-columns:1.05fr 0.95fr;gap:3rem;align-items:center}
+.ai-wix-copy .section-tag{background:rgba(108,92,231,0.12);color:#5b4cdb;border:1px solid rgba(108,92,231,0.25)}
+.ai-wix-copy h2{font-size:clamp(1.65rem,3.5vw,2.35rem);font-weight:800;color:var(--dark);line-height:1.15;margin:0.75rem 0 1rem}
+.ai-wix-copy>p{color:var(--text-light);font-size:1.05rem;line-height:1.75;margin-bottom:1.5rem;max-width:36rem}
+.ai-wix-steps{list-style:none;margin:0 0 1.75rem;padding:0;display:flex;flex-direction:column;gap:1rem}
+.ai-wix-steps li{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid #e8eef3;border-radius:14px;padding:1rem 1.15rem;box-shadow:0 8px 30px rgba(42,74,111,0.06)}
+.ai-wix-steps strong{display:block;color:var(--dark);font-size:1rem;margin-bottom:0.2rem}
+.ai-wix-steps span{font-size:0.9rem;color:var(--text-light);line-height:1.5}
+.ai-wix-num{flex-shrink:0;width:2.25rem;height:2.25rem;border-radius:10px;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.ai-wix-cta{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center}
+.ai-wix-cta .btn-ai-builder{background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;padding:0.9rem 1.6rem;border-radius:50px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;border:none;box-shadow:0 6px 24px rgba(108,92,231,0.35)}
+.ai-wix-cta .btn-ai-builder:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(108,92,231,0.45)}
+.ai-wix-cta .btn-ai-landing{color:var(--dark);font-weight:700;padding:0.85rem 1.4rem;border-radius:50px;border:2px solid #cbd5e1;text-decoration:none;background:#fff}
+.ai-wix-cta .btn-ai-landing:hover{border-color:#6c5ce7;color:#6c5ce7}
+.ai-wix-note{font-size:0.85rem;color:var(--text-light);margin-top:1rem;max-width:32rem}
+.ai-wix-note a{color:#6c5ce7;font-weight:600}
+.ai-wix-visual{position:relative}
+.ai-wix-frame{border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(26,47,71,0.18);border:1px solid #e2e8f0;background:#fff}
+.ai-wix-frame-bar{height:40px;background:linear-gradient(180deg,#f1f5f9,#e2e8f0);display:flex;align-items:center;gap:6px;padding:0 14px;border-bottom:1px solid #e2e8f0}
+.ai-wix-frame-bar span{width:10px;height:10px;border-radius:50%;background:#cbd5e1}
+.ai-wix-frame-bar span:first-child{background:#ef4444}
+.ai-wix-frame-bar span:nth-child(2){background:#f59e0b}
+.ai-wix-frame-bar span:nth-child(3){background:#22c55e}
+.ai-wix-frame img{display:block;width:100%;height:auto;vertical-align:middle}
+@media(max-width:900px){
+    .ai-wix-inner{grid-template-columns:1fr;gap:2.5rem}
+    .ai-wix-visual{order:-1;max-width:520px;margin:0 auto}
+}
+
 /* BUTTONS */
 .btn{
     display:inline-flex;
@@ -2694,6 +2725,7 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
     <nav class="home-subnav" id="home-subnav" aria-label="Sezioni della pagina">
         <div class="home-subnav-inner">
             <a href="#due-percorsi">Percorsi</a>
+            <a href="#ai-sito-guida">AI guidato</a>
             <a href="#come-funziona">Modello</a>
             <a href="#verticali-settore">Settori</a>
             <a href="#chi-siamo">Chi siamo</a>
@@ -2856,10 +2888,63 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
                     </ul>
                     <div style="font-size:1.6rem;font-weight:800;color:#6c5ce7;margin-bottom:0.4rem;">Gratis per iniziare</div>
                     <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:2rem;">Pro 9€/mese · Agency 29€/mese</div>
-                    <a href="/ai" class="btn" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;border:none;">
-                        <i class="fas fa-magic"></i>&nbsp; Apri AI Sito &rarr;
+                    <a href="/siteforge/builder.html" class="btn" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;border:none;margin-bottom:0.75rem;">
+                        <i class="fas fa-layer-group"></i>&nbsp; Apri il builder &rarr;
                     </a>
+                    <a href="/ai/" style="display:block;text-align:center;font-size:0.9rem;font-weight:600;color:#6c5ce7;">Scheda AI Sito, prezzi e FAQ</a>
                     <p style="text-align:center;font-size:0.8rem;color:var(--text-light);margin-top:1rem;">Nessuna carta di credito richiesta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Percorso guidato AI Sito / SiteForge (ispirazione flusso builder) -->
+    <section id="ai-sito-guida" class="section ai-wix-section" aria-label="Percorso guidato creazione sito con AI">
+        <div class="ai-wix-inner">
+            <div class="ai-wix-copy">
+                <span class="section-tag">SiteForge + AI Sito</span>
+                <h2>Dal template al sito online, passo dopo passo</h2>
+                <p>Come un builder moderno: apri l&rsquo;editor, scegli il settore o genera con l&rsquo;AI, personalizza e scarica HTML statico. Se vuoi crescita e lead misurabili, dopo il lancio puoi passare al modello <strong>RaaS</strong> con analisi e ottimizzazione continue.</p>
+                <ol class="ai-wix-steps" role="list">
+                    <li>
+                        <span class="ai-wix-num" aria-hidden="true">1</span>
+                        <div>
+                            <strong>Apri il builder SiteForge</strong>
+                            <span>Editor visuale: template o bozza generata dall&rsquo;AI, senza installare nulla nel browser oltre al sito.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="ai-wix-num" aria-hidden="true">2</span>
+                        <div>
+                            <strong>Scegli verticale o &ldquo;genera tutto&rdquo;</strong>
+                            <span>Immobiliare, ristorante, studio, e-commerce, portfolio &mdash; oppure prompt e contenuti in pochi secondi.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="ai-wix-num" aria-hidden="true">3</span>
+                        <div>
+                            <strong>Personalizza e anteprima</strong>
+                            <span>Testi, colori, sezioni; layout responsive come nei builder professionali.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="ai-wix-num" aria-hidden="true">4</span>
+                        <div>
+                            <strong>Esporta e pubblica</strong>
+                            <span>HTML statico su GitHub Pages, Netlify o hosting che gi&agrave; usi. Opzionale: <a href="#contatti">affidati a noi</a> per SEO, GEO e performance.</span>
+                        </div>
+                    </li>
+                </ol>
+                <div class="ai-wix-cta">
+                    <a href="/siteforge/builder.html" class="btn-ai-builder"><i class="fas fa-layer-group"></i> Apri il builder</a>
+                    <a href="/ai/" class="btn-ai-landing">Pagina AI Sito</a>
+                </div>
+                <p class="ai-wix-note">Per siti gi&agrave; online: valutiamo stato di salute (velocit&agrave;, SEO, GEO) con strumenti come l&rsquo;<a href="#analisi-sito">analisi gratuita</a> in homepage &mdash; in linea con percorsi di controllo qualit&agrave; su progetti come <a href="https://www.righettoimmobiliare.it/" rel="noopener noreferrer">Righetto Immobiliare</a>.</p>
+            </div>
+            <div class="ai-wix-visual">
+                <div class="ai-wix-frame">
+                    <div class="ai-wix-frame-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Workspace digitale: dashboard e ottimizzazione sito web per PMI" width="900" height="600" loading="lazy">
                 </div>
             </div>
         </div>
