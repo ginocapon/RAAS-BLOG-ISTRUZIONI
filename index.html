@@ -468,37 +468,6 @@ body{
     }
 }
 
-/* Sezione percorso AI / SiteForge (stile chiaro tipo builder) */
-.ai-wix-section{background:linear-gradient(180deg,#fff 0%,#f0f4f8 100%);padding:5rem 0;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0}
-.ai-wix-inner{max-width:1240px;margin:0 auto;padding:0 1.5rem;display:grid;grid-template-columns:1.05fr 0.95fr;gap:3rem;align-items:center}
-.ai-wix-copy .section-tag{background:rgba(108,92,231,0.12);color:#5b4cdb;border:1px solid rgba(108,92,231,0.25)}
-.ai-wix-copy h2{font-size:clamp(1.65rem,3.5vw,2.35rem);font-weight:800;color:var(--dark);line-height:1.15;margin:0.75rem 0 1rem}
-.ai-wix-copy>p{color:var(--text-light);font-size:1.05rem;line-height:1.75;margin-bottom:1.5rem;max-width:36rem}
-.ai-wix-steps{list-style:none;margin:0 0 1.75rem;padding:0;display:flex;flex-direction:column;gap:1rem}
-.ai-wix-steps li{display:flex;gap:1rem;align-items:flex-start;background:var(--white);border:1px solid #e8eef3;border-radius:14px;padding:1rem 1.15rem;box-shadow:0 8px 30px rgba(42,74,111,0.06)}
-.ai-wix-steps strong{display:block;color:var(--dark);font-size:1rem;margin-bottom:0.2rem}
-.ai-wix-steps span{font-size:0.9rem;color:var(--text-light);line-height:1.5}
-.ai-wix-num{flex-shrink:0;width:2.25rem;height:2.25rem;border-radius:10px;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center}
-.ai-wix-cta{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center}
-.ai-wix-cta .btn-ai-builder{background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;padding:0.9rem 1.6rem;border-radius:50px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;border:none;box-shadow:0 6px 24px rgba(108,92,231,0.35)}
-.ai-wix-cta .btn-ai-builder:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(108,92,231,0.45)}
-.ai-wix-cta .btn-ai-landing{color:var(--dark);font-weight:700;padding:0.85rem 1.4rem;border-radius:50px;border:2px solid #cbd5e1;text-decoration:none;background:#fff}
-.ai-wix-cta .btn-ai-landing:hover{border-color:#6c5ce7;color:#6c5ce7}
-.ai-wix-note{font-size:0.85rem;color:var(--text-light);margin-top:1rem;max-width:32rem}
-.ai-wix-note a{color:#6c5ce7;font-weight:600}
-.ai-wix-visual{position:relative}
-.ai-wix-frame{border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(26,47,71,0.18);border:1px solid #e2e8f0;background:#fff}
-.ai-wix-frame-bar{height:40px;background:linear-gradient(180deg,#f1f5f9,#e2e8f0);display:flex;align-items:center;gap:6px;padding:0 14px;border-bottom:1px solid #e2e8f0}
-.ai-wix-frame-bar span{width:10px;height:10px;border-radius:50%;background:#cbd5e1}
-.ai-wix-frame-bar span:first-child{background:#ef4444}
-.ai-wix-frame-bar span:nth-child(2){background:#f59e0b}
-.ai-wix-frame-bar span:nth-child(3){background:#22c55e}
-.ai-wix-frame img{display:block;width:100%;height:auto;vertical-align:middle}
-@media(max-width:900px){
-    .ai-wix-inner{grid-template-columns:1fr;gap:2.5rem}
-    .ai-wix-visual{order:-1;max-width:520px;margin:0 auto}
-}
-
 /* BUTTONS */
 .btn{
     display:inline-flex;
@@ -554,109 +523,33 @@ body{
     align-items:center;
     position:relative;
     overflow:hidden;
-    background:linear-gradient(135deg,var(--dark) 0%,var(--dark-light) 50%,#3d6a97 100%);
+    background:linear-gradient(125deg,#1a2332 0%,#243447 50%,#2d3d4f 100%);
     isolation:isolate
 }
 
-/* Layer di morphing background */
+/* Hero moderno: foto professionale leggera + velatura (no effetti sci-fi) */
 .hero::before{
     content:'';
     position:absolute;
     inset:0;
-    background:radial-gradient(circle at center,transparent 0%,rgba(26,47,71,0.4) 100%);
-    z-index:2;
+    background:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&q=75&auto=format&fit=crop') center/cover no-repeat;
+    opacity:0.14;
+    z-index:0;
     pointer-events:none
 }
-
-/* SVG Container per cerchi concentrici - Effetto Video */
-.morph-container{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:min(100vmin,900px);
-    height:min(100vmin,900px);
-    z-index:1;
-    pointer-events:none;
-    opacity:0.6
-}
-
-.morph-svg{
-    width:100%;
-    height:100%;
-    filter:drop-shadow(0 0 30px rgba(56,189,248,0.3))
-}
-
-/* Cerchi concentrici animati */
-.morph-circle{
-    fill:none;
-    stroke:url(#morphGradient);
-    stroke-width:2;
-    stroke-linecap:round;
-    transform-origin:center;
-    animation:morphSpin 20s linear infinite
-}
-
-.morph-circle-2{
-    stroke:url(#morphGradient2);
-    stroke-width:1.5;
-    animation:morphSpinReverse 15s linear infinite
-}
-
-.morph-circle-3{
-    stroke:url(#morphGradient3);
-    stroke-width:1;
-    opacity:0.6;
-    animation:morphSpin 30s linear infinite
-}
-
-/* Animazioni cerchi */
-@keyframes morphSpin{
-    from{transform:rotate(0deg)}
-    to{transform:rotate(360deg)}
-}
-
-@keyframes morphSpinReverse{
-    from{transform:rotate(360deg)}
-    to{transform:rotate(0deg)}
-}
-
-/* Core centrale che pulsa - come nel video */
-.morph-core{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:60px;
-    height:60px;
-    background:linear-gradient(135deg,var(--white) 0%,#e0e0e0 100%);
-    border-radius:16px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:5;
-    box-shadow:0 0 60px rgba(255,255,255,0.5),0 0 100px rgba(230,57,70,0.3);
-    animation:coreMorph 3s ease-in-out infinite
-}
-
-.morph-core::before{
+.hero::after{
     content:'';
-    width:30px;
-    height:30px;
-    background:linear-gradient(135deg,var(--dark) 0%,var(--dark-light) 100%);
-    border-radius:8px;
-    position:relative
-}
-
-@keyframes coreMorph{
-    0%,100%{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 60px rgba(255,255,255,0.5)}
-    50%{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 80px rgba(255,255,255,0.8),0 0 120px rgba(230,57,70,0.5)}
+    position:absolute;
+    inset:0;
+    background:linear-gradient(105deg,rgba(26,35,50,0.94) 0%,rgba(26,35,50,0.82) 42%,rgba(36,52,71,0.65) 100%);
+    z-index:1;
+    pointer-events:none
 }
 
 /* Contenuto Hero */
 .hero-content{
     position:relative;
-    z-index:10;
+    z-index:12;
     max-width:1240px;
     margin:0 auto;
     display:grid;
@@ -671,10 +564,7 @@ body{
 .hero-top{text-align:left;grid-column:1;grid-row:1}
 .hero-bottom{text-align:left;grid-column:1;grid-row:2}
 .hero-right{display:flex;justify-content:center;align-items:center;position:relative;overflow:visible;grid-column:2;grid-row:1/3}
-.hero-right img{width:100%;height:auto;display:block;transform:scaleX(-1) scale(1.12) translateX(15%);transform-origin:center center;-webkit-mask-image:linear-gradient(to bottom,#000 60%,transparent 100%);mask-image:linear-gradient(to bottom,#000 60%,transparent 100%);position:relative;z-index:2}
-.hero-right::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:340px;height:340px;border-radius:50%;border:2px solid rgba(14,165,233,0.2);animation:heroRingPulse 4s ease-in-out infinite;z-index:1}
-.hero-right::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:450px;height:450px;border-radius:50%;border:1px solid rgba(14,165,233,0.1);animation:heroRingPulse 4s ease-in-out infinite 1s;z-index:1}
-@keyframes heroRingPulse{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:.8;transform:translate(-50%,-50%) scale(1.05)}}
+.hero-right img{width:100%;max-width:440px;height:auto;display:block;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,0.35);object-fit:cover;position:relative;z-index:2;border:1px solid rgba(255,255,255,0.08)}
 .hero-raas{font-size:1.15rem;line-height:1.6;color:var(--accent);margin:0 0 1rem;opacity:0.95}
 .hero-raas strong{color:var(--white);font-size:1.3rem}
 .hero-claim{font-size:1.2rem;font-weight:800;color:var(--primary);margin:1.5rem 0 .25rem;line-height:1.4}
@@ -763,7 +653,7 @@ body{
 .hero-cta{
     display:flex;
     gap:1rem;
-    justify-content:center;
+    justify-content:flex-start;
     flex-wrap:wrap;
     margin-bottom:3rem
 }
@@ -2711,7 +2601,6 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
                 <a href="#chi-siamo">Chi Siamo</a>
                 <a href="blog">Blog</a>
                 <a href="bandi" style="color:#f4a261;font-weight:700;"><i class="fas fa-search-dollar" style="margin-right:4px;"></i>Bandi</a>
-                <a href="/ai" style="color:#a29bfe;font-weight:700;"><i class="fas fa-magic" style="margin-right:4px;"></i>AI Sito</a>
                 <a href="/en/" style="font-size:0.85rem;opacity:0.7;" title="English version">EN</a>
                 <a href="#contatti" class="btn btn-primary">Inizia Ora</a>
                 <a href="admin.html" style="color:#8b95a5;font-size:0.75rem;opacity:0.6;" title="Admin"><i class="fas fa-cog"></i></a>
@@ -2725,7 +2614,6 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
     <nav class="home-subnav" id="home-subnav" aria-label="Sezioni della pagina">
         <div class="home-subnav-inner">
             <a href="#due-percorsi">Percorsi</a>
-            <a href="#ai-sito-guida">AI guidato</a>
             <a href="#come-funziona">Modello</a>
             <a href="#verticali-settore">Settori</a>
             <a href="#chi-siamo">Chi siamo</a>
@@ -2738,48 +2626,7 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
     </nav>
 
     <section id="home" class="hero" aria-label="Introduzione" tabindex="-1">
-        <!-- SVG Morphing Background come nel video -->
-        <div class="morph-container" aria-hidden="true">
-            <svg class="morph-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                    <linearGradient id="morphGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.4" />
-                    </linearGradient>
-                    <linearGradient id="morphGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:0.6" />
-                        <stop offset="100%" style="stop-color:#00b4d8;stop-opacity:0.3" />
-                    </linearGradient>
-                    <linearGradient id="morphGradient3" x1="50%" y1="0%" x2="50%" y2="100%">
-                        <stop offset="0%" style="stop-color:#7dd3fc;stop-opacity:0.5" />
-                        <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0.2" />
-                    </linearGradient>
-                </defs>
-                
-                <!-- Cerchi concentrici che ruotano (come nel video) -->
-                <circle class="morph-circle" cx="200" cy="200" r="30" stroke-dasharray="20 10" opacity="0.9"/>
-                <circle class="morph-circle-2" cx="200" cy="200" r="60" stroke-dasharray="40 20" opacity="0.7"/>
-                <circle class="morph-circle" cx="200" cy="200" r="90" stroke-dasharray="60 30" opacity="0.6"/>
-                <circle class="morph-circle-3" cx="200" cy="200" r="120" stroke-dasharray="80 40" opacity="0.5"/>
-                <circle class="morph-circle-2" cx="200" cy="200" r="150" stroke-dasharray="100 50" opacity="0.4"/>
-                <circle class="morph-circle" cx="200" cy="200" r="180" stroke-dasharray="120 60" opacity="0.3"/>
-                
-                <!-- Linee trasversali animazioni -->
-                <g opacity="0.3">
-                    <line x1="0" y1="200" x2="400" y2="200" stroke="#38bdf8" stroke-width="0.5">
-                        <animate attributeName="y1" values="200;100;200;300;200" dur="8s" repeatCount="indefinite"/>
-                        <animate attributeName="y2" values="200;300;200;100;200" dur="8s" repeatCount="indefinite"/>
-                    </line>
-                    <line x1="200" y1="0" x2="200" y2="400" stroke="#38bdf8" stroke-width="0.5">
-                        <animate attributeName="x1" values="200;100;200;300;200" dur="10s" repeatCount="indefinite"/>
-                        <animate attributeName="x2" values="200;300;200;100;200" dur="10s" repeatCount="indefinite"/>
-                    </line>
-                </g>
-            </svg>
-            <div class="morph-core"></div>
-        </div>
-        
-        <div class="container">
+        <div class="container" style="position:relative;z-index:12;">
             <!-- Language switcher -->
             <div style="position:absolute;top:1rem;right:1.5rem;display:flex;gap:0.5rem;z-index:10;">
                 <a href="/" style="font-weight:700;color:var(--white);text-decoration:none;padding:0.3rem 0.6rem;border-radius:4px;background:rgba(255,255,255,0.2);">IT</a>
@@ -2789,19 +2636,19 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
             <div class="hero-content">
                 <div class="hero-top">
                     <div class="hero-badge">
-                        <i class="fas fa-bolt"></i>
-                        <span>Revenue as a Service</span>
+                        <i class="fas fa-handshake"></i>
+                        <span>Per aziende e professionisti</span>
                     </div>
 
                     <h1>
     Ti portiamo clienti. <span>Guadagniamo solo se guadagni tu.</span>
 </h1>
                     <p class="hero-raas"><strong>Revenue as a Service:</strong> sito in codice puro, PageSpeed 90+, SEO e GEO (Google e assistenti AI), lead generation e dashboard trasparente. Fee annuale fissa + <strong>3% solo su fatturato da nuovi clienti</strong> che ti portiamo.</p>
-                    <p class="hero-subtitle">Vuoi partire in autonomia? <strong><a href="/ai" style="color:#a29bfe;text-decoration:underline;text-underline-offset:3px;">AI Sito</a></strong> genera template verticali e contenuti in pochi minuti; con RaaS ottimizziamo e gestiamo acquisizione e risultati per te.</p>
+                    <p class="hero-subtitle">Per il titolare &egrave; semplice: <strong>due passaggi</strong> &mdash; ci indichi attivit&agrave; e obiettivi, noi allestiamo il sito e lo mettiamo online. Poi lavoriamo perch&eacute; ti trovino su Google e nei motori di ricerca con AI. Zero complessit&agrave; tecnica dalla tua parte.</p>
                 </div>
 
                 <div class="hero-right">
-                    <img src="file/drsjs-man-320276_640-removebg-preview.png" alt="RaaS Automazioni - acquisizione clienti e automazione per PMI" width="400" height="580" fetchpriority="high" loading="eager">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=640&amp;h=800&amp;q=82&amp;auto=format&amp;fit=crop" alt="Team aziendale al lavoro su strategia digitale" width="640" height="800" fetchpriority="high" loading="eager">
                 </div>
 
                 <div class="hero-bottom">
@@ -2811,11 +2658,11 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
                     <div class="hero-cta">
                         <a href="#contatti" class="btn btn-primary">
                             <i class="fas fa-rocket"></i>
-                            Affidati a Noi (RaaS)
+                            Parliamo del tuo progetto
                         </a>
-                        <a href="/ai" class="btn btn-secondary" style="border-color:#a29bfe;color:#a29bfe;">
-                            <i class="fas fa-magic"></i>
-                            AI Sito &mdash; Crea da Solo
+                        <a href="#analisi-sito" class="btn btn-secondary">
+                            <i class="fas fa-chart-line"></i>
+                            Analisi gratuita del sito
                         </a>
                     </div>
 
@@ -2846,9 +2693,9 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
     <section id="due-percorsi" class="section" style="background:linear-gradient(180deg,#0e2240 0%,#f7fafc 100%);padding:5rem 0;" aria-label="Scegli il tuo percorso">
         <div class="container">
             <div class="section-header" style="text-align:center;margin-bottom:3rem;">
-                <span class="section-tag" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.18);">Due Strade. Zero Rischi.</span>
-                <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin:0.6rem 0 0.5rem;">Scegli come vuoi crescere online</h2>
-                <p style="max-width:580px;margin:0 auto;color:rgba(255,255,255,0.7);font-size:1.05rem;">Gestione completa o autonomia totale — entrambe senza anticipo, senza rischi d'ingresso.</p>
+                <span class="section-tag" style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.18);">Percorsi chiari</span>
+                <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin:0.6rem 0 0.5rem;">Crescita online senza perderti nel tecnico</h2>
+                <p style="max-width:620px;margin:0 auto;color:rgba(255,255,255,0.7);font-size:1.05rem;">Un modello completo di acquisizione clienti, oppure un ingresso leggero se vuoi solo mettere ordine alla presenza web.</p>
             </div>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;align-items:stretch;">
                 <!-- Percorso A: RaaS Managed -->
@@ -2873,78 +2720,24 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
                     </a>
                     <p style="text-align:center;font-size:0.8rem;color:rgba(255,255,255,0.45);margin-top:1rem;font-style:italic;">Nessun Risultato, Zero Commissione</p>
                 </div>
-                <!-- Percorso B: AI Sito DIY -->
-                <div style="background:#fff;border-radius:24px;padding:3rem 2.5rem;border:2px solid rgba(108,92,231,0.2);position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.08);">
-                    <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(108,92,231,0.05);border-radius:50%;pointer-events:none;"></div>
-                    <div style="font-size:2.8rem;margin-bottom:1rem;line-height:1;">✨</div>
-                    <h3 style="font-size:1.65rem;font-weight:800;margin-bottom:1rem;color:var(--dark);line-height:1.2;">AI Sito — Fai da solo</h3>
-                    <p style="color:var(--text-light);line-height:1.75;margin-bottom:2rem;font-size:1rem;">Generatore siti con intelligenza artificiale, template responsive per il tuo settore, builder drag-and-drop. <strong style="color:#6c5ce7;">Contenuti generati in 60 secondi.</strong></p>
+                <!-- Percorso B: sito senza pensieri (messaggio semplice per titolare) -->
+                <div id="percorso-leggero" style="background:#fff;border-radius:24px;padding:3rem 2.5rem;border:2px solid rgba(244,162,97,0.35);position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.08);">
+                    <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(244,162,97,0.08);border-radius:50%;pointer-events:none;"></div>
+                    <div style="font-size:2.8rem;margin-bottom:1rem;line-height:1;">&#128188;</div>
+                    <h3 style="font-size:1.65rem;font-weight:800;margin-bottom:1rem;color:var(--dark);line-height:1.2;">Sito online in due passaggi</h3>
+                    <p style="color:var(--text-light);line-height:1.75;margin-bottom:2rem;font-size:1rem;">Pensato per chi ha gi&agrave; un&rsquo;azienda e poco tempo: <strong style="color:var(--dark);">ci mandi materiali e indicazioni</strong>, noi prepariamo il sito in codice puro, veloce e pronto per Google e per i motori che usano l&rsquo;AI. Tu non gestisci tool complessi.</p>
                     <ul style="list-style:none;margin:0 0 2.5rem;padding:0;display:flex;flex-direction:column;gap:0.7rem;">
-                        <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:var(--text);"><span style="color:#6c5ce7;font-weight:700;font-size:1rem;">✓</span> 5 template verticali per settore</li>
-                        <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:var(--text);"><span style="color:#6c5ce7;font-weight:700;font-size:1rem;">✓</span> Generazione AI del sito completo</li>
-                        <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:var(--text);"><span style="color:#6c5ce7;font-weight:700;font-size:1rem;">✓</span> Builder drag-and-drop visuale</li>
-                        <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:var(--text);"><span style="color:#6c5ce7;font-weight:700;font-size:1rem;">✓</span> Export HTML statico ovunque</li>
-                        <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:var(--text);"><span style="color:#6c5ce7;font-weight:700;font-size:1rem;">✓</span> 5 crediti AI gratis alla registrazione</li>
+                        <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:var(--text);"><span style="color:#06d6a0;font-weight:700;font-size:1rem;">✓</span> Brief guidato: obiettivi, settore, tono di voce</li>
+                        <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:var(--text);"><span style="color:#06d6a0;font-weight:700;font-size:1rem;">✓</span> Impaginazione e testi curati dal nostro team</li>
+                        <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:var(--text);"><span style="color:#06d6a0;font-weight:700;font-size:1rem;">✓</span> PageSpeed 90+, mobile-first, SEO tecnica base</li>
+                        <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.95rem;color:var(--text);"><span style="color:#06d6a0;font-weight:700;font-size:1rem;">✓</span> Opzione: poi attivi il pacchetto RaaS per i clienti</li>
                     </ul>
-                    <div style="font-size:1.6rem;font-weight:800;color:#6c5ce7;margin-bottom:0.4rem;">Gratis per iniziare</div>
-                    <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:2rem;">Pro 9€/mese · Agency 29€/mese</div>
-                    <a href="/siteforge/builder.html" class="btn" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;border:none;margin-bottom:0.75rem;">
-                        <i class="fas fa-layer-group"></i>&nbsp; Apri il builder &rarr;
+                    <div style="font-size:1.25rem;font-weight:800;color:var(--accent);margin-bottom:0.4rem;">Da 399€ + IVA / anno</div>
+                    <div style="font-size:0.85rem;color:var(--text-light);margin-bottom:2rem;">Allineato al pacchetto Base &mdash; prezzo bloccato come da listino</div>
+                    <a href="#contatti" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1rem;">
+                        <i class="fas fa-comments"></i>&nbsp; Richiedi il percorso leggero
                     </a>
-                    <a href="/ai/" style="display:block;text-align:center;font-size:0.9rem;font-weight:600;color:#6c5ce7;">Scheda AI Sito, prezzi e FAQ</a>
-                    <p style="text-align:center;font-size:0.8rem;color:var(--text-light);margin-top:1rem;">Nessuna carta di credito richiesta</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Percorso guidato AI Sito / SiteForge (ispirazione flusso builder) -->
-    <section id="ai-sito-guida" class="section ai-wix-section" aria-label="Percorso guidato creazione sito con AI">
-        <div class="ai-wix-inner">
-            <div class="ai-wix-copy">
-                <span class="section-tag">SiteForge + AI Sito</span>
-                <h2>Dal template al sito online, passo dopo passo</h2>
-                <p>Come un builder moderno: apri l&rsquo;editor, scegli il settore o genera con l&rsquo;AI, personalizza e scarica HTML statico. Se vuoi crescita e lead misurabili, dopo il lancio puoi passare al modello <strong>RaaS</strong> con analisi e ottimizzazione continue.</p>
-                <ol class="ai-wix-steps" role="list">
-                    <li>
-                        <span class="ai-wix-num" aria-hidden="true">1</span>
-                        <div>
-                            <strong>Apri il builder SiteForge</strong>
-                            <span>Editor visuale: template o bozza generata dall&rsquo;AI, senza installare nulla nel browser oltre al sito.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="ai-wix-num" aria-hidden="true">2</span>
-                        <div>
-                            <strong>Scegli verticale o &ldquo;genera tutto&rdquo;</strong>
-                            <span>Immobiliare, ristorante, studio, e-commerce, portfolio &mdash; oppure prompt e contenuti in pochi secondi.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="ai-wix-num" aria-hidden="true">3</span>
-                        <div>
-                            <strong>Personalizza e anteprima</strong>
-                            <span>Testi, colori, sezioni; layout responsive come nei builder professionali.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="ai-wix-num" aria-hidden="true">4</span>
-                        <div>
-                            <strong>Esporta e pubblica</strong>
-                            <span>HTML statico su GitHub Pages, Netlify o hosting che gi&agrave; usi. Opzionale: <a href="#contatti">affidati a noi</a> per SEO, GEO e performance.</span>
-                        </div>
-                    </li>
-                </ol>
-                <div class="ai-wix-cta">
-                    <a href="/siteforge/builder.html" class="btn-ai-builder"><i class="fas fa-layer-group"></i> Apri il builder</a>
-                    <a href="/ai/" class="btn-ai-landing">Pagina AI Sito</a>
-                </div>
-                <p class="ai-wix-note">Per siti gi&agrave; online: valutiamo stato di salute (velocit&agrave;, SEO, GEO) con strumenti come l&rsquo;<a href="#analisi-sito">analisi gratuita</a> in homepage &mdash; in linea con percorsi di controllo qualit&agrave; su progetti come <a href="https://www.righettoimmobiliare.it/" rel="noopener noreferrer">Righetto Immobiliare</a>.</p>
-            </div>
-            <div class="ai-wix-visual">
-                <div class="ai-wix-frame">
-                    <div class="ai-wix-frame-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&amp;q=80&amp;auto=format&amp;fit=crop" alt="Workspace digitale: dashboard e ottimizzazione sito web per PMI" width="900" height="600" loading="lazy">
+                    <p style="text-align:center;font-size:0.8rem;color:var(--text-light);margin-top:1rem;">Stesso standard qualit&agrave; dei progetti che ottimizziamo anche per brand esposti come <a href="https://www.righettoimmobiliare.it/" rel="noopener noreferrer" style="color:var(--primary);font-weight:600;">Righetto Immobiliare</a>.</p>
                 </div>
             </div>
         </div>
@@ -3023,71 +2816,71 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
             <div class="section-header" style="text-align:center;margin-bottom:3rem;">
                 <span class="section-tag" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.12);">Verticalizzazione per Settore</span>
                 <h2 style="color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);margin:0.6rem 0 0.5rem;">Il tuo settore. Il sito che converte.</h2>
-                <p style="color:rgba(255,255,255,0.6);max-width:580px;margin:0 auto;font-size:1.05rem;">Strategie e template pensati per ogni business. Dal brief al sito live in ore, non settimane.</p>
+                <p style="color:rgba(255,255,255,0.6);max-width:580px;margin:0 auto;font-size:1.05rem;">Ogni settore ha regole diverse: costruiamo il sito e il messaggio insieme a te. Richiedi una proposta per la tua attivit&agrave;.</p>
             </div>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1.25rem;">
 
                 <!-- Immobiliare -->
-                <a href="/ai/demo/immobiliare" title="Vedi demo sito immobiliare" style="text-decoration:none;border-radius:20px;overflow:hidden;position:relative;display:block;min-height:320px;background:#3A5578;transition:transform 0.35s,box-shadow 0.35s;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+                <a href="#contatti" title="Sito per settore immobiliare — contattaci" style="text-decoration:none;border-radius:20px;overflow:hidden;position:relative;display:block;min-height:320px;background:#3A5578;transition:transform 0.35s,box-shadow 0.35s;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
                     <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=75&auto=format&fit=crop" alt="Sito web immobiliare professionale" width="600" height="400" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0.5;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='0.5'">
                     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.15) 65%);"></div>
                     <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;">
                         <span style="display:inline-block;background:rgba(255,255,255,0.14);color:#fff;font-size:0.72rem;font-weight:700;padding:0.22rem 0.75rem;border-radius:50px;margin-bottom:0.65rem;backdrop-filter:blur(6px);">Immobiliare</span>
                         <p style="color:#fff;font-size:0.95rem;font-weight:700;line-height:1.35;margin:0 0 0.6rem;">Lascia che i tuoi immobili parlino da soli</p>
-                        <span style="color:rgba(255,255,255,0.55);font-size:0.78rem;">Vedi demo &rarr;</span>
+                        <span style="color:rgba(255,255,255,0.55);font-size:0.78rem;">Richiedi proposta &rarr;</span>
                     </div>
                 </a>
 
                 <!-- Ristorante -->
-                <a href="/ai/demo/ristorante" title="Vedi demo sito ristorante" style="text-decoration:none;border-radius:20px;overflow:hidden;position:relative;display:block;min-height:320px;background:#1a1a1a;transition:transform 0.35s,box-shadow 0.35s;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+                <a href="#contatti" title="Sito per ristorazione — contattaci" style="text-decoration:none;border-radius:20px;overflow:hidden;position:relative;display:block;min-height:320px;background:#1a1a1a;transition:transform 0.35s,box-shadow 0.35s;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
                     <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=75&auto=format&fit=crop" alt="Sito web ristorante professionale" width="600" height="400" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0.55;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.65'" onmouseout="this.style.opacity='0.55'">
                     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.15) 65%);"></div>
                     <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;">
                         <span style="display:inline-block;background:rgba(255,255,255,0.14);color:#fff;font-size:0.72rem;font-weight:700;padding:0.22rem 0.75rem;border-radius:50px;margin-bottom:0.65rem;backdrop-filter:blur(6px);">Ristorante</span>
                         <p style="color:#fff;font-size:0.95rem;font-weight:700;line-height:1.35;margin:0 0 0.6rem;">I tuoi piatti già attraggono. Il tuo sito, anche.</p>
-                        <span style="color:rgba(255,255,255,0.55);font-size:0.78rem;">Vedi demo &rarr;</span>
+                        <span style="color:rgba(255,255,255,0.55);font-size:0.78rem;">Richiedi proposta &rarr;</span>
                     </div>
                 </a>
 
                 <!-- Studio Professionale -->
-                <a href="/ai/demo/studio-professionale" title="Vedi demo sito studio professionale" style="text-decoration:none;border-radius:20px;overflow:hidden;position:relative;display:block;min-height:320px;background:#2c3e50;transition:transform 0.35s,box-shadow 0.35s;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+                <a href="#contatti" title="Sito per studio professionale — contattaci" style="text-decoration:none;border-radius:20px;overflow:hidden;position:relative;display:block;min-height:320px;background:#2c3e50;transition:transform 0.35s,box-shadow 0.35s;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
                     <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=75&auto=format&fit=crop" alt="Sito web studio professionale" width="600" height="400" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0.45;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.55'" onmouseout="this.style.opacity='0.45'">
                     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.15) 65%);"></div>
                     <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;">
                         <span style="display:inline-block;background:rgba(255,255,255,0.14);color:#fff;font-size:0.72rem;font-weight:700;padding:0.22rem 0.75rem;border-radius:50px;margin-bottom:0.65rem;backdrop-filter:blur(6px);">Studio Professionale</span>
                         <p style="color:#fff;font-size:0.95rem;font-weight:700;line-height:1.35;margin:0 0 0.6rem;">La tua competenza merita la presenza che merita</p>
-                        <span style="color:rgba(255,255,255,0.55);font-size:0.78rem;">Vedi demo &rarr;</span>
+                        <span style="color:rgba(255,255,255,0.55);font-size:0.78rem;">Richiedi proposta &rarr;</span>
                     </div>
                 </a>
 
                 <!-- E-commerce -->
-                <a href="/ai/demo/ecommerce" title="Vedi demo sito e-commerce" style="text-decoration:none;border-radius:20px;overflow:hidden;position:relative;display:block;min-height:320px;background:#6c5ce7;transition:transform 0.35s,box-shadow 0.35s;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+                <a href="#contatti" title="Sito e-commerce — contattaci" style="text-decoration:none;border-radius:20px;overflow:hidden;position:relative;display:block;min-height:320px;background:#6c5ce7;transition:transform 0.35s,box-shadow 0.35s;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
                     <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=75&auto=format&fit=crop" alt="Sito web e-commerce" width="600" height="400" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0.45;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.55'" onmouseout="this.style.opacity='0.45'">
                     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.15) 65%);"></div>
                     <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;">
                         <span style="display:inline-block;background:rgba(255,255,255,0.14);color:#fff;font-size:0.72rem;font-weight:700;padding:0.22rem 0.75rem;border-radius:50px;margin-bottom:0.65rem;backdrop-filter:blur(6px);">E-commerce</span>
                         <p style="color:#fff;font-size:0.95rem;font-weight:700;line-height:1.35;margin:0 0 0.6rem;">Il tuo negozio aperto 24/7 — inizia a vendere</p>
-                        <span style="color:rgba(255,255,255,0.55);font-size:0.78rem;">Vedi demo &rarr;</span>
+                        <span style="color:rgba(255,255,255,0.55);font-size:0.78rem;">Richiedi proposta &rarr;</span>
                     </div>
                 </a>
 
                 <!-- Portfolio -->
-                <a href="/ai/demo/portfolio" title="Vedi demo sito portfolio" style="text-decoration:none;border-radius:20px;overflow:hidden;position:relative;display:block;min-height:320px;background:#2d3436;transition:transform 0.35s,box-shadow 0.35s;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+                <a href="#contatti" title="Sito portfolio / creativo — contattaci" style="text-decoration:none;border-radius:20px;overflow:hidden;position:relative;display:block;min-height:320px;background:#2d3436;transition:transform 0.35s,box-shadow 0.35s;" onmouseover="this.style.transform='translateY(-8px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.5)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
                     <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&q=75&auto=format&fit=crop" alt="Sito web portfolio creativo" width="600" height="400" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0.5;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='0.5'">
                     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.15) 65%);"></div>
                     <div style="position:absolute;bottom:0;left:0;right:0;padding:1.5rem;">
                         <span style="display:inline-block;background:rgba(255,255,255,0.14);color:#fff;font-size:0.72rem;font-weight:700;padding:0.22rem 0.75rem;border-radius:50px;margin-bottom:0.65rem;backdrop-filter:blur(6px);">Portfolio / Creativo</span>
                         <p style="color:#fff;font-size:0.95rem;font-weight:700;line-height:1.35;margin:0 0 0.6rem;">Il tuo lavoro, in primo piano. Senza compromessi.</p>
-                        <span style="color:rgba(255,255,255,0.55);font-size:0.78rem;">Vedi demo &rarr;</span>
+                        <span style="color:rgba(255,255,255,0.55);font-size:0.78rem;">Richiedi proposta &rarr;</span>
                     </div>
                 </a>
 
             </div>
             <div style="text-align:center;margin-top:2.5rem;">
-                <a href="/ai" class="btn" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;border:none;padding:0.9rem 2.5rem;font-size:1rem;">
-                    <i class="fas fa-magic"></i>&nbsp; Esplora tutti i template per settore
+                <a href="#contatti" class="btn btn-primary" style="padding:0.9rem 2.5rem;font-size:1rem;">
+                    <i class="fas fa-briefcase"></i>&nbsp; Parla con noi per il tuo settore
                 </a>
-                <p style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-top:1rem;">5 verticali pronti · generazione AI in 60s · export HTML ovunque</p>
+                <p style="color:rgba(255,255,255,0.45);font-size:0.82rem;margin-top:1rem;">Siti su misura per il tuo mercato &mdash; codice puro, veloci, pronti per SEO e GEO</p>
             </div>
         </div>
         <style>
