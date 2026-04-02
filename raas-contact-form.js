@@ -49,11 +49,31 @@
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + ANON,
+        apikey: ANON,
       },
       body: JSON.stringify(payload),
     }).then(function (r) {
-      return r.json().then(function (j) {
-        if (!r.ok) throw new Error(j.error || r.statusText || "Errore invio");
+      return r.text().then(function (text) {
+        var j = {};
+        try {
+          j = text ? JSON.parse(text) : {};
+        } catch (e) {
+          throw new Error(
+            "Risposta server non valida (" +
+              r.status +
+              "). Se vedi 404, deploya la funzione contact-form su Supabase. Dettaglio: " +
+              text.slice(0, 120)
+          );
+        }
+        if (!r.ok) {
+          var msg =
+            j.error ||
+            j.message ||
+            r.statusText ||
+            "Errore invio";
+          if (j.details) msg += " — " + String(j.details).slice(0, 200);
+          throw new Error(msg);
+        }
         return j;
       });
     });

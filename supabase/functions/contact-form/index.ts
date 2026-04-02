@@ -1,7 +1,7 @@
 // Supabase Edge Function — Notifica form contatti → info@raasautomazioni.it (SMTP SiteGround)
 // Deploy: supabase secrets set SMTP_HOST SMTP_PORT SMTP_USER SMTP_PASS
-//         supabase functions deploy contact-form --no-verify-jwt
-// Env: SMTP_* come send-email; opzionale CONTACT_NOTIFY_EMAIL (default info@raasautomazioni.it)
+//         supabase functions deploy contact-form
+// Destinatario notifiche: sempre info@raasautomazioni.it (SMTP_USER di solito = stessa casella)
 
 import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
@@ -95,7 +95,8 @@ Deno.serve(async (req: Request) => {
     const smtpPort = parseInt(Deno.env.get("SMTP_PORT") || "465", 10);
     const smtpUser = Deno.env.get("SMTP_USER") || "info@raasautomazioni.it";
     const smtpPass = Deno.env.get("SMTP_PASS");
-    const notifyTo = Deno.env.get("CONTACT_NOTIFY_EMAIL") || "info@raasautomazioni.it";
+    /** Destinazione fissa richiesta: tutte le richieste form → info@ */
+    const notifyTo = "info@raasautomazioni.it";
 
     if (!smtpPass) {
       return new Response(
@@ -106,7 +107,7 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const subject = `[RaaS — Form] ${source.slice(0, 80)} — ${esc(nome)}`;
+    const subjectPlain = `[RaaS — Form] ${source.replace(/[\r\n]+/g, " ").slice(0, 80)} — ${nome.replace(/[\r\n]+/g, " ").slice(0, 60)}`;
     const html = `<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8"></head><body style="font-family:system-ui,sans-serif;line-height:1.6;color:#1a2f47;">
 <h2 style="color:#e63946;">Nuova richiesta dal sito</h2>
 <table style="border-collapse:collapse;max-width:560px;">
@@ -133,7 +134,7 @@ ${messaggio ? `<tr><td style="padding:6px 12px 6px 0;font-weight:700;vertical-al
     await client.send({
       from: `RaaS Automazioni <${smtpUser}>`,
       to: notifyTo,
-      subject: subject.replace(/[\r\n]/g, " ").slice(0, 200),
+      subject: subjectPlain.slice(0, 200),
       content: `Rispondi a: ${email}\n\n${messaggio || "(nessun messaggio)"}`,
       html,
     });
