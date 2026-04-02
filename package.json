@@ -6,9 +6,13 @@
   "scripts": {
     "scrape-bandi": "node tools/scrape-bandi.js",
     "verify-links": "node tools/verify-links-perplexity.js",
-    "sync-bandi": "node tools/sync-bandi.js"
+    "sync-bandi": "node tools/sync-bandi.js",
+    "deploy-contact-form": "supabase functions deploy contact-form"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "supabase": "^2.84.7"
   }
 }
