@@ -1,5 +1,5 @@
 // Supabase Edge Function — Notifica form contatti → info@raasautomazioni.it
-// Invio: se c’è BREVO_API_KEY → API Brevo; altrimenti SMTP (SMTP_PASS + opzionali SMTP_*).
+// Invio: se c’è SMTP_PASS → SMTP (default host mail.raasautomazioni.it); altrimenti BREVO_API_KEY.
 // Deploy: supabase functions deploy contact-form
 
 import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
@@ -127,7 +127,8 @@ Deno.serve(async (req: Request) => {
     const messaggio = String(body.messaggio ?? body.message ?? "").trim();
     const source = String(body.source ?? "sito").trim().slice(0, 500);
 
-    const smtpHost = Deno.env.get("SMTP_HOST") || "es1003.siteground.eu";
+    /** Host SMTP della casella (es. mail.raasautomazioni.it su SiteGround/cPanel). */
+    const smtpHost = Deno.env.get("SMTP_HOST") || "mail.raasautomazioni.it";
     const smtpPort = parseInt(Deno.env.get("SMTP_PORT") || "465", 10);
     const smtpUser = Deno.env.get("SMTP_USER") || "info@raasautomazioni.it";
     const smtpPass = Deno.env.get("SMTP_PASS");
@@ -166,25 +167,14 @@ ${messaggio ? `<tr><td style="padding:6px 12px 6px 0;font-weight:700;vertical-al
     const textPlain = `Rispondi a: ${email}\n\n${messaggio || "(nessun messaggio)"}`;
     const replyName = [nome, cognome].filter(Boolean).join(" ").slice(0, 70) || nome;
 
-    if (brevoKey) {
-      await sendViaBrevo({
-        apiKey: brevoKey,
-        to: notifyTo,
-        senderEmail: brevoSender,
-        senderName: "RaaS Automazioni",
-        replyToEmail: email,
-        replyToName: replyName,
-        subject: subjectPlain.slice(0, 200),
-        html,
-        text: textPlain,
-      });
-    } else {
+    // Se hai SMTP_PASS + mail.raasautomazioni.it usiamo la tua casella; altrimenti Brevo.
+    if (smtpPass) {
       const client = new SmtpClient();
       await client.connectTLS({
         hostname: smtpHost,
         port: smtpPort,
         username: smtpUser,
-        password: smtpPass!,
+        password: smtpPass,
       });
 
       await client.send({
@@ -196,6 +186,18 @@ ${messaggio ? `<tr><td style="padding:6px 12px 6px 0;font-weight:700;vertical-al
       });
 
       await client.close();
+    } else if (brevoKey) {
+      await sendViaBrevo({
+        apiKey: brevoKey,
+        to: notifyTo,
+        senderEmail: brevoSender,
+        senderName: "RaaS Automazioni",
+        replyToEmail: email,
+        replyToName: replyName,
+        subject: subjectPlain.slice(0, 200),
+        html,
+        text: textPlain,
+      });
     }
 
     return new Response(JSON.stringify({ success: true }), {

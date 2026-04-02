@@ -9,11 +9,16 @@ Notifica a **info@raasautomazioni.it** quando un visitatore invia un form contat
 - `BREVO_API_KEY` — la funzione invia tramite `https://api.brevo.com/v3/smtp/email`
 - Opzionale: `BREVO_SENDER_EMAIL` — mittente (default `info@raasautomazioni.it`); deve essere **verificato** in Brevo
 
-**Opzione B — SMTP SiteGround (come `send-email`)**
+**Opzione B — SMTP della casella (es. SiteGround)**
 
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`
+- `SMTP_PASS` — **obbligatorio** per usare la posta sul tuo dominio  
+- `SMTP_HOST` — di solito **`mail.raasautomazioni.it`** (se omesso, la funzione usa questo default)  
+- `SMTP_PORT` — spesso **`465`** (SSL); se non funziona prova **`587`**  
+- `SMTP_USER` — di solito l’email completa, es. **`info@raasautomazioni.it`**
 
-Serve **almeno una** tra `BREVO_API_KEY` e `SMTP_PASS`.
+Se imposti `SMTP_PASS`, l’invio passa da **questo SMTP** (non da Brevo), anche se `BREVO_API_KEY` esiste.
+
+Serve **almeno una** tra `SMTP_PASS` e `BREVO_API_KEY`.
 
 Le notifiche arrivano sempre a **info@raasautomazioni.it** (mittente di solito `SMTP_USER`, stessa casella).
 
