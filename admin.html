@@ -761,7 +761,7 @@ a.btn-icon { text-decoration: none; color: var(--testo); }
 <!-- ══════════ LOGIN ══════════ -->
 <div id="loginOverlay">
   <div class="login-box">
-    <div class="login-logo">BANDI<span>ITALIA</span></div>
+    <div class="login-logo">RaaS<span style="color:var(--oro);">Automazioni</span></div>
     <div class="login-sub">Pannello Amministrazione</div>
     <input type="password" id="loginPwd" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()">
     <button class="btn-login" onclick="doLogin()">ACCEDI</button>
@@ -775,7 +775,7 @@ a.btn-icon { text-decoration: none; color: var(--testo); }
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
-    <h1><em>Bandi</em>Italia</h1>
+    <h1 style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2;">RaaS <span style="color:var(--oro);">Automazioni</span></h1>
     <span>Admin Panel</span>
   </div>
   <nav>
@@ -1692,7 +1692,7 @@ a.btn-icon { text-decoration: none; color: var(--testo); }
           <label>Password SMTP (info@raasautomazioni.it)</label>
           <input type="password" id="smtpPassField" placeholder="Password SMTP SiteGround">
           <button class="btn btn-secondary btn-sm" style="margin-top:8px;width:fit-content;" onclick="saveSMTPPass()">Salva in Locale</button>
-          <p style="font-size:0.72rem;color:var(--grigio);margin-top:4px;">Salvata in localStorage. Per produzione, configurare come env var su Supabase.</p>
+          <p style="font-size:0.72rem;color:var(--grigio);margin-top:4px;">Salvata in localStorage per invii massivi da questo pannello. I form pubblici del sito usano la funzione Edge <code style="font-size:0.68rem;">contact-form</code> con <strong>SMTP_PASS</strong> solo nei secret Supabase (stesso account <strong>info@raasautomazioni.it</strong>).</p>
         </div>
       </div>
     </div>
@@ -2582,7 +2582,7 @@ async function sendEmail() {
       const res = await fetch(EDGE_FN_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY },
-        body: JSON.stringify({ to: emails, subject: oggetto, html: html, smtp_pass: smtpPass })
+        body: JSON.stringify({ to: emails, subject: oggetto, html: html, smtp_pass: smtpPass, from_name: 'RaaS Automazioni' })
       });
       const result = await res.json();
       if (result.success) {
@@ -2676,11 +2676,8 @@ function buildNewsletterHTML(bandi) {
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a1628;padding:20px 0 40px;"><tr><td align="center">
 <table width="600" cellpadding="0" cellspacing="0" style="background:#0f2035;border-radius:16px;overflow:hidden;border:1px solid rgba(212,168,67,0.15);">
 <tr><td style="padding:30px 40px 20px;text-align:center;">
-  <table cellpadding="0" cellspacing="0" style="margin:0 auto;"><tr>
-    <td style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#d4a843;letter-spacing:1px;">BANDI</td>
-    <td style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#f8f6f1;letter-spacing:1px;">ITALIA</td>
-  </tr></table>
-  <p style="margin:8px 0 0;font-size:11px;color:#8b95a5;letter-spacing:2px;text-transform:uppercase;">Newsletter Settimanale</p>
+  <p style="margin:0;font-family:Georgia,serif;font-size:22px;font-weight:700;color:#f8f6f1;letter-spacing:0.5px;">RaaS <span style="color:#d4a843;">Automazioni</span></p>
+  <p style="margin:8px 0 0;font-size:11px;color:#8b95a5;letter-spacing:2px;text-transform:uppercase;">Newsletter bandi</p>
 </td></tr>
 <tr><td style="padding:0 60px;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td style="height:2px;background:linear-gradient(90deg,transparent,#d4a843,transparent);"></td></tr></table></td></tr>
 <tr><td style="padding:30px 40px 10px;text-align:center;">
@@ -2740,7 +2737,7 @@ async function sendNewsletter() {
         const res = await fetch(EDGE_FN_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY },
-          body: JSON.stringify({ to: emails, subject: oggetto, html: html, smtp_pass: smtpPass })
+          body: JSON.stringify({ to: emails, subject: oggetto, html: html, smtp_pass: smtpPass, from_name: 'RaaS Automazioni' })
         });
         const result = await res.json();
         if (result.success) {
@@ -2820,7 +2817,8 @@ async function testSMTP() {
         to: email,
         subject: 'Test SMTP — RaaS Automazioni Admin',
         html: '<h2 style="color:#d4a843;">Test SMTP funzionante!</h2><p>Se leggi questo messaggio, la configurazione SMTP e\' corretta.</p><p>— RaaS Automazioni Admin</p>',
-        smtp_pass: smtpPass
+        smtp_pass: smtpPass,
+        from_name: 'RaaS Automazioni'
       })
     });
     const result = await res.json();

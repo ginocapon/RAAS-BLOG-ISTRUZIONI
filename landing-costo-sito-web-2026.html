@@ -703,7 +703,9 @@ footer a:hover{text-decoration:underline}
     <div class="section-divider reveal"></div>
     <p class="section-sub reveal">Compila il form e riceverai entro 24 ore un preventivo dettagliato e personalizzato per il tuo progetto web.</p>
     <div class="form-wrapper reveal">
-      <form action="https://formspree.io/f/xaqdydbp" method="POST" id="contactForm">
+      <form method="post" id="contactForm" data-raas-contact="1">
+        <input type="text" name="hp" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+        <p id="formSuccess" style="display:none;text-align:center;padding:1rem;margin-bottom:1rem;background:rgba(74,222,128,0.15);border-radius:12px;color:#166534;font-weight:600;">Grazie! Ti contatteremo entro 24 ore.</p>
         <div class="form-row">
           <div class="form-group">
             <label for="nome">Nome *</label>
@@ -859,6 +861,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </div>
 
+<script src="/raas-contact-form.js"></script>
 <script>
 /* === SPIRAL BACKGROUND === */
 (function(){
@@ -1016,26 +1019,22 @@ if(!document.cookie.includes('cookie_consent=')){
         addMessage('Per favore compila tutti i campi.','bot');
         return;
       }
-      var formData=new FormData();
-      formData.append('nome',nome);
-      formData.append('email',email);
-      formData.append('telefono',tel);
-      formData.append('_subject','Richiesta preventivo da Chatbot Costo Sito Web 2026');
-      formData.append('messaggio','Richiesta di preventivo dal chatbot della landing costo sito web 2026.');
-      fetch('https://formspree.io/f/xaqdydbp',{method:'POST',body:formData,headers:{'Accept':'application/json'}})
-        .then(function(r){
-          if(r.ok){
-            addMessage('Grazie '+nome+'! Ti invieremo un preventivo dettagliato entro 24 ore.','bot');
-            showQuickReplies();
-          }else{
-            addMessage('Si è verificato un errore. Prova a compilare il form nella pagina.','bot');
-            showQuickReplies();
-          }
-        })
-        .catch(function(){
-          addMessage('Errore di connessione. Prova a compilare il form nella pagina.','bot');
-          showQuickReplies();
-        });
+      if(typeof raasSendContactPayload!=='function'){
+        addMessage('Servizio temporaneamente non disponibile. Usa il form in pagina.','bot');
+        showQuickReplies();
+        return;
+      }
+      raasSendContactPayload({
+        nome:nome,cognome:'—',email:email,telefono:tel,
+        problema:'Chatbot',messaggio:'Richiesta dal chatbot — landing costo sito web 2026.',
+        source:location.pathname+' (chatbot)'
+      }).then(function(){
+        addMessage('Grazie '+nome+'! Ti invieremo un preventivo dettagliato entro 24 ore.','bot');
+        showQuickReplies();
+      }).catch(function(){
+        addMessage('Errore invio. Prova il form in pagina o info@raasautomazioni.it','bot');
+        showQuickReplies();
+      });
     });
   }
 

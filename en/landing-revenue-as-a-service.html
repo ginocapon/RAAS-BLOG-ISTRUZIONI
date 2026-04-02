@@ -663,9 +663,9 @@ footer .footer-tagline{font-family:'Playfair Display',serif;font-size:1.3rem;col
     <div class="section-divider reveal"></div>
     <p class="section-sub reveal">Tell us about your business and we will show you exactly how RaaS can generate more revenue for you.</p>
     <div class="contact-form-wrapper reveal">
-      <form action="https://formspree.io/f/xaqdydbp" method="POST">
-        <input type="hidden" name="_subject" value="New Lead from EN Landing Page - Revenue as a Service">
-        <input type="hidden" name="_language" value="en">
+      <form method="post" id="contactForm" data-raas-contact="1">
+        <input type="text" name="hp" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+        <p id="formSuccess" style="display:none;text-align:center;padding:1rem;margin-bottom:1rem;background:rgba(34,197,94,0.15);border-radius:12px;color:#166534;font-weight:600;">Thank you! We will contact you within 24 hours.</p>
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">First Name *</label>
@@ -789,6 +789,7 @@ footer .footer-tagline{font-family:'Playfair Display',serif;font-size:1.3rem;col
   </div>
 </div>
 
+<script src="/raas-contact-form.js"></script>
 <script>
 /* === SPIRAL BACKGROUND === */
 (function(){
@@ -919,11 +920,14 @@ document.querySelectorAll('.faq-question').forEach(function(btn){
       var email=document.getElementById('chatEmail').value;
       var phone=document.getElementById('chatPhone').value;
       if(!name||!email){addMsg('Please fill in at least your name and email.','bot');return;}
-      /* Send via Formspree */
-      fetch('https://formspree.io/f/xaqdydbp',{
-        method:'POST',
-        headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify({firstName:name,email:email,phone:phone,service:'Chatbot contact request',_subject:'Chatbot Lead - EN Landing Page',_language:'en'})
+      if(typeof raasSendContactPayload!=='function'){
+        addMsg('Service unavailable. Use the contact form on this page.','bot');
+        return;
+      }
+      raasSendContactPayload({
+        nome:name,cognome:'—',email:email,telefono:phone||'',
+        problema:'Chatbot (EN RaaS)',messaggio:'Revenue as a Service landing — chatbot.',
+        source:location.pathname+' (chatbot)'
       }).then(function(){
         form.remove();
         addMsg('Thank you, '+name+'! Our team will contact you within 24 hours.','bot');

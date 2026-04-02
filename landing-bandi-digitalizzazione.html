@@ -616,7 +616,9 @@ footer a:hover{text-decoration:underline}
     <div class="section-divider reveal"></div>
     <p class="section-sub reveal">Compila il modulo e ti contatteremo per individuare i bandi disponibili per la tua impresa.</p>
     <div class="form-box reveal">
-      <form action="https://formspree.io/f/xaqdydbp" method="POST">
+      <form method="post" id="contactForm" data-raas-contact="1">
+        <input type="text" name="hp" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+        <p id="formSuccess" style="display:none;text-align:center;padding:1rem;margin-bottom:1rem;background:rgba(74,222,128,0.15);border-radius:12px;color:#166534;font-weight:600;">Grazie! Ti contatteremo entro 24 ore.</p>
         <div class="form-row">
           <div class="form-group">
             <label for="nome">Nome *</label>
@@ -745,6 +747,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </div>
 
+<script src="/raas-contact-form.js"></script>
 <script>
 /* === SPIRAL BACKGROUND === */
 (function(){
@@ -876,15 +879,18 @@ function submitChatForm(){
   }
   chatForm.style.display='none';
   addMessage('Richiesta inviata: '+name+' ('+email+', '+phone+')','user');
-  /* Send via Formspree */
-  fetch('https://formspree.io/f/xaqdydbp',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({nome:name,email:email,telefono:phone,fonte:'chatbot',interesse:'Richiesta contatto da chatbot'})
-  }).then(()=>{
+  if(typeof raasSendContactPayload!=='function'){
+    addMessage('Servizio non disponibile. Usa il form in pagina o scrivi a info@raasautomazioni.it','bot');
+    return;
+  }
+  raasSendContactPayload({
+    nome:name,cognome:'—',email:email,telefono:phone,
+    problema:'Chatbot bandi',messaggio:'Richiesta da chatbot landing bandi digitalizzazione.',
+    source:location.pathname+' (chatbot)'
+  }).then(function(){
     addMessage('Grazie '+name+'! Ti ricontatteremo entro 24 ore. Nel frattempo, puoi esplorare i bandi disponibili su raasautomazioni.it/bandi','bot');
-  }).catch(()=>{
-    addMessage('Grazie '+name+'! La tua richiesta e\' stata registrata. Ti contatteremo al piu\' presto.','bot');
+  }).catch(function(){
+    addMessage('Invio non riuscito. Usa il form in pagina o info@raasautomazioni.it','bot');
   });
 }
 </script>

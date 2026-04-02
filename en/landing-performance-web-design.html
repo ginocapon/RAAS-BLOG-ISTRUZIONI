@@ -648,7 +648,9 @@ footer .footer-copy{font-size:.8rem;color:var(--text-light)}
     <div class="section-divider reveal"></div>
     <p class="section-sub reveal">Tell us about your business and we will show you exactly how we can improve your online performance.</p>
     <div class="form-container reveal">
-      <form action="https://formspree.io/f/xaqdydbp" method="POST">
+      <form method="post" id="contactForm" data-raas-contact="1">
+        <input type="text" name="hp" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+        <p id="formSuccess" style="display:none;text-align:center;padding:1rem;margin-bottom:1rem;background:rgba(34,197,94,0.15);border-radius:12px;color:#166534;font-weight:600;">Thank you! We will contact you within 24 hours.</p>
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">First Name <span class="req">*</span></label>
@@ -687,8 +689,6 @@ footer .footer-copy{font-size:.8rem;color:var(--text-light)}
           <input type="checkbox" id="privacy" name="privacy" required>
           <label for="privacy">I agree to the <a href="/privacy" target="_blank">Privacy Policy</a>. My data will be used only to respond to this enquiry and will not be shared with third parties.</label>
         </div>
-        <input type="hidden" name="_subject" value="New Lead: Performance Web Design Landing (EN)">
-        <input type="hidden" name="_next" value="https://www.raasautomazioni.it/en/landing-performance-web-design?sent=true">
         <button type="submit" class="form-submit">Get Your Custom Website Audit</button>
       </form>
     </div>
@@ -802,6 +802,7 @@ footer .footer-copy{font-size:.8rem;color:var(--text-light)}
   </div>
 </div>
 
+<script src="/raas-contact-form.js"></script>
 <script>
 /* === SPIRAL BACKGROUND === */
 (function(){
@@ -955,16 +956,21 @@ if(!document.cookie.includes('cookie_consent=')){
       return;
     }
     const form=document.getElementById('chatContactForm');
-    form.classList.remove('show');
-    form.style.display='none';
-    addMsg('Thank you, '+name+'! Our team will reach out to you at '+email+' within 24 hours.','bot');
-
-    // Send via Formspree
-    fetch('https://formspree.io/f/xaqdydbp',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({firstName:name,email:email,phone:phone,_subject:'Chatbot Lead: Performance Web Design (EN)',websiteType:'From chatbot'})
-    }).catch(()=>{});
+    if(typeof raasSendContactPayload!=='function'){
+      addMsg('Service unavailable. Use the form on this page.','bot');
+      return;
+    }
+    raasSendContactPayload({
+      nome:name,cognome:'—',email:email,telefono:phone||'',
+      problema:'Chatbot (EN)',messaggio:'Performance web design landing — chatbot.',
+      source:location.pathname+' (chatbot)'
+    }).then(function(){
+      form.classList.remove('show');
+      form.style.display='none';
+      addMsg('Thank you, '+name+'! Our team will reach out to you at '+email+' within 24 hours.','bot');
+    }).catch(function(){
+      addMsg('Send failed. Use the form below or email info@raasautomazioni.it','bot');
+    });
   };
 })();
 </script>

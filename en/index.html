@@ -657,8 +657,8 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
                         <i class="fas fa-check-circle" style="color:#4ade80;"></i> Thank you! We'll contact you soon.
                     </div>
 
-                    <form action="https://formspree.io/f/xaqdydbp" method="POST" id="contactForm">
-                        <input type="hidden" name="_language" value="en">
+                    <form method="post" id="contactForm" data-raas-contact="1" data-raas-source="en-home-contatti">
+                        <input type="text" name="hp" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Name *</label>
@@ -717,15 +717,13 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
         <div class="container" style="max-width:600px;text-align:center;">
             <h3 style="font-size:1.5rem;font-weight:800;color:var(--dark);margin-bottom:0.5rem;">Stay Ahead of the Competition</h3>
             <p style="color:var(--text-light);margin-bottom:1.5rem;">Get weekly insights on AI, SEO, GEO, and lead generation strategies. No spam.</p>
-            <form action="https://formspree.io/f/xaqdydbp" method="POST" style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
-                <input type="hidden" name="_subject" value="Newsletter EN Subscription">
-                <input type="hidden" name="_language" value="en">
-                <input type="hidden" name="type" value="newsletter">
-                <input type="email" name="email" required placeholder="Your email address" style="flex:1;min-width:250px;padding:0.85rem 1.2rem;border:2px solid #e8eef3;border-radius:8px;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='#e8eef3'">
+            <form id="newsletterFormEn" style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
+                <input type="email" id="nl-en-email" name="email" required placeholder="Your email address" style="flex:1;min-width:250px;padding:0.85rem 1.2rem;border:2px solid #e8eef3;border-radius:8px;font-size:0.95rem;font-family:inherit;outline:none;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='#e8eef3'">
                 <button type="submit" class="btn btn-primary" style="white-space:nowrap;">
                     <i class="fas fa-paper-plane"></i> Subscribe
                 </button>
             </form>
+            <p id="nlEnSuccess" style="display:none;margin-top:0.75rem;color:#16a34a;font-weight:600;">Thank you! You are subscribed.</p>
             <p style="font-size:0.75rem;color:var(--text-light);opacity:0.6;margin-top:0.75rem;">By subscribing you accept our <a href="/privacy" style="color:var(--primary);">Privacy Policy</a></p>
         </div>
     </section>
@@ -740,18 +738,33 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;colo
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/raas-contact-form.js"></script>
     <script>
-    // Mobile menu
     document.getElementById('mobileMenuToggle').addEventListener('click',function(){
         document.getElementById('navLinks').classList.toggle('active');
     });
-    // Form success
-    const form=document.getElementById('contactForm');
-    if(form){form.addEventListener('submit',function(e){
-        e.preventDefault();
-        fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-        .then(r=>{if(r.ok){document.getElementById('formSuccess').style.display='block';form.reset();}});
-    });}
+    (function(){
+        var SUPABASE_URL='https://ieeriszlalrsbfsnarih.supabase.co';
+        var SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZXJpc3psYWxyc2Jmc25hcmloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNjEyNjAsImV4cCI6MjA4MzczNzI2MH0.Sjwu1620mMTAAoKVHgXHQ1cA-m3hFXqtCtqjAQNErQo';
+        var nf=document.getElementById('newsletterFormEn');
+        if(nf&&window.supabase){
+            nf.addEventListener('submit',function(e){
+                e.preventDefault();
+                var em=document.getElementById('nl-en-email').value.trim();
+                if(!em)return;
+                var client=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+                client.from('subscribers').insert([{
+                    email:em,name:'',company:'',newsletter:true,type:'newsletter',
+                    start_date:new Date().toISOString(),transaction_id:'NL-EN-'+Date.now()
+                }]).then(function(){
+                    nf.style.display='none';
+                    var s=document.getElementById('nlEnSuccess');
+                    if(s)s.style.display='block';
+                }).catch(function(){ alert('Could not subscribe. Email us at info@raasautomazioni.it'); });
+            });
+        }
+    })();
     </script>
 
     <!-- RaaS Assistant: iframe /brobot (embed); IT/EN dal toggle nella chat -->

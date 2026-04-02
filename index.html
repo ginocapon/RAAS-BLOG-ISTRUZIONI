@@ -4276,8 +4276,9 @@ FINE CHATBOT - Inserire PRIMA del tag </body>
                         <i class="fas fa-check-circle"></i> Grazie! Ti contatteremo presto.
                     </div>
                     
-                    <!-- FORM FORMSPREE FUNZIONANTE -->
-                    <form action="https://formspree.io/f/xaqdydbp" method="POST" id="contactForm">
+                    <!-- Form → Supabase Edge contact-form (SMTP info@raasautomazioni.it) -->
+                    <form method="post" id="contactForm" data-raas-contact="1" data-raas-source="home-contatti">
+                        <input type="text" name="hp" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="nome">Nome *</label>
@@ -4370,7 +4371,7 @@ ISTRUZIONI:
         <div id="nlSuccess" style="display:none;text-align:center;background:#fff;border-radius:20px;padding:3rem;box-shadow:0 15px 50px rgba(42,74,111,0.12);">
             <div style="font-size:3rem;margin-bottom:1rem;">&#127881;</div>
             <h3 style="color:#2a4a6f;margin-bottom:0.5rem;">Iscrizione Completata!</h3>
-            <p style="color:#516a87;">Controlla la tua email. Riceverai presto offerte e novit&agrave; su siti web e bandi.</p>
+            <p style="color:#516a87;">Grazie per l&apos;iscrizione. Le comunicazioni commerciali rispettano la Privacy; per assistenza: <a href="mailto:info@raasautomazioni.it">info@raasautomazioni.it</a>.</p>
         </div>
     </div>
 </section>
@@ -4525,6 +4526,7 @@ ISTRUZIONI:
 4) Al suo posto INCOLLA tutto il contenuto qui sotto (il tag <script> è già incluso)
 -->
 
+<script src="/raas-contact-form.js"></script>
 <script>
 // ========== SUPABASE CLIENT ==========
 const SUPABASE_URL='https://ieeriszlalrsbfsnarih.supabase.co';
@@ -4746,7 +4748,7 @@ qa:{
 'Sitemap XML?':'Generata e inviata a Google Search Console. Aggiornata automaticamente.',
 'CDN incluso?':'Sì, Cloudflare CDN per velocità globale e protezione DDoS.',
 'Sicurezza sito?':'HTTPS, Cloudflare, no vulnerabilità WordPress. Sicuro by design.',
-'Form contatto funziona?':'Sì! Formspree integrato. Notifica istantanea sul tuo telefono.',
+'Form contatto funziona?':'Sì! Il messaggio arriva via email a info@raasautomazioni.it (SMTP sul nostro server).',
 'Chatbot personalizzabile?':'Sì! Domande e risposte personalizzate per il tuo settore.',
 'Posso avere blog?':'Sì! Dal piano Business. Blog ottimizzato SEO.',
 'Migrazione inclusa?':'Sì! La migrazione dei contenuti dal vecchio sito è inclusa nel servizio.',

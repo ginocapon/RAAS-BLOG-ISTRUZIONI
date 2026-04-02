@@ -521,7 +521,9 @@ footer a{color:var(--gold);text-decoration:none}
     <div class="section-divider reveal"></div>
     <p class="section-sub reveal">Tell us about your business and we will show you exactly how many leads our AI system can generate for you.</p>
     <div class="contact-form-wrap reveal">
-      <form action="https://formspree.io/f/xaqdydbp" method="POST" id="contactForm">
+      <form method="post" id="contactForm" data-raas-contact="1">
+        <input type="text" name="hp" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+        <p id="formSuccess" style="display:none;text-align:center;padding:1rem;margin-bottom:1rem;background:rgba(34,197,94,0.15);border-radius:12px;color:#166534;font-weight:600;">Thank you! We will contact you within 24 hours.</p>
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">First Name *</label>
@@ -556,8 +558,6 @@ footer a{color:var(--gold);text-decoration:none}
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Tell us about your business, your goals, and what you have tried so far..."></textarea>
         </div>
-        <input type="hidden" name="_subject" value="New Lead - AI Lead Generation Landing (EN)">
-        <input type="hidden" name="_next" value="https://www.raasautomazioni.it/en/landing-ai-lead-generation#hero">
         <div class="form-checkbox">
           <input type="checkbox" id="privacy" required>
           <label for="privacy">I agree to the <a href="/privacy" target="_blank">Privacy Policy</a>. My data will be processed to respond to my request in accordance with GDPR regulations.</label>
@@ -665,6 +665,7 @@ footer a{color:var(--gold);text-decoration:none}
   </div>
 </div>
 
+<script src="/raas-contact-form.js"></script>
 <script>
 /* === SPIRAL BACKGROUND === */
 (function(){
@@ -798,19 +799,24 @@ function submitChatForm(){
     return;
   }
 
-  /* Submit via Formspree */
-  fetch('https://formspree.io/f/xaqdydbp',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({firstName:name,email:email,phone:phone,_subject:'Chatbot Lead - AI Lead Gen (EN)',challenge:'Contact request via chatbot'})
+  if(typeof raasSendContactPayload!=='function'){
+    msgs.innerHTML+='<div class="chat-msg chat-bot">Service unavailable. Please use the form on the page.</div>';
+    return;
+  }
+  raasSendContactPayload({
+    nome:name,cognome:'—',email:email,telefono:phone,
+    problema:'Chatbot (EN)',messaggio:'Contact request via chatbot — AI lead generation landing.',
+    source:location.pathname+' (chatbot)'
+  }).then(function(){
+    miniForm.classList.remove('show');
+    msgs.innerHTML+='<div class="chat-msg chat-user">Name: '+name+'<br>Email: '+email+'<br>Phone: '+phone+'</div>';
+    setTimeout(()=>{
+      msgs.innerHTML+='<div class="chat-msg chat-bot">Thank you, '+name+'! Our team will contact you within 24 hours. In the meantime, feel free to <a href="#contact" style="color:var(--gold)" onclick="toggleChatbot()">fill out the full form</a> to tell us more about your needs.</div>';
+      msgs.scrollTop=msgs.scrollHeight;
+    },800);
+  }).catch(function(){
+    msgs.innerHTML+='<div class="chat-msg chat-bot">Send failed. Use the form below or email info@raasautomazioni.it</div>';
   });
-
-  miniForm.classList.remove('show');
-  msgs.innerHTML+='<div class="chat-msg chat-user">Name: '+name+'<br>Email: '+email+'<br>Phone: '+phone+'</div>';
-  setTimeout(()=>{
-    msgs.innerHTML+='<div class="chat-msg chat-bot">Thank you, '+name+'! Our team will contact you within 24 hours. In the meantime, feel free to <a href="#contact" style="color:var(--gold)" onclick="toggleChatbot()">fill out the full form</a> to tell us more about your needs.</div>';
-    msgs.scrollTop=msgs.scrollHeight;
-  },800);
 }
 </script>
 </body>

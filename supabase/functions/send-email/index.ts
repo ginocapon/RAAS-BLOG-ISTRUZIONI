@@ -69,7 +69,7 @@ Deno.serve(async (req: Request) => {
     for (const recipient of recipients) {
       try {
         await client.send({
-          from: `${from_name || "BandiItalia"} <${smtpUser}>`,
+          from: `${from_name || "RaaS Automazioni"} <${smtpUser}>`,
           to: recipient,
           subject: subject,
           content: "Visualizza questa email in un client che supporta HTML.",
