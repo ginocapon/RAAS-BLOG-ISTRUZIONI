@@ -2010,6 +2010,7 @@ function showBandoPreview(b) {
           <div class="preview-meta-item"><span class="preview-label">Stato</span><span>${b.attivo !== false ? 'Attivo' : 'Disattivo'}</span></div>
         </div>
         ${b.descrizione ? `<div class="preview-desc"><strong>Descrizione:</strong><p>${esc(b.descrizione)}</p></div>` : ''}
+        ${b.provenance_interna && typeof b.provenance_interna === 'object' && Object.keys(b.provenance_interna).length ? `<div class="preview-desc" style="margin-top:12px"><strong>Tracciamento interno (non sul sito pubblico):</strong><pre style="font-size:11px;white-space:pre-wrap;max-height:180px;overflow:auto;background:#f4f4f5;padding:10px;border-radius:8px">${esc(JSON.stringify(b.provenance_interna, null, 2))}</pre></div>` : ''}
         ${linkUrl ? `<a href="${esc(linkUrl)}" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:16px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Apri Bando Originale</a>` : ''}
       </div>
     </div>

@@ -1,15 +1,13 @@
-// Supabase Edge Function — Manutenzione completa bandi v4.0
+// Supabase Edge Function — Manutenzione completa bandi v5.0
 // Deploy: supabase functions deploy manutenzione-bandi
 // Env vars richieste: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY (automatiche in Supabase)
 //
 // Ciclo completo:
-// 1. Cerca nuovi bandi da 55+ fonti ufficiali (incentivi.gov.it, portali regionali, enti nazionali, CCIAA, aggregatori, UE)
-// 2. Scraping HTML per portali senza API (regioni, CCIAA, Invitalia, SIMEST)
-// 3. Deduplica contro DB esistente
-// 4. Inserisce nuovi bandi
-// 5. Disattiva bandi scaduti
-// 6. Rimuove duplicati
-// 7. Verifica formato titoli e link
+// 1. Cerca nuovi bandi da 55+ fonti (incentivi.gov.it, portali regionali, enti, CCIAA, aggregatori solo come discovery, UE)
+// 2. Titoli pubblici = testo ufficiale fonte (API/CSV/HTML) senza riformulazione del titolo
+// 3. provenance_interna (jsonb): traccia listing/aggregatore e metodo risoluzione URL istituzionale
+// 4. URL aggregatore: match titolo sul pool incentivi.gov (gratis) o estrazione link .gov da pagina scheda; altrimenti scarto
+// 5. Deduplica, insert, disattiva scaduti, rimuovi duplicati, verifica link
 //
 // Fonti coperte: MIMIT, MUR, MASE, MASAF, Invitalia, SIMEST, INAIL, SACE, InPA,
 //   20 Regioni + 2 Province Autonome, 105+ CCIAA, incentivi.gov.it, RNA, OpenCoesione,
@@ -66,6 +64,7 @@ const FONTI: FonteBandi[] = [
   { id: "bandicameredicommercio", nome: "BandiCamereDiCommercio.it — Aggregatore CCIAA", url: "https://www.bandicameredicommercio.it/bandi-e-contributi", tipo: "html", regione: "Nazionale", ente: "BandiCamereDiCommercio", tipo_ente: "cciaa" },
   { id: "bandi_it", nome: "Bandi.it — Aggregatore Nazionale", url: "https://bandi.it", tipo: "html", regione: "Nazionale", ente: "Bandi.it", tipo_ente: "ente_nazionale" },
   { id: "contributieuropa", nome: "ContributiEuropa — Tutti i Bandi", url: "https://www.contributieuropa.com/tuttibandi/", tipo: "html", regione: "Nazionale", ente: "ContributiEuropa", tipo_ente: "ente_nazionale" },
+  { id: "indicebandi_europa_aperti", nome: "Indice Bandi Europa — Bandi aperti", url: "https://www.indicebandi-europa.it/it/bandi_aperti", tipo: "html", regione: "Nazionale", ente: "Indice Bandi Europa", tipo_ente: "ente_nazionale" },
   { id: "telemat", nome: "Telemat — Gare per Regione", url: "https://www.telemat.it/gare-in-italia/gare-per-regione/", tipo: "html", regione: "Nazionale", ente: "Telemat", tipo_ente: "ente_nazionale" },
   { id: "banchedati_biz", nome: "BancheDati.biz — Bandi di Gara", url: "https://www.banchedati.biz/bandi-di-gara/", tipo: "html", regione: "Nazionale", ente: "BancheDati", tipo_ente: "ente_nazionale" },
   { id: "finera", nome: "Finera — Finanza Agevolata", url: "https://finera.it/articoli/finanza-agevolata/la-guida-definitiva-ai-bandi-regionali/", tipo: "html", regione: "Nazionale", ente: "Finera", tipo_ente: "ente_nazionale" },
@@ -193,6 +192,9 @@ interface Bando {
   attivo: boolean;
   fonte: string;
   data_inserimento: string;
+  /** Solo DB / admin: non esporre sul sito pubblico */
+  provenance_interna?: Record<string, unknown>;
+  stato?: string;
 }
 
 // ══════════ RISCRITTURA ANTI-PLAGIO DESCRIZIONI ══════════
@@ -264,16 +266,12 @@ function parseIncentiviGov(body: string, fonte: FonteBandi): Bando[] {
       json.results || json.data || json.incentivi || (Array.isArray(json) ? json : []);
     return items.map((item) => {
       const titolo = item.titolo || item.title || item.nome || "Senza titolo";
-      const titoloFormattato = titolo.includes("—")
-        ? titolo
-        : titolo.includes(" - ")
-          ? titolo.replace(" - ", " — ")
-          : titolo;
+      const titoloUfficiale = titolo.trim().replace(/\s+/g, " ");
 
       const descOriginale = item.descrizione || item.abstract || "";
 
       return {
-        titolo: titoloFormattato,
+        titolo: titoloUfficiale,
         descrizione: riscriviDescrizione(descOriginale, fonte),
         ente: item.ente_erogatore || item.ente || fonte.ente,
         regione: item.regione || fonte.regione,
@@ -288,6 +286,13 @@ function parseIncentiviGov(body: string, fonte: FonteBandi): Bando[] {
         attivo: true,
         fonte: fonte.id,
         data_inserimento: new Date().toISOString(),
+        stato: "aperto",
+        provenance_interna: {
+          fonte_primaria_api: fonte.id.startsWith("incentivi_gov")
+            ? "incentivi.gov.it"
+            : fonte.ente,
+          ingest_endpoint: fonte.id,
+        },
       };
     });
   } catch {
@@ -311,12 +316,12 @@ function parseCsv(body: string, fonte: FonteBandi): Bando[] {
       const titolo = row["titolo"] || row["nome"] || row["incentivo"] || "";
       if (!titolo) continue;
 
-      const titoloFormattato = titolo.includes("—") ? titolo : titolo.includes(" - ") ? titolo.replace(" - ", " — ") : titolo;
+      const titoloUfficiale = titolo.trim().replace(/\s+/g, " ");
 
       const descCsv = row["descrizione"] || row["abstract"] || "";
 
       bandi.push({
-        titolo: titoloFormattato,
+        titolo: titoloUfficiale,
         descrizione: riscriviDescrizione(descCsv, fonte),
         ente: row["ente_erogatore"] || row["ente"] || fonte.ente,
         regione: row["regione"] || fonte.regione,
@@ -329,6 +334,11 @@ function parseCsv(body: string, fonte: FonteBandi): Bando[] {
         attivo: true,
         fonte: fonte.id,
         data_inserimento: new Date().toISOString(),
+        stato: "aperto",
+        provenance_interna: {
+          fonte_primaria: "incentivi.gov.it_opendata_csv",
+          ingest_endpoint: fonte.id,
+        },
       });
     }
     return bandi;
@@ -381,11 +391,10 @@ function parseHtml(body: string, fonte: FonteBandi): Bando[] {
         if (seen.has(key)) continue;
         seen.add(key);
 
-        // Formato anti-plagio
-        const titoloFormattato = text.includes("—") ? text : text.includes(" - ") ? text.replace(" - ", " — ") : `${fonte.ente} — ${text}`;
+        const titoloUfficiale = text.trim().replace(/\s+/g, " ");
 
         bandi.push({
-          titolo: titoloFormattato,
+          titolo: titoloUfficiale,
           descrizione: "",
           ente: fonte.ente,
           regione: fonte.regione,
@@ -398,6 +407,12 @@ function parseHtml(body: string, fonte: FonteBandi): Bando[] {
           attivo: true,
           fonte: fonte.id,
           data_inserimento: new Date().toISOString(),
+          stato: "aperto",
+          provenance_interna: {
+            estrazione_scraping_html: true,
+            ingest_endpoint: fonte.id,
+            pagina_listing: fonte.url,
+          },
         });
       }
     }
@@ -424,6 +439,175 @@ function normalizeTitle(t: string): string {
     .toLowerCase()
     .replace(/[^a-z0-9àèéìòù\s]/g, "")
     .trim();
+}
+
+// ══════════ AGGREGATORI: mai pubblicare il link sul sito ══════════
+function normHost(hostname: string): string {
+  return hostname.replace(/^www\./i, "").toLowerCase();
+}
+
+const AGGREGATOR_HOSTS = new Set([
+  "contributieuropa.com",
+  "indicebandi-europa.it",
+  "bandi.it",
+  "telemat.it",
+  "banchedati.biz",
+  "finera.it",
+  "bandiweb.it",
+  "bandicameredicommercio.it",
+  "contributiregione.it",
+]);
+
+function isAggregatorUrl(urlStr: string): boolean {
+  try {
+    const host = normHost(new URL(urlStr).hostname);
+    if (AGGREGATOR_HOSTS.has(host)) return true;
+    if (host === "infobandi.csvnet.it") return true;
+    if (host.endsWith(".contributiregione.it")) return true;
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/** Link istituzionale accettabile se estratto da una scheda aggregatore. */
+function looksOfficialUrl(urlStr: string): boolean {
+  if (isAggregatorUrl(urlStr)) return false;
+  try {
+    const host = normHost(new URL(urlStr).hostname);
+    if (/\.gov\.it$/i.test(host)) return true;
+    if (/\.europa\.eu$/i.test(host)) return true;
+    if (/invitalia\.it$/i.test(host)) return true;
+    if (/inail\.it$/i.test(host)) return true;
+    if (/simest\.it$/i.test(host)) return true;
+    if (/sace\.it$/i.test(host)) return true;
+    if (/unioncamere\.gov\.it$/i.test(host)) return true;
+    if (/\.camcom\.it$/i.test(host)) return true;
+    if (/\.camcom\.gov\.it$/i.test(host)) return true;
+    if (host.includes("regione.")) return true;
+    if (host.includes("provincia.")) return true;
+    if (host.includes("incentivi.gov.it")) return true;
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+function bestIncentiviMatch(
+  titolo: string,
+  pool: Bando[],
+): { b: Bando; score: number } | null {
+  const nt = normalizeTitle(titolo);
+  if (nt.length < 8) return null;
+  let best: { b: Bando; score: number } | null = null;
+  for (const cand of pool) {
+    const s = similarity(nt, normalizeTitle(cand.titolo));
+    if (!best || s > best.score) best = { b: cand, score: s };
+  }
+  if (best && best.score >= 0.42) return best;
+  return null;
+}
+
+async function extractFirstOfficialFromHtmlPage(
+  pageUrl: string,
+): Promise<string | null> {
+  const html = await fetchWithRetry(pageUrl);
+  if (!html) return null;
+  const re = /href\s*=\s*["'](https?:\/\/[^"'>\s]+)["']/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html)) !== null) {
+    const u = m[1].replace(/&amp;/g, "&");
+    if (u.startsWith("http") && looksOfficialUrl(u)) return u;
+  }
+  return null;
+}
+
+/** Rimuove o risolve URL aggregatore; arricchisce provenance_interna. */
+async function enrichAggregatorBandi(
+  raw: Bando[],
+  addLog: (s: string) => void,
+): Promise<Bando[]> {
+  const officialPool = raw.filter(
+    (b) =>
+      /^incentivi_gov/.test(b.fonte) &&
+      b.url &&
+      b.url.startsWith("http") &&
+      b.url !== "#" &&
+      !isAggregatorUrl(b.url),
+  );
+  addLog(
+    `  Pool incentivi.gov per abbinamento titoli: ${officialPool.length} record`,
+  );
+
+  const out: Bando[] = [];
+  let detailBudget = 30;
+  let scartati = 0;
+
+  for (const b of raw) {
+    const origUrl = b.url || "";
+    const prevProv =
+      typeof b.provenance_interna === "object" && b.provenance_interna
+        ? (b.provenance_interna as Record<string, unknown>)
+        : {};
+    const baseProvenenza: Record<string, unknown> = {
+      ...prevProv,
+      ingest_fonte_id: b.fonte,
+      url_rilevato_iniziale: origUrl,
+    };
+
+    if (!origUrl || origUrl === "#") continue;
+
+    if (!isAggregatorUrl(origUrl)) {
+      out.push({
+        ...b,
+        provenance_interna: baseProvenenza,
+      });
+      continue;
+    }
+
+    const match = bestIncentiviMatch(b.titolo, officialPool);
+    if (match) {
+      out.push({
+        ...b,
+        titolo: match.b.titolo,
+        url: match.b.url,
+        scadenza: b.scadenza || match.b.scadenza,
+        descrizione: b.descrizione?.length ? b.descrizione : match.b.descrizione,
+        provenance_interna: {
+          ...baseProvenenza,
+          risolto_tramite: "match_titolo_incentivi_gov",
+          url_scheda_aggregatore: origUrl,
+          titolo_listing_prima_match: b.titolo,
+        },
+      });
+      continue;
+    }
+
+    if (detailBudget > 0) {
+      detailBudget--;
+      const extracted = await extractFirstOfficialFromHtmlPage(origUrl);
+      if (extracted && looksOfficialUrl(extracted)) {
+        out.push({
+          ...b,
+          url: extracted,
+          provenance_interna: {
+            ...baseProvenenza,
+            risolto_tramite: "link_estratto_scheda_html",
+            url_scheda_aggregatore: origUrl,
+          },
+        });
+        continue;
+      }
+    }
+
+    scartati++;
+    addLog(
+      `    Scarto aggregatore senza URL istituzionale: ${b.titolo.substring(0, 52)}...`,
+    );
+  }
+
+  addLog(`  Scartati (solo aggregatore non risolvibile): ${scartati}`);
+  return out;
 }
 
 // ══════════ HANDLER PRINCIPALE ══════════
@@ -520,6 +704,15 @@ Deno.serve(async (req: Request) => {
     }
     addLog(`  Totale bandi trovati da tutte le fonti: ${tuttiBandiNuovi.length}`);
 
+    addLog("Risoluzione URL aggregatori (match incentivi.gov + estrazione scheda)...");
+    const tuttiBandiNuoviDopoRisoluzione = await enrichAggregatorBandi(
+      tuttiBandiNuovi,
+      addLog,
+    );
+    addLog(
+      `  Record dopo filtro aggregatore: ${tuttiBandiNuoviDopoRisoluzione.length}`,
+    );
+
     // ═══ STEP 3: Deduplica e inserisci nuovi ═══
     // Logica a 3 fattori:
     //   1. Stesso URL = duplicato certo
@@ -527,7 +720,7 @@ Deno.serve(async (req: Request) => {
     //   3. Date diverse = MAI duplicato (anche con titolo identico)
     const normUrl = (u: string) => (u || "").toLowerCase().replace(/\/+$/, "").replace(/^https?:\/\/(www\.)?/, "");
 
-    if (tuttiBandiNuovi.length > 0) {
+    if (tuttiBandiNuoviDopoRisoluzione.length > 0) {
       addLog("Deduplicazione e inserimento nuovi bandi...");
       addLog("  Fattore 1: stesso URL = duplicato");
       addLog("  Fattore 2: stesso titolo + stessa data = duplicato");
@@ -536,9 +729,10 @@ Deno.serve(async (req: Request) => {
       const urlEsistenti = new Set(bandiEsistenti.map((eb) => normUrl(eb.url)).filter((u) => u && u !== "#"));
       const bandiDaInserire: Bando[] = [];
 
-      for (const nb of tuttiBandiNuovi) {
+      for (const nb of tuttiBandiNuoviDopoRisoluzione) {
         // Skip link vuoti o placeholder
         if (!nb.url || nb.url === "#") continue;
+        if (isAggregatorUrl(nb.url)) continue;
 
         // Fattore 1: stesso URL = duplicato certo
         if (urlEsistenti.has(normUrl(nb.url))) continue;
@@ -650,22 +844,22 @@ Deno.serve(async (req: Request) => {
       }
     }
 
-    // ═══ STEP 6: Verifica formato titoli ═══
-    addLog("Controllo formato titoli anti-plagio...");
+    // ═══ STEP 6: Verifica titoli vuoti o troppo corti ═══
+    addLog("Controllo titoli (ufficiali dalla fonte, senza riformulazione)...");
     if (allAttivi) {
       const badTitles = allAttivi.filter(
-        (b) => !b.titolo.includes("—") && !b.titolo.includes(" - ")
+        (b) => !b.titolo || b.titolo.trim().length < 8,
       );
       titoliCorretti = badTitles.length;
       if (badTitles.length > 0) {
         addLog(
-          `  ${badTitles.length} titoli senza formato anti-plagio (NomeBando — Descrizione):`
+          `  ${badTitles.length} titoli assenti o troppo corti:`,
         );
         badTitles
           .slice(0, 10)
-          .forEach((b) => addLog(`    ! "${b.titolo}"`));
+          .forEach((b) => addLog(`    ! id=${b.id} "${(b.titolo || "").substring(0, 60)}"`));
       } else {
-        addLog("  Tutti i titoli rispettano il formato anti-plagio");
+        addLog("  Nessun titolo anomalo rilevato");
       }
     }
 

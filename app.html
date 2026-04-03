@@ -640,15 +640,17 @@ async function loadBandi(){
         // Try Supabase first
         if(supabaseClient){
             try{
+                var bandiCols='id,titolo,descrizione,ente,regione,importo_max,tipo_contributo,tipo_ente,settore,scadenza,url,attivo,fonte,stato';
                 var all=[],offset=0;
                 while(true){
-                    var res=await supabaseClient.from('bandi').select('*').eq('attivo',true).order('id',{ascending:false}).range(offset,offset+999);
+                    var res=await supabaseClient.from('bandi').select(bandiCols).eq('attivo',true).order('id',{ascending:false}).range(offset,offset+999);
                     if(res.error)throw res.error;
                     if(!res.data||!res.data.length)break;
                     all=all.concat(res.data);
                     if(res.data.length<1000)break;
                     offset+=1000;
                 }
+                all=all.map(function(b){if(!b.stato)b.stato='aperto';return b});
                 if(all.length){allBandi=all;renderHome();return}
             }catch(e){}
         }
