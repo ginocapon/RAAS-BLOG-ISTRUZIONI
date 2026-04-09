@@ -1,8 +1,8 @@
 {
   "metadata": {
     "version": "5.0.0",
-    "generated_at": "2026-04-03T07:02:05.654Z",
-    "total_bandi": 74,
+    "generated_at": "2026-04-03T12:30:00.000Z",
+    "total_bandi": 83,
     "sources": [
       "aggregatore",
       "cciaa_bologna",
@@ -603,10 +603,10 @@
       "tipo_ente": "regione",
       "regione": "Lazio",
       "provincia": null,
-      "url_bando": "https://www.lazioinnova.it/",
-      "url_domanda": "https://www.lazioinnova.it/",
+      "url_bando": "https://www.regione.lazio.it/notizie/bando-Donne-Imprese-sostegno-imprese-femminili",
+      "url_domanda": "https://www.regione.lazio.it/notizie/bando-Donne-Imprese-sostegno-imprese-femminili",
       "data_apertura": "2025-01-01",
-      "data_scadenza": "2026-06-30",
+      "data_scadenza": "2026-06-10",
       "stato": "aperto",
       "dotazione": 3000000,
       "contributo_min": 10000,
@@ -2883,6 +2883,345 @@
       "descrizione": "Voucher 50% max €5.000 per investimenti sicurezza aziendale MPMI. Lucca, Massa-Carrara, Pisa. Scad. 31/05/2026.",
       "data_scraping": "2026-03-14T15:07:59.046903Z",
       "fonte_scraping": "cciaa_toscana_no"
+    },
+    {
+      "id": "imp26g01fesr131cert",
+      "titolo": "FESR Emilia-Romagna — Certificazioni di processo, servizio e gestione (azione 1.3.1)",
+      "ente": "Regione Emilia-Romagna",
+      "tipo_ente": "regione",
+      "regione": "Emilia-Romagna",
+      "provincia": null,
+      "url_bando": "https://fesr.regione.emilia-romagna.it/opportunita/opportunita-di-finanziamento/2026/rafforzamento-della-competitivita-delle-imprese-e-delle-filiere-tramite-lottenimento-di-sistemi-di-certificazione-di-processo-servizio-gestione-aziendale",
+      "url_domanda": "https://fesr.regione.emilia-romagna.it/opportunita/opportunita-di-finanziamento/2026/rafforzamento-della-competitivita-delle-imprese-e-delle-filiere-tramite-lottenimento-di-sistemi-di-certificazione-di-processo-servizio-gestione-aziendale",
+      "data_apertura": "2026-04-16",
+      "data_scadenza": "2026-05-15",
+      "stato": "aperto",
+      "dotazione": null,
+      "contributo_min": 8000,
+      "contributo_max": 30000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "MPMI"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "certificazioni",
+        "qualita",
+        "competitivita"
+      ],
+      "keywords": [
+        "fesr",
+        "certificazioni",
+        "emilia-romagna",
+        "1.3.1"
+      ],
+      "descrizione": "Contributo a fondo perduto per sistemi di certificazione di processo, servizio e gestione aziendale. Programma FESR 2021-2027.",
+      "data_scraping": "2026-04-03T12:00:00Z",
+      "fonte_scraping": "import_manuale_gruppo1"
+    },
+    {
+      "id": "imp26g01lombnextfashion",
+      "titolo": "FESR Lombardia — Innovazione tessile, moda e accessorio (azione 1.3.3, scheda regionale)",
+      "ente": "Regione Lombardia",
+      "tipo_ente": "regione",
+      "regione": "Lombardia",
+      "provincia": null,
+      "url_bando": "https://www.bandi.regione.lombardia.it/servizi/servizio/bandi/dettaglio/ricerca-innovazione/ricerca-sviluppo-innovazione/next-fashion-RLP12025046223",
+      "url_domanda": "https://www.bandi.regione.lombardia.it/servizi/servizio/bandi/dettaglio/ricerca-innovazione/ricerca-sviluppo-innovazione/next-fashion-RLP12025046223",
+      "data_apertura": null,
+      "data_scadenza": null,
+      "stato": "in_arrivo",
+      "dotazione": null,
+      "contributo_min": null,
+      "contributo_max": null,
+      "percentuale": null,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "PMI"
+      ],
+      "settori": [
+        "tessile",
+        "moda"
+      ],
+      "finalita": [
+        "innovazione",
+        "ricerca_sviluppo"
+      ],
+      "keywords": [
+        "lombardia",
+        "fesr",
+        "moda",
+        "tessile"
+      ],
+      "descrizione": "Sostegno a progetti di ricerca e sviluppo nel settore tessile, moda e accessorio. Verificare stato sportello e nuove edizioni sul portale bandi regionali.",
+      "data_scraping": "2026-04-03T12:00:00Z",
+      "fonte_scraping": "import_manuale_gruppo1"
+    },
+    {
+      "id": "imp26g01ocmumbria",
+      "titolo": "OCM Vino Umbria — Ristrutturazione e riconversione vigneti (campagna vitivinicola)",
+      "ente": "Regione Umbria",
+      "tipo_ente": "regione",
+      "regione": "Umbria",
+      "provincia": null,
+      "url_bando": "https://www.regione.umbria.it/-/programma-nazionale-di-sostegno-del-settore-vino-p-n-s-",
+      "url_domanda": "https://www.regione.umbria.it/-/programma-nazionale-di-sostegno-del-settore-vino-p-n-s-",
+      "data_apertura": null,
+      "data_scadenza": "2026-04-14",
+      "stato": "aperto",
+      "dotazione": null,
+      "contributo_min": null,
+      "contributo_max": null,
+      "percentuale": null,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "imprese_agricole"
+      ],
+      "settori": [
+        "vitivinicolo"
+      ],
+      "finalita": [
+        "agricoltura",
+        "vino"
+      ],
+      "keywords": [
+        "ocm",
+        "vino",
+        "umbria",
+        "vigneti"
+      ],
+      "descrizione": "Intervento PNS vitivinicolo — ristrutturazione e riconversione vigneti. Verificare avviso specifico annualità campagna sul portale regionale.",
+      "data_scraping": "2026-04-03T12:00:00Z",
+      "fonte_scraping": "import_manuale_gruppo1"
+    },
+    {
+      "id": "imp26g01ucveneto",
+      "titolo": "Unioncamere Veneto — Contributi a progetti per lo sviluppo economico regionale (2026)",
+      "ente": "Unioncamere Veneto",
+      "tipo_ente": "altro",
+      "regione": "Veneto",
+      "provincia": null,
+      "url_bando": "https://www.unioncamereveneto.it/bando-2026-per-la-concessione-di-contributi-a-sostegno-di-progetti-di-soggetti-pubblici-e-privati-per-lo-sviluppo-economico-regionale/",
+      "url_domanda": "https://www.unioncamereveneto.it/bando-2026-per-la-concessione-di-contributi-a-sostegno-di-progetti-di-soggetti-pubblici-e-privati-per-lo-sviluppo-economico-regionale/",
+      "data_apertura": "2026-03-16",
+      "data_scadenza": "2026-10-31",
+      "stato": "aperto",
+      "dotazione": null,
+      "contributo_min": null,
+      "contributo_max": null,
+      "percentuale": null,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "imprese",
+        "enti_pubblici",
+        "associazioni"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "sviluppo_economico"
+      ],
+      "keywords": [
+        "veneto",
+        "unioncamere",
+        "sviluppo"
+      ],
+      "descrizione": "Contributi a fondo perduto per progetti di soggetti pubblici e privati per lo sviluppo economico regionale. Verificare conformità policy link su dominio.",
+      "data_scraping": "2026-04-03T12:00:00Z",
+      "fonte_scraping": "import_manuale_gruppo1",
+      "needs_url_verification": true
+    },
+    {
+      "id": "imp26g01vensra28",
+      "titolo": "Veneto — CSR SRA28 (imboschimento, arboricoltura e forestazione)",
+      "ente": "Regione Veneto",
+      "tipo_ente": "regione",
+      "regione": "Veneto",
+      "provincia": null,
+      "url_bando": "https://www.regione.veneto.it/web/agricoltura-e-foreste/bandi-finanziamenti",
+      "url_domanda": "https://www.regione.veneto.it/web/agricoltura-e-foreste/bandi-finanziamenti",
+      "data_apertura": null,
+      "data_scadenza": "2026-05-15",
+      "stato": "aperto",
+      "dotazione": null,
+      "contributo_min": null,
+      "contributo_max": null,
+      "percentuale": null,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "imprese_agricole"
+      ],
+      "settori": [
+        "agricoltura",
+        "foreste"
+      ],
+      "finalita": [
+        "ambiente",
+        "sviluppo_rurale"
+      ],
+      "keywords": [
+        "veneto",
+        "csr",
+        "sra28",
+        "forestazione"
+      ],
+      "descrizione": "Interventi CSR PAC — SRA28. Scheda dettagliata su bandi agricoltura e foreste regionali.",
+      "data_scraping": "2026-04-03T12:00:00Z",
+      "fonte_scraping": "import_manuale_gruppo1",
+      "needs_url_verification": true
+    },
+    {
+      "id": "imp26g01fesr111talenti",
+      "titolo": "FESR Emilia-Romagna — Ricerca e sviluppo con inserimento nuovi talenti (azione 1.1.1)",
+      "ente": "Regione Emilia-Romagna",
+      "tipo_ente": "regione",
+      "regione": "Emilia-Romagna",
+      "provincia": null,
+      "url_bando": "https://www.regione.emilia-romagna.it/talenti/le-azioni-e-i-risultati/bandi",
+      "url_domanda": "https://www.regione.emilia-romagna.it/talenti/le-azioni-e-i-risultati/bandi",
+      "data_apertura": "2026-04-15",
+      "data_scadenza": "2026-05-18",
+      "stato": "aperto",
+      "dotazione": null,
+      "contributo_min": 100000,
+      "contributo_max": 300000,
+      "percentuale": null,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "imprese"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "ricerca",
+        "innovazione",
+        "talenti"
+      ],
+      "keywords": [
+        "fesr",
+        "talenti",
+        "r&s",
+        "emilia-romagna"
+      ],
+      "descrizione": "Progetti di ricerca e sviluppo con inserimento di nuovi talenti. Approfondire scheda su portale Talenti e bandi FESR.",
+      "data_scraping": "2026-04-03T12:00:00Z",
+      "fonte_scraping": "import_manuale_gruppo1",
+      "needs_url_verification": true
+    },
+    {
+      "id": "imp26g01erlr2sport",
+      "titolo": "Emilia-Romagna L.R. 2/2024 — Contrasto abbandono sportivo giovanile",
+      "ente": "Regione Emilia-Romagna",
+      "tipo_ente": "regione",
+      "regione": "Emilia-Romagna",
+      "provincia": null,
+      "url_bando": "https://www.regione.emilia-romagna.it/sport/bandi/2024/avviso-per-la-concessione-di-contributi-per-progetti-di-contrasto-allabbandono-sportivo-giovanile",
+      "url_domanda": "https://www.regione.emilia-romagna.it/sport/bandi/2024/avviso-per-la-concessione-di-contributi-per-progetti-di-contrasto-allabbandono-sportivo-giovanile",
+      "data_apertura": null,
+      "data_scadenza": "2026-06-12",
+      "stato": "aperto",
+      "dotazione": null,
+      "contributo_min": null,
+      "contributo_max": null,
+      "percentuale": null,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "enti_pubblici",
+        "associazioni"
+      ],
+      "settori": [
+        "sport"
+      ],
+      "finalita": [
+        "sport",
+        "giovani"
+      ],
+      "keywords": [
+        "sport",
+        "giovanile",
+        "emilia-romagna"
+      ],
+      "descrizione": "Contributi per progetti integrati di contrasto all'abbandono sportivo giovanile. Verificare avviso annualità 2026 sul sito regionale Sport.",
+      "data_scraping": "2026-04-03T12:00:00Z",
+      "fonte_scraping": "import_manuale_gruppo1"
+    },
+    {
+      "id": "imp26g01piedeobbl",
+      "titolo": "Piemonte L.R. 34/2004 — Abbattimento oneri emissione obbligazioni (MPMI)",
+      "ente": "Regione Piemonte",
+      "tipo_ente": "regione",
+      "regione": "Piemonte",
+      "provincia": null,
+      "url_bando": "https://bandi.regione.piemonte.it/contributifinanziamenti/abbattimento-degli-oneri-connessi-allemissione-di-obbligazioni-da-parte-di",
+      "url_domanda": "https://bandi.regione.piemonte.it/contributifinanziamenti/abbattimento-degli-oneri-connessi-allemissione-di-obbligazioni-da-parte-di",
+      "data_apertura": "2026-04-07",
+      "data_scadenza": "2026-12-21",
+      "stato": "aperto",
+      "dotazione": null,
+      "contributo_min": null,
+      "contributo_max": 50000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "MPMI"
+      ],
+      "settori": [
+        "tutti"
+      ],
+      "finalita": [
+        "finanza",
+        "credito"
+      ],
+      "keywords": [
+        "piemonte",
+        "obbligazioni",
+        "pmi"
+      ],
+      "descrizione": "Sovvenzione a fondo perduto su oneri di emissione obbligazionaria per PMI e imprese a media capitalizzazione in Piemonte.",
+      "data_scraping": "2026-04-03T12:00:00Z",
+      "fonte_scraping": "import_manuale_gruppo1"
+    },
+    {
+      "id": "imp26g01marchem1",
+      "titolo": "Marche L.R. 19/2021 — Misura 1 artigianato artistico (laboratori e attrezzature)",
+      "ente": "Regione Marche",
+      "tipo_ente": "regione",
+      "regione": "Marche",
+      "provincia": null,
+      "url_bando": "https://www.regione.marche.it/Entra-in-Regione/Artigianato-artistico/Bandi",
+      "url_domanda": "https://www.regione.marche.it/Entra-in-Regione/Artigianato-artistico/Bandi",
+      "data_apertura": null,
+      "data_scadenza": "2026-05-11",
+      "stato": "aperto",
+      "dotazione": null,
+      "contributo_min": 10000,
+      "contributo_max": 40000,
+      "percentuale": 50,
+      "tipo_contributo": "fondo_perduto",
+      "beneficiari": [
+        "artigiani"
+      ],
+      "settori": [
+        "artigianato"
+      ],
+      "finalita": [
+        "artigianato",
+        "investimenti"
+      ],
+      "keywords": [
+        "marche",
+        "artigianato",
+        "lr 19/2021"
+      ],
+      "descrizione": "Contributi per laboratori e attrezzature non reperibili sul mercato (misura 1). Approfondire avviso pubblico sulla pagina bandi artigianato.",
+      "data_scraping": "2026-04-03T12:00:00Z",
+      "fonte_scraping": "import_manuale_gruppo1",
+      "needs_url_verification": true
     },
     {
       "id": "ei_wmumqc",
