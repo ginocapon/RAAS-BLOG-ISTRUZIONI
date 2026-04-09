@@ -1,6 +1,6 @@
 # Import bandi da lista aggregatore — lavorazione a gruppi da 10
 
-**Progressione:** Gruppo 1 importato. **Gruppo 2 importato** (10 nuovi `id` prefisso `imp26g02…`). Per Gruppo 3 scrivi **continua**.
+**Progressione:** Gruppi **1–5** importati in `data/bandi.json` (commit cumulativo gruppi 3–5: 30 `id` prefissi `imp26g03…` `imp26g04…` `imp26g05…`). Per Gruppo 6 scrivi **continua**.
 
 **Regola:** titoli pubblici parafrasati; `url_bando` solo fonti istituzionali. Verificare ogni URL prima del merge in `bandi.json`.
 
