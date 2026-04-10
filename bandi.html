@@ -672,7 +672,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
 <!-- FILTERS (subscribers only) -->
 <section class="filters-section" id="filtersSection">
     <div class="filters-grid">
-        <div class="filter-group search-box"><input type="text" id="search" placeholder="&#x1F50D; Cerca bandi per titolo, ente, settore, regione..."></div>
+        <div class="filter-group search-box"><input type="text" id="search" list="search-bandi-datalist" autocomplete="off" placeholder="&#x1F50D; Cerca bandi per titolo, ente, settore, regione... (suggerimenti dal corpus)"></div>
+        <datalist id="search-bandi-datalist"></datalist>
         <div class="filter-group"><label>Regione</label><select id="filter-regione"><option value="">Tutte le regioni</option><option value="Nazionale">Nazionali</option><option value="Sud Italia">Sud Italia</option><option value="Piemonte">Piemonte</option><option value="Valle d'Aosta">Valle d'Aosta</option><option value="Lombardia">Lombardia</option><option value="Trentino-Alto Adige">Trentino-Alto Adige</option><option value="Veneto">Veneto</option><option value="Friuli Venezia Giulia">Friuli Venezia Giulia</option><option value="Liguria">Liguria</option><option value="Emilia-Romagna">Emilia-Romagna</option><option value="Toscana">Toscana</option><option value="Umbria">Umbria</option><option value="Marche">Marche</option><option value="Lazio">Lazio</option><option value="Abruzzo">Abruzzo</option><option value="Molise">Molise</option><option value="Campania">Campania</option><option value="Puglia">Puglia</option><option value="Basilicata">Basilicata</option><option value="Calabria">Calabria</option><option value="Sicilia">Sicilia</option><option value="Sardegna">Sardegna</option></select></div>
         <div class="filter-group"><label>Tipo Ente</label><select id="filter-tipo-ente"><option value="">Tutti</option><option value="ministero">Ministeri</option><option value="ente_nazionale">Enti Nazionali</option><option value="regione">Regioni</option><option value="cciaa">Camere di Commercio</option><option value="altro">Altro</option></select></div>
         <div class="filter-group"><label>Tipo Contributo</label><select id="filter-tipo-contributo"><option value="">Tutti</option><option value="fondo_perduto">Fondo Perduto</option><option value="tasso_agevolato">Tasso Agevolato</option><option value="misto">Misto</option><option value="credito_imposta">Credito d'Imposta</option></select></div>
@@ -956,7 +957,7 @@ const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 var supabaseClient=null;
 try{if(window.supabase&&window.supabase.createClient)supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)}catch(e){console.warn('Supabase init fallback:',e)}
 const PREVIEW_COUNT=12;const SUBSCRIPTION_DAYS=365;
-let allBandi=[],filteredBandi=[];
+let allBandi=[],filteredBandi=[],bandiKeywordStats=null;
 
 function getSubscription(){const s=localStorage.getItem('bandiSubscription');if(!s)return null;try{return JSON.parse(s)}catch{return null}}
 function isSubscriptionActive(){const s=getSubscription();return s?new Date()<new Date(s.expiryDate):false}
@@ -1098,6 +1099,43 @@ async function loadBandi(){
         if(sf)sf.textContent='\u2014';
     }
 }
+async function loadKeywordStats(){
+    try{
+        var r=await fetch('/data/bandi-keyword-stats.json',{cache:'no-cache'});
+        if(!r.ok)return;
+        bandiKeywordStats=await r.json();
+        refreshSearchDatalist();
+    }catch(e){console.warn('Suggerimenti ricerca (keyword stats):',e)}
+}
+function refreshSearchDatalist(){
+    var dl=document.getElementById('search-bandi-datalist');
+    if(!dl)return;
+    dl.innerHTML='';
+    if(!bandiKeywordStats)return;
+    var merged=new Map();
+    function take(arr,w){
+        if(!arr||!arr.length)return;
+        for(var i=0;i<arr.length;i++){
+            var t=arr[i].term,c=arr[i].count*(w||1);
+            merged.set(t,(merged.get(t)||0)+c);
+        }
+    }
+    take(bandiKeywordStats.global,1);
+    var regEl=document.getElementById('filter-regione');
+    var tipoEl=document.getElementById('filter-tipo-ente');
+    if(regEl&&regEl.value&&bandiKeywordStats.by_regione&&bandiKeywordStats.by_regione[regEl.value]){
+        take(bandiKeywordStats.by_regione[regEl.value],1.35);
+    }
+    if(tipoEl&&tipoEl.value&&bandiKeywordStats.by_tipo_ente&&bandiKeywordStats.by_tipo_ente[tipoEl.value]){
+        take(bandiKeywordStats.by_tipo_ente[tipoEl.value],1.35);
+    }
+    var sorted=Array.from(merged.entries()).sort(function(a,b){return b[1]-a[1]});
+    for(var j=0;j<sorted.length&&j<80;j++){
+        var opt=document.createElement('option');
+        opt.value=sorted[j][0];
+        dl.appendChild(opt);
+    }
+}
 function renderPreview(){
     const grid=document.getElementById('preview-grid'),load=document.getElementById('loading-preview');
     const latest=allBandi.slice(0,PREVIEW_COUNT);load.style.display='none';
@@ -1181,7 +1219,7 @@ function debounce(fn,w){let t;return function(...a){clearTimeout(t);t=setTimeout
 async function initPage(){
     // Riprova init Supabase se non era pronto prima (defer)
     if(!supabaseClient&&window.supabase&&window.supabase.createClient){try{supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)}catch(e){}}
-    updateStatusBar();await loadBandi();renderPreview();
+    updateStatusBar();await Promise.all([loadBandi(),loadKeywordStats()]);renderPreview();
     if(isSubscriptionActive()){document.getElementById('filtersSection').classList.add('unlocked');document.getElementById('resultsSection').classList.add('unlocked');document.getElementById('pricingHero').style.display='none';document.getElementById('paywallBanner').style.display='none';applyFilters()}
 }
 document.addEventListener('DOMContentLoaded',function(){
@@ -1200,7 +1238,7 @@ document.addEventListener('DOMContentLoaded',function(){
     }
     initPage();
     document.getElementById('search').addEventListener('input',debounce(function(){applyFilters();saveSearchPreferences()},300));
-    ['filter-regione','filter-tipo-ente','filter-tipo-contributo','filter-stato','sort-by'].forEach(id=>document.getElementById(id).addEventListener('change',function(){applyFilters();saveSearchPreferences()}));
+    ['filter-regione','filter-tipo-ente','filter-tipo-contributo','filter-stato','sort-by'].forEach(function(id){document.getElementById(id).addEventListener('change',function(){applyFilters();saveSearchPreferences();if(id==='filter-regione'||id==='filter-tipo-ente')refreshSearchDatalist()})});
     const toggle=document.getElementById('mobileMenuToggle'),nav=document.getElementById('navLinks');
     toggle&&toggle.addEventListener('click',()=>{nav.classList.toggle('active');toggle.innerHTML=nav.classList.contains('active')?'<i class="fas fa-times"></i>':'<i class="fas fa-bars"></i>'});
     ['paymentModal','successModal'].forEach(id=>document.getElementById(id).addEventListener('click',function(e){if(e.target===this){id==='paymentModal'?closePaymentModal():closeSuccessModal()}}));

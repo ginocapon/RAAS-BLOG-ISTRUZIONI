@@ -42,3 +42,8 @@ Prompt consigliato per Cursor (Agent) — validazione link + coerenza titoli Sup
    (stesso script del punto 8). Per il database in produzione usare i punti 1 e 3 con le variabili d’ambiente.
 
 10) Regole progetto per l’agente: .cursor/rules/bandi-supabase.mdc (globs tools/bandi*, data/bandi.json, bandi.html, admin.html).
+
+11) Statistiche keyword per suggerimenti ricerca (batch, niente GPU):
+   npm run build-bandi-keywords
+   (oppure node tools/build-bandi-keyword-stats.js — opzioni --source=supabase|json|auto, --out=…)
+   Genera data/bandi-keyword-stats.json; bandi.html lo usa per il datalist della ricerca.

@@ -7,6 +7,8 @@ globs:
   - tools/http-fetch-page-title.js
   - tools/bandi-link-policy.js
   - data/bandi.json
+  - data/bandi-keyword-stats.json
+  - tools/build-bandi-keyword-stats.js
   - bandi.html
   - app.html
   - admin.html
@@ -27,6 +29,10 @@ alwaysApply: false
 - Strumenti: `tools/audit-bandi-coherence-supabase.js`, `tools/http-fetch-page-title.js`.
 - Classificare discordanze: **minima** (punteggiatura) vs **sostanziale** (obiettivo/beneficiari diversi).
 - Azioni suggerite: **AGGIORNARE** titolo se il bando è valido; **VERIFICA MANUALE** se link ambiguo o 403; **ARCHIVIARE** (`attivo = false`) se chiuso/revocato o solo dopo policy esplicita (mai inventare dati).
+
+## Suggerimenti ricerca (batch, senza LLM)
+
+- `npm run build-bandi-keywords` oppure `node tools/build-bandi-keyword-stats.js` — legge Supabase (`--source=auto`) o `data/bandi.json`, scrive **`data/bandi-keyword-stats.json`** (top termini per `regione` e `tipo_ente`). `bandi.html` lo carica per `<datalist>` sulla barra di ricerca.
 
 ## Policy link
 

@@ -1,0 +1,4760 @@
+{
+  "version": 1,
+  "generated_at": "2026-04-10T03:31:42.929Z",
+  "source": "local_json",
+  "record_count": 165,
+  "top_per_bucket": 45,
+  "top_global": 80,
+  "global": [
+    {
+      "term": "fondo",
+      "count": 178
+    },
+    {
+      "term": "perduto",
+      "count": 165
+    },
+    {
+      "term": "lombardia",
+      "count": 70
+    },
+    {
+      "term": "romagna",
+      "count": 58
+    },
+    {
+      "term": "emilia",
+      "count": 55
+    },
+    {
+      "term": "camera",
+      "count": 51
+    },
+    {
+      "term": "commercio",
+      "count": 50
+    },
+    {
+      "term": "contributi",
+      "count": 50
+    },
+    {
+      "term": "fiere",
+      "count": 42
+    },
+    {
+      "term": "lazio",
+      "count": 42
+    },
+    {
+      "term": "voucher",
+      "count": 38
+    },
+    {
+      "term": "cciaa",
+      "count": 37
+    },
+    {
+      "term": "toscana",
+      "count": 37
+    },
+    {
+      "term": "piemonte",
+      "count": 36
+    },
+    {
+      "term": "marche",
+      "count": 34
+    },
+    {
+      "term": "agricoltura",
+      "count": 31
+    },
+    {
+      "term": "investimenti",
+      "count": 29
+    },
+    {
+      "term": "turismo",
+      "count": 29
+    },
+    {
+      "term": "misto",
+      "count": 27
+    },
+    {
+      "term": "innovazione",
+      "count": 26
+    },
+    {
+      "term": "sviluppo",
+      "count": 26
+    },
+    {
+      "term": "veneto",
+      "count": 26
+    },
+    {
+      "term": "fesr",
+      "count": 24
+    },
+    {
+      "term": "sardegna",
+      "count": 24
+    },
+    {
+      "term": "digitale",
+      "count": 22
+    },
+    {
+      "term": "cultura",
+      "count": 21
+    },
+    {
+      "term": "verificare",
+      "count": 21
+    },
+    {
+      "term": "ministero",
+      "count": 20
+    },
+    {
+      "term": "startup",
+      "count": 20
+    },
+    {
+      "term": "transizione",
+      "count": 20
+    },
+    {
+      "term": "agevolato",
+      "count": 19
+    },
+    {
+      "term": "annualita",
+      "count": 19
+    },
+    {
+      "term": "puglia",
+      "count": 19
+    },
+    {
+      "term": "calabria",
+      "count": 18
+    },
+    {
+      "term": "bergamo",
+      "count": 16
+    },
+    {
+      "term": "green",
+      "count": 16
+    },
+    {
+      "term": "internazionali",
+      "count": 16
+    },
+    {
+      "term": "internazionalizzazione",
+      "count": 16
+    },
+    {
+      "term": "invitalia",
+      "count": 16
+    },
+    {
+      "term": "sicurezza",
+      "count": 16
+    },
+    {
+      "term": "credito",
+      "count": 15
+    },
+    {
+      "term": "imposta",
+      "count": 15
+    },
+    {
+      "term": "portale",
+      "count": 15
+    },
+    {
+      "term": "simest",
+      "count": 15
+    },
+    {
+      "term": "sociale",
+      "count": 15
+    },
+    {
+      "term": "emilia romagna",
+      "count": 14
+    },
+    {
+      "term": "export",
+      "count": 14
+    },
+    {
+      "term": "artigianato",
+      "count": 13
+    },
+    {
+      "term": "formazione",
+      "count": 13
+    },
+    {
+      "term": "lavoro",
+      "count": 13
+    },
+    {
+      "term": "liguria",
+      "count": 13
+    },
+    {
+      "term": "mimit",
+      "count": 13
+    },
+    {
+      "term": "regionale",
+      "count": 13
+    },
+    {
+      "term": "sport",
+      "count": 13
+    },
+    {
+      "term": "maremma",
+      "count": 12
+    },
+    {
+      "term": "servizi",
+      "count": 12
+    },
+    {
+      "term": "settore",
+      "count": 12
+    },
+    {
+      "term": "sostenibile",
+      "count": 12
+    },
+    {
+      "term": "tasso",
+      "count": 12
+    },
+    {
+      "term": "innovative",
+      "count": 11
+    },
+    {
+      "term": "partecipazione",
+      "count": 11
+    },
+    {
+      "term": "progetti",
+      "count": 11
+    },
+    {
+      "term": "sezione",
+      "count": 11
+    },
+    {
+      "term": "sicilia",
+      "count": 11
+    },
+    {
+      "term": "mezzogiorno",
+      "count": 10
+    },
+    {
+      "term": "mpmi",
+      "count": 10
+    },
+    {
+      "term": "zero",
+      "count": 10
+    },
+    {
+      "term": "beni",
+      "count": 9
+    },
+    {
+      "term": "dotazione",
+      "count": 9
+    },
+    {
+      "term": "ecologica",
+      "count": 9
+    },
+    {
+      "term": "giovani",
+      "count": 9
+    },
+    {
+      "term": "italy",
+      "count": 9
+    },
+    {
+      "term": "made",
+      "count": 9
+    },
+    {
+      "term": "scheda",
+      "count": 9
+    },
+    {
+      "term": "tirreno",
+      "count": 9
+    },
+    {
+      "term": "agricole",
+      "count": 8
+    },
+    {
+      "term": "brevetti",
+      "count": 8
+    },
+    {
+      "term": "competitivita",
+      "count": 8
+    },
+    {
+      "term": "internazionale",
+      "count": 8
+    },
+    {
+      "term": "moda",
+      "count": 8
+    }
+  ],
+  "by_regione": {
+    "Nazionale": [
+      {
+        "term": "fondo",
+        "count": 38
+      },
+      {
+        "term": "perduto",
+        "count": 33
+      },
+      {
+        "term": "ministero",
+        "count": 20
+      },
+      {
+        "term": "misto",
+        "count": 20
+      },
+      {
+        "term": "invitalia",
+        "count": 16
+      },
+      {
+        "term": "agevolato",
+        "count": 15
+      },
+      {
+        "term": "credito",
+        "count": 15
+      },
+      {
+        "term": "imposta",
+        "count": 15
+      },
+      {
+        "term": "simest",
+        "count": 15
+      },
+      {
+        "term": "turismo",
+        "count": 15
+      },
+      {
+        "term": "voucher",
+        "count": 15
+      },
+      {
+        "term": "mimit",
+        "count": 13
+      },
+      {
+        "term": "contributi",
+        "count": 12
+      },
+      {
+        "term": "investimenti",
+        "count": 11
+      },
+      {
+        "term": "mezzogiorno",
+        "count": 10
+      },
+      {
+        "term": "transizione",
+        "count": 10
+      },
+      {
+        "term": "export",
+        "count": 9
+      },
+      {
+        "term": "italy",
+        "count": 9
+      },
+      {
+        "term": "made",
+        "count": 9
+      },
+      {
+        "term": "tasso",
+        "count": 9
+      },
+      {
+        "term": "zero",
+        "count": 9
+      },
+      {
+        "term": "brevetti",
+        "count": 8
+      },
+      {
+        "term": "lavoro",
+        "count": 8
+      },
+      {
+        "term": "digitale",
+        "count": 7
+      },
+      {
+        "term": "ecologica",
+        "count": 7
+      },
+      {
+        "term": "green",
+        "count": 7
+      },
+      {
+        "term": "inail",
+        "count": 7
+      },
+      {
+        "term": "marchi",
+        "count": 7
+      },
+      {
+        "term": "sicurezza",
+        "count": 7
+      },
+      {
+        "term": "sociale",
+        "count": 7
+      },
+      {
+        "term": "agricoltura",
+        "count": 6
+      },
+      {
+        "term": "cultura",
+        "count": 6
+      },
+      {
+        "term": "giovani",
+        "count": 6
+      },
+      {
+        "term": "intellettuale",
+        "count": 6
+      },
+      {
+        "term": "internazionale",
+        "count": 6
+      },
+      {
+        "term": "internazionali",
+        "count": 6
+      },
+      {
+        "term": "proprieta",
+        "count": 6
+      },
+      {
+        "term": "under",
+        "count": 6
+      },
+      {
+        "term": "cloud",
+        "count": 5
+      },
+      {
+        "term": "cybersecurity",
+        "count": 5
+      },
+      {
+        "term": "dotazione",
+        "count": 5
+      },
+      {
+        "term": "innovazione",
+        "count": 5
+      },
+      {
+        "term": "ismea",
+        "count": 5
+      },
+      {
+        "term": "manifatturiero",
+        "count": 5
+      },
+      {
+        "term": "mercati",
+        "count": 5
+      }
+    ],
+    "Veneto": [
+      {
+        "term": "veneto",
+        "count": 26
+      },
+      {
+        "term": "fondo",
+        "count": 8
+      },
+      {
+        "term": "padova",
+        "count": 7
+      },
+      {
+        "term": "perduto",
+        "count": 7
+      },
+      {
+        "term": "sviluppo",
+        "count": 4
+      },
+      {
+        "term": "agricoltura",
+        "count": 3
+      },
+      {
+        "term": "cciaa",
+        "count": 3
+      },
+      {
+        "term": "efficientamento",
+        "count": 3
+      },
+      {
+        "term": "green",
+        "count": 3
+      },
+      {
+        "term": "sra28",
+        "count": 3
+      },
+      {
+        "term": "startup",
+        "count": 3
+      },
+      {
+        "term": "unioncamere",
+        "count": 3
+      },
+      {
+        "term": "agevolato",
+        "count": 2
+      },
+      {
+        "term": "apertura",
+        "count": 2
+      },
+      {
+        "term": "camera",
+        "count": 2
+      },
+      {
+        "term": "cciaa padova",
+        "count": 2
+      },
+      {
+        "term": "commercio",
+        "count": 2
+      },
+      {
+        "term": "competitivita",
+        "count": 2
+      },
+      {
+        "term": "contributi",
+        "count": 2
+      },
+      {
+        "term": "economico",
+        "count": 2
+      },
+      {
+        "term": "energia",
+        "count": 2
+      },
+      {
+        "term": "forestazione",
+        "count": 2
+      },
+      {
+        "term": "foreste",
+        "count": 2
+      },
+      {
+        "term": "innovazione",
+        "count": 2
+      },
+      {
+        "term": "interventi",
+        "count": 2
+      },
+      {
+        "term": "misto",
+        "count": 2
+      },
+      {
+        "term": "progetti",
+        "count": 2
+      },
+      {
+        "term": "prossima",
+        "count": 2
+      },
+      {
+        "term": "regionale",
+        "count": 2
+      },
+      {
+        "term": "sezione",
+        "count": 2
+      },
+      {
+        "term": "transizione",
+        "count": 2
+      },
+      {
+        "term": "verificare",
+        "count": 2
+      },
+      {
+        "term": "vitivinicolo",
+        "count": 2
+      },
+      {
+        "term": "aggregatrici",
+        "count": 1
+      },
+      {
+        "term": "agricole",
+        "count": 1
+      },
+      {
+        "term": "arboricoltura",
+        "count": 1
+      },
+      {
+        "term": "arboricoltura forestazione",
+        "count": 1
+      },
+      {
+        "term": "campagna",
+        "count": 1
+      },
+      {
+        "term": "competitivita fondo",
+        "count": 1
+      },
+      {
+        "term": "conformita",
+        "count": 1
+      },
+      {
+        "term": "contributi progetti",
+        "count": 1
+      },
+      {
+        "term": "dettagliata",
+        "count": 1
+      },
+      {
+        "term": "digitale",
+        "count": 1
+      },
+      {
+        "term": "digitale ecologica",
+        "count": 1
+      },
+      {
+        "term": "dominio",
+        "count": 1
+      }
+    ],
+    "Lombardia": [
+      {
+        "term": "lombardia",
+        "count": 70
+      },
+      {
+        "term": "fondo",
+        "count": 24
+      },
+      {
+        "term": "perduto",
+        "count": 24
+      },
+      {
+        "term": "bergamo",
+        "count": 16
+      },
+      {
+        "term": "commercio",
+        "count": 15
+      },
+      {
+        "term": "camera",
+        "count": 14
+      },
+      {
+        "term": "cciaa",
+        "count": 10
+      },
+      {
+        "term": "formazione",
+        "count": 8
+      },
+      {
+        "term": "sviluppo",
+        "count": 8
+      },
+      {
+        "term": "voucher",
+        "count": 8
+      },
+      {
+        "term": "verificare",
+        "count": 7
+      },
+      {
+        "term": "agricoltura",
+        "count": 6
+      },
+      {
+        "term": "competenze",
+        "count": 6
+      },
+      {
+        "term": "milano",
+        "count": 6
+      },
+      {
+        "term": "cciaa bergamo",
+        "count": 5
+      },
+      {
+        "term": "internazionalizzazione",
+        "count": 5
+      },
+      {
+        "term": "portale",
+        "count": 5
+      },
+      {
+        "term": "agricole",
+        "count": 4
+      },
+      {
+        "term": "annualita",
+        "count": 4
+      },
+      {
+        "term": "fesr",
+        "count": 4
+      },
+      {
+        "term": "fiere",
+        "count": 4
+      },
+      {
+        "term": "investimenti",
+        "count": 4
+      },
+      {
+        "term": "moda",
+        "count": 4
+      },
+      {
+        "term": "organizzazioni",
+        "count": 4
+      },
+      {
+        "term": "tessile",
+        "count": 4
+      },
+      {
+        "term": "varese",
+        "count": 4
+      },
+      {
+        "term": "agroindustria",
+        "count": 3
+      },
+      {
+        "term": "avvio",
+        "count": 3
+      },
+      {
+        "term": "categoria",
+        "count": 3
+      },
+      {
+        "term": "check",
+        "count": 3
+      },
+      {
+        "term": "como",
+        "count": 3
+      },
+      {
+        "term": "corrente",
+        "count": 3
+      },
+      {
+        "term": "cremona",
+        "count": 3
+      },
+      {
+        "term": "cultura",
+        "count": 3
+      },
+      {
+        "term": "forestazione",
+        "count": 3
+      },
+      {
+        "term": "innovazione",
+        "count": 3
+      },
+      {
+        "term": "itinerari",
+        "count": 3
+      },
+      {
+        "term": "lecco",
+        "count": 3
+      },
+      {
+        "term": "mpmi",
+        "count": 3
+      },
+      {
+        "term": "nuova",
+        "count": 3
+      },
+      {
+        "term": "regionale",
+        "count": 3
+      },
+      {
+        "term": "scheda",
+        "count": 3
+      },
+      {
+        "term": "selezionare",
+        "count": 3
+      },
+      {
+        "term": "sport",
+        "count": 3
+      },
+      {
+        "term": "sra28",
+        "count": 3
+      }
+    ],
+    "Lazio": [
+      {
+        "term": "lazio",
+        "count": 42
+      },
+      {
+        "term": "fondo",
+        "count": 14
+      },
+      {
+        "term": "perduto",
+        "count": 14
+      },
+      {
+        "term": "roma",
+        "count": 7
+      },
+      {
+        "term": "voucher",
+        "count": 6
+      },
+      {
+        "term": "cultura",
+        "count": 5
+      },
+      {
+        "term": "innova",
+        "count": 5
+      },
+      {
+        "term": "sport",
+        "count": 4
+      },
+      {
+        "term": "turismo",
+        "count": 4
+      },
+      {
+        "term": "camera",
+        "count": 3
+      },
+      {
+        "term": "commercio",
+        "count": 3
+      },
+      {
+        "term": "competitivita",
+        "count": 3
+      },
+      {
+        "term": "digitale",
+        "count": 3
+      },
+      {
+        "term": "innovazione",
+        "count": 3
+      },
+      {
+        "term": "startup",
+        "count": 3
+      },
+      {
+        "term": "street",
+        "count": 3
+      },
+      {
+        "term": "sviluppo",
+        "count": 3
+      },
+      {
+        "term": "avvio",
+        "count": 2
+      },
+      {
+        "term": "comune",
+        "count": 2
+      },
+      {
+        "term": "donne",
+        "count": 2
+      },
+      {
+        "term": "economico",
+        "count": 2
+      },
+      {
+        "term": "efficientamento",
+        "count": 2
+      },
+      {
+        "term": "femminile",
+        "count": 2
+      },
+      {
+        "term": "impianti",
+        "count": 2
+      },
+      {
+        "term": "innovative",
+        "count": 2
+      },
+      {
+        "term": "ladit",
+        "count": 2
+      },
+      {
+        "term": "manager",
+        "count": 2
+      },
+      {
+        "term": "territorio",
+        "count": 2
+      },
+      {
+        "term": "tradizioni",
+        "count": 2
+      },
+      {
+        "term": "transizione",
+        "count": 2
+      },
+      {
+        "term": "artistiche",
+        "count": 1
+      },
+      {
+        "term": "artistiche popolari",
+        "count": 1
+      },
+      {
+        "term": "assunzioni",
+        "count": 1
+      },
+      {
+        "term": "avvio startup",
+        "count": 1
+      },
+      {
+        "term": "capacita",
+        "count": 1
+      },
+      {
+        "term": "capacita gestionali",
+        "count": 1
+      },
+      {
+        "term": "cciaa",
+        "count": 1
+      },
+      {
+        "term": "cciaa roma",
+        "count": 1
+      },
+      {
+        "term": "competitivita sviluppo",
+        "count": 1
+      },
+      {
+        "term": "comune impianti",
+        "count": 1
+      },
+      {
+        "term": "comuni",
+        "count": 1
+      },
+      {
+        "term": "consulenza",
+        "count": 1
+      },
+      {
+        "term": "consulenze",
+        "count": 1
+      },
+      {
+        "term": "contributi",
+        "count": 1
+      },
+      {
+        "term": "digitale esperienziale",
+        "count": 1
+      }
+    ],
+    "Piemonte": [
+      {
+        "term": "piemonte",
+        "count": 36
+      },
+      {
+        "term": "fondo",
+        "count": 10
+      },
+      {
+        "term": "perduto",
+        "count": 10
+      },
+      {
+        "term": "srd04",
+        "count": 6
+      },
+      {
+        "term": "agricoltura",
+        "count": 5
+      },
+      {
+        "term": "contributi",
+        "count": 5
+      },
+      {
+        "term": "fiere",
+        "count": 4
+      },
+      {
+        "term": "riciclo",
+        "count": 4
+      },
+      {
+        "term": "artigianato",
+        "count": 3
+      },
+      {
+        "term": "batterie",
+        "count": 3
+      },
+      {
+        "term": "certificazioni",
+        "count": 3
+      },
+      {
+        "term": "filiera",
+        "count": 3
+      },
+      {
+        "term": "fondazione",
+        "count": 3
+      },
+      {
+        "term": "legno",
+        "count": 3
+      },
+      {
+        "term": "raee",
+        "count": 3
+      },
+      {
+        "term": "voucher",
+        "count": 3
+      },
+      {
+        "term": "ampliamento",
+        "count": 2
+      },
+      {
+        "term": "annualita",
+        "count": 2
+      },
+      {
+        "term": "artigianale",
+        "count": 2
+      },
+      {
+        "term": "artigiani",
+        "count": 2
+      },
+      {
+        "term": "beni",
+        "count": 2
+      },
+      {
+        "term": "carnivori",
+        "count": 2
+      },
+      {
+        "term": "critiche",
+        "count": 2
+      },
+      {
+        "term": "culturali",
+        "count": 2
+      },
+      {
+        "term": "cuneo",
+        "count": 2
+      },
+      {
+        "term": "danni",
+        "count": 2
+      },
+      {
+        "term": "emissione",
+        "count": 2
+      },
+      {
+        "term": "fauna",
+        "count": 2
+      },
+      {
+        "term": "impianti",
+        "count": 2
+      },
+      {
+        "term": "investimenti",
+        "count": 2
+      },
+      {
+        "term": "materie",
+        "count": 2
+      },
+      {
+        "term": "obbligazioni",
+        "count": 2
+      },
+      {
+        "term": "oneri",
+        "count": 2
+      },
+      {
+        "term": "piemonte srd04",
+        "count": 2
+      },
+      {
+        "term": "piemontesi",
+        "count": 2
+      },
+      {
+        "term": "predazione",
+        "count": 2
+      },
+      {
+        "term": "prime",
+        "count": 2
+      },
+      {
+        "term": "qualita",
+        "count": 2
+      },
+      {
+        "term": "verificare",
+        "count": 2
+      },
+      {
+        "term": "abbattimento",
+        "count": 1
+      },
+      {
+        "term": "abbattimento oneri",
+        "count": 1
+      },
+      {
+        "term": "agea",
+        "count": 1
+      },
+      {
+        "term": "agevolati",
+        "count": 1
+      },
+      {
+        "term": "agricoltura allevamenti",
+        "count": 1
+      },
+      {
+        "term": "agroecosistema",
+        "count": 1
+      }
+    ],
+    "Emilia-Romagna": [
+      {
+        "term": "romagna",
+        "count": 58
+      },
+      {
+        "term": "emilia",
+        "count": 55
+      },
+      {
+        "term": "fondo",
+        "count": 26
+      },
+      {
+        "term": "perduto",
+        "count": 21
+      },
+      {
+        "term": "emilia romagna",
+        "count": 14
+      },
+      {
+        "term": "contributi",
+        "count": 12
+      },
+      {
+        "term": "fesr",
+        "count": 9
+      },
+      {
+        "term": "fiere",
+        "count": 7
+      },
+      {
+        "term": "bologna",
+        "count": 6
+      },
+      {
+        "term": "sport",
+        "count": 6
+      },
+      {
+        "term": "annualita",
+        "count": 5
+      },
+      {
+        "term": "camera",
+        "count": 5
+      },
+      {
+        "term": "commercio",
+        "count": 5
+      },
+      {
+        "term": "internazionali",
+        "count": 5
+      },
+      {
+        "term": "rimini",
+        "count": 5
+      },
+      {
+        "term": "servizi",
+        "count": 5
+      },
+      {
+        "term": "garanzia",
+        "count": 4
+      },
+      {
+        "term": "srd09",
+        "count": 4
+      },
+      {
+        "term": "talenti",
+        "count": 4
+      },
+      {
+        "term": "base",
+        "count": 3
+      },
+      {
+        "term": "bilancio",
+        "count": 3
+      },
+      {
+        "term": "camp",
+        "count": 3
+      },
+      {
+        "term": "cciaa",
+        "count": 3
+      },
+      {
+        "term": "comuni",
+        "count": 3
+      },
+      {
+        "term": "disabilita",
+        "count": 3
+      },
+      {
+        "term": "ducato",
+        "count": 3
+      },
+      {
+        "term": "fesr emilia",
+        "count": 3
+      },
+      {
+        "term": "forli",
+        "count": 3
+      },
+      {
+        "term": "giovanile",
+        "count": 3
+      },
+      {
+        "term": "innovazione",
+        "count": 3
+      },
+      {
+        "term": "investimenti",
+        "count": 3
+      },
+      {
+        "term": "itinerari",
+        "count": 3
+      },
+      {
+        "term": "lavoro",
+        "count": 3
+      },
+      {
+        "term": "locale",
+        "count": 3
+      },
+      {
+        "term": "marecchia",
+        "count": 3
+      },
+      {
+        "term": "polizia",
+        "count": 3
+      },
+      {
+        "term": "progetti",
+        "count": 3
+      },
+      {
+        "term": "promozione",
+        "count": 3
+      },
+      {
+        "term": "rurale",
+        "count": 3
+      },
+      {
+        "term": "scheda",
+        "count": 3
+      },
+      {
+        "term": "scuola",
+        "count": 3
+      },
+      {
+        "term": "sostenibilita",
+        "count": 3
+      },
+      {
+        "term": "starter",
+        "count": 3
+      },
+      {
+        "term": "startup",
+        "count": 3
+      },
+      {
+        "term": "summer",
+        "count": 3
+      }
+    ],
+    "Toscana": [
+      {
+        "term": "toscana",
+        "count": 37
+      },
+      {
+        "term": "fondo",
+        "count": 16
+      },
+      {
+        "term": "perduto",
+        "count": 16
+      },
+      {
+        "term": "camera",
+        "count": 14
+      },
+      {
+        "term": "maremma",
+        "count": 12
+      },
+      {
+        "term": "cciaa",
+        "count": 11
+      },
+      {
+        "term": "commercio",
+        "count": 11
+      },
+      {
+        "term": "tirreno",
+        "count": 9
+      },
+      {
+        "term": "firenze",
+        "count": 7
+      },
+      {
+        "term": "sicurezza",
+        "count": 6
+      },
+      {
+        "term": "arezzo",
+        "count": 4
+      },
+      {
+        "term": "cciaa maremma",
+        "count": 4
+      },
+      {
+        "term": "maremma tirreno",
+        "count": 4
+      },
+      {
+        "term": "moda",
+        "count": 4
+      },
+      {
+        "term": "portale",
+        "count": 4
+      },
+      {
+        "term": "siena",
+        "count": 4
+      },
+      {
+        "term": "tessile",
+        "count": 4
+      },
+      {
+        "term": "agricoltura",
+        "count": 3
+      },
+      {
+        "term": "grosseto",
+        "count": 3
+      },
+      {
+        "term": "innovazione",
+        "count": 3
+      },
+      {
+        "term": "livorno",
+        "count": 3
+      },
+      {
+        "term": "pistoia",
+        "count": 3
+      },
+      {
+        "term": "prato",
+        "count": 3
+      },
+      {
+        "term": "settore",
+        "count": 3
+      },
+      {
+        "term": "turismo",
+        "count": 3
+      },
+      {
+        "term": "vicinato",
+        "count": 3
+      },
+      {
+        "term": "voucher",
+        "count": 3
+      },
+      {
+        "term": "annualita",
+        "count": 2
+      },
+      {
+        "term": "azioni",
+        "count": 2
+      },
+      {
+        "term": "birra",
+        "count": 2
+      },
+      {
+        "term": "cciaa firenze",
+        "count": 2
+      },
+      {
+        "term": "certificazioni",
+        "count": 2
+      },
+      {
+        "term": "creazione",
+        "count": 2
+      },
+      {
+        "term": "dimostrative",
+        "count": 2
+      },
+      {
+        "term": "edilizia",
+        "count": 2
+      },
+      {
+        "term": "investimenti",
+        "count": 2
+      },
+      {
+        "term": "minori",
+        "count": 2
+      },
+      {
+        "term": "mpmi",
+        "count": 2
+      },
+      {
+        "term": "nord",
+        "count": 2
+      },
+      {
+        "term": "oratori",
+        "count": 2
+      },
+      {
+        "term": "ovest",
+        "count": 2
+      },
+      {
+        "term": "scad",
+        "count": 2
+      },
+      {
+        "term": "sedi",
+        "count": 2
+      },
+      {
+        "term": "servizi",
+        "count": 2
+      },
+      {
+        "term": "sezione",
+        "count": 2
+      }
+    ],
+    "Puglia": [
+      {
+        "term": "puglia",
+        "count": 17
+      },
+      {
+        "term": "fondo",
+        "count": 4
+      },
+      {
+        "term": "perduto",
+        "count": 4
+      },
+      {
+        "term": "taranto",
+        "count": 4
+      },
+      {
+        "term": "acquacoltura",
+        "count": 3
+      },
+      {
+        "term": "digitale",
+        "count": 3
+      },
+      {
+        "term": "feampa",
+        "count": 3
+      },
+      {
+        "term": "innovazione",
+        "count": 3
+      },
+      {
+        "term": "azione",
+        "count": 2
+      },
+      {
+        "term": "azioni",
+        "count": 2
+      },
+      {
+        "term": "faunistico",
+        "count": 2
+      },
+      {
+        "term": "miglioramento",
+        "count": 2
+      },
+      {
+        "term": "olivicoltura",
+        "count": 2
+      },
+      {
+        "term": "trasformazioni",
+        "count": 2
+      },
+      {
+        "term": "acquacoltura sostenibile",
+        "count": 1
+      },
+      {
+        "term": "acquicole",
+        "count": 1
+      },
+      {
+        "term": "agricoltura",
+        "count": 1
+      },
+      {
+        "term": "ambientale",
+        "count": 1
+      },
+      {
+        "term": "ambientale incremento",
+        "count": 1
+      },
+      {
+        "term": "ambiente",
+        "count": 1
+      },
+      {
+        "term": "azione piano",
+        "count": 1
+      },
+      {
+        "term": "caccia",
+        "count": 1
+      },
+      {
+        "term": "competitivita",
+        "count": 1
+      },
+      {
+        "term": "domande",
+        "count": 1
+      },
+      {
+        "term": "energetica",
+        "count": 1
+      },
+      {
+        "term": "faunistica",
+        "count": 1
+      },
+      {
+        "term": "feampa investimenti",
+        "count": 1
+      },
+      {
+        "term": "incremento",
+        "count": 1
+      },
+      {
+        "term": "incremento faunistico",
+        "count": 1
+      },
+      {
+        "term": "innovazione digitale",
+        "count": 1
+      },
+      {
+        "term": "investimenti",
+        "count": 1
+      },
+      {
+        "term": "investimenti acquacoltura",
+        "count": 1
+      },
+      {
+        "term": "micro",
+        "count": 1
+      },
+      {
+        "term": "miglioramento ambientale",
+        "count": 1
+      },
+      {
+        "term": "olivicola",
+        "count": 1
+      },
+      {
+        "term": "olivicola azione",
+        "count": 1
+      },
+      {
+        "term": "opere",
+        "count": 1
+      },
+      {
+        "term": "pesca",
+        "count": 1
+      },
+      {
+        "term": "piano",
+        "count": 1
+      },
+      {
+        "term": "piano straordinario",
+        "count": 1
+      },
+      {
+        "term": "presso",
+        "count": 1
+      },
+      {
+        "term": "puglia feampa",
+        "count": 1
+      },
+      {
+        "term": "puglia rigenerazione",
+        "count": 1
+      },
+      {
+        "term": "puglia taranto",
+        "count": 1
+      },
+      {
+        "term": "puglia trasformazioni",
+        "count": 1
+      }
+    ],
+    "Calabria": [
+      {
+        "term": "calabria",
+        "count": 16
+      },
+      {
+        "term": "cosenza",
+        "count": 4
+      },
+      {
+        "term": "fondo",
+        "count": 4
+      },
+      {
+        "term": "green",
+        "count": 4
+      },
+      {
+        "term": "critiche",
+        "count": 3
+      },
+      {
+        "term": "deep",
+        "count": 3
+      },
+      {
+        "term": "sicurezza",
+        "count": 3
+      },
+      {
+        "term": "sociale",
+        "count": 3
+      },
+      {
+        "term": "tech",
+        "count": 3
+      },
+      {
+        "term": "tecnologica",
+        "count": 3
+      },
+      {
+        "term": "tecnologie",
+        "count": 3
+      },
+      {
+        "term": "trasformazione",
+        "count": 3
+      },
+      {
+        "term": "camera",
+        "count": 2
+      },
+      {
+        "term": "digitale",
+        "count": 2
+      },
+      {
+        "term": "misto",
+        "count": 2
+      },
+      {
+        "term": "perduto",
+        "count": 2
+      },
+      {
+        "term": "tecstep",
+        "count": 2
+      },
+      {
+        "term": "100m",
+        "count": 1
+      },
+      {
+        "term": "agevolazioni",
+        "count": 1
+      },
+      {
+        "term": "apertura",
+        "count": 1
+      },
+      {
+        "term": "azioni",
+        "count": 1
+      },
+      {
+        "term": "beni",
+        "count": 1
+      },
+      {
+        "term": "beni pubblici",
+        "count": 1
+      },
+      {
+        "term": "calabria fondo",
+        "count": 1
+      },
+      {
+        "term": "calabria sociale",
+        "count": 1
+      },
+      {
+        "term": "calabria tecstep",
+        "count": 1
+      },
+      {
+        "term": "cciaa",
+        "count": 1
+      },
+      {
+        "term": "cciaa cosenza",
+        "count": 1
+      },
+      {
+        "term": "commercio",
+        "count": 1
+      },
+      {
+        "term": "copertura",
+        "count": 1
+      },
+      {
+        "term": "cosenza sicurezza",
+        "count": 1
+      },
+      {
+        "term": "critiche green",
+        "count": 1
+      },
+      {
+        "term": "edizione",
+        "count": 1
+      },
+      {
+        "term": "fondo tecnologie",
+        "count": 1
+      },
+      {
+        "term": "fondo trasformazione",
+        "count": 1
+      },
+      {
+        "term": "fonti",
+        "count": 1
+      },
+      {
+        "term": "grandi",
+        "count": 1
+      },
+      {
+        "term": "investimenti",
+        "count": 1
+      },
+      {
+        "term": "lavoro",
+        "count": 1
+      },
+      {
+        "term": "lavoro edizione",
+        "count": 1
+      },
+      {
+        "term": "luoghi",
+        "count": 1
+      },
+      {
+        "term": "luoghi lavoro",
+        "count": 1
+      },
+      {
+        "term": "monitorare",
+        "count": 1
+      },
+      {
+        "term": "prossima",
+        "count": 1
+      },
+      {
+        "term": "pubblici",
+        "count": 1
+      }
+    ],
+    "Marche": [
+      {
+        "term": "marche",
+        "count": 34
+      },
+      {
+        "term": "artigianato",
+        "count": 9
+      },
+      {
+        "term": "fondo",
+        "count": 8
+      },
+      {
+        "term": "perduto",
+        "count": 8
+      },
+      {
+        "term": "fiere",
+        "count": 6
+      },
+      {
+        "term": "contributi",
+        "count": 4
+      },
+      {
+        "term": "memoria",
+        "count": 4
+      },
+      {
+        "term": "locali",
+        "count": 3
+      },
+      {
+        "term": "sra15",
+        "count": 3
+      },
+      {
+        "term": "srb01",
+        "count": 3
+      },
+      {
+        "term": "terrorismo",
+        "count": 3
+      },
+      {
+        "term": "agricoltura",
+        "count": 2
+      },
+      {
+        "term": "agrobiodiversita",
+        "count": 2
+      },
+      {
+        "term": "attrezzature",
+        "count": 2
+      },
+      {
+        "term": "camera",
+        "count": 2
+      },
+      {
+        "term": "commercializzazione",
+        "count": 2
+      },
+      {
+        "term": "commercio",
+        "count": 2
+      },
+      {
+        "term": "editoria",
+        "count": 2
+      },
+      {
+        "term": "iniziative",
+        "count": 2
+      },
+      {
+        "term": "internazionalizzazione",
+        "count": 2
+      },
+      {
+        "term": "laboratori",
+        "count": 2
+      },
+      {
+        "term": "marche artigianato",
+        "count": 2
+      },
+      {
+        "term": "montagna",
+        "count": 2
+      },
+      {
+        "term": "pagina",
+        "count": 2
+      },
+      {
+        "term": "sezione",
+        "count": 2
+      },
+      {
+        "term": "testate",
+        "count": 2
+      },
+      {
+        "term": "vino",
+        "count": 2
+      },
+      {
+        "term": "vittime",
+        "count": 2
+      },
+      {
+        "term": "agea",
+        "count": 1
+      },
+      {
+        "term": "agricoltori",
+        "count": 1
+      },
+      {
+        "term": "agricoltori custodi",
+        "count": 1
+      },
+      {
+        "term": "agroalimentare",
+        "count": 1
+      },
+      {
+        "term": "annualita",
+        "count": 1
+      },
+      {
+        "term": "approfondire",
+        "count": 1
+      },
+      {
+        "term": "aree",
+        "count": 1
+      },
+      {
+        "term": "aree montagna",
+        "count": 1
+      },
+      {
+        "term": "artigianato artistico",
+        "count": 1
+      },
+      {
+        "term": "artigianato commercializzazione",
+        "count": 1
+      },
+      {
+        "term": "artistico",
+        "count": 1
+      },
+      {
+        "term": "artistico laboratori",
+        "count": 1
+      },
+      {
+        "term": "campagna",
+        "count": 1
+      },
+      {
+        "term": "cciaa",
+        "count": 1
+      },
+      {
+        "term": "cciaa marche",
+        "count": 1
+      },
+      {
+        "term": "commercializzazione fiere",
+        "count": 1
+      },
+      {
+        "term": "connesse",
+        "count": 1
+      }
+    ],
+    "Campania": [
+      {
+        "term": "fiere",
+        "count": 6
+      },
+      {
+        "term": "camera",
+        "count": 4
+      },
+      {
+        "term": "caserta",
+        "count": 4
+      },
+      {
+        "term": "commercio",
+        "count": 4
+      },
+      {
+        "term": "partecipazione",
+        "count": 3
+      },
+      {
+        "term": "salerno",
+        "count": 3
+      },
+      {
+        "term": "campania",
+        "count": 2
+      },
+      {
+        "term": "cciaa",
+        "count": 2
+      },
+      {
+        "term": "fondo",
+        "count": 2
+      },
+      {
+        "term": "internazionalizzazione",
+        "count": 2
+      },
+      {
+        "term": "perduto",
+        "count": 2
+      },
+      {
+        "term": "caserta fiere",
+        "count": 1
+      },
+      {
+        "term": "cciaa caserta",
+        "count": 1
+      },
+      {
+        "term": "cciaa salerno",
+        "count": 1
+      },
+      {
+        "term": "contributi",
+        "count": 1
+      },
+      {
+        "term": "contributi internazionalizzazione",
+        "count": 1
+      },
+      {
+        "term": "esaurimento",
+        "count": 1
+      },
+      {
+        "term": "estero",
+        "count": 1
+      },
+      {
+        "term": "fiere contributi",
+        "count": 1
+      },
+      {
+        "term": "fiere partecipazione",
+        "count": 1
+      },
+      {
+        "term": "fondi",
+        "count": 1
+      },
+      {
+        "term": "manifestazioni",
+        "count": 1
+      },
+      {
+        "term": "partecipazione manifestazioni",
+        "count": 1
+      },
+      {
+        "term": "provincia",
+        "count": 1
+      },
+      {
+        "term": "quadrimestre",
+        "count": 1
+      },
+      {
+        "term": "salerno fiere",
+        "count": 1
+      },
+      {
+        "term": "sportello",
+        "count": 1
+      }
+    ],
+    "Umbria": [
+      {
+        "term": "umbria",
+        "count": 8
+      },
+      {
+        "term": "fiere",
+        "count": 3
+      },
+      {
+        "term": "vigneti",
+        "count": 3
+      },
+      {
+        "term": "camera",
+        "count": 2
+      },
+      {
+        "term": "campagna",
+        "count": 2
+      },
+      {
+        "term": "commercio",
+        "count": 2
+      },
+      {
+        "term": "contributi",
+        "count": 2
+      },
+      {
+        "term": "fondo",
+        "count": 2
+      },
+      {
+        "term": "internazionali",
+        "count": 2
+      },
+      {
+        "term": "mpmi",
+        "count": 2
+      },
+      {
+        "term": "perduto",
+        "count": 2
+      },
+      {
+        "term": "riconversione",
+        "count": 2
+      },
+      {
+        "term": "ristrutturazione",
+        "count": 2
+      },
+      {
+        "term": "vino",
+        "count": 2
+      },
+      {
+        "term": "vitivinicolo",
+        "count": 2
+      },
+      {
+        "term": "annualita",
+        "count": 1
+      },
+      {
+        "term": "campagna vitivinicola",
+        "count": 1
+      },
+      {
+        "term": "cciaa",
+        "count": 1
+      },
+      {
+        "term": "cciaa umbria",
+        "count": 1
+      },
+      {
+        "term": "contributi mpmi",
+        "count": 1
+      },
+      {
+        "term": "fiere internazionali",
+        "count": 1
+      },
+      {
+        "term": "internazionali contributi",
+        "count": 1
+      },
+      {
+        "term": "internazionalizzazione",
+        "count": 1
+      },
+      {
+        "term": "intervento",
+        "count": 1
+      },
+      {
+        "term": "partecipazione",
+        "count": 1
+      },
+      {
+        "term": "portale",
+        "count": 1
+      },
+      {
+        "term": "premialita",
+        "count": 1
+      },
+      {
+        "term": "regionale",
+        "count": 1
+      },
+      {
+        "term": "riconversione vigneti",
+        "count": 1
+      },
+      {
+        "term": "ristrutturazione riconversione",
+        "count": 1
+      },
+      {
+        "term": "specifico",
+        "count": 1
+      },
+      {
+        "term": "umbre",
+        "count": 1
+      },
+      {
+        "term": "umbria fiere",
+        "count": 1
+      },
+      {
+        "term": "umbria ristrutturazione",
+        "count": 1
+      },
+      {
+        "term": "verificare",
+        "count": 1
+      },
+      {
+        "term": "vigneti campagna",
+        "count": 1
+      },
+      {
+        "term": "vino umbria",
+        "count": 1
+      },
+      {
+        "term": "vitivinicola",
+        "count": 1
+      }
+    ],
+    "Trentino-Alto Adige": [
+      {
+        "term": "adige",
+        "count": 3
+      },
+      {
+        "term": "alto",
+        "count": 3
+      },
+      {
+        "term": "fiere",
+        "count": 3
+      },
+      {
+        "term": "bolzano",
+        "count": 2
+      },
+      {
+        "term": "contributi",
+        "count": 2
+      },
+      {
+        "term": "export",
+        "count": 2
+      },
+      {
+        "term": "fondo",
+        "count": 2
+      },
+      {
+        "term": "internazionali",
+        "count": 2
+      },
+      {
+        "term": "perduto",
+        "count": 2
+      },
+      {
+        "term": "adige fiere",
+        "count": 1
+      },
+      {
+        "term": "alto adige",
+        "count": 1
+      },
+      {
+        "term": "autonoma",
+        "count": 1
+      },
+      {
+        "term": "contributi export",
+        "count": 1
+      },
+      {
+        "term": "fiere internazionali",
+        "count": 1
+      },
+      {
+        "term": "internazionali contributi",
+        "count": 1
+      },
+      {
+        "term": "internazionalizzazione",
+        "count": 1
+      },
+      {
+        "term": "medie",
+        "count": 1
+      },
+      {
+        "term": "provincia",
+        "count": 1
+      },
+      {
+        "term": "sportello",
+        "count": 1
+      },
+      {
+        "term": "trentino",
+        "count": 1
+      }
+    ],
+    "Valle d'Aosta": [
+      {
+        "term": "aosta",
+        "count": 4
+      },
+      {
+        "term": "valle",
+        "count": 4
+      },
+      {
+        "term": "fiere",
+        "count": 3
+      },
+      {
+        "term": "internazionale",
+        "count": 2
+      },
+      {
+        "term": "promozione",
+        "count": 2
+      },
+      {
+        "term": "aosta fiere",
+        "count": 1
+      },
+      {
+        "term": "contributi",
+        "count": 1
+      },
+      {
+        "term": "contributi promozione",
+        "count": 1
+      },
+      {
+        "term": "esaurimento",
+        "count": 1
+      },
+      {
+        "term": "fiere contributi",
+        "count": 1
+      },
+      {
+        "term": "fondo",
+        "count": 1
+      },
+      {
+        "term": "internazionalizzazione",
+        "count": 1
+      },
+      {
+        "term": "perduto",
+        "count": 1
+      },
+      {
+        "term": "promozione internazionale",
+        "count": 1
+      },
+      {
+        "term": "sportello",
+        "count": 1
+      },
+      {
+        "term": "valle aosta",
+        "count": 1
+      }
+    ],
+    "Liguria": [
+      {
+        "term": "liguria",
+        "count": 13
+      },
+      {
+        "term": "fesr",
+        "count": 5
+      },
+      {
+        "term": "fondo",
+        "count": 4
+      },
+      {
+        "term": "perduto",
+        "count": 4
+      },
+      {
+        "term": "investimenti",
+        "count": 3
+      },
+      {
+        "term": "reti",
+        "count": 3
+      },
+      {
+        "term": "sra14",
+        "count": 2
+      },
+      {
+        "term": "sviluppo",
+        "count": 2
+      },
+      {
+        "term": "aggregazioni",
+        "count": 1
+      },
+      {
+        "term": "agricoltura",
+        "count": 1
+      },
+      {
+        "term": "agrobiodiversita",
+        "count": 1
+      },
+      {
+        "term": "allevamento",
+        "count": 1
+      },
+      {
+        "term": "allevatori",
+        "count": 1
+      },
+      {
+        "term": "allevatori custodi",
+        "count": 1
+      },
+      {
+        "term": "artigianato",
+        "count": 1
+      },
+      {
+        "term": "azione",
+        "count": 1
+      },
+      {
+        "term": "azione reti",
+        "count": 1
+      },
+      {
+        "term": "commercio",
+        "count": 1
+      },
+      {
+        "term": "contributi",
+        "count": 1
+      },
+      {
+        "term": "custodi",
+        "count": 1
+      },
+      {
+        "term": "custodi agrobiodiversita",
+        "count": 1
+      },
+      {
+        "term": "fesr azione",
+        "count": 1
+      },
+      {
+        "term": "filse",
+        "count": 1
+      },
+      {
+        "term": "industria",
+        "count": 1
+      },
+      {
+        "term": "innovazione",
+        "count": 1
+      },
+      {
+        "term": "investimenti fesr",
+        "count": 1
+      },
+      {
+        "term": "liguri",
+        "count": 1
+      },
+      {
+        "term": "liguria fesr",
+        "count": 1
+      },
+      {
+        "term": "liguria sra14",
+        "count": 1
+      },
+      {
+        "term": "liguria sviluppo",
+        "count": 1
+      },
+      {
+        "term": "presentazione",
+        "count": 1
+      },
+      {
+        "term": "produttivi",
+        "count": 1
+      },
+      {
+        "term": "programmi",
+        "count": 1
+      },
+      {
+        "term": "reti aggregazioni",
+        "count": 1
+      },
+      {
+        "term": "sra14 allevatori",
+        "count": 1
+      },
+      {
+        "term": "sviluppo investimenti",
+        "count": 1
+      },
+      {
+        "term": "tramite",
+        "count": 1
+      }
+    ],
+    "Friuli Venezia Giulia": [
+      {
+        "term": "friuli",
+        "count": 5
+      },
+      {
+        "term": "giulia",
+        "count": 4
+      },
+      {
+        "term": "venezia",
+        "count": 4
+      },
+      {
+        "term": "voucher",
+        "count": 3
+      },
+      {
+        "term": "digitale",
+        "count": 2
+      },
+      {
+        "term": "tecnologici",
+        "count": 2
+      },
+      {
+        "term": "digitale voucher",
+        "count": 1
+      },
+      {
+        "term": "digitalizzazione",
+        "count": 1
+      },
+      {
+        "term": "fondo",
+        "count": 1
+      },
+      {
+        "term": "friuli venezia",
+        "count": 1
+      },
+      {
+        "term": "giulia digitale",
+        "count": 1
+      },
+      {
+        "term": "perduto",
+        "count": 1
+      },
+      {
+        "term": "tecnologia",
+        "count": 1
+      },
+      {
+        "term": "venezia giulia",
+        "count": 1
+      },
+      {
+        "term": "voucher tecnologici",
+        "count": 1
+      }
+    ],
+    "Sardegna": [
+      {
+        "term": "sardegna",
+        "count": 22
+      },
+      {
+        "term": "nuoro",
+        "count": 8
+      },
+      {
+        "term": "fondo",
+        "count": 6
+      },
+      {
+        "term": "perduto",
+        "count": 6
+      },
+      {
+        "term": "alisei",
+        "count": 3
+      },
+      {
+        "term": "camera",
+        "count": 3
+      },
+      {
+        "term": "cciaa",
+        "count": 3
+      },
+      {
+        "term": "commercio",
+        "count": 3
+      },
+      {
+        "term": "cultura",
+        "count": 3
+      },
+      {
+        "term": "fesr",
+        "count": 3
+      },
+      {
+        "term": "fiere",
+        "count": 3
+      },
+      {
+        "term": "istruzione",
+        "count": 3
+      },
+      {
+        "term": "sostenibile",
+        "count": 3
+      },
+      {
+        "term": "srd01",
+        "count": 3
+      },
+      {
+        "term": "accelerazione",
+        "count": 2
+      },
+      {
+        "term": "agricoltura",
+        "count": 2
+      },
+      {
+        "term": "annualita",
+        "count": 2
+      },
+      {
+        "term": "cciaa nuoro",
+        "count": 2
+      },
+      {
+        "term": "contributi",
+        "count": 2
+      },
+      {
+        "term": "crescita",
+        "count": 2
+      },
+      {
+        "term": "digitale",
+        "count": 2
+      },
+      {
+        "term": "ecosistema",
+        "count": 2
+      },
+      {
+        "term": "iniziative",
+        "count": 2
+      },
+      {
+        "term": "innovazione",
+        "count": 2
+      },
+      {
+        "term": "locali",
+        "count": 2
+      },
+      {
+        "term": "portale",
+        "count": 2
+      },
+      {
+        "term": "promozionali",
+        "count": 2
+      },
+      {
+        "term": "secondo",
+        "count": 2
+      },
+      {
+        "term": "secondo semestre",
+        "count": 2
+      },
+      {
+        "term": "semestre",
+        "count": 2
+      },
+      {
+        "term": "sezione",
+        "count": 2
+      },
+      {
+        "term": "startup",
+        "count": 2
+      },
+      {
+        "term": "svizzero",
+        "count": 2
+      },
+      {
+        "term": "accelerazione startup",
+        "count": 1
+      },
+      {
+        "term": "agricoli",
+        "count": 1
+      },
+      {
+        "term": "agricoli annualita",
+        "count": 1
+      },
+      {
+        "term": "alisei azioni",
+        "count": 1
+      },
+      {
+        "term": "attivi",
+        "count": 1
+      },
+      {
+        "term": "avvisi",
+        "count": 1
+      },
+      {
+        "term": "azioni",
+        "count": 1
+      },
+      {
+        "term": "azioni educazione",
+        "count": 1
+      },
+      {
+        "term": "contributi iniziative",
+        "count": 1
+      },
+      {
+        "term": "crescita sostenibile",
+        "count": 1
+      },
+      {
+        "term": "culturale",
+        "count": 1
+      },
+      {
+        "term": "culturale locali",
+        "count": 1
+      }
+    ],
+    "Molise": [
+      {
+        "term": "molise",
+        "count": 5
+      },
+      {
+        "term": "start",
+        "count": 3
+      },
+      {
+        "term": "fesr",
+        "count": 2
+      },
+      {
+        "term": "innovative",
+        "count": 2
+      },
+      {
+        "term": "avvisi",
+        "count": 1
+      },
+      {
+        "term": "fesr start",
+        "count": 1
+      },
+      {
+        "term": "fondo",
+        "count": 1
+      },
+      {
+        "term": "individuare",
+        "count": 1
+      },
+      {
+        "term": "innovative avvisi",
+        "count": 1
+      },
+      {
+        "term": "molise fesr",
+        "count": 1
+      },
+      {
+        "term": "perduto",
+        "count": 1
+      },
+      {
+        "term": "sostegno",
+        "count": 1
+      },
+      {
+        "term": "start innovative",
+        "count": 1
+      },
+      {
+        "term": "startup",
+        "count": 1
+      },
+      {
+        "term": "testo",
+        "count": 1
+      }
+    ],
+    "Abruzzo": [
+      {
+        "term": "beni",
+        "count": 3
+      },
+      {
+        "term": "culturali",
+        "count": 3
+      },
+      {
+        "term": "fondazione",
+        "count": 3
+      },
+      {
+        "term": "turismo",
+        "count": 3
+      },
+      {
+        "term": "aquila",
+        "count": 2
+      },
+      {
+        "term": "provincia",
+        "count": 2
+      },
+      {
+        "term": "abruzzo",
+        "count": 1
+      },
+      {
+        "term": "aquila turismo",
+        "count": 1
+      },
+      {
+        "term": "beni culturali",
+        "count": 1
+      },
+      {
+        "term": "carispaq",
+        "count": 1
+      },
+      {
+        "term": "contributi",
+        "count": 1
+      },
+      {
+        "term": "cultura",
+        "count": 1
+      },
+      {
+        "term": "dominio",
+        "count": 1
+      },
+      {
+        "term": "esperienze",
+        "count": 1
+      },
+      {
+        "term": "esperienziale",
+        "count": 1
+      },
+      {
+        "term": "esperienziale beni",
+        "count": 1
+      },
+      {
+        "term": "fondazione provincia",
+        "count": 1
+      },
+      {
+        "term": "fondo",
+        "count": 1
+      },
+      {
+        "term": "laquila",
+        "count": 1
+      },
+      {
+        "term": "perduto",
+        "count": 1
+      },
+      {
+        "term": "policy",
+        "count": 1
+      },
+      {
+        "term": "provincia aquila",
+        "count": 1
+      },
+      {
+        "term": "turismo esperienziale",
+        "count": 1
+      },
+      {
+        "term": "verificare",
+        "count": 1
+      }
+    ],
+    "Friuli-Venezia Giulia": [
+      {
+        "term": "settore",
+        "count": 3
+      },
+      {
+        "term": "terzo",
+        "count": 3
+      },
+      {
+        "term": "friuli",
+        "count": 2
+      },
+      {
+        "term": "giulia",
+        "count": 2
+      },
+      {
+        "term": "sociale",
+        "count": 2
+      },
+      {
+        "term": "venezia",
+        "count": 2
+      },
+      {
+        "term": "approfondire",
+        "count": 1
+      },
+      {
+        "term": "economia",
+        "count": 1
+      },
+      {
+        "term": "fondo",
+        "count": 1
+      },
+      {
+        "term": "funzionamento",
+        "count": 1
+      },
+      {
+        "term": "perduto",
+        "count": 1
+      },
+      {
+        "term": "portale",
+        "count": 1
+      },
+      {
+        "term": "regionale",
+        "count": 1
+      },
+      {
+        "term": "settore spese",
+        "count": 1
+      },
+      {
+        "term": "spese",
+        "count": 1
+      },
+      {
+        "term": "spese funzionamento",
+        "count": 1
+      },
+      {
+        "term": "terzo settore",
+        "count": 1
+      }
+    ],
+    "Sicilia": [
+      {
+        "term": "sicilia",
+        "count": 9
+      },
+      {
+        "term": "fondo",
+        "count": 3
+      },
+      {
+        "term": "perduto",
+        "count": 3
+      },
+      {
+        "term": "siciliana",
+        "count": 3
+      },
+      {
+        "term": "srg10",
+        "count": 3
+      },
+      {
+        "term": "ciclone",
+        "count": 2
+      },
+      {
+        "term": "danni",
+        "count": 2
+      },
+      {
+        "term": "harry",
+        "count": 2
+      },
+      {
+        "term": "agricoltura",
+        "count": 1
+      },
+      {
+        "term": "agroalimentare",
+        "count": 1
+      },
+      {
+        "term": "annualita",
+        "count": 1
+      },
+      {
+        "term": "avvisi",
+        "count": 1
+      },
+      {
+        "term": "ciclone harry",
+        "count": 1
+      },
+      {
+        "term": "contributi",
+        "count": 1
+      },
+      {
+        "term": "contributi danni",
+        "count": 1
+      },
+      {
+        "term": "danni ciclone",
+        "count": 1
+      },
+      {
+        "term": "decreto",
+        "count": 1
+      },
+      {
+        "term": "economiche",
+        "count": 1
+      },
+      {
+        "term": "gurs",
+        "count": 1
+      },
+      {
+        "term": "iniziative",
+        "count": 1
+      },
+      {
+        "term": "iniziative territoriali",
+        "count": 1
+      },
+      {
+        "term": "prodotti",
+        "count": 1
+      },
+      {
+        "term": "prodotti qualita",
+        "count": 1
+      },
+      {
+        "term": "promozione",
+        "count": 1
+      },
+      {
+        "term": "promozione prodotti",
+        "count": 1
+      },
+      {
+        "term": "qualita",
+        "count": 1
+      },
+      {
+        "term": "regionale",
+        "count": 1
+      },
+      {
+        "term": "ricercare",
+        "count": 1
+      },
+      {
+        "term": "sezione",
+        "count": 1
+      },
+      {
+        "term": "sicilia contributi",
+        "count": 1
+      },
+      {
+        "term": "sicilia iniziative",
+        "count": 1
+      },
+      {
+        "term": "sicilia srg10",
+        "count": 1
+      },
+      {
+        "term": "sociali",
+        "count": 1
+      },
+      {
+        "term": "sociali economiche",
+        "count": 1
+      },
+      {
+        "term": "srg10 promozione",
+        "count": 1
+      },
+      {
+        "term": "straordinaria",
+        "count": 1
+      },
+      {
+        "term": "territoriali",
+        "count": 1
+      },
+      {
+        "term": "territoriali sociali",
+        "count": 1
+      }
+    ],
+    "Bandi Europei": [
+      {
+        "term": "call",
+        "count": 2
+      },
+      {
+        "term": "urban",
+        "count": 2
+      },
+      {
+        "term": "call progetti",
+        "count": 1
+      },
+      {
+        "term": "commissione",
+        "count": 1
+      },
+      {
+        "term": "europea",
+        "count": 1
+      },
+      {
+        "term": "european",
+        "count": 1
+      },
+      {
+        "term": "european urban",
+        "count": 1
+      },
+      {
+        "term": "europei",
+        "count": 1
+      },
+      {
+        "term": "fondo",
+        "count": 1
+      },
+      {
+        "term": "initiative",
+        "count": 1
+      },
+      {
+        "term": "initiative call",
+        "count": 1
+      },
+      {
+        "term": "iniziativa",
+        "count": 1
+      },
+      {
+        "term": "perduto",
+        "count": 1
+      },
+      {
+        "term": "progetti",
+        "count": 1
+      },
+      {
+        "term": "progetti sviluppo",
+        "count": 1
+      },
+      {
+        "term": "sito",
+        "count": 1
+      },
+      {
+        "term": "sostenibile",
+        "count": 1
+      },
+      {
+        "term": "sviluppo",
+        "count": 1
+      },
+      {
+        "term": "sviluppo urbano",
+        "count": 1
+      },
+      {
+        "term": "testo",
+        "count": 1
+      },
+      {
+        "term": "urban initiative",
+        "count": 1
+      },
+      {
+        "term": "urbana",
+        "count": 1
+      },
+      {
+        "term": "urbanistica",
+        "count": 1
+      },
+      {
+        "term": "urbano",
+        "count": 1
+      },
+      {
+        "term": "urbano sostenibile",
+        "count": 1
+      },
+      {
+        "term": "verificare",
+        "count": 1
+      }
+    ],
+    "Basilicata": [
+      {
+        "term": "basilicata",
+        "count": 5
+      },
+      {
+        "term": "infanzia",
+        "count": 2
+      },
+      {
+        "term": "nido",
+        "count": 2
+      },
+      {
+        "term": "basilicata nido",
+        "count": 1
+      },
+      {
+        "term": "educativi",
+        "count": 1
+      },
+      {
+        "term": "fondo",
+        "count": 1
+      },
+      {
+        "term": "infanzia servizi",
+        "count": 1
+      },
+      {
+        "term": "nido infanzia",
+        "count": 1
+      },
+      {
+        "term": "perduto",
+        "count": 1
+      },
+      {
+        "term": "politiche",
+        "count": 1
+      },
+      {
+        "term": "servizi",
+        "count": 1
+      },
+      {
+        "term": "servizi educativi",
+        "count": 1
+      },
+      {
+        "term": "sociali",
+        "count": 1
+      }
+    ]
+  },
+  "by_tipo_ente": {
+    "ente_nazionale": [
+      {
+        "term": "fondo",
+        "count": 19
+      },
+      {
+        "term": "perduto",
+        "count": 17
+      },
+      {
+        "term": "simest",
+        "count": 15
+      },
+      {
+        "term": "invitalia",
+        "count": 14
+      },
+      {
+        "term": "misto",
+        "count": 13
+      },
+      {
+        "term": "agevolato",
+        "count": 11
+      },
+      {
+        "term": "contributi",
+        "count": 9
+      },
+      {
+        "term": "export",
+        "count": 8
+      },
+      {
+        "term": "zero",
+        "count": 8
+      },
+      {
+        "term": "inail",
+        "count": 7
+      },
+      {
+        "term": "tasso",
+        "count": 7
+      },
+      {
+        "term": "agricoltura",
+        "count": 6
+      },
+      {
+        "term": "giovani",
+        "count": 6
+      },
+      {
+        "term": "under",
+        "count": 6
+      },
+      {
+        "term": "ecologica",
+        "count": 5
+      },
+      {
+        "term": "ismea",
+        "count": 5
+      },
+      {
+        "term": "pnrr",
+        "count": 5
+      },
+      {
+        "term": "sociale",
+        "count": 5
+      },
+      {
+        "term": "startup",
+        "count": 5
+      },
+      {
+        "term": "transizione",
+        "count": 5
+      },
+      {
+        "term": "cultura",
+        "count": 4
+      },
+      {
+        "term": "digitale",
+        "count": 4
+      },
+      {
+        "term": "donne",
+        "count": 4
+      },
+      {
+        "term": "economia",
+        "count": 4
+      },
+      {
+        "term": "femminile",
+        "count": 4
+      },
+      {
+        "term": "gruppo",
+        "count": 4
+      },
+      {
+        "term": "internazionali",
+        "count": 4
+      },
+      {
+        "term": "mercati",
+        "count": 4
+      },
+      {
+        "term": "mezzogiorno",
+        "count": 4
+      },
+      {
+        "term": "sicurezza",
+        "count": 4
+      },
+      {
+        "term": "voucher",
+        "count": 4
+      },
+      {
+        "term": "centro",
+        "count": 3
+      },
+      {
+        "term": "circolare",
+        "count": 3
+      },
+      {
+        "term": "commerce",
+        "count": 3
+      },
+      {
+        "term": "esteri",
+        "count": 3
+      },
+      {
+        "term": "eventi",
+        "count": 3
+      },
+      {
+        "term": "fiere",
+        "count": 3
+      },
+      {
+        "term": "innovative",
+        "count": 3
+      },
+      {
+        "term": "lavoro",
+        "count": 3
+      },
+      {
+        "term": "manifatturiero",
+        "count": 3
+      },
+      {
+        "term": "nord",
+        "count": 3
+      },
+      {
+        "term": "nuove",
+        "count": 3
+      },
+      {
+        "term": "settore",
+        "count": 3
+      },
+      {
+        "term": "sostegno",
+        "count": 3
+      },
+      {
+        "term": "sostenibile",
+        "count": 3
+      }
+    ],
+    "ministero": [
+      {
+        "term": "ministero",
+        "count": 20
+      },
+      {
+        "term": "credito",
+        "count": 15
+      },
+      {
+        "term": "imposta",
+        "count": 15
+      },
+      {
+        "term": "turismo",
+        "count": 14
+      },
+      {
+        "term": "mimit",
+        "count": 13
+      },
+      {
+        "term": "fondo",
+        "count": 12
+      },
+      {
+        "term": "perduto",
+        "count": 11
+      },
+      {
+        "term": "investimenti",
+        "count": 10
+      },
+      {
+        "term": "italy",
+        "count": 9
+      },
+      {
+        "term": "made",
+        "count": 9
+      },
+      {
+        "term": "mezzogiorno",
+        "count": 6
+      },
+      {
+        "term": "brevetti",
+        "count": 5
+      },
+      {
+        "term": "cloud",
+        "count": 5
+      },
+      {
+        "term": "cybersecurity",
+        "count": 5
+      },
+      {
+        "term": "green",
+        "count": 5
+      },
+      {
+        "term": "lavoro",
+        "count": 5
+      },
+      {
+        "term": "marchi",
+        "count": 5
+      },
+      {
+        "term": "misto",
+        "count": 5
+      },
+      {
+        "term": "ricettivo",
+        "count": 5
+      },
+      {
+        "term": "transizione",
+        "count": 5
+      },
+      {
+        "term": "agevolato",
+        "count": 4
+      },
+      {
+        "term": "credito imposta",
+        "count": 4
+      },
+      {
+        "term": "disegni",
+        "count": 4
+      },
+      {
+        "term": "innovazione",
+        "count": 4
+      },
+      {
+        "term": "beni",
+        "count": 3
+      },
+      {
+        "term": "biblioteche",
+        "count": 3
+      },
+      {
+        "term": "contributi",
+        "count": 3
+      },
+      {
+        "term": "dotazione",
+        "count": 3
+      },
+      {
+        "term": "energetico",
+        "count": 3
+      },
+      {
+        "term": "intellettuale",
+        "count": 3
+      },
+      {
+        "term": "modelli",
+        "count": 3
+      },
+      {
+        "term": "progetti",
+        "count": 3
+      },
+      {
+        "term": "proprieta",
+        "count": 3
+      },
+      {
+        "term": "ricerca",
+        "count": 3
+      },
+      {
+        "term": "risparmio",
+        "count": 3
+      },
+      {
+        "term": "seguire",
+        "count": 3
+      },
+      {
+        "term": "sicurezza",
+        "count": 3
+      },
+      {
+        "term": "unica",
+        "count": 3
+      },
+      {
+        "term": "valorizzazione",
+        "count": 3
+      },
+      {
+        "term": "voucher",
+        "count": 3
+      },
+      {
+        "term": "accordi",
+        "count": 2
+      },
+      {
+        "term": "alloggi",
+        "count": 2
+      },
+      {
+        "term": "cultura",
+        "count": 2
+      },
+      {
+        "term": "deal",
+        "count": 2
+      },
+      {
+        "term": "digital",
+        "count": 2
+      }
+    ],
+    "regione": [
+      {
+        "term": "fondo",
+        "count": 98
+      },
+      {
+        "term": "perduto",
+        "count": 90
+      },
+      {
+        "term": "lombardia",
+        "count": 60
+      },
+      {
+        "term": "emilia",
+        "count": 50
+      },
+      {
+        "term": "romagna",
+        "count": 50
+      },
+      {
+        "term": "lazio",
+        "count": 40
+      },
+      {
+        "term": "piemonte",
+        "count": 35
+      },
+      {
+        "term": "marche",
+        "count": 30
+      },
+      {
+        "term": "toscana",
+        "count": 25
+      },
+      {
+        "term": "fesr",
+        "count": 24
+      },
+      {
+        "term": "contributi",
+        "count": 22
+      },
+      {
+        "term": "agricoltura",
+        "count": 20
+      },
+      {
+        "term": "innovazione",
+        "count": 20
+      },
+      {
+        "term": "sardegna",
+        "count": 20
+      },
+      {
+        "term": "veneto",
+        "count": 20
+      },
+      {
+        "term": "puglia",
+        "count": 17
+      },
+      {
+        "term": "annualita",
+        "count": 15
+      },
+      {
+        "term": "calabria",
+        "count": 15
+      },
+      {
+        "term": "startup",
+        "count": 15
+      },
+      {
+        "term": "emilia romagna",
+        "count": 14
+      },
+      {
+        "term": "investimenti",
+        "count": 14
+      },
+      {
+        "term": "artigianato",
+        "count": 13
+      },
+      {
+        "term": "cultura",
+        "count": 13
+      },
+      {
+        "term": "liguria",
+        "count": 13
+      },
+      {
+        "term": "sport",
+        "count": 13
+      },
+      {
+        "term": "digitale",
+        "count": 11
+      },
+      {
+        "term": "regionale",
+        "count": 11
+      },
+      {
+        "term": "fiere",
+        "count": 10
+      },
+      {
+        "term": "portale",
+        "count": 10
+      },
+      {
+        "term": "verificare",
+        "count": 10
+      },
+      {
+        "term": "sicilia",
+        "count": 9
+      },
+      {
+        "term": "voucher",
+        "count": 9
+      },
+      {
+        "term": "innovative",
+        "count": 8
+      },
+      {
+        "term": "moda",
+        "count": 8
+      },
+      {
+        "term": "sociale",
+        "count": 8
+      },
+      {
+        "term": "sviluppo",
+        "count": 8
+      },
+      {
+        "term": "tessile",
+        "count": 8
+      },
+      {
+        "term": "turismo",
+        "count": 8
+      },
+      {
+        "term": "azione",
+        "count": 7
+      },
+      {
+        "term": "friuli",
+        "count": 7
+      },
+      {
+        "term": "green",
+        "count": 7
+      },
+      {
+        "term": "misto",
+        "count": 7
+      },
+      {
+        "term": "settore",
+        "count": 7
+      },
+      {
+        "term": "sezione",
+        "count": 7
+      },
+      {
+        "term": "vino",
+        "count": 7
+      }
+    ],
+    "cciaa": [
+      {
+        "term": "camera",
+        "count": 30
+      },
+      {
+        "term": "cciaa",
+        "count": 25
+      },
+      {
+        "term": "commercio",
+        "count": 24
+      },
+      {
+        "term": "fondo",
+        "count": 24
+      },
+      {
+        "term": "perduto",
+        "count": 24
+      },
+      {
+        "term": "bergamo",
+        "count": 16
+      },
+      {
+        "term": "maremma",
+        "count": 12
+      },
+      {
+        "term": "voucher",
+        "count": 10
+      },
+      {
+        "term": "tirreno",
+        "count": 9
+      },
+      {
+        "term": "formazione",
+        "count": 8
+      },
+      {
+        "term": "lombardia",
+        "count": 8
+      },
+      {
+        "term": "nuoro",
+        "count": 8
+      },
+      {
+        "term": "toscana",
+        "count": 8
+      },
+      {
+        "term": "firenze",
+        "count": 7
+      },
+      {
+        "term": "padova",
+        "count": 7
+      },
+      {
+        "term": "sicurezza",
+        "count": 6
+      },
+      {
+        "term": "sviluppo",
+        "count": 6
+      },
+      {
+        "term": "agricole",
+        "count": 5
+      },
+      {
+        "term": "agricoltura",
+        "count": 5
+      },
+      {
+        "term": "cciaa bergamo",
+        "count": 5
+      },
+      {
+        "term": "marketing",
+        "count": 5
+      },
+      {
+        "term": "portale",
+        "count": 5
+      },
+      {
+        "term": "transizione",
+        "count": 5
+      },
+      {
+        "term": "arezzo",
+        "count": 4
+      },
+      {
+        "term": "cciaa maremma",
+        "count": 4
+      },
+      {
+        "term": "cosenza",
+        "count": 4
+      },
+      {
+        "term": "digital",
+        "count": 4
+      },
+      {
+        "term": "digitale",
+        "count": 4
+      },
+      {
+        "term": "internazionalizzazione",
+        "count": 4
+      },
+      {
+        "term": "maremma tirreno",
+        "count": 4
+      },
+      {
+        "term": "organizzazioni",
+        "count": 4
+      },
+      {
+        "term": "roma",
+        "count": 4
+      },
+      {
+        "term": "sezione",
+        "count": 4
+      },
+      {
+        "term": "siena",
+        "count": 4
+      },
+      {
+        "term": "varese",
+        "count": 4
+      },
+      {
+        "term": "verificare",
+        "count": 4
+      },
+      {
+        "term": "annualita",
+        "count": 3
+      },
+      {
+        "term": "categoria",
+        "count": 3
+      },
+      {
+        "term": "como",
+        "count": 3
+      },
+      {
+        "term": "connessi",
+        "count": 3
+      },
+      {
+        "term": "contributi",
+        "count": 3
+      },
+      {
+        "term": "edizione",
+        "count": 3
+      },
+      {
+        "term": "export",
+        "count": 3
+      },
+      {
+        "term": "fiere",
+        "count": 3
+      },
+      {
+        "term": "grosseto",
+        "count": 3
+      }
+    ],
+    "ente_ue": [
+      {
+        "term": "euipo",
+        "count": 3
+      },
+      {
+        "term": "fondo",
+        "count": 3
+      },
+      {
+        "term": "voucher",
+        "count": 3
+      },
+      {
+        "term": "brevetti",
+        "count": 2
+      },
+      {
+        "term": "intellettuale",
+        "count": 2
+      },
+      {
+        "term": "marchi",
+        "count": 2
+      },
+      {
+        "term": "proprieta",
+        "count": 2
+      },
+      {
+        "term": "aperto",
+        "count": 1
+      },
+      {
+        "term": "design",
+        "count": 1
+      },
+      {
+        "term": "disponibili",
+        "count": 1
+      },
+      {
+        "term": "euipo fondo",
+        "count": 1
+      },
+      {
+        "term": "europee",
+        "count": 1
+      },
+      {
+        "term": "fondo voucher",
+        "count": 1
+      },
+      {
+        "term": "perduto",
+        "count": 1
+      },
+      {
+        "term": "proprieta intellettuale",
+        "count": 1
+      },
+      {
+        "term": "registrazione",
+        "count": 1
+      },
+      {
+        "term": "tutela",
+        "count": 1
+      },
+      {
+        "term": "tutela proprieta",
+        "count": 1
+      },
+      {
+        "term": "ufficio",
+        "count": 1
+      },
+      {
+        "term": "voucher tutela",
+        "count": 1
+      }
+    ],
+    "camera_commercio": [
+      {
+        "term": "fiere",
+        "count": 23
+      },
+      {
+        "term": "camera",
+        "count": 21
+      },
+      {
+        "term": "commercio",
+        "count": 21
+      },
+      {
+        "term": "cciaa",
+        "count": 12
+      },
+      {
+        "term": "fondo",
+        "count": 12
+      },
+      {
+        "term": "perduto",
+        "count": 12
+      },
+      {
+        "term": "voucher",
+        "count": 9
+      },
+      {
+        "term": "contributi",
+        "count": 8
+      },
+      {
+        "term": "internazionalizzazione",
+        "count": 8
+      },
+      {
+        "term": "internazionali",
+        "count": 7
+      },
+      {
+        "term": "bologna",
+        "count": 6
+      },
+      {
+        "term": "partecipazione",
+        "count": 6
+      },
+      {
+        "term": "romagna",
+        "count": 6
+      },
+      {
+        "term": "caserta",
+        "count": 4
+      },
+      {
+        "term": "marche",
+        "count": 4
+      },
+      {
+        "term": "mpmi",
+        "count": 4
+      },
+      {
+        "term": "toscana",
+        "count": 4
+      },
+      {
+        "term": "umbria",
+        "count": 4
+      },
+      {
+        "term": "bilancio",
+        "count": 3
+      },
+      {
+        "term": "check",
+        "count": 3
+      },
+      {
+        "term": "competenze",
+        "count": 3
+      },
+      {
+        "term": "competitivita",
+        "count": 3
+      },
+      {
+        "term": "cremona",
+        "count": 3
+      },
+      {
+        "term": "emilia",
+        "count": 3
+      },
+      {
+        "term": "fiere internazionali",
+        "count": 3
+      },
+      {
+        "term": "forli",
+        "count": 3
+      },
+      {
+        "term": "milano",
+        "count": 3
+      },
+      {
+        "term": "rimini",
+        "count": 3
+      },
+      {
+        "term": "roma",
+        "count": 3
+      },
+      {
+        "term": "salerno",
+        "count": 3
+      },
+      {
+        "term": "sicurezza",
+        "count": 3
+      },
+      {
+        "term": "sostenibilita",
+        "count": 3
+      },
+      {
+        "term": "sviluppo",
+        "count": 3
+      },
+      {
+        "term": "analisi",
+        "count": 2
+      },
+      {
+        "term": "bolognesi",
+        "count": 2
+      },
+      {
+        "term": "campania",
+        "count": 2
+      },
+      {
+        "term": "cciaa bologna",
+        "count": 2
+      },
+      {
+        "term": "cesena",
+        "count": 2
+      },
+      {
+        "term": "contributi fiere",
+        "count": 2
+      },
+      {
+        "term": "digitali",
+        "count": 2
+      },
+      {
+        "term": "economico",
+        "count": 2
+      },
+      {
+        "term": "estero",
+        "count": 2
+      },
+      {
+        "term": "fiere contributi",
+        "count": 2
+      },
+      {
+        "term": "lombardia",
+        "count": 2
+      },
+      {
+        "term": "nord",
+        "count": 2
+      }
+    ],
+    "provincia_autonoma": [
+      {
+        "term": "adige",
+        "count": 3
+      },
+      {
+        "term": "alto",
+        "count": 3
+      },
+      {
+        "term": "fiere",
+        "count": 3
+      },
+      {
+        "term": "bolzano",
+        "count": 2
+      },
+      {
+        "term": "contributi",
+        "count": 2
+      },
+      {
+        "term": "export",
+        "count": 2
+      },
+      {
+        "term": "fondo",
+        "count": 2
+      },
+      {
+        "term": "internazionali",
+        "count": 2
+      },
+      {
+        "term": "perduto",
+        "count": 2
+      },
+      {
+        "term": "adige fiere",
+        "count": 1
+      },
+      {
+        "term": "alto adige",
+        "count": 1
+      },
+      {
+        "term": "autonoma",
+        "count": 1
+      },
+      {
+        "term": "contributi export",
+        "count": 1
+      },
+      {
+        "term": "fiere internazionali",
+        "count": 1
+      },
+      {
+        "term": "internazionali contributi",
+        "count": 1
+      },
+      {
+        "term": "internazionalizzazione",
+        "count": 1
+      },
+      {
+        "term": "medie",
+        "count": 1
+      },
+      {
+        "term": "provincia",
+        "count": 1
+      },
+      {
+        "term": "sportello",
+        "count": 1
+      },
+      {
+        "term": "trentino",
+        "count": 1
+      }
+    ],
+    "altro": [
+      {
+        "term": "fondo",
+        "count": 8
+      },
+      {
+        "term": "perduto",
+        "count": 8
+      },
+      {
+        "term": "verificare",
+        "count": 7
+      },
+      {
+        "term": "fondazione",
+        "count": 6
+      },
+      {
+        "term": "beni",
+        "count": 5
+      },
+      {
+        "term": "culturali",
+        "count": 5
+      },
+      {
+        "term": "policy",
+        "count": 5
+      },
+      {
+        "term": "servizi",
+        "count": 5
+      },
+      {
+        "term": "sviluppo",
+        "count": 5
+      },
+      {
+        "term": "link",
+        "count": 4
+      },
+      {
+        "term": "srd09",
+        "count": 4
+      },
+      {
+        "term": "veneto",
+        "count": 4
+      },
+      {
+        "term": "bambini",
+        "count": 3
+      },
+      {
+        "term": "base",
+        "count": 3
+      },
+      {
+        "term": "commissione",
+        "count": 3
+      },
+      {
+        "term": "contributi",
+        "count": 3
+      },
+      {
+        "term": "dominio",
+        "count": 3
+      },
+      {
+        "term": "ducato",
+        "count": 3
+      },
+      {
+        "term": "europea",
+        "count": 3
+      },
+      {
+        "term": "marecchia",
+        "count": 3
+      },
+      {
+        "term": "progetti",
+        "count": 3
+      },
+      {
+        "term": "rurale",
+        "count": 3
+      },
+      {
+        "term": "turismo",
+        "count": 3
+      },
+      {
+        "term": "unioncamere",
+        "count": 3
+      },
+      {
+        "term": "aquila",
+        "count": 2
+      },
+      {
+        "term": "base popolazione",
+        "count": 2
+      },
+      {
+        "term": "beni culturali",
+        "count": 2
+      },
+      {
+        "term": "call",
+        "count": 2
+      },
+      {
+        "term": "conca",
+        "count": 2
+      },
+      {
+        "term": "cultura",
+        "count": 2
+      },
+      {
+        "term": "cuneo",
+        "count": 2
+      },
+      {
+        "term": "dipendenze",
+        "count": 2
+      },
+      {
+        "term": "economico",
+        "count": 2
+      },
+      {
+        "term": "emilia",
+        "count": 2
+      },
+      {
+        "term": "investimenti",
+        "count": 2
+      },
+      {
+        "term": "misto",
+        "count": 2
+      },
+      {
+        "term": "popolazione",
+        "count": 2
+      },
+      {
+        "term": "popolazione rurale",
+        "count": 2
+      },
+      {
+        "term": "produttivi",
+        "count": 2
+      },
+      {
+        "term": "progetti sviluppo",
+        "count": 2
+      },
+      {
+        "term": "provincia",
+        "count": 2
+      },
+      {
+        "term": "pubblici",
+        "count": 2
+      },
+      {
+        "term": "regionale",
+        "count": 2
+      },
+      {
+        "term": "rimini",
+        "count": 2
+      },
+      {
+        "term": "romagna",
+        "count": 2
+      }
+    ]
+  }
+}

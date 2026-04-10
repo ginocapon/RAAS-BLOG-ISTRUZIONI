@@ -7,6 +7,7 @@
     "scrape-bandi": "node tools/scrape-bandi.js",
     "verify-links": "node tools/verify-links-perplexity.js",
     "sync-bandi": "node tools/sync-bandi.js",
+    "build-bandi-keywords": "node tools/build-bandi-keyword-stats.js",
     "deploy-contact-form": "supabase functions deploy contact-form"
   },
   "engines": {
