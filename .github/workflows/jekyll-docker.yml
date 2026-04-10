@@ -24,6 +24,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Aggiorna conteggi bandi (stesso dominio, no CORS)
+        run: node tools/write-bandi-live-stats.js
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

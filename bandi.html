@@ -1101,6 +1101,21 @@ function finalizeBandiRows(all,displayTotal){
 async function loadBandi(){
     var bandiCols='id,titolo,descrizione,ente,regione,importo_max,tipo_contributo,tipo_ente,settore,scadenza,url,attivo,fonte,stato';
     var bandiColsMin='id,titolo,descrizione,ente,regione,importo_max,tipo_contributo,tipo_ente,settore,scadenza,url,attivo,stato';
+    /** 0) Conteggi da file sullo stesso dominio (aggiornato a ogni deploy CI). Funziona anche se Firefox/ad-block blocca supabase.co. */
+    var liveStats=null;
+    try{
+        var lr=await fetch('/data/bandi-live-stats.json',{cache:'no-store',credentials:'same-origin'});
+        if(lr.ok)liveStats=await lr.json();
+    }catch(eLive){}
+    function paintHeroFromLiveStats(){
+        if(!liveStats||typeof liveStats.attivi_count!=='number'||liveStats.attivi_count<1)return;
+        document.getElementById('stat-bandi').textContent=String(liveStats.attivi_count);
+        document.getElementById('totalBandiCount').textContent=String(liveStats.attivi_count);
+        var sff=document.getElementById('stat-fonti');
+        if(sff&&typeof liveStats.fonti_distinte==='number'&&liveStats.fonti_distinte>0)
+            sff.textContent=String(liveStats.fonti_distinte);
+    }
+    paintHeroFromLiveStats();
     /** 1) REST prima: stesso percorso di tools/verify-bandi-public-read.js (no supabase-js, no cache SW su API). */
     async function loadViaRest(){
         try{
@@ -1147,19 +1162,25 @@ async function loadBandi(){
             }
         }catch(e){console.warn('Supabase JS:',e.message||e)}
     }
-    /** 3) Ultimo resort: JSON statico (solo ~165 voci) — offline o blocco totale API. */
+    /** 3) Ultimo resort: JSON statico (solo ~165 voci) — offline o blocco totale API. Contatore hero resta da bandi-live-stats.json se presente. */
     try{
         console.warn('Fallback data/bandi.json: snapshot ridotto. Verifica rete, ad-block su supabase.co e deploy bandi.html.');
         allBandi=await loadBandiFromJson();
-        document.getElementById('stat-bandi').textContent=allBandi.length;
-        document.getElementById('totalBandiCount').textContent=allBandi.length;
         updateStatFontiFromBandi(allBandi);
+        paintHeroFromLiveStats();
+        if(!liveStats||typeof liveStats.attivi_count!=='number'||liveStats.attivi_count<1){
+            document.getElementById('stat-bandi').textContent=allBandi.length;
+            document.getElementById('totalBandiCount').textContent=allBandi.length;
+        }
     }catch(e2){
         allBandi=[];
-        document.getElementById('stat-bandi').textContent='0';
-        document.getElementById('totalBandiCount').textContent='0';
-        var sf=document.getElementById('stat-fonti');
-        if(sf)sf.textContent='\u2014';
+        paintHeroFromLiveStats();
+        if(!liveStats||typeof liveStats.attivi_count!=='number'||liveStats.attivi_count<1){
+            document.getElementById('stat-bandi').textContent='0';
+            document.getElementById('totalBandiCount').textContent='0';
+            var sf=document.getElementById('stat-fonti');
+            if(sf)sf.textContent='\u2014';
+        }
     }
 }
 async function loadKeywordStats(){

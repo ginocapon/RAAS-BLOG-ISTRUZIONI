@@ -1,8 +1,8 @@
 // Service Worker — RaaS Bandi PWA
 // Strategia: cache-first per assets statici, network-first per dati bandi
 
-var CACHE_NAME = 'raas-bandi-v4';
-var DATA_CACHE = 'raas-bandi-data-v4';
+var CACHE_NAME = 'raas-bandi-v5';
+var DATA_CACHE = 'raas-bandi-data-v5';
 
 var STATIC_ASSETS = [
   '/app.html',
@@ -52,8 +52,8 @@ self.addEventListener('fetch', function(e) {
     return;
   }
 
-  // bandi.json locale: network-first + fallback offline
-  if (url.pathname === '/data/bandi.json') {
+  // JSON dati bandi (snapshot + conteggi da deploy): network-first + fallback offline
+  if (url.pathname === '/data/bandi.json' || url.pathname === '/data/bandi-live-stats.json') {
     e.respondWith(networkFirstData(e.request));
     return;
   }
