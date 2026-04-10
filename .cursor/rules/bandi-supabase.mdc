@@ -46,7 +46,7 @@ alwaysApply: false
 
 ## Suggerimenti ricerca (batch, senza LLM)
 
-- `npm run build-bandi-keywords` oppure `node tools/build-bandi-keyword-stats.js` — legge Supabase (`--source=auto`) o `data/bandi.json`, scrive **`data/bandi-keyword-stats.json`** (top termini per `regione` e `tipo_ente`). `bandi.html` lo carica per `<datalist>` sulla barra di ricerca.
+- `npm run build-bandi-keywords` oppure `node tools/build-bandi-keyword-stats.js` — legge Supabase (`--source=auto`) o `data/bandi.json`, scrive **`data/bandi-keyword-stats.json`** (top termini per `regione` e `tipo_ente`). `bandi.html` lo carica per `<datalist>` sulla barra di ricerca; i valori di `tipo_ente` e `regione` nei record devono combaciare con i filtri pubblici (vedi `tools/BANDI-RICERCA-FONTI-KEYWORDS.md`, paragrafo “Allineamento con filtri pubblici”).
 
 ## Policy link
 

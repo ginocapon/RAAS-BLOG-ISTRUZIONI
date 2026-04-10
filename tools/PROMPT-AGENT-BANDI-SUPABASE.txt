@@ -37,6 +37,11 @@ Prompt consigliato per Cursor (Agent) — validazione link + coerenza titoli Sup
    node tools/validate-bandi-links-free.js [--limit=N]
    Policy aggregatori: tools/bandi-link-policy.js
 
+8bis) Discovery nuove fonti e classificazione record:
+   - Guida operativa: tools/BANDI-RICERCA-FONTI-KEYWORDS.md (matrice enti, tipologie misura, workflow intersezioni).
+   - Campi `tipo_ente` e `regione` devono essere coerenti con i filtri di bandi.html
+     (inclusi valore `ue` per programmi UE e regioni reali per la macro filtro “Sud Italia”).
+
 9) Audit automatico venerdì ~07:00 CET (GitHub Actions):
    .github/workflows/weekly-audit.yml esegue anche la sezione “Validazione link data/bandi.json”
    (stesso script del punto 8). Per il database in produzione usare i punti 1 e 3 con le variabili d’ambiente.
@@ -54,7 +59,8 @@ Prompt consigliato per Cursor (Agent) — validazione link + coerenza titoli Sup
 
 13) Nuove fonti + conteggio “fonti” sul sito:
    Skill Cursor (progetto): .cursor/skills/bandi-nuove-fonti/SKILL.md
-   Il 65 sul hero = fonti_distinte nel DB (write-bandi-live-stats) e coincide con le 65 voci FONTI nell’Edge Function se ogni ingest usa fonte.id.
+   Il numero sul hero = fonti_distinte nel DB (npm run write-bandi-live-stats) e in condizioni normali coincide
+   con le voci in FONTI nell’Edge Function se ogni ingest usa fonte.id (verificare con grep su index.ts).
 
 14) Verifica fonti istituzionali + keyword di ricerca (regione/provincia/nazione):
    tools/BANDI-RICERCA-FONTI-KEYWORDS.md

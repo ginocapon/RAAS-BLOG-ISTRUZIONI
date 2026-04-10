@@ -22,7 +22,7 @@ Se `fonti_distinte` < numero di voci in `FONTI`, alcuni endpoint non producono b
 
 1. **Corpus** — Da DB o da `data/bandi.json`: estrarre termini ricorrenti (titolo, descrizione, keywords, settore). Script: `npm run build-bandi-keywords` → `data/bandi-keyword-stats.json` (`by_regione`, `by_tipo_ente`, `global`).
 2. **Discovery** — Per ogni regione/ente sotto-rappresentato, cercare **nuovi portali ufficiali** (.gov.it, regione.*, camcom.it, incentivi.gov.it) che pubblicano avvisi. **Non** inventare URL: solo fonti verificabili.
-3. **Implementazione** — Aggiungere una voce in `FONTI` con `id`, `nome`, `url`, `tipo` (`json`|`html`|`csv`|`rss`), `regione`, `ente`, `tipo_ente`. Seguire i parser esistenti in `index.ts` (`parseHtml`, `parseIncentiviGov`, …).
+3. **Implementazione** — Aggiungere una voce in `FONTI` con `id`, `nome`, `url`, `tipo` (`json`|`html`|`csv`|`rss`), `regione`, `ente`, `tipo_ente`. **`tipo_ente` deve coincidere con i valori del filtro su `bandi.html`** (`ministero`, `ente_nazionale`, `regione`, `cciaa`, `ue`, `altro`). Dettaglio campi e macro “Sud Italia”: `tools/BANDI-RICERCA-FONTI-KEYWORDS.md` (sotto “Verifica delle fonti”, allineamento filtri). Seguire i parser in `index.ts` (`parseHtml`, `parseIncentiviGov`, …).
 4. **Deduplica** — Stesso URL normalizzato o stesso titolo+scadenza → logica già in manutenzione admin; dopo ingest verificare duplicati in dashboard.
 5. **Deploy** — `supabase functions deploy manutenzione-bandi` (o pipeline del team). Poi eseguire manutenzione da admin o cron.
 6. **Aggiorna conteggi statici** — `npm run write-bandi-live-stats` e commit se si aggiorna il file per il sito; il deploy CI lo rigenera comunque.

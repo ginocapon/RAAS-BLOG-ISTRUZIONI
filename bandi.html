@@ -677,7 +677,7 @@ body{font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;color:var(--tex
         <div class="filter-group search-box"><input type="text" id="search" list="search-bandi-datalist" autocomplete="off" placeholder="&#x1F50D; Cerca bandi per titolo, ente, settore, regione... (suggerimenti dal corpus)"></div>
         <datalist id="search-bandi-datalist"></datalist>
         <div class="filter-group"><label>Regione</label><select id="filter-regione"><option value="">Tutte le regioni</option><option value="Nazionale">Nazionali</option><option value="Sud Italia">Sud Italia</option><option value="Piemonte">Piemonte</option><option value="Valle d'Aosta">Valle d'Aosta</option><option value="Lombardia">Lombardia</option><option value="Trentino-Alto Adige">Trentino-Alto Adige</option><option value="Veneto">Veneto</option><option value="Friuli Venezia Giulia">Friuli Venezia Giulia</option><option value="Liguria">Liguria</option><option value="Emilia-Romagna">Emilia-Romagna</option><option value="Toscana">Toscana</option><option value="Umbria">Umbria</option><option value="Marche">Marche</option><option value="Lazio">Lazio</option><option value="Abruzzo">Abruzzo</option><option value="Molise">Molise</option><option value="Campania">Campania</option><option value="Puglia">Puglia</option><option value="Basilicata">Basilicata</option><option value="Calabria">Calabria</option><option value="Sicilia">Sicilia</option><option value="Sardegna">Sardegna</option></select></div>
-        <div class="filter-group"><label>Tipo Ente</label><select id="filter-tipo-ente"><option value="">Tutti</option><option value="ministero">Ministeri</option><option value="ente_nazionale">Enti Nazionali</option><option value="regione">Regioni</option><option value="cciaa">Camere di Commercio</option><option value="altro">Altro</option></select></div>
+        <div class="filter-group"><label>Tipo Ente</label><select id="filter-tipo-ente"><option value="">Tutti</option><option value="ministero">Ministeri</option><option value="ente_nazionale">Enti Nazionali</option><option value="regione">Regioni</option><option value="cciaa">Camere di Commercio</option><option value="ue">Unione Europea</option><option value="altro">Altro</option></select></div>
         <div class="filter-group"><label>Tipo Contributo</label><select id="filter-tipo-contributo"><option value="">Tutti</option><option value="fondo_perduto">Fondo Perduto</option><option value="tasso_agevolato">Tasso Agevolato</option><option value="misto">Misto</option><option value="credito_imposta">Credito d'Imposta</option></select></div>
         <div class="filter-group"><label>Stato</label><select id="filter-stato"><option value="">Tutti</option><option value="aperto" selected>Aperti</option><option value="in_arrivo">In arrivo</option><option value="chiuso">Chiusi</option></select></div>
     </div>
@@ -1183,6 +1183,14 @@ async function loadBandi(){
         }
     }
 }
+/** Regioni incluse nel filtro macro &ldquo;Sud Italia&rdquo; (allineato a uso Mezzogiorno / ZES sui contenuti informativi del sito). */
+var REGIONI_SUD_ITALIA=['Abruzzo','Basilicata','Calabria','Campania','Molise','Puglia','Sardegna','Sicilia'];
+function regioneFilterMatch(b,r){
+    if(!r)return true;
+    var br=b.regione||'';
+    if(r==='Sud Italia')return REGIONI_SUD_ITALIA.indexOf(br)!==-1;
+    return br===r||br.indexOf(r)!==-1;
+}
 async function loadKeywordStats(){
     try{
         var r=await fetch('/data/bandi-keyword-stats.json',{cache:'no-cache'});
@@ -1207,8 +1215,15 @@ function refreshSearchDatalist(){
     take(bandiKeywordStats.global,1);
     var regEl=document.getElementById('filter-regione');
     var tipoEl=document.getElementById('filter-tipo-ente');
-    if(regEl&&regEl.value&&bandiKeywordStats.by_regione&&bandiKeywordStats.by_regione[regEl.value]){
-        take(bandiKeywordStats.by_regione[regEl.value],1.35);
+    if(regEl&&regEl.value&&bandiKeywordStats.by_regione){
+        if(regEl.value==='Sud Italia'){
+            for(var si=0;si<REGIONI_SUD_ITALIA.length;si++){
+                var rk=REGIONI_SUD_ITALIA[si];
+                if(bandiKeywordStats.by_regione[rk])take(bandiKeywordStats.by_regione[rk],1.35);
+            }
+        }else if(bandiKeywordStats.by_regione[regEl.value]){
+            take(bandiKeywordStats.by_regione[regEl.value],1.35);
+        }
     }
     if(tipoEl&&tipoEl.value&&bandiKeywordStats.by_tipo_ente&&bandiKeywordStats.by_tipo_ente[tipoEl.value]){
         take(bandiKeywordStats.by_tipo_ente[tipoEl.value],1.35);
@@ -1232,7 +1247,7 @@ function renderPreview(){
 }
 function applyFilters(){
     const s=document.getElementById('search').value.toLowerCase(),r=document.getElementById('filter-regione').value,te=document.getElementById('filter-tipo-ente').value,tc=document.getElementById('filter-tipo-contributo').value,st=document.getElementById('filter-stato').value;
-    filteredBandi=allBandi.filter(b=>{if(s&&!JSON.stringify(b).toLowerCase().includes(s))return false;if(r&&b.regione!==r&&!(b.regione||'').includes(r))return false;if(te&&b.tipo_ente!==te)return false;if(tc&&b.tipo_contributo!==tc)return false;if(st&&b.stato!==st)return false;return true});
+    filteredBandi=allBandi.filter(b=>{if(s&&!JSON.stringify(b).toLowerCase().includes(s))return false;if(r&&!regioneFilterMatch(b,r))return false;if(te&&b.tipo_ente!==te)return false;if(tc&&b.tipo_contributo!==tc)return false;if(st&&b.stato!==st)return false;return true});
     const sort=document.getElementById('sort-by').value;
     filteredBandi.sort((a,b)=>{if(sort==='titolo')return(a.titolo||'').localeCompare(b.titolo||'');if(sort==='ente')return(a.ente||'').localeCompare(b.ente||'');if(sort==='regione')return(a.regione||'').localeCompare(b.regione||'');return 0});
     renderFullList();

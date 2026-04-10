@@ -29,6 +29,21 @@ Skill Cursor correlata: `.cursor/skills/bandi-nuove-fonti/SKILL.md`.
 3. **Contatti istituzionali** (PEC o area trasparenza dello stesso ente).
 4. **Red flag:** unica fonte su dominio non istituzionale; landing “lascia email”; testo generico senza allegati ufficiali.
 
+#### Allineamento con filtri pubblici e campi Supabase (`bandi.html` / `public.bandi`)
+
+Il motore di discovery e l’ingest devono produrre record **compatibili** con ciò che l’utente filtra sul sito e con ciò che il datalist suggerisce (vedi `tools/build-bandi-keyword-stats.js`).
+
+| Campo DB / JSON | Uso nel sito | Valori attesi / note |
+|-----------------|--------------|----------------------|
+| **`regione`** | Select “Regione” + ordinamento | `Nazionale` oppure nome regione esatto (es. `Veneto`). Macro **Sud Italia** nel filtro = Abruzzo, Basilicata, Calabria, Campania, Molise, Puglia, Sardegna, Sicilia (il valore sul record resta la regione singola). |
+| **`tipo_ente`** | Select “Tipo Ente” | `ministero`, `ente_nazionale`, `regione`, `cciaa`, **`ue`** (bandi/programmi UE diretti, es. Horizon), `altro`. In `FONTI`, usare lo stesso valore che deve comparire nel filtro (es. Commissione europea → `ue`). |
+| **`tipo_contributo`** | Select “Tipo Contributo” | `fondo_perduto`, `tasso_agevolato`, `misto`, `credito_imposta`. Se la fonte non espone il dato, l’ingest spesso mette `misto`: in audit manuale si può affinare. |
+| **`stato`** | Select “Stato” | `aperto`, `in_arrivo`, `chiuso`. |
+| **`settore`** | **Non** ha select dedicata: entra nella **ricerca testuale** (insieme a titolo, descrizione, ecc.) | Testo libero coerente con il corpus (es. `Digitalizzazione`, `Turismo`). Utile per intersezione semantica in UI. |
+| **`ente`** | Visualizzato in scheda; ricerca full-text | Nome erogatore riconoscibile (stesso brand del sito istituzionale quando possibile). |
+
+**Suggerimenti datalist:** `by_regione` e `by_tipo_ente` nel JSON keyword sono chiavi esatte. Per `Sud Italia` il front-end unisce i bucket delle otto regioni meridionali; in ingest non si scrive `regione: "Sud Italia"` sul record.
+
 ---
 
 ## 2. Parole chiave specifiche (template)
@@ -139,7 +154,71 @@ Sostituisci `[settore]`, `[Regione]`, `[Provincia]`, `[Comune]`, `[ente]`.
 
 ---
 
-## 7. Prompt riutilizzabile (per agente o team)
+## 7. Matrice ecosistema enti e punti di intersezione
+
+Obiettivo: massimizzare le **sovrapposizioni** tra canali (stessa misura vista da incentivi.gov, da sito ministeriale, da regione, da CCIAA) senza duplicare URL in pubblicazione.
+
+### Livello UE
+
+| Ruolo | Dove cercare | Incrocio tipico |
+|-------|----------------|-----------------|
+| Programmi diretti | [Funding & Tenders](https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home), siti di programma (Horizon, LIFE, Digital Europe, Creative Europe, Interreg) | Scheda UE + pagina nazionale “info day” / ufficio progetti (MUR, MIMIT, regioni) |
+| Politiche di coesione | Open Data progetti, siti regioni (FESR/FSE+), [incentivi.gov.it](https://www.incentivi.gov.it/) | Stesso CUP / stesso titolo programma in più portali |
+
+### Livello Stato e agenzie
+
+| Tipologia | Esempi di enti / aree | Query e sezioni sito |
+|-----------|------------------------|----------------------|
+| Ministeri economici / impresa | MIMIT, MASAF, MASE, MUR, MiC, MiTE, Ministero Turismo | `site:*.gov.it` + “avviso”, “contributi”, “bando”, “decreto”; aree “Imprese”, “Incentivi”, “Trasparenza” |
+| Agenzie strumentali | Invitalia, SIMEST, SACE, CDP (dove pertinente), ICE, GSE, INAIL, ISPRA (bandi settoriali) | Pagine “cosa facciamo”, “bandi”, “finanziamenti” |
+| Coesione / PNRR | Agenzia per la coesione, Italia Domani, siti missione/ministero | Collegare sempre alla **scheda incentivi.gov** o al DM/DPCM di riferimento |
+| Enti vigilati / partecipati | GSE, Terna (bandi territoriali), enti consortili | Filtrare “sovvenzioni” vs “gare” in trasparenza |
+
+### Livello sub-statale
+
+| Tipologia | Dove | Intersezione |
+|-----------|------|----------------|
+| Regioni e province autonome | Portali bandi dedicati, BUR, sportelli (es. Lazio Innova, Sistema Puglia) | CCIAA e unioni di comuni spesso **rimandano** alle stesse misure: utile per discovery, link finale = regione |
+| Città metropolitane, province, unioni di comuni | Trasparenza, “Sviluppo economico” | `avviso pubblico` + nome ente + `site:.gov.it` |
+| Comuni | Regolamenti contributi, bandi negozi/centro storico | Molto frammentato: priorità per capoluoghi e comuni >50k ab. se obiettivo è copertura |
+| **GAL / FLAG / LAG** (sviluppo locale LEADER) | Siti GAL, regione (PSR), Rete Rurale | Spesso dominio **non** `.gov.it`: usare per discovery, poi scheda su `regione.*` / BUR se esiste |
+| Camere di commercio | `*.camcom.it`, PID | Voucher e digitalizzazione; sovrapposizione con misure regionali |
+| Fondazioni (caritative, bancarie, territoriali) | Solo se **avviso pubblico** con link a delibera / convenzione | Trattare come `altro` o `ente_nazionale` a seconda dello statuto; verificare policy link in `tools/bandi-link-policy.js` |
+| Università / IRCCS / hub innovazione | Bandi spin-off, brevetti, PNRR | Incrocio con MUR e regioni (R&S, FESR) |
+
+### Semantica “chi pubblica cosa”
+
+- **Erogatore** (chi firma il contributo) ≠ **Gestore** (Invitalia, banca, regione) ≠ **Piattaforma** (incentivi.gov). In discovery conviene cercare tutti e tre i ruoli per non perdere varianti di URL.
+- **Gare e appalti** PA compaiono spesso accanto ai contributi: separare con keyword *imprese*, *PMI*, *voucher*, *fondo perduto*.
+
+---
+
+## 8. Tipologie di misura (oltre la parola “bando”)
+
+Per intercettare tutti gli enti che “si occupano” di agevolazioni, includere nelle ricerche anche:
+
+| Forma | Esempi di parole chiave |
+|-------|-------------------------|
+| Avviso / manifestazione di interesse | `manifestazione di interesse`, `MIS`, `preinformazione` |
+| Decreto / DM / DPCM | `decreto ministeriale`, `riparto fondi`, `graduatoria` |
+| Credito d’imposta / decontribuzione | spesso **non** sono “bandi”: restano utili in corpus se il sito le classifica come opportunità (tipo contributo `credito_imposta`) |
+| Prestiti / garanzie | MCC, Confidi, accordi bancari — verificare se sono nel perimetro prodotto o solo informativi |
+| Regimi di aiuto | RNA, de minimis — utile per **contesto** e verifica compatibilità, raramente come listing HTML scrape |
+
+---
+
+## 9. Workflow: massimizzare le intersezioni (senza rumore)
+
+1. **Baseline corpus** — `npm run build-bandi-keywords`: leggere `by_regione` e `by_tipo_ente` per vedere dove il DB è scarso (poche occorrenze o assenza di chiavi).
+2. **Hub nazionale** — Per ogni nuova misura su incentivi.gov, annotare ente gestore e cercare la **pagina dedicata** sul sito dell’ente (secondo URL per `provenance_interna` / coerenza titoli).
+3. **Espansione geografica** — Per ogni regione sotto-rappresentata: portale regionale + 1–2 CCIAA capoluogo + Città metropolitana se esiste.
+4. **Espansione tipologica** — Per ogni `tipo_ente` scarso: aggiungere fonti che riempiano quel bucket (es. più `ue` se mancano call europee strutturate).
+5. **Verifica filtri** — Dopo ingest, campionare record e provare filtri su `bandi.html` (reg macro Sud, tipo UE, tipo contributo).
+6. **Dedup** — Stesso provvedimento su più siti: un solo `url` pubblico preferibilmente quello dell’ente erogatore o della scheda incentivi.gov se canonica.
+
+---
+
+## 10. Prompt riutilizzabile (per agente o team)
 
 ```
 Per ogni bando in lista:
@@ -150,4 +229,4 @@ Per ogni bando in lista:
 
 ---
 
-*Ultimo aggiornamento struttura documento: aprile 2026. Aggiornare link e numeri solo dopo verifica sulle fonti citate.*
+*Ultimo aggiornamento struttura documento: aprile 2026 (filtri sito, matrice enti, workflow intersezioni). Aggiornare link e numeri solo dopo verifica sulle fonti citate.*
