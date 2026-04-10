@@ -1,12 +1,11 @@
 // Service Worker — RaaS Bandi PWA
 // Strategia: cache-first per assets statici, network-first per dati bandi
 
-var CACHE_NAME = 'raas-bandi-v2';
-var DATA_CACHE = 'raas-bandi-data-v2';
+var CACHE_NAME = 'raas-bandi-v3';
+var DATA_CACHE = 'raas-bandi-data-v3';
 
 var STATIC_ASSETS = [
   '/app.html',
-  '/bandi.html',
   '/manifest.json',
   '/favicon.svg',
   '/favicon.ico',
@@ -53,6 +52,12 @@ self.addEventListener('fetch', function(e) {
     return;
   }
 
+  // bandi.html: network-first (mai servire solo cache — altrimenti contatore/JS restano vecchi dopo deploy)
+  if (url.pathname === '/bandi.html' || url.pathname === '/bandi') {
+    e.respondWith(networkFirstHtml(e.request));
+    return;
+  }
+
   // CDN esterni (fonts, Font Awesome, PayPal SDK) -> network con cache opzionale
   if (url.hostname !== location.hostname) {
     e.respondWith(networkWithCache(e.request));
@@ -62,6 +67,23 @@ self.addEventListener('fetch', function(e) {
   // Assets statici locali -> cache-first
   e.respondWith(cacheFirst(e.request));
 });
+
+// Network-first per HTML che deve aggiornarsi a ogni release (es. bandi.html)
+function networkFirstHtml(request) {
+  return fetch(request)
+    .then(function (response) {
+      if (response.ok) {
+        var clone = response.clone();
+        caches.open(CACHE_NAME).then(function (cache) {
+          cache.put(request, clone);
+        });
+      }
+      return response;
+    })
+    .catch(function () {
+      return caches.match(request);
+    });
+}
 
 // Network-first per dati bandi (aggiornati + salvati offline)
 function networkFirstData(request) {
