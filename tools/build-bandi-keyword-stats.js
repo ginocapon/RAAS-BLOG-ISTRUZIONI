@@ -104,9 +104,20 @@ function restGet(pathAndQuery, apiKey) {
   });
 }
 
+function normalizeSettoreField(b) {
+  if (Array.isArray(b.settori)) {
+    return b.settori.filter(Boolean).join(' ');
+  }
+  if (typeof b.settori === 'string' && b.settori.trim()) {
+    return b.settori.trim();
+  }
+  return typeof b.settore === 'string' ? b.settore : '';
+}
+
 async function fetchAllFromSupabase(apiKey) {
+  // Colonna reale su public.bandi: settori (json/array); "settore" non esiste → HTTP 400 se richiesto in select.
   const cols =
-    'titolo,descrizione,ente,regione,tipo_ente,settore,tipo_contributo,attivo,stato';
+    'titolo,descrizione,ente,regione,tipo_ente,settori,tipo_contributo,attivo,stato';
   const all = [];
   let offset = 0;
   const pageSize = 1000;
@@ -116,7 +127,12 @@ async function fetchAllFromSupabase(apiKey) {
       apiKey
     );
     if (!rows.length) break;
-    all.push(...rows);
+    for (const r of rows) {
+      all.push({
+        ...r,
+        settore: normalizeSettoreField(r),
+      });
+    }
     if (rows.length < pageSize) break;
     offset += pageSize;
   }
