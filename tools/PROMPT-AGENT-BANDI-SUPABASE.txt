@@ -51,3 +51,7 @@ Prompt consigliato per Cursor (Agent) — validazione link + coerenza titoli Sup
 12) RLS + controllo lettura anon:
    supabase/migrations/20260410120000_bandi_rls_anon_access.sql (applicare su progetto Supabase se serve).
    npm run verify-bandi-public-read — deve stampare PASS (bandi attivi via chiave anon).
+
+13) Nuove fonti + conteggio “fonti” sul sito:
+   Skill Cursor (progetto): .cursor/skills/bandi-nuove-fonti/SKILL.md
+   Il 65 sul hero = fonti_distinte nel DB (write-bandi-live-stats) e coincide con le 65 voci FONTI nell’Edge Function se ogni ingest usa fonte.id.

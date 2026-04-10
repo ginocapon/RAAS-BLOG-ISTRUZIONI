@@ -1,5 +1,5 @@
 {
-  "version": "1.3",
+  "version": "1.4",
   "project": "RaaS Automazioni",
   "description": "Mappa dei file skill da caricare per ogni tipo di task. Obiettivo: ridurre token consumati caricando solo le regole necessarie.",
   "always_load": ["skill-essentials.md"],
@@ -71,7 +71,13 @@
     "verifica-bandi-supabase": {
       "description": "Validazione link, coerenza titoli, monitoraggio bandi DB Supabase",
       "load": ["skill-essentials.md", "skill-context.md"],
-      "note": "Regola Cursor: .cursor/rules/bandi-supabase.mdc — prompt tools/PROMPT-AGENT-BANDI-SUPABASE.txt",
+      "note": "Regola: .cursor/rules/bandi-supabase.mdc — prompt tools/PROMPT-AGENT-BANDI-SUPABASE.txt — skill nuove fonti: .cursor/skills/bandi-nuove-fonti/SKILL.md",
+      "token_saving": "medio"
+    },
+    "nuove-fonti-bandi": {
+      "description": "Aggiungere fonti ingest, verificare conteggio 65/hero, workflow keyword→discovery→FONTI→deploy",
+      "load": ["skill-essentials.md", "skill-context.md"],
+      "note": "Skill progetto: .cursor/skills/bandi-nuove-fonti/SKILL.md — array FONTI in supabase/functions/manutenzione-bandi/index.ts",
       "token_saving": "medio"
     },
     "analisi-competitor": {

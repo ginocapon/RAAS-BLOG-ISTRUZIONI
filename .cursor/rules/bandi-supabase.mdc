@@ -36,6 +36,7 @@ alwaysApply: false
 ## Conteggi in hero (stesso dominio)
 
 - **`data/bandi-live-stats.json`**: `attivi_count` e `fonti_distinte` dal DB, generato da **`npm run write-bandi-live-stats`** e ad ogni deploy GitHub Pages (workflow `jekyll-docker.yml`). `bandi.html` lo legge per primo così il contatore resta corretto anche se il browser blocca `supabase.co`.
+- **Estendere fonti / workflow discovery**: skill progetto **`.cursor/skills/bandi-nuove-fonti/SKILL.md`** (task `nuove-fonti-bandi` in `context-map.json`).
 
 ## RLS / lettura anon
 
