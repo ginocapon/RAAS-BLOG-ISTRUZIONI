@@ -51,6 +51,7 @@ Carica SOLO i file necessari per il task — vedi tabella sotto.
 - Rapporto creato come GitHub Issue con label `audit-settimanale`
 - Il rapporto include anche **validazione link** su `data/bandi.json` (`url_bando`) tramite `tools/validate-bandi-links-free.js`
 - **Bandi Supabase (PostgreSQL):** colonna URL canonica **`url`** su `public.bandi` (vedi `.cursor/rules/bandi-supabase.mdc`); prompt operativo in `tools/PROMPT-AGENT-BANDI-SUPABASE.txt`; nuove fonti / conteggi: skill `.cursor/skills/bandi-nuove-fonti/SKILL.md` e task `nuove-fonti-bandi` in `context-map.json`
+- **Bonifica link aggregatore (es. europainnovazione.com):** in pubblicazione solo URL istituzionali. Esecuzione locale con `export SUPABASE_SERVICE_ROLE_KEY=…` poi `bash tools/run-resolve-europainnovazione.sh` (batch da 100, sostituisce o disattiva); residui: `tools/sql/deactivate-europainnovazione-remaining.sql`. Dettaglio: skill `bandi-nuove-fonti`, sezione «Pulizia europainnovazione».
 - Autorizzazione **permanente** — attivo fino a revoca esplicita
 - Riferimento regole: `skill-seo.md` (19 controlli automatizzati) + sezione bandi sopra
 
